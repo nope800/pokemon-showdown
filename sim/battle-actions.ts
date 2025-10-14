@@ -1712,8 +1712,10 @@ export class BattleActions {
 
 		const tr = this.battle.trunc;
 
-		// int(int(int(2 * L / 5 + 2) * A * P / D) / 50);
-		const baseDamage = tr(tr(tr(tr(2 * level / 5 + 2) * basePower * attack) / defense) / 50);
+		// int(int(int(2 * L / 5 + 2) * A * P / D) / 50); NORMAL POKEMON
+		//const baseDamage = tr(tr(tr(tr(2 * level / 5 + 2) * basePower * attack) / defense) / 50);
+		// math.round(math.round(ATT/DEF * POW / 1.6) + 0.5); AMOROS
+		const baseDamage = Math.round(Math.round((attack / defense) * basePower / 1.6) + 0.5);
 
 		// Calculate damage modifiers separately (order differs between generations)
 		return this.modifyDamage(baseDamage, source, target, move, suppressMessages);
@@ -1750,7 +1752,8 @@ export class BattleActions {
 		}
 
 		// random factor - also not a modifier
-		baseDamage = this.battle.randomizer(baseDamage);
+		//no randomness in amoros. We are beings of pure skill.
+		//baseDamage = this.battle.randomizer(baseDamage);
 
 		// STAB
 		// The "???" type never gets STAB
