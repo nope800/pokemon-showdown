@@ -892,4 +892,17 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 			return bp;
 		},
 	},
+
+
+	//BEGIN AMOROS STATUSES
+	afraid: {
+		name: 'afraid',
+		effectType: 'Status',
+		onStart(target, source, sourceEffect) {
+				this.add('-status', target, 'afraid');
+		},
+		onDisableMove(pokemon) {
+				if (pokemon.lastMove && pokemon.lastMove.id !== 'struggle') pokemon.disableMove(pokemon.lastMove.id);
+			},
+	},
 };
