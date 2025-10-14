@@ -214,6 +214,15 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 		endFromItem: "  [POKEMON]'s [ITEM] woke it up!",
 		cant: "[POKEMON] is fast asleep.",
 	},
+	//amoros statuses
+	afraid: {
+		start: "  [POKEMON] became afraid!",
+		startFromItem: "  [POKEMON] became afraid of the [ITEM]!",
+		alreadyStarted: "  [POKEMON] is already afraid!",
+		end: "  [POKEMON] got over their fear!",
+		endFromItem: "  [POKEMON]'s [ITEM] calmed it down!",
+		damage: "  [POKEMON] THIS SHOULDN'T HAPPEN! IF IT DOES, IT'S A BUG. IT'S HAPPENED A COUPLE TIMES THOUGH SO IDK WHAT TO DO ABOUT THAT.",
+	},
 
 	// misc effects
 	confusion: {
