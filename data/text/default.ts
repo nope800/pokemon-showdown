@@ -223,6 +223,14 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 		endFromItem: "  [POKEMON]'s [ITEM] calmed it down!",
 		damage: "  [POKEMON] THIS SHOULDN'T HAPPEN! IF IT DOES, IT'S A BUG. IT'S HAPPENED A COUPLE TIMES THOUGH SO IDK WHAT TO DO ABOUT THAT.",
 	},
+	heat: {
+		start: "  [POKEMON] is in heat!",
+		startFromItem: "  [POKEMON] went into heat from the [ITEM]!",
+		alreadyStarted: "  [POKEMON] is already in heat!",
+		end: "  [POKEMON] in no longer in heat!",
+		endFromItem: "  [POKEMON]'s [ITEM] calmed it down!",
+		damage: "  [POKEMON] took damage from being in heat!",
+	},
 
 	// misc effects
 	confusion: {

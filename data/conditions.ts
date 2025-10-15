@@ -905,4 +905,23 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 				if (pokemon.lastMove && pokemon.lastMove.id !== 'struggle') pokemon.disableMove(pokemon.lastMove.id);
 			},
 	},
+	heat: {
+		name: 'heat',
+		effectType: 'Status',
+		onStart(target, source, sourceEffect) {
+				this.add('-status', target, 'heat');
+		},
+		onDisableMove(pokemon) {
+				for (const moveSlot of pokemon.moveSlots) {
+					const move = this.dex.moves.get(moveSlot.id);
+					if (move.category === 'Status' && move.id !== 'mefirst') {
+						pokemon.disableMove(moveSlot.id);
+					}
+				}
+		},
+		onResidualOrder: 10,
+		onResidual(pokemon) {
+			this.damage(5);
+		},
+	},
 };
