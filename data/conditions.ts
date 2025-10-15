@@ -903,7 +903,14 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 		},
 		onDisableMove(pokemon) {
 				if (pokemon.lastMove && pokemon.lastMove.id !== 'struggle') pokemon.disableMove(pokemon.lastMove.id);
-			},
+		},
+		onBeforeMovePriority: 5, //if the opponent would use the same move as last turn, cancel it.
+			onBeforeMove(attacker, defender, move) {
+				if (attacker.lastMove === move) {
+					this.add('cant', attacker, 'fear', move);
+					return false;
+				}
+		},
 	},
 	heat: {
 		name: 'heat',
@@ -925,7 +932,7 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 					this.add('cant', attacker, 'heat', move);
 					return false;
 				}
-			},
+		},
 		onResidualOrder: 10,
 		onResidual(pokemon) {
 			this.damage(5);

@@ -222,6 +222,7 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 		end: "  [POKEMON] got over their fear!",
 		endFromItem: "  [POKEMON]'s [ITEM] calmed it down!",
 		damage: "  [POKEMON] THIS SHOULDN'T HAPPEN! IF IT DOES, IT'S A BUG. IT'S HAPPENED A COUPLE TIMES THOUGH SO IDK WHAT TO DO ABOUT THAT.",
+		cant: "[POKEMON] is too scared to stay in one place!",
 	},
 	heat: {
 		start: "  [POKEMON] is in heat! Status moves disabled!",
@@ -229,7 +230,7 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 		alreadyStarted: "  [POKEMON] is already in heat!",
 		end: "  [POKEMON] in no longer in heat!",
 		endFromItem: "  [POKEMON]'s [ITEM] calmed it down!",
-		damage: "  [POKEMON] took damage from being in heat!",
+		damage: "  [POKEMON] is dripping with need! Took damage from being in heat!",
 		cant: "[POKEMON] is too horny to do anything but fuck!",
 	},
 
