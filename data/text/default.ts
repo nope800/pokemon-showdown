@@ -17,7 +17,7 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 		switchOut: "[TRAINER] withdrew [NICKNAME]!",
 		switchOutOwn: "[NICKNAME], come back!",
 		drag: "[FULLNAME] was dragged out!",
-		faint: "[POKEMON] fainted!",
+		faint: "[POKEMON] came!",
 		swap: "[POKEMON] and [TARGET] switched places!",
 		swapCenter: "[POKEMON] moved to the center!",
 
