@@ -945,11 +945,13 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 				this.add('-status', target, 'trance');
 		},
 		onDisableMove(pokemon) {
-				for (const moveSlot of pokemon.moveSlots) {
-					if (this.randomChance(1,2)) {
-						pokemon.disableMove(moveSlot.id);
-					}
+				var move1 = this.sample(pokemon.moveSlots) //should probably make this a loop and an array and stuff but whatever it's small enough that it's not that hard to change.
+				var move2 = move1
+				while (move1 == move2) {
+					move2 = this.sample(pokemon.moveSlots)
 				}
+				pokemon.disableMove(move1.id);
+				pokemon.disableMove(move2.id);
 		},
 	},
 };

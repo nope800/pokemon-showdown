@@ -230,11 +230,11 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 		alreadyStarted: "  [POKEMON] is already in heat!",
 		end: "  [POKEMON] in no longer in heat!",
 		endFromItem: "  [POKEMON]'s [ITEM] calmed it down!",
-		damage: "  [POKEMON] is dripping with need! Took damage from being in heat!",
+		damage: "  [POKEMON] took damage from being in heat!",
 		cant: "[POKEMON] is too horny to do anything but fuck!",
 	},
 	trance: {
-		start: "  [POKEMON] is in a trance! Each move has a chance to be disabled every turn!",
+		start: "  [POKEMON] is in a trance! Two moves disabled every turn!",
 		startFromItem: "  [POKEMON] was mesmerized by the [ITEM]!",
 		alreadyStarted: "  [POKEMON] is already in a trance!",
 		end: "  [POKEMON] in no longer entranced!",
