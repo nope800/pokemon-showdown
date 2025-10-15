@@ -919,6 +919,13 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 					}
 				}
 		},
+		onBeforeMovePriority: 5, //if the opponent would use a status move, cancel it.
+			onBeforeMove(attacker, defender, move) {
+				if (!move.isZ && !move.isMax && move.category === 'Status' && move.id !== 'mefirst') {
+					this.add('cant', attacker, 'heat', move);
+					return false;
+				}
+			},
 		onResidualOrder: 10,
 		onResidual(pokemon) {
 			this.damage(5);
