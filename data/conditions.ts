@@ -938,4 +938,18 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 			this.damage(5);
 		},
 	},
+	trance: {
+		name: 'trance',
+		effectType: 'Status',
+		onStart(target, source, sourceEffect) {
+				this.add('-status', target, 'trance');
+		},
+		onDisableMove(pokemon) {
+				for (const moveSlot of pokemon.moveSlots) {
+					if (this.randomChance(1,2)) {
+						pokemon.disableMove(moveSlot.id);
+					}
+				}
+		},
+	},
 };

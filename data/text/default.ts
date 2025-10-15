@@ -216,7 +216,7 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 	},
 	//amoros statuses
 	afraid: {
-		start: "  [POKEMON] became afraid!",
+		start: "  [POKEMON] became afraid! Can't use the same move twice in a row",
 		startFromItem: "  [POKEMON] became afraid of the [ITEM]!",
 		alreadyStarted: "  [POKEMON] is already afraid!",
 		end: "  [POKEMON] got over their fear!",
@@ -232,6 +232,14 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 		endFromItem: "  [POKEMON]'s [ITEM] calmed it down!",
 		damage: "  [POKEMON] is dripping with need! Took damage from being in heat!",
 		cant: "[POKEMON] is too horny to do anything but fuck!",
+	},
+	trance: {
+		start: "  [POKEMON] is in a trance! Each move has a chance to be disabled every turn!",
+		startFromItem: "  [POKEMON] was mesmerized by the [ITEM]!",
+		alreadyStarted: "  [POKEMON] is already in a trance!",
+		end: "  [POKEMON] in no longer entranced!",
+		endFromItem: "  [POKEMON]'s [ITEM] freed it from its trance!",
+		cant: "[POKEMON]'s mind is full of spirals!",
 	},
 
 	// misc effects
