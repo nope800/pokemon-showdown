@@ -975,11 +975,51 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 				}
 		},
 		onBeforeMovePriority: 5, //if the opponent would use a move of the bad type, cancel it.
-			onBeforeMove(attacker, defender, move) {
-				if (move.type === this.effectState.type) {
-					this.add('cant', attacker, 'embarrassed', move);
-					return false;
+		onBeforeMove(attacker, defender, move) {
+			if (move.type === this.effectState.type) {
+				this.add('cant', attacker, 'embarrassed', move);
+				return false;
+			}
+		},
+	},
+	held: {
+		name: 'held',
+		effectType: 'Status',
+		onStart(pokemon, source) {
+			this.add('-status', pokemon, 'held');
+			this.effectState.source = source
+		},
+		onResidualOrder: 13,
+		onResidual(pokemon) {
+			const source = this.effectState.source;
+			// G-Max Centiferno and G-Max Sandblast continue even after the user leaves the field
+			const gmaxEffect = ['gmaxcentiferno', 'gmaxsandblast'].includes(this.effectState.sourceEffect.id);
+			if (source && (!source.isActive || source.hp <= 0 || !source.activeTurns) && !gmaxEffect) {
+				pokemon.clearStatus();
+				this.add('-end', pokemon, 'held');
+				return;
+			}
+		},
+		onEnd(pokemon) {
+			this.add('-end', pokemon, 'held');
+		},
+		onTrapPokemon(pokemon) {
+			if (this.effectState.source?.isActive) pokemon.tryTrap();
+		},
+		onDisableMove(pokemon) { //disable moves with the hold flag
+				for (const moveSlot of pokemon.moveSlots) {
+					const move = this.dex.moves.get(moveSlot.id);
+					if (move.flags['hold']) {
+						pokemon.disableMove(moveSlot.id);
+					}
 				}
+		},
+		onBeforeMovePriority: 5, //if the opponent would use a move of the bad type, cancel it.
+		onBeforeMove(attacker, defender, move) {
+			if (move.flags['hold']) {
+				this.add('cant', attacker, 'hold', move);
+				return false;
+			}
 		},
 	},
 };
