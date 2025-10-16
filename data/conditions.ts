@@ -954,4 +954,32 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 				pokemon.disableMove(move2.id);
 		},
 	},
+	embarrassed: {
+		name: 'embarrassed',
+		effectType: 'Status',
+		onStart(target, source, sourceEffect) {
+				this.add('-status', target, 'embarrassed');
+				if (!target.lastMove) {
+					this.effectState.type = null
+				}
+				else {
+					this.effectState.type = target.lastMove.type
+				}
+		},
+		onDisableMove(pokemon) {
+				for (const moveSlot of pokemon.moveSlots) {
+					const move = this.dex.moves.get(moveSlot.id);
+					if (move.type === this.effectState.type) {
+						pokemon.disableMove(moveSlot.id);
+					}
+				}
+		},
+		onBeforeMovePriority: 5, //if the opponent would use a move of the bad type, cancel it.
+			onBeforeMove(attacker, defender, move) {
+				if (move.type === this.effectState.type) {
+					this.add('cant', attacker, 'embarrassed', move);
+					return false;
+				}
+		},
+	},
 };

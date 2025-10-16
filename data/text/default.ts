@@ -241,6 +241,14 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 		endFromItem: "  [POKEMON]'s [ITEM] freed it from its trance!",
 		cant: "[POKEMON]'s mind is full of spirals!",
 	},
+	embarrassed: {
+		start: "  [POKEMON] is embarrassed! Can't use a certain type of move!",
+		startFromItem: "  [POKEMON]'s [ITEM] made them embarrassed of their moves!",
+		alreadyStarted: "  [POKEMON] is already embarrassed!",
+		end: "  [POKEMON] in no longer embarrassed of their moves!",
+		endFromItem: "  [POKEMON]'s [ITEM] gave it confidence!",
+		cant: "[POKEMON] is too embarrassed!",
+	},
 
 	// misc effects
 	confusion: {
