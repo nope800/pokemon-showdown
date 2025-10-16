@@ -249,6 +249,14 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 		endFromItem: "  [POKEMON]'s [ITEM] gave it confidence!",
 		cant: "[POKEMON] is too embarrassed!",
 	},
+	held: {
+		start: "  [POKEMON] is held! Can't escape or use moves that inflict Held!",
+		startFromItem: "  [POKEMON]'s [ITEM] held them?",
+		alreadyStarted: "  [POKEMON] is already held!",
+		end: "  [POKEMON] in no longer held!",
+		endFromItem: "  [POKEMON]'s [ITEM] let it escape!",
+		cant: "[POKEMON] is being held too tight to hold back!",
+	},
 
 	// misc effects
 	confusion: {

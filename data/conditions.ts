@@ -992,10 +992,8 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 		onResidualOrder: 13,
 		onResidual(pokemon) {
 			const source = this.effectState.source;
-			// G-Max Centiferno and G-Max Sandblast continue even after the user leaves the field
-			const gmaxEffect = ['gmaxcentiferno', 'gmaxsandblast'].includes(this.effectState.sourceEffect.id);
-			if (source && (!source.isActive || source.hp <= 0 || !source.activeTurns) && !gmaxEffect) {
-				pokemon.clearStatus();
+			if (source && (!source.isActive || source.hp <= 0 || !source.activeTurns)) {
+				pokemon.cureStatus(true);
 				this.add('-end', pokemon, 'held');
 				return;
 			}
