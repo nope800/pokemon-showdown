@@ -1639,18 +1639,16 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 	bodyslam: {
 		num: 34,
 		accuracy: 100,
-		basePower: 85,
+		basePower: 10,
 		category: "Physical",
 		name: "Body Slam",
 		pp: 15,
 		priority: 0,
 		flags: { contact: 1, protect: 1, mirror: 1, nonsky: 1, metronome: 1 },
-		secondary: {
-			chance: 100,
-			status: 'brn',
-		},
+		multihit: 2,
+		secondary: null,
 		target: "normal",
-		type: "Normal",
+		type: "Group",
 		contestType: "Tough",
 	},
 	boltbeak: {
@@ -19531,10 +19529,10 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, hold: 1 },
 		secondary: {
 			chance: 100,
-			status: 'held',
+			status: 'swarming',
 		},
 		target: "normal",
-		type: "Normal",
+		type: "Vanilla",
 		contestType: "Tough",
 	},
 	tailglow: {
