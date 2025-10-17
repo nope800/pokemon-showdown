@@ -947,7 +947,7 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 		onDisableMove(pokemon) {
 				var move1 = this.sample(pokemon.moveSlots) //should probably make this a loop and an array and stuff but whatever it's small enough that it's not that hard to change.
 				var move2 = move1
-				while (move1 == move2) {
+				while (move1 == move2 && pokemon.moveSlots.length > 1) { //add a contingency in case they only have 1 move for some reason.
 					move2 = this.sample(pokemon.moveSlots)
 				}
 				pokemon.disableMove(move1.id);
@@ -1012,12 +1012,29 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 					}
 				}
 		},
-		onBeforeMovePriority: 5, //if the opponent would use a move of the bad type, cancel it.
+		onBeforeMovePriority: 5, //if the opponent would use a hold move, cancel it.
 		onBeforeMove(attacker, defender, move) {
 			if (move.flags['hold']) {
 				this.add('cant', attacker, 'hold', move);
 				return false;
 			}
+		},
+	},
+	swarming: {
+		name: 'swarming',
+		effectType: 'Status',
+		onStart(target, source, sourceEffect) {
+				this.add('-status', target, 'swarming');
+		},
+		onPrepareHit(source, target, move) {
+			if (!move.multihit) return;
+			if (typeof(move.multihit) == "object") {
+				move.multihit = [move.multihit[0] + 1, move.multihit[1] + 1]
+			}
+			else {
+				move.multihit = move.multihit + 1
+			}
+			move.multihitType = "swarming"
 		},
 	},
 };

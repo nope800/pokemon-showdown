@@ -257,6 +257,14 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 		endFromItem: "  [POKEMON]'s [ITEM] let it escape!",
 		cant: "[POKEMON] is being held too tight to hold back!",
 	},
+	swarming: {
+		start: "  [POKEMON] is swarming! Multihit moves will hit an additional time!",
+		startFromItem: "  [POKEMON]'s [ITEM] gathered a swarm",
+		alreadyStarted: "  [POKEMON] is already swarming!",
+		end: "  [POKEMON]'s swarm dispersed!",
+		endFromItem: "  [POKEMON]'s [ITEM] dispersed the swarm!",
+		cant: "THIS SHOULDN'T HAPPEN! LET ME KNOW IF IT DOES! tell me 'Swarm-Cant' ",
+	},
 
 	// misc effects
 	confusion: {
