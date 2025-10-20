@@ -17107,9 +17107,9 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 	tandemaus: {
 		num: 924,
 		name: "Tandemaus",
-		types: ["Normal"],
+		types: ["Group"],
 		gender: "N",
-		baseStats: { hp: 50, atk: 50, def: 45, spa: 40, spd: 45, spe: 75 },
+		baseStats: { hp: 25, atk: 24, def: 24, spa: 18, spd: 20, spe: 30 },
 		abilities: { 0: "Run Away", 1: "Pickup", H: "Own Tempo" },
 		heightm: 0.3,
 		weightkg: 1.8,
@@ -20116,5 +20116,18 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		color: "White",
 		eggGroups: ["Undiscovered"],
 		gen: 5,
+	},
+	//AMOROS
+	cerise: {
+		num: 2000,
+		name: "Cerise",
+		types: ["Vanilla"],
+		gender: "N",
+		baseStats: { hp: 25, atk: 25, def: 25, spa: 25, spd: 25, spe: 25 },
+		abilities: { 0: "No Ability" },
+		heightm: 2,
+		weightkg: 170,
+		color: "Red",
+		eggGroups: ["Undiscovered"],
 	},
 };

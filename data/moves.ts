@@ -14134,7 +14134,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
 		secondary: null,
 		target: "normal",
-		type: "Normal",
+		type: "Vanilla",
 		contestType: "Tough",
 	},
 	powder: {
@@ -19529,7 +19529,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, hold: 1 },
 		secondary: {
 			chance: 100,
-			status: 'swarming',
+			status: 'trance',
 		},
 		target: "normal",
 		type: "Vanilla",
