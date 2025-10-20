@@ -20124,7 +20124,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		types: ["Vanilla"],
 		gender: "N",
 		baseStats: { hp: 25, atk: 25, def: 25, spa: 25, spd: 25, spe: 25 },
-		abilities: { 0: "No Ability" },
+		abilities: { 0: "Human Adaptability" },
 		heightm: 2,
 		weightkg: 170,
 		color: "Red",
