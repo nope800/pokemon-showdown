@@ -99986,16 +99986,16 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 	//AMOROS
 	cerise: {
 		learnset: {
-			lighttouchontheshoulder: ["1L1"],
-			top: ["1L1"],
-			bottom: ["1L1"],
-			rivalryboost: ["1L1"],
-			mount: ["1L1"],
-			stickyweb: ["1L1"],
-			squirm: ["1L1"],
-			bounce: ["1L1"],
-			stroke: ["1L1"],
-			cuddle: ["1L1"],
+			lighttouchontheshoulder: ["1L1","9L1"],
+			top: ["1L1","9L1"],
+			bottom: ["1L1","9L1"],
+			rivalryboost: ["1L1","9L1"],
+			mount: ["1L1","9L1"],
+			stickyweb: ["1L1","9L1"],
+			squirm: ["1L1","9L1"],
+			bounce: ["1L1","9L1"],
+			stroke: ["1L1","9L1"],
+			cuddle: ["1L1","9L1"],
 		},
 	},
 };
