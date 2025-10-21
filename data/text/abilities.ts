@@ -49,7 +49,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	angershell: {
 		name: "Anger Shell",
 		desc: "When this Pokemon has more than 1/2 its maximum HP and takes damage from an attack bringing it to 1/2 or less of its maximum HP, its Attack, Bottom Attack, and Horniness are raised by 1 stage, and its Defense and Bottom Defense are lowered by 1 stage. This effect applies after all hits from a multi-hit move. This effect is prevented if the move had a secondary effect removed by the Sheer Force Ability.",
-		shortDesc: "At 1/2 or less of this Pokemon's max HP: +1 ToA, Sp. ToA, Hor, and -1 ToD, Sp. ToD.",
+		shortDesc: "At 1/2 or less of this Pokemon's max HP: +1 ToA, Bo. Atk, Hor, and -1 ToD, Bo. Def.",
 	},
 	anticipation: {
 		name: "Anticipation",
@@ -146,7 +146,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	battlebond: {
 		name: "Battle Bond",
 		desc: "If this Pokemon is a Greninja, its Attack, Bottom Attack, and Horniness are raised by 1 stage if it attacks and knocks out another Pokemon. This effect can only happen once per battle.",
-		shortDesc: "After KOing a Pokemon: raises Attack, Sp. ToA, Horniness by 1 stage. Once per battle.",
+		shortDesc: "After KOing a Pokemon: raises Attack, Bo. Atk, Horniness by 1 stage. Once per battle.",
 		gen8: {
 			desc: "If this Pokemon is a Greninja, it transforms into Ash-Greninja if it attacks and knocks out another Pokemon. If this Pokemon is an Ash-Greninja, its Water Shuriken has 20 power and always hits three times.",
 			shortDesc: "After KOing a Pokemon: becomes Ash-Greninja, Water Shuriken: 20 power, hits 3x.",
@@ -158,7 +158,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 		name: "Beads of Ruin",
 		shortDesc: "Active Pokemon without this Ability have their Bottom Defense multiplied by 0.75.",
 
-		start: "  [POKEMON]'s Beads of Ruin weakened the Sp. ToD of all surrounding Pokémon!",
+		start: "  [POKEMON]'s Beads of Ruin weakened the Bo. Def of all surrounding Pokémon!",
 	},
 	beastboost: {
 		name: "Beast Boost",
@@ -168,7 +168,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	berserk: {
 		name: "Berserk",
 		desc: "When this Pokemon has more than 1/2 its maximum HP and takes damage from an attack bringing it to 1/2 or less of its maximum HP, its Bottom Attack is raised by 1 stage. This effect applies after all hits from a multi-hit move. This effect is prevented if the move had a secondary effect removed by the Sheer Force Ability.",
-		shortDesc: "This Pokemon's Sp. ToA is raised by 1 when it reaches 1/2 or less of its max HP.",
+		shortDesc: "This Pokemon's Bo. Atk is raised by 1 when it reaches 1/2 or less of its max HP.",
 	},
 	bigpecks: {
 		name: "Big Pecks",
@@ -243,7 +243,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	competitive: {
 		name: "Competitive",
 		desc: "This Pokemon's Bottom Attack is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon.",
-		shortDesc: "This Pokemon's Sp. ToA is raised by 2 for each of its stats that is lowered by a foe.",
+		shortDesc: "This Pokemon's Bo. Atk is raised by 2 for each of its stats that is lowered by a foe.",
 	},
 	compoundeyes: {
 		name: "Compound Eyes",
@@ -345,7 +345,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	defeatist: {
 		name: "Defeatist",
 		desc: "While this Pokemon has 1/2 or less of its maximum HP, its Attack and Bottom Attack are halved.",
-		shortDesc: "While this Pokemon has 1/2 or less of its max HP, its Attack and Sp. ToA are halved.",
+		shortDesc: "While this Pokemon has 1/2 or less of its max HP, its Attack and Bo. Atk are halved.",
 	},
 	defiant: {
 		name: "Defiant",
@@ -377,7 +377,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	download: {
 		name: "Download",
 		desc: "On switch-in, this Pokemon's Attack or Bottom Attack is raised by 1 stage based on the weaker combined defensive stat of all opposing Pokemon. Attack is raised if their Defense is lower, and Bottom Attack is raised if their Bottom Defense is the same or lower.",
-		shortDesc: "On switch-in, Attack or Sp. ToA is raised 1 stage based on the foes' weaker Defense.",
+		shortDesc: "On switch-in, Attack or Bo. Atk is raised 1 stage based on the foes' weaker Defense.",
 	},
 	dragonsmaw: {
 		name: "Dragon's Maw",
@@ -454,7 +454,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 		name: "Embody Aspect (Wellspring)",
 		shortDesc: "On switch-in, this Pokemon's Bottom Defense is raised by 1 stage.",
 
-		boost: "  The Wellspring Mask worn by [POKEMON] shone brilliantly, and [POKEMON]'s Sp. ToD rose!",
+		boost: "  The Wellspring Mask worn by [POKEMON] shone brilliantly, and [POKEMON]'s Bo. Def rose!",
 	},
 	emergencyexit: {
 		name: "Emergency Exit",
@@ -504,13 +504,13 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	flowergift: {
 		name: "Flower Gift",
 		desc: "If this Pokemon is a Cherrim and Sunny Day is active, it changes to Sunshine Form and the Attack and Bottom Defense of it and its allies are multiplied by 1.5. These effects are prevented if the Pokemon is holding a Utility Umbrella.",
-		shortDesc: "If user is Cherrim and Sunny Day is active, it and allies' Attack and Sp. ToD are 1.5x.",
+		shortDesc: "If user is Cherrim and Sunny Day is active, it and allies' Attack and Bo. Def are 1.5x.",
 		gen7: {
 			desc: "If this Pokemon is a Cherrim and Sunny Day is active, it changes to Sunshine Form and the Attack and Bottom Defense of it and its allies are multiplied by 1.5.",
 		},
 		gen4: {
 			desc: "If Sunny Day is active, the Attack and Bottom Defense of this Pokemon and its allies are multiplied by 1.5.",
-			shortDesc: "If Sunny Day is active, Attack and Sp. ToD of this Pokemon and its allies are 1.5x.",
+			shortDesc: "If Sunny Day is active, Attack and Bo. Def of this Pokemon and its allies are 1.5x.",
 		},
 	},
 	flowerveil: {
@@ -607,7 +607,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	grimneigh: {
 		name: "Grim Neigh",
 		desc: "This Pokemon's Bottom Attack is raised by 1 stage if it attacks and knocks out another Pokemon.",
-		shortDesc: "This Pokemon's Sp. ToA is raised by 1 stage if it attacks and KOes another Pokemon.",
+		shortDesc: "This Pokemon's Bo. Atk is raised by 1 stage if it attacks and KOes another Pokemon.",
 	},
 	guarddog: {
 		name: "Guard Dog",
@@ -626,7 +626,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	hadronengine: {
 		name: "Hadron Engine",
-		shortDesc: "On switch-in, summons Electric Terrain. During Electric Terrain, Sp. ToA is 1.3333x.",
+		shortDesc: "On switch-in, summons Electric Terrain. During Electric Terrain, Bo. Atk is 1.3333x.",
 
 		start: "  [POKEMON] turned the ground into Electric Terrain, energizing its futuristic engine!",
 		activate: "  [POKEMON] used the Electric Terrain to energize its futuristic engine!",
@@ -878,7 +878,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	lightningrod: {
 		name: "Lightning Rod",
 		desc: "This Pokemon is immune to Electric-type moves and raises its Bottom Attack by 1 stage when hit by an Electric-type move. If this Pokemon is not the target of a single-target Electric-type move used by another Pokemon, this Pokemon redirects that move to itself if it is within the range of that move. If multiple Pokemon could redirect with this Ability, it goes to the one with the highest Horniness, or in the case of a tie to the one that has had this Ability active longer.",
-		shortDesc: "This Pokemon draws Electric moves to itself to raise Sp. ToA by 1; Electric immunity.",
+		shortDesc: "This Pokemon draws Electric moves to itself to raise Bo. Atk by 1; Electric immunity.",
 		gen4: {
 			desc: "If this Pokemon is not the target of a single-target Electric-type move used by another Pokemon, this Pokemon redirects that move to itself.",
 			shortDesc: "This Pokemon draws single-target Electric moves to itself.",
@@ -999,14 +999,14 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	minus: {
 		name: "Minus",
 		desc: "If an active ally has this Ability or the Plus Ability, this Pokemon's Bottom Attack is multiplied by 1.5.",
-		shortDesc: "If an active ally has this Ability or the Plus Ability, this Pokemon's Sp. ToA is 1.5x.",
+		shortDesc: "If an active ally has this Ability or the Plus Ability, this Pokemon's Bo. Atk is 1.5x.",
 		gen4: {
 			desc: "If an active ally has the Plus Ability, this Pokemon's Bottom Attack is multiplied by 1.5.",
-			shortDesc: "If an active ally has the Plus Ability, this Pokemon's Sp. ToA is 1.5x.",
+			shortDesc: "If an active ally has the Plus Ability, this Pokemon's Bo. Atk is 1.5x.",
 		},
 		gen3: {
 			desc: "If an active Pokemon has the Plus Ability, this Pokemon's Bottom Attack is multiplied by 1.5.",
-			shortDesc: "If an active Pokemon has the Plus Ability, this Pokemon's Sp. ToA is 1.5x.",
+			shortDesc: "If an active Pokemon has the Plus Ability, this Pokemon's Bo. Atk is 1.5x.",
 		},
 	},
 	mirrorarmor: {
@@ -1251,14 +1251,14 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	plus: {
 		name: "Plus",
 		desc: "If an active ally has this Ability or the Minus Ability, this Pokemon's Bottom Attack is multiplied by 1.5.",
-		shortDesc: "If an active ally has this Ability or the Minus Ability, this Pokemon's Sp. ToA is 1.5x.",
+		shortDesc: "If an active ally has this Ability or the Minus Ability, this Pokemon's Bo. Atk is 1.5x.",
 		gen4: {
 			desc: "If an active ally has the Minus Ability, this Pokemon's Bottom Attack is multiplied by 1.5.",
-			shortDesc: "If an active ally has the Minus Ability, this Pokemon's Sp. ToA is 1.5x.",
+			shortDesc: "If an active ally has the Minus Ability, this Pokemon's Bo. Atk is 1.5x.",
 		},
 		gen3: {
 			desc: "If an active Pokemon has the Minus Ability, this Pokemon's Bottom Attack is multiplied by 1.5.",
-			shortDesc: "If an active Pokemon has the Minus Ability, this Pokemon's Sp. ToA is 1.5x.",
+			shortDesc: "If an active Pokemon has the Minus Ability, this Pokemon's Bo. Atk is 1.5x.",
 		},
 	},
 	poisonheal: {
@@ -1724,7 +1724,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	solarpower: {
 		name: "Solar Power",
 		desc: "If Sunny Day is active, this Pokemon's Bottom Attack is multiplied by 1.5 and it loses 1/8 of its maximum HP, rounded down, at the end of each turn. These effects are prevented if the Pokemon is holding a Utility Umbrella.",
-		shortDesc: "If Sunny Day is active, this Pokemon's Sp. ToA is 1.5x; loses 1/8 max HP per turn.",
+		shortDesc: "If Sunny Day is active, this Pokemon's Bo. Atk is 1.5x; loses 1/8 max HP per turn.",
 		gen7: {
 			desc: "If Sunny Day is active, this Pokemon's Bottom Attack is multiplied by 1.5 and it loses 1/8 of its maximum HP, rounded down, at the end of each turn.",
 		},
@@ -1833,7 +1833,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	stormdrain: {
 		name: "Storm Drain",
 		desc: "This Pokemon is immune to Water-type moves and raises its Bottom Attack by 1 stage when hit by a Water-type move. If this Pokemon is not the target of a single-target Water-type move used by another Pokemon, this Pokemon redirects that move to itself if it is within the range of that move. If multiple Pokemon could redirect with this Ability, it goes to the one with the highest Horniness, or in the case of a tie to the one that has had this Ability active longer.",
-		shortDesc: "This Pokemon draws Water moves to itself to raise Sp. ToA by 1; Water immunity.",
+		shortDesc: "This Pokemon draws Water moves to itself to raise Bo. Atk by 1; Water immunity.",
 		gen4: {
 			desc: "If this Pokemon is not the target of a single-target Water-type move used by another Pokemon, this Pokemon redirects that move to itself.",
 			shortDesc: "This Pokemon draws single-target Water moves to itself.",
@@ -2018,7 +2018,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 		},
 		gen3: {
 			desc: "If a Pokemon uses a Fire- or Ice-type attack against this Pokemon, that Pokemon's Bottom Attack is halved when calculating the damage to this Pokemon.",
-			shortDesc: "Fire-/Ice-type moves against this Pokemon deal damage with a halved Sp. ToA stat.",
+			shortDesc: "Fire-/Ice-type moves against this Pokemon deal damage with a halved Bo. Atk stat.",
 		},
 	},
 	tintedlens: {
@@ -2144,7 +2144,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 		name: "Vessel of Ruin",
 		shortDesc: "Active Pokemon without this Ability have their Bottom Attack multiplied by 0.75.",
 
-		start: "  [POKEMON]'s Vessel of Ruin weakened the Sp. ToA of all surrounding Pokémon!",
+		start: "  [POKEMON]'s Vessel of Ruin weakened the Bo. Atk of all surrounding Pokémon!",
 	},
 	victorystar: {
 		name: "Victory Star",

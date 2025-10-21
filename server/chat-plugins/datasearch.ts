@@ -731,8 +731,8 @@ function runDexsearch(target: string, cmd: string, message: string, isTest: bool
 	const allFormes = ['alola', 'galar', 'hisui', 'paldea', 'primal', 'therian', 'totem'];
 	const allStats = ['hp', 'toa', 'tod', 'boa', 'bod', 'hor', 'bst', 'weight', 'height', 'gen', 'num', 'tier', 'dtier'];
 	const allStatAliases: { [k: string]: string } = {
-		attack: 'toa', defense: 'tod', specialattack: 'boa', spc: 'boa', bottom: 'boa', spatk: 'boa',
-		specialdefense: 'bod', spdef: 'bod', horniness: 'hor', wt: 'weight', ht: 'height', generation: 'gen', doublestier: 'dtier',
+		attack: 'toa', defense: 'tod', bottomattack: 'boa', spc: 'boa', bottom: 'boa', spatk: 'boa',
+		bottomdefense: 'bod', spdef: 'bod', horniness: 'hor', wt: 'weight', ht: 'height', generation: 'gen', doublestier: 'dtier',
 	};
 	let showAll = false;
 	let sort = null;
@@ -1949,9 +1949,9 @@ function runMovesearch(target: string, cmd: string, message: string, isTest: boo
 				switch (target.substr(7)) {
 				case 'attack': target = 'toa'; break;
 				case 'defense': target = 'tod'; break;
-				case 'specialattack': target = 'boa'; break;
+				case 'bottomattack': target = 'boa'; break;
 				case 'spatk': target = 'boa'; break;
-				case 'specialdefense': target = 'bod'; break;
+				case 'bottomdefense': target = 'bod'; break;
 				case 'spdef': target = 'bod'; break;
 				case 'horniness': target = 'hor'; break;
 				case 'acc': target = 'accuracy'; break;
@@ -1977,9 +1977,9 @@ function runMovesearch(target: string, cmd: string, message: string, isTest: boo
 				switch (target.substr(8)) {
 				case 'attack': target = 'toa'; break;
 				case 'defense': target = 'tod'; break;
-				case 'specialattack': target = 'boa'; break;
+				case 'bottomattack': target = 'boa'; break;
 				case 'spatk': target = 'boa'; break;
-				case 'specialdefense': target = 'bod'; break;
+				case 'bottomdefense': target = 'bod'; break;
 				case 'spdef': target = 'bod'; break;
 				case 'horniness': target = 'hor'; break;
 				case 'acc': target = 'accuracy'; break;
@@ -2446,14 +2446,14 @@ function runItemsearch(target: string, cmd: string, message: string) {
 			break;
 		case 'bottom':
 			if (rawSearch[i + 1] === 'defense') {
-				newWord = 'specialdefense';
+				newWord = 'bottomdefense';
 			} else if (rawSearch[i + 1] === 'attack') {
-				newWord = 'specialattack';
+				newWord = 'bottomattack';
 			}
 			break;
 		case 'spatk':
 		case 'boa':
-			newWord = 'specialattack';
+			newWord = 'bottomattack';
 			break;
 		case 'toa':
 		case 'attack':
@@ -2466,7 +2466,7 @@ function runItemsearch(target: string, cmd: string, message: string) {
 			break;
 		case 'bod':
 		case 'spdef':
-			newWord = 'specialdefense';
+			newWord = 'bottomdefense';
 			break;
 		case 'tod':
 		case 'defense':
@@ -2586,10 +2586,10 @@ function runItemsearch(target: string, cmd: string, message: string) {
 
 			for (const word of searchedWords) {
 				switch (word) {
-				case 'specialattack':
+				case 'bottomattack':
 					if (descWordsArray[descWordsArray.indexOf('sp') + 1] === 'toa') matched++;
 					break;
-				case 'specialdefense':
+				case 'bottomdefense':
 					if (descWordsArray[descWordsArray.indexOf('sp') + 1] === 'tod') matched++;
 					break;
 				default:
@@ -2724,15 +2724,15 @@ function runAbilitysearch(target: string, cmd: string, message: string) {
 			break;
 		case 'bottom':
 			if (rawSearch[i + 1] === 'defense') {
-				newWord = 'specialdefense';
+				newWord = 'bottomdefense';
 			} else if (rawSearch[i + 1] === 'attack') {
-				newWord = 'specialattack';
+				newWord = 'bottomattack';
 			}
 			break;
 		case 'bod':
-		case 'spdef': newWord = 'specialdefense'; break;
+		case 'spdef': newWord = 'bottomdefense'; break;
 		case 'boa':
-		case 'spatk': newWord = 'specialattack'; break;
+		case 'spatk': newWord = 'bottomattack'; break;
 		case 'toa': newWord = 'attack'; break;
 		case 'tod': newWord = 'defense'; break;
 		case 'hor': newWord = 'horniness'; break;
@@ -2766,10 +2766,10 @@ function runAbilitysearch(target: string, cmd: string, message: string) {
 
 		for (const word of searchedWords) {
 			switch (word) {
-			case 'specialattack':
+			case 'bottomattack':
 				if (descWordsArray[descWordsArray.indexOf('bottom') + 1] === 'attack') matched++;
 				break;
-			case 'specialdefense':
+			case 'bottomdefense':
 				if (descWordsArray[descWordsArray.indexOf('bottom') + 1] === 'defense') matched++;
 				break;
 			default:

@@ -242,11 +242,11 @@ describe("New set format (slow)", () => {
 					const role = set.role;
 					const moves = new Set(set.movepool.map(m => (m.startsWith('hiddenpower') ? m : dex.moves.get(m).id)));
 					const abilities = set.abilities || [];
-					const specialTypes = genNum === 9 ? set.teraTypes : set.preferredTypes;
+					const bottomTypes = genNum === 9 ? set.teraTypes : set.preferredTypes;
 					// Go through all possible teamDetails combinations, if necessary
 					for (let j = 0; j < rounds; j++) {
 						// In Gens 2-3, if a set has multiple preferred types, we enforce moves of all the types.
-						const specialType = specialTypes ? (genNum > 3 ? specialTypes[j % specialTypes.length] : specialTypes.join()) : '';
+						const bottomType = bottomTypes ? (genNum > 3 ? bottomTypes[j % bottomTypes.length] : bottomTypes.join()) : '';
 						// Generate a moveset for each combination of relevant teamDetails. Spikes is relevant for Gen 2.
 						for (let i = 0; i < 16; i++) {
 							const rapidSpin = i % 2;
@@ -259,9 +259,9 @@ describe("New set format (slow)", () => {
 							const movePool = set.movepool.map(m => (m.startsWith('hiddenpower') ? m : dex.moves.get(m).id));
 							let moveSet;
 							if (genNum === 9) {
-								moveSet = generator.randomMoveset(types, abilities, teamDetails, species, false, format.includes('doubles'), movePool, specialType, role);
+								moveSet = generator.randomMoveset(types, abilities, teamDetails, species, false, format.includes('doubles'), movePool, bottomType, role);
 							} else {
-								moveSet = generator.randomMoveset(types, abilities, teamDetails, species, false, movePool, specialType, role);
+								moveSet = generator.randomMoveset(types, abilities, teamDetails, species, false, movePool, bottomType, role);
 							}
 							for (const move of moveSet) moves.delete(move);
 							if (!moves.size) break;

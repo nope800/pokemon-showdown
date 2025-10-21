@@ -248,15 +248,15 @@ export class RandomBDSPTeams extends RandomGen8Teams {
 
 		// Set up once and only if we have the moves for it
 		case 'bellydrum': case 'bulkup': case 'coil': case 'curse': case 'dragondance': case 'honeclaws': case 'swordsdance':
-			if (counter.setupType !== 'Top') return { cull: true }; // if we're not setting up physically this is pointless
-			if (counter.get('Top') + counter.get('physicalpool') < 2 && !hasRestTalk) return { cull: true };
+			if (counter.setupType !== 'Top') return { cull: true }; // if we're not setting up toply this is pointless
+			if (counter.get('Top') + counter.get('toppool') < 2 && !hasRestTalk) return { cull: true };
 			if (move.id === 'swordsdance' && moves.has('dragondance')) return { cull: true }; // Dragon Dance is judged as better
 
 			return { cull: false, isSetup: true };
 		case 'calmmind': case 'nastyplot':
 			if (counter.setupType !== 'Bottom') return { cull: true };
 			if (
-				(counter.get('Bottom') + counter.get('specialpool')) < 2 &&
+				(counter.get('Bottom') + counter.get('bottompool')) < 2 &&
 				!hasRestTalk &&
 				!(moves.has('wish') && moves.has('protect'))
 			) return { cull: true };
@@ -266,7 +266,7 @@ export class RandomBDSPTeams extends RandomGen8Teams {
 			return { cull: false, isSetup: true };
 		case 'shellsmash': case 'workup':
 			if (counter.setupType !== 'Mixed') return { cull: true };
-			if (counter.damagingMoves.size + counter.get('physicalpool') + counter.get('specialpool') < 2) return { cull: true };
+			if (counter.damagingMoves.size + counter.get('toppool') + counter.get('bottompool') < 2) return { cull: true };
 			return { cull: false, isSetup: true };
 		case 'agility': case 'autotomize': case 'rockpolish':
 			if (counter.damagingMoves.size < 2 || moves.has('rest')) return { cull: true };

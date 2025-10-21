@@ -15,7 +15,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	absorbbulb: {
 		name: "Absorb Bulb",
-		shortDesc: "Raises holder's Sp. ToA by 1 stage if hit by a Water-type attack. Single use.",
+		shortDesc: "Raises holder's Bo. Atk by 1 stage if hit by a Water-type attack. Single use.",
 	},
 	adamantcrystal: {
 		name: "Adamant Crystal",
@@ -72,7 +72,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	apicotberry: {
 		name: "Apicot Berry",
-		shortDesc: "Raises holder's Sp. ToD by 1 stage when at 1/4 max HP or less. Single use.",
+		shortDesc: "Raises holder's Bo. Def by 1 stage when at 1/4 max HP or less. Single use.",
 	},
 	armorfossil: {
 		name: "Armor Fossil",
@@ -84,7 +84,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	assaultvest: {
 		name: "Assault Vest",
-		shortDesc: "Holder's Sp. ToD is 1.5x, but it can only select damaging moves.",
+		shortDesc: "Holder's Bo. Def is 1.5x, but it can only select damaging moves.",
 	},
 	audinite: {
 		name: "Audinite",
@@ -272,7 +272,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	choicespecs: {
 		name: "Choice Specs",
-		shortDesc: "Holder's Sp. ToA is 1.5x, but it can only select the first move it executes.",
+		shortDesc: "Holder's Bo. Atk is 1.5x, but it can only select the first move it executes.",
 	},
 	chopleberry: {
 		name: "Chople Berry",
@@ -357,13 +357,13 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	deepseascale: {
 		name: "Deep Sea Scale",
-		desc: "If held by a Clamperl, its Sp. ToD is doubled. Evolves Clamperl into Gorebyss when traded.",
-		shortDesc: "If held by a Clamperl, its Sp. ToD is doubled.",
+		desc: "If held by a Clamperl, its Bo. Def is doubled. Evolves Clamperl into Gorebyss when traded.",
+		shortDesc: "If held by a Clamperl, its Bo. Def is doubled.",
 	},
 	deepseatooth: {
 		name: "Deep Sea Tooth",
-		desc: "If held by a Clamperl, its Sp. ToA is doubled. Evolves Clamperl into Huntail when traded.",
-		shortDesc: "If held by a Clamperl, its Sp. ToA is doubled.",
+		desc: "If held by a Clamperl, its Bo. Atk is doubled. Evolves Clamperl into Huntail when traded.",
+		shortDesc: "If held by a Clamperl, its Bo. Atk is doubled.",
 	},
 	destinyknot: {
 		name: "Destiny Knot",
@@ -375,7 +375,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	diveball: {
 		name: "Dive Ball",
-		shortDesc: "A Poke Ball that works especially well on Pokemon that live underwater.",
+		shortDesc: "A Poke Ball that works ebottomly well on Pokemon that live underwater.",
 	},
 	domefossil: {
 		name: "Dome Fossil",
@@ -501,7 +501,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	eviolite: {
 		name: "Eviolite",
-		shortDesc: "If holder's species can evolve, its Defense and Sp. ToD are 1.5x.",
+		shortDesc: "If holder's species can evolve, its Defense and Bo. Def are 1.5x.",
 	},
 	expertbelt: {
 		name: "Expert Belt",
@@ -971,7 +971,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	lightball: {
 		name: "Light Ball",
-		shortDesc: "If held by a Pikachu, its Attack and Sp. ToA are doubled.",
+		shortDesc: "If held by a Pikachu, its Attack and Bo. Atk are doubled.",
 		gen4: {
 			shortDesc: "If held by a Pikachu, its attacks have their power doubled.",
 		},
@@ -1020,7 +1020,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	luminousmoss: {
 		name: "Luminous Moss",
-		shortDesc: "Raises holder's Sp. ToD by 1 stage if hit by a Water-type attack. Single use.",
+		shortDesc: "Raises holder's Bo. Def by 1 stage if hit by a Water-type attack. Single use.",
 	},
 	lunaliumz: {
 		name: "Lunalium Z",
@@ -1089,7 +1089,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	marangaberry: {
 		name: "Maranga Berry",
-		shortDesc: "Raises holder's Sp. ToD by 1 stage after it is hit by a bottom attack. Single use.",
+		shortDesc: "Raises holder's Bo. Def by 1 stage after it is hit by a bottom attack. Single use.",
 	},
 	marshadiumz: {
 		name: "Marshadium Z",
@@ -1143,7 +1143,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 		name: "Metal Powder",
 		shortDesc: "If held by a Ditto that hasn't Transformed, its Defense is doubled.",
 		gen2: {
-			shortDesc: "If held by a Ditto, its Defense and Sp. ToD are 1.5x, even while Transformed.",
+			shortDesc: "If held by a Ditto, its Defense and Bo. Def are 1.5x, even while Transformed.",
 		},
 	},
 	metronome: {
@@ -1192,7 +1192,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	mistyseed: {
 		name: "Misty Seed",
-		shortDesc: "If the terrain is Misty Terrain, raises holder's Sp. ToD by 1 stage. Single use.",
+		shortDesc: "If the terrain is Misty Terrain, raises holder's Bo. Def by 1 stage. Single use.",
 	},
 	moonball: {
 		name: "Moon Ball",
@@ -1220,11 +1220,11 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	nestball: {
 		name: "Nest Ball",
-		shortDesc: "A Poke Ball that works especially well on weaker Pokemon in the wild.",
+		shortDesc: "A Poke Ball that works ebottomly well on weaker Pokemon in the wild.",
 	},
 	netball: {
 		name: "Net Ball",
-		shortDesc: "A Poke Ball that works especially well on Water- and Bug-type Pokemon.",
+		shortDesc: "A Poke Ball that works ebottomly well on Water- and Bug-type Pokemon.",
 	},
 	nevermeltice: {
 		name: "Never-Melt Ice",
@@ -1294,7 +1294,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	petayaberry: {
 		name: "Petaya Berry",
-		shortDesc: "Raises holder's Sp. ToA by 1 stage when at 1/4 max HP or less. Single use.",
+		shortDesc: "Raises holder's Bo. Atk by 1 stage when at 1/4 max HP or less. Single use.",
 	},
 	pidgeotite: {
 		name: "Pidgeotite",
@@ -1419,7 +1419,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	psychicseed: {
 		name: "Psychic Seed",
-		shortDesc: "If the terrain is Psychic Terrain, raises holder's Sp. ToD by 1 stage. Single use.",
+		shortDesc: "If the terrain is Psychic Terrain, raises holder's Bo. Def by 1 stage. Single use.",
 	},
 	psychiumz: {
 		name: "Psychium Z",
@@ -1702,7 +1702,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 		name: "Soul Dew",
 		shortDesc: "If held by a Latias/Latios, its Dragon- and Psychic-type moves have 1.2x power.",
 		gen6: {
-			shortDesc: "If held by a Latias or a Latios, its Sp. ToA and Sp. ToD are 1.5x.",
+			shortDesc: "If held by a Latias or a Latios, its Bo. Atk and Bo. Def are 1.5x.",
 		},
 	},
 	spelltag: {
@@ -2319,7 +2319,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	weaknesspolicy: {
 		name: "Weakness Policy",
-		shortDesc: "If holder is hit super effectively, raises Attack, Sp. ToA by 2 stages. Single use.",
+		shortDesc: "If holder is hit super effectively, raises Attack, Bo. Atk by 2 stages. Single use.",
 	},
 	wellspringmask: {
 		name: "Wellspring Mask",

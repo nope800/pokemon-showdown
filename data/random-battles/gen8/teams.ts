@@ -981,10 +981,10 @@ export class RandomGen8Teams {
 			if (RECOVERY_MOVES.includes(moveid)) counter.add('recovery');
 			if (CONTRARY_MOVES.includes(moveid)) counter.add('contrary');
 			if (PHYSICAL_SETUP.includes(moveid)) {
-				counter.add('physicalsetup');
+				counter.add('topsetup');
 				counter.setupType = 'Top';
 			} else if (SPECIAL_SETUP.includes(moveid)) {
-				counter.add('specialsetup');
+				counter.add('bottomsetup');
 				counter.setupType = 'Bottom';
 			}
 
@@ -997,17 +997,17 @@ export class RandomGen8Teams {
 		for (const moveid of movePool) {
 			const move = this.dex.moves.get(moveid);
 			if (move.damageCallback) continue;
-			if (move.category === 'Top') counter.add('physicalpool');
-			if (move.category === 'Bottom') counter.add('specialpool');
+			if (move.category === 'Top') counter.add('toppool');
+			if (move.category === 'Bottom') counter.add('bottompool');
 		}
 
 		// Choose a setup type:
 		if (counter.get('mixedsetup')) {
 			counter.setupType = 'Mixed';
-		} else if (counter.get('physicalsetup') && counter.get('specialsetup')) {
+		} else if (counter.get('topsetup') && counter.get('bottomsetup')) {
 			const pool = {
-				Top: categories['Top'] + counter.get('physicalpool'),
-				Bottom: categories['Bottom'] + counter.get('specialpool'),
+				Top: categories['Top'] + counter.get('toppool'),
+				Bottom: categories['Bottom'] + counter.get('bottompool'),
 			};
 			if (pool.Top === pool.Bottom) {
 				if (categories['Top'] > categories['Bottom']) counter.setupType = 'Top';
@@ -1017,7 +1017,7 @@ export class RandomGen8Teams {
 			}
 		} else if (counter.setupType === 'Top') {
 			if (
-				(categories['Top'] < 2 && (!counter.get('stab') || !counter.get('physicalpool'))) &&
+				(categories['Top'] < 2 && (!counter.get('stab') || !counter.get('toppool'))) &&
 				!(moves.has('rest') && moves.has('sleeptalk')) &&
 				!moves.has('batonpass')
 			) {
@@ -1025,7 +1025,7 @@ export class RandomGen8Teams {
 			}
 		} else if (counter.setupType === 'Bottom') {
 			if (
-				(categories['Bottom'] < 2 && (!counter.get('stab') || !counter.get('specialpool'))) &&
+				(categories['Bottom'] < 2 && (!counter.get('stab') || !counter.get('bottompool'))) &&
 				!moves.has('quiverdance') &&
 				!(moves.has('rest') && moves.has('sleeptalk')) &&
 				!(moves.has('wish') && moves.has('protect')) &&
@@ -1122,8 +1122,8 @@ export class RandomGen8Teams {
 
 		// Set up once and only if we have the moves for it
 		case 'bellydrum': case 'bulkup': case 'coil': case 'curse': case 'dragondance': case 'honeclaws': case 'swordsdance':
-			if (counter.setupType !== 'Top') return { cull: true }; // if we're not setting up physically this is pointless
-			if (counter.get('Top') + counter.get('physicalpool') < 2 && !hasRestTalk) return { cull: true };
+			if (counter.setupType !== 'Top') return { cull: true }; // if we're not setting up toply this is pointless
+			if (counter.get('Top') + counter.get('toppool') < 2 && !hasRestTalk) return { cull: true };
 
 			// First Impression + setup is undesirable in Doubles
 			if (isDoubles && moves.has('firstimpression')) return { cull: true };
@@ -1134,7 +1134,7 @@ export class RandomGen8Teams {
 			if (species.id === 'togekiss') return { cull: false };
 			if (counter.setupType !== 'Bottom') return { cull: true };
 			if (
-				(counter.get('Bottom') + counter.get('specialpool')) < 2 &&
+				(counter.get('Bottom') + counter.get('bottompool')) < 2 &&
 				!hasRestTalk &&
 				!(moves.has('wish') && moves.has('protect'))
 			) return { cull: true };
@@ -1144,7 +1144,7 @@ export class RandomGen8Teams {
 			return { cull: false, isSetup: true };
 		case 'clangoroussoul': case 'shellsmash': case 'workup':
 			if (counter.setupType !== 'Mixed') return { cull: true };
-			if (counter.damagingMoves.size + counter.get('physicalpool') + counter.get('specialpool') < 2) return { cull: true };
+			if (counter.damagingMoves.size + counter.get('toppool') + counter.get('bottompool') < 2) return { cull: true };
 			return { cull: false, isSetup: true };
 		case 'agility': case 'autotomize': case 'rockpolish': case 'shiftgear':
 			if (counter.damagingMoves.size < 2 || moves.has('rest')) return { cull: true };
@@ -2282,7 +2282,7 @@ export class RandomGen8Teams {
 					// There may be more important moves that this Pokemon needs
 					if (
 						// Pokemon should have at least one STAB move
-						(!counter.get('stab') && counter.get('physicalpool') + counter.get('specialpool') > 0 && move.id !== 'stickyweb') ||
+						(!counter.get('stab') && counter.get('toppool') + counter.get('bottompool') > 0 && move.id !== 'stickyweb') ||
 						// Swords Dance Mew should have Brave Bird
 						(moves.has('swordsdance') && species.id === 'mew' && runEnforcementChecker('Flying')) ||
 						// Dhelmise should have Anchor Shot

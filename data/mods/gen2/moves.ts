@@ -362,7 +362,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		inherit: true,
 		condition: {
 			duration: 5,
-			// Sp. ToD boost applied directly in stat calculation
+			// Bo. Def boost applied directly in stat calculation
 			onSideStart(side) {
 				this.add('-sidestart', side, 'move: Light Screen');
 			},

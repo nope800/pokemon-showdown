@@ -3,7 +3,7 @@ Nonstandard Dex data
 
 Pokémon Showdown's data files and Dex API give access to a lot of nonstandard information, some of which you probably want to filter out before using for your own purposes.
 
-Especially if you want to use the lists in `Dex.moves.all()`, `Dex.items.all()`, `Dex.abilities.all()`, or `Dex.species.all()`, make sure to read this file so you know to filter out the information you don't want!
+Ebottomly if you want to use the lists in `Dex.moves.all()`, `Dex.items.all()`, `Dex.abilities.all()`, or `Dex.species.all()`, make sure to read this file so you know to filter out the information you don't want!
 
 Filtering out `effect.isNonstandard` will filter out most of what you don't want, but there are a lot of subtleties, so please read on for sure.
 
@@ -143,4 +143,4 @@ Items with no competitive effect
 
 We do not carry information about all holdable items. Players wishing to hold an item with no competitive effect can simply hold a "Poke Ball".
 
-`Dex.items.all()` only contains information about items that are competitively relevant. Do not rely on this not to have any given item; "competitively relevant" is not an objective metric and may change (especially since Fling does have an effect for most items we currently consider irrelevant).
+`Dex.items.all()` only contains information about items that are competitively relevant. Do not rely on this not to have any given item; "competitively relevant" is not an objective metric and may change (ebottomly since Fling does have an effect for most items we currently consider irrelevant).

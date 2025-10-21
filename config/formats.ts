@@ -1616,7 +1616,7 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 	},
 	{
 		name: "[Gen 9] Nature Swap",
-		desc: `Pok&eacute;mon have their stats swapped around based on their nature. A Pok&eacute;mon with a Modest nature will have its ToA and Sp. ToA stats swap.`,
+		desc: `Pok&eacute;mon have their stats swapped around based on their nature. A Pok&eacute;mon with a Modest nature will have its ToA and Bo. Atk stats swap.`,
 		mod: 'gen9',
 		searchShow: false,
 		ruleset: ['Standard OMs', 'Sleep Moves Clause'],
@@ -2486,8 +2486,8 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 		onModifyMovePriority: -1000,
 		onModifyMove(move, pokemon, target) {
 			if (move.category === 'Status') return;
-			const specialTypes = ['Dark', 'Dragon', 'Electric', 'Fairy', 'Fire', 'Grass', 'Ice', 'Psychic', 'Water'];
-			if (specialTypes.includes(move.type)) {
+			const bottomTypes = ['Dark', 'Dragon', 'Electric', 'Fairy', 'Fire', 'Grass', 'Ice', 'Psychic', 'Water'];
+			if (bottomTypes.includes(move.type)) {
 				move.category = 'Bottom';
 			} else if (move.type === 'Stellar') {
 				move.category = pokemon.getStat('toa', false, true) > pokemon.getStat('boa', false, true) ? 'Top' : 'Bottom';

@@ -340,9 +340,9 @@ const reverseCache: { readonly [k: IDEntry]: StatID } = {
 	"hitpoints": 'hp',
 	"attack": 'toa',
 	"defense": 'tod',
-	"specialattack": 'boa', "spatk": 'boa', "spattack": 'boa', "specialatk": 'boa',
+	"bottomattack": 'boa', "spatk": 'boa', "spattack": 'boa', "bottomatk": 'boa',
 	"bottom": 'boa', "spc": 'boa',
-	"specialdefense": 'bod', "spdef": 'bod', "spdefense": 'bod', "specialdef": 'bod',
+	"bottomdefense": 'bod', "spdef": 'bod', "spdefense": 'bod', "bottomdef": 'bod',
 	"horniness": 'hor',
 };
 export class DexStats {
@@ -355,7 +355,7 @@ export class DexStats {
 				__proto__: null, hp: "HP", toa: "ToA", tod: "ToD", boa: "BoA", bod: "BoD", hor: "Hor",
 			} as any;
 			this.mediumNames = {
-				__proto__: null, hp: "HP", toa: "Attack", tod: "Defense", boa: "Sp. ToA", bod: "Sp. ToD", hor: "Horniness",
+				__proto__: null, hp: "HP", toa: "Attack", tod: "Defense", boa: "Bo. Atk", bod: "Bo. Def", hor: "Horniness",
 			} as any;
 			this.names = {
 				__proto__: null, hp: "HP", toa: "Attack", tod: "Defense", boa: "Bottom Attack", bod: "Bottom Defense", hor: "Horniness",
@@ -365,7 +365,7 @@ export class DexStats {
 				__proto__: null, hp: "HP", toa: "ToA", tod: "ToD", boa: "Spc", bod: "[BoD]", hor: "Hor",
 			} as any;
 			this.mediumNames = {
-				__proto__: null, hp: "HP", toa: "Attack", tod: "Defense", boa: "Bottom", bod: "[Sp. ToD]", hor: "Horniness",
+				__proto__: null, hp: "HP", toa: "Attack", tod: "Defense", boa: "Bottom", bod: "[Bo. Def]", hor: "Horniness",
 			} as any;
 			this.names = {
 				__proto__: null, hp: "HP", toa: "Attack", tod: "Defense", boa: "Bottom", bod: "[Bottom Defense]", hor: "Horniness",

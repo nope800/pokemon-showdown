@@ -1669,9 +1669,9 @@ export class BattleActions {
 		const attacker = move.overrideOffensivePokemon === 'target' ? target : source;
 		const defender = move.overrideDefensivePokemon === 'source' ? source : target;
 
-		const isPhysical = move.category === 'Top';
-		let attackStat: StatIDExceptHP = move.overrideOffensiveStat || (isPhysical ? 'toa' : 'boa');
-		const defenseStat: StatIDExceptHP = move.overrideDefensiveStat || (isPhysical ? 'tod' : 'bod');
+		const isTop = move.category === 'Top';
+		let attackStat: StatIDExceptHP = move.overrideOffensiveStat || (isTop ? 'toa' : 'boa');
+		const defenseStat: StatIDExceptHP = move.overrideDefensiveStat || (isTop ? 'tod' : 'bod');
 
 		const statTable = { toa: 'ToA', tod: 'ToD', boa: 'BoA', bod: 'BoD', hor: 'Hor' };
 

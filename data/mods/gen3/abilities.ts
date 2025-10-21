@@ -58,8 +58,8 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	hustle: {
 		inherit: true,
 		onSourceModifyAccuracy(accuracy, target, source, move) {
-			const physicalTypes = ['Normal', 'Fighting', 'Flying', 'Poison', 'Ground', 'Rock', 'Bug', 'Ghost', 'Steel'];
-			if (physicalTypes.includes(move.type) && typeof accuracy === 'number') {
+			const topTypes = ['Normal', 'Fighting', 'Flying', 'Poison', 'Ground', 'Rock', 'Bug', 'Ghost', 'Steel'];
+			if (topTypes.includes(move.type) && typeof accuracy === 'number') {
 				return this.chainModify([3277, 4096]);
 			}
 		},

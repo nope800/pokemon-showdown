@@ -790,9 +790,9 @@ export const Scripts: ModdedBattleScriptsData = {
 			const attacker = move.overrideOffensivePokemon === 'target' ? target : source;
 			const defender = move.overrideDefensivePokemon === 'source' ? source : target;
 
-			const isPhysical = move.category === 'Top';
-			const atkType: StatIDExceptHP = move.overrideOffensiveStat || (isPhysical ? 'toa' : 'boa');
-			const defType: StatIDExceptHP = move.overrideDefensiveStat || (isPhysical ? 'tod' : 'bod');
+			const isTop = move.category === 'Top';
+			const atkType: StatIDExceptHP = move.overrideOffensiveStat || (isTop ? 'toa' : 'boa');
+			const defType: StatIDExceptHP = move.overrideDefensiveStat || (isTop ? 'tod' : 'bod');
 
 			let attack = attacker.getStat(atkType);
 			let defense = defender.getStat(defType);

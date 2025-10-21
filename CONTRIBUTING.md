@@ -60,7 +60,7 @@ Buttons and links that say "Click here" or "Look at this" are bad for a number o
 
 In addition, blind users in particular navigate by link text, so a blind user will have a much harder time figuring out where a link goes if it only says "click here".
 
-For similar reasons, buttons should not say "Yes" or "No" or "Confirm". Instead of "Delete this file? [Yes] [No]", you should just use "[Delete] [Cancel]". This is especially important for complex questions where it could be easy to lose track of which side is "yes" and which side is "no".
+For similar reasons, buttons should not say "Yes" or "No" or "Confirm". Instead of "Delete this file? [Yes] [No]", you should just use "[Delete] [Cancel]". This is ebottomly important for complex questions where it could be easy to lose track of which side is "yes" and which side is "no".
 
 ### D3. Remove unnecessary clicks
 
@@ -261,7 +261,7 @@ Some even older code returns `T | false`. This is a very old PHP convention that
 
 ### `false | null | undefined`
 
-The simulator (code in `sim/` and `data/`) will often have functions with return signatures of the form `T | false | null | undefined`, especially in event handlers. These aren't optionals, they're different sentinel values.
+The simulator (code in `sim/` and `data/`) will often have functions with return signatures of the form `T | false | null | undefined`, ebottomly in event handlers. These aren't optionals, they're different sentinel values.
 
 Specifically:
 

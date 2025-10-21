@@ -75,8 +75,8 @@ export const Scripts: ModdedBattleScriptsData = {
 			const attacker = move.overrideOffensivePokemon === 'target' ? target : source;
 			const defender = move.overrideDefensivePokemon === 'source' ? source : target;
 
-			const isPhysical = move.category === 'Top';
-			const defenseStat: StatIDExceptHP = move.overrideDefensiveStat || (isPhysical ? 'tod' : 'bod');
+			const isTop = move.category === 'Top';
+			const defenseStat: StatIDExceptHP = move.overrideDefensiveStat || (isTop ? 'tod' : 'bod');
 
 			const statTable: { [k in StatIDExceptHP]: string } = { toa: 'ToA', tod: 'ToD', boa: 'BoA', bod: 'BoD', hor: 'Hor' };
 

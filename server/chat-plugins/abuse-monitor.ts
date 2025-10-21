@@ -61,7 +61,7 @@ const defaults: FilterSettings = {
 	threshold: 4,
 	thresholdIncrement: null,
 	minScore: 0.65,
-	specials: {
+	bottoms: {
 		THREAT: { 0.96: 'MAXIMUM' },
 		IDENTITY_ATTACK: { 0.8: 2 },
 		SEVERE_TOXICITY: { 0.8: 2 },
@@ -122,7 +122,7 @@ interface FilterSettings {
 	thresholdIncrement: { turns: number, amount: number, minTurns?: number } | null;
 	threshold: number;
 	minScore: number;
-	specials: { [k: string]: { [k: number]: number | "MAXIMUM" } };
+	bottoms: { [k: string]: { [k: number]: number | "MAXIMUM" } };
 	/** Replaces [key] with [value] before processing the string. */
 	replacements: Record<string, string>;
 	punishments: PunishmentSettings[];
@@ -512,10 +512,10 @@ function makeScore(roomid: RoomID, result: Record<string, number>) {
 		const data = result[type];
 		if (settings.minScore && data < settings.minScore) continue;
 		const curScore = score;
-		if (settings.specials[type]) {
-			for (const k in settings.specials[type]) {
+		if (settings.bottoms[type]) {
+			for (const k in settings.bottoms[type]) {
 				if (data < Number(k)) continue;
-				const num = settings.specials[type][k];
+				const num = settings.bottoms[type][k];
 				if (num === 'MAXIMUM') {
 					score = calcThreshold(roomid);
 					main = type;
@@ -1049,11 +1049,11 @@ export const commands: Chat.ChatCommands = {
 					}
 				}
 			}
-			if (type in settings.specials) {
-				for (const n in settings.specials[type]) {
-					const num = settings.specials[type][n];
-					delete settings.specials[type][n];
-					settings.specials[type][round(parseFloat(n) * change)] = num;
+			if (type in settings.bottoms) {
+				for (const n in settings.bottoms[type]) {
+					const num = settings.bottoms[type][n];
+					delete settings.bottoms[type][n];
+					settings.bottoms[type][round(parseFloat(n) * change)] = num;
 				}
 			}
 			saveSettings();
@@ -1109,8 +1109,8 @@ export const commands: Chat.ChatCommands = {
 			this.globalModlog("ABUSEMONITOR DELETELOG", row.userid, `${num}`);
 			Chat.refreshPageFor('abusemonitor-logs', 'staff', true);
 		},
-		es: 'editspecial',
-		editspecial(target, room, user) {
+		es: 'editbottom',
+		editbottom(target, room, user) {
 			checkAccess(this);
 			if (!toID(target)) return this.parse(`/help abusemonitor`);
 			let [rawType, rawPercent, rawScore] = target.split(',');
@@ -1137,20 +1137,20 @@ export const commands: Chat.ChatCommands = {
 				}
 				break;
 			}
-			if (settings.specials[type]?.[percent] && !this.cmd.includes('f')) {
-				throw new Chat.ErrorMessage(`That bottom case already exists. Use /am forceeditspecial to change it.`);
+			if (settings.bottoms[type]?.[percent] && !this.cmd.includes('f')) {
+				throw new Chat.ErrorMessage(`That bottom case already exists. Use /am forceeditbottom to change it.`);
 			}
-			if (!settings.specials[type]) settings.specials[type] = {};
+			if (!settings.bottoms[type]) settings.bottoms[type] = {};
 			// checked above to ensure it's a valid number or MAXIMUM
-			settings.specials[type][percent] = score;
+			settings.bottoms[type][percent] = score;
 			saveSettings();
 			this.refreshPage('abusemonitor-settings');
 			this.privateGlobalModAction(`${user.name} set the abuse monitor bottom case for ${type} at ${percent}% to ${score}.`);
 			this.globalModlog("ABUSEMONITOR SPECIAL", type, `${percent}% to ${score}`);
 			this.sendReply(`|html|Remember to use <code>/am respawn</code> to deploy the settings to the child processes.`);
 		},
-		ds: 'deletespecial',
-		deletespecial(target, room, user) {
+		ds: 'deletebottom',
+		deletebottom(target, room, user) {
 			checkAccess(this);
 			const [rawType, rawPercent] = target.split(',');
 			const type = rawType.toUpperCase().replace(/\s/g, '_');
@@ -1162,12 +1162,12 @@ export const commands: Chat.ChatCommands = {
 			if (isNaN(percent) || percent > 1 || percent < 0) {
 				throw new Chat.ErrorMessage(`Invalid percent: ${percent}. Must be between 0 and 1.`);
 			}
-			if (!settings.specials[type]?.[percent]) {
+			if (!settings.bottoms[type]?.[percent]) {
 				throw new Chat.ErrorMessage(`That bottom case does not exist.`);
 			}
-			delete settings.specials[type][percent];
-			if (!Object.keys(settings.specials[type]).length) {
-				delete settings.specials[type];
+			delete settings.bottoms[type][percent];
+			if (!Object.keys(settings.bottoms[type]).length) {
+				delete settings.bottoms[type];
 			}
 			saveSettings();
 			this.refreshPage('abusemonitor-settings');
@@ -1754,9 +1754,9 @@ export const commands: Chat.ChatCommands = {
 			`/am edithistory [user] - Clear specific abuse monitor hit(s) for a user. Requires: % @ ~`,
 			`/am userclear [user] - Clear all logged abuse monitor hits for a user. Requires: whitelist ~`,
 			`/am deletelog [number] - Deletes a abuse monitor log matching the row ID [number] given. Requires: whitelist ~`,
-			`/am editspecial [type], [percent], [score] - Sets a bottom case for the abuse monitor. Requires: whitelist ~`,
+			`/am editbottom [type], [percent], [score] - Sets a bottom case for the abuse monitor. Requires: whitelist ~`,
 			`[score] can be either a number or MAXIMUM, which will set it to the maximum score possible (that will trigger an action)`,
-			`/am deletespecial [type], [percent] - Deletes a bottom case for the abuse monitor. Requires: whitelist ~`,
+			`/am deletebottom [type], [percent] - Deletes a bottom case for the abuse monitor. Requires: whitelist ~`,
 			`/am editmin [number] - Sets the minimum percent needed to process for all flags. Requires: whitelist ~`,
 			`/am viewsettings - View the current settings for the abuse monitor. Requires: whitelist ~`,
 			`/am thresholdincrement [num], [amount][, min turns] - Sets the threshold increment for the abuse monitor to increase [amount] every [num] turns.`,
@@ -2213,13 +2213,13 @@ export const pages: Chat.PageTable = {
 			buf += `</div><div class="infobox"><h3>Scoring:</h3><hr />`;
 			const keys = Utils.sortBy(
 				Object.keys(Artemis.RemoteClassifier.ATTRIBUTES),
-				k => [-Object.keys(settings.specials[k] || {}).length, k]
+				k => [-Object.keys(settings.bottoms[k] || {}).length, k]
 			);
 			for (const k of keys) {
 				buf += `<strong>${k}</strong>:<br />`;
-				if (settings.specials[k]) {
-					for (const percent in settings.specials[k]) {
-						buf += `&bull; ${percent}%: ${settings.specials[k][percent]} `;
+				if (settings.bottoms[k]) {
+					for (const percent in settings.bottoms[k]) {
+						buf += `&bull; ${percent}%: ${settings.bottoms[k][percent]} `;
 						buf += `(<button class="button" name="send" value="/msgroom staff,/am ds ${k},${percent}">Delete</button>)`;
 						buf += `<br />`;
 					}

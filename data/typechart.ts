@@ -15,7 +15,9 @@ export const TypeChart: import('../sim/dex-data').TypeDataTable = {
 			tentacle: 0,
 			stoic: 0,
 			rage: 2,
-		}
+		},
+		HPivs: { toa: 30, tod: 30, hor: 30 },
+		HPdvs: { toa: 13, tod: 13 },
 	},
 	loving: {
 		damageTaken: {
@@ -32,7 +34,9 @@ export const TypeChart: import('../sim/dex-data').TypeDataTable = {
 			tentacle: 0,
 			stoic: 0,
 			rage: 0,
-		}
+		},
+		HPivs: { toa: 30, tod: 30, hor: 30 },
+		HPdvs: { toa: 13, tod: 13 },
 	},
 	muscle: {
 		damageTaken: {
@@ -49,7 +53,9 @@ export const TypeChart: import('../sim/dex-data').TypeDataTable = {
 			tentacle: 0,
 			stoic: 0,
 			rage: 0,
-		}
+		},
+		HPivs: { toa: 30, tod: 30, hor: 30 },
+		HPdvs: { toa: 13, tod: 13 },
 	},
 	control: {
 		damageTaken: {
@@ -66,7 +72,9 @@ export const TypeChart: import('../sim/dex-data').TypeDataTable = {
 			tentacle: 1,
 			stoic: 0,
 			rage: 0,
-		}
+		},
+		HPivs: { toa: 30, tod: 30, hor: 30 },
+		HPdvs: { toa: 13, tod: 13 },
 	},
 	instinct: {
 		damageTaken: {
@@ -83,7 +91,9 @@ export const TypeChart: import('../sim/dex-data').TypeDataTable = {
 			tentacle: 0,
 			stoic: 0,
 			rage: 0,
-		}
+		},
+		HPivs: { toa: 30, tod: 30, hor: 30 },
+		HPdvs: { toa: 13, tod: 13 },
 	},
 	toy: {
 		damageTaken: {
@@ -100,7 +110,9 @@ export const TypeChart: import('../sim/dex-data').TypeDataTable = {
 			tentacle: 0,
 			stoic: 0,
 			rage: 0,
-		}
+		},
+		HPivs: { toa: 30, tod: 30, hor: 30 },
+		HPdvs: { toa: 13, tod: 13 },
 	},
 	freak: {
 		damageTaken: {
@@ -117,7 +129,9 @@ export const TypeChart: import('../sim/dex-data').TypeDataTable = {
 			tentacle: 0,
 			stoic: 0,
 			rage: 0,
-		}
+		},
+		HPivs: { toa: 30, tod: 30, hor: 30 },
+		HPdvs: { toa: 13, tod: 13 },
 	},
 	spoiled: {
 		damageTaken: {
@@ -134,7 +148,9 @@ export const TypeChart: import('../sim/dex-data').TypeDataTable = {
 			tentacle: 0,
 			stoic: 0,
 			rage: 0,
-		}
+		},
+		HPivs: { toa: 30, tod: 30, hor: 30 },
+		HPdvs: { toa: 13, tod: 13 },
 	},
 	group: {
 		damageTaken: {
@@ -151,7 +167,9 @@ export const TypeChart: import('../sim/dex-data').TypeDataTable = {
 			tentacle: 0,
 			stoic: 0,
 			rage: 0,
-		}
+		},
+		HPivs: { toa: 30, tod: 30, hor: 30 },
+		HPdvs: { toa: 13, tod: 13 },
 	},
 	pathetic: {
 		damageTaken: {
@@ -168,7 +186,9 @@ export const TypeChart: import('../sim/dex-data').TypeDataTable = {
 			tentacle: 0,
 			stoic: 0,
 			rage: 0,
-		}
+		},
+		HPivs: { toa: 30, tod: 30, hor: 30 },
+		HPdvs: { toa: 13, tod: 13 },
 	},
 	tentacle: {
 		damageTaken: {
@@ -185,7 +205,9 @@ export const TypeChart: import('../sim/dex-data').TypeDataTable = {
 			tentacle: 0,
 			stoic: 0,
 			rage: 0,
-		}
+		},
+		HPivs: { toa: 30, tod: 30, hor: 30 },
+		HPdvs: { toa: 13, tod: 13 },
 	},
 	stoic: {
 		damageTaken: {
@@ -202,7 +224,9 @@ export const TypeChart: import('../sim/dex-data').TypeDataTable = {
 			tentacle: 0,
 			stoic: 0,
 			rage: 0,
-		}
+		},
+		HPivs: { toa: 30, tod: 30, hor: 30 },
+		HPdvs: { toa: 13, tod: 13 },
 	},
 	rage: {
 		damageTaken: {
@@ -219,6 +243,8 @@ export const TypeChart: import('../sim/dex-data').TypeDataTable = {
 			tentacle: 0,
 			stoic: 0,
 			rage: 0,
-		}
+		},
+		HPivs: { toa: 30, tod: 30, hor: 30 },
+		HPdvs: { toa: 13, tod: 13 },
 	},
 };

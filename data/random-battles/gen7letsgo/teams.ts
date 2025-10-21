@@ -35,8 +35,8 @@ export class RandomLetsGoTeams extends RandomGen8Teams {
 			return {
 				cull: (
 					counter.setupType !== 'Top' ||
-					counter.get('physicalsetup') > 1 ||
-					counter.get('Top') + counter.get('physicalpool') < 2
+					counter.get('topsetup') > 1 ||
+					counter.get('Top') + counter.get('toppool') < 2
 				),
 				isSetup: true,
 			};
@@ -44,8 +44,8 @@ export class RandomLetsGoTeams extends RandomGen8Teams {
 			return {
 				cull: (
 					counter.setupType !== 'Bottom' ||
-					counter.get('specialsetup') > 1 ||
-					counter.get('Bottom') + counter.get('specialpool') < 2
+					counter.get('bottomsetup') > 1 ||
+					counter.get('Bottom') + counter.get('bottompool') < 2
 				),
 				isSetup: true,
 			};
@@ -53,7 +53,7 @@ export class RandomLetsGoTeams extends RandomGen8Teams {
 			return {
 				cull: (
 					counter.setupType !== 'Mixed' ||
-					(counter.damagingMoves.size + counter.get('physicalpool') + counter.get('specialpool')) < 2
+					(counter.damagingMoves.size + counter.get('toppool') + counter.get('bottompool')) < 2
 				),
 				isSetup: true,
 			};
@@ -159,7 +159,7 @@ export class RandomLetsGoTeams extends RandomGen8Teams {
 						// Reject Status moves only if there is nothing else to reject
 						move.category !== 'Status' || (
 							counter.get(counter.setupType) + counter.get('Status') > 3 &&
-							counter.get('physicalsetup') + counter.get('specialsetup') < 2
+							counter.get('topsetup') + counter.get('bottomsetup') < 2
 						)
 					)
 				) {
@@ -174,14 +174,14 @@ export class RandomLetsGoTeams extends RandomGen8Teams {
 				);
 
 				// Pokemon should have moves that benefit their Type, as well as moves required by its forme
-				if (moveIsRejectable && !cull && !isSetup && counter.get('physicalsetup') + counter.get('specialsetup') < 2 && (
+				if (moveIsRejectable && !cull && !isSetup && counter.get('topsetup') + counter.get('bottomsetup') < 2 && (
 					!counter.setupType || counter.setupType === 'Mixed' ||
 					(move.category !== counter.setupType && move.category !== 'Status') ||
 					counter.get(counter.setupType) + counter.get('Status') > 3
 				)) {
 					if (
 						(counter.damagingMoves.size === 0 || !counter.get('stab')) &&
-						(counter.get('physicalpool') || counter.get('specialpool'))
+						(counter.get('toppool') || counter.get('bottompool'))
 					) {
 						cull = true;
 					} else {

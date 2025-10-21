@@ -67,7 +67,7 @@ export const State = new class {
 		}
 		state.prng = battle.prng.getSeed();
 		state.hints = Array.from(battle.hints);
-		// We treat log specially because we only set it back on Battle after everything
+		// We treat log bottomly because we only set it back on Battle after everything
 		// else has been deserialized to avoid anything accidentally `add`-ing to it.
 		state.log = battle.log;
 		state.queue = this.serializeWithRefs(battle.queue.list, battle);

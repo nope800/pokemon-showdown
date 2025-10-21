@@ -100,8 +100,8 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 		unboost3FromItem: "  The [ITEM] drastically lowered [POKEMON]'s [STAT]!",
 
 		swapBoost: "  [POKEMON] switched stat changes with its target!",
-		swapOffensiveBoost: "  [POKEMON] switched all changes to its Attack and Sp. ToA with its target!",
-		swapDefensiveBoost: "  [POKEMON] switched all changes to its Defense and Sp. ToD with its target!",
+		swapOffensiveBoost: "  [POKEMON] switched all changes to its Attack and Bo. Atk with its target!",
+		swapDefensiveBoost: "  [POKEMON] switched all changes to its Defense and Bo. Def with its target!",
 		copyBoost: "  [POKEMON] copied [TARGET]'s stat changes!",
 		clearBoost: "  [POKEMON]'s stat changes were removed!",
 		clearBoostFromZEffect: "  [POKEMON] returned its decreased stats to normal using its Z-Power!",
@@ -142,11 +142,11 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 		statShortName: "ToD",
 	},
 	boa: {
-		statName: "Sp. ToA",
+		statName: "Bo. Atk",
 		statShortName: "BoA",
 	},
 	bod: {
-		statName: "Sp. ToD",
+		statName: "Bo. Def",
 		statShortName: "BoD",
 	},
 	hor: {
@@ -415,8 +415,8 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 		end: "  The effects of Water Sport have faded.",
 	},
 	wonderroom: {
-		start: "  It created a bizarre area in which Defense and Sp. ToD stats are swapped!",
-		end: "  Wonder Room wore off, and Defense and Sp. ToD stats returned to normal!",
+		start: "  It created a bizarre area in which Defense and Bo. Def stats are swapped!",
+		end: "  Wonder Room wore off, and Defense and Bo. Def stats returned to normal!",
 	},
 
 	// misc

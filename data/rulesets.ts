@@ -1911,7 +1911,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 	flippedmod: {
 		effectType: 'Rule',
 		name: 'Flipped Mod',
-		desc: "Every Pok&eacute;mon's stats are reversed. HP becomes Hor, ToA becomes Sp. ToD, ToD becomes Sp. ToA, and vice versa.",
+		desc: "Every Pok&eacute;mon's stats are reversed. HP becomes Hor, ToA becomes Bo. Def, ToD becomes Bo. Atk, and vice versa.",
 		onBegin() {
 			this.add('rule', 'Flipped Mod: Pokemon have their stats flipped (HP becomes Hor, vice versa).');
 		},

@@ -34,7 +34,7 @@ describe('Wonder Room', () => {
 		assert.bounded(damage, [38, 46], `Wonder Room should not use Assault Vest for Brick Break's damage calculation`);
 	});
 
-	it(`should cause Body Press to use Sp. ToD stat stage changes`, () => {
+	it(`should cause Body Press to use Bo. Def stat stage changes`, () => {
 		battle = common.createBattle([[
 			{ species: 'Wynaut', moves: ['amnesia', 'bodypress'] },
 		], [
@@ -59,9 +59,9 @@ describe('Wonder Room', () => {
 		battle.makeChoices();
 		battle.makeChoices('switch porygon', 'auto');
 		const porygon = battle.p1.active[0];
-		assert.statStage(porygon, 'toa', 1); // Download is ignoring Wonder Room, so it's comparing raw ToD vs. Sp. ToD
+		assert.statStage(porygon, 'toa', 1); // Download is ignoring Wonder Room, so it's comparing raw ToD vs. Bo. Def
 		battle.makeChoices('switch wynaut', 'move amnesia');
 		battle.makeChoices('switch porygon', 'auto');
-		assert.statStage(porygon, 'boa', 1); // Wonder Room is applying the +2 Sp. ToD to Venusaur's ToD
+		assert.statStage(porygon, 'boa', 1); // Wonder Room is applying the +2 Bo. Def to Venusaur's ToD
 	});
 });

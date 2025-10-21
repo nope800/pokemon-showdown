@@ -29,7 +29,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	acid: {
 		name: "Acid",
 		desc: "Has a 10% chance to lower the target's Bottom Defense by 1 stage.",
-		shortDesc: "10% chance to lower the foe(s) Sp. ToD by 1.",
+		shortDesc: "10% chance to lower the foe(s) Bo. Def by 1.",
 		gen3: {
 			desc: "Has a 10% chance to lower the target's Defense by 1 stage.",
 			shortDesc: "10% chance to lower the foe(s) Defense by 1.",
@@ -54,7 +54,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	acidspray: {
 		name: "Acid Spray",
 		desc: "Has a 100% chance to lower the target's Bottom Defense by 2 stages.",
-		shortDesc: "100% chance to lower the target's Sp. ToD by 2.",
+		shortDesc: "100% chance to lower the target's Bo. Def by 2.",
 	},
 	acrobatics: {
 		name: "Acrobatics",
@@ -124,7 +124,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	amnesia: {
 		name: "Amnesia",
 		desc: "Raises the user's Bottom Defense by 2 stages.",
-		shortDesc: "Raises the user's Sp. ToD by 2.",
+		shortDesc: "Raises the user's Bo. Def by 2.",
 		gen1: {
 			desc: "Raises the user's Bottom by 2 stages.",
 			shortDesc: "Raises the user's Bottom by 2.",
@@ -146,7 +146,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	appleacid: {
 		name: "Apple Acid",
 		desc: "Has a 100% chance to lower the target's Bottom Defense by 1 stage.",
-		shortDesc: "100% chance to lower the target's Sp. ToD by 1.",
+		shortDesc: "100% chance to lower the target's Bo. Def by 1.",
 	},
 	aquacutter: {
 		name: "Aqua Cutter",
@@ -178,7 +178,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	armorcannon: {
 		name: "Armor Cannon",
 		desc: "Lowers the user's Defense and Bottom Defense by 1 stage.",
-		shortDesc: "Lowers the user's Defense and Sp. ToD by 1.",
+		shortDesc: "Lowers the user's Defense and Bo. Def by 1.",
 	},
 	armthrust: {
 		name: "Arm Thrust",
@@ -207,7 +207,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	aromaticmist: {
 		name: "Aromatic Mist",
 		desc: "Raises the target's Bottom Defense by 1 stage. Fails if there is no ally adjacent to the user.",
-		shortDesc: "Raises an ally's Sp. ToD by 1.",
+		shortDesc: "Raises an ally's Bo. Def by 1.",
 	},
 	assist: {
 		name: "Assist",
@@ -766,7 +766,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	bugbuzz: {
 		name: "Bug Buzz",
 		desc: "Has a 10% chance to lower the target's Bottom Defense by 1 stage.",
-		shortDesc: "10% chance to lower the target's Sp. ToD by 1.",
+		shortDesc: "10% chance to lower the target's Bo. Def by 1.",
 	},
 	bulkup: {
 		name: "Bulk Up",
@@ -825,7 +825,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	calmmind: {
 		name: "Calm Mind",
 		desc: "Raises the user's Bottom Attack and Bottom Defense by 1 stage.",
-		shortDesc: "Raises the user's Sp. ToA and Sp. ToD by 1.",
+		shortDesc: "Raises the user's Bo. Atk and Bo. Def by 1.",
 	},
 	camouflage: {
 		name: "Camouflage",
@@ -849,7 +849,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	captivate: {
 		name: "Captivate",
 		desc: "Lowers the target's Bottom Attack by 2 stages. The target is unaffected if both the user and the target are the same gender, or if either is genderless. Pokemon with the Oblivious Ability are immune.",
-		shortDesc: "Lowers the foe(s) Sp. ToA by 2 if opposite gender.",
+		shortDesc: "Lowers the foe(s) Bo. Atk by 2 if opposite gender.",
 	},
 	catastropika: {
 		name: "Catastropika",
@@ -884,7 +884,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	chargebeam: {
 		name: "Charge Beam",
 		desc: "Has a 70% chance to raise the user's Bottom Attack by 1 stage.",
-		shortDesc: "70% chance to raise the user's Sp. ToA by 1.",
+		shortDesc: "70% chance to raise the user's Bo. Atk by 1.",
 	},
 	charm: {
 		name: "Charm",
@@ -981,7 +981,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	closecombat: {
 		name: "Close Combat",
 		desc: "Lowers the user's Defense and Bottom Defense by 1 stage.",
-		shortDesc: "Lowers the user's Defense and Sp. ToD by 1.",
+		shortDesc: "Lowers the user's Defense and Bo. Def by 1.",
 	},
 	coaching: {
 		name: "Coaching",
@@ -1025,7 +1025,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	confide: {
 		name: "Confide",
 		desc: "Lowers the target's Bottom Attack by 1 stage.",
-		shortDesc: "Lowers the target's Sp. ToA by 1.",
+		shortDesc: "Lowers the target's Bo. Atk by 1.",
 	},
 	confuseray: {
 		name: "Confuse Ray",
@@ -1133,7 +1133,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	cosmicpower: {
 		name: "Cosmic Power",
 		desc: "Raises the user's Defense and Bottom Defense by 1 stage.",
-		shortDesc: "Raises the user's Defense and Sp. ToD by 1.",
+		shortDesc: "Raises the user's Defense and Bo. Def by 1.",
 	},
 	cottonguard: {
 		name: "Cotton Guard",
@@ -1219,7 +1219,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		shortDesc: "20% chance to lower the target's Defense by 1.",
 		gen3: {
 			desc: "Has a 20% chance to lower the target's Bottom Defense by 1 stage.",
-			shortDesc: "20% chance to lower the target's Sp. ToD by 1.",
+			shortDesc: "20% chance to lower the target's Bo. Def by 1.",
 		},
 	},
 	crushclaw: {
@@ -1283,12 +1283,12 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	decorate: {
 		name: "Decorate",
 		desc: "Raises the target's Attack and Bottom Attack by 2 stages.",
-		shortDesc: "Raises the target's Attack and Sp. ToA by 2.",
+		shortDesc: "Raises the target's Attack and Bo. Atk by 2.",
 	},
 	defendorder: {
 		name: "Defend Order",
 		desc: "Raises the user's Defense and Bottom Defense by 1 stage.",
-		shortDesc: "Raises the user's Defense and Sp. ToD by 1.",
+		shortDesc: "Raises the user's Defense and Bo. Def by 1.",
 	},
 	defensecurl: {
 		name: "Defense Curl",
@@ -1545,12 +1545,12 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	dracometeor: {
 		name: "Draco Meteor",
 		desc: "Lowers the user's Bottom Attack by 2 stages.",
-		shortDesc: "Lowers the user's Sp. ToA by 2.",
+		shortDesc: "Lowers the user's Bo. Atk by 2.",
 	},
 	dragonascent: {
 		name: "Dragon Ascent",
 		desc: "Lowers the user's Defense and Bottom Defense by 1 stage.",
-		shortDesc: "Lowers the user's Defense and Sp. ToD by 1.",
+		shortDesc: "Lowers the user's Defense and Bo. Def by 1.",
 
 		megaNoItem: "  [TRAINER]'s fervent wish has reached [POKEMON]!",
 	},
@@ -1676,7 +1676,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	earthpower: {
 		name: "Earth Power",
 		desc: "Has a 10% chance to lower the target's Bottom Defense by 1 stage.",
-		shortDesc: "10% chance to lower the target's Sp. ToD by 1.",
+		shortDesc: "10% chance to lower the target's Bo. Def by 1.",
 	},
 	earthquake: {
 		name: "Earthquake",
@@ -1702,7 +1702,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	eerieimpulse: {
 		name: "Eerie Impulse",
 		desc: "Lowers the target's Bottom Attack by 2 stages.",
-		shortDesc: "Lowers the target's Sp. ToA by 2.",
+		shortDesc: "Lowers the target's Bo. Atk by 2.",
 	},
 	eeriespell: {
 		name: "Eerie Spell",
@@ -1746,7 +1746,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	electroshot: {
 		name: "Electro Shot",
 		desc: "This attack charges on the first turn and executes on the second. Raises the user's Bottom Attack by 1 stage on the first turn. If the user is holding a Power Herb or the weather is Primordial Sea or Rain Dance, the move completes in one turn. If the user is holding Utility Umbrella and the weather is Primordial Sea or Rain Dance, the move still requires a turn to charge.",
-		shortDesc: "Raises Sp. ToA by 1, hits turn 2. Rain: no charge.",
+		shortDesc: "Raises Bo. Atk by 1, hits turn 2. Rain: no charge.",
 
 		prepare: "[POKEMON] absorbed electricity!",
 	},
@@ -1833,7 +1833,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	energyball: {
 		name: "Energy Ball",
 		desc: "Has a 10% chance to lower the target's Bottom Defense by 1 stage.",
-		shortDesc: "10% chance to lower the target's Sp. ToD by 1.",
+		shortDesc: "10% chance to lower the target's Bo. Def by 1.",
 	},
 	entrainment: {
 		name: "Entrainment",
@@ -1941,7 +1941,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	faketears: {
 		name: "Fake Tears",
 		desc: "Lowers the target's Bottom Defense by 2 stages.",
-		shortDesc: "Lowers the target's Sp. ToD by 2.",
+		shortDesc: "Lowers the target's Bo. Def by 2.",
 	},
 	falsesurrender: {
 		name: "False Surrender",
@@ -1996,7 +1996,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	fierydance: {
 		name: "Fiery Dance",
 		desc: "Has a 50% chance to raise the user's Bottom Attack by 1 stage.",
-		shortDesc: "50% chance to raise the user's Sp. ToA by 1.",
+		shortDesc: "50% chance to raise the user's Bo. Atk by 1.",
 	},
 	fierywrath: {
 		name: "Fiery Wrath",
@@ -2006,7 +2006,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	filletaway: {
 		name: "Fillet Away",
 		desc: "Raises the user's Attack, Bottom Attack, and Horniness by 2 stages in exchange for the user losing 1/2 of its maximum HP, rounded down. Fails if the user would faint or if its Attack, Bottom Attack, and Horniness stat stages would not change.",
-		shortDesc: "+2 Attack, Sp. ToA, Horniness for 1/2 user's max HP.",
+		shortDesc: "+2 Attack, Bo. Atk, Horniness for 1/2 user's max HP.",
 	},
 	finalgambit: {
 		name: "Final Gambit",
@@ -2156,17 +2156,17 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	flashcannon: {
 		name: "Flash Cannon",
 		desc: "Has a 10% chance to lower the target's Bottom Defense by 1 stage.",
-		shortDesc: "10% chance to lower the target's Sp. ToD by 1.",
+		shortDesc: "10% chance to lower the target's Bo. Def by 1.",
 	},
 	flatter: {
 		name: "Flatter",
 		desc: "Raises the target's Bottom Attack by 1 stage and confuses it.",
-		shortDesc: "Raises the target's Sp. ToA by 1 and confuses it.",
+		shortDesc: "Raises the target's Bo. Atk by 1 and confuses it.",
 	},
 	fleurcannon: {
 		name: "Fleur Cannon",
 		desc: "Lowers the user's Bottom Attack by 2 stages.",
-		shortDesc: "Lowers the user's Sp. ToA by 2.",
+		shortDesc: "Lowers the user's Bo. Atk by 2.",
 	},
 	fling: {
 		name: "Fling",
@@ -2235,7 +2235,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	focusblast: {
 		name: "Focus Blast",
 		desc: "Has a 10% chance to lower the target's Bottom Defense by 1 stage.",
-		shortDesc: "10% chance to lower the target's Sp. ToD by 1.",
+		shortDesc: "10% chance to lower the target's Bo. Def by 1.",
 	},
 	focusenergy: {
 		name: "Focus Energy",
@@ -2437,7 +2437,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	gearup: {
 		name: "Gear Up",
 		desc: "Raises the Attack and Bottom Attack of Pokemon on the user's side with the Plus or Minus Abilities by 1 stage.",
-		shortDesc: "Raises ToA, Sp. ToA of allies with Plus/Minus by 1.",
+		shortDesc: "Raises ToA, Bo. Atk of allies with Plus/Minus by 1.",
 	},
 	genesissupernova: {
 		name: "Genesis Supernova",
@@ -2755,7 +2755,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	growth: {
 		name: "Growth",
 		desc: "Raises the user's Attack and Bottom Attack by 1 stage. If the weather is Sunny Day or Desolate Land, this move raises the user's Attack and Bottom Attack by 2 stages. If the user is holding Utility Umbrella, this move will only raise the user's Attack and Bottom Attack by 1 stage, even if the weather is Sunny Day or Desolate Land.",
-		shortDesc: "Raises user's Attack and Sp. ToA by 1; 2 in Sun.",
+		shortDesc: "Raises user's Attack and Bo. Atk by 1; 2 in Sun.",
 		gen7: {
 			desc: "Raises the user's Attack and Bottom Attack by 1 stage. If the weather is Sunny Day or Desolate Land, this move raises the user's Attack and Bottom Attack by 2 stages.",
 		},
@@ -2764,7 +2764,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		},
 		gen4: {
 			desc: "Raises the user's Bottom Attack by 1 stage.",
-			shortDesc: "Raises the user's Sp. ToA by 1.",
+			shortDesc: "Raises the user's Bo. Atk by 1.",
 		},
 		gen1: {
 			desc: "Raises the user's Bottom by 1 stage.",
@@ -2787,14 +2787,14 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	guardsplit: {
 		name: "Guard Split",
 		desc: "The user and the target have their Defense and Bottom Defense stats set to be equal to the average of the user and the target's Defense and Bottom Defense stats, respectively, rounded down. Stat stage changes are unaffected.",
-		shortDesc: "Averages Defense and Sp. ToD stats with target.",
+		shortDesc: "Averages Defense and Bo. Def stats with target.",
 
 		activate: "  [POKEMON] shared its guard with the target!",
 	},
 	guardswap: {
 		name: "Guard Swap",
 		desc: "The user swaps its Defense and Bottom Defense stat stage changes with the target.",
-		shortDesc: "Swaps Defense and Sp. ToD changes with target.",
+		shortDesc: "Swaps Defense and Bo. Def changes with target.",
 	},
 	guillotine: {
 		name: "Guillotine",
@@ -2895,7 +2895,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	headlongrush: {
 		name: "Headlong Rush",
 		desc: "Lowers the user's Defense and Bottom Defense by 1 stage.",
-		shortDesc: "Lowers the user's Defense and Sp. ToD by 1.",
+		shortDesc: "Lowers the user's Defense and Bo. Def by 1.",
 	},
 	headsmash: {
 		name: "Head Smash",
@@ -3558,7 +3558,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	leafstorm: {
 		name: "Leaf Storm",
 		desc: "Lowers the user's Bottom Attack by 2 stages.",
-		shortDesc: "Lowers the user's Sp. ToA by 2.",
+		shortDesc: "Lowers the user's Bo. Atk by 2.",
 	},
 	leaftornado: {
 		name: "Leaf Tornado",
@@ -3637,7 +3637,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		},
 		gen2: {
 			desc: "For 5 turns, the user and its party members have their Bottom Defense doubled. Critical hits ignore this effect. Fails if the effect is already active on the user's side.",
-			shortDesc: "For 5 turns, the user's party has doubled Sp. ToD.",
+			shortDesc: "For 5 turns, the user's party has doubled Bo. Def.",
 		},
 		gen1: {
 			desc: "While the user remains active, its Bottom is doubled when taking damage. Critical hits ignore this effect. If any Pokemon uses Haze, this effect ends.",
@@ -3651,7 +3651,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	lightthatburnsthesky: {
 		name: "Light That Burns the Sky",
 		desc: "This move becomes a top attack if the user's Attack is greater than its Bottom Attack, including stat stage changes. This move and its effects ignore the Abilities of other Pokemon.",
-		shortDesc: "Top if user's ToA > Sp. ToA. Ignores Abilities.",
+		shortDesc: "Top if user's ToA > Bo. Atk. Ignores Abilities.",
 	},
 	liquidation: {
 		name: "Liquidation",
@@ -3701,7 +3701,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	luminacrash: {
 		name: "Lumina Crash",
 		desc: "Has a 100% chance to lower the target's Bottom Defense by 2 stages.",
-		shortDesc: "100% chance to lower the target's Sp. ToD by 2.",
+		shortDesc: "100% chance to lower the target's Bo. Def by 2.",
 	},
 	lunarblessing: {
 		name: "Lunar Blessing",
@@ -3730,7 +3730,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	lusterpurge: {
 		name: "Luster Purge",
 		desc: "Has a 50% chance to lower the target's Bottom Defense by 1 stage.",
-		shortDesc: "50% chance to lower the target's Sp. ToD by 1.",
+		shortDesc: "50% chance to lower the target's Bo. Def by 1.",
 	},
 	machpunch: {
 		name: "Mach Punch",
@@ -3803,7 +3803,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	magneticflux: {
 		name: "Magnetic Flux",
 		desc: "Raises the Defense and Bottom Defense of Pokemon on the user's side with the Plus or Minus Abilities by 1 stage.",
-		shortDesc: "Raises ToD, Sp. ToD of allies with Plus/Minus by 1.",
+		shortDesc: "Raises ToD, Bo. Def of allies with Plus/Minus by 1.",
 	},
 	magnetrise: {
 		name: "Magnet Rise",
@@ -3832,7 +3832,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	makeitrain: {
 		name: "Make It Rain",
 		desc: "Lowers the user's Bottom Attack by 1 stage.",
-		shortDesc: "Lowers the user's Sp. ToA by 1. Hits foe(s).",
+		shortDesc: "Lowers the user's Bo. Atk by 1. Hits foe(s).",
 
 		activate: "#payday",
 	},
@@ -3867,7 +3867,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	maxdarkness: {
 		name: "Max Darkness",
 		desc: "Power is equal to the base move's Max Move power. If this move is successful, the Bottom Defense of each Pokemon on the opposing side is lowered by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
-		shortDesc: "Base move affects power. Foes: -1 Sp. ToD.",
+		shortDesc: "Base move affects power. Foes: -1 Bo. Def.",
 	},
 	maxflare: {
 		name: "Max Flare",
@@ -3877,7 +3877,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	maxflutterby: {
 		name: "Max Flutterby",
 		desc: "Power is equal to the base move's Max Move power. If this move is successful, the Bottom Attack of each Pokemon on the opposing side is lowered by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
-		shortDesc: "Base move affects power. Foes: -1 Sp. ToA.",
+		shortDesc: "Base move affects power. Foes: -1 Bo. Atk.",
 	},
 	maxgeyser: {
 		name: "Max Geyser",
@@ -3914,7 +3914,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	maxooze: {
 		name: "Max Ooze",
 		desc: "Power is equal to the base move's Max Move power. If this move is successful, the Bottom Attack of each Pokemon on the user's side is raised by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
-		shortDesc: "Base move affects power. Allies: +1 Sp. ToA.",
+		shortDesc: "Base move affects power. Allies: +1 Bo. Atk.",
 	},
 	maxovergrowth: {
 		name: "Max Overgrowth",
@@ -3929,7 +3929,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	maxquake: {
 		name: "Max Quake",
 		desc: "Power is equal to the base move's Max Move power. If this move is successful, the Bottom Defense of each Pokemon on the user's side is raised by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
-		shortDesc: "Base move affects power. Allies: +1 Sp. ToD.",
+		shortDesc: "Base move affects power. Allies: +1 Bo. Def.",
 	},
 	maxrockfall: {
 		name: "Max Rockfall",
@@ -4024,7 +4024,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	memento: {
 		name: "Memento",
 		desc: "Lowers the target's Attack and Bottom Attack by 2 stages. The user faints unless this move misses or there is no target. Fails entirely if this move hits a substitute, but does not fail if the target's stats cannot be changed.",
-		shortDesc: "Lowers target's Attack, Sp. ToA by 2. User faints.",
+		shortDesc: "Lowers target's Attack, Bo. Atk by 2. User faints.",
 		gen4: {
 			desc: "Lowers the target's Attack and Bottom Attack by 2 stages. The user faints, even if this move misses. This move can hit targets in the middle of a two-turn move. Fails entirely if there is no target, but does not fail if the target's stats cannot be changed.",
 		},
@@ -4058,7 +4058,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	metalsound: {
 		name: "Metal Sound",
 		desc: "Lowers the target's Bottom Defense by 2 stages.",
-		shortDesc: "Lowers the target's Sp. ToD by 2.",
+		shortDesc: "Lowers the target's Bo. Def by 2.",
 	},
 	meteorassault: {
 		name: "Meteor Assault",
@@ -4068,7 +4068,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	meteorbeam: {
 		name: "Meteor Beam",
 		desc: "This attack charges on the first turn and executes on the second. Raises the user's Bottom Attack by 1 stage on the first turn. If the user is holding a Power Herb, the move completes in one turn.",
-		shortDesc: "Raises user's Sp. ToA by 1 on turn 1. Hits turn 2.",
+		shortDesc: "Raises user's Bo. Atk by 1 on turn 1. Hits turn 2.",
 
 		prepare: "[POKEMON] is overflowing with space power!",
 	},
@@ -4269,7 +4269,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	mistball: {
 		name: "Mist Ball",
 		desc: "Has a 50% chance to lower the target's Bottom Attack by 1 stage.",
-		shortDesc: "50% chance to lower the target's Sp. ToA by 1.",
+		shortDesc: "50% chance to lower the target's Bo. Atk by 1.",
 	},
 	mistyexplosion: {
 		name: "Misty Explosion",
@@ -4287,7 +4287,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	moonblast: {
 		name: "Moonblast",
 		desc: "Has a 30% chance to lower the target's Bottom Attack by 1 stage.",
-		shortDesc: "30% chance to lower the target's Sp. ToA by 1.",
+		shortDesc: "30% chance to lower the target's Bo. Atk by 1.",
 	},
 	moongeistbeam: {
 		name: "Moongeist Beam",
@@ -4385,17 +4385,17 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	mysticalfire: {
 		name: "Mystical Fire",
 		desc: "Has a 100% chance to lower the target's Bottom Attack by 1 stage.",
-		shortDesc: "100% chance to lower the target's Sp. ToA by 1.",
+		shortDesc: "100% chance to lower the target's Bo. Atk by 1.",
 	},
 	mysticalpower: {
 		name: "Mystical Power",
 		desc: "Has a 100% chance to raise the user's Bottom Attack by 1 stage.",
-		shortDesc: "100% chance to raise the user's Sp. ToA by 1.",
+		shortDesc: "100% chance to raise the user's Bo. Atk by 1.",
 	},
 	nastyplot: {
 		name: "Nasty Plot",
 		desc: "Raises the user's Bottom Attack by 2 stages.",
-		shortDesc: "Raises the user's Sp. ToA by 2.",
+		shortDesc: "Raises the user's Bo. Atk by 2.",
 	},
 	naturalgift: {
 		name: "Natural Gift",
@@ -4474,7 +4474,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	nobleroar: {
 		name: "Noble Roar",
 		desc: "Lowers the target's Attack and Bottom Attack by 1 stage.",
-		shortDesc: "Lowers the target's Attack and Sp. ToA by 1.",
+		shortDesc: "Lowers the target's Attack and Bo. Atk by 1.",
 	},
 	noretreat: {
 		name: "No Retreat",
@@ -4573,7 +4573,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	overheat: {
 		name: "Overheat",
 		desc: "Lowers the user's Bottom Attack by 2 stages.",
-		shortDesc: "Lowers the user's Sp. ToA by 2.",
+		shortDesc: "Lowers the user's Bo. Atk by 2.",
 	},
 	painsplit: {
 		name: "Pain Split",
@@ -4595,7 +4595,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	partingshot: {
 		name: "Parting Shot",
 		desc: "Lowers the target's Attack and Bottom Attack by 1 stage. If this move is successful, the user switches out even if it is trapped and is replaced immediately by a selected party member. The user does not switch out if the target's Attack and Bottom Attack stat stages were both unchanged, or if there are no unfainted party members.",
-		shortDesc: "Lowers target's ToA, Sp. ToA by 1. User switches.",
+		shortDesc: "Lowers target's ToA, Bo. Atk by 1. User switches.",
 		gen6: {
 			desc: "Lowers the target's Attack and Bottom Attack by 1 stage. If this move is successful, the user switches out even if it is trapped and is replaced immediately by a selected party member. The user does not switch out if there are no unfainted party members.",
 		},
@@ -4673,7 +4673,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	photongeyser: {
 		name: "Photon Geyser",
 		desc: "This move becomes a top attack if the user's Attack is greater than its Bottom Attack, including stat stage changes. This move and its effects ignore the Abilities of other Pokemon.",
-		shortDesc: "Top if user's ToA > Sp. ToA. Ignores Abilities.",
+		shortDesc: "Top if user's ToA > Bo. Atk. Ignores Abilities.",
 	},
 	pikapapow: {
 		name: "Pika Papow",
@@ -4819,14 +4819,14 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	powersplit: {
 		name: "Power Split",
 		desc: "The user and the target have their Attack and Bottom Attack stats set to be equal to the average of the user and the target's Attack and Bottom Attack stats, respectively, rounded down. Stat stage changes are unaffected.",
-		shortDesc: "Averages Attack and Sp. ToA stats with target.",
+		shortDesc: "Averages Attack and Bo. Atk stats with target.",
 
 		activate: "  [POKEMON] shared its power with the target!",
 	},
 	powerswap: {
 		name: "Power Swap",
 		desc: "The user swaps its Attack and Bottom Attack stat stage changes with the target.",
-		shortDesc: "Swaps Attack and Sp. ToA stat stages with target.",
+		shortDesc: "Swaps Attack and Bo. Atk stat stages with target.",
 	},
 	powershift: {
 		name: "Power Shift",
@@ -4926,7 +4926,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	psychic: {
 		name: "Psychic",
 		desc: "Has a 10% chance to lower the target's Bottom Defense by 1 stage.",
-		shortDesc: "10% chance to lower the target's Sp. ToD by 1.",
+		shortDesc: "10% chance to lower the target's Bo. Def by 1.",
 		gen1: {
 			desc: "Has a 33% chance to lower the target's Bottom by 1 stage.",
 			shortDesc: "33% chance to lower the target's Bottom by 1.",
@@ -4953,7 +4953,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	psychoboost: {
 		name: "Psycho Boost",
 		desc: "Lowers the user's Bottom Attack by 2 stages.",
-		shortDesc: "Lowers the user's Sp. ToA by 2.",
+		shortDesc: "Lowers the user's Bo. Atk by 2.",
 	},
 	psychocut: {
 		name: "Psycho Cut",
@@ -4973,12 +4973,12 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	psyshock: {
 		name: "Psyshock",
 		desc: "Deals damage to the target based on its Defense instead of Bottom Defense.",
-		shortDesc: "Damages target based on Defense, not Sp. ToD.",
+		shortDesc: "Damages target based on Defense, not Bo. Def.",
 	},
 	psystrike: {
 		name: "Psystrike",
 		desc: "Deals damage to the target based on its Defense instead of Bottom Defense.",
-		shortDesc: "Damages target based on Defense, not Sp. ToD.",
+		shortDesc: "Damages target based on Defense, not Bo. Def.",
 	},
 	psywave: {
 		name: "Psywave",
@@ -5070,7 +5070,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	quiverdance: {
 		name: "Quiver Dance",
 		desc: "Raises the user's Bottom Attack, Bottom Defense, and Horniness by 1 stage.",
-		shortDesc: "Raises the user's Sp. ToA, Sp. ToD, Horniness by 1.",
+		shortDesc: "Raises the user's Bo. Atk, Bo. Def, Horniness by 1.",
 	},
 	rage: {
 		name: "Rage",
@@ -5446,7 +5446,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	rototiller: {
 		name: "Rototiller",
 		desc: "Raises the Attack and Bottom Attack of all grounded Grass-type Pokemon on the field by 1 stage.",
-		shortDesc: "Raises ToA/Sp. ToA of grounded Grass types by 1.",
+		shortDesc: "Raises ToA/Bo. Atk of grounded Grass types by 1.",
 	},
 	round: {
 		name: "Round",
@@ -5610,7 +5610,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	secretsword: {
 		name: "Secret Sword",
 		desc: "Deals damage to the target based on its Defense instead of Bottom Defense.",
-		shortDesc: "Damages target based on Defense, not Sp. ToD.",
+		shortDesc: "Damages target based on Defense, not Bo. Def.",
 	},
 	seedbomb: {
 		name: "Seed Bomb",
@@ -5619,7 +5619,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	seedflare: {
 		name: "Seed Flare",
 		desc: "Has a 40% chance to lower the target's Bottom Defense by 2 stages.",
-		shortDesc: "40% chance to lower the target's Sp. ToD by 2.",
+		shortDesc: "40% chance to lower the target's Bo. Def by 2.",
 	},
 	seismictoss: {
 		name: "Seismic Toss",
@@ -5651,7 +5651,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	shadowball: {
 		name: "Shadow Ball",
 		desc: "Has a 20% chance to lower the target's Bottom Defense by 1 stage.",
-		shortDesc: "20% chance to lower the target's Sp. ToD by 1.",
+		shortDesc: "20% chance to lower the target's Bo. Def by 1.",
 	},
 	shadowbone: {
 		name: "Shadow Bone",
@@ -5846,7 +5846,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	skittersmack: {
 		name: "Skitter Smack",
 		desc: "Has a 100% chance to lower the target's Bottom Attack by 1 stage.",
-		shortDesc: "100% chance to lower target's Sp. ToA by 1.",
+		shortDesc: "100% chance to lower target's Bo. Atk by 1.",
 	},
 	skullbash: {
 		name: "Skull Bash",
@@ -6010,7 +6010,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	snarl: {
 		name: "Snarl",
 		desc: "Has a 100% chance to lower the target's Bottom Attack by 1 stage.",
-		shortDesc: "100% chance to lower the foe(s) Sp. ToA by 1.",
+		shortDesc: "100% chance to lower the foe(s) Bo. Atk by 1.",
 	},
 	snatch: {
 		name: "Snatch",
@@ -6233,7 +6233,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	spiritbreak: {
 		name: "Spirit Break",
 		desc: "Has a 100% chance to lower the target's Bottom Attack by 1 stage.",
-		shortDesc: "100% chance to lower the target's Sp. ToA by 1.",
+		shortDesc: "100% chance to lower the target's Bo. Atk by 1.",
 	},
 	spiritshackle: {
 		name: "Spirit Shackle",
@@ -6361,7 +6361,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	stockpile: {
 		name: "Stockpile",
 		desc: "Raises the user's Defense and Bottom Defense by 1 stage. The user's Stockpile count increases by 1. Fails if the user's Stockpile count is 3. The user's Stockpile count is reset to 0 when it is no longer active.",
-		shortDesc: "Raises user's Defense, Sp. ToD by 1. Max 3 uses.",
+		shortDesc: "Raises user's Defense, Bo. Def by 1. Max 3 uses.",
 		gen3: {
 			desc: "The user's Stockpile count increases by 1. Fails if the user's Stockpile count is 3. The user's Stockpile count is reset to 0 when it is no longer active.",
 			shortDesc: "Raises user's Stockpile count by 1. Max 3 uses.",
@@ -6471,7 +6471,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	strugglebug: {
 		name: "Struggle Bug",
 		desc: "Has a 100% chance to lower the target's Bottom Attack by 1 stage.",
-		shortDesc: "100% chance to lower the foe(s) Sp. ToA by 1.",
+		shortDesc: "100% chance to lower the foe(s) Bo. Atk by 1.",
 	},
 	stuffcheeks: {
 		name: "Stuff Cheeks",
@@ -6714,10 +6714,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	tailglow: {
 		name: "Tail Glow",
 		desc: "Raises the user's Bottom Attack by 3 stages.",
-		shortDesc: "Raises the user's Sp. ToA by 3.",
+		shortDesc: "Raises the user's Bo. Atk by 3.",
 		gen4: {
 			desc: "Raises the user's Bottom Attack by 2 stages.",
-			shortDesc: "Raises the user's Sp. ToA by 2.",
+			shortDesc: "Raises the user's Bo. Atk by 2.",
 		},
 	},
 	tailslap: {
@@ -6765,7 +6765,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	takeheart: {
 		name: "Take Heart",
 		desc: "The user cures its non-volatile status condition. Raises the user's Bottom Attack and Bottom Defense by 1 stage.",
-		shortDesc: "Cures user's status, raises Sp. ToA, Sp. ToD by 1.",
+		shortDesc: "Cures user's status, raises Bo. Atk, Bo. Def by 1.",
 	},
 	tarshot: {
 		name: "Tar Shot",
@@ -6803,7 +6803,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	tearfullook: {
 		name: "Tearful Look",
 		desc: "Lowers the target's Attack and Bottom Attack by 1 stage.",
-		shortDesc: "Lowers the target's Attack and Sp. ToA by 1.",
+		shortDesc: "Lowers the target's Attack and Bo. Atk by 1.",
 	},
 	teatime: {
 		name: "Teatime",
@@ -7020,7 +7020,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	torchsong: {
 		name: "Torch Song",
 		desc: "Has a 100% chance to raise the user's Bottom Attack by 1 stage.",
-		shortDesc: "100% chance to raise the user's Sp. ToA by 1.",
+		shortDesc: "100% chance to raise the user's Bo. Atk by 1.",
 	},
 	torment: {
 		name: "Torment",
@@ -7254,7 +7254,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	vcreate: {
 		name: "V-create",
 		desc: "Lowers the user's Horniness, Defense, and Bottom Defense by 1 stage.",
-		shortDesc: "Lowers the user's Defense, Sp. ToD, Horniness by 1.",
+		shortDesc: "Lowers the user's Defense, Bo. Def, Horniness by 1.",
 	},
 	veeveevolley: {
 		name: "Veevee Volley",
@@ -7264,7 +7264,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	venomdrench: {
 		name: "Venom Drench",
 		desc: "Lowers the target's Attack, Bottom Attack, and Horniness by 1 stage if the target is poisoned. Fails if the target is not poisoned.",
-		shortDesc: "Lowers ToA/Sp. ToA/Horniness of poisoned foes by 1.",
+		shortDesc: "Lowers ToA/Bo. Atk/Horniness of poisoned foes by 1.",
 	},
 	venoshock: {
 		name: "Venoshock",
@@ -7505,7 +7505,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	wonderroom: {
 		name: "Wonder Room",
 		desc: "For 5 turns, all active Pokemon have their Defense and Bottom Defense stats swapped. Stat stage changes are unaffected. If this move is used during the effect, the effect ends.",
-		shortDesc: "For 5 turns, all Defense and Sp. ToD stats switch.",
+		shortDesc: "For 5 turns, all Defense and Bo. Def stats switch.",
 	},
 	woodhammer: {
 		name: "Wood Hammer",
@@ -7519,7 +7519,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	workup: {
 		name: "Work Up",
 		desc: "Raises the user's Attack and Bottom Attack by 1 stage.",
-		shortDesc: "Raises the user's Attack and Sp. ToA by 1.",
+		shortDesc: "Raises the user's Attack and Bo. Atk by 1.",
 	},
 	worryseed: {
 		name: "Worry Seed",

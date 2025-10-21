@@ -334,7 +334,7 @@ describe('Future Sight', () => {
 		assert.bounded(damage, [79, 94], `Future Sight should deal Blade Forme damage, even though Aegislash was KOed in Blade Forme.`);
 	});
 
-	it(`should only use Sp. ToA stat boosts/drops if the user is on the field`, () => {
+	it(`should only use Bo. Atk stat boosts/drops if the user is on the field`, () => {
 		battle = common.createBattle([[
 			{ species: 'Flapple', moves: ['futuresight', 'nastyplot', 'sleeptalk'] },
 			{ species: 'Wynaut', moves: ['sleeptalk'] },
@@ -347,13 +347,13 @@ describe('Future Sight', () => {
 		battle.makeChoices();
 		const hooh = battle.p2.active[0];
 		let damage = hooh.maxhp - hooh.hp;
-		assert.bounded(damage, [113, 134], `Future Sight should deal damage with +2 Sp. ToA`);
+		assert.bounded(damage, [113, 134], `Future Sight should deal damage with +2 Bo. Atk`);
 
 		battle.makeChoices();
 		battle.makeChoices('switch wynaut', 'auto');
 		battle.makeChoices();
 		damage = hooh.maxhp - hooh.hp;
-		assert.bounded(damage, [57, 68], `Future Sight should deal damage with +0 Sp. ToA`);
+		assert.bounded(damage, [57, 68], `Future Sight should deal damage with +0 Bo. Atk`);
 	});
 
 	it(`should never resolve when used on turn 254 or later`, () => {

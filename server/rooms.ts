@@ -2021,7 +2021,7 @@ export class GameRoom extends BasicRoom {
 		// Cloudflare, and blocked.
 
 		// While I'm sure this is configurable, it's a huge pain, and getting it
-		// wrong, especially while migrating infrastructure, leads to everything
+		// wrong, ebottomly while migrating infrastructure, leads to everything
 		// being unusable and panic while we figure out how to unblock our servers
 		// from each other. It's just easier to "spread out" the bandwidth.
 
@@ -2202,22 +2202,22 @@ export const Rooms = {
 			return null;
 		}
 
-		const p1Special = players.length ? players[0].battleSettings.bottom : undefined;
-		let mismatch = `"${p1Special}"`;
+		const p1Bottom = players.length ? players[0].battleSettings.bottom : undefined;
+		let mismatch = `"${p1Bottom}"`;
 		for (const user of players) {
-			if (user.battleSettings.bottom !== p1Special) {
+			if (user.battleSettings.bottom !== p1Bottom) {
 				mismatch += ` vs. "${user.battleSettings.bottom}"`;
 			}
 			user.battleSettings.bottom = undefined;
 		}
 
-		if (mismatch !== `"${p1Special}"`) {
+		if (mismatch !== `"${p1Bottom}"`) {
 			for (const user of players) {
 				user.popup(`Your bottom battle settings don't match: ${mismatch}`);
 			}
 			return null;
-		} else if (p1Special) {
-			options.ratedMessage = p1Special;
+		} else if (p1Bottom) {
+			options.ratedMessage = p1Bottom;
 		}
 
 		// options.rated is a number representing the lowest player rating, for searching purposes

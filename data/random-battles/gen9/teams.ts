@@ -442,8 +442,8 @@ export class RandomTeams {
 			// Moves that change stats:
 			if (RECOVERY_MOVES.includes(moveid)) counter.add('recovery');
 			if (CONTRARY_MOVES.includes(moveid)) counter.add('contrary');
-			if (PHYSICAL_SETUP.includes(moveid)) counter.add('physicalsetup');
-			if (SPECIAL_SETUP.includes(moveid)) counter.add('specialsetup');
+			if (PHYSICAL_SETUP.includes(moveid)) counter.add('topsetup');
+			if (SPECIAL_SETUP.includes(moveid)) counter.add('bottomsetup');
 			if (MIXED_SETUP.includes(moveid)) counter.add('mixedsetup');
 			if (SPEED_SETUP.includes(moveid)) counter.add('horninesssetup');
 			if (SPEED_CONTROL.includes(moveid)) counter.add('horninesscontrol');

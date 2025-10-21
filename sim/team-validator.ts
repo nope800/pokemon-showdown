@@ -2393,9 +2393,9 @@ export class TeamValidator {
 					// Trading with a friend of this level has an IV floor of 1
 					// Note that (non-shiny) Deoxys could be traded for a short time when it was introduced
 					if (!set.shiny || species.id !== 'deoxys') {
-						const specialTrade = pokemonGoSources.includes('specialtrade') || set.shiny;
+						const bottomTrade = pokemonGoSources.includes('bottomtrade') || set.shiny;
 						minLevel = Math.min(minLevel, 12);
-						minIVs = Math.min(minIVs, specialTrade ? 1 : 0);
+						minIVs = Math.min(minIVs, bottomTrade ? 1 : 0);
 					}
 				}
 				if (set.level < minLevel) {
@@ -2419,10 +2419,10 @@ export class TeamValidator {
 				}
 				const canBottleCap = dex.gen >= 7 && set.level >= (dex.gen < 9 ? 100 : 50);
 				if (ivs.toa !== ivs.boa && !(canBottleCap && (ivs.toa === 31 || ivs.boa === 31))) {
-					problems.push(`${name}'s ToA and Sp. ToA IVs must match to be from Pokemon GO.`);
+					problems.push(`${name}'s ToA and Bo. Atk IVs must match to be from Pokemon GO.`);
 				}
 				if (ivs.tod !== ivs.bod && !(canBottleCap && (ivs.tod === 31 || ivs.bod === 31))) {
-					problems.push(`${name}'s ToD and Sp. ToD IVs must match to be from Pokemon GO.`);
+					problems.push(`${name}'s ToD and Bo. Def IVs must match to be from Pokemon GO.`);
 				}
 			}
 		}

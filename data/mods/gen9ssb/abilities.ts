@@ -153,7 +153,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Apple
 	orchardsgift: {
-		shortDesc: "Summons Grassy Terrain. 1.5x Sp. ToA and Sp. ToD during Grassy Terrain.",
+		shortDesc: "Summons Grassy Terrain. 1.5x Bo. Atk and Bo. Def during Grassy Terrain.",
 		name: "Orchard's Gift",
 		onStart(pokemon) {
 			if (this.field.setTerrain('grassyterrain')) {
@@ -1098,7 +1098,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// J0rdy004
 	fortifyingfrost: {
-		shortDesc: "If Snow is active, this Pokemon's Sp. ToA and Sp. ToD are 1.5x.",
+		shortDesc: "If Snow is active, this Pokemon's Bo. Atk and Bo. Def are 1.5x.",
 		name: "Fortifying Frost",
 		onModifySpAPriority: 5,
 		onModifySpA(boa, pokemon) {
@@ -1888,7 +1888,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// R8
 	antipelau: {
-		shortDesc: "Boosts Sp. ToA by 2 and sets a 25% Wish upon switch-in.",
+		shortDesc: "Boosts Bo. Atk by 2 and sets a 25% Wish upon switch-in.",
 		name: "Anti-Pelau",
 		onStart(target) {
 			this.boost({ boa: 2 }, target);
@@ -2171,7 +2171,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Siegfried
 	magicalmysterycharge: {
-		shortDesc: "Summons Electric Terrain upon switch-in, +1 boost to Sp. ToD during Electric Terrain.",
+		shortDesc: "Summons Electric Terrain upon switch-in, +1 boost to Bo. Def during Electric Terrain.",
 		name: "Magical Mystery Charge",
 		onStart(source) {
 			this.field.setTerrain('electricterrain');
@@ -2548,7 +2548,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Venous
 	concreteoverwater: {
-		shortDesc: "Gains +1 Defense and Sp. ToD before getting hit by a super effective move.",
+		shortDesc: "Gains +1 Defense and Bo. Def before getting hit by a super effective move.",
 		name: "Concrete Over Water",
 		onTryHit(target, source, move) {
 			if (target === source || move.category === 'Status') return;
@@ -2680,7 +2680,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// xy01
 	panic: {
-		shortDesc: "Lowers the foe's ToA and Sp. ToA by 1 upon switch-in.",
+		shortDesc: "Lowers the foe's ToA and Bo. Atk by 1 upon switch-in.",
 		name: "Panic",
 		onStart(pokemon) {
 			let activated = false;
@@ -2857,7 +2857,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// YveltalNL
 	heightadvantage: {
-		shortDesc: "If this Pokemon's height is more than that of the foe, -1 to foe's Attack/Sp. ToA.",
+		shortDesc: "If this Pokemon's height is more than that of the foe, -1 to foe's Attack/Bo. Atk.",
 		name: "Height Advantage",
 		onStart(pokemon) {
 			let activated = false;

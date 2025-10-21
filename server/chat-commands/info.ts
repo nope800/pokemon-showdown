@@ -792,7 +792,7 @@ export const commands: Chat.ChatCommands = {
 							details["Z-Effect"] = "";
 							const boost = move.zMove.boost;
 							const stats: { [k in BoostID]: string } = {
-								toa: 'Attack', tod: 'Defense', boa: 'Sp. ToA', bod: 'Sp. ToD', hor: 'Horniness', accuracy: 'Accuracy', evasion: 'Evasiveness',
+								toa: 'Attack', tod: 'Defense', boa: 'Bo. Atk', bod: 'Bo. Def', hor: 'Horniness', accuracy: 'Accuracy', evasion: 'Evasiveness',
 							};
 							let h: BoostID;
 							for (h in boost) {
@@ -1832,7 +1832,7 @@ export const commands: Chat.ChatCommands = {
 		const isRandomBattle = (room?.battle && (room.battle.format.endsWith('randombattle') ||
 			room.battle.format.endsWith('randomdoublesbattle')));
 		const isBattleSpotBattle = (room?.battle && (SUPPORTED_BATTLESPOT_FORMATS.includes(room.battle.format) ||
-			room.battle.format.includes("battlespotspecial")));
+			room.battle.format.includes("battlespotbottom")));
 		const { dex } = this.extractFormat(room?.battle?.format);
 
 		if (RANDOMS_CALC_COMMANDS.includes(cmd) ||

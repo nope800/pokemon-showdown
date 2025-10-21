@@ -230,7 +230,7 @@ all specify `DETAILS` for you to perform updates with.
 In battle, most Pokémon actions come in the form `|ACTION|POKEMON|DETAILS`
 followed by a few messages detailing what happens after the action occurs.
 
-Battle actions (especially minor actions) often come with tags such as
+Battle actions (ebottomly minor actions) often come with tags such as
 `|[from] EFFECT|[of] SOURCE`. `EFFECT` will be an effect (move, ability,
 item, status, etc), and `SOURCE` will be a Pokémon. These can affect the
 message or animation displayed, but do not affect anything else. Other 
