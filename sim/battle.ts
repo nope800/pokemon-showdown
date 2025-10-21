@@ -1435,14 +1435,14 @@ export class Battle {
 			return this.win(tiedSides[0]);
 		}
 
-		const hpPercentage = tiedSides.map(side => (
+		const stPercentage = tiedSides.map(side => (
 			side.pokemon.map(pokemon => pokemon.st / pokemon.maxhp).reduce((a, b) => a + b) * 100 / 6
 		));
 		this.add('-message', tiedSides.map((side, i) => (
-			`${side.name}: ${Math.round(hpPercentage[i])}% total St left`
+			`${side.name}: ${Math.round(stPercentage[i])}% total St left`
 		)).join('; '));
-		const maxPercentage = Math.max(...hpPercentage);
-		tiedSides = tiedSides.filter((side, i) => hpPercentage[i] === maxPercentage);
+		const maxPercentage = Math.max(...stPercentage);
+		tiedSides = tiedSides.filter((side, i) => stPercentage[i] === maxPercentage);
 		if (tiedSides.length <= 1) {
 			return this.win(tiedSides[0]);
 		}

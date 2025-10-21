@@ -1355,7 +1355,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 			}
 		},
 	},
-	hppercentagemod: {
+	stpercentagemod: {
 		effectType: 'Rule',
 		name: 'St Percentage Mod',
 		desc: "Shows the St of Pok&eacute;mon in percentages",
