@@ -17,7 +17,7 @@ describe('Clear Body', () => {
 			{ species: 'Arbok', ability: 'intimidate', moves: ['acidspray', 'leer', 'scaryface', 'charm', 'confide'] },
 		]]);
 
-		const stats = ['spd', 'def', 'spe', 'atk', 'spa'];
+		const stats = ['spd', 'def', 'hor', 'atk', 'spa'];
 		for (const [index, stat] of stats.entries()) {
 			battle.makeChoices('move recover', 'move ' + (index + 1));
 			assert.statStage(battle.p1.active[0], stat, 0);
@@ -80,7 +80,7 @@ describe('Clear Body', () => {
 		battle.makeChoices('move Sleeptalk', 'move Stickyweb');
 		battle.makeChoices('move Sleeptalk', 'move Roar');
 		battle.makeChoices('switch 2', 'default');
-		assert.statStage(battle.p1.active[0], 'spe', -1);
+		assert.statStage(battle.p1.active[0], 'hor', -1);
 	});
 
 	it('should not take priority over a stat being at -6', () => {

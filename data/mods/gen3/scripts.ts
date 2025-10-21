@@ -15,17 +15,17 @@ export const Scripts: ModdedBattleScriptsData = {
 	},
 	pokemon: {
 		inherit: true,
-		getActionSpeed() {
-			let speed = this.getStat('spe', false, false);
+		getActionHorniness() {
+			let horniness = this.getStat('hor', false, false);
 			const trickRoomCheck = this.battle.ruleTable.has('twisteddimensionmod') ?
 				!this.battle.field.getPseudoWeather('trickroom') : this.battle.field.getPseudoWeather('trickroom');
 			if (trickRoomCheck) {
-				speed = -speed;
+				horniness = -horniness;
 			}
 			if (this.battle.quickClawRoll && this.hasItem('quickclaw')) {
-				speed = 65535;
+				horniness = 65535;
 			}
-			return speed;
+			return horniness;
 		},
 	},
 	actions: {

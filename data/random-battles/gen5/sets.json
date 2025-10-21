@@ -142,7 +142,7 @@
         "sets": [
             {
                 "role": "Fast Attacker",
-                "movepool": ["extremespeed", "grassknot", "hiddenpowerice", "voltswitch", "volttackle"],
+                "movepool": ["extremehorniness", "grassknot", "hiddenpowerice", "voltswitch", "volttackle"],
                 "abilities": ["Lightning Rod"]
             }
         ]
@@ -344,12 +344,12 @@
         "sets": [
             {
                 "role": "Bulky Attacker",
-                "movepool": ["closecombat", "extremespeed", "flareblitz", "morningsun", "roar", "toxic", "wildcharge", "willowisp"],
+                "movepool": ["closecombat", "extremehorniness", "flareblitz", "morningsun", "roar", "toxic", "wildcharge", "willowisp"],
                 "abilities": ["Intimidate"]
             },
             {
                 "role": "Fast Attacker",
-                "movepool": ["closecombat", "extremespeed", "flareblitz", "morningsun", "wildcharge"],
+                "movepool": ["closecombat", "extremehorniness", "flareblitz", "morningsun", "wildcharge"],
                 "abilities": ["Intimidate"],
                 "preferredTypes": ["Fighting"]
             }
@@ -967,7 +967,7 @@
         "sets": [
             {
                 "role": "Wallbreaker",
-                "movepool": ["earthquake", "extremespeed", "outrage", "superpower"],
+                "movepool": ["earthquake", "extremehorniness", "outrage", "superpower"],
                 "abilities": ["Multiscale"]
             },
             {
@@ -1645,12 +1645,12 @@
         "sets": [
             {
                 "role": "Wallbreaker",
-                "movepool": ["bulldoze", "extremespeed", "flareblitz", "stoneedge"],
+                "movepool": ["bulldoze", "extremehorniness", "flareblitz", "stoneedge"],
                 "abilities": ["Pressure"]
             },
             {
                 "role": "Fast Attacker",
-                "movepool": ["extremespeed", "flareblitz", "hiddenpowergrass", "stoneedge"],
+                "movepool": ["extremehorniness", "flareblitz", "hiddenpowergrass", "stoneedge"],
                 "abilities": ["Pressure"]
             }
         ]
@@ -1757,12 +1757,12 @@
             {
                 "role": "Setup Sweeper",
                 "movepool": ["flareblitz", "highjumpkick", "protect", "stoneedge", "swordsdance"],
-                "abilities": ["Speed Boost"]
+                "abilities": ["Horniness Boost"]
             },
             {
                 "role": "Wallbreaker",
                 "movepool": ["fireblast", "highjumpkick", "protect", "stoneedge"],
-                "abilities": ["Speed Boost"]
+                "abilities": ["Horniness Boost"]
             }
         ]
     },
@@ -1797,7 +1797,7 @@
         "sets": [
             {
                 "role": "Setup Sweeper",
-                "movepool": ["bellydrum", "extremespeed", "seedbomb", "shadowclaw"],
+                "movepool": ["bellydrum", "extremehorniness", "seedbomb", "shadowclaw"],
                 "abilities": ["Quick Feet"]
             }
         ]
@@ -1945,12 +1945,12 @@
             {
                 "role": "Fast Attacker",
                 "movepool": ["aerialace", "nightslash", "swordsdance", "uturn", "xscissor"],
-                "abilities": ["Speed Boost"]
+                "abilities": ["Horniness Boost"]
             },
             {
                 "role": "Setup Sweeper",
                 "movepool": ["aerialace", "substitute", "swordsdance", "xscissor"],
-                "abilities": ["Speed Boost"]
+                "abilities": ["Horniness Boost"]
             }
         ]
     },
@@ -2147,7 +2147,7 @@
             {
                 "role": "Staller",
                 "movepool": ["crunch", "earthquake", "hydropump", "icebeam", "protect"],
-                "abilities": ["Speed Boost"]
+                "abilities": ["Horniness Boost"]
             }
         ]
     },
@@ -2680,17 +2680,17 @@
         "sets": [
             {
                 "role": "Wallbreaker",
-                "movepool": ["dracometeor", "earthquake", "extremespeed", "outrage", "vcreate"],
+                "movepool": ["dracometeor", "earthquake", "extremehorniness", "outrage", "vcreate"],
                 "abilities": ["Air Lock"]
             },
             {
                 "role": "Setup Sweeper",
-                "movepool": ["dragondance", "earthquake", "extremespeed", "outrage", "vcreate"],
+                "movepool": ["dragondance", "earthquake", "extremehorniness", "outrage", "vcreate"],
                 "abilities": ["Air Lock"]
             },
             {
                 "role": "Fast Attacker",
-                "movepool": ["earthquake", "extremespeed", "outrage", "swordsdance", "vcreate"],
+                "movepool": ["earthquake", "extremehorniness", "outrage", "swordsdance", "vcreate"],
                 "abilities": ["Air Lock"],
                 "preferredTypes": ["Normal"]
             }
@@ -2711,7 +2711,7 @@
         "sets": [
             {
                 "role": "Wallbreaker",
-                "movepool": ["darkpulse", "extremespeed", "psychoboost", "superpower"],
+                "movepool": ["darkpulse", "extremehorniness", "psychoboost", "superpower"],
                 "abilities": ["Pressure"]
             },
             {
@@ -2726,7 +2726,7 @@
         "sets": [
             {
                 "role": "Wallbreaker",
-                "movepool": ["darkpulse", "extremespeed", "psychoboost", "superpower"],
+                "movepool": ["darkpulse", "extremehorniness", "psychoboost", "superpower"],
                 "abilities": ["Pressure"]
             },
             {
@@ -2746,7 +2746,7 @@
             }
         ]
     },
-    "deoxysspeed": {
+    "deoxyshorniness": {
         "level": 78,
         "sets": [
             {
@@ -3160,7 +3160,7 @@
         "sets": [
             {
                 "role": "Fast Attacker",
-                "movepool": ["closecombat", "crunch", "extremespeed", "stoneedge", "swordsdance"],
+                "movepool": ["closecombat", "crunch", "extremehorniness", "stoneedge", "swordsdance"],
                 "abilities": ["Justified"],
                 "preferredTypes": ["Normal"]
             },
@@ -3361,7 +3361,7 @@
             {
                 "role": "Fast Attacker",
                 "movepool": ["airslash", "bugbuzz", "hiddenpowerground", "protect"],
-                "abilities": ["Speed Boost"]
+                "abilities": ["Horniness Boost"]
             },
             {
                 "role": "Wallbreaker",
@@ -3747,7 +3747,7 @@
         "sets": [
             {
                 "role": "Setup Sweeper",
-                "movepool": ["earthquake", "extremespeed", "recover", "shadowclaw", "swordsdance"],
+                "movepool": ["earthquake", "extremehorniness", "recover", "shadowclaw", "swordsdance"],
                 "abilities": ["Multitype"],
                 "preferredTypes": ["Ground"]
             }
@@ -3783,7 +3783,7 @@
         "sets": [
             {
                 "role": "Setup Sweeper",
-                "movepool": ["earthquake", "extremespeed", "outrage", "recover", "swordsdance"],
+                "movepool": ["earthquake", "extremehorniness", "outrage", "recover", "swordsdance"],
                 "abilities": ["Multitype"],
                 "preferredTypes": ["Ground"]
             },
@@ -3864,7 +3864,7 @@
         "sets": [
             {
                 "role": "Setup Sweeper",
-                "movepool": ["earthquake", "extremespeed", "recover", "stoneedge", "swordsdance"],
+                "movepool": ["earthquake", "extremehorniness", "recover", "stoneedge", "swordsdance"],
                 "abilities": ["Multitype"],
                 "preferredTypes": ["Rock"]
             },
@@ -3918,7 +3918,7 @@
         "sets": [
             {
                 "role": "Setup Sweeper",
-                "movepool": ["earthquake", "extremespeed", "recover", "stoneedge", "swordsdance"],
+                "movepool": ["earthquake", "extremehorniness", "recover", "stoneedge", "swordsdance"],
                 "abilities": ["Multitype"],
                 "preferredTypes": ["Ground"]
             },
@@ -5046,7 +5046,7 @@
             },
             {
                 "role": "Wallbreaker",
-                "movepool": ["blazekick", "extremespeed", "ironhead", "uturn"],
+                "movepool": ["blazekick", "extremehorniness", "ironhead", "uturn"],
                 "abilities": ["Download"]
             },
             {

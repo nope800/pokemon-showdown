@@ -7643,7 +7643,7 @@ export const Learnsets: import('../../../sim/dex-species').ModdedLearnsetDataTab
 			dragonclaw: ["3M", "3L20"],
 			dragondance: ["3L30"],
 			earthquake: ["3M"],
-			extremespeed: ["3L60"],
+			extremehorniness: ["3L60"],
 			facade: ["3M"],
 			fireblast: ["3M"],
 			flamethrower: ["3M"],

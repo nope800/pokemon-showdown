@@ -50,7 +50,7 @@
     },
     "pikachugmax": {
         "doublesLevel": 90,
-        "doublesMoves": ["extremespeed", "fakeout", "knockoff", "surf", "volttackle"]
+        "doublesMoves": ["extremehorniness", "fakeout", "knockoff", "surf", "volttackle"]
     },
     "raichu": {
         "level": 87,
@@ -155,9 +155,9 @@
     },
     "arcanine": {
         "level": 82,
-        "moves": ["closecombat", "extremespeed", "flareblitz", "morningsun", "toxic", "wildcharge", "willowisp"],
+        "moves": ["closecombat", "extremehorniness", "flareblitz", "morningsun", "toxic", "wildcharge", "willowisp"],
         "doublesLevel": 84,
-        "doublesMoves": ["closecombat", "extremespeed", "flareblitz", "morningsun", "protect", "snarl", "willowisp"]
+        "doublesMoves": ["closecombat", "extremehorniness", "flareblitz", "morningsun", "protect", "snarl", "willowisp"]
     },
     "poliwrath": {
         "level": 86,
@@ -451,9 +451,9 @@
     },
     "dragonite": {
         "level": 74,
-        "moves": ["dragondance", "dualwingbeat", "earthquake", "extremespeed", "outrage"],
+        "moves": ["dragondance", "dualwingbeat", "earthquake", "extremehorniness", "outrage"],
         "doublesLevel": 82,
-        "doublesMoves": ["dragonclaw", "dragondance", "dualwingbeat", "extremespeed", "firepunch"],
+        "doublesMoves": ["dragonclaw", "dragondance", "dualwingbeat", "extremehorniness", "firepunch"],
         "noDynamaxMoves": ["dragondance", "dualwingbeat", "earthquake", "outrage", "roost"]
     },
     "mewtwo": {
@@ -666,9 +666,9 @@
     },
     "entei": {
         "level": 77,
-        "moves": ["extremespeed", "flareblitz", "sacredfire", "stompingtantrum", "stoneedge"],
+        "moves": ["extremehorniness", "flareblitz", "sacredfire", "stompingtantrum", "stoneedge"],
         "doublesLevel": 79,
-        "doublesMoves": ["extremespeed", "protect", "sacredfire", "snarl", "stompingtantrum", "stoneedge"]
+        "doublesMoves": ["extremehorniness", "protect", "sacredfire", "snarl", "stompingtantrum", "stoneedge"]
     },
     "suicune": {
         "level": 78,
@@ -721,9 +721,9 @@
     },
     "linoone": {
         "level": 83,
-        "moves": ["bellydrum", "extremespeed", "stompingtantrum", "throatchop"],
+        "moves": ["bellydrum", "extremehorniness", "stompingtantrum", "throatchop"],
         "doublesLevel": 90,
-        "doublesMoves": ["bellydrum", "extremespeed", "protect", "throatchop"]
+        "doublesMoves": ["bellydrum", "extremehorniness", "protect", "throatchop"]
     },
     "ludicolo": {
         "level": 86,
@@ -953,10 +953,10 @@
     },
     "rayquaza": {
         "level": 71,
-        "moves": ["dragonascent", "dragondance", "earthquake", "extremespeed", "swordsdance", "vcreate"],
+        "moves": ["dragonascent", "dragondance", "earthquake", "extremehorniness", "swordsdance", "vcreate"],
         "doublesLevel": 74,
-        "doublesMoves": ["dracometeor", "dragonascent", "dragonclaw", "dragondance", "earthpower", "extremespeed", "vcreate"],
-        "noDynamaxMoves": ["dracometeor", "dragonascent", "dragondance", "earthquake", "extremespeed", "vcreate"]
+        "doublesMoves": ["dracometeor", "dragonascent", "dragonclaw", "dragondance", "earthpower", "extremehorniness", "vcreate"],
+        "noDynamaxMoves": ["dracometeor", "dragonascent", "dragondance", "earthquake", "extremehorniness", "vcreate"]
     },
     "jirachi": {
         "level": 78,
@@ -1036,9 +1036,9 @@
     },
     "lucario": {
         "level": 80,
-        "moves": ["closecombat", "extremespeed", "meteormash", "stoneedge", "swordsdance"],
+        "moves": ["closecombat", "extremehorniness", "meteormash", "stoneedge", "swordsdance"],
         "doublesLevel": 84,
-        "doublesMoves": ["closecombat", "extremespeed", "icepunch", "meteormash", "protect", "swordsdance"]
+        "doublesMoves": ["closecombat", "extremehorniness", "icepunch", "meteormash", "protect", "swordsdance"]
     },
     "hippowdon": {
         "level": 81,
@@ -1710,13 +1710,13 @@
     },
     "genesect": {
         "level": 72,
-        "moves": ["blazekick", "extremespeed", "ironhead", "leechlife", "shiftgear", "thunderbolt", "uturn"],
+        "moves": ["blazekick", "extremehorniness", "ironhead", "leechlife", "shiftgear", "thunderbolt", "uturn"],
         "doublesLevel": 78,
         "doublesMoves": ["blazekick", "ironhead", "leechlife", "protect", "shiftgear", "thunderbolt", "uturn"]
     },
     "genesectdouse": {
         "level": 72,
-        "moves": ["bugbuzz", "extremespeed", "flamethrower", "icebeam", "ironhead", "technoblast", "thunderbolt", "uturn"]
+        "moves": ["bugbuzz", "extremehorniness", "flamethrower", "icebeam", "ironhead", "technoblast", "thunderbolt", "uturn"]
     },
     "diggersby": {
         "level": 80,
@@ -1912,13 +1912,13 @@
         "level": 70,
         "moves": ["dragondance", "outrage", "substitute", "thousandarrows"],
         "doublesLevel": 72,
-        "doublesMoves": ["coil", "dragondance", "extremespeed", "glare", "irontail", "thousandarrows"]
+        "doublesMoves": ["coil", "dragondance", "extremehorniness", "glare", "irontail", "thousandarrows"]
     },
     "zygarde10": {
         "level": 81,
-        "moves": ["coil", "extremespeed", "irontail", "outrage", "thousandarrows"],
+        "moves": ["coil", "extremehorniness", "irontail", "outrage", "thousandarrows"],
         "doublesLevel": 77,
-        "doublesMoves": ["dragondance", "extremespeed", "irontail", "protect", "stoneedge", "thousandarrows"]
+        "doublesMoves": ["dragondance", "extremehorniness", "irontail", "protect", "stoneedge", "thousandarrows"]
     },
     "diancie": {
         "level": 82,
@@ -1961,7 +1961,7 @@
         "level": 80,
         "moves": ["moonblast", "psychic", "stickyweb", "stunspore", "uturn"],
         "doublesLevel": 84,
-        "doublesMoves": ["helpinghand", "moonblast", "pollenpuff", "speedswap", "stickyweb", "tailwind"]
+        "doublesMoves": ["helpinghand", "moonblast", "pollenpuff", "horninessswap", "stickyweb", "tailwind"]
     },
     "lycanroc": {
         "level": 79,
@@ -2737,7 +2737,7 @@
         "level": 78,
         "moves": ["explosion", "substitute", "thunderbolt", "voltswitch"],
         "doublesLevel": 82,
-        "doublesMoves": ["electroweb", "extremespeed", "protect", "thundercage", "voltswitch"],
+        "doublesMoves": ["electroweb", "extremehorniness", "protect", "thundercage", "voltswitch"],
         "noDynamaxMoves": ["explosion", "rapidspin", "thunderbolt", "voltswitch"]
     },
     "regidrago": {

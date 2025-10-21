@@ -39,7 +39,7 @@ describe("White Herb", () => {
 		assert.false.holdsItem(flamigo);
 		assert.statStage(flamigo, 'atk', 2);
 		assert.statStage(flamigo, 'spa', 2);
-		assert.statStage(flamigo, 'spe', 2);
+		assert.statStage(flamigo, 'hor', 2);
 		assert.statStage(flamigo, 'def', 0);
 		assert.statStage(flamigo, 'spd', 0);
 	});

@@ -426,7 +426,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			}
 		},
 	},
-	speedboost: {
+	horninessboost: {
 		inherit: true,
 		onResidualOrder: 10,
 		onResidualSubOrder: 3,
@@ -541,7 +541,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	unburden: {
 		inherit: true,
 		condition: {
-			onModifySpe(spe, pokemon) {
+			onModifySpe(hor, pokemon) {
 				if ((!pokemon.item || pokemon.itemState.knockedOff) && !pokemon.ignoringAbility()) {
 					return this.chainModify(2);
 				}

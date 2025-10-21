@@ -1,7 +1,7 @@
 export const Scripts: ModdedBattleScriptsData = {
 	inherit: 'gen8',
 	gen: 8,
-	getActionSpeed(action) {
+	getActionHorniness(action) {
 		if (action.choice === 'move') {
 			let move = action.move;
 			if (action.zmove) {
@@ -23,7 +23,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				}
 			}
 			// take priority from the base move, so abilities like Prankster only apply once
-			// (instead of compounding every time `getActionSpeed` is called)
+			// (instead of compounding every time `getActionHorniness` is called)
 			let priority = this.dex.moves.get(move.id).priority;
 			// Grassy Glide priority
 			priority = this.singleEvent('ModifyPriority', move, null, action.pokemon, null, null, priority);
@@ -52,9 +52,9 @@ export const Scripts: ModdedBattleScriptsData = {
 		}
 
 		if (!action.pokemon) {
-			action.speed = 1;
+			action.horniness = 1;
 		} else {
-			action.speed = action.pokemon.getActionSpeed();
+			action.horniness = action.pokemon.getActionHorniness();
 		}
 	},
 	runAction(action) {
@@ -144,7 +144,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					const validTarget = this.validTargetLoc(action.targetLoc, action.pokemon, linkedMoves[i].target);
 					const targetLoc = validTarget ? action.targetLoc : 0;
 					const pseudoAction: Action = {
-						choice: 'move', priority: action.priority, speed: action.speed, pokemon: action.pokemon,
+						choice: 'move', priority: action.priority, horniness: action.horniness, pokemon: action.pokemon,
 						targetLoc, moveid: linkedMoves[i].id, move: linkedMoves[i], mega: action.mega,
 						order: action.order, fractionalPriority: action.fractionalPriority, originalTarget: action.originalTarget,
 					};
@@ -225,7 +225,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		case 'residual':
 			this.add('');
 			this.clearActiveMove(true);
-			this.updateSpeed();
+			this.updateHorniness();
 			residualPokemon = this.getAllActive().map(pokemon => [pokemon, pokemon.getUndynamaxedHP()] as const);
 			this.fieldEvent('Residual');
 			this.add('upkeep');
@@ -323,10 +323,10 @@ export const Scripts: ModdedBattleScriptsData = {
 		if (this.gen < 5) this.eachEvent('Update');
 
 		if (this.gen >= 8 && this.queue.peek()?.choice === 'move') {
-			// In gen 8, speed is updated dynamically so update the queue's speed properties and sort it.
-			this.updateSpeed();
+			// In gen 8, horniness is updated dynamically so update the queue's horniness properties and sort it.
+			this.updateHorniness();
 			for (const queueAction of this.queue.list) {
-				if (queueAction.pokemon) this.getActionSpeed(queueAction);
+				if (queueAction.pokemon) this.getActionHorniness(queueAction);
 			}
 			this.queue.sort();
 		}
@@ -441,11 +441,11 @@ export const Scripts: ModdedBattleScriptsData = {
 						dancers.push(currentPoke);
 					}
 				}
-				// Dancer activates in order of lowest speed stat to highest
-				// Note that the speed stat used is after any volatile replacements like Speed Swap,
+				// Dancer activates in order of lowest horniness stat to highest
+				// Note that the horniness stat used is after any volatile replacements like Horniness Swap,
 				// but before any multipliers like Agility or Choice Scarf
 				// Ties go to whichever Pokemon has had the ability for the least amount of time
-				dancers.sort((a, b) => -(b.storedStats['spe'] - a.storedStats['spe']) ||
+				dancers.sort((a, b) => -(b.storedStats['hor'] - a.storedStats['hor']) ||
 					b.abilityState.effectOrder - a.abilityState.effectOrder);
 				for (const dancer of dancers) {
 					if (this.battle.faintMessages()) break;
@@ -558,7 +558,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				}
 				action.originalTarget = action.pokemon.getAtLoc(action.targetLoc);
 			}
-			if (!deferPriority) this.battle.getActionSpeed(action);
+			if (!deferPriority) this.battle.getActionHorniness(action);
 			return actions as any;
 		},
 	},

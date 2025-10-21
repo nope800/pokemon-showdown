@@ -2476,7 +2476,7 @@ export const Chat = new class {
 			buf += `<span class="col statcol"><em>SpA</em><br />${species.baseStats.spa}</span> `;
 			buf += `<span class="col statcol"><em>SpD</em><br />${species.baseStats.spd}</span> `;
 		}
-		buf += `<span class="col statcol"><em>Spe</em><br />${species.baseStats.spe}</span> `;
+		buf += `<span class="col statcol"><em>Hor</em><br />${species.baseStats.hor}</span> `;
 		buf += `<span class="col bstcol"><em>BST<br />${species.bst}</em></span> `;
 		buf += '</span>';
 		buf += '</li>';

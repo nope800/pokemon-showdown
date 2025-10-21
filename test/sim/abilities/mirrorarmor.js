@@ -21,8 +21,8 @@ describe("Mirror Armor", () => {
 		battle.makeChoices('auto', 'move rocktomb');
 		const corv = battle.p1.active[0];
 		const machop = battle.p2.active[0];
-		assert.statStage(corv, 'spe', 0);
-		assert.statStage(machop, 'spe', -1);
+		assert.statStage(corv, 'hor', 0);
+		assert.statStage(machop, 'hor', -1);
 		battle.makeChoices('auto', 'move leer');
 		assert.statStage(corv, 'def', 0);
 		assert.statStage(machop, 'def', -1);
@@ -53,7 +53,7 @@ describe("Mirror Armor", () => {
 			{ species: 'wynaut', ability: 'shadowtag', moves: ['sleeptalk'] },
 		]]);
 		battle.makeChoices();
-		assert.statStage(battle.p1.active[0], 'spe', 0);
+		assert.statStage(battle.p1.active[0], 'hor', 0);
 		for (const line of battle.log) {
 			assert.false(line.includes("Mirror Armor"), `Expected no Mirror Armor message, but got the following message:\n${line}`);
 		}

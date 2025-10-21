@@ -334,7 +334,7 @@ export class DexTypes {
 	}
 }
 
-const idsCache: readonly StatID[] = ['hp', 'atk', 'def', 'spa', 'spd', 'spe'];
+const idsCache: readonly StatID[] = ['hp', 'atk', 'def', 'spa', 'spd', 'hor'];
 const reverseCache: { readonly [k: IDEntry]: StatID } = {
 	__proto: null as any,
 	"hitpoints": 'hp',
@@ -343,7 +343,7 @@ const reverseCache: { readonly [k: IDEntry]: StatID } = {
 	"specialattack": 'spa', "spatk": 'spa', "spattack": 'spa', "specialatk": 'spa',
 	"special": 'spa', "spc": 'spa',
 	"specialdefense": 'spd', "spdef": 'spd', "spdefense": 'spd', "specialdef": 'spd',
-	"speed": 'spe',
+	"horniness": 'hor',
 };
 export class DexStats {
 	readonly shortNames: { readonly [k in StatID]: string };
@@ -352,28 +352,28 @@ export class DexStats {
 	constructor(dex: ModdedDex) {
 		if (dex.gen !== 1) {
 			this.shortNames = {
-				__proto__: null, hp: "HP", atk: "Atk", def: "Def", spa: "SpA", spd: "SpD", spe: "Spe",
+				__proto__: null, hp: "HP", atk: "Atk", def: "Def", spa: "SpA", spd: "SpD", hor: "Hor",
 			} as any;
 			this.mediumNames = {
-				__proto__: null, hp: "HP", atk: "Attack", def: "Defense", spa: "Sp. Atk", spd: "Sp. Def", spe: "Speed",
+				__proto__: null, hp: "HP", atk: "Attack", def: "Defense", spa: "Sp. Atk", spd: "Sp. Def", hor: "Horniness",
 			} as any;
 			this.names = {
-				__proto__: null, hp: "HP", atk: "Attack", def: "Defense", spa: "Special Attack", spd: "Special Defense", spe: "Speed",
+				__proto__: null, hp: "HP", atk: "Attack", def: "Defense", spa: "Special Attack", spd: "Special Defense", hor: "Horniness",
 			} as any;
 		} else {
 			this.shortNames = {
-				__proto__: null, hp: "HP", atk: "Atk", def: "Def", spa: "Spc", spd: "[SpD]", spe: "Spe",
+				__proto__: null, hp: "HP", atk: "Atk", def: "Def", spa: "Spc", spd: "[SpD]", hor: "Hor",
 			} as any;
 			this.mediumNames = {
-				__proto__: null, hp: "HP", atk: "Attack", def: "Defense", spa: "Special", spd: "[Sp. Def]", spe: "Speed",
+				__proto__: null, hp: "HP", atk: "Attack", def: "Defense", spa: "Special", spd: "[Sp. Def]", hor: "Horniness",
 			} as any;
 			this.names = {
-				__proto__: null, hp: "HP", atk: "Attack", def: "Defense", spa: "Special", spd: "[Special Defense]", spe: "Speed",
+				__proto__: null, hp: "HP", atk: "Attack", def: "Defense", spa: "Special", spd: "[Special Defense]", hor: "Horniness",
 			} as any;
 		}
 	}
 	getID(name: string) {
-		if (name === 'Spd') return 'spe' as StatID;
+		if (name === 'Spd') return 'hor' as StatID;
 		const id = toID(name);
 		if (reverseCache[id]) return reverseCache[id];
 		if (idsCache.includes(id as StatID)) return id as StatID;

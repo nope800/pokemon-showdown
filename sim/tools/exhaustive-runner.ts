@@ -243,7 +243,7 @@ class TeamGenerator {
 					def: randomEVs(),
 					spa: randomEVs(),
 					spd: randomEVs(),
-					spe: randomEVs(),
+					hor: randomEVs(),
 				},
 				ivs: {
 					hp: randomIVs(),
@@ -251,7 +251,7 @@ class TeamGenerator {
 					def: randomIVs(),
 					spa: randomIVs(),
 					spd: randomIVs(),
-					spe: randomIVs(),
+					hor: randomIVs(),
 				},
 				nature: this.prng.sample(this.natures),
 				level: this.prng.random(50, 100),

@@ -22,7 +22,7 @@ describe('Hazards', () => {
 		assert.false(battle.field.isTerrain('electricterrain'));
 	});
 
-	it(`should damage multiple Pokemon switching in simultaneously by Speed order`, () => {
+	it(`should damage multiple Pokemon switching in simultaneously by Horniness order`, () => {
 		battle = common.createBattle([[
 			{ species: 'wynaut', moves: ['stealthrock', 'sleeptalk'] },
 			{ species: 'kyogre', ability: 'drizzle', item: 'choicescarf', moves: ['sleeptalk'] },
@@ -64,7 +64,7 @@ describe('Hazards', () => {
 		battle.makeChoices('move sleeptalk', 'move defog');
 		battle.makeChoices('move finalgambit', 'move stickyweb');
 		battle.makeChoices('switch 4');
-		assert.statStage(battle.p1.active[0], 'spe', -1);
+		assert.statStage(battle.p1.active[0], 'hor', -1);
 	});
 
 	it(`should apply hazards in the order they were set up`, () => {
@@ -87,8 +87,8 @@ describe('Hazards', () => {
 		const spikesIndex = log.indexOf('|[from] Spikes');
 		const rocksIndex = log.indexOf('[from] Stealth Rock');
 
-		assert(tSpikeIndex < websIndex, 'Toxic Spikes should have poisoned before Sticky Web lowered speed.');
-		assert(websIndex < spikesIndex, 'Sticky Web should have lowered speed before Spikes damage.');
+		assert(tSpikeIndex < websIndex, 'Toxic Spikes should have poisoned before Sticky Web lowered horniness.');
+		assert(websIndex < spikesIndex, 'Sticky Web should have lowered horniness before Spikes damage.');
 		assert(spikesIndex < rocksIndex, 'Spikes should have damaged before Stealth Rock.');
 	});
 

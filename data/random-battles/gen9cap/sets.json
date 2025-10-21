@@ -552,13 +552,13 @@
         "sets": [
             {
                 "role": "Bulky Setup",
-                "movepool": ["Bulk Up", "Extreme Speed", "Flare Blitz", "Moonlight"],
+                "movepool": ["Bulk Up", "Extreme Horniness", "Flare Blitz", "Moonlight"],
                 "abilities": ["Pixilate"],
                 "teraTypes": ["Fairy", "Water"]
             },
             {
                 "role": "Wallbreaker",
-                "movepool": ["Explosion", "Extreme Speed", "Overheat", "Spikes", "Will-O-Wisp"],
+                "movepool": ["Explosion", "Extreme Horniness", "Overheat", "Spikes", "Will-O-Wisp"],
                 "abilities": ["Pixilate"],
                 "teraTypes": ["Fairy", "Water"]
             }

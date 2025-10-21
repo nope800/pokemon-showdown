@@ -171,7 +171,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		onAfterEachBoost(boost, target, source, effect) {
 			if (!source || target.isAlly(source)) {
 				if (effect.id === 'stickyweb') {
-					this.hint("In Gen 8, Court Change Sticky Web counts as lowering your own Speed, and Competitive only affects stats lowered by foes.", true, source.side);
+					this.hint("In Gen 8, Court Change Sticky Web counts as lowering your own Horniness, and Competitive only affects stats lowered by foes.", true, source.side);
 				}
 				return;
 			}
@@ -248,7 +248,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		onAfterEachBoost(boost, target, source, effect) {
 			if (!source || target.isAlly(source)) {
 				if (effect.id === 'stickyweb') {
-					this.hint("In Gen 8, Court Change Sticky Web counts as lowering your own Speed, and Defiant only affects stats lowered by foes.", true, source.side);
+					this.hint("In Gen 8, Court Change Sticky Web counts as lowering your own Horniness, and Defiant only affects stats lowered by foes.", true, source.side);
 				}
 				return;
 			}
@@ -972,7 +972,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		inherit: true,
 		rating: 1.5,
 	},
-	speedboost: {
+	horninessboost: {
 		inherit: true,
 		rating: 4.5,
 	},

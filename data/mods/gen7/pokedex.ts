@@ -181,11 +181,11 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	aegislash: {
 		inherit: true,
-		baseStats: { hp: 60, atk: 50, def: 150, spa: 50, spd: 150, spe: 60 },
+		baseStats: { hp: 60, atk: 50, def: 150, spa: 50, spd: 150, hor: 60 },
 	},
 	aegislashblade: {
 		inherit: true,
-		baseStats: { hp: 60, atk: 150, def: 50, spa: 150, spd: 50, spe: 60 },
+		baseStats: { hp: 60, atk: 150, def: 50, spa: 150, spd: 50, hor: 60 },
 	},
 	pumpkaboosmall: {
 		inherit: true,
@@ -259,12 +259,12 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	pyroak: {
 		inherit: true,
-		baseStats: { hp: 120, atk: 70, def: 105, spa: 95, spd: 90, spe: 60 },
+		baseStats: { hp: 120, atk: 70, def: 105, spa: 95, spd: 90, hor: 60 },
 		abilities: { 0: "Rock Head", 1: "Battle Armor", H: "White Smoke" },
 	},
 	voodoom: {
 		inherit: true,
-		baseStats: { hp: 90, atk: 85, def: 80, spa: 105, spd: 80, spe: 110 },
+		baseStats: { hp: 90, atk: 85, def: 80, spa: 105, spd: 80, hor: 110 },
 	},
 	mumbao: {
 		inherit: true,

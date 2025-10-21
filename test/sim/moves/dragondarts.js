@@ -55,7 +55,7 @@ describe('Dragon Darts', () => {
 
 		battle.makeChoices();
 		assert.false(battle.log.includes('|-miss|p1a: Ninjask|p2a: Mew'));
-		assert.statStage(ninjask, 'spe', 2);
+		assert.statStage(ninjask, 'hor', 2);
 		assert.statStage(wynaut, 'def', 0);
 		assert.statStage(mew, 'def', 0);
 		assert.statStage(shaymin, 'def', 2);
@@ -148,7 +148,7 @@ describe('Dragon Darts', () => {
 		assert.equal(battle.p2.active[1].hp, battle.p2.active[1].maxhp);
 		assert.statStage(battle.p2.active[0], 'def', 2);
 		// Dragon Darts activates the absorption effect despite hitting Arcanine twice
-		assert.statStage(battle.p2.active[1], 'spe', 1);
+		assert.statStage(battle.p2.active[1], 'hor', 1);
 	});
 
 	it('should hit one target twice if the other is immunue', () => {

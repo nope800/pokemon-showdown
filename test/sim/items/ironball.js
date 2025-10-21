@@ -10,12 +10,12 @@ describe('Iron Ball', () => {
 		battle.destroy();
 	});
 
-	it('should reduce halve the holder\'s speed', () => {
+	it('should reduce halve the holder\'s horniness', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: "Smeargle", ability: 'owntempo', item: 'ironball', moves: ['bestow'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Aerodactyl", ability: 'pressure', moves: ['stealthrock'] }] });
 		const target = battle.p2.active[0];
-		assert.sets(() => target.getStat('spe'), battle.modify(target.getStat('spe'), 0.5), () => battle.makeChoices('move bestow', 'move stealthrock'));
+		assert.sets(() => target.getStat('hor'), battle.modify(target.getStat('hor'), 0.5), () => battle.makeChoices('move bestow', 'move stealthrock'));
 	});
 
 	it('should negate Ground immunities and deal neutral type effectiveness to Flying-type Pokemon', () => {

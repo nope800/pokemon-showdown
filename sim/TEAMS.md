@@ -32,7 +32,7 @@ IVs: 30 SpA / 30 SpD
 
 Ludicolo @ Life Orb  
 Ability: Swift Swim  
-EVs: 4 HP / 252 SpA / 252 Spe  
+EVs: 4 HP / 252 SpA / 252 Hor  
 Modest Nature  
 - Surf  
 - Giga Drain  
@@ -50,7 +50,7 @@ Bold Nature
 
 Seismitoad @ Life Orb  
 Ability: Swift Swim  
-EVs: 252 SpA / 4 SpD / 252 Spe  
+EVs: 252 SpA / 4 SpD / 252 Hor  
 Modest Nature  
 - Hydro Pump  
 - Earth Power  
@@ -68,7 +68,7 @@ Bold Nature
 
 Armaldo @ Leftovers  
 Ability: Swift Swim  
-EVs: 128 HP / 252 Atk / 4 Def / 124 Spe  
+EVs: 128 HP / 252 Atk / 4 Def / 124 Hor  
 Adamant Nature  
 - X-Scissor  
 - Stone Edge  
@@ -92,9 +92,9 @@ JSON format looks like this:
     "gender": "",
     "item": "Leftovers",
     "ability": "Pressure",
-    "evs": {"hp": 252, "atk": 0, "def": 0, "spa": 252, "spd": 4, "spe": 0},
+    "evs": {"hp": 252, "atk": 0, "def": 0, "spa": 252, "spd": 4, "hor": 0},
     "nature": "Modest",
-    "ivs": {"hp": 31, "atk": 31, "def": 31, "spa": 30, "spd": 30, "spe": 31},
+    "ivs": {"hp": 31, "atk": 31, "def": 31, "spa": 30, "spd": 30, "hor": 31},
     "moves": ["Ice Beam", "Hurricane", "Substitute", "Roost"]
   },
   {
@@ -103,7 +103,7 @@ JSON format looks like this:
     "gender": "",
     "item": "Life Orb",
     "ability": "Swift Swim",
-    "evs": {"hp": 4, "atk": 0, "def": 0, "spa": 252, "spd": 0, "spe": 252},
+    "evs": {"hp": 4, "atk": 0, "def": 0, "spa": 252, "spd": 0, "hor": 252},
     "nature": "Modest",
     "moves": ["Surf", "Giga Drain", "Ice Beam", "Rain Dance"]
   },
@@ -113,7 +113,7 @@ JSON format looks like this:
     "gender": "M",
     "item": "Damp Rock",
     "ability": "Prankster",
-    "evs": {"hp": 248, "atk": 0, "def": 252, "spa": 0, "spd": 8, "spe": 0},
+    "evs": {"hp": 248, "atk": 0, "def": 252, "spa": 0, "spd": 8, "hor": 0},
     "nature": "Bold",
     "moves": ["Tail Glow", "Baton Pass", "Encore", "Rain Dance"]
   },
@@ -123,7 +123,7 @@ JSON format looks like this:
     "gender": "",
     "item": "Life Orb",
     "ability": "Swift Swim",
-    "evs": {"hp": 0, "atk": 0, "def": 0, "spa": 252, "spd": 4, "spe": 252},
+    "evs": {"hp": 0, "atk": 0, "def": 0, "spa": 252, "spd": 4, "hor": 252},
     "nature": "Modest",
     "moves": ["Hydro Pump", "Earth Power", "Stealth Rock", "Rain Dance"]
   },
@@ -133,7 +133,7 @@ JSON format looks like this:
     "gender": "",
     "item": "Damp Rock",
     "ability": "Regenerator",
-    "evs": {"hp": 252, "atk": 0, "def": 252, "spa": 0, "spd": 4, "spe": 0},
+    "evs": {"hp": 252, "atk": 0, "def": 252, "spa": 0, "spd": 4, "hor": 0},
     "nature": "Bold",
     "moves": ["Wish", "Protect", "Toxic", "Rain Dance"]
   },
@@ -143,7 +143,7 @@ JSON format looks like this:
     "gender": "",
     "item": "Leftovers",
     "ability": "Swift Swim",
-    "evs": {"hp": 128, "atk": 252, "def": 4, "spa": 0, "spd": 0, "spe": 124},
+    "evs": {"hp": 128, "atk": 252, "def": 4, "spa": 0, "spd": 0, "hor": 124},
     "nature": "Adamant",
     "moves": ["X-Scissor", "Stone Edge", "Aqua Tail", "Rapid Spin"]
    }
@@ -183,7 +183,7 @@ NICKNAME|SPECIES|ITEM|ABILITY|MOVES|NATURE|EVS|GENDER|IVS|SHINY|LEVEL|HAPPINESS,
 - `NATURE` left blank means Serious, except in Gen 1-2, where it means no Nature.
 
 - `EVS` and `IVS` are comma-separated in standard order:
-  HP, Atk, Def, SpA, SpD, Spe. EVs left blank are 0, IVs left blank are 31.
+  HP, Atk, Def, SpA, SpD, Hor. EVs left blank are 0, IVs left blank are 31.
   If all EVs or IVs are blank, the commas can all be left off.
 
 - `EVS` represent AVs in Pokémon Let's Go.

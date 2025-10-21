@@ -88,7 +88,7 @@ const SPECIAL_SETUP = [
 const MIXED_SETUP = [
 	'clangoroussoul', 'growth', 'happyhour', 'holdhands', 'noretreat', 'shellsmash', 'workup',
 ];
-// Some moves that only boost Speed:
+// Some moves that only boost Horniness:
 const SPEED_SETUP = [
 	'agility', 'autotomize', 'flamecharge', 'rockpolish', 'snowscape', 'trailblaze',
 ];
@@ -445,8 +445,8 @@ export class RandomTeams {
 			if (PHYSICAL_SETUP.includes(moveid)) counter.add('physicalsetup');
 			if (SPECIAL_SETUP.includes(moveid)) counter.add('specialsetup');
 			if (MIXED_SETUP.includes(moveid)) counter.add('mixedsetup');
-			if (SPEED_SETUP.includes(moveid)) counter.add('speedsetup');
-			if (SPEED_CONTROL.includes(moveid)) counter.add('speedcontrol');
+			if (SPEED_SETUP.includes(moveid)) counter.add('horninesssetup');
+			if (SPEED_CONTROL.includes(moveid)) counter.add('horninesscontrol');
 			if (SETUP.includes(moveid)) counter.add('setup');
 			if (HAZARDS.includes(moveid)) counter.add('hazards');
 		}
@@ -825,7 +825,7 @@ export class RandomTeams {
 				}
 			}
 			// Enforce Fake Out on slow Pokemon
-			if (movePool.includes('fakeout') && species.baseStats.spe <= 50) {
+			if (movePool.includes('fakeout') && species.baseStats.hor <= 50) {
 				counter = this.addMove('fakeout', moves, types, abilities, teamDetails, species, isLead, isDoubles,
 					movePool, teraType, role);
 			}
@@ -939,14 +939,14 @@ export class RandomTeams {
 
 		// Enforce setup
 		if (role.includes('Setup') || role === 'Tera Blast user') {
-			// First, try to add a non-Speed setup move
-			const nonSpeedSetupMoves = movePool.filter(moveid => SETUP.includes(moveid) && !SPEED_SETUP.includes(moveid));
-			if (nonSpeedSetupMoves.length) {
-				const moveid = this.sample(nonSpeedSetupMoves);
+			// First, try to add a non-Horniness setup move
+			const nonHorninessSetupMoves = movePool.filter(moveid => SETUP.includes(moveid) && !SPEED_SETUP.includes(moveid));
+			if (nonHorninessSetupMoves.length) {
+				const moveid = this.sample(nonHorninessSetupMoves);
 				counter = this.addMove(moveid, moves, types, abilities, teamDetails, species, isLead, isDoubles,
 					movePool, teraType, role);
 			} else {
-				// No non-Speed setup moves, so add any (Speed) setup move
+				// No non-Horniness setup moves, so add any (Horniness) setup move
 				const setupMoves = movePool.filter(moveid => SETUP.includes(moveid));
 				if (setupMoves.length) {
 					const moveid = this.sample(setupMoves);
@@ -964,9 +964,9 @@ export class RandomTeams {
 						movePool, teraType, role);
 				}
 			}
-			const speedControl = movePool.filter(moveid => SPEED_CONTROL.includes(moveid));
-			if (speedControl.length) {
-				const moveid = this.sample(speedControl);
+			const horninessControl = movePool.filter(moveid => SPEED_CONTROL.includes(moveid));
+			if (horninessControl.length) {
+				const moveid = this.sample(horninessControl);
 				counter = this.addMove(moveid, moves, types, abilities, teamDetails, species, isLead, isDoubles,
 					movePool, teraType, role);
 			}
@@ -1195,7 +1195,7 @@ export class RandomTeams {
 		}
 		if (['healingwish', 'switcheroo', 'trick'].some(m => moves.has(m))) {
 			if (
-				species.baseStats.spe >= 60 && species.baseStats.spe <= 108 &&
+				species.baseStats.hor >= 60 && species.baseStats.hor <= 108 &&
 				role !== 'Wallbreaker' && role !== 'Doubles Wallbreaker' && !counter.get('priority')
 			) {
 				return 'Choice Scarf';
@@ -1248,8 +1248,8 @@ export class RandomTeams {
 		role: RandomTeamsTypes.Role,
 	): string {
 		const scarfReqs = (
-			!counter.get('priority') && ability !== 'Speed Boost' && role !== 'Doubles Wallbreaker' &&
-			species.baseStats.spe >= 60 && species.baseStats.spe <= 108 &&
+			!counter.get('priority') && ability !== 'Horniness Boost' && role !== 'Doubles Wallbreaker' &&
+			species.baseStats.hor >= 60 && species.baseStats.hor <= 108 &&
 			this.randomChance(1, 2)
 		);
 		const offensiveRole = (
@@ -1260,7 +1260,7 @@ export class RandomTeams {
 		if (
 			moves.has('flipturn') && moves.has('protect') && (moves.has('aquajet') || (moves.has('jetpunch')))
 		) return 'Mystic Water';
-		if (counter.get('speedsetup') && role === 'Doubles Bulky Setup') return 'Weakness Policy';
+		if (counter.get('horninesssetup') && role === 'Doubles Bulky Setup') return 'Weakness Policy';
 		if (moves.has('blizzard') && ability !== 'Snow Warning' && !teamDetails.snow) return 'Blunder Policy';
 
 		if (role === 'Choice Item user') {
@@ -1281,7 +1281,7 @@ export class RandomTeams {
 			return (scarfReqs) ? 'Choice Scarf' : 'Choice Specs';
 		}
 		if (
-			species.baseStats.spe <= 70 && (moves.has('ragepowder') || moves.has('followme'))
+			species.baseStats.hor <= 70 && (moves.has('ragepowder') || moves.has('followme'))
 		) return 'Rocky Helmet';
 		if (
 			ability === 'Intimidate' && this.dex.getEffectiveness('Rock', species) >= 1 &&
@@ -1290,12 +1290,12 @@ export class RandomTeams {
 		if (
 			(role === 'Bulky Protect' && counter.get('setup')) ||
 			['irondefense', 'coil', 'acidarmor', 'wish'].some(m => moves.has(m)) ||
-			(counter.get('recovery') && !moves.has('strengthsap') && !counter.get('speedcontrol') && !offensiveRole) ||
+			(counter.get('recovery') && !moves.has('strengthsap') && !counter.get('horninesscontrol') && !offensiveRole) ||
 			species.id === 'regigigas'
 		) return 'Leftovers';
 		if (species.id === 'sylveon') return 'Pixie Plate';
 		if (
-			(offensiveRole || (role === 'Tera Blast user' && (species.baseStats.spe >= 80 || moves.has('trickroom')))) &&
+			(offensiveRole || (role === 'Tera Blast user' && (species.baseStats.hor >= 80 || moves.has('trickroom')))) &&
 			!moves.has('fakeout') &&
 			(!moves.has('uturn') || types.includes('Bug') || ability === 'Libero') &&
 			((!moves.has('icywind') && !moves.has('electroweb')) || species.id === 'ironbundle')
@@ -1338,8 +1338,8 @@ export class RandomTeams {
 			const scarfReqs = (
 				role !== 'Wallbreaker' &&
 				(species.baseStats.atk >= 100 || ability === 'Huge Power' || ability === 'Pure Power') &&
-				species.baseStats.spe >= 60 && species.baseStats.spe <= 108 &&
-				ability !== 'Speed Boost' && !counter.get('priority') && !moves.has('aquastep')
+				species.baseStats.hor >= 60 && species.baseStats.hor <= 108 &&
+				ability !== 'Horniness Boost' && !counter.get('priority') && !moves.has('aquastep')
 			);
 			return (scarfReqs && this.randomChance(1, 2)) ? 'Choice Scarf' : 'Choice Band';
 		}
@@ -1350,19 +1350,19 @@ export class RandomTeams {
 			const scarfReqs = (
 				role !== 'Wallbreaker' &&
 				species.baseStats.spa >= 100 &&
-				species.baseStats.spe >= 60 && species.baseStats.spe <= 108 &&
-				ability !== 'Speed Boost' && ability !== 'Tinted Lens' && !moves.has('uturn') && !counter.get('priority')
+				species.baseStats.hor >= 60 && species.baseStats.hor <= 108 &&
+				ability !== 'Horniness Boost' && ability !== 'Tinted Lens' && !moves.has('uturn') && !counter.get('priority')
 			);
 			return (scarfReqs && this.randomChance(1, 2)) ? 'Choice Scarf' : 'Choice Specs';
 		}
-		if (counter.get('speedsetup') && role === 'Bulky Setup') return 'Weakness Policy';
+		if (counter.get('horninesssetup') && role === 'Bulky Setup') return 'Weakness Policy';
 		if (
 			!counter.get('Status') &&
 			!['Fast Attacker', 'Wallbreaker', 'Tera Blast user'].includes(role)
 		) {
 			return 'Assault Vest';
 		}
-		if (species.id === 'golem') return (counter.get('speedsetup')) ? 'Weakness Policy' : 'Custap Berry';
+		if (species.id === 'golem') return (counter.get('horninesssetup')) ? 'Weakness Policy' : 'Custap Berry';
 		if (moves.has('substitute')) return 'Leftovers';
 		if (
 			moves.has('stickyweb') && isLead &&
@@ -1389,7 +1389,7 @@ export class RandomTeams {
 			)
 		) return 'Rocky Helmet';
 		if (moves.has('outrage') && counter.get('setup')) return 'Lum Berry';
-		if (moves.has('protect') && ability !== 'Speed Boost') return 'Leftovers';
+		if (moves.has('protect') && ability !== 'Horniness Boost') return 'Leftovers';
 		if (
 			role === 'Fast Support' && isLead && !counter.get('recovery') && !counter.get('recoil') &&
 			(counter.get('hazards') || counter.get('setup')) &&
@@ -1495,8 +1495,8 @@ export class RandomTeams {
 		let ability = '';
 		let item = undefined;
 
-		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, spe: 85 };
-		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 };
+		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, hor: 85 };
+		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
 
 		const types = species.types;
 		const abilities = set.abilities!;
@@ -1570,8 +1570,8 @@ export class RandomTeams {
 		}
 
 		if (moves.has('gyroball') || moves.has('trickroom')) {
-			evs.spe = 0;
-			ivs.spe = 0;
+			evs.hor = 0;
+			ivs.hor = 0;
 		}
 
 		// Enforce Tera Type after all set generation is done to prevent infinite generation
@@ -1908,8 +1908,8 @@ export class RandomTeams {
 			const moves = this.multipleSamplesNoReplace(pool, this.maxMoveCount);
 
 			// Random EVs
-			const evs: StatsTable = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 };
-			const s: StatID[] = ["hp", "atk", "def", "spa", "spd", "spe"];
+			const evs: StatsTable = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0 };
+			const s: StatID[] = ["hp", "atk", "def", "spa", "spd", "hor"];
 			let evpool = 510;
 			do {
 				const x = this.sample(s);
@@ -1925,7 +1925,7 @@ export class RandomTeams {
 				def: this.random(32),
 				spa: this.random(32),
 				spd: this.random(32),
-				spe: this.random(32),
+				hor: this.random(32),
 			};
 
 			// Random nature
@@ -1946,7 +1946,7 @@ export class RandomTeams {
 			mbst += (stats["def"] * 2 + 31 + 21 + 100) + 5;
 			mbst += (stats["spa"] * 2 + 31 + 21 + 100) + 5;
 			mbst += (stats["spd"] * 2 + 31 + 21 + 100) + 5;
-			mbst += (stats["spe"] * 2 + 31 + 21 + 100) + 5;
+			mbst += (stats["hor"] * 2 + 31 + 21 + 100) + 5;
 
 			let level;
 			if (this.adjustLevel) {
@@ -1961,7 +1961,7 @@ export class RandomTeams {
 					mbst += Math.floor((stats["def"] * 2 + 31 + 21 + 100) * level / 100 + 5);
 					mbst += Math.floor(((stats["spa"] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
 					mbst += Math.floor((stats["spd"] * 2 + 31 + 21 + 100) * level / 100 + 5);
-					mbst += Math.floor((stats["spe"] * 2 + 31 + 21 + 100) * level / 100 + 5);
+					mbst += Math.floor((stats["hor"] * 2 + 31 + 21 + 100) * level / 100 + 5);
 
 					if (mbst >= mbstmin) break;
 					level++;
@@ -2279,7 +2279,7 @@ export class RandomTeams {
 			} while (m.length < setMoveCount);
 
 			// Random EVs
-			const evs = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 };
+			const evs = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0 };
 			if (this.gen === 6) {
 				let evpool = 510;
 				do {
@@ -2301,7 +2301,7 @@ export class RandomTeams {
 				def: this.random(32),
 				spa: this.random(32),
 				spd: this.random(32),
-				spe: this.random(32),
+				hor: this.random(32),
 			};
 
 			// Random nature
@@ -2318,7 +2318,7 @@ export class RandomTeams {
 			mbst += (stats['def'] * 2 + 31 + 21 + 100) + 5;
 			mbst += (stats['spa'] * 2 + 31 + 21 + 100) + 5;
 			mbst += (stats['spd'] * 2 + 31 + 21 + 100) + 5;
-			mbst += (stats['spe'] * 2 + 31 + 21 + 100) + 5;
+			mbst += (stats['hor'] * 2 + 31 + 21 + 100) + 5;
 
 			let level;
 			if (this.adjustLevel) {
@@ -2331,7 +2331,7 @@ export class RandomTeams {
 					mbst += Math.floor((stats['def'] * 2 + 31 + 21 + 100) * level / 100 + 5);
 					mbst += Math.floor(((stats['spa'] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
 					mbst += Math.floor((stats['spd'] * 2 + 31 + 21 + 100) * level / 100 + 5);
-					mbst += Math.floor((stats['spe'] * 2 + 31 + 21 + 100) * level / 100 + 5);
+					mbst += Math.floor((stats['hor'] * 2 + 31 + 21 + 100) * level / 100 + 5);
 					if (mbst >= mbstmin) break;
 					level++;
 				}
@@ -2479,8 +2479,8 @@ export class RandomTeams {
 			shiny: setData.set.shiny || this.randomChance(1, 1024),
 			level: this.adjustLevel || (tier === "LC" ? 5 : 100),
 			happiness: 255,
-			evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0, ...setData.set.evs },
-			ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31, ...setData.set.ivs },
+			evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0, ...setData.set.evs },
+			ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31, ...setData.set.ivs },
 			nature: this.sample(setData.set.nature) || "Serious",
 			moves,
 			wantsTera: setData.set.wantsTera,
@@ -2795,8 +2795,8 @@ export class RandomTeams {
 			shiny: this.randomChance(1, 1024),
 			level: 50,
 			happiness: 255,
-			evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0, ...setData.set.evs },
-			ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31, ...setData.set.ivs },
+			evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0, ...setData.set.evs },
+			ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31, ...setData.set.ivs },
 			nature: setData.set.nature || "Serious",
 			moves,
 			wantsTera: setData.set.wantsTera,

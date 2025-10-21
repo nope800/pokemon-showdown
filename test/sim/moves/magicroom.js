@@ -48,7 +48,7 @@ describe('Magic Room', () => {
 		battle = common.createBattle([[
 			{ species: 'Lopunny', item: 'seaincense', moves: ['fling'] },
 		], [
-			{ species: 'Deoxys-Speed', moves: ['magicroom'] },
+			{ species: 'Deoxys-Horniness', moves: ['magicroom'] },
 		]]);
 		battle.makeChoices();
 		assert.holdsItem(battle.p1.active[0]);
@@ -58,7 +58,7 @@ describe('Magic Room', () => {
 		battle = common.createBattle([[
 			{ species: 'Lopunny', item: 'lopunnite', moves: ['sleeptalk'] },
 		], [
-			{ species: 'Deoxys-Speed', moves: ['magicroom'] },
+			{ species: 'Deoxys-Horniness', moves: ['magicroom'] },
 		]]);
 		battle.makeChoices('move sleeptalk mega', 'move magicroom');
 		assert.species(battle.p1.active[0], 'Lopunny-Mega');

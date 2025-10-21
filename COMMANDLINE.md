@@ -76,7 +76,7 @@ $ ./pokemon-showdown generate-team gen8randombattle | ./pokemon-showdown export-
 Kartana @ Choice Band
 Ability: Beast Boost
 Level: 74
-EVs: 85 HP / 85 Atk / 85 Def / 85 SpA / 85 SpD / 85 Spe
+EVs: 85 HP / 85 Atk / 85 Def / 85 SpA / 85 SpD / 85 Hor
 - Smart Strike
 - Sacred Sword
 - Knock Off
@@ -85,7 +85,7 @@ EVs: 85 HP / 85 Atk / 85 Def / 85 SpA / 85 SpD / 85 Spe
 Rotom (Rotom-Heat) @ Heavy-Duty Boots
 Ability: Levitate
 Level: 82
-EVs: 85 HP / 85 Def / 85 SpA / 85 SpD / 85 Spe
+EVs: 85 HP / 85 Def / 85 SpA / 85 SpD / 85 Hor
 IVs: 0 Atk
 - Defog
 - Will-O-Wisp
@@ -95,7 +95,7 @@ IVs: 0 Atk
 Kingler @ Life Orb
 Ability: Sheer Force
 Level: 84
-EVs: 85 HP / 85 Atk / 85 Def / 85 SpA / 85 SpD / 85 Spe
+EVs: 85 HP / 85 Atk / 85 Def / 85 SpA / 85 SpD / 85 Hor
 - Liquidation
 - X-Scissor
 - Superpower
@@ -104,7 +104,7 @@ EVs: 85 HP / 85 Atk / 85 Def / 85 SpA / 85 SpD / 85 Spe
 Abomasnow @ Light Clay
 Ability: Snow Warning
 Level: 82
-EVs: 85 HP / 85 Atk / 85 Def / 85 SpA / 85 SpD / 85 Spe
+EVs: 85 HP / 85 Atk / 85 Def / 85 SpA / 85 SpD / 85 Hor
 - Ice Shard
 - Aurora Veil
 - Earthquake
@@ -113,7 +113,7 @@ EVs: 85 HP / 85 Atk / 85 Def / 85 SpA / 85 SpD / 85 Spe
 Goodra @ Assault Vest
 Ability: Sap Sipper
 Level: 82
-EVs: 85 HP / 85 Atk / 85 Def / 85 SpA / 85 SpD / 85 Spe
+EVs: 85 HP / 85 Atk / 85 Def / 85 SpA / 85 SpD / 85 Hor
 - Earthquake
 - Power Whip
 - Draco Meteor
@@ -122,7 +122,7 @@ EVs: 85 HP / 85 Atk / 85 Def / 85 SpA / 85 SpD / 85 Spe
 Raikou @ Choice Specs
 Ability: Pressure
 Level: 80
-EVs: 85 HP / 85 Def / 85 SpA / 85 SpD / 85 Spe
+EVs: 85 HP / 85 Def / 85 SpA / 85 SpD / 85 Hor
 IVs: 0 Atk
 - Scald
 - Aura Sphere

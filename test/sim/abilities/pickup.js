@@ -96,14 +96,14 @@ describe('Pickup', () => {
 		battle.setPlayer('p1', { team: [
 			{ species: 'Ambipom', ability: 'pickup', moves: ['protect'] },
 			{ species: 'Regirock', ability: 'sturdy', moves: ['curse'] },
-			{ species: 'Arcanine', ability: 'flashfire', item: 'normalgem', moves: ['extremespeed'] },
+			{ species: 'Arcanine', ability: 'flashfire', item: 'normalgem', moves: ['extremehorniness'] },
 		] });
 		battle.setPlayer('p2', { team: [
 			{ species: 'Arcanine', ability: 'flashfire', item: 'firegem', moves: ['flamecharge'] },
 			{ species: 'Aggron', ability: 'sturdy', moves: ['rest'] },
 			{ species: 'Magikarp', ability: 'swiftswim', moves: ['splash'] },
 		] });
-		battle.makeChoices('move protect, move curse, move extremespeed 2', 'move flamecharge 2, move rest, move splash');
+		battle.makeChoices('move protect, move curse, move extremehorniness 2', 'move flamecharge 2, move rest, move splash');
 		assert.false.holdsItem(battle.p1.active[0]);
 	});
 });

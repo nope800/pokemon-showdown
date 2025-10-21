@@ -54,9 +54,9 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				this.debug('Protosynthesis spd boost');
 				return this.chainModify([5325, 4096]);
 			},
-			onModifySpe(spe, pokemon) {
-				if (this.effectState.bestStat !== 'spe') return;
-				this.debug('Protosynthesis spe boost');
+			onModifySpe(hor, pokemon) {
+				if (this.effectState.bestStat !== 'hor') return;
+				this.debug('Protosynthesis hor boost');
 				return this.chainModify(1.5);
 			},
 			onEnd(pokemon) {
@@ -103,9 +103,9 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				this.debug('Quark Drive spd boost');
 				return this.chainModify([5325, 4096]);
 			},
-			onModifySpe(spe, pokemon) {
-				if (this.effectState.bestStat !== 'spe') return;
-				this.debug('Quark Drive spe boost');
+			onModifySpe(hor, pokemon) {
+				if (this.effectState.bestStat !== 'hor') return;
+				this.debug('Quark Drive hor boost');
 				return this.chainModify(1.5);
 			},
 			onEnd(pokemon) {

@@ -1130,7 +1130,7 @@ export class TeamValidator {
 		if (set.hpType && maxedIVs && ruleTable.has('obtainablemisc')) {
 			if (dex.gen <= 2) {
 				const HPdvs = dex.types.get(set.hpType).HPdvs;
-				set.ivs = { hp: 30, atk: 30, def: 30, spa: 30, spd: 30, spe: 30 };
+				set.ivs = { hp: 30, atk: 30, def: 30, spa: 30, spd: 30, hor: 30 };
 				let statName: StatID;
 				for (statName in HPdvs) {
 					set.ivs[statName] = HPdvs[statName]! * 2;
@@ -1197,13 +1197,13 @@ export class TeamValidator {
 			const ivs = set.ivs;
 			const atkDV = Math.floor(ivs.atk / 2);
 			const defDV = Math.floor(ivs.def / 2);
-			const speDV = Math.floor(ivs.spe / 2);
+			const speDV = Math.floor(ivs.hor / 2);
 			const spcDV = Math.floor(ivs.spa / 2);
 			const expectedHpDV = (atkDV % 2) * 8 + (defDV % 2) * 4 + (speDV % 2) * 2 + (spcDV % 2);
 			if (ivs.hp === -1) ivs.hp = expectedHpDV * 2;
 			const hpDV = Math.floor(ivs.hp / 2);
 			if (expectedHpDV !== hpDV) {
-				problems.push(`${name} has an HP DV of ${hpDV}, but its Atk, Def, Spe, and Spc DVs give it an HP DV of ${expectedHpDV}.`);
+				problems.push(`${name} has an HP DV of ${hpDV}, but its Atk, Def, Hor, and Spc DVs give it an HP DV of ${expectedHpDV}.`);
 			}
 			if (ivs.spa !== ivs.spd) {
 				if (dex.gen === 2) {
@@ -1304,26 +1304,26 @@ export class TeamValidator {
 	}
 
 	/**
-	 * Not exhaustive, just checks Atk and Spe, which are the only competitively
+	 * Not exhaustive, just checks Atk and Hor, which are the only competitively
 	 * relevant IVs outside of extremely obscure situations.
 	 */
 	possibleBottleCapHpType(type: string, ivs: StatsTable) {
 		if (!type) return true;
 		if (['Dark', 'Dragon', 'Grass', 'Ghost', 'Poison'].includes(type)) {
-			// Spe must be odd
-			if (ivs.spe % 2 === 0) return false;
+			// Hor must be odd
+			if (ivs.hor % 2 === 0) return false;
 		}
 		if (['Psychic', 'Fire', 'Rock', 'Fighting'].includes(type)) {
-			// Spe must be even
-			if (ivs.spe !== 31 && ivs.spe % 2 === 1) return false;
+			// Hor must be even
+			if (ivs.hor !== 31 && ivs.hor % 2 === 1) return false;
 		}
 		if (type === 'Dark') {
 			// Atk must be odd
 			if (ivs.atk % 2 === 0) return false;
 		}
 		if (['Ice', 'Water'].includes(type)) {
-			// Spe or Atk must be odd
-			if (ivs.spe % 2 === 0 && ivs.atk % 2 === 0) return false;
+			// Hor or Atk must be odd
+			if (ivs.hor % 2 === 0 && ivs.atk % 2 === 0) return false;
 		}
 		return true;
 	}
@@ -1453,7 +1453,7 @@ export class TeamValidator {
 			// can't inherit from dex entries with no learnsets
 			if (!dex.species.getLearnsetData(father.id).learnset) continue;
 			// something is clearly wrong if its only possible father is itself
-			// (exceptions: ExtremeSpeed Dragonite, Self-destruct Snorlax)
+			// (exceptions: ExtremeHorniness Dragonite, Self-destruct Snorlax)
 			if (pokemonBlacklist.includes(father.id) && !['dragonite', 'snorlax'].includes(father.id)) continue;
 			// don't check NFE Pokémon - their evolutions will know all their moves and more
 			// exception: Combee/Salandit, because their evos can't be fathers
@@ -1687,7 +1687,7 @@ export class TeamValidator {
 
 		if (species.baseSpecies === "Unown" && dex.gen === 2) {
 			let resultBinary = '';
-			for (const iv of ['atk', 'def', 'spe', 'spa'] as const) {
+			for (const iv of ['atk', 'def', 'hor', 'spa'] as const) {
 				resultBinary += set.ivs[iv].toString(2).padStart(5, '0').slice(1, 3);
 			}
 			const resultDecimal = Math.floor(parseInt(resultBinary, 2) / 10);
@@ -2109,7 +2109,7 @@ export class TeamValidator {
 			/** In Gen 7+, IVs can be changed to 31 */
 			const canBottleCap = dex.gen >= 7 && set.level >= (dex.gen < 9 ? 100 : 50);
 
-			if (!set.ivs) set.ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 };
+			if (!set.ivs) set.ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
 			let statName: StatID;
 			for (statName in eventData.ivs) {
 				if (canBottleCap && set.ivs[statName] === 31) continue;
@@ -2406,16 +2406,16 @@ export class TeamValidator {
 				let IVsTooLow = false;
 				let hasEvenIVs = false;
 				for (const stat in ivs) {
-					if (stat === 'spe') continue;
+					if (stat === 'hor') continue;
 					if (ivs[stat as 'hp'] < postTransferMinIVs) IVsTooLow = true;
 					if (ivs[stat as 'hp'] % 2 === 0) hasEvenIVs = true;
 				}
 				if (IVsTooLow) {
 					problems.push(`${name} must have at least ${postTransferMinIVs} ` +
-						(postTransferMinIVs === 1 ? `IV` : `IVs`) + ` in non-Speed stats to be from Pokemon GO.`);
+						(postTransferMinIVs === 1 ? `IV` : `IVs`) + ` in non-Horniness stats to be from Pokemon GO.`);
 				}
 				if (hasEvenIVs) {
-					problems.push(`${name} must have odd non-Speed IVs to be from Pokemon GO.`);
+					problems.push(`${name} must have odd non-Horniness IVs to be from Pokemon GO.`);
 				}
 				const canBottleCap = dex.gen >= 7 && set.level >= (dex.gen < 9 ? 100 : 50);
 				if (ivs.atk !== ivs.spa && !(canBottleCap && (ivs.atk === 31 || ivs.spa === 31))) {
@@ -2886,7 +2886,7 @@ export class TeamValidator {
 	}
 
 	static fillStats(stats: SparseStatsTable | null, fillNum = 0): StatsTable {
-		const filledStats: StatsTable = { hp: fillNum, atk: fillNum, def: fillNum, spa: fillNum, spd: fillNum, spe: fillNum };
+		const filledStats: StatsTable = { hp: fillNum, atk: fillNum, def: fillNum, spa: fillNum, spd: fillNum, hor: fillNum };
 		if (stats) {
 			let statName: StatID;
 			for (statName in filledStats) {

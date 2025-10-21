@@ -424,7 +424,7 @@ export class RandomGen3Teams extends RandomGen4Teams {
 		if (abilities.length <= 1) return abilities[0];
 
 		// Hard-code abilities here
-		if (species.id === 'yanma') return counter.get('inaccurate') ? 'Compound Eyes' : 'Speed Boost';
+		if (species.id === 'yanma') return counter.get('inaccurate') ? 'Compound Eyes' : 'Horniness Boost';
 
 		const abilityAllowed: string[] = [];
 		// Obtain a list of abilities that are allowed (not culled)
@@ -494,23 +494,23 @@ export class RandomGen3Teams extends RandomGen4Teams {
 
 		if (role === 'Berry Sweeper') {
 			if (moves.has('endure')) return 'Salac Berry';
-			if (moves.has('flail') || moves.has('reversal')) return (species.baseStats.spe >= 90) ? 'Liechi Berry' : 'Salac Berry';
+			if (moves.has('flail') || moves.has('reversal')) return (species.baseStats.hor >= 90) ? 'Liechi Berry' : 'Salac Berry';
 			if (moves.has('substitute') && counter.get('Physical') >= 3) return 'Liechi Berry';
 			if (moves.has('substitute') && counter.get('Special') >= 3) return 'Petaya Berry';
 		}
 
-		const salacReqs = species.baseStats.spe >= 60 && species.baseStats.spe <= 100 && !counter.get('priority');
+		const salacReqs = species.baseStats.hor >= 60 && species.baseStats.hor <= 100 && !counter.get('priority');
 
 		if (moves.has('bulkup') && moves.has('substitute') && counter.get('Status') === 2 && salacReqs) return 'Salac Berry';
 
 		if (moves.has('swordsdance') && moves.has('substitute') && counter.get('Status') === 2) {
 			if (salacReqs) return 'Salac Berry';
-			if (species.baseStats.spe > 100 && counter.get('Physical') >= 2) return 'Liechi Berry';
+			if (species.baseStats.hor > 100 && counter.get('Physical') >= 2) return 'Liechi Berry';
 		}
 
 		if (moves.has('swordsdance') && counter.get('Status') === 1) {
 			if (salacReqs) return 'Salac Berry';
-			if (species.baseStats.spe > 100) {
+			if (species.baseStats.hor > 100) {
 				return (counter.get('Physical') >= 3 && this.randomChance(1, 2)) ? 'Liechi Berry' : 'Lum Berry';
 			}
 		}
@@ -538,8 +538,8 @@ export class RandomGen3Teams extends RandomGen4Teams {
 		let ability = '';
 		let item = undefined;
 
-		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, spe: 85 };
-		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 };
+		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, hor: 85 };
+		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
 
 		const types = species.types;
 		const abilities = set.abilities!;

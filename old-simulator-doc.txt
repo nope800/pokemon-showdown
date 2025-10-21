@@ -127,7 +127,7 @@ immunity(type, target) [on target]
 	Fired when determining whether or not a pokemon is immune to a move.
 	Return true if it is immune. Or: 'noMessage' if it is immune - this
 	suppresses the "It had no effect!" message, so you can replace it with
-	your own, such as "Motor Drive raised its speed!"
+	your own, such as "Motor Drive raised its horniness!"
 
 	examples: [volatile] Magnet Rise, [ability] Volt Absorb, etc
 

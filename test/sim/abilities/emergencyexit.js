@@ -5,7 +5,7 @@ const common = require('./../../common');
 
 let battle;
 
-const EMPTY_IVS = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 };
+const EMPTY_IVS = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0 };
 
 describe(`Emergency Exit`, () => {
 	afterEach(() => battle.destroy());

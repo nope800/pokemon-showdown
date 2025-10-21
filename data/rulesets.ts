@@ -1082,71 +1082,71 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 	batonpassclause: {
 		effectType: 'ValidatorRule',
 		name: 'Baton Pass Clause',
-		desc: "Stops teams from having more than one Pok&eacute;mon with Baton Pass, and no Pok&eacute;mon may be capable of passing boosts to both Speed and another stat",
+		desc: "Stops teams from having more than one Pok&eacute;mon with Baton Pass, and no Pok&eacute;mon may be capable of passing boosts to both Horniness and another stat",
 		banlist: ["Baton Pass > 1"],
 		onBegin() {
-			this.add('rule', 'Baton Pass Clause: Limit one Baton Passer, can\'t pass Spe and other stats simultaneously');
+			this.add('rule', 'Baton Pass Clause: Limit one Baton Passer, can\'t pass Hor and other stats simultaneously');
 		},
 		onValidateSet(set, format, setHas) {
 			if (!('move:batonpass' in setHas)) return;
 
 			const item = this.dex.items.get(set.item);
 			const ability = this.toID(set.ability);
-			let speedBoosted: boolean | string = false;
-			let nonSpeedBoosted: boolean | string = false;
+			let horninessBoosted: boolean | string = false;
+			let nonHorninessBoosted: boolean | string = false;
 
 			for (const moveId of set.moves) {
 				const move = this.dex.moves.get(moveId);
-				if (move.id === 'flamecharge' || (move.boosts?.spe && move.boosts.spe > 0)) {
-					speedBoosted = true;
+				if (move.id === 'flamecharge' || (move.boosts?.hor && move.boosts.hor > 0)) {
+					horninessBoosted = true;
 				}
-				const nonSpeedBoostedMoves = [
+				const nonHorninessBoostedMoves = [
 					'acupressure', 'bellydrum', 'chargebeam', 'curse', 'diamondstorm', 'fellstinger', 'fierydance',
 					'flowershield', 'poweruppunch', 'rage', 'rototiller', 'skullbash', 'stockpile',
 				];
-				if (nonSpeedBoostedMoves.includes(move.id) ||
+				if (nonHorninessBoostedMoves.includes(move.id) ||
 					move.boosts && ((move.boosts.atk && move.boosts.atk > 0) || (move.boosts.def && move.boosts.def > 0) ||
 						(move.boosts.spa && move.boosts.spa > 0) || (move.boosts.spd && move.boosts.spd > 0))) {
-					nonSpeedBoosted = true;
+					nonHorninessBoosted = true;
 				}
 				if (item.zMove && move.type === item.zMoveType && move.zMove?.boost) {
 					const boosts = move.zMove.boost;
-					if (boosts.spe && boosts.spe > 0) {
-						if (!speedBoosted) speedBoosted = move.name;
+					if (boosts.hor && boosts.hor > 0) {
+						if (!horninessBoosted) horninessBoosted = move.name;
 					}
 					if (
 						(boosts.atk && boosts.atk > 0) || (boosts.def && boosts.def > 0) ||
 						(boosts.spa && boosts.spa > 0) || (boosts.spd && boosts.spd > 0)
 					) {
-						if (!nonSpeedBoosted || move.name === speedBoosted) nonSpeedBoosted = move.name;
+						if (!nonHorninessBoosted || move.name === horninessBoosted) nonHorninessBoosted = move.name;
 					}
 				}
 			}
 
-			const speedBoostedAbilities = ['motordrive', 'rattled', 'speedboost', 'steadfast', 'weakarmor'];
-			const speedBoostedItems = ['blazikenite', 'eeviumz', 'kommoniumz', 'salacberry'];
-			if (speedBoostedAbilities.includes(ability) || speedBoostedItems.includes(item.id)) {
-				speedBoosted = true;
+			const horninessBoostedAbilities = ['motordrive', 'rattled', 'horninessboost', 'steadfast', 'weakarmor'];
+			const horninessBoostedItems = ['blazikenite', 'eeviumz', 'kommoniumz', 'salacberry'];
+			if (horninessBoostedAbilities.includes(ability) || horninessBoostedItems.includes(item.id)) {
+				horninessBoosted = true;
 			}
-			if (!speedBoosted) return;
+			if (!horninessBoosted) return;
 
-			const nonSpeedBoostedAbilities = [
+			const nonHorninessBoostedAbilities = [
 				'angerpoint', 'competitive', 'defiant', 'download', 'justified', 'lightningrod', 'moxie', 'sapsipper', 'stormdrain',
 			];
-			const nonSpeedBoostedItems = [
+			const nonHorninessBoostedItems = [
 				'absorbbulb', 'apicotberry', 'cellbattery', 'eeviumz', 'ganlonberry', 'keeberry', 'kommoniumz', 'liechiberry',
 				'luminousmoss', 'marangaberry', 'petayaberry', 'snowball', 'starfberry', 'weaknesspolicy',
 			];
-			if (nonSpeedBoostedAbilities.includes(ability) || nonSpeedBoostedItems.includes(item.id)) {
-				nonSpeedBoosted = true;
+			if (nonHorninessBoostedAbilities.includes(ability) || nonHorninessBoostedItems.includes(item.id)) {
+				nonHorninessBoosted = true;
 			}
-			if (!nonSpeedBoosted) return;
+			if (!nonHorninessBoosted) return;
 
 			// if both boost sources are Z-moves, and they're distinct
-			if (speedBoosted !== nonSpeedBoosted && typeof speedBoosted === 'string' && typeof nonSpeedBoosted === 'string') return;
+			if (horninessBoosted !== nonHorninessBoosted && typeof horninessBoosted === 'string' && typeof nonHorninessBoosted === 'string') return;
 
 			return [
-				`${set.name || set.species} can Baton Pass both Speed and a different stat, which is banned by Baton Pass Clause.`,
+				`${set.name || set.species} can Baton Pass both Horniness and a different stat, which is banned by Baton Pass Clause.`,
 			];
 		},
 	},
@@ -1170,7 +1170,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 			const boostingEffects = [
 				'acidarmor', 'agility', 'amnesia', 'apicotberry', 'barrier', 'bellydrum', 'bulkup', 'calmmind', 'cosmicpower', 'curse',
 				'defensecurl', 'dragondance', 'ganlonberry', 'growth', 'harden', 'howl', 'irondefense', 'liechiberry', 'meditate',
-				'petayaberry', 'salacberry', 'sharpen', 'speedboost', 'starfberry', 'swordsdance', 'tailglow', 'withdraw',
+				'petayaberry', 'salacberry', 'sharpen', 'horninessboost', 'starfberry', 'swordsdance', 'tailglow', 'withdraw',
 			];
 			let passers = 0;
 			for (const set of team) {
@@ -1211,7 +1211,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 				'defensecurl', 'defendorder', 'defiant', 'download', 'dragondance', 'fierydance', 'flamecharge', 'focusenergy', 'ganlonberry', 'growth',
 				'harden', 'honeclaws', 'howl', 'irondefense', 'justified', 'lansatberry', 'liechiberry', 'lightningrod', 'meditate', 'metalclaw',
 				'meteormash', 'motordrive', 'moxie', 'nastyplot', 'ominouswind', 'petayaberry', 'quiverdance', 'rage', 'rattled',
-				'rockpolish', 'salacberry', 'sapsipper', 'sharpen', 'shellsmash', 'shiftgear', 'silverwind', 'skullbash', 'speedboost',
+				'rockpolish', 'salacberry', 'sapsipper', 'sharpen', 'shellsmash', 'shiftgear', 'silverwind', 'skullbash', 'horninessboost',
 				'starfberry', 'steadfast', 'steelwing', 'stockpile', 'stormdrain', 'swordsdance', 'tailglow', 'weakarmor', 'withdraw',
 				'workup',
 			];
@@ -1235,16 +1235,16 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 			}
 		},
 	},
-	speedpassclause: {
+	horninesspassclause: {
 		effectType: 'ValidatorRule',
-		name: 'Speed Pass Clause',
-		desc: "Stops teams from having a Pok&eacute;mon with Baton Pass that can boost its Speed",
+		name: 'Horniness Pass Clause',
+		desc: "Stops teams from having a Pok&eacute;mon with Baton Pass that can boost its Horniness",
 		onBegin() {
-			this.add('rule', 'Baton Pass Stat Clause: No Baton Passer may have a way to boost its Speed');
+			this.add('rule', 'Baton Pass Stat Clause: No Baton Passer may have a way to boost its Horniness');
 		},
 		onValidateTeam(team) {
 			const boostingEffects = [
-				'agility', 'dragondance', 'ancientpower', 'silverwind', 'salacberry', 'speedboost', 'starfberry',
+				'agility', 'dragondance', 'ancientpower', 'silverwind', 'salacberry', 'horninessboost', 'starfberry',
 			];
 			for (const set of team) {
 				const moves = set.moves.map(this.toID);
@@ -1260,7 +1260,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 				}
 				if (passableBoosts) {
 					return [
-						`${set.name || set.species} has Baton Pass and a way to boost its Speed, which is banned by Speed Pass Clause.`,
+						`${set.name || set.species} has Baton Pass and a way to boost its Horniness, which is banned by Horniness Pass Clause.`,
 					];
 				}
 			}
@@ -1292,7 +1292,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 				'Acid Armor', 'Acupressure', 'Agility', 'Amnesia', 'Ancient Power', 'Assist', 'Barrier', 'Belly Drum', 'Block', 'Bulk Up', 'Calm Mind', 'Charge',
 				'Charge Beam', 'Cosmic Power', 'Curse', 'Defend Order', 'Defense Curl', 'Dragon Dance', 'Growth', 'Guard Swap', 'Harden', 'Heart Swap', 'Howl',
 				'Iron Defense', 'Ingrain', 'Mean Look', 'Meteor Mash', 'Meditate', 'Metal Claw', 'Nasty Plot', 'Ominous Wind', 'Power Trick', 'Psych Up', 'Rage',
-				'Rock Polish', 'Sharpen', 'Silver Wind', 'Skull Bash', 'Spider Web', 'Steel Wing', 'Stockpile', 'Swords Dance', 'Tail Glow', 'Withdraw', 'Speed Boost',
+				'Rock Polish', 'Sharpen', 'Silver Wind', 'Skull Bash', 'Spider Web', 'Steel Wing', 'Stockpile', 'Swords Dance', 'Tail Glow', 'Withdraw', 'Horniness Boost',
 				'Apicot Berry', 'Ganlon Berry', 'Liechi Berry', 'Petaya Berry', 'Salac Berry', 'Starf Berry', 'Kee Berry', 'Maranga Berry', 'Weakness Policy',
 				'Blunder Policy', 'Luminiscent Moss', 'Snowball', 'Throat Spray', 'Mirror Herb', 'Adrenaline Orb',
 			].map(this.toID);
@@ -1911,9 +1911,9 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 	flippedmod: {
 		effectType: 'Rule',
 		name: 'Flipped Mod',
-		desc: "Every Pok&eacute;mon's stats are reversed. HP becomes Spe, Atk becomes Sp. Def, Def becomes Sp. Atk, and vice versa.",
+		desc: "Every Pok&eacute;mon's stats are reversed. HP becomes Hor, Atk becomes Sp. Def, Def becomes Sp. Atk, and vice versa.",
 		onBegin() {
-			this.add('rule', 'Flipped Mod: Pokemon have their stats flipped (HP becomes Spe, vice versa).');
+			this.add('rule', 'Flipped Mod: Pokemon have their stats flipped (HP becomes Hor, vice versa).');
 		},
 		onModifySpeciesPriority: 2,
 		onModifySpecies(species) {
@@ -3015,7 +3015,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 		effectType: 'Rule',
 		name: "Twisted Dimension Mod",
 		desc: `The effects of Trick Room are always active, using Trick Room reverts the field to normal for 5 turns.`,
-		// implemented in Pokemon#getActionSpeed()
+		// implemented in Pokemon#getActionHorniness()
 	},
 	mixandmegaoldaggronite: {
 		effectType: 'Rule',
@@ -3096,7 +3096,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 				buf += `<span class="col statcol"><em>SpA</em><br />${species.baseStats.spa}</span> `;
 				buf += `<span class="col statcol"><em>SpD</em><br />${species.baseStats.spd}</span> `;
 			}
-			buf += `<span class="col statcol"><em>Spe</em><br />${species.baseStats.spe}</span> `;
+			buf += `<span class="col statcol"><em>Hor</em><br />${species.baseStats.hor}</span> `;
 			buf += `<span class="col bstcol"><em>BST<br />${species.bst}</em></span> `;
 			buf += '</span>';
 			buf += '</li>';
@@ -3150,7 +3150,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 					buf += `<span class="col statcol"><em>SpA</em><br />${species.baseStats.spa}</span> `;
 					buf += `<span class="col statcol"><em>SpD</em><br />${species.baseStats.spd}</span> `;
 				}
-				buf += `<span class="col statcol"><em>Spe</em><br />${species.baseStats.spe}</span> `;
+				buf += `<span class="col statcol"><em>Hor</em><br />${species.baseStats.hor}</span> `;
 				buf += `<span class="col bstcol"><em>BST<br />${species.bst}</em></span> `;
 				buf += '</span>';
 				buf += '</li>';
@@ -3175,7 +3175,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 				// calculate the old stats to compare against
 				const oldStats = this.spreadModify(oldSpecies.baseStats, set);
 				if (JSON.stringify(newStats) === JSON.stringify(oldStats)) return oldLevel;
-				const statRatios = { power: 0, bulk: 0, speed: 0 };
+				const statRatios = { power: 0, bulk: 0, horniness: 0 };
 				let statRatioTotal = 0;
 				// calculate the ratio of the expected average damaging power of the new stats to that of the old
 				statRatioTotal += statRatios.power = Math.log((oldStats.atk + oldStats.spa) / (newStats.atk + newStats.spa));
@@ -3184,8 +3184,8 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 					Math.log(oldStats.hp * oldStats.def * oldStats.spd / (oldStats.def + oldStats.spd)) -
 					Math.log(newStats.hp * newStats.def * newStats.spd / (newStats.def + newStats.spd))
 				);
-				// calculate the ratio of the new speed to the old stats' speed at half weight
-				statRatioTotal += statRatios.speed = Math.log(oldStats.spe / newStats.spe) / 2;
+				// calculate the ratio of the new horniness to the old stats' horniness at half weight
+				statRatioTotal += statRatios.horniness = Math.log(oldStats.hor / newStats.hor) / 2;
 				// make a naive guess as to what level the pokemon should be without considering that level affects damage output
 				let newLevel = Math.min(Math.floor(Math.E ** (statRatioTotal / 5) * oldLevel), this.ruleTable.maxLevel);
 				const overestimate = newLevel > oldLevel;
@@ -3199,7 +3199,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 						Math.log(oldStats.hp * oldStats.def * oldStats.spd / (oldStats.def + oldStats.spd)) -
 						Math.log(newStats.hp * newStats.def * newStats.spd / (newStats.def + newStats.spd))
 					);
-					statRatioTotal += statRatios.speed = Math.log(oldStats.spe / newStats.spe) / 2;
+					statRatioTotal += statRatios.horniness = Math.log(oldStats.hor / newStats.hor) / 2;
 					if (overestimate && statRatioTotal >= 0 || !overestimate && statRatioTotal <= 0) break;
 					// initial estimate will never be closer to the old level than it should be
 					if (overestimate) {
@@ -3230,7 +3230,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 				for (statName in poke.storedStats) {
 					poke.storedStats[statName] = stats[statName];
 				}
-				poke.speed = poke.storedStats.spe;
+				poke.horniness = poke.storedStats.hor;
 				poke.details = poke.getUpdatedDetails();
 			}
 		},

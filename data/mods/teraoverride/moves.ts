@@ -66,7 +66,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			if (!source.hasType(source.teraType)) {
 				delete move.volatileStatus;
 				delete move.onHit;
-				move.self = { boosts: { spe: -1, atk: 1, def: 1 } };
+				move.self = { boosts: { hor: -1, atk: 1, def: 1 } };
 			} else if (move.volatileStatus && target.volatiles['curse']) {
 				return false;
 			}

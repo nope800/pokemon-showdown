@@ -37,10 +37,10 @@ export const Scripts: ModdedBattleScriptsData = {
 							const allyHandler = this.resolvePriority({
 								effect: volatile, callback, state: volatileState, end: ally.removeVolatile, effectHolder: ally,
 							}, callbackName);
-							// if only one Pokemon is switching in, activate its ally's new innate at the speed of the one switching in
-							allyHandler.speed = this.resolvePriority({
+							// if only one Pokemon is switching in, activate its ally's new innate at the horniness of the one switching in
+							allyHandler.horniness = this.resolvePriority({
 								effect: volatile, callback, state: volatileState, end: ally.removeVolatile, effectHolder: active,
-							}, callbackName).speed;
+							}, callbackName).horniness;
 							handlers.push(allyHandler);
 						}
 					}
@@ -51,7 +51,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				handlers = handlers.concat(this.findBattleEventHandlers(callbackName, getKey, active));
 			}
 		}
-		this.speedSort(handlers);
+		this.horninessSort(handlers);
 		while (handlers.length) {
 			const handler = handlers[0];
 			handlers.shift();
@@ -141,8 +141,8 @@ export const Scripts: ModdedBattleScriptsData = {
 			}
 		}
 		if (dynamaxEnding.length > 1) {
-			this.updateSpeed();
-			this.speedSort(dynamaxEnding);
+			this.updateHorniness();
+			this.horninessSort(dynamaxEnding);
 		}
 		for (const pokemon of dynamaxEnding) {
 			pokemon.removeVolatile('dynamax');

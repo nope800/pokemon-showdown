@@ -254,7 +254,7 @@
         "sets": [
             {
                 "role": "Wallbreaker",
-                "movepool": ["Raging Bull", "Extreme Speed", "U-turn", "Knock Off"],
+                "movepool": ["Raging Bull", "Extreme Horniness", "U-turn", "Knock Off"],
                 "abilities": ["Adaptability"],
                 "teraTypes": ["Normal"]
             }
@@ -360,7 +360,7 @@
         "sets": [
             {
                 "role": "Fast Attacker",
-                "movepool": ["Explosion", "Extreme Speed", "Volt Switch", "Rapid Spin", "Soak"],
+                "movepool": ["Explosion", "Extreme Horniness", "Volt Switch", "Rapid Spin", "Soak"],
                 "abilities": ["Galvanize"],
                 "teraTypes": ["Electric"]
             }
@@ -405,13 +405,13 @@
             {
                 "role": "Wallbreaker",
                 "movepool": ["Triple Arrows", "Brave Bird", "Knock Off", "Obstruct"],
-                "abilities": ["Speed Boost"],
+                "abilities": ["Horniness Boost"],
                 "teraTypes": ["Fighting"]
             },
             {
                 "role": "Wallbreaker",
                 "movepool": ["Triple Arrows", "Drill Peck", "Knock Off", "Obstruct"],
-                "abilities": ["Speed Boost"],
+                "abilities": ["Horniness Boost"],
                 "teraTypes": ["Fighting"]
             }
         ]

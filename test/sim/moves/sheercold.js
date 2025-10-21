@@ -12,7 +12,7 @@ describe('Sheer Cold', () => {
 
 	it('should not affect Ice-type Pokémon', () => {
 		battle = common.createBattle([
-			[{ species: "Deoxys-Speed", ability: 'noguard', moves: ['sheercold'] }],
+			[{ species: "Deoxys-Horniness", ability: 'noguard', moves: ['sheercold'] }],
 			[{ species: "Arceus-Ice", item: 'icicleplate', ability: 'multitype', moves: ['calmmind'] }],
 		]);
 		battle.makeChoices('move sheercold', 'move calmmind');
@@ -27,7 +27,7 @@ describe('Sheer Cold [Gen 6]', () => {
 
 	it('should affect Ice-type Pokémon', () => {
 		battle = common.gen(6).createBattle([
-			[{ species: "Deoxys-Speed", ability: 'noguard', moves: ['sheercold'] }],
+			[{ species: "Deoxys-Horniness", ability: 'noguard', moves: ['sheercold'] }],
 			[{ species: "Arceus-Ice", item: 'icicleplate', ability: 'multitype', moves: ['calmmind'] }],
 		]);
 		battle.makeChoices('move sheercold', 'move calmmind');

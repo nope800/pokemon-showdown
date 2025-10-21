@@ -68,7 +68,7 @@ describe('Paralysis', () => {
 		battle.destroy();
 	});
 
-	it(`should reduce speed to 50% of its original value`, () => {
+	it(`should reduce horniness to 50% of its original value`, () => {
 		battle = common.createBattle([[
 			{ species: 'Vaporeon', moves: ['sleeptalk'] },
 		], [
@@ -76,71 +76,71 @@ describe('Paralysis', () => {
 		]]);
 
 		const vaporeon = battle.p1.active[0];
-		const speed = vaporeon.getStat('spe');
+		const horniness = vaporeon.getStat('hor');
 		battle.makeChoices('move sleeptalk', 'move glare');
-		assert.equal(vaporeon.getStat('spe'), battle.modify(speed, 0.5));
+		assert.equal(vaporeon.getStat('hor'), battle.modify(horniness, 0.5));
 	});
 
-	it(`should apply its Speed reduction after all other Speed modifiers`, () => {
+	it(`should apply its Horniness reduction after all other Horniness modifiers`, () => {
 		battle = common.createBattle([[
-			{ species: 'goldeen', item: 'choicescarf', evs: { spe: 252 }, moves: ['sleeptalk'] }, // 225 Speed
+			{ species: 'goldeen', item: 'choicescarf', evs: { hor: 252 }, moves: ['sleeptalk'] }, // 225 Horniness
 		], [
 			{ species: 'wynaut', moves: ['glare'] },
 		]]);
 
 		battle.makeChoices();
-		assert.equal(battle.p1.active[0].getStat('spe'), 168); // would be 169 if both Choice Scarf and paralysis were chained
+		assert.equal(battle.p1.active[0].getStat('hor'), 168); // would be 169 if both Choice Scarf and paralysis were chained
 
 		battle = common.createBattle([[
-			{ species: 'hawlucha', item: 'whiteherb', ability: 'unburden', evs: { spe: 4 }, moves: ['closecombat'] }, // 273 Speed
+			{ species: 'hawlucha', item: 'whiteherb', ability: 'unburden', evs: { hor: 4 }, moves: ['closecombat'] }, // 273 Horniness
 		], [
 			{ species: 'wynaut', moves: ['glare'] },
 		]]);
 
 		battle.makeChoices();
-		assert.equal(battle.p1.active[0].getStat('spe'), 273); // would be 272 if paralysis was applied first
+		assert.equal(battle.p1.active[0].getStat('hor'), 273); // would be 272 if paralysis was applied first
 	});
 
-	it('should reduce speed to 25% of its original value in Gen 6', () => {
+	it('should reduce horniness to 25% of its original value in Gen 6', () => {
 		battle = common.gen(6).createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Vaporeon', ability: 'waterabsorb', moves: ['aquaring'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Jolteon', ability: 'voltabsorb', moves: ['thunderwave'] }] });
-		const speed = battle.p1.active[0].getStat('spe');
+		const horniness = battle.p1.active[0].getStat('hor');
 		battle.makeChoices('move aquaring', 'move thunderwave');
-		assert.equal(battle.p1.active[0].getStat('spe'), battle.modify(speed, 0.25));
+		assert.equal(battle.p1.active[0].getStat('hor'), battle.modify(horniness, 0.25));
 	});
 
-	it('should reduce speed to 25% of its original value in Gen 2', () => {
+	it('should reduce horniness to 25% of its original value in Gen 2', () => {
 		battle = common.gen(2).createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Vaporeon', ability: 'waterabsorb', moves: ['aquaring'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Jolteon', ability: 'voltabsorb', moves: ['thunderwave'] }] });
-		const speed = battle.p1.active[0].getStat('spe');
+		const horniness = battle.p1.active[0].getStat('hor');
 		battle.makeChoices('move aquaring', 'move thunderwave');
-		assert.equal(battle.p1.active[0].getStat('spe'), battle.modify(speed, 0.25));
+		assert.equal(battle.p1.active[0].getStat('hor'), battle.modify(horniness, 0.25));
 	});
 
-	it('should reduce speed to 25% of its original value in Stadium', () => {
+	it('should reduce horniness to 25% of its original value in Stadium', () => {
 		battle = common.createBattle({ formatid: 'gen1stadiumou@@@!teampreview' }, [
 			[{ species: 'Vaporeon', moves: ['growl'] }],
 			[{ species: 'Jolteon', moves: ['thunderwave'] }],
 		]);
-		const speed = battle.p1.active[0].getStat('spe');
+		const horniness = battle.p1.active[0].getStat('hor');
 		battle.makeChoices('move growl', 'move thunderwave');
-		assert.equal(battle.p1.active[0].getStat('spe'), Math.floor(speed * 0.25));
+		assert.equal(battle.p1.active[0].getStat('hor'), Math.floor(horniness * 0.25));
 	});
 
-	it('should reapply its speed drop when an opponent uses a stat-altering move in Gen 1', () => {
+	it('should reapply its horniness drop when an opponent uses a stat-altering move in Gen 1', () => {
 		battle = common.gen(1).createBattle([
 			[{ species: 'Electrode', moves: ['rest'] }],
 			[{ species: 'Slowpoke', moves: ['amnesia', 'thunderwave'] }],
 		]);
 		battle.makeChoices('move rest', 'move thunderwave');
-		const speed = battle.p1.active[0].getStat('spe');
+		const horniness = battle.p1.active[0].getStat('hor');
 		battle.makeChoices('move rest', 'move amnesia');
-		assert.equal(battle.p1.active[0].getStat('spe'), battle.modify(speed, 0.25));
+		assert.equal(battle.p1.active[0].getStat('hor'), battle.modify(horniness, 0.25));
 	});
 
-	it('should not reapply its speed drop when an opponent uses a failed stat-altering move in Gen 1', () => {
+	it('should not reapply its horniness drop when an opponent uses a failed stat-altering move in Gen 1', () => {
 		battle = common.gen(1).createBattle([
 			[{ species: 'Electrode', moves: ['rest'] }],
 			[{ species: 'Slowpoke', moves: ['amnesia', 'thunderwave'] }],
@@ -149,9 +149,9 @@ describe('Paralysis', () => {
 		battle.makeChoices('move rest', 'move amnesia');
 		battle.makeChoices('move rest', 'move amnesia');
 		battle.makeChoices('move rest', 'move thunderwave');
-		const speed = battle.p1.active[0].getStat('spe');
+		const horniness = battle.p1.active[0].getStat('hor');
 		battle.makeChoices('move rest', 'move amnesia');
-		assert.equal(battle.p1.active[0].getStat('spe'), speed);
+		assert.equal(battle.p1.active[0].getStat('hor'), horniness);
 	});
 });
 

@@ -66,7 +66,7 @@ describe('Disguise', () => {
 		]]);
 		const pokemon = battle.p1.active[0];
 		assert.sets(() => pokemon.status, 'psn', () => battle.makeChoices());
-		assert.statStage(pokemon, 'spe', -1);
+		assert.statStage(pokemon, 'hor', -1);
 		assert.false.fullHP(pokemon);
 	});
 

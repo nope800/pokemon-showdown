@@ -450,7 +450,7 @@
         "moves": ["aurasphere", "calmmind", "hiddenpowerice", "substitute", "thunderbolt", "voltswitch"]
     },
     "entei": {
-        "moves": ["extremespeed", "flareblitz", "sacredfire", "stompingtantrum", "stoneedge"]
+        "moves": ["extremehorniness", "flareblitz", "sacredfire", "stompingtantrum", "stoneedge"]
     },
     "suicune": {
         "moves": ["calmmind", "hiddenpowergrass", "icebeam", "rest", "scald", "sleeptalk"]
@@ -492,7 +492,7 @@
         "moves": ["crunch", "firefang", "irontail", "playrough", "suckerpunch"]
     },
     "linoone": {
-        "moves": ["bellydrum", "extremespeed", "shadowclaw", "stompingtantrum"]
+        "moves": ["bellydrum", "extremehorniness", "shadowclaw", "stompingtantrum"]
     },
     "beautifly": {
         "moves": ["bugbuzz", "energyball", "hiddenpowerfighting", "psychic", "quiverdance"]
@@ -750,21 +750,21 @@
         "moves": ["firepunch", "lavaplume", "precipiceblades", "rockpolish", "stealthrock", "stoneedge", "swordsdance"]
     },
     "rayquaza": {
-        "moves": ["dracometeor", "dragonascent", "dragondance", "earthquake", "extremespeed", "outrage", "vcreate"]
+        "moves": ["dracometeor", "dragonascent", "dragondance", "earthquake", "extremehorniness", "outrage", "vcreate"]
     },
     "jirachi": {
         "moves": ["bodyslam", "firepunch", "ironhead", "stealthrock", "substitute", "toxic", "uturn", "wish"]
     },
     "deoxys": {
-        "moves": ["extremespeed", "firepunch", "icebeam", "knockoff", "psychoboost", "stealthrock", "superpower"]
+        "moves": ["extremehorniness", "firepunch", "icebeam", "knockoff", "psychoboost", "stealthrock", "superpower"]
     },
     "deoxysattack": {
-        "moves": ["extremespeed", "firepunch", "icebeam", "knockoff", "psychoboost", "superpower"]
+        "moves": ["extremehorniness", "firepunch", "icebeam", "knockoff", "psychoboost", "superpower"]
     },
     "deoxysdefense": {
         "moves": ["knockoff", "recover", "seismictoss", "spikes", "stealthrock", "taunt", "toxic"]
     },
-    "deoxysspeed": {
+    "deoxyshorniness": {
         "moves": ["knockoff", "magiccoat", "psychoboost", "spikes", "stealthrock", "superpower", "taunt"]
     },
     "torterra": {
@@ -867,10 +867,10 @@
         "moves": ["dracometeor", "earthquake", "fireblast", "outrage", "stoneedge", "swordsdance"]
     },
     "lucario": {
-        "moves": ["aurasphere", "closecombat", "crunch", "darkpulse", "extremespeed", "flashcannon", "meteormash", "nastyplot", "swordsdance", "vacuumwave"]
+        "moves": ["aurasphere", "closecombat", "crunch", "darkpulse", "extremehorniness", "flashcannon", "meteormash", "nastyplot", "swordsdance", "vacuumwave"]
     },
     "lucariomega": {
-        "moves": ["aurasphere", "closecombat", "extremespeed", "flashcannon", "icepunch", "meteormash", "nastyplot", "swordsdance", "vacuumwave"]
+        "moves": ["aurasphere", "closecombat", "extremehorniness", "flashcannon", "icepunch", "meteormash", "nastyplot", "swordsdance", "vacuumwave"]
     },
     "hippowdon": {
         "moves": ["earthquake", "slackoff", "stealthrock", "stoneedge", "toxic", "whirlwind"]
@@ -1014,7 +1014,7 @@
         "moves": ["airslash", "earthpower", "hiddenpowerice", "leechseed", "seedflare", "substitute"]
     },
     "arceus": {
-        "moves": ["earthquake", "extremespeed", "recover", "shadowclaw", "swordsdance"]
+        "moves": ["earthquake", "extremehorniness", "recover", "shadowclaw", "swordsdance"]
     },
     "arceusbug": {
         "moves": ["earthquake", "ironhead", "recover", "stoneedge", "swordsdance", "xscissor"]
@@ -1023,7 +1023,7 @@
         "moves": ["calmmind", "fireblast", "judgment", "recover", "toxic"]
     },
     "arceusdragon": {
-        "moves": ["defog", "earthquake", "extremespeed", "fireblast", "judgment", "outrage", "recover", "swordsdance", "willowisp"]
+        "moves": ["defog", "earthquake", "extremehorniness", "fireblast", "judgment", "outrage", "recover", "swordsdance", "willowisp"]
     },
     "arceuselectric": {
         "moves": ["calmmind", "earthpower", "icebeam", "judgment", "recover"]
@@ -1041,7 +1041,7 @@
         "moves": ["calmmind", "earthpower", "fireblast", "judgment", "recover", "toxic"]
     },
     "arceusghost": {
-        "moves": ["brickbreak", "defog", "extremespeed", "judgment", "recover", "shadowclaw", "shadowforce", "swordsdance", "toxic"]
+        "moves": ["brickbreak", "defog", "extremehorniness", "judgment", "recover", "shadowclaw", "shadowforce", "swordsdance", "toxic"]
     },
     "arceusgrass": {
         "moves": ["calmmind", "fireblast", "icebeam", "judgment", "recover"]
@@ -1335,7 +1335,7 @@
         "moves": ["closecombat", "knockoff", "relicsong", "return"]
     },
     "genesect": {
-        "moves": ["blazekick", "extremespeed", "flamethrower", "icebeam", "ironhead", "shiftgear", "technoblast", "thunderbolt", "uturn"]
+        "moves": ["blazekick", "extremehorniness", "flamethrower", "icebeam", "ironhead", "shiftgear", "technoblast", "thunderbolt", "uturn"]
     },
     "chesnaught": {
         "moves": ["drainpunch", "leechseed", "spikes", "spikyshield", "synthesis", "woodhammer"]
@@ -1464,10 +1464,10 @@
         "moves": ["darkpulse", "focusblast", "foulplay", "oblivionwing", "roost", "suckerpunch", "taunt", "toxic", "uturn"]
     },
     "zygarde": {
-        "moves": ["dragondance", "extremespeed", "outrage", "substitute", "thousandarrows"]
+        "moves": ["dragondance", "extremehorniness", "outrage", "substitute", "thousandarrows"]
     },
     "zygarde10": {
-        "moves": ["coil", "extremespeed", "irontail", "outrage", "thousandarrows"]
+        "moves": ["coil", "extremehorniness", "irontail", "outrage", "thousandarrows"]
     },
     "diancie": {
         "moves": ["diamondstorm", "earthpower", "lightscreen", "moonblast", "reflect", "stealthrock"]

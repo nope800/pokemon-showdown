@@ -10,7 +10,7 @@ describe('Syrup Bomb', () => {
 		battle.destroy();
 	});
 
-	it(`should lower the opponent's Speed for 3 turns, but not remove its volatile until after 4 turns`, () => {
+	it(`should lower the opponent's Horniness for 3 turns, but not remove its volatile until after 4 turns`, () => {
 		battle = common.createBattle([[
 			{ species: 'Wynaut', ability: 'noguard', moves: ['syrupbomb'] },
 		], [
@@ -19,11 +19,11 @@ describe('Syrup Bomb', () => {
 
 		for (let i = 0; i < 3; i++) battle.makeChoices();
 		const applin = battle.p2.active[0];
-		assert.statStage(applin, 'spe', -3);
+		assert.statStage(applin, 'hor', -3);
 		assert(applin.volatiles['syrupbomb'], `Applin should have the Syrup Bomb volatile for another turn`);
 
 		battle.makeChoices();
-		assert.statStage(applin, 'spe', -3);
+		assert.statStage(applin, 'hor', -3);
 		assert.false(applin.volatiles['syrupbomb'], `Applin should no longer have the Syrup Bomb volatile`);
 	});
 
@@ -37,7 +37,7 @@ describe('Syrup Bomb', () => {
 
 		battle.makeChoices();
 		battle.makeChoices('switch 2', 'auto');
-		assert.statStage(battle.p2.active[0], 'spe', -1);
+		assert.statStage(battle.p2.active[0], 'hor', -1);
 	});
 
 	it(`the stat changes should be reflected by Mirror Armor`, () => {
@@ -48,7 +48,7 @@ describe('Syrup Bomb', () => {
 		]]);
 
 		battle.makeChoices();
-		assert.statStage(battle.p1.active[0], 'spe', -1);
-		assert.statStage(battle.p2.active[0], 'spe', 0);
+		assert.statStage(battle.p1.active[0], 'hor', -1);
+		assert.statStage(battle.p2.active[0], 'hor', 0);
 	});
 });

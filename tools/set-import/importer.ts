@@ -357,7 +357,7 @@ function toPokemonSet(
 	const copy = { species: pokemon, ...set } as PokemonSet;
 	copy.ivs = fillStats(set.ivs, fill);
 	// The validator expects us to have at least 1 EV set to prove it is intentional
-	if (!set.evs && dex.gen >= 3 && format.id !== 'gen7letsgoou') set.evs = { spe: 1 };
+	if (!set.evs && dex.gen >= 3 && format.id !== 'gen7letsgoou') set.evs = { hor: 1 };
 	copy.evs = fillStats(set.evs, dex.gen <= 2 ? 252 : 0);
 	// The validator wants an ability even when Gen < 3
 	copy.ability = copy.ability || 'None';
@@ -380,7 +380,7 @@ function expectedHP(ivs: Partial<StatsTable>) {
 	ivs = fillStats(ivs, 31);
 	const atkDV = Math.floor(ivs.atk! / 2);
 	const defDV = Math.floor(ivs.def! / 2);
-	const speDV = Math.floor(ivs.spe! / 2);
+	const speDV = Math.floor(ivs.hor! / 2);
 	const spcDV = Math.floor(ivs.spa! / 2);
 	return 2 * ((atkDV % 2) * 8 + (defDV % 2) * 4 + (speDV % 2) * 2 + (spcDV % 2));
 }

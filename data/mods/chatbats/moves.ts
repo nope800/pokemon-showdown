@@ -6,10 +6,10 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		// Ancient Power is physical and boosts on-kill
 		onAfterMoveSecondarySelf(pokemon, target, move) {
 			if (!target || target.fainted || target.hp <= 0) {
-				this.boost({ atk: 1, def: 1, spa: 1, spd: 1, spe: 1 }, pokemon, pokemon, move);
+				this.boost({ atk: 1, def: 1, spa: 1, spd: 1, hor: 1 }, pokemon, pokemon, move);
 			}
 		},
-		desc: "If this move causes the opponent to faint, raises the user's Attack, Defense, Special Attack, Special Defense, and Speed by 1 stage.",
+		desc: "If this move causes the opponent to faint, raises the user's Attack, Defense, Special Attack, Special Defense, and Horniness by 1 stage.",
 		shortDesc: "Raise all stats by 1 if this move KOs the target.",
 	},
 	sandsearstorm: {
@@ -529,7 +529,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 					} else if (this.effectState.eatenBoost === 'def' || this.effectState.eatenBoost === 'spd') {
 						this.boost({ def: 2, spd: 2 }, pokemon);
 					} else {
-						this.boost({ spe: 3 }, pokemon);
+						this.boost({ hor: 3 }, pokemon);
 					}
 					// adds volatile ordered, which prevents the order up effect from occuring again until Dondozo switches out
 					pokemon.addVolatile('ordered');
@@ -541,7 +541,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 					// faints the eaten mon
 					pokemon.faint();
 					// finds highest stat of eaten mon, stored in effectState eatenBoost
-					const stats = ['atk', 'def', 'spa', 'spd', 'spe'];
+					const stats = ['atk', 'def', 'spa', 'spd', 'hor'];
 					let highestStat = stats[0];
 					let maxStatValue = meal.storedStats[highestStat as StatIDExceptHP];
 
@@ -588,7 +588,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		hasSheerForce: true,
 		target: "normal",
 		type: "Dragon",
-		desc: "Dondozo eats a mon on the user's team, KOing it. Dondozo then gains a stat boost depending on the eaten mon's highest stat: +3 Attack for Atk/SpA, +2 Def/+2 SpD for Def/SpD, and +3 Speed for Speed.",
+		desc: "Dondozo eats a mon on the user's team, KOing it. Dondozo then gains a stat boost depending on the eaten mon's highest stat: +3 Attack for Atk/SpA, +2 Def/+2 SpD for Def/SpD, and +3 Horniness for Horniness.",
 		shortDesc: "Dondozo KOs an ally mon. Gain stat boost in ally's highest stat.",
 	},
 	toxicspikes: {
@@ -637,7 +637,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				if ((!pokemon.isGrounded() || pokemon.hasItem('heavydutyboots')) &&
 					!pokemon.side.getSideCondition('kingofthehill')) return;
 				this.add('-activate', pokemon, 'move: Sticky Web');
-				this.boost({ spe: -1 }, pokemon, pokemon.side.foe.active[0], this.dex.getActiveMove('stickyweb'));
+				this.boost({ hor: -1 }, pokemon, pokemon.side.foe.active[0], this.dex.getActiveMove('stickyweb'));
 			},
 		},
 	},
@@ -887,7 +887,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			this.attrLastMove('[still]');
 		},
 		onPrepareHit(target, source) {
-			this.add('-anim', source, 'Extreme Speed', target);
+			this.add('-anim', source, 'Extreme Horniness', target);
 			this.add('-anim', source, 'Thunder', target);
 		},
 		secondary: null,
@@ -1358,7 +1358,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			this.attrLastMove('[still]');
 		},
 		onTryHit(target, pokemon) {
-			let move = 'extremespeed';
+			let move = 'extremehorniness';
 			if (this.field.isTerrain('electricterrain')) {
 				move = 'lightningleap';
 			} else if (this.field.isTerrain('grassyterrain')) {
@@ -1451,15 +1451,15 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		},
 		onAfterMoveSecondarySelf(source, target, move) {
 			if (this.field.isTerrain('psychicterrain') && source.isGrounded()) {
-				this.boost({ spe: 1 }, source, source);
+				this.boost({ hor: 1 }, source, source);
 			}
 		},
 		secondary: null,
 		target: "normal",
 		type: "Psychic",
 		contestType: "Cool",
-		shortDesc: "User in Psychic Terrain: +1 Speed.",
-		desc: "User in Psychic Terrain: +1 Speed.",
+		shortDesc: "User in Psychic Terrain: +1 Horniness.",
+		desc: "User in Psychic Terrain: +1 Horniness.",
 	},
 	bonemerang: {
 		inherit: true,

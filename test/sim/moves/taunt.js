@@ -25,7 +25,7 @@ describe('Taunt', () => {
 		battle.setPlayer('p1', { team: [{ species: 'Sableye', ability: 'prankster', moves: ['taunt'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Charmander', ability: 'blaze', item: 'firiumz', moves: ['sunnyday'] }] });
 		battle.makeChoices('move taunt', 'move sunnyday zmove');
-		assert.statStage(battle.p2.active[0], 'spe', 1);
+		assert.statStage(battle.p2.active[0], 'hor', 1);
 		assert(battle.field.isWeather('sunnyday'));
 	});
 });

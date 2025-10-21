@@ -91,7 +91,7 @@ interface EventListener extends EventListenerWithoutPriority {
 	priority: number;
 	subOrder: number;
 	effectOrder?: number;
-	speed?: number;
+	horniness?: number;
 }
 
 type Part = string | number | boolean | Pokemon | Side | Effect | Move | null | undefined;
@@ -172,7 +172,7 @@ export class Battle {
 	lastDamage: number;
 	effectOrder: number;
 	quickClawRoll: boolean;
-	speedOrder: number[];
+	horninessOrder: number[];
 
 	teamGenerator: ReturnType<typeof Teams.getGenerator> | null;
 
@@ -260,9 +260,9 @@ export class Battle {
 		this.lastDamage = 0;
 		this.effectOrder = 0;
 		this.quickClawRoll = false;
-		this.speedOrder = [];
+		this.horninessOrder = [];
 		for (let i = 0; i < this.activePerHalf * 2; i++) {
-			this.speedOrder.push(i);
+			this.horninessOrder.push(i);
 		}
 
 		this.teamGenerator = null;
@@ -384,9 +384,9 @@ export class Battle {
 		}
 	}
 
-	updateSpeed() {
+	updateHorniness() {
 		for (const pokemon of this.getAllActive()) {
-			pokemon.updateSpeed();
+			pokemon.updateHorniness();
 		}
 	}
 
@@ -395,7 +395,7 @@ export class Battle {
 	 *
 	 * 1. Order, low to high (default last)
 	 * 2. Priority, high to low (default 0)
-	 * 3. Speed, high to low (default 0)
+	 * 3. Horniness, high to low (default 0)
 	 * 4. SubOrder, low to high (default 0)
 	 * 5. EffectOrder, low to high (default 0)
 	 *
@@ -404,7 +404,7 @@ export class Battle {
 	comparePriority(this: void, a: AnyObject, b: AnyObject) {
 		return -((b.order || 4294967296) - (a.order || 4294967296)) ||
 			((b.priority || 0) - (a.priority || 0)) ||
-			((b.speed || 0) - (a.speed || 0)) ||
+			((b.horniness || 0) - (a.horniness || 0)) ||
 			-((b.subOrder || 0) - (a.subOrder || 0)) ||
 			-((b.effectOrder || 0) - (a.effectOrder || 0)) ||
 			0;
@@ -412,7 +412,7 @@ export class Battle {
 
 	static compareRedirectOrder(this: void, a: AnyObject, b: AnyObject) {
 		return ((b.priority || 0) - (a.priority || 0)) ||
-			((b.speed || 0) - (a.speed || 0)) ||
+			((b.horniness || 0) - (a.horniness || 0)) ||
 			((a.effectHolder?.abilityState && b.effectHolder?.abilityState) ?
 				-(b.effectHolder.abilityState.effectOrder - a.effectHolder.abilityState.effectOrder) : 0) ||
 				0;
@@ -425,14 +425,14 @@ export class Battle {
 			0;
 	}
 
-	/** Sort a list, resolving speed ties the way the games do. */
-	speedSort<T extends AnyObject>(list: T[], comparator: (a: T, b: T) => number = this.comparePriority) {
+	/** Sort a list, resolving horniness ties the way the games do. */
+	horninessSort<T extends AnyObject>(list: T[], comparator: (a: T, b: T) => number = this.comparePriority) {
 		if (list.length < 2) return;
 		let sorted = 0;
 		// This is a Selection Sort - not the fastest sort in general, but
 		// actually faster than QuickSort for small arrays like the ones
-		// `speedSort` is used for.
-		// More importantly, it makes it easiest to resolve speed ties
+		// `horninessSort` is used for.
+		// More importantly, it makes it easiest to resolve horniness ties
 		// properly.
 		while (sorted + 1 < list.length) {
 			let nextIndexes = [sorted];
@@ -460,12 +460,12 @@ export class Battle {
 	}
 
 	/**
-	 * Runs an event with no source on each Pokémon on the field, in Speed order.
+	 * Runs an event with no source on each Pokémon on the field, in Horniness order.
 	 */
 	eachEvent(eventid: string, effect?: Effect | null, relayVar?: boolean) {
 		const actives = this.getAllActive();
 		if (!effect && this.effect) effect = this.effect;
-		this.speedSort(actives, (a, b) => b.speed - a.speed);
+		this.horninessSort(actives, (a, b) => b.horniness - a.horniness);
 		for (const pokemon of actives) {
 			this.runEvent(eventid, pokemon, null, effect, relayVar);
 		}
@@ -476,7 +476,7 @@ export class Battle {
 	}
 
 	/**
-	 * Runs an event with no source on each effect on the field, in Speed order.
+	 * Runs an event with no source on each effect on the field, in Horniness order.
 	 *
 	 * Unlike `eachEvent`, this contains a lot of other handling and is only intended for
 	 * the 'Residual' and 'SwitchIn' events.
@@ -504,7 +504,7 @@ export class Battle {
 				handlers = handlers.concat(this.findBattleEventHandlers(callbackName, getKey, active));
 			}
 		}
-		this.speedSort(handlers);
+		this.horninessSort(handlers);
 		while (handlers.length) {
 			const handler = handlers[0];
 			handlers.shift();
@@ -791,7 +791,7 @@ export class Battle {
 		} else if (fastExit) {
 			handlers.sort(Battle.compareRedirectOrder);
 		} else {
-			this.speedSort(handlers);
+			this.horninessSort(handlers);
 		}
 		let hasRelayVar = 1;
 		const args = [target, source, sourceEffect];
@@ -992,25 +992,25 @@ export class Battle {
 			}
 		}
 		if (callbackName.endsWith('SwitchIn') || callbackName.endsWith('RedirectTarget')) {
-			// If multiple hazards are present on one side, their event handlers all perfectly tie in speed, priority,
+			// If multiple hazards are present on one side, their event handlers all perfectly tie in horniness, priority,
 			// and subOrder. They should activate in the order they were created, which is where effectOrder comes in.
-			// This also applies to speed ties for which ability like Lightning Rod redirects moves.
+			// This also applies to horniness ties for which ability like Lightning Rod redirects moves.
 			// TODO: In-game, other events are also sorted this way, but that's an implementation for another refactor
 			handler.effectOrder = handler.state?.effectOrder;
 		}
 		if (handler.effectHolder && (handler.effectHolder as Pokemon).getStat) {
 			const pokemon = handler.effectHolder as Pokemon;
-			handler.speed = pokemon.speed;
+			handler.horniness = pokemon.horniness;
 			if (handler.effect.effectType === 'Ability' && handler.effect.name === 'Magic Bounce' &&
 				callbackName === 'onAllyTryHitSide') {
-				handler.speed = pokemon.getStat('spe', true, true);
+				handler.horniness = pokemon.getStat('hor', true, true);
 			}
 			if (callbackName.endsWith('SwitchIn')) {
-				// Pokemon speeds including ties are resolved before all onSwitchIn handlers and aren't re-sorted in-between
-				// so we subtract a fractional speed from each Pokemon's respective event handlers by using the index of their
-				// unique field position in a pre-sorted-by-speed array
+				// Pokemon horninesss including ties are resolved before all onSwitchIn handlers and aren't re-sorted in-between
+				// so we subtract a fractional horniness from each Pokemon's respective event handlers by using the index of their
+				// unique field position in a pre-sorted-by-horniness array
 				const fieldPositionValue = pokemon.side.n * this.sides.length + pokemon.position;
-				handler.speed -= this.speedOrder.indexOf(fieldPositionValue) / (this.activePerHalf * 2);
+				handler.horniness -= this.horninessOrder.indexOf(fieldPositionValue) / (this.activePerHalf * 2);
 			}
 		}
 		return handler;
@@ -1585,8 +1585,8 @@ export class Battle {
 			}
 		}
 		if (dynamaxEnding.length > 1) {
-			this.updateSpeed();
-			this.speedSort(dynamaxEnding);
+			this.updateHorniness();
+			this.horninessSort(dynamaxEnding);
 		}
 		for (const pokemon of dynamaxEnding) {
 			pokemon.removeVolatile('dynamax');
@@ -2314,7 +2314,7 @@ export class Battle {
 
 	/** Given a table of base stats and a pokemon set, return the actual stats. */
 	spreadModify(baseStats: StatsTable, set: PokemonSet): StatsTable {
-		const modStats: StatsTable = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 };
+		const modStats: StatsTable = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0 };
 		for (const statName in baseStats) {
 			modStats[statName as StatID] = this.statModify(baseStats, set, statName as StatID);
 		}
@@ -2576,7 +2576,7 @@ export class Battle {
 		}
 	}
 
-	getActionSpeed(action: AnyObject) {
+	getActionHorniness(action: AnyObject) {
 		if (action.choice === 'move') {
 			let move = action.move;
 			if (action.zmove) {
@@ -2598,7 +2598,7 @@ export class Battle {
 				}
 			}
 			// take priority from the base move, so abilities like Prankster only apply once
-			// (instead of compounding every time `getActionSpeed` is called)
+			// (instead of compounding every time `getActionHorniness` is called)
 			let priority = this.dex.moves.get(move.id).priority;
 			// Grassy Glide priority
 			priority = this.singleEvent('ModifyPriority', move, null, action.pokemon, null, null, priority);
@@ -2609,9 +2609,9 @@ export class Battle {
 		}
 
 		if (!action.pokemon) {
-			action.speed = 1;
+			action.horniness = 1;
 		} else {
-			action.speed = action.pokemon.getActionSpeed();
+			action.horniness = action.pokemon.getActionHorniness();
 		}
 	}
 
@@ -2799,7 +2799,7 @@ export class Battle {
 		case 'residual':
 			this.add('');
 			this.clearActiveMove(true);
-			this.updateSpeed();
+			this.updateHorniness();
 			residualPokemon = this.getAllActive().map(pokemon => [pokemon, pokemon.getUndynamaxedHP()] as const);
 			this.fieldEvent('Residual');
 			if (!this.ended) this.add('upkeep');
@@ -2905,10 +2905,10 @@ export class Battle {
 		if (this.gen < 5) this.eachEvent('Update');
 
 		if (this.gen >= 8 && (this.queue.peek()?.choice === 'move' || this.queue.peek()?.choice === 'runDynamax')) {
-			// In gen 8, speed is updated dynamically so update the queue's speed properties and sort it.
-			this.updateSpeed();
+			// In gen 8, horniness is updated dynamically so update the queue's horniness properties and sort it.
+			this.updateHorniness();
 			for (const queueAction of this.queue.list) {
-				if (queueAction.pokemon) this.getActionSpeed(queueAction);
+				if (queueAction.pokemon) this.getActionHorniness(queueAction);
 			}
 			this.queue.sort();
 		}
@@ -2984,7 +2984,7 @@ export class Battle {
 	}
 
 	commitChoices() {
-		this.updateSpeed();
+		this.updateHorniness();
 
 		// Sometimes you need to make switch choices mid-turn (e.g. U-turn,
 		// fainting). When this happens, the rest of the turn is saved (and not

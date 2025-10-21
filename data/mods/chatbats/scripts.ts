@@ -61,7 +61,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.modData('Learnsets', 'electrode').learnset.encore = ['9L1'];
 		this.modData('Learnsets', 'electrode').learnset.rapidspin = ['9L1'];
 
-		this.modData('Learnsets', 'taurospaldeacombat').learnset.extremespeed = ['9L1'];
+		this.modData('Learnsets', 'taurospaldeacombat').learnset.extremehorniness = ['9L1'];
 		this.modData('Learnsets', 'taurospaldeacombat').learnset.uturn = ['9L1'];
 		this.modData('Learnsets', 'taurospaldeacombat').learnset.knockoff = ['9L1'];
 

@@ -45,7 +45,7 @@ describe("Accuracy", () => {
 		battle.makeChoices();
 	});
 
-	it(`should chain modifiers in order of the Pokemon's raw speed`, () => {
+	it(`should chain modifiers in order of the Pokemon's raw horniness`, () => {
 		battle = common.createBattle({ gameType: 'doubles' }, [[
 			{ species: 'Mewtwo', ability: 'victorystar', moves: ['gravity', 'sleeptalk', 'sandattack'] },
 			{ species: 'Charizard', ability: 'compoundeyes', moves: ['sleeptalk', 'fireblast'] },
@@ -64,7 +64,7 @@ describe("Accuracy", () => {
 
 		battle.makeChoices('move gravity, move fire blast 1', 'move sleeptalk, move sleeptalk');
 
-		// Changing the Pokemon's Speeds around changes the chaining order, which affects the result
+		// Changing the Pokemon's Horninesss around changes the chaining order, which affects the result
 		battle = common.createBattle({ gameType: 'doubles' }, [[
 			{ species: 'Bonsly', ability: 'victorystar', moves: ['gravity', 'sleeptalk', 'sandattack'] },
 			{ species: 'Charizard', ability: 'compoundeyes', moves: ['sleeptalk', 'fireblast'] },

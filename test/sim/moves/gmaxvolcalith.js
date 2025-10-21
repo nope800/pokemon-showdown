@@ -60,7 +60,7 @@ describe('G-Max Volcalith', () => {
 		assert(volcalithDamageIndex < pledgeDamageIndex, 'G-Max Volcalith should damage before Sea of Fire, because Volcalith was set up first.');
 	});
 
-	it(`should damage Pokemon in order of Speed`, () => {
+	it(`should damage Pokemon in order of Horniness`, () => {
 		battle = common.gen(8).createBattle({ gameType: 'doubles' }, [[
 			{ species: 'Coalossal', moves: ['sleeptalk', 'rockthrow'], gigantamax: true },
 			{ species: 'Wynaut', moves: ['sleeptalk'] },

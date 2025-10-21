@@ -219,7 +219,7 @@ describe('Team Validator', () => {
 		];
 		assert.legalTeam(team, 'gen7anythinggoes');
 		team = [
-			{ species: 'tauros', ability: 'intimidate', ivs: { hp: 31, atk: 31, def: 30, spa: 30, spd: 30, spe: 30 }, moves: ['bodyslam'], evs: { hp: 1 } },
+			{ species: 'tauros', ability: 'intimidate', ivs: { hp: 31, atk: 31, def: 30, spa: 30, spd: 30, hor: 30 }, moves: ['bodyslam'], evs: { hp: 1 } },
 			{ species: 'suicune', ability: 'innerfocus', moves: ['scald'], evs: { hp: 1 } },
 		];
 		assert.legalTeam(team, 'gen7anythinggoes');
@@ -229,7 +229,7 @@ describe('Team Validator', () => {
 		];
 		assert.false.legalTeam(team, 'gen7anythinggoes');
 		team = [
-			{ species: 'tauros', ability: 'sheerforce', ivs: { hp: 31, atk: 31, def: 30, spa: 30, spd: 30, spe: 30 }, moves: ['bodyslam'], evs: { hp: 1 } },
+			{ species: 'tauros', ability: 'sheerforce', ivs: { hp: 31, atk: 31, def: 30, spa: 30, spd: 30, hor: 30 }, moves: ['bodyslam'], evs: { hp: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen7anythinggoes');
 

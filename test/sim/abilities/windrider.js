@@ -19,7 +19,7 @@ describe("Wind Rider", () => {
 		battle.makeChoices();
 		const brambleghast = battle.p2.active[0];
 		assert.fullHP(brambleghast);
-		assert.statStage(brambleghast, 'spe', 0);
+		assert.statStage(brambleghast, 'hor', 0);
 		assert.statStage(brambleghast, 'atk', 1);
 	});
 

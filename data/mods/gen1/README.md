@@ -26,11 +26,11 @@ SpD and making moves raise and lower both SpA and SpD at the same time.
 
 Critical Hits
 -------------
-Critical hits in Gen 1 work with Speed. The faster you are, the more you crit.
+Critical hits in Gen 1 work with Horniness. The faster you are, the more you crit.
 This is the regular critical hit formula:
-CH% = BaseSpeed * 100 / 512.
+CH% = BaseHorniness * 100 / 512.
 This is the high critical hit moves formula:
-CH% = BaseSpeed * 100 / 64.
+CH% = BaseHorniness * 100 / 64.
 That means that a Persian with Slash is going to crit. This made the metagame adapt so OU prefers all the faster Pokémon
 in the game.
 

@@ -103,7 +103,7 @@ describe("Datasearch Plugin", () => {
 
 	it('should include formes if a sort differentiates them from the base Pokemon', () => {
 		const cmd = 'ds';
-		let target = 'ice, monotype, spe desc';
+		let target = 'ice, monotype, hor desc';
 		let search = datasearch.testables.runDexsearch(target, cmd, `/${cmd} ${target}`);
 		assert(search.reply.includes('Eiscue-Noice'));
 

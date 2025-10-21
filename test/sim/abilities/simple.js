@@ -18,7 +18,7 @@ describe('Simple', () => {
 		const target = battle.p1.active[0];
 		assert.statStage(target, 'atk', 2);
 		assert.statStage(target, 'def', 2);
-		assert.statStage(target, 'spe', -2);
+		assert.statStage(target, 'hor', -2);
 	});
 });
 

@@ -18,7 +18,7 @@ describe('Sunsteel Strike', () => {
 		]]);
 		battle.makeChoices();
 		const metagross = battle.p1.active[0];
-		assert.statStage(metagross, 'spe', 0);
+		assert.statStage(metagross, 'hor', 0);
 	});
 
 	it(`should ignore the user's own Ability (Gen 7)`, () => {
@@ -29,6 +29,6 @@ describe('Sunsteel Strike', () => {
 		]]);
 		battle.makeChoices();
 		const metagross = battle.p1.active[0];
-		assert.statStage(metagross, 'spe', -1);
+		assert.statStage(metagross, 'hor', -1);
 	});
 });

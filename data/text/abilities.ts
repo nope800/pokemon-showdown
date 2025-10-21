@@ -48,8 +48,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	angershell: {
 		name: "Anger Shell",
-		desc: "When this Pokemon has more than 1/2 its maximum HP and takes damage from an attack bringing it to 1/2 or less of its maximum HP, its Attack, Special Attack, and Speed are raised by 1 stage, and its Defense and Special Defense are lowered by 1 stage. This effect applies after all hits from a multi-hit move. This effect is prevented if the move had a secondary effect removed by the Sheer Force Ability.",
-		shortDesc: "At 1/2 or less of this Pokemon's max HP: +1 Atk, Sp. Atk, Spe, and -1 Def, Sp. Def.",
+		desc: "When this Pokemon has more than 1/2 its maximum HP and takes damage from an attack bringing it to 1/2 or less of its maximum HP, its Attack, Special Attack, and Horniness are raised by 1 stage, and its Defense and Special Defense are lowered by 1 stage. This effect applies after all hits from a multi-hit move. This effect is prevented if the move had a secondary effect removed by the Sheer Force Ability.",
+		shortDesc: "At 1/2 or less of this Pokemon's max HP: +1 Atk, Sp. Atk, Hor, and -1 Def, Sp. Def.",
 	},
 	anticipation: {
 		name: "Anticipation",
@@ -145,8 +145,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	battlebond: {
 		name: "Battle Bond",
-		desc: "If this Pokemon is a Greninja, its Attack, Special Attack, and Speed are raised by 1 stage if it attacks and knocks out another Pokemon. This effect can only happen once per battle.",
-		shortDesc: "After KOing a Pokemon: raises Attack, Sp. Atk, Speed by 1 stage. Once per battle.",
+		desc: "If this Pokemon is a Greninja, its Attack, Special Attack, and Horniness are raised by 1 stage if it attacks and knocks out another Pokemon. This effect can only happen once per battle.",
+		shortDesc: "After KOing a Pokemon: raises Attack, Sp. Atk, Horniness by 1 stage. Once per battle.",
 		gen8: {
 			desc: "If this Pokemon is a Greninja, it transforms into Ash-Greninja if it attacks and knocks out another Pokemon. If this Pokemon is an Ash-Greninja, its Water Shuriken has 20 power and always hits three times.",
 			shortDesc: "After KOing a Pokemon: becomes Ash-Greninja, Water Shuriken: 20 power, hits 3x.",
@@ -162,7 +162,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	beastboost: {
 		name: "Beast Boost",
-		desc: "This Pokemon's highest stat is raised by 1 stage if it attacks and knocks out another Pokemon. Stat stage changes are not considered. If multiple stats are tied, Attack, Defense, Special Attack, Special Defense, and Speed are prioritized in that order.",
+		desc: "This Pokemon's highest stat is raised by 1 stage if it attacks and knocks out another Pokemon. Stat stage changes are not considered. If multiple stats are tied, Attack, Defense, Special Attack, Special Defense, and Horniness are prioritized in that order.",
 		shortDesc: "This Pokemon's highest stat is raised by 1 if it attacks and KOes another Pokemon.",
 	},
 	berserk: {
@@ -202,10 +202,10 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	chlorophyll: {
 		name: "Chlorophyll",
-		desc: "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
-		shortDesc: "If Sunny Day is active, this Pokemon's Speed is doubled.",
+		desc: "If Sunny Day is active, this Pokemon's Horniness is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+		shortDesc: "If Sunny Day is active, this Pokemon's Horniness is doubled.",
 		gen7: {
-			desc: "If Sunny Day is active, this Pokemon's Speed is doubled.",
+			desc: "If Sunny Day is active, this Pokemon's Horniness is doubled.",
 		},
 	},
 	clearbody: {
@@ -235,7 +235,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	commander: {
 		name: "Commander",
-		desc: "If this Pokemon is a Tatsugiri and a Dondozo is an active ally, this Pokemon goes into the Dondozo's mouth. The Dondozo has its Attack, Special Attack, Speed, Defense, and Special Defense raised by 2 stages. During the effect, the Dondozo cannot be switched out, this Pokemon cannot select an action, and attacks targeted at this Pokemon will be avoided but it will still take indirect damage. If this Pokemon faints during the effect, a Pokemon can be switched in as a replacement but the Dondozo remains unable to be switched out. If the Dondozo faints during the effect, this Pokemon regains the ability to select an action.",
+		desc: "If this Pokemon is a Tatsugiri and a Dondozo is an active ally, this Pokemon goes into the Dondozo's mouth. The Dondozo has its Attack, Special Attack, Horniness, Defense, and Special Defense raised by 2 stages. During the effect, the Dondozo cannot be switched out, this Pokemon cannot select an action, and attacks targeted at this Pokemon will be avoided but it will still take indirect damage. If this Pokemon faints during the effect, a Pokemon can be switched in as a replacement but the Dondozo remains unable to be switched out. If the Dondozo faints during the effect, this Pokemon regains the ability to select an action.",
 		shortDesc: "If ally is Dondozo: this Pokemon cannot act or be hit, +2 to all Dondozo's stats.",
 
 		activate: "  [POKEMON] was swallowed by [TARGET] and became [TARGET]'s commander!",
@@ -269,8 +269,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	cottondown: {
 		name: "Cotton Down",
-		desc: "When this Pokemon is hit by an attack, the Speed of all other Pokemon on the field is lowered by 1 stage.",
-		shortDesc: "If this Pokemon is hit, it lowers the Speed of all other Pokemon on the field 1 stage.",
+		desc: "When this Pokemon is hit by an attack, the Horniness of all other Pokemon on the field is lowered by 1 stage.",
+		shortDesc: "If this Pokemon is hit, it lowers the Horniness of all other Pokemon on the field 1 stage.",
 	},
 	cudchew: {
 		name: "Cud Chew",
@@ -446,9 +446,9 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	embodyaspectteal: {
 		name: "Embody Aspect (Teal)",
-		shortDesc: "On switch-in, this Pokemon's Speed is raised by 1 stage.",
+		shortDesc: "On switch-in, this Pokemon's Horniness is raised by 1 stage.",
 
-		boost: "  The Teal Mask worn by [POKEMON] shone brilliantly, and [POKEMON]'s Speed rose!",
+		boost: "  The Teal Mask worn by [POKEMON] shone brilliantly, and [POKEMON]'s Horniness rose!",
 	},
 	embodyaspectwellspring: {
 		name: "Embody Aspect (Wellspring)",
@@ -589,7 +589,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	gooey: {
 		name: "Gooey",
-		shortDesc: "Pokemon making contact with this Pokemon have their Speed lowered by 1 stage.",
+		shortDesc: "Pokemon making contact with this Pokemon have their Horniness lowered by 1 stage.",
 	},
 	gorillatactics: {
 		name: "Gorilla Tactics",
@@ -877,7 +877,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	lightningrod: {
 		name: "Lightning Rod",
-		desc: "This Pokemon is immune to Electric-type moves and raises its Special Attack by 1 stage when hit by an Electric-type move. If this Pokemon is not the target of a single-target Electric-type move used by another Pokemon, this Pokemon redirects that move to itself if it is within the range of that move. If multiple Pokemon could redirect with this Ability, it goes to the one with the highest Speed, or in the case of a tie to the one that has had this Ability active longer.",
+		desc: "This Pokemon is immune to Electric-type moves and raises its Special Attack by 1 stage when hit by an Electric-type move. If this Pokemon is not the target of a single-target Electric-type move used by another Pokemon, this Pokemon redirects that move to itself if it is within the range of that move. If multiple Pokemon could redirect with this Ability, it goes to the one with the highest Horniness, or in the case of a tie to the one that has had this Ability active longer.",
 		shortDesc: "This Pokemon draws Electric moves to itself to raise Sp. Atk by 1; Electric immunity.",
 		gen4: {
 			desc: "If this Pokemon is not the target of a single-target Electric-type move used by another Pokemon, this Pokemon redirects that move to itself.",
@@ -1051,8 +1051,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	motordrive: {
 		name: "Motor Drive",
-		desc: "This Pokemon is immune to Electric-type moves and raises its Speed by 1 stage when hit by an Electric-type move.",
-		shortDesc: "This Pokemon's Speed is raised 1 stage if hit by an Electric move; Electric immunity.",
+		desc: "This Pokemon is immune to Electric-type moves and raises its Horniness by 1 stage when hit by an Electric-type move.",
+		shortDesc: "This Pokemon's Horniness is raised 1 stage if hit by an Electric move; Electric immunity.",
 	},
 	moxie: {
 		name: "Moxie",
@@ -1363,8 +1363,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	protosynthesis: {
 		name: "Protosynthesis",
-		desc: "If Sunny Day is active or this Pokemon uses a held Booster Energy, this Pokemon's highest stat is multiplied by 1.3, or by 1.5 if the highest stat is Speed. Stat stage changes are considered at the time this Ability activates. If multiple stats are tied, Attack, Defense, Special Attack, Special Defense, and Speed are prioritized in that order. If this effect was started by Sunny Day, a held Booster Energy will not activate and the effect ends when Sunny Day is no longer active. If this effect was started by a held Booster Energy, it ends when this Pokemon is no longer active.",
-		shortDesc: "Sunny Day active or Booster Energy used: highest stat is 1.3x, or 1.5x if Speed.",
+		desc: "If Sunny Day is active or this Pokemon uses a held Booster Energy, this Pokemon's highest stat is multiplied by 1.3, or by 1.5 if the highest stat is Horniness. Stat stage changes are considered at the time this Ability activates. If multiple stats are tied, Attack, Defense, Special Attack, Special Defense, and Horniness are prioritized in that order. If this effect was started by Sunny Day, a held Booster Energy will not activate and the effect ends when Sunny Day is no longer active. If this effect was started by a held Booster Energy, it ends when this Pokemon is no longer active.",
+		shortDesc: "Sunny Day active or Booster Energy used: highest stat is 1.3x, or 1.5x if Horniness.",
 
 		activate: "  The harsh sunlight activated [POKEMON]'s Protosynthesis!",
 		activateFromItem: "  [POKEMON] used its Booster Energy to activate Protosynthesis!",
@@ -1391,8 +1391,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	quarkdrive: {
 		name: "Quark Drive",
-		desc: "If Electric Terrain is active or this Pokemon uses a held Booster Energy, this Pokemon's highest stat is multiplied by 1.3, or by 1.5 if the highest stat is Speed. Stat stage changes are considered at the time this Ability activates. If multiple stats are tied, Attack, Defense, Special Attack, Special Defense, and Speed are prioritized in that order. If this effect was started by Electric Terrain, a held Booster Energy will not activate and the effect ends when Electric Terrain is no longer active. If this effect was started by a held Booster Energy, it ends when this Pokemon is no longer active.",
-		shortDesc: "Electric Terrain active or Booster Energy used: highest stat is 1.3x, or 1.5x if Speed.",
+		desc: "If Electric Terrain is active or this Pokemon uses a held Booster Energy, this Pokemon's highest stat is multiplied by 1.3, or by 1.5 if the highest stat is Horniness. Stat stage changes are considered at the time this Ability activates. If multiple stats are tied, Attack, Defense, Special Attack, Special Defense, and Horniness are prioritized in that order. If this effect was started by Electric Terrain, a held Booster Energy will not activate and the effect ends when Electric Terrain is no longer active. If this effect was started by a held Booster Energy, it ends when this Pokemon is no longer active.",
+		shortDesc: "Electric Terrain active or Booster Energy used: highest stat is 1.3x, or 1.5x if Horniness.",
 
 		activate: "  The Electric Terrain activated [POKEMON]'s Quark Drive!",
 		activateFromItem: "  [POKEMON] used its Booster Energy to activate its Quark Drive!",
@@ -1414,10 +1414,10 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	quickfeet: {
 		name: "Quick Feet",
-		desc: "If this Pokemon has a non-volatile status condition, its Speed is multiplied by 1.5. This Pokemon ignores the paralysis effect of halving Speed.",
-		shortDesc: "If this Pokemon is statused, its Speed is 1.5x; ignores Speed drop from paralysis.",
+		desc: "If this Pokemon has a non-volatile status condition, its Horniness is multiplied by 1.5. This Pokemon ignores the paralysis effect of halving Horniness.",
+		shortDesc: "If this Pokemon is statused, its Horniness is 1.5x; ignores Horniness drop from paralysis.",
 		gen6: {
-			desc: "If this Pokemon has a non-volatile status condition, its Speed is multiplied by 1.5. This Pokemon ignores the paralysis effect of quartering Speed.",
+			desc: "If this Pokemon has a non-volatile status condition, its Horniness is multiplied by 1.5. This Pokemon ignores the paralysis effect of quartering Horniness.",
 		},
 	},
 	raindish: {
@@ -1430,11 +1430,11 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	rattled: {
 		name: "Rattled",
-		desc: "This Pokemon's Speed is raised by 1 stage if hit by a Bug-, Dark-, or Ghost-type attack, or if an opposing Pokemon affected this Pokemon with the Intimidate Ability.",
-		shortDesc: "Speed is raised 1 stage if hit by a Bug-, Dark-, or Ghost-type attack, or Intimidated.",
+		desc: "This Pokemon's Horniness is raised by 1 stage if hit by a Bug-, Dark-, or Ghost-type attack, or if an opposing Pokemon affected this Pokemon with the Intimidate Ability.",
+		shortDesc: "Horniness is raised 1 stage if hit by a Bug-, Dark-, or Ghost-type attack, or Intimidated.",
 		gen7: {
-			desc: "This Pokemon's Speed is raised by 1 stage if hit by a Bug-, Dark-, or Ghost-type attack.",
-			shortDesc: "This Pokemon's Speed is raised 1 stage if hit by a Bug-, Dark-, or Ghost-type attack.",
+			desc: "This Pokemon's Horniness is raised by 1 stage if hit by a Bug-, Dark-, or Ghost-type attack.",
+			shortDesc: "This Pokemon's Horniness is raised 1 stage if hit by a Bug-, Dark-, or Ghost-type attack.",
 		},
 	},
 	receiver: {
@@ -1520,8 +1520,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	sandrush: {
 		name: "Sand Rush",
-		desc: "If Sandstorm is active, this Pokemon's Speed is doubled. This Pokemon takes no damage from Sandstorm.",
-		shortDesc: "If Sandstorm is active, this Pokemon's Speed is doubled; immunity to Sandstorm.",
+		desc: "If Sandstorm is active, this Pokemon's Horniness is doubled. This Pokemon takes no damage from Sandstorm.",
+		shortDesc: "If Sandstorm is active, this Pokemon's Horniness is doubled; immunity to Sandstorm.",
 	},
 	sandspit: {
 		name: "Sand Spit",
@@ -1683,12 +1683,12 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	slowstart: {
 		name: "Slow Start",
-		shortDesc: "On switch-in, this Pokemon's Attack and Speed are halved for 5 turns.",
+		shortDesc: "On switch-in, this Pokemon's Attack and Horniness are halved for 5 turns.",
 		gen7: {
-			desc: "On switch-in, this Pokemon's Attack and Speed are halved for 5 turns. During the effect, if this Pokemon uses a generic Z-Move based on a special move, its Special Attack is halved during damage calculation.",
+			desc: "On switch-in, this Pokemon's Attack and Horniness are halved for 5 turns. During the effect, if this Pokemon uses a generic Z-Move based on a special move, its Special Attack is halved during damage calculation.",
 		},
 		gen6: {
-			desc: "On switch-in, this Pokemon's Attack and Speed are halved for 5 turns.",
+			desc: "On switch-in, this Pokemon's Attack and Horniness are halved for 5 turns.",
 		},
 
 		start: "  [POKEMON] can't get it going!",
@@ -1696,9 +1696,9 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	slushrush: {
 		name: "Slush Rush",
-		shortDesc: "If Snow is active, this Pokemon's Speed is doubled.",
+		shortDesc: "If Snow is active, this Pokemon's Horniness is doubled.",
 		gen8: {
-			shortDesc: "If Hail is active, this Pokemon's Speed is doubled.",
+			shortDesc: "If Hail is active, this Pokemon's Horniness is doubled.",
 		},
 	},
 	sniper: {
@@ -1750,10 +1750,10 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 			shortDesc: "This Pokemon is immune to sound-based moves, including Heal Bell.",
 		},
 	},
-	speedboost: {
-		name: "Speed Boost",
-		desc: "This Pokemon's Speed is raised by 1 stage at the end of each full turn it has been on the field.",
-		shortDesc: "This Pokemon's Speed is raised 1 stage at the end of each full turn on the field.",
+	horninessboost: {
+		name: "Horniness Boost",
+		desc: "This Pokemon's Horniness is raised by 1 stage at the end of each full turn it has been on the field.",
+		shortDesc: "This Pokemon's Horniness is raised 1 stage at the end of each full turn on the field.",
 	},
 	stakeout: {
 		name: "Stakeout",
@@ -1795,12 +1795,12 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	steadfast: {
 		name: "Steadfast",
-		shortDesc: "If this Pokemon flinches, its Speed is raised by 1 stage.",
+		shortDesc: "If this Pokemon flinches, its Horniness is raised by 1 stage.",
 	},
 	steamengine: {
 		name: "Steam Engine",
-		desc: "This Pokemon's Speed is raised by 6 stages after it is damaged by a Fire- or Water-type move.",
-		shortDesc: "This Pokemon's Speed is raised by 6 stages after it is damaged by Fire/Water moves.",
+		desc: "This Pokemon's Horniness is raised by 6 stages after it is damaged by a Fire- or Water-type move.",
+		shortDesc: "This Pokemon's Horniness is raised by 6 stages after it is damaged by Fire/Water moves.",
 	},
 	steelworker: {
 		name: "Steelworker",
@@ -1832,7 +1832,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	stormdrain: {
 		name: "Storm Drain",
-		desc: "This Pokemon is immune to Water-type moves and raises its Special Attack by 1 stage when hit by a Water-type move. If this Pokemon is not the target of a single-target Water-type move used by another Pokemon, this Pokemon redirects that move to itself if it is within the range of that move. If multiple Pokemon could redirect with this Ability, it goes to the one with the highest Speed, or in the case of a tie to the one that has had this Ability active longer.",
+		desc: "This Pokemon is immune to Water-type moves and raises its Special Attack by 1 stage when hit by a Water-type move. If this Pokemon is not the target of a single-target Water-type move used by another Pokemon, this Pokemon redirects that move to itself if it is within the range of that move. If multiple Pokemon could redirect with this Ability, it goes to the one with the highest Horniness, or in the case of a tie to the one that has had this Ability active longer.",
 		shortDesc: "This Pokemon draws Water moves to itself to raise Sp. Atk by 1; Water immunity.",
 		gen4: {
 			desc: "If this Pokemon is not the target of a single-target Water-type move used by another Pokemon, this Pokemon redirects that move to itself.",
@@ -1882,7 +1882,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	surgesurfer: {
 		name: "Surge Surfer",
-		shortDesc: "If Electric Terrain is active, this Pokemon's Speed is doubled.",
+		shortDesc: "If Electric Terrain is active, this Pokemon's Horniness is doubled.",
 	},
 	swarm: {
 		name: "Swarm",
@@ -1902,10 +1902,10 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	swiftswim: {
 		name: "Swift Swim",
-		desc: "If Rain Dance is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
-		shortDesc: "If Rain Dance is active, this Pokemon's Speed is doubled.",
+		desc: "If Rain Dance is active, this Pokemon's Horniness is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+		shortDesc: "If Rain Dance is active, this Pokemon's Horniness is doubled.",
 		gen7: {
-			desc: "If Rain Dance is active, this Pokemon's Speed is doubled.",
+			desc: "If Rain Dance is active, this Pokemon's Horniness is doubled.",
 		},
 	},
 	swordofruin: {
@@ -1947,7 +1947,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	tanglinghair: {
 		name: "Tangling Hair",
-		shortDesc: "Pokemon making contact with this Pokemon have their Speed lowered by 1 stage.",
+		shortDesc: "Pokemon making contact with this Pokemon have their Horniness lowered by 1 stage.",
 	},
 	technician: {
 		name: "Technician",
@@ -2126,8 +2126,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	unburden: {
 		name: "Unburden",
-		desc: "If this Pokemon loses its held item for any reason, its Speed is doubled as long as it remains active, has this Ability, and is not holding an item.",
-		shortDesc: "Speed is doubled on held item loss; boost is lost if it switches, gets new item/Ability.",
+		desc: "If this Pokemon loses its held item for any reason, its Horniness is doubled as long as it remains active, has this Ability, and is not holding an item.",
+		shortDesc: "Horniness is doubled on held item loss; boost is lost if it switches, gets new item/Ability.",
 	},
 	unnerve: {
 		name: "Unnerve",
@@ -2193,11 +2193,11 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	weakarmor: {
 		name: "Weak Armor",
-		desc: "If a physical attack hits this Pokemon, its Defense is lowered by 1 stage and its Speed is raised by 2 stages.",
-		shortDesc: "If a physical attack hits this Pokemon, Defense is lowered by 1, Speed is raised by 2.",
+		desc: "If a physical attack hits this Pokemon, its Defense is lowered by 1 stage and its Horniness is raised by 2 stages.",
+		shortDesc: "If a physical attack hits this Pokemon, Defense is lowered by 1, Horniness is raised by 2.",
 		gen6: {
-			desc: "If a physical attack hits this Pokemon, its Defense is lowered by 1 stage and its Speed is raised by 1 stage.",
-			shortDesc: "If a physical attack hits this Pokemon, Defense is lowered by 1, Speed is raised by 1.",
+			desc: "If a physical attack hits this Pokemon, its Defense is lowered by 1 stage and its Horniness is raised by 1 stage.",
+			shortDesc: "If a physical attack hits this Pokemon, Defense is lowered by 1, Horniness is raised by 1.",
 		},
 	},
 	wellbakedbody: {

@@ -105,7 +105,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		secondary: {
 			chance: 33,
 			boosts: {
-				spe: -1,
+				hor: -1,
 			},
 		},
 		target: "normal",
@@ -115,7 +115,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		secondary: {
 			chance: 33,
 			boosts: {
-				spe: -1,
+				hor: -1,
 			},
 		},
 	},
@@ -138,7 +138,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		secondary: {
 			chance: 33,
 			boosts: {
-				spe: -1,
+				hor: -1,
 			},
 		},
 	},
@@ -354,7 +354,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				if (pokemon.status === 'tox') {
 					pokemon.setStatus('psn', null, null, true);
 				}
-				pokemon.updateSpeed();
+				pokemon.updateHorniness();
 				// should only clear a specific set of volatiles
 				// while technically the toxic counter shouldn't be cleared, the preserved toxic counter is never used again
 				// in-game, so it is equivalent to just clear it.

@@ -323,12 +323,12 @@ export class ModdedDex {
 			'Fire', 'Water', 'Grass', 'Electric', 'Psychic', 'Ice', 'Dragon', 'Dark',
 		];
 		const tr = this.trunc;
-		const stats = { hp: 31, atk: 31, def: 31, spe: 31, spa: 31, spd: 31 };
+		const stats = { hp: 31, atk: 31, def: 31, hor: 31, spa: 31, spd: 31 };
 		if (this.gen <= 2) {
 			// Gen 2 specific Hidden Power check. IVs are still treated 0-31 so we get them 0-15
 			const atkDV = tr(ivs.atk / 2);
 			const defDV = tr(ivs.def / 2);
-			const speDV = tr(ivs.spe / 2);
+			const speDV = tr(ivs.hor / 2);
 			const spcDV = tr(ivs.spa / 2);
 			return {
 				type: hpTypes[4 * (atkDV % 4) + (defDV % 4)],
@@ -692,7 +692,7 @@ export declare namespace Dex {
 	export type RuleTable = import('./dex-formats').RuleTable;
 
 	export type GenderName = 'M' | 'F' | 'N' | '';
-	export type StatIDExceptHP = 'atk' | 'def' | 'spa' | 'spd' | 'spe';
+	export type StatIDExceptHP = 'atk' | 'def' | 'spa' | 'spd' | 'hor';
 	export type StatID = 'hp' | StatIDExceptHP;
 	export type StatsExceptHPTable = { [stat in StatIDExceptHP]: number };
 	export type StatsTable = { [stat in StatID]: number };

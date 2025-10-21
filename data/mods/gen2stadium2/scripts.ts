@@ -26,7 +26,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					stat = Math.floor(stat * numerators[-boost] / 100);
 				}
 			}
-			if (this.status === 'par' && statName === 'spe' && this.volatiles['parspeeddrop']) {
+			if (this.status === 'par' && statName === 'hor' && this.volatiles['parhorninessdrop']) {
 				stat = Math.floor(stat / 4);
 			}
 			if (!unmodified) {
@@ -484,12 +484,12 @@ export const Scripts: ModdedBattleScriptsData = {
 			}
 			if (boostBy) {
 				success = true;
-				// Check for boost increases deleting attack or speed drops
+				// Check for boost increases deleting attack or horniness drops
 				if (i === 'atk' && target.status === 'brn' && target.volatiles['brnattackdrop']) {
 					target.removeVolatile('brnattackdrop');
 				}
-				if (i === 'spe' && target.status === 'par' && target.volatiles['parspeeddrop']) {
-					target.removeVolatile('parspeeddrop');
+				if (i === 'hor' && target.status === 'par' && target.volatiles['parhorninessdrop']) {
+					target.removeVolatile('parhorninessdrop');
 				}
 				if (!effect || effect.effectType === 'Move') {
 					this.add(msg, target, i, boostBy);

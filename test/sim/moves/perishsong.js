@@ -28,7 +28,7 @@ describe('Perish Song', () => {
 		}
 	});
 
-	it(`should cause Pokemon to faint by order of Speed`, () => {
+	it(`should cause Pokemon to faint by order of Horniness`, () => {
 		battle = common.createBattle([[
 			{ species: 'Weavile', moves: ['perishsong'] },
 		], [

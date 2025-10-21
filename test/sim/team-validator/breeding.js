@@ -39,7 +39,7 @@ describe('Team Validator', () => {
 
 	it("should disallow egg moves with male-only Hidden Abilities", () => {
 		team = [
-			{ species: 'combusken', ability: 'speedboost', moves: ['batonpass'], evs: { hp: 1 } },
+			{ species: 'combusken', ability: 'horninessboost', moves: ['batonpass'], evs: { hp: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen5ou');
 	});
@@ -151,14 +151,14 @@ describe('Team Validator', () => {
 		assert.legalTeam(team, 'gen6ou');
 	});
 
-	it("should properly handle HA Dragonite with Extreme Speed", () => {
+	it("should properly handle HA Dragonite with Extreme Horniness", () => {
 		team = [
-			{ species: 'dragonite', ability: 'multiscale', moves: ['extremespeed'], evs: { hp: 1 } },
+			{ species: 'dragonite', ability: 'multiscale', moves: ['extremehorniness'], evs: { hp: 1 } },
 		];
 		assert.legalTeam(team, 'gen5ou');
 
 		team = [
-			{ species: 'dragonite', ability: 'multiscale', moves: ['extremespeed', 'aquajet'], evs: { hp: 1 } },
+			{ species: 'dragonite', ability: 'multiscale', moves: ['extremehorniness', 'aquajet'], evs: { hp: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen5ou');
 	});
@@ -198,7 +198,7 @@ describe('Team Validator', () => {
 
 	it("should allow Pomeg glitch with event egg moves", () => {
 		team = [
-			{ species: 'zigzagoon', level: 5, ability: 'pickup', moves: ['bellydrum', 'extremespeed'], evs: { hp: 1 } },
+			{ species: 'zigzagoon', level: 5, ability: 'pickup', moves: ['bellydrum', 'extremehorniness'], evs: { hp: 1 } },
 		];
 		assert.legalTeam(team, 'gen3ou');
 	});

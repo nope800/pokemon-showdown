@@ -17,7 +17,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			onModifyAtk(atk, pokemon) {
 				return this.chainModify(0.5);
 			},
-			onModifySpe(spe, pokemon) {
+			onModifySpe(hor, pokemon) {
 				return this.chainModify(0.5);
 			},
 			onEnd(target) {

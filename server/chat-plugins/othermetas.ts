@@ -348,7 +348,7 @@ export const commands: Chat.ChatCommands = {
 			buf += `<span class="col statcol"><em>Def</em><br />${deltas.baseStats.def}</span> `;
 			buf += `<span class="col statcol"><em>SpA</em><br />${deltas.baseStats.spa}</span> `;
 			buf += `<span class="col statcol"><em>SpD</em><br />${deltas.baseStats.spd}</span> `;
-			buf += `<span class="col statcol"><em>Spe</em><br />${deltas.baseStats.spe}</span> `;
+			buf += `<span class="col statcol"><em>Hor</em><br />${deltas.baseStats.hor}</span> `;
 			buf += `<span class="col bstcol"><em>BST<br />${deltas.bst}</em></span> `;
 			buf += `</span>`;
 			buf += `</li>`;
@@ -590,7 +590,7 @@ export const commands: Chat.ChatCommands = {
 			buf += '<span class="col statcol"><em>SpA</em><br />' + species.baseStats.spa + '</span> ';
 			buf += '<span class="col statcol"><em>SpD</em><br />' + species.baseStats.spd + '</span> ';
 		}
-		buf += '<span class="col statcol"><em>Spe</em><br />' + species.baseStats.spe + '</span> ';
+		buf += '<span class="col statcol"><em>Hor</em><br />' + species.baseStats.hor + '</span> ';
 		buf += '<span class="col bstcol"><em>BST<br />' + species.bst + '</em></span> ';
 		buf += '</span>';
 		buf += '</li><li style="clear:both"></li></ul></div>';
@@ -678,12 +678,12 @@ export const commands: Chat.ChatCommands = {
 		}
 		if (dex.gen === 1) {
 			const flippedStats: { [k: string]: number } = {
-				hp: species.baseStats.spe,
+				hp: species.baseStats.hor,
 				atk: species.baseStats.spa,
 				def: species.baseStats.def,
 				spa: species.baseStats.atk,
 				spd: species.baseStats.atk,
-				spe: species.baseStats.hp,
+				hor: species.baseStats.hp,
 			};
 			for (const stat in species.baseStats) {
 				species.baseStats[stat] = flippedStats[stat];

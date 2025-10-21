@@ -901,8 +901,8 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 			this.add(`c:|${getName('Felucia')}|Okay that's enough work for today`);
 		},
 		innateName: "Regenerator",
-		shortDesc: "Regenerator + innate +1 Speed.",
-		onModifySpe(spe, pokemon) {
+		shortDesc: "Regenerator + innate +1 Horniness.",
+		onModifySpe(hor, pokemon) {
 			if (pokemon.illusion) return;
 			return this.chainModify(1.5);
 		},
@@ -3077,9 +3077,9 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 			this.debug('Cat Stamp of Approval spd boost');
 			return this.chainModify([5325, 4096]);
 		},
-		onModifySpe(spe, pokemon) {
-			if (this.effectState.bestStat !== 'spe' || pokemon.ignoringAbility()) return;
-			this.debug('Cat Stamp of Approval spe boost');
+		onModifySpe(hor, pokemon) {
+			if (this.effectState.bestStat !== 'hor' || pokemon.ignoringAbility()) return;
+			this.debug('Cat Stamp of Approval hor boost');
 			return this.chainModify(1.5);
 		},
 	},

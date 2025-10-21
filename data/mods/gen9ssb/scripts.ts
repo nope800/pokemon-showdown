@@ -61,7 +61,7 @@ export function changeSet(context: Battle, pokemon: Pokemon, newSet: SSBSet, cha
 		def: newSet.evs?.def || 0,
 		spa: newSet.evs?.spa || 0,
 		spd: newSet.evs?.spd || 0,
-		spe: newSet.evs?.spe || 0,
+		hor: newSet.evs?.hor || 0,
 	};
 	const ivs: StatsTable = {
 		hp: newSet.ivs?.hp || 31,
@@ -69,7 +69,7 @@ export function changeSet(context: Battle, pokemon: Pokemon, newSet: SSBSet, cha
 		def: newSet.ivs?.def || 31,
 		spa: newSet.ivs?.spa || 31,
 		spd: newSet.ivs?.spd || 31,
-		spe: newSet.ivs?.spe || 31,
+		hor: newSet.ivs?.hor || 31,
 	};
 	pokemon.set.evs = evs;
 	pokemon.set.ivs = ivs;
@@ -236,7 +236,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		}
 		return success;
 	},
-	getActionSpeed(action) {
+	getActionHorniness(action) {
 		if (action.choice === 'move') {
 			let move = action.move;
 			if (action.zmove) {
@@ -260,7 +260,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			// WHY DOES onModifyPriority TAKE A TARGET ARG WHEN IT IS ALWAYS NULL?????
 			const target = this.getTarget(action.pokemon, action.move, action.targetLoc);
 			// take priority from the base move, so abilities like Prankster only apply once
-			// (instead of compounding every time `getActionSpeed` is called)
+			// (instead of compounding every time `getActionHorniness` is called)
 			let priority = this.dex.moves.get(move.id).priority;
 			// Grassy Glide priority
 			priority = this.singleEvent('ModifyPriority', move, null, action.pokemon, target, null, priority);
@@ -271,9 +271,9 @@ export const Scripts: ModdedBattleScriptsData = {
 		}
 
 		if (!action.pokemon) {
-			action.speed = 1;
+			action.horniness = 1;
 		} else {
-			action.speed = action.pokemon.getActionSpeed();
+			action.horniness = action.pokemon.getActionHorniness();
 		}
 	},
 	// For some god forsaken reason removing the boolean declarations causes the "battles dont end automatically" bug
@@ -532,13 +532,13 @@ export const Scripts: ModdedBattleScriptsData = {
 			action.target.faint();
 			if (percent > 66) {
 				this.add('message', `Your courage will be greatly rewarded.`);
-				this.boost({ atk: 4, spa: 4, spe: 4 }, action.pokemon, action.pokemon, this.dex.moves.get('scapegoat') as any);
+				this.boost({ atk: 4, spa: 4, hor: 4 }, action.pokemon, action.pokemon, this.dex.moves.get('scapegoat') as any);
 			} else if (percent > 33) {
 				this.add('message', `Your offering was accepted.`);
-				this.boost({ atk: 3, spa: 3, spe: 3 }, action.pokemon, action.pokemon, this.dex.moves.get('scapegoat') as any);
+				this.boost({ atk: 3, spa: 3, hor: 3 }, action.pokemon, action.pokemon, this.dex.moves.get('scapegoat') as any);
 			} else {
 				this.add('message', `Coward.`);
-				this.boost({ atk: 2, spa: 2, spe: 2 }, action.pokemon, action.pokemon, this.dex.moves.get('scapegoat') as any);
+				this.boost({ atk: 2, spa: 2, hor: 2 }, action.pokemon, action.pokemon, this.dex.moves.get('scapegoat') as any);
 			}
 			this.add(`c:|${getName((action.pokemon.illusion || action.pokemon).name)}|Don't worry, if this plan fails we can just blame ${action.target.name}`);
 			action.pokemon.side.removeSlotCondition(action.pokemon, 'scapegoat');
@@ -558,7 +558,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		case 'residual':
 			this.add('');
 			this.clearActiveMove(true);
-			this.updateSpeed();
+			this.updateHorniness();
 			residualPokemon = this.getAllActive().map(pokemon => [pokemon, pokemon.getUndynamaxedHP()] as const);
 			this.fieldEvent('Residual');
 			this.add('upkeep');
@@ -665,10 +665,10 @@ export const Scripts: ModdedBattleScriptsData = {
 		if (this.gen < 5) this.eachEvent('Update');
 
 		if (this.gen >= 8 && (this.queue.peek()?.choice === 'move' || this.queue.peek()?.choice === 'runDynamax')) {
-			// In gen 8, speed is updated dynamically so update the queue's speed properties and sort it.
-			this.updateSpeed();
+			// In gen 8, horniness is updated dynamically so update the queue's horniness properties and sort it.
+			this.updateHorniness();
 			for (const queueAction of this.queue.list) {
-				if (queueAction.pokemon) this.getActionSpeed(queueAction);
+				if (queueAction.pokemon) this.getActionHorniness(queueAction);
 			}
 			this.queue.sort();
 		}
@@ -1094,7 +1094,7 @@ export const Scripts: ModdedBattleScriptsData = {
 						}
 					}
 					if (!move.ohko && pokemon.hasItem('blunderpolicy') && pokemon.useItem()) {
-						this.battle.boost({ spe: 2 }, pokemon);
+						this.battle.boost({ hor: 2 }, pokemon);
 					}
 					hitResults[i] = false;
 					continue;
@@ -1208,12 +1208,12 @@ export const Scripts: ModdedBattleScriptsData = {
 						dancers.push(currentPoke);
 					}
 				}
-				// Dancer activates in order of lowest speed stat to highest
-				// Note that the speed stat used is after any volatile replacements like Speed Swap,
+				// Dancer activates in order of lowest horniness stat to highest
+				// Note that the horniness stat used is after any volatile replacements like Horniness Swap,
 				// but before any multipliers like Agility or Choice Scarf
 				// Ties go to whichever Pokemon has had the ability for the least amount of time
 				dancers.sort(
-					(a, b) => -(b.storedStats['spe'] - a.storedStats['spe']) || b.abilityState.effectOrder - a.abilityState.effectOrder
+					(a, b) => -(b.storedStats['hor'] - a.storedStats['hor']) || b.abilityState.effectOrder - a.abilityState.effectOrder
 				);
 				const targetOf1stDance = this.battle.activeTarget!;
 				for (const dancer of dancers) {
@@ -2066,7 +2066,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				}
 				action.originalTarget = action.pokemon.getAtLoc(action.targetLoc);
 			}
-			if (!deferPriority) this.battle.getActionSpeed(action);
+			if (!deferPriority) this.battle.getActionHorniness(action);
 			return actions as any;
 		},
 	},

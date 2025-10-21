@@ -67,22 +67,22 @@ describe('Encore', () => {
 			],
 			[
 				{ species: "Smeargle", ability: 'owntempo', item: 'laggingtail', moves: ['encore', 'splash'] },
-				{ species: "Zigzagoon", level: 1, ability: 'pickup', moves: ['extremespeed'] },
+				{ species: "Zigzagoon", level: 1, ability: 'pickup', moves: ['extremehorniness'] },
 			],
 		]);
 
 		// If the Focus Punch user is not interrupted the attack is expected to be successful.
-		battle.makeChoices('move focuspunch 1, move knockoff 1', 'move splash, move extremespeed 2');
+		battle.makeChoices('move focuspunch 1, move knockoff 1', 'move splash, move extremehorniness 2');
 		const hp = battle.p2.active[0].hp;
 		assert.notEqual(hp, battle.p2.active[0].maxhp);
 
 		// If a user's previous move was Focus Punch and it is Encored into Focus Punch while attempting to
 		// execute the move, the regular "you can't be hit" effect for Focus Punch will be enforced.
-		battle.makeChoices('move focuspunch 1, move teleport', 'move encore 1, move extremespeed 1');
+		battle.makeChoices('move focuspunch 1, move teleport', 'move encore 1, move extremehorniness 1');
 		assert.equal(battle.p2.active[0].hp, hp);
 
 		// During subsequent turns the normal Focus Punch behavior applies.
-		battle.makeChoices('move focuspunch 1, move teleport', 'move splash, move extremespeed 1');
+		battle.makeChoices('move focuspunch 1, move teleport', 'move splash, move extremehorniness 1');
 		assert.equal(battle.p2.active[0].hp, hp);
 	});
 
@@ -93,10 +93,10 @@ describe('Encore', () => {
 			{ species: 'Abra', level: 1, moves: ['knockoff', 'teleport'] },
 		], [
 			{ species: 'Smeargle', item: 'laggingtail', moves: ['encore', 'splash'] },
-			{ species: 'Zigzagoon', level: 1, moves: ['extremespeed'] },
+			{ species: 'Zigzagoon', level: 1, moves: ['extremehorniness'] },
 		]]);
 
-		battle.makeChoices('move focuspunch 1, move knockoff 1', 'move splash, move extremespeed 2');
+		battle.makeChoices('move focuspunch 1, move knockoff 1', 'move splash, move extremehorniness 2');
 		const p2smeargle = battle.p2.active[0];
 		let hp = p2smeargle.hp;
 		assert.false.fullHP(p2smeargle);
@@ -104,12 +104,12 @@ describe('Encore', () => {
 		// The Pokemon Encored into Focus Punch is not subject to the negative effects of Focus Punch; that is,
 		// if it is hit at any time before or after the Encore, it still uses Focus Punch like normal. It doesn't matter
 		// in the case of Focus Punch if the user was hit before or after the Encore; Focus Punch will still always work.
-		battle.makeChoices('move splash, move teleport', 'move encore 1, move extremespeed 1');
+		battle.makeChoices('move splash, move teleport', 'move encore 1, move extremehorniness 1');
 		assert.notEqual(p2smeargle.hp, hp);
 		hp = p2smeargle.hp;
 
 		// During subsequent turns the normal Focus Punch behavior applies.
-		battle.makeChoices('move focuspunch 1, move teleport', 'move splash, move extremespeed 1');
+		battle.makeChoices('move focuspunch 1, move teleport', 'move splash, move extremehorniness 1');
 		assert.equal(p2smeargle.hp, hp);
 	});
 

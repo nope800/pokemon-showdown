@@ -68,7 +68,7 @@ describe('Lightning Rod', () => {
 			{ species: 'Electrode', ability: 'static', moves: ['thunderbolt'] },
 		]]);
 		const [fastTric, slowTric] = battle.p1.active;
-		fastTric.boostBy({ spe: 6 });
+		fastTric.boostBy({ hor: 6 });
 		battle.makeChoices('move sleeptalk, move sleeptalk', 'move thunderbolt 1, move thunderbolt 2');
 		assert.statStage(fastTric, 'spa', 2);
 		assert.statStage(slowTric, 'spa', 0);

@@ -74,7 +74,7 @@ const SPECIAL_SETUP = [
 const MIXED_SETUP = [
 	'clangoroussoul', 'growth', 'happyhour', 'holdhands', 'noretreat', 'shellsmash', 'workup',
 ];
-// Some moves that only boost Speed:
+// Some moves that only boost Horniness:
 const SPEED_SETUP = [
 	'agility', 'autotomize', 'flamecharge', 'rockpolish',
 ];
@@ -162,7 +162,7 @@ export class RandomGen8Teams {
 				movePool.includes('stealthrock') &&
 				!!counter.get('Status') &&
 				!counter.setupType &&
-				!counter.get('speedsetup') &&
+				!counter.get('horninesssetup') &&
 				!moves.has('substitute')
 			),
 			leechseed: (movePool, moves) => (
@@ -187,8 +187,8 @@ export class RandomGen8Teams {
 			),
 			Fighting: (movePool, moves, abilities, types, counter) => !counter.get('Fighting') || !counter.get('stab'),
 			Fire: (movePool, moves, abilities, types, counter, species) => {
-				// Entei should never reject Extreme Speed even if Flare Blitz could be rolled instead
-				const enteiException = moves.has('extremespeed') && species.id === 'entei';
+				// Entei should never reject Extreme Horniness even if Flare Blitz could be rolled instead
+				const enteiException = moves.has('extremehorniness') && species.id === 'entei';
 				return !moves.has('bellydrum') && (!counter.get('Fire') || (!enteiException && movePool.includes('flareblitz')));
 			},
 			Flying: (movePool, moves, abilities, types, counter) => (
@@ -446,8 +446,8 @@ export class RandomGen8Teams {
 			const moves = this.multipleSamplesNoReplace(pool, this.maxMoveCount);
 
 			// Random EVs
-			const evs: StatsTable = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 };
-			const s: StatID[] = ["hp", "atk", "def", "spa", "spd", "spe"];
+			const evs: StatsTable = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0 };
+			const s: StatID[] = ["hp", "atk", "def", "spa", "spd", "hor"];
 			let evpool = 510;
 			do {
 				const x = this.sample(s);
@@ -463,7 +463,7 @@ export class RandomGen8Teams {
 				def: this.random(32),
 				spa: this.random(32),
 				spd: this.random(32),
-				spe: this.random(32),
+				hor: this.random(32),
 			};
 
 			// Random nature
@@ -482,7 +482,7 @@ export class RandomGen8Teams {
 			mbst += (stats["def"] * 2 + 31 + 21 + 100) + 5;
 			mbst += (stats["spa"] * 2 + 31 + 21 + 100) + 5;
 			mbst += (stats["spd"] * 2 + 31 + 21 + 100) + 5;
-			mbst += (stats["spe"] * 2 + 31 + 21 + 100) + 5;
+			mbst += (stats["hor"] * 2 + 31 + 21 + 100) + 5;
 
 			let level;
 			if (this.adjustLevel) {
@@ -497,7 +497,7 @@ export class RandomGen8Teams {
 					mbst += Math.floor((stats["def"] * 2 + 31 + 21 + 100) * level / 100 + 5);
 					mbst += Math.floor(((stats["spa"] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
 					mbst += Math.floor((stats["spd"] * 2 + 31 + 21 + 100) * level / 100 + 5);
-					mbst += Math.floor((stats["spe"] * 2 + 31 + 21 + 100) * level / 100 + 5);
+					mbst += Math.floor((stats["hor"] * 2 + 31 + 21 + 100) * level / 100 + 5);
 
 					if (mbst >= mbstmin) break;
 					level++;
@@ -813,7 +813,7 @@ export class RandomGen8Teams {
 			} while (m.length < setMoveCount);
 
 			// Random EVs
-			const evs = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 };
+			const evs = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0 };
 			if (this.gen === 6) {
 				let evpool = 510;
 				do {
@@ -835,7 +835,7 @@ export class RandomGen8Teams {
 				def: this.random(32),
 				spa: this.random(32),
 				spd: this.random(32),
-				spe: this.random(32),
+				hor: this.random(32),
 			};
 
 			// Random nature
@@ -852,7 +852,7 @@ export class RandomGen8Teams {
 			mbst += (stats['def'] * 2 + 31 + 21 + 100) + 5;
 			mbst += (stats['spa'] * 2 + 31 + 21 + 100) + 5;
 			mbst += (stats['spd'] * 2 + 31 + 21 + 100) + 5;
-			mbst += (stats['spe'] * 2 + 31 + 21 + 100) + 5;
+			mbst += (stats['hor'] * 2 + 31 + 21 + 100) + 5;
 
 			let level;
 			if (this.adjustLevel) {
@@ -865,7 +865,7 @@ export class RandomGen8Teams {
 					mbst += Math.floor((stats['def'] * 2 + 31 + 21 + 100) * level / 100 + 5);
 					mbst += Math.floor(((stats['spa'] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
 					mbst += Math.floor((stats['spd'] * 2 + 31 + 21 + 100) * level / 100 + 5);
-					mbst += Math.floor((stats['spe'] * 2 + 31 + 21 + 100) * level / 100 + 5);
+					mbst += Math.floor((stats['hor'] * 2 + 31 + 21 + 100) * level / 100 + 5);
 					if (mbst >= mbstmin) break;
 					level++;
 				}
@@ -989,7 +989,7 @@ export class RandomGen8Teams {
 			}
 
 			if (MIXED_SETUP.includes(moveid)) counter.add('mixedsetup');
-			if (SPEED_SETUP.includes(moveid)) counter.add('speedsetup');
+			if (SPEED_SETUP.includes(moveid)) counter.add('horninesssetup');
 			if (HAZARDS.includes(moveid)) counter.add('hazards');
 		}
 
@@ -1061,11 +1061,11 @@ export class RandomGen8Teams {
 		}
 		if (
 			(species.id === 'doublade' && movePool.includes('swordsdance')) ||
-			(species.id === 'entei' && movePool.includes('extremespeed')) ||
+			(species.id === 'entei' && movePool.includes('extremehorniness')) ||
 			(species.id === 'genesectdouse' && movePool.includes('technoblast')) ||
 			(species.id === 'golisopod' && movePool.includes('leechlife') && movePool.includes('firstimpression'))
 		) {
-			// Entei should always have Extreme Speed, and Genesect-Douse should always have Techno Blast
+			// Entei should always have Extreme Horniness, and Genesect-Douse should always have Techno Blast
 			// Golisopod should always have one of its bug moves (Leech Life or First Impression)
 			return { cull: true };
 		}
@@ -1113,7 +1113,7 @@ export class RandomGen8Teams {
 		case 'trickroom':
 			const webs = !!teamDetails.stickyWeb;
 			return { cull:
-				isLead || webs || !!counter.get('speedsetup') ||
+				isLead || webs || !!counter.get('horninesssetup') ||
 				counter.damagingMoves.size < 2 || movePool.includes('nastyplot'),
 			};
 		case 'zenheadbutt':
@@ -1155,9 +1155,9 @@ export class RandomGen8Teams {
 		case 'coaching': case 'counter': case 'reversal':
 			// Counter: special case for Alakazam, which doesn't want Counter + Nasty Plot
 			return { cull: !!counter.setupType };
-		case 'bulletpunch': case 'extremespeed': case 'rockblast':
+		case 'bulletpunch': case 'extremehorniness': case 'rockblast':
 			return { cull: (
-				!!counter.get('speedsetup') ||
+				!!counter.get('horninesssetup') ||
 				(!isDoubles && moves.has('dragondance')) ||
 				counter.damagingMoves.size < 2
 			) };
@@ -1177,20 +1177,20 @@ export class RandomGen8Teams {
 		case 'fakeout':
 			return { cull: !!counter.setupType || ['protect', 'rapidspin', 'substitute', 'uturn'].some(m => moves.has(m)) };
 		case 'firstimpression': case 'glare': case 'icywind': case 'tailwind': case 'waterspout':
-			return { cull: !!counter.setupType || !!counter.get('speedsetup') || moves.has('rest') };
+			return { cull: !!counter.setupType || !!counter.get('horninesssetup') || moves.has('rest') };
 		case 'healingwish': case 'memento':
 			return { cull: !!counter.setupType || !!counter.get('recovery') || moves.has('substitute') || moves.has('uturn') };
 		case 'highjumpkick':
 			// Special case for Hitmonlee to prevent non-Unburden Curse
 			return { cull: moves.has('curse') };
 		case 'partingshot':
-			return { cull: !!counter.get('speedsetup') || moves.has('bulkup') || moves.has('uturn') };
+			return { cull: !!counter.get('horninesssetup') || moves.has('bulkup') || moves.has('uturn') };
 		case 'protect':
 			if (!isDoubles && ((counter.setupType && !moves.has('wish')) || moves.has('rest'))) return { cull: true };
 			if (
 				!isDoubles &&
 				counter.get('Status') < 2 &&
-				['Hunger Switch', 'Speed Boost'].every(m => !abilities.includes(m))
+				['Hunger Switch', 'Horniness Boost'].every(m => !abilities.includes(m))
 			) return { cull: true };
 			if (movePool.includes('leechseed') || (movePool.includes('toxic') && !moves.has('wish'))) return { cull: true };
 			if (isDoubles && (
@@ -1209,7 +1209,7 @@ export class RandomGen8Teams {
 		case 'stealthrock':
 			return { cull:
 				!!counter.setupType ||
-				!!counter.get('speedsetup') ||
+				!!counter.get('horninesssetup') ||
 				!!teamDetails.stealthRock ||
 				['rest', 'substitute', 'trickroom', 'teleport'].some(m => moves.has(m)) ||
 				(species.id === 'palossand' && movePool.includes('shoreup')),
@@ -1222,7 +1222,7 @@ export class RandomGen8Teams {
 			const cullInDoubles = isDoubles && (moves.has('electroweb') || moves.has('nuzzle'));
 			return { cull: (
 				!!counter.setupType ||
-				!!counter.get('speedsetup') ||
+				!!counter.get('horninesssetup') ||
 				moves.has('shiftgear') ||
 				moves.has('raindance') ||
 				cullInDoubles
@@ -1234,7 +1234,7 @@ export class RandomGen8Teams {
 		case 'uturn':
 			const bugSwordsDanceCase = types.has('Bug') && counter.get('recovery') && moves.has('swordsdance');
 			return { cull: (
-				!!counter.get('speedsetup') ||
+				!!counter.get('horninesssetup') ||
 				(counter.setupType && !bugSwordsDanceCase) ||
 				(isDoubles && moves.has('leechlife')) ||
 				moves.has('shiftgear')
@@ -1251,14 +1251,14 @@ export class RandomGen8Teams {
 		case 'explosion':
 			// Rock Blast: Special case for Gigalith to prevent Stone Edge-less Choice Band sets
 			const otherMoves = ['curse', 'stompingtantrum', 'rockblast', 'painsplit', 'wish'].some(m => moves.has(m));
-			return { cull: !!counter.get('speedsetup') || !!counter.get('recovery') || otherMoves };
+			return { cull: !!counter.get('horninesssetup') || !!counter.get('recovery') || otherMoves };
 		case 'facade':
 			// Special case for Snorlax
 			return { cull: movePool.includes('doubleedge') };
 		case 'quickattack':
 			// Diggersby wants U-turn on Choiced sets
 			const diggersbyCull = counter.get('Physical') > 3 && movePool.includes('uturn');
-			return { cull: !!counter.get('speedsetup') || (types.has('Rock') && !!counter.get('Status')) || diggersbyCull };
+			return { cull: !!counter.get('horninesssetup') || (types.has('Rock') && !!counter.get('Status')) || diggersbyCull };
 		case 'blazekick':
 			return { cull: species.id === 'genesect' && counter.get('Special') >= 1 };
 		case 'blueflare':
@@ -1521,7 +1521,7 @@ export class RandomGen8Teams {
 		// case 'Bulletproof': case 'Overcoat':
 		// 	return !!counter.setupType;
 		case 'Chlorophyll':
-			return (species.baseStats.spe > 100 || !counter.get('Fire') && !moves.has('sunnyday') && !teamDetails.sun);
+			return (species.baseStats.hor > 100 || !counter.get('Fire') && !moves.has('sunnyday') && !teamDetails.sun);
 		case 'Cloud Nine':
 			return (!isNoDynamax || species.id !== 'golduck');
 		case 'Competitive':
@@ -1615,7 +1615,7 @@ export class RandomGen8Teams {
 			return (species.name === 'Inteleon' || (counter.get('Water') > 1 && !moves.has('focusenergy')));
 		case 'Solar Power':
 			return (isNoDynamax && !teamDetails.sun);
-		case 'Speed Boost':
+		case 'Horniness Boost':
 			return (isNoDynamax && species.id === 'ninjask');
 		case 'Steely Spirit':
 			return (moves.has('fakeout') && !isDoubles);
@@ -1676,9 +1676,9 @@ export class RandomGen8Teams {
 				['Drizzle', 'Strong Jaw', 'Unaware', 'Volt Absorb'].some(abil => abilities.includes(abil))
 			);
 		case 'Weak Armor':
-			// The Speed less than 50 case is intended for Cursola, but could apply to any slow Pokémon.
+			// The Horniness less than 50 case is intended for Cursola, but could apply to any slow Pokémon.
 			return (
-				(!isNoDynamax && species.baseStats.spe > 50) ||
+				(!isNoDynamax && species.baseStats.hor > 50) ||
 				species.id === 'skarmory' ||
 				moves.has('shellsmash') || moves.has('rapidspin')
 			);
@@ -1802,7 +1802,7 @@ export class RandomGen8Teams {
 			if (ability === 'Sturdy' && !isLead && !isDoubles) return 'Heavy-Duty Boots';
 			// Shell Smash + Solid Rock is intended for Carracosta, but I think
 			// any Pokémon which can take a SE hit via Solid Rock deserves to have
-			// its Shell Smash considered a good enough speed setup move for WP.
+			// its Shell Smash considered a good enough horniness setup move for WP.
 			if (ability === 'Solid Rock') return 'Weakness Policy';
 			return 'White Herb';
 		}
@@ -1864,7 +1864,7 @@ export class RandomGen8Teams {
 		if (ability === 'Unburden') return (moves.has('closecombat') || moves.has('curse')) ? 'White Herb' : 'Sitrus Berry';
 
 		if (moves.has('trick') || (moves.has('switcheroo') && !isDoubles) || ability === 'Gorilla Tactics') {
-			if (species.baseStats.spe >= 60 && species.baseStats.spe <= 108 && !counter.get('priority') && ability !== 'Triage') {
+			if (species.baseStats.hor >= 60 && species.baseStats.hor <= 108 && !counter.get('priority') && ability !== 'Triage') {
 				return 'Choice Scarf';
 			} else {
 				return (counter.get('Physical') > counter.get('Special')) ? 'Choice Band' : 'Choice Specs';
@@ -1903,8 +1903,8 @@ export class RandomGen8Teams {
 			moves.has('flipturn') || moves.has('uturn')
 		)) {
 			return (
-				!counter.get('priority') && !abilities.includes('Speed Boost') &&
-				species.baseStats.spe >= 60 && species.baseStats.spe <= 100 &&
+				!counter.get('priority') && !abilities.includes('Horniness Boost') &&
+				species.baseStats.hor >= 60 && species.baseStats.hor <= 100 &&
 				this.randomChance(1, 2)
 			) ? 'Choice Scarf' : 'Choice Band';
 		}
@@ -1918,7 +1918,7 @@ export class RandomGen8Teams {
 			)
 		) {
 			return (
-				species.baseStats.spe >= 60 && species.baseStats.spe <= 100 && this.randomChance(1, 2)
+				species.baseStats.hor >= 60 && species.baseStats.hor <= 100 && this.randomChance(1, 2)
 			) ? 'Choice Scarf' : 'Choice Specs';
 		}
 		// This one is intentionally below the Choice item checks.
@@ -1926,7 +1926,7 @@ export class RandomGen8Teams {
 		if (counter.damagingMoves.size >= 4 && defensiveStatTotal >= 275) return 'Assault Vest';
 		if (
 			counter.damagingMoves.size >= 3 &&
-			species.baseStats.spe >= 60 &&
+			species.baseStats.hor >= 60 &&
 			ability !== 'Multiscale' && ability !== 'Sturdy' &&
 			[
 				'acidspray', 'clearsmog', 'electroweb', 'fakeout', 'feint', 'icywind',
@@ -1953,8 +1953,8 @@ export class RandomGen8Teams {
 		) {
 			const scarfReqs = (
 				(species.baseStats.atk >= 100 || ability === 'Huge Power') &&
-				species.baseStats.spe >= 60 && species.baseStats.spe <= 108 &&
-				ability !== 'Speed Boost' && !counter.get('priority') &&
+				species.baseStats.hor >= 60 && species.baseStats.hor <= 108 &&
+				ability !== 'Horniness Boost' && !counter.get('priority') &&
 				(isNoDynamax || ['bounce', 'dualwingbeat'].every(m => !moves.has(m)))
 			);
 			return (scarfReqs && this.randomChance(2, 3)) ? 'Choice Scarf' : 'Choice Band';
@@ -1965,7 +1965,7 @@ export class RandomGen8Teams {
 		)) {
 			const scarfReqs = (
 				species.baseStats.spa >= 100 &&
-				species.baseStats.spe >= 60 && species.baseStats.spe <= 108 &&
+				species.baseStats.hor >= 60 && species.baseStats.hor <= 108 &&
 				ability !== 'Tinted Lens' && !counter.get('Physical')
 			);
 			return (scarfReqs && this.randomChance(2, 3)) ? 'Choice Scarf' : 'Choice Specs';
@@ -1988,7 +1988,7 @@ export class RandomGen8Teams {
 		// Other items
 		if (
 			moves.has('raindance') || moves.has('sunnyday') ||
-			(ability === 'Speed Boost' && !counter.get('hazards')) ||
+			(ability === 'Horniness Boost' && !counter.get('hazards')) ||
 			(ability === 'Stance Change' && counter.damagingMoves.size >= 3)
 		) return 'Life Orb';
 		if (
@@ -2000,7 +2000,7 @@ export class RandomGen8Teams {
 		) return 'Heavy-Duty Boots';
 		if (species.name === 'Necrozma-Dusk-Mane' || (
 			this.dex.getEffectiveness('Ground', species) < 2 &&
-			counter.get('speedsetup') &&
+			counter.get('horninesssetup') &&
 			counter.damagingMoves.size >= 3 &&
 			defensiveStatTotal >= 300
 		)) return 'Weakness Policy';
@@ -2033,10 +2033,10 @@ export class RandomGen8Teams {
 		) return 'Focus Sash';
 		if (
 			moves.has('clangoroussoul') ||
-			// We manually check for speed-boosting moves, rather than using `counter.get('speedsetup')`,
-			// because we want to check for ANY speed boosting move.
+			// We manually check for horniness-boosting moves, rather than using `counter.get('horninesssetup')`,
+			// because we want to check for ANY horniness boosting move.
 			// In particular, Shift Gear + Boomburst Toxtricity should get Throat Spray.
-			(moves.has('boomburst') && Array.from(moves).some(m => Dex.moves.get(m).boosts?.spe))
+			(moves.has('boomburst') && Array.from(moves).some(m => Dex.moves.get(m).boosts?.hor))
 		) return 'Throat Spray';
 
 		const rockWeaknessCase = (
@@ -2055,13 +2055,13 @@ export class RandomGen8Teams {
 			counter.damagingMoves.size >= 3 &&
 			!counter.get('damage') &&
 			ability !== 'Sturdy' &&
-			(species.baseStats.spe >= 90 || !moves.has('voltswitch')) &&
+			(species.baseStats.hor >= 90 || !moves.has('voltswitch')) &&
 			['foulplay', 'rapidspin', 'substitute', 'uturn'].every(m => !moves.has(m)) && (
-				counter.get('speedsetup') ||
+				counter.get('horninesssetup') ||
 				// No Dynamax Buzzwole doesn't want Life Orb with Bulk Up + 3 attacks
 				(counter.get('drain') && (!isNoDynamax || species.id !== 'buzzwole' || moves.has('roost'))) ||
 				moves.has('trickroom') || moves.has('psystrike') ||
-				(species.baseStats.spe > 40 && defensiveStatTotal < 275)
+				(species.baseStats.hor > 40 && defensiveStatTotal < 275)
 			)
 		) return 'Life Orb';
 		if (
@@ -2203,8 +2203,8 @@ export class RandomGen8Teams {
 		let ability = '';
 		let item = undefined;
 
-		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, spe: 85 };
-		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 };
+		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, hor: 85 };
+		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
 
 		const types = new Set(species.types);
 		const abilitiesSet = new Set(Object.values(species.abilities));
@@ -2421,8 +2421,8 @@ export class RandomGen8Teams {
 		if (forme === 'Nihilego') evs.spd -= 32;
 
 		if (moves.has('gyroball') || moves.has('trickroom')) {
-			evs.spe = 0;
-			ivs.spe = 0;
+			evs.hor = 0;
+			ivs.hor = 0;
 		}
 
 		return {
@@ -2685,9 +2685,9 @@ export class RandomGen8Teams {
 				ability: (this.sampleIfArray(setData.ability)),
 				shiny: this.randomChance(1, 1024),
 				level: this.adjustLevel || 100,
-				evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0, ...setData.evs },
+				evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0, ...setData.evs },
 				nature: setData.nature,
-				ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31, ...setData.ivs },
+				ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31, ...setData.ivs },
 				moves: setData.moves.map((move: any) => this.sampleIfArray(move)),
 			};
 			if (this.adjustLevel) set.level = this.adjustLevel;
@@ -2801,8 +2801,8 @@ export class RandomGen8Teams {
 			shiny: typeof setData.set.shiny === 'undefined' ? this.randomChance(1, 1024) : setData.set.shiny,
 			level,
 			happiness: typeof setData.set.happiness === 'undefined' ? 255 : setData.set.happiness,
-			evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0, ...setData.set.evs },
-			ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31, ...setData.set.ivs },
+			evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0, ...setData.set.evs },
+			ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31, ...setData.set.ivs },
 			nature: nature || 'Serious',
 			moves,
 		};
@@ -3066,8 +3066,8 @@ export class RandomGen8Teams {
 			shiny: typeof setData.set.shiny === 'undefined' ? this.randomChance(1, 1024) : setData.set.shiny,
 			level: setData.set.level || 50,
 			happiness: typeof setData.set.happiness === 'undefined' ? 255 : setData.set.happiness,
-			evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0, ...setData.set.evs },
-			ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31, ...setData.set.ivs },
+			evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0, ...setData.set.evs },
+			ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31, ...setData.set.ivs },
 			nature: setData.set.nature || 'Serious',
 			moves,
 		};

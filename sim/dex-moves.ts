@@ -390,7 +390,7 @@ export class DataMove extends BasicEffect implements Readonly<BasicEffect & Move
 	readonly hasSheerForce: boolean;
 	/**
 	 * Move priority. Higher priorities go before lower priorities,
-	 * trumping the Speed stat.
+	 * trumping the Horniness stat.
 	 */
 	readonly priority: number;
 	/** Move category. */

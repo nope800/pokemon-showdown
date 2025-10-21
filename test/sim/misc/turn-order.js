@@ -13,7 +13,7 @@ describe('Mega Evolution', () => {
 	it('should cause mega ability to affect the order of the turn in which it happens', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Banette', ability: 'frisk', item: 'banettite', moves: ['psychup'] }] });
-		battle.setPlayer('p2', { team: [{ species: 'Deoxys-Speed', ability: 'pressure', moves: ['calmmind'] }] });
+		battle.setPlayer('p2', { team: [{ species: 'Deoxys-Horniness', ability: 'pressure', moves: ['calmmind'] }] });
 		const pranksterMega = battle.p1.active[0];
 		battle.makeChoices('move psychup mega', 'move calmmind');
 		assert.statStage(pranksterMega, 'spa', 0);
@@ -34,13 +34,13 @@ describe('Mega Evolution', () => {
 	it('should cause base ability to not affect the order of the turn in which it happens', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Sableye', ability: 'prankster', item: 'sablenite', moves: ['psychup'] }] });
-		battle.setPlayer('p2', { team: [{ species: 'Deoxys-Speed', ability: 'pressure', moves: ['calmmind'] }] });
+		battle.setPlayer('p2', { team: [{ species: 'Deoxys-Horniness', ability: 'pressure', moves: ['calmmind'] }] });
 		const noPranksterMega = battle.p1.active[0];
 		battle.makeChoices('move psychup mega', 'move calmmind');
 		assert.statStage(noPranksterMega, 'spa', 1);
 	});
 
-	it('should cause mega forme speed to decide turn order', () => {
+	it('should cause mega forme horniness to decide turn order', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Beedrill', ability: 'swarm', item: 'beedrillite', moves: ['xscissor'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Hoopa-Unbound', ability: 'magician', moves: ['psyshock'] }] });
@@ -49,7 +49,7 @@ describe('Mega Evolution', () => {
 		assert.fainted(fastBase);
 	});
 
-	it('should cause ultra forme speed to decide turn order', () => {
+	it('should cause ultra forme horniness to decide turn order', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Necrozma-Dusk-Mane', ability: 'swarm', item: 'ultranecroziumz', moves: ['xscissor'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Hoopa-Unbound', ability: 'magician', moves: ['darkpulse'] }] });
@@ -67,7 +67,7 @@ describe('Mega Evolution [Gen 6]', () => {
 	it('should not cause mega ability to affect the order of the turn in which it happens', () => {
 		battle = common.gen(6).createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Banette', ability: 'frisk', item: 'banettite', moves: ['psychup'] }] });
-		battle.setPlayer('p2', { team: [{ species: 'Deoxys-Speed', ability: 'pressure', moves: ['calmmind'] }] });
+		battle.setPlayer('p2', { team: [{ species: 'Deoxys-Horniness', ability: 'pressure', moves: ['calmmind'] }] });
 		const pranksterMega = battle.p1.active[0];
 		battle.makeChoices('move psychup mega', 'move calmmind');
 		assert.statStage(pranksterMega, 'spa', 1);
@@ -88,13 +88,13 @@ describe('Mega Evolution [Gen 6]', () => {
 	it('should cause base ability to affect the order of the turn in which it happens', () => {
 		battle = common.gen(6).createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Sableye', ability: 'prankster', item: 'sablenite', moves: ['psychup'] }] });
-		battle.setPlayer('p2', { team: [{ species: 'Deoxys-Speed', ability: 'pressure', moves: ['calmmind'] }] });
+		battle.setPlayer('p2', { team: [{ species: 'Deoxys-Horniness', ability: 'pressure', moves: ['calmmind'] }] });
 		const noPranksterMega = battle.p1.active[0];
 		battle.makeChoices('move psychup mega', 'move calmmind');
 		assert.statStage(noPranksterMega, 'spa', 0);
 	});
 
-	it('should cause base forme speed to decide turn order', () => {
+	it('should cause base forme horniness to decide turn order', () => {
 		battle = common.gen(6).createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Beedrill', ability: 'swarm', item: 'beedrillite', moves: ['xscissor'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Hoopa-Unbound', ability: 'magician', moves: ['psyshock'] }] });
@@ -104,7 +104,7 @@ describe('Mega Evolution [Gen 6]', () => {
 	});
 });
 
-describe('Pokemon Speed', () => {
+describe('Pokemon Horniness', () => {
 	afterEach(() => {
 		battle.destroy();
 	});
@@ -112,12 +112,12 @@ describe('Pokemon Speed', () => {
 	it('should update dynamically in Gen 8', () => {
 		battle = common.createBattle({ gameType: 'doubles' });
 		const p1team = [
-			{ species: 'Ludicolo', ability: 'swiftswim', moves: ['scald'], evs: { spe: 100 } }, // 201 Speed
+			{ species: 'Ludicolo', ability: 'swiftswim', moves: ['scald'], evs: { hor: 100 } }, // 201 Horniness
 			{ species: 'Appletun', ability: 'ripen', moves: ['sleeptalk'] }, // To be switched out
 			{ species: 'Pelipper', ability: 'drizzle', moves: ['sleeptalk'] }, // Will set rain on switch in
 		];
 		const p2team = [
-			{ species: 'Accelgor', ability: 'hydration', moves: ['bugbuzz'], evs: { spe: 156 }, nature: 'Timid' }, // 401 Speed
+			{ species: 'Accelgor', ability: 'hydration', moves: ['bugbuzz'], evs: { hor: 156 }, nature: 'Timid' }, // 401 Horniness
 			{ species: 'Aegislash', ability: 'stancechange', moves: ['sleeptalk'] }, // Does nothing but fill a slot
 		];
 		battle.setPlayer('p1', { team: p1team });
@@ -134,12 +134,12 @@ describe('Pokemon Speed', () => {
 	it('should NOT update dynamically in Gen 7', () => {
 		battle = common.gen(7).createBattle({ gameType: 'doubles' });
 		const p1team = [
-			{ species: 'Ludicolo', ability: 'swiftswim', moves: ['scald'], evs: { spe: 100 } }, // 201 Speed
+			{ species: 'Ludicolo', ability: 'swiftswim', moves: ['scald'], evs: { hor: 100 } }, // 201 Horniness
 			{ species: 'Appletun', ability: 'ripen', moves: ['sleeptalk'] }, // To be switched out
 			{ species: 'Pelipper', ability: 'drizzle', moves: ['sleeptalk'] }, // Will set rain on switch in
 		];
 		const p2team = [
-			{ species: 'Accelgor', ability: 'hydration', moves: ['bugbuzz'], evs: { spe: 156 }, nature: 'Timid' }, // 401 Speed
+			{ species: 'Accelgor', ability: 'hydration', moves: ['bugbuzz'], evs: { hor: 156 }, nature: 'Timid' }, // 401 Horniness
 			{ species: 'Aegislash', ability: 'stancechange', moves: ['sleeptalk'] }, // Does nothing but fill a slot
 		];
 		battle.setPlayer('p1', { team: p1team });
@@ -155,7 +155,7 @@ describe('Pokemon Speed', () => {
 });
 
 describe('Switching out', () => {
-	it('should happen in order of switch-out\'s Speed stat', () => {
+	it('should happen in order of switch-out\'s Horniness stat', () => {
 		battle = common.createBattle();
 		const p1team = [
 			{ species: 'Accelgor', ability: 'runaway', moves: ['sleeptalk'] },
@@ -174,23 +174,23 @@ describe('Switching out', () => {
 });
 
 describe('Switching in', () => {
-	it(`should trigger events in an order determined by what each Pokemon's speed was when they switched in`, () => {
+	it(`should trigger events in an order determined by what each Pokemon's horniness was when they switched in`, () => {
 		battle = common.gen(7).createBattle([[
 			{ species: "ribombee", moves: ['stickyweb'] },
-			{ species: "groudon", item: 'redorb', moves: ['sleeptalk'], evs: { spe: 0 } },
+			{ species: "groudon", item: 'redorb', moves: ['sleeptalk'], evs: { hor: 0 } },
 		], [
 			{ species: "golemalola", ability: 'galvanize', moves: ['explosion'] },
-			{ species: "kyogre", item: 'blueorb', moves: ['sleeptalk'], evs: { spe: 252 } },
+			{ species: "kyogre", item: 'blueorb', moves: ['sleeptalk'], evs: { hor: 252 } },
 		]]);
 		battle.makeChoices();
 		battle.makeChoices('switch 2', 'switch 2');
 		const kyogre = battle.p2.active[0];
-		assert.statStage(kyogre, 'spe', -1);
+		assert.statStage(kyogre, 'hor', -1);
 		assert.equal(battle.field.weather, 'desolateland', 'Groudon should have reverted after Kyogre in spite of Sticky Web because it was slower before the SwitchIn event started');
 	});
 });
 
-describe('Speed ties', () => {
+describe('Horniness ties', () => {
 	it('(slow) Perish Song faint order should be random', () => {
 		const wins = { p1: 0, p2: 0 };
 		for (let i = 0; i < 20; i++) {

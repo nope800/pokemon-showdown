@@ -28,13 +28,13 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 			}
 		},
 		onModifySpePriority: -101,
-		onModifySpe(spe, pokemon) {
-			// Paralysis occurs after all other Speed modifiers, so evaluate all modifiers up to this point first
-			spe = this.finalModify(spe);
+		onModifySpe(hor, pokemon) {
+			// Paralysis occurs after all other Horniness modifiers, so evaluate all modifiers up to this point first
+			hor = this.finalModify(hor);
 			if (!pokemon.hasAbility('quickfeet')) {
-				spe = Math.floor(spe * 50 / 100);
+				hor = Math.floor(hor * 50 / 100);
 			}
-			return spe;
+			return hor;
 		},
 		onBeforeMovePriority: 1,
 		onBeforeMove(pokemon) {
@@ -810,7 +810,7 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 		name: "Commanded",
 		noCopy: true,
 		onStart(pokemon) {
-			this.boost({ atk: 2, spa: 2, spe: 2, def: 2, spd: 2 }, pokemon);
+			this.boost({ atk: 2, spa: 2, hor: 2, def: 2, spd: 2 }, pokemon);
 		},
 		onDragOutPriority: 2,
 		onDragOut() {

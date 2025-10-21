@@ -196,7 +196,7 @@ describe('Team Validator', () => {
 
 	it('should disallow Pokemon from Pokemon GO knowing incompatible moves', () => {
 		const team = [
-			{ species: 'mew', shiny: true, level: 15, ability: 'synchronize', moves: ['aircutter'], evs: { hp: 1 }, ivs: { hp: 21, atk: 31, def: 21, spa: 21, spd: 31, spe: 0 } },
+			{ species: 'mew', shiny: true, level: 15, ability: 'synchronize', moves: ['aircutter'], evs: { hp: 1 }, ivs: { hp: 21, atk: 31, def: 21, spa: 21, spd: 31, hor: 0 } },
 		];
 		assert.false.legalTeam(team, 'gen8ou');
 	});

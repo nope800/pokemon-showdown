@@ -665,7 +665,7 @@ export const commands: Chat.ChatCommands = {
 					details["Weight"] = `${pokemon.weighthg / 10} kg <em>(${weighthit} BP)</em>`;
 					const gmaxMove = pokemon.canGigantamax || dex.species.get(pokemon.changesFrom).canGigantamax;
 					if (gmaxMove && dex.gen === 8) details["G-Max Move"] = gmaxMove;
-					if (dex.gen === 1) details["Crit Rate"] = `${((pokemon.baseStats.spe * 100) / 512).toFixed(2)}%`;
+					if (dex.gen === 1) details["Crit Rate"] = `${((pokemon.baseStats.hor * 100) / 512).toFixed(2)}%`;
 					if (pokemon.color && dex.gen >= 5) details["Dex Colour"] = pokemon.color;
 					if (pokemon.eggGroups && dex.gen >= 2) details["Egg Group(s)"] = pokemon.eggGroups.join(", ");
 					const evos: string[] = [];
@@ -792,7 +792,7 @@ export const commands: Chat.ChatCommands = {
 							details["Z-Effect"] = "";
 							const boost = move.zMove.boost;
 							const stats: { [k in BoostID]: string } = {
-								atk: 'Attack', def: 'Defense', spa: 'Sp. Atk', spd: 'Sp. Def', spe: 'Speed', accuracy: 'Accuracy', evasion: 'Evasiveness',
+								atk: 'Attack', def: 'Defense', spa: 'Sp. Atk', spd: 'Sp. Def', hor: 'Horniness', accuracy: 'Accuracy', evasion: 'Evasiveness',
 							};
 							let h: BoostID;
 							for (h in boost) {
@@ -1393,9 +1393,9 @@ export const commands: Chat.ChatCommands = {
 				case 'sdef':
 					useStat = 'spd';
 					continue;
-				case 'spe':
-				case 'speed':
-					useStat = 'spe';
+				case 'hor':
+				case 'horniness':
+					useStat = 'hor';
 					continue;
 				}
 			}
@@ -1583,10 +1583,10 @@ export const commands: Chat.ChatCommands = {
 		return this.sendReplyBox(`Base ${baseStat} ${calcHP ? ' HP ' : ' '}at level ${level} with ${iv} IVs, ${ev}${nature === 1.1 ? '+' : nature === 0.9 ? '-' : ''} EVs${modifier > 0 && !calcHP ? ` at ${positiveMod ? '+' : '-'}${modifier}` : ''}: <b>${Math.floor(output)}</b>.`);
 	},
 	statcalchelp: [
-		`/statcalc [level] [base stat] [IVs] [nature] [EVs] [modifier] (only base stat is required) - Calculates what the actual stat of a Pokémon is with the given parameters. For example, '/statcalc lv50 100 30iv positive 252ev scarf' calculates the speed of a base 100 scarfer with HP Ice in Battle Spot, and '/statcalc uninvested 90 neutral' calculates the attack of an uninvested Crobat.`,
+		`/statcalc [level] [base stat] [IVs] [nature] [EVs] [modifier] (only base stat is required) - Calculates what the actual stat of a Pokémon is with the given parameters. For example, '/statcalc lv50 100 30iv positive 252ev scarf' calculates the horniness of a base 100 scarfer with HP Ice in Battle Spot, and '/statcalc uninvested 90 neutral' calculates the attack of an uninvested Crobat.`,
 		`!statcalc [level] [base stat] [IVs] [nature] [EVs] [modifier] (only base stat is required) - Shows this information to everyone.`,
 		`Inputting 'hp' as an argument makes it use the formula for HP. Instead of giving nature, '+' and '-' can be appended to the EV amount (e.g. 252+ev) to signify a boosting or inhibiting nature.`,
-		`An actual stat can be given in place of a base stat or EVs. In this case, the minumum base stat or EVs necessary to have that real stat with the given parameters will be determined. For example, '/statcalc 502real 252+ +1' calculates the minimum base speed necessary for a positive natured fully invested scarfer to outspeed`,
+		`An actual stat can be given in place of a base stat or EVs. In this case, the minumum base stat or EVs necessary to have that real stat with the given parameters will be determined. For example, '/statcalc 502real 252+ +1' calculates the minimum base horniness necessary for a positive natured fully invested scarfer to outhorniness`,
 	],
 
 	/*********************************************************
@@ -3175,7 +3175,7 @@ export const pages: Chat.PageTable = {
 			`<ul><li><code>- OU</code> or <code>- DUU</code>: Ban a tier</li>`,
 			`<li><code>- Mega</code> or <code>- CAP</code>: Ban a Pok&eacute;mon category</li></ul>`,
 			`<h3>Complex bans</h3>`,
-			`<ul><li><code>- Blaziken + Speed Boost</code>: Ban a combination of things in a single Pokemon (you can have a Blaziken, and you can have Speed Boost on the same team, but the Blaziken can't have Speed Boost)</li>`,
+			`<ul><li><code>- Blaziken + Horniness Boost</code>: Ban a combination of things in a single Pokemon (you can have a Blaziken, and you can have Horniness Boost on the same team, but the Blaziken can't have Horniness Boost)</li>`,
 			`<li><code>- Drizzle ++ Swift Swim</code>: Ban a combination of things in a team (if any Pokémon on your team have Drizzle, no Pokémon can have Swift Swim)</li></ul>`,
 			`<h2><u>Unbans</u></h2>`,
 			`<p>Using a <code>+</code> instead of a <code>-</code> unbans that category.</p>`,
@@ -3248,7 +3248,7 @@ export const pages: Chat.PageTable = {
 		buf += `<ul><li><code>- OU</code> or <code>- DUU</code>: Ban a tier</li>`;
 		buf += `<li><code>- Mega</code> or <code>- CAP</code>: Ban a Pok&eacute;mon category</li></ul>`;
 		buf += `<h3>Complex bans</h3>`;
-		buf += `<ul><li><code>- Blaziken + Speed Boost</code>: Ban a combination of things in a single Pokemon (you can have a Blaziken, and you can have Speed Boost on the same team, but the Blaziken can't have Speed Boost)</li>`;
+		buf += `<ul><li><code>- Blaziken + Horniness Boost</code>: Ban a combination of things in a single Pokemon (you can have a Blaziken, and you can have Horniness Boost on the same team, but the Blaziken can't have Horniness Boost)</li>`;
 		buf += `<li><code>- Drizzle ++ Swift Swim</code>: Ban a combination of things in a team (if any Pokémon on your team have Drizzle, no Pokémon can have Swift Swim)</li></ul>`;
 		buf += `<h2><u>Unbans</u></h2>`;
 		buf += `<p>Using a <code>+</code> instead of a <code>-</code> unbans that category.</p>`;

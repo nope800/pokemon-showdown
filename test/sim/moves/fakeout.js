@@ -65,6 +65,6 @@ describe('Fake Out', () => {
 			{ species: 'Gallade', ability: 'steadfast', moves: ['focuspunch'] },
 		]]);
 		battle.makeChoices();
-		assert.equal(battle.p2.active[0].boosts.spe, 0);
+		assert.equal(battle.p2.active[0].boosts.hor, 0);
 	});
 });

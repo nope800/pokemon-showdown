@@ -95,7 +95,7 @@ describe('Grassy Terrain', () => {
 		assert.equal(resultMove, 'energyball');
 	});
 
-	it(`should heal by Speed order in the same block as Leftovers`, () => {
+	it(`should heal by Horniness order in the same block as Leftovers`, () => {
 		battle = common.createBattle([[
 			{ species: 'rillaboom', ability: 'grassysurge', item: 'leftovers', moves: ['seismictoss'] },
 		], [

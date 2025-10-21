@@ -13,7 +13,7 @@ describe('Prankster', () => {
 	it('should increase the priority of Status moves', () => {
 		battle = common.createBattle([
 			[{ species: "Murkrow", ability: 'prankster', moves: ['taunt'] }],
-			[{ species: "Deoxys-Speed", ability: 'pressure', moves: ['calmmind'] }],
+			[{ species: "Deoxys-Horniness", ability: 'pressure', moves: ['calmmind'] }],
 		]);
 		battle.makeChoices('move taunt', 'move calmmind');
 		assert.statStage(battle.p2.active[0], 'spa', 0);

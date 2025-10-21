@@ -37,7 +37,7 @@ describe('Teatime', () => {
 
 	it('should force Pokemon to eat Berries while Magic Room is active', () => {
 		battle = common.createBattle([[
-			{ species: 'wynaut', item: 'sitrusberry', evs: { spe: 252 }, moves: ['magicroom'] },
+			{ species: 'wynaut', item: 'sitrusberry', evs: { hor: 252 }, moves: ['magicroom'] },
 		], [
 			{ species: 'wynaut', moves: ['teatime'] },
 		]]);
@@ -57,7 +57,7 @@ describe('Teatime', () => {
 
 	it('should force Pokemon with Substitute to eat Berries', () => {
 		battle = common.createBattle([[
-			{ species: 'wynaut', item: 'sitrusberry', evs: { spe: 252 }, moves: ['substitute'] },
+			{ species: 'wynaut', item: 'sitrusberry', evs: { hor: 252 }, moves: ['substitute'] },
 		], [
 			{ species: 'wynaut', moves: ['teatime'] },
 		]]);
@@ -67,7 +67,7 @@ describe('Teatime', () => {
 
 	it('should not cause Pokemon in the semi-invulernable state to eat their Berries', () => {
 		battle = common.createBattle([[
-			{ species: 'wynaut', item: 'sitrusberry', evs: { spe: 252 }, moves: ['fly'] },
+			{ species: 'wynaut', item: 'sitrusberry', evs: { hor: 252 }, moves: ['fly'] },
 		], [
 			{ species: 'wynaut', moves: ['teatime'] },
 		]]);
@@ -79,7 +79,7 @@ describe('Teatime', () => {
 		battle = common.createBattle([[
 			{ species: 'wynaut', item: 'sitrusberry', moves: ['recycle'] },
 		], [
-			{ species: 'wynaut', evs: { spe: 252 }, moves: ['teatime'] },
+			{ species: 'wynaut', evs: { hor: 252 }, moves: ['teatime'] },
 		]]);
 		battle.makeChoices();
 		assert.equal(battle.p1.pokemon[0].item, 'sitrusberry');

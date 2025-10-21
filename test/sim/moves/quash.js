@@ -34,11 +34,11 @@ describe('Quash', () => {
 		] });
 		battle.setPlayer('p2', { team: [
 			{ species: "Arceus", ability: 'multitype', moves: ['voltswitch'] },
-			{ species: "Aerodactyl", ability: 'unnerve', moves: ['extremespeed'] },
+			{ species: "Aerodactyl", ability: 'unnerve', moves: ['extremehorniness'] },
 			{ species: "Rotom", ability: 'levitate', moves: ['thunderbolt'] },
 		] });
-		battle.makeChoices('move quash 2, move earthquake', 'move voltswitch 2, move extremespeed 1');
+		battle.makeChoices('move quash 2, move earthquake', 'move voltswitch 2, move extremehorniness 1');
 		battle.makeChoices('', 'switch 3, pass'); // Volt Switch
-		assert.notEqual(battle.log[battle.lastMoveLine].split('|')[3], 'Extremespeed');
+		assert.notEqual(battle.log[battle.lastMoveLine].split('|')[3], 'Extremehorniness');
 	});
 });

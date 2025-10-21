@@ -355,7 +355,7 @@ export const Scripts: ModdedBattleScriptsData = {
 
 			// OHKO moves only have a chance to hit if the user is at least as fast as the target
 			if (move.ohko) {
-				if (target.getStat('spe') > pokemon.getStat('spe')) {
+				if (target.getStat('hor') > pokemon.getStat('hor')) {
 					this.battle.add('-immune', target, '[ohko]');
 					return false;
 				}
@@ -556,9 +556,9 @@ export const Scripts: ModdedBattleScriptsData = {
 					// When a move that affects stat levels is used, if the Pokémon whose turn it is not right now is paralyzed or
 					// burned, the correspoding stat penalties will be applied again to that Pokémon.
 					if (pokemon.side.foe.active[0].status) {
-						// If it's paralysed, quarter its speed.
+						// If it's paralysed, quarter its horniness.
 						if (pokemon.side.foe.active[0].status === 'par') {
-							pokemon.side.foe.active[0].modifyStat!('spe', 0.25);
+							pokemon.side.foe.active[0].modifyStat!('hor', 0.25);
 						}
 						// If it's burned, halve its attack.
 						if (pokemon.side.foe.active[0].status === 'brn') {
@@ -577,7 +577,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				}
 				if (moveData.status) {
 					// Gen 1 bug: If the target has just used hyperbeam and must recharge, its status will be ignored and put to sleep.
-					// This does NOT revert the paralyse speed drop or the burn attack drop.
+					// This does NOT revert the paralyse horniness drop or the burn attack drop.
 					// Also, being put to sleep clears the recharge condition.
 					if (moveData.status === 'slp' && target.volatiles['mustrecharge']) {
 						// The sleep move is guaranteed to hit in this situation, unless Sleep Clause activates.
@@ -591,9 +591,9 @@ export const Scripts: ModdedBattleScriptsData = {
 						}
 					} else if (!target.status) {
 						if (target.setStatus(moveData.status, pokemon, move)) {
-							// Gen 1 mechanics: The burn attack drop and the paralyse speed drop are applied here directly on stat modifiers.
+							// Gen 1 mechanics: The burn attack drop and the paralyse horniness drop are applied here directly on stat modifiers.
 							if (moveData.status === 'brn') target.modifyStat!('atk', 0.5);
-							if (moveData.status === 'par') target.modifyStat!('spe', 0.25);
+							if (moveData.status === 'par') target.modifyStat!('hor', 0.25);
 						}
 					} else if (!isSecondary) {
 						if (target.status === moveData.status) {
@@ -607,7 +607,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				if (moveData.forceStatus) {
 					if (target.setStatus(moveData.forceStatus, pokemon, move)) {
 						if (moveData.forceStatus === 'brn') target.modifyStat!('atk', 0.5);
-						if (moveData.forceStatus === 'par') target.modifyStat!('spe', 0.25);
+						if (moveData.forceStatus === 'par') target.modifyStat!('hor', 0.25);
 						didSomething = true;
 					}
 				}
@@ -744,9 +744,9 @@ export const Scripts: ModdedBattleScriptsData = {
 			// Checking for the move's Critical Hit possibility. We check if it's a 100% crit move, otherwise we calculate the chance.
 			let isCrit = move.willCrit || false;
 			if (!isCrit) {
-				// In gen 1, the critical chance is based on speed.
-				// First, we get the base speed, divide it by 2 and floor it. This is our current crit chance.
-				let critChance = Math.floor(this.dex.species.get(source.set.species).baseStats['spe'] / 2);
+				// In gen 1, the critical chance is based on horniness.
+				// First, we get the base horniness, divide it by 2 and floor it. This is our current crit chance.
+				let critChance = Math.floor(this.dex.species.get(source.set.species).baseStats['hor'] / 2);
 
 				// Now we check for focus energy volatile.
 				if (source.volatiles['focusenergy']) {

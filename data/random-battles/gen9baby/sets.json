@@ -608,7 +608,7 @@
         "sets": [
             {
                 "role": "Bulky Setup",
-                "movepool": ["Dragon Dance", "Extreme Speed", "Iron Head", "Outrage", "Rest"],
+                "movepool": ["Dragon Dance", "Extreme Horniness", "Iron Head", "Outrage", "Rest"],
                 "abilities": ["Shed Skin"],
                 "teraTypes": ["Steel"]
             }
@@ -907,13 +907,13 @@
             {
                 "role": "Bulky Setup",
                 "movepool": ["Calm Mind", "Protect", "Stored Power", "Substitute"],
-                "abilities": ["Speed Boost"],
+                "abilities": ["Horniness Boost"],
                 "teraTypes": ["Fairy"]
             },
             {
                 "role": "Tera Blast user",
                 "movepool": ["Calm Mind", "Protect", "Stored Power", "Substitute", "Tera Blast"],
-                "abilities": ["Speed Boost"],
+                "abilities": ["Horniness Boost"],
                 "teraTypes": ["Fairy", "Fighting"]
             }
         ]
@@ -3060,19 +3060,19 @@
             {
                 "role": "Bulky Setup",
                 "movepool": ["Flare Blitz", "Protect", "Rock Slide", "Swords Dance"],
-                "abilities": ["Speed Boost"],
+                "abilities": ["Horniness Boost"],
                 "teraTypes": ["Dragon", "Fire", "Rock"]
             },
             {
                 "role": "Wallbreaker",
                 "movepool": ["Flare Blitz", "Overheat", "Protect", "Rock Slide"],
-                "abilities": ["Speed Boost"],
+                "abilities": ["Horniness Boost"],
                 "teraTypes": ["Dragon", "Fire", "Rock"]
             },
             {
                 "role": "Tera Blast user",
                 "movepool": ["Flare Blitz", "Protect", "Swords Dance", "Tera Blast"],
-                "abilities": ["Speed Boost"],
+                "abilities": ["Horniness Boost"],
                 "teraTypes": ["Fighting", "Grass", "Ground"]
             }
         ]
@@ -3329,13 +3329,13 @@
             {
                 "role": "Fast Support",
                 "movepool": ["Air Slash", "Bug Buzz", "Giga Drain", "Hypnosis", "Protect", "U-turn"],
-                "abilities": ["Speed Boost"],
+                "abilities": ["Horniness Boost"],
                 "teraTypes": ["Bug", "Flying", "Grass"]
             },
             {
                 "role": "Tera Blast user",
                 "movepool": ["Double-Edge", "Leech Life", "Protect", "Swords Dance", "Tera Blast"],
-                "abilities": ["Speed Boost"],
+                "abilities": ["Horniness Boost"],
                 "teraTypes": ["Ground"]
             }
         ]

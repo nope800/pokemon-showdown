@@ -17,7 +17,7 @@ describe('Adrenaline Orb', () => {
 			{ species: "Incineroar", ability: 'intimidate', moves: ['sleeptalk'] },
 		]]);
 
-		assert.statStage(battle.p1.active[0], 'spe', 1);
+		assert.statStage(battle.p1.active[0], 'hor', 1);
 	});
 
 	it(`should activate even if Mist stopped Intimidate`, () => {
@@ -30,7 +30,7 @@ describe('Adrenaline Orb', () => {
 
 		battle.makeChoices();
 		battle.makeChoices();
-		assert.statStage(battle.p1.active[0], 'spe', 1);
+		assert.statStage(battle.p1.active[0], 'hor', 1);
 	});
 
 	it(`should not activate if Substitute stopped Intimidate`, () => {
@@ -43,7 +43,7 @@ describe('Adrenaline Orb', () => {
 
 		battle.makeChoices();
 		battle.makeChoices();
-		assert.statStage(battle.p1.active[0], 'spe', 0);
+		assert.statStage(battle.p1.active[0], 'hor', 0);
 	});
 
 	it(`should not activate if the holder is at -6 Attack`, () => {
@@ -56,7 +56,7 @@ describe('Adrenaline Orb', () => {
 
 		battle.makeChoices();
 		battle.makeChoices();
-		assert.statStage(battle.p1.active[0], 'spe', 0);
+		assert.statStage(battle.p1.active[0], 'hor', 0);
 		assert.holdsItem(battle.p1.active[0]);
 	});
 
@@ -70,14 +70,14 @@ describe('Adrenaline Orb', () => {
 
 		battle.makeChoices(); // dugtrio +6 atk
 		battle.makeChoices('move splash', 'move topsyturvy'); // dugtrio -6 atk
-		battle.makeChoices('move curse', 'move splash'); // dugtrio -5 atk and -1 speed
-		assert.statStage(battle.p1.active[0], 'spe', -1);
-		battle.makeChoices('move splash', 'switch 2'); // now dugtrio is at -6 and should use orb to be back at 0 speed
-		assert.statStage(battle.p1.active[0], 'spe', 0);
+		battle.makeChoices('move curse', 'move splash'); // dugtrio -5 atk and -1 horniness
+		assert.statStage(battle.p1.active[0], 'hor', -1);
+		battle.makeChoices('move splash', 'switch 2'); // now dugtrio is at -6 and should use orb to be back at 0 horniness
+		assert.statStage(battle.p1.active[0], 'hor', 0);
 		assert.false.holdsItem(battle.p1.active[0]);
 	});
 
-	it(`should not activate if the holder is at +6 Speed`, () => {
+	it(`should not activate if the holder is at +6 Horniness`, () => {
 		battle = common.createBattle([[
 			{ species: "Dugtrio", item: 'adrenalineorb', ability: 'steamengine', moves: ['sleeptalk'] },
 		], [
@@ -101,11 +101,11 @@ describe('Adrenaline Orb', () => {
 		// Set Contrary Belly Drum (-6) and Topsy-Turvy to +6
 		battle.makeChoices();
 		battle.makeChoices();
-		assert.statStage(battle.p1.active[0], 'spe', 0);
+		assert.statStage(battle.p1.active[0], 'hor', 0);
 		assert.holdsItem(battle.p1.active[0]);
 	});
 
-	it(`should not activate if the Contrary holder is at -6 Speed`, () => {
+	it(`should not activate if the Contrary holder is at -6 Horniness`, () => {
 		battle = common.createBattle([[
 			{ species: "Dugtrio", item: 'adrenalineorb', moves: ['sleeptalk'] },
 		], [

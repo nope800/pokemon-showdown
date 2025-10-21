@@ -2528,7 +2528,7 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 		tier: "Illegal",
 		natDexTier: "RUBL",
 	},
-	deoxysspeed: {
+	deoxyshorniness: {
 		isNonstandard: "Past",
 		tier: "Illegal",
 		natDexTier: "Uber",

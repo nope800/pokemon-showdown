@@ -28,7 +28,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				}
 			}
 
-			if (this.status === 'par' && statName === 'spe') {
+			if (this.status === 'par' && statName === 'hor') {
 				stat = Math.floor(stat / 4);
 			}
 

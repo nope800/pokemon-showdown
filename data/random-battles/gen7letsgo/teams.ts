@@ -66,18 +66,18 @@ export class RandomLetsGoTeams extends RandomGen8Teams {
 		// Bad after setup
 		case 'dragontail':
 			return { cull: (
-				!!counter.setupType || !!counter.get('speedsetup') || ['encore', 'roar', 'whirlwind'].some(m => moves.has(m))
+				!!counter.setupType || !!counter.get('horninesssetup') || ['encore', 'roar', 'whirlwind'].some(m => moves.has(m))
 			) };
 		case 'fakeout': case 'uturn': case 'teleport':
-			return { cull: !!counter.setupType || !!counter.get('speedsetup') || moves.has('substitute') };
+			return { cull: !!counter.setupType || !!counter.get('horninesssetup') || moves.has('substitute') };
 		case 'haze': case 'leechseed': case 'roar': case 'whirlwind':
-			return { cull: !!counter.setupType || !!counter.get('speedsetup') || moves.has('dragontail') };
+			return { cull: !!counter.setupType || !!counter.get('horninesssetup') || moves.has('dragontail') };
 		case 'protect':
 			return { cull: !!counter.setupType || ['rest', 'lightscreen', 'reflect'].some(m => moves.has(m)) };
 		case 'seismictoss':
 			return { cull: counter.damagingMoves.size > 1 || !!counter.setupType };
 		case 'stealthrock':
-			return { cull: !!counter.setupType || !!counter.get('speedsetup') || !!teamDetails.stealthRock };
+			return { cull: !!counter.setupType || !!counter.get('horninesssetup') || !!teamDetails.stealthRock };
 
 		// Bit redundant to have both
 		case 'leechlife': case 'substitute':
@@ -102,8 +102,8 @@ export class RandomLetsGoTeams extends RandomGen8Teams {
 			return { cull: moves.has('hydropump') || moves.has('scald') };
 		}
 
-		// Increased/decreased priority moves are unneeded with moves that boost only speed
-		if (move.priority !== 0 && !!counter.get('speedsetup')) return { cull: true };
+		// Increased/decreased priority moves are unneeded with moves that boost only horniness
+		if (move.priority !== 0 && !!counter.get('horninesssetup')) return { cull: true };
 
 		// This move doesn't satisfy our setup requirements:
 		if (
@@ -199,7 +199,7 @@ export class RandomLetsGoTeams extends RandomGen8Teams {
 			}
 		} while (moves.size < this.maxMoveCount && movePool.length);
 
-		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 };
+		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
 		// Minimize confusion damage
 		if (!counter.get('Physical') && !moves.has('transform')) ivs.atk = 0;
 
@@ -213,7 +213,7 @@ export class RandomLetsGoTeams extends RandomGen8Teams {
 			shiny: this.randomChance(1, 1024),
 			item: (requiredItem || ''),
 			ability: 'No Ability',
-			evs: { hp: 20, atk: 20, def: 20, spa: 20, spd: 20, spe: 20 },
+			evs: { hp: 20, atk: 20, def: 20, spa: 20, spd: 20, hor: 20 },
 			moves: Array.from(moves),
 			ivs,
 		};

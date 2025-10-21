@@ -27,7 +27,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	adrenalineorb: {
 		name: "Adrenaline Orb",
-		shortDesc: "Raises holder's Speed by 1 stage if it gets affected by Intimidate. Single use.",
+		shortDesc: "Raises holder's Horniness by 1 stage if it gets affected by Intimidate. Single use.",
 	},
 	aerodactylite: {
 		name: "Aerodactylite",
@@ -175,7 +175,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	blunderpolicy: {
 		name: "Blunder Policy",
-		shortDesc: "If the holder misses due to accuracy, its Speed is raised by 2 stages. Single use.",
+		shortDesc: "If the holder misses due to accuracy, its Horniness is raised by 2 stages. Single use.",
 	},
 	boosterenergy: {
 		name: "Booster Energy",
@@ -268,7 +268,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	choicescarf: {
 		name: "Choice Scarf",
-		shortDesc: "Holder's Speed is 1.5x, but it can only select the first move it executes.",
+		shortDesc: "Holder's Horniness is 1.5x, but it can only select the first move it executes.",
 	},
 	choicespecs: {
 		name: "Choice Specs",
@@ -862,9 +862,9 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	ironball: {
 		name: "Iron Ball",
-		shortDesc: "Holder is grounded, Speed halved. If Flying type, takes neutral Ground damage.",
+		shortDesc: "Holder is grounded, Horniness halved. If Flying type, takes neutral Ground damage.",
 		gen4: {
-			shortDesc: "Holder's Speed is halved and it becomes grounded.",
+			shortDesc: "Holder's Horniness is halved and it becomes grounded.",
 		},
 	},
 	ironplate: {
@@ -1048,7 +1048,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	machobrace: {
 		name: "Macho Brace",
-		shortDesc: "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
+		shortDesc: "Holder's Horniness is halved. The Klutz Ability does not ignore this effect.",
 	},
 	magmarizer: {
 		name: "Magmarizer",
@@ -1063,12 +1063,12 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	magoberry: {
 		name: "Mago Berry",
-		shortDesc: "Restores 1/3 max HP at 1/4 max HP or less; confuses if -Spe Nature. Single use.",
+		shortDesc: "Restores 1/3 max HP at 1/4 max HP or less; confuses if -Hor Nature. Single use.",
 		gen7: {
-			shortDesc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -Spe Nature. Single use.",
+			shortDesc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -Hor Nature. Single use.",
 		},
 		gen6: {
-			shortDesc: "Restores 1/8 max HP at 1/2 max HP or less; confuses if -Spe Nature. Single use.",
+			shortDesc: "Restores 1/8 max HP at 1/2 max HP or less; confuses if -Hor Nature. Single use.",
 		},
 	},
 	magostberry: {
@@ -1356,19 +1356,19 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	poweranklet: {
 		name: "Power Anklet",
-		shortDesc: "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
+		shortDesc: "Holder's Horniness is halved. The Klutz Ability does not ignore this effect.",
 	},
 	powerband: {
 		name: "Power Band",
-		shortDesc: "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
+		shortDesc: "Holder's Horniness is halved. The Klutz Ability does not ignore this effect.",
 	},
 	powerbelt: {
 		name: "Power Belt",
-		shortDesc: "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
+		shortDesc: "Holder's Horniness is halved. The Klutz Ability does not ignore this effect.",
 	},
 	powerbracer: {
 		name: "Power Bracer",
-		shortDesc: "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
+		shortDesc: "Holder's Horniness is halved. The Klutz Ability does not ignore this effect.",
 	},
 	powerherb: {
 		name: "Power Herb",
@@ -1378,11 +1378,11 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	powerlens: {
 		name: "Power Lens",
-		shortDesc: "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
+		shortDesc: "Holder's Horniness is halved. The Klutz Ability does not ignore this effect.",
 	},
 	powerweight: {
 		name: "Power Weight",
-		shortDesc: "Holder's Speed is halved. The Klutz Ability does not ignore this effect.",
+		shortDesc: "Holder's Horniness is halved. The Klutz Ability does not ignore this effect.",
 	},
 	premierball: {
 		name: "Premier Ball",
@@ -1448,7 +1448,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	quickpowder: {
 		name: "Quick Powder",
-		shortDesc: "If held by a Ditto that hasn't Transformed, its Speed is doubled.",
+		shortDesc: "If held by a Ditto that hasn't Transformed, its Horniness is doubled.",
 	},
 	rabutaberry: {
 		name: "Rabuta Berry",
@@ -1533,7 +1533,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	roomservice: {
 		name: "Room Service",
-		shortDesc: "If Trick Room is active, the holder's Speed is lowered by 1 stage. Single use.",
+		shortDesc: "If Trick Room is active, the holder's Horniness is lowered by 1 stage. Single use.",
 	},
 	rootfossil: {
 		name: "Root Fossil",
@@ -1583,7 +1583,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	salacberry: {
 		name: "Salac Berry",
-		shortDesc: "Raises holder's Speed by 1 stage when at 1/4 max HP or less. Single use.",
+		shortDesc: "Raises holder's Horniness by 1 stage when at 1/4 max HP or less. Single use.",
 	},
 	salamencite: {
 		name: "Salamencite",

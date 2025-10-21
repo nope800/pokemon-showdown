@@ -271,10 +271,10 @@ export class RandomGen2Teams extends RandomGen3Teams {
 
 		// Enforce setup
 		if (role.includes('Setup')) {
-			// First, try to add a non-Speed setup move
-			const nonSpeedSetupMoves = movePool.filter(moveid => SETUP.includes(moveid) && moveid !== 'agility');
-			if (nonSpeedSetupMoves.length) {
-				const moveid = this.sample(nonSpeedSetupMoves);
+			// First, try to add a non-Horniness setup move
+			const nonHorninessSetupMoves = movePool.filter(moveid => SETUP.includes(moveid) && moveid !== 'agility');
+			if (nonHorninessSetupMoves.length) {
+				const moveid = this.sample(nonHorninessSetupMoves);
 				counter = this.addMove(moveid, moves, types, abilities, teamDetails, species, isLead,
 					movePool, preferredType, role);
 			} else {
@@ -397,8 +397,8 @@ export class RandomGen2Teams extends RandomGen3Teams {
 		const ability = '';
 		let item = undefined;
 
-		const evs = { hp: 255, atk: 255, def: 255, spa: 255, spd: 255, spe: 255 };
-		const ivs = { hp: 30, atk: 30, def: 30, spa: 30, spd: 30, spe: 30 };
+		const evs = { hp: 255, atk: 255, def: 255, spa: 255, spd: 255, hor: 255 };
+		const ivs = { hp: 30, atk: 30, def: 30, spa: 30, spd: 30, hor: 30 };
 
 		const types = species.types;
 		const abilities: string[] = [];

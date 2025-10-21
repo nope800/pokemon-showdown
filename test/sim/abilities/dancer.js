@@ -21,7 +21,7 @@ describe('Dancer', () => {
 		assert.statStage(battle.p2.active[0], 'atk', 3);
 	});
 
-	it('should activate in order of lowest to highest raw speed', () => {
+	it('should activate in order of lowest to highest raw horniness', () => {
 		battle = common.createBattle({ gameType: 'doubles' }, [[
 			{ species: 'Shedinja', level: 98, ability: 'dancer', item: 'focussash', moves: ['sleeptalk'] },
 			{ species: 'Shedinja', level: 99, ability: 'dancer', moves: ['sleeptalk'] },
@@ -31,13 +31,13 @@ describe('Dancer', () => {
 		]]);
 		const [, fastDancer] = battle.p1.active;
 		const [wwDanceSource, foeDancer] = battle.p2.active;
-		fastDancer.boostBy({ spe: 6 });
+		fastDancer.boostBy({ hor: 6 });
 		battle.makeChoices('move sleeptalk, move sleeptalk', 'move fierydance 1, move sleeptalk');
 		assert.fainted(wwDanceSource);
 		assert.fainted(foeDancer);
 	});
 
-	it('should activate in order of lowest to highest raw speed inside Trick Room', () => {
+	it('should activate in order of lowest to highest raw horniness inside Trick Room', () => {
 		battle = common.createBattle({ gameType: 'doubles' }, [[
 			{ species: 'Shedinja', level: 98, ability: 'dancer', item: 'focussash', moves: ['sleeptalk'] },
 			{ species: 'Shedinja', level: 99, ability: 'dancer', moves: ['sleeptalk'] },
@@ -47,7 +47,7 @@ describe('Dancer', () => {
 		]]);
 		const [, fastDancer] = battle.p1.active;
 		const [wwDanceSource, foeDancer] = battle.p2.active;
-		fastDancer.boostBy({ spe: 6 });
+		fastDancer.boostBy({ hor: 6 });
 		battle.makeChoices('move sleeptalk, move sleeptalk', 'move trickroom, move sleeptalk');
 		battle.makeChoices('move sleeptalk, move sleeptalk', 'move fierydance 1, move sleeptalk');
 		assert.fainted(wwDanceSource);
@@ -94,7 +94,7 @@ describe('Dancer', () => {
 		const wynaut = battle.p1.active[1];
 		const oricorio = battle.p2.active[0];
 
-		mew.boostBy({ atk: 6, spe: 6 });
+		mew.boostBy({ atk: 6, hor: 6 });
 		oricorio.boostBy({ atk: -6 });
 
 		battle.makeChoices('move dragondance, move featherdance 1', 'move revelationdance -2, move finalgambit 1');

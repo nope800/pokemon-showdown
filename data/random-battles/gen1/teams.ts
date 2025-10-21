@@ -38,7 +38,7 @@ export class RandomGen1Teams extends RandomGen2Teams {
 			mbst += (stats["def"] * 2 + 30 + 63 + 100) + 5;
 			mbst += (stats["spa"] * 2 + 30 + 63 + 100) + 5;
 			mbst += (stats["spd"] * 2 + 30 + 63 + 100) + 5;
-			mbst += (stats["spe"] * 2 + 30 + 63 + 100) + 5;
+			mbst += (stats["hor"] * 2 + 30 + 63 + 100) + 5;
 
 			let level;
 			if (this.adjustLevel) {
@@ -53,7 +53,7 @@ export class RandomGen1Teams extends RandomGen2Teams {
 					mbst += Math.floor((stats["def"] * 2 + 30 + 63 + 100) * level / 100 + 5);
 					mbst += Math.floor(((stats["spa"] * 2 + 30 + 63 + 100) * level / 100 + 5) * level / 100);
 					mbst += Math.floor((stats["spd"] * 2 + 30 + 63 + 100) * level / 100 + 5);
-					mbst += Math.floor((stats["spe"] * 2 + 30 + 63 + 100) * level / 100 + 5);
+					mbst += Math.floor((stats["hor"] * 2 + 30 + 63 + 100) * level / 100 + 5);
 
 					if (mbst >= mbstmin) break;
 					level++;
@@ -67,17 +67,17 @@ export class RandomGen1Teams extends RandomGen2Teams {
 				def: this.random(16),
 				spa: this.random(16),
 				spd: 0,
-				spe: this.random(16),
+				hor: this.random(16),
 			};
-			ivs["hp"] = (ivs["atk"] % 2) * 16 + (ivs["def"] % 2) * 8 + (ivs["spe"] % 2) * 4 + (ivs["spa"] % 2) * 2;
+			ivs["hp"] = (ivs["atk"] % 2) * 16 + (ivs["def"] % 2) * 8 + (ivs["hor"] % 2) * 4 + (ivs["spa"] % 2) * 2;
 			ivs["atk"] *= 2;
 			ivs["def"] *= 2;
 			ivs["spa"] *= 2;
 			ivs["spd"] = ivs["spa"];
-			ivs["spe"] *= 2;
+			ivs["hor"] *= 2;
 
 			// Maxed EVs.
-			const evs = { hp: 255, atk: 255, def: 255, spa: 255, spd: 255, spe: 255 };
+			const evs = { hp: 255, atk: 255, def: 255, spa: 255, spd: 255, hor: 255 };
 
 			// Four random unique moves from movepool. don't worry about "attacking" or "viable".
 			// Since Gens 1 and 2 learnsets are shared, we need to weed out Gen 2 moves.
@@ -257,8 +257,8 @@ export class RandomGen1Teams extends RandomGen2Teams {
 
 		const level = this.getLevel(species);
 
-		const evs = { hp: 255, atk: 255, def: 255, spa: 255, spd: 255, spe: 255 };
-		const ivs = { hp: 30, atk: 30, def: 30, spa: 30, spd: 30, spe: 30 };
+		const evs = { hp: 255, atk: 255, def: 255, spa: 255, spd: 255, hor: 255 };
+		const ivs = { hp: 30, atk: 30, def: 30, spa: 30, spd: 30, hor: 30 };
 
 		// Should be able to use Substitute four times from full HP without fainting
 		if (moves.has('substitute')) {
@@ -322,7 +322,7 @@ export class RandomGen1Teams extends RandomGen2Teams {
 						def: Utils.clampIntRange(this.random(256), 1),
 						spa: Utils.clampIntRange(this.random(256), 1),
 						spd: 0,
-						spe: Utils.clampIntRange(this.random(256), 1),
+						hor: Utils.clampIntRange(this.random(256), 1),
 					},
 				};
 				if (this.forceMonotype && !hackmonsCup[species.id].types.includes(this.forceMonotype)) {
@@ -350,7 +350,7 @@ export class RandomGen1Teams extends RandomGen2Teams {
 				def: this.random(256),
 				spa: this.random(256),
 				spd: 0,
-				spe: this.random(256),
+				hor: this.random(256),
 			};
 			evs['spd'] = evs['spa'];
 
@@ -361,9 +361,9 @@ export class RandomGen1Teams extends RandomGen2Teams {
 				def: this.random(16),
 				spa: this.random(16),
 				spd: 0,
-				spe: this.random(16),
+				hor: this.random(16),
 			};
-			ivs["hp"] = (ivs["atk"] % 2) * 16 + (ivs["def"] % 2) * 8 + (ivs["spe"] % 2) * 4 + (ivs["spa"] % 2) * 2;
+			ivs["hp"] = (ivs["atk"] % 2) * 16 + (ivs["def"] % 2) * 8 + (ivs["hor"] % 2) * 4 + (ivs["spa"] % 2) * 2;
 			for (const iv in ivs) {
 				if (iv === 'hp' || iv === 'spd') continue;
 				ivs[iv as keyof StatsTable] *= 2;

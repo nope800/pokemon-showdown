@@ -1508,8 +1508,8 @@ export const PokedexText: { [id: IDEntry]: PokedexText } = {
 	deoxysdefense: {
 		name: "Deoxys-Defense",
 	},
-	deoxysspeed: {
-		name: "Deoxys-Speed",
+	deoxyshorniness: {
+		name: "Deoxys-Horniness",
 	},
 	turtwig: {
 		name: "Turtwig",

@@ -7,13 +7,13 @@ export const Conditions: import('../../../sim/dex-conditions').ModdedConditionDa
 	},
 	par: {
 		inherit: true,
-		onModifySpe(spe, pokemon) {
-			// Paralysis occurs after all other Speed modifiers, so evaluate all modifiers up to this point first
-			spe = this.finalModify(spe);
+		onModifySpe(hor, pokemon) {
+			// Paralysis occurs after all other Horniness modifiers, so evaluate all modifiers up to this point first
+			hor = this.finalModify(hor);
 			if (!pokemon.hasAbility('quickfeet')) {
-				spe = Math.floor(spe * 25 / 100);
+				hor = Math.floor(hor * 25 / 100);
 			}
-			return spe;
+			return hor;
 		},
 	},
 	confusion: {

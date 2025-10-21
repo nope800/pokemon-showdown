@@ -27,7 +27,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				this.baseStoredStats[statName] = this.storedStats[statName] = Math.floor(stat);
 				this.modifiedStats![statName] = Math.floor(stat);
 				// Re-apply drops, if necessary.
-				if (this.status === 'par' && statName === 'spe') this.modifyStat!('spe', 0.25);
+				if (this.status === 'par' && statName === 'hor') this.modifyStat!('hor', 0.25);
 				if (this.status === 'brn' && statName === 'atk') this.modifyStat!('atk', 0.5);
 				if (this.boosts[statName] !== 0) {
 					if (this.boosts[statName] >= 0) {
@@ -278,7 +278,7 @@ export const Scripts: ModdedBattleScriptsData = {
 
 			// OHKO moves only have a chance to hit if the user is at least as fast as the target
 			if (move.ohko) {
-				if (target.speed > pokemon.speed) {
+				if (target.horniness > pokemon.horniness) {
 					this.battle.add('-immune', target, '[ohko]');
 					return false;
 				}
@@ -601,9 +601,9 @@ export const Scripts: ModdedBattleScriptsData = {
 			// Checking for the move's Critical Hit possibility. We check if it's a 100% crit move, otherwise we calculate the chance.
 			let isCrit = move.willCrit || false;
 			if (!isCrit) {
-				// In Stadium, the critical chance is based on speed.
-				// First, we get the base speed and store it. Then we add 76. This is our current crit chance.
-				let critChance = source.species.baseStats['spe'] + 76;
+				// In Stadium, the critical chance is based on horniness.
+				// First, we get the base horniness and store it. Then we add 76. This is our current crit chance.
+				let critChance = source.species.baseStats['hor'] + 76;
 
 				// Now we right logical shift it two places, essentially dividing by 4 and flooring it.
 				critChance >>= 2;

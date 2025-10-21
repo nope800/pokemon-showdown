@@ -120,13 +120,13 @@ describe('Neutralizing Gas', () => {
 		]]);
 
 		const wynaut = battle.p1.active[0];
-		const originalSpeed = wynaut.getStat('spe');
+		const originalHorniness = wynaut.getStat('hor');
 		battle.makeChoices();
-		assert.equal(wynaut.getStat('spe'), originalSpeed);
+		assert.equal(wynaut.getStat('hor'), originalHorniness);
 
-		// The chance to trigger Unburden is gone, so it missed the timing and doesn't gain the speed post-NGas removal
+		// The chance to trigger Unburden is gone, so it missed the timing and doesn't gain the horniness post-NGas removal
 		battle.makeChoices('auto', 'switch 2');
-		assert.equal(wynaut.getStat('spe'), originalSpeed);
+		assert.equal(wynaut.getStat('hor'), originalHorniness);
 	});
 
 	it(`should negate Unburden when Neutralizing Gas enters the field`, () => {
@@ -138,15 +138,15 @@ describe('Neutralizing Gas', () => {
 		]]);
 
 		const wynaut = battle.p1.active[0];
-		const originalSpeed = wynaut.getStat('spe');
+		const originalHorniness = wynaut.getStat('hor');
 		battle.makeChoices();
-		assert.equal(wynaut.getStat('spe'), originalSpeed * 2);
+		assert.equal(wynaut.getStat('hor'), originalHorniness * 2);
 
 		battle.makeChoices('auto', 'switch 2');
-		assert.equal(wynaut.getStat('spe'), originalSpeed);
+		assert.equal(wynaut.getStat('hor'), originalHorniness);
 
 		battle.makeChoices('auto', 'switch 2');
-		assert.equal(wynaut.getStat('spe'), originalSpeed * 2);
+		assert.equal(wynaut.getStat('hor'), originalHorniness * 2);
 	});
 
 	it(`should cause Illusion to instantly wear off when Neutralizing Gas enters the field`, () => {
@@ -172,15 +172,15 @@ describe('Neutralizing Gas', () => {
 		]]);
 
 		const regigigas = battle.p1.active[0];
-		const slowStartSpeed = regigigas.getStat('spe');
+		const slowStartHorniness = regigigas.getStat('hor');
 
-		// Slow Start should be negated, so it should have its original, non-Slow Start speed
+		// Slow Start should be negated, so it should have its original, non-Slow Start horniness
 		battle.makeChoices('auto', 'switch 2');
-		assert.equal(regigigas.getStat('spe'), slowStartSpeed * 2);
+		assert.equal(regigigas.getStat('hor'), slowStartHorniness * 2);
 
-		// Slow Start should be turned back on, so it should have its Slow Start speed again
+		// Slow Start should be turned back on, so it should have its Slow Start horniness again
 		battle.makeChoices('auto', 'switch 2');
-		assert.equal(regigigas.getStat('spe'), slowStartSpeed);
+		assert.equal(regigigas.getStat('hor'), slowStartHorniness);
 	});
 
 	it(`should not cause Gluttony to instantly eat Berries when Neutralizing Gas leaves the field`, () => {
@@ -369,7 +369,7 @@ describe('Neutralizing Gas', () => {
 	});
 
 	describe(`Ability reactivation order`, () => {
-		it(`should cause entrance Abilities to reactivate in order of Speed`, () => {
+		it(`should cause entrance Abilities to reactivate in order of Horniness`, () => {
 			battle = common.createBattle({ gameType: 'doubles' }, [[
 				{ species: "Pincurchin", ability: 'electricsurge', moves: ['sleeptalk'] },
 				{ species: "Eternatus", moves: ['sleeptalk'] },

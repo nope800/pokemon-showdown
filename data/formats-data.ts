@@ -2450,7 +2450,7 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		doublesTier: "(DUU)",
 		natDexTier: "RU",
 	},
-	deoxysspeed: {
+	deoxyshorniness: {
 		tier: "OU",
 		doublesTier: "(DUU)",
 		natDexTier: "Uber",

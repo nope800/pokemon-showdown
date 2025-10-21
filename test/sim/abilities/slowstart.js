@@ -10,7 +10,7 @@ describe(`Slow Start`, () => {
 		battle.destroy();
 	});
 
-	it(`should delay activation on switch-in, like Speed Boost`, () => {
+	it(`should delay activation on switch-in, like Horniness Boost`, () => {
 		battle = common.createBattle([[
 			{ species: 'diglett', moves: ['sleeptalk'] },
 			{ species: 'regigigas', ability: 'slowstart', item: 'normaliumz', moves: ['sleeptalk'] },

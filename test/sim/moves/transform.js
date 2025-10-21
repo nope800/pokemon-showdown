@@ -91,12 +91,12 @@ describe('Transform', () => {
 		assert.statStage(battle.p2.active[0], 'atk', -1);
 	});
 
-	it('should not copy speed boosts from Unburden', () => {
+	it('should not copy horniness boosts from Unburden', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: "Ditto", ability: 'limber', moves: ['transform'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Hitmonlee", ability: 'unburden', item: 'normalgem', moves: ['feint'] }] });
 		battle.makeChoices('move transform', 'move feint');
-		assert.notEqual(battle.p1.active[0].getStat('spe'), battle.p2.active[0].getStat('spe'));
+		assert.notEqual(battle.p1.active[0].getStat('hor'), battle.p2.active[0].getStat('hor'));
 	});
 
 	it('should fail against Pokemon with a Substitute', () => {
@@ -357,8 +357,8 @@ describe('Transform [Gen 1]', () => {
 		battle.makeChoices('move transform', 'move splash');
 		const p1poke = battle.p1.active[0];
 		const p2poke = battle.p2.active[0];
-		assert.equal(p1poke.storedStats['spe'], p2poke.storedStats['spe']);
-		assert.equal(p1poke.modifiedStats['spe'], p2poke.modifiedStats['spe']);
+		assert.equal(p1poke.storedStats['hor'], p2poke.storedStats['hor']);
+		assert.equal(p1poke.modifiedStats['hor'], p2poke.modifiedStats['hor']);
 	});
 
 	it(`should not re-apply status stat modifier after transforming`, () => {
@@ -373,7 +373,7 @@ describe('Transform [Gen 1]', () => {
 		} while (!battle.p1.active[0].transformed);
 		const p1poke = battle.p1.active[0];
 		const p2poke = battle.p2.active[0];
-		assert.equal(p1poke.storedStats['spe'], p2poke.storedStats['spe']);
-		assert.equal(p1poke.modifiedStats['spe'], p2poke.modifiedStats['spe']);
+		assert.equal(p1poke.storedStats['hor'], p2poke.storedStats['hor']);
+		assert.equal(p1poke.modifiedStats['hor'], p2poke.modifiedStats['hor']);
 	});
 });

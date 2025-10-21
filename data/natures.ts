@@ -15,7 +15,7 @@ export const Natures: import('../sim/dex-data').NatureDataTable = {
 	brave: {
 		name: "Brave",
 		plus: 'atk',
-		minus: 'spe',
+		minus: 'hor',
 	},
 	calm: {
 		name: "Calm",
@@ -40,7 +40,7 @@ export const Natures: import('../sim/dex-data').NatureDataTable = {
 	},
 	hasty: {
 		name: "Hasty",
-		plus: 'spe',
+		plus: 'hor',
 		minus: 'def',
 	},
 	impish: {
@@ -50,7 +50,7 @@ export const Natures: import('../sim/dex-data').NatureDataTable = {
 	},
 	jolly: {
 		name: "Jolly",
-		plus: 'spe',
+		plus: 'hor',
 		minus: 'spa',
 	},
 	lax: {
@@ -75,7 +75,7 @@ export const Natures: import('../sim/dex-data').NatureDataTable = {
 	},
 	naive: {
 		name: "Naive",
-		plus: 'spe',
+		plus: 'hor',
 		minus: 'spd',
 	},
 	naughty: {
@@ -86,7 +86,7 @@ export const Natures: import('../sim/dex-data').NatureDataTable = {
 	quiet: {
 		name: "Quiet",
 		plus: 'spa',
-		minus: 'spe',
+		minus: 'hor',
 	},
 	quirky: {
 		name: "Quirky",
@@ -99,19 +99,19 @@ export const Natures: import('../sim/dex-data').NatureDataTable = {
 	relaxed: {
 		name: "Relaxed",
 		plus: 'def',
-		minus: 'spe',
+		minus: 'hor',
 	},
 	sassy: {
 		name: "Sassy",
 		plus: 'spd',
-		minus: 'spe',
+		minus: 'hor',
 	},
 	serious: {
 		name: "Serious",
 	},
 	timid: {
 		name: "Timid",
-		plus: 'spe',
+		plus: 'hor',
 		minus: 'atk',
 	},
 };

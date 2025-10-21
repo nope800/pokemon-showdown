@@ -72,7 +72,7 @@
         "moves": ["closecombat", "earthquake", "poisonjab", "stoneedge", "uturn"]
     },
     "arcanine": {
-        "moves": ["closecombat", "extremespeed", "flareblitz", "morningsun", "willowisp"]
+        "moves": ["closecombat", "extremehorniness", "flareblitz", "morningsun", "willowisp"]
     },
     "poliwrath": {
         "moves": ["bulkup", "drainpunch", "poisonjab", "raindance", "waterfall"]
@@ -204,7 +204,7 @@
         "moves": ["fireblast", "hurricane", "roost", "uturn", "willowisp"]
     },
     "dragonite": {
-        "moves": ["dragondance", "earthquake", "extremespeed", "outrage", "roost"]
+        "moves": ["dragondance", "earthquake", "extremehorniness", "outrage", "roost"]
     },
     "mewtwo": {
         "moves": ["aurasphere", "fireblast", "nastyplot", "psystrike", "recover", "shadowball"]
@@ -357,7 +357,7 @@
         "moves": ["calmmind", "scald", "substitute", "thunderbolt", "voltswitch"]
     },
     "entei": {
-        "moves": ["bulldoze", "extremespeed", "sacredfire", "stoneedge"]
+        "moves": ["bulldoze", "extremehorniness", "sacredfire", "stoneedge"]
     },
     "suicune": {
         "moves": ["calmmind", "rest", "scald", "sleeptalk"]
@@ -387,7 +387,7 @@
         "moves": ["crunch", "firefang", "irontail", "playrough", "suckerpunch"]
     },
     "linoone": {
-        "moves": ["bellydrum", "extremespeed", "irontail", "shadowclaw"]
+        "moves": ["bellydrum", "extremehorniness", "irontail", "shadowclaw"]
     },
     "beautifly": {
         "moves": ["aircutter", "bugbuzz", "energyball", "quiverdance", "roost"]
@@ -588,21 +588,21 @@
         "moves": ["precipiceblades", "rockpolish", "stoneedge", "swordsdance"]
     },
     "rayquaza": {
-        "moves": ["dragonascent", "dragondance", "earthquake", "extremespeed", "outrage"]
+        "moves": ["dragonascent", "dragondance", "earthquake", "extremehorniness", "outrage"]
     },
     "jirachi": {
         "moves": ["calmmind", "dazzlinggleam", "flashcannon", "psychic", "shadowball", "thunderbolt", "uturn"]
     },
     "deoxys": {
-        "moves": ["superpower", "icebeam", "knockoff", "psychoboost", "stealthrock", "toxicspikes", "extremespeed"]
+        "moves": ["superpower", "icebeam", "knockoff", "psychoboost", "stealthrock", "toxicspikes", "extremehorniness"]
     },
     "deoxysattack": {
-        "moves": ["extremespeed", "icebeam", "knockoff", "psychoboost", "superpower"]
+        "moves": ["extremehorniness", "icebeam", "knockoff", "psychoboost", "superpower"]
     },
     "deoxysdefense": {
         "moves": ["knockoff", "nightshade", "recover", "stealthrock", "taunt", "teleport", "toxicspikes"]
     },
-    "deoxysspeed": {
+    "deoxyshorniness": {
         "moves": ["knockoff", "psychic", "stealthrock", "taunt", "toxicspikes"]
     },
     "torterra": {
@@ -696,7 +696,7 @@
         "moves": ["earthquake", "fireblast", "outrage", "stealthrock", "stoneedge", "swordsdance"]
     },
     "lucario": {
-        "moves": ["closecombat", "extremespeed", "meteormash", "stoneedge", "swordsdance"]
+        "moves": ["closecombat", "extremehorniness", "meteormash", "stoneedge", "swordsdance"]
     },
     "hippowdon": {
         "moves": ["earthquake", "slackoff", "stealthrock", "stoneedge", "whirlwind"]
@@ -834,7 +834,7 @@
         "moves": ["airslash", "leechseed", "seedflare", "substitute", "synthesis"]
     },
     "arceusbug": {
-        "moves": ["earthquake", "extremespeed", "recover", "stoneedge", "swordsdance", "xscissor"]
+        "moves": ["earthquake", "extremehorniness", "recover", "stoneedge", "swordsdance", "xscissor"]
     },
     "arceusdark": {
         "moves": ["calmmind", "fireblast", "judgment", "recover", "sludgebomb"]
@@ -864,7 +864,7 @@
         "moves": ["calmmind", "fireblast", "icebeam", "judgment", "recover"]
     },
     "arceusground": {
-        "moves": ["earthquake", "extremespeed", "recover", "stoneedge", "swordsdance"]
+        "moves": ["earthquake", "extremehorniness", "recover", "stoneedge", "swordsdance"]
     },
     "arceusice": {
         "moves": ["calmmind", "fireblast", "judgment", "recover", "thunderbolt"]
@@ -876,7 +876,7 @@
         "moves": ["calmmind", "fireblast", "icebeam", "judgment", "recover"]
     },
     "arceusrock": {
-        "moves": ["earthquake", "extremespeed", "recover", "stoneedge", "swordsdance"]
+        "moves": ["earthquake", "extremehorniness", "recover", "stoneedge", "swordsdance"]
     },
     "arceussteel": {
         "moves": ["defog", "judgment", "recover", "roar", "stealthrock", "earthpower", "willowisp"]
@@ -885,6 +885,6 @@
         "moves": ["defog", "icebeam", "judgment", "recover", "roar"]
     },
     "arceus": {
-        "moves": ["earthquake", "extremespeed", "recover", "shadowclaw", "swordsdance"]
+        "moves": ["earthquake", "extremehorniness", "recover", "shadowclaw", "swordsdance"]
     }
 }

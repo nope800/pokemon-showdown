@@ -82,7 +82,7 @@ describe('Primordial Sea', () => {
 		battle.makeChoices('move sonicboom', 'move weatherball');
 		assert.species(myActive[0], 'Castform-Rainy');
 		battle.makeChoices('move sonicboom', 'switch 2');
-		assert.equal(myActive[0].getStat('spe'), 2 * myActive[0].storedStats['spe'], "Kingdra's Speed should be doubled by Swift Swim");
+		assert.equal(myActive[0].getStat('hor'), 2 * myActive[0].storedStats['hor'], "Kingdra's Horniness should be doubled by Swift Swim");
 		battle.makeChoices('move sonicboom', 'switch 3');
 		assert.notEqual(myActive[0].maxhp - myActive[0].hp, 20);
 		battle.makeChoices('move sonicboom', 'switch 4');

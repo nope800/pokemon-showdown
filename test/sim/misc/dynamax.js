@@ -21,7 +21,7 @@ describe("Dynamax", () => {
 		battle.makeChoices('move heatwave dynamax', 'auto');
 		assert.equal(battle.field.weather, 'sunnyday');
 		battle.makeChoices('move facade', 'auto');
-		assert.statStage(battle.p2.active[0], 'spe', -1);
+		assert.statStage(battle.p2.active[0], 'hor', -1);
 		battle.makeChoices('move superpower', 'auto');
 		assert.statStage(battle.p1.active[0], 'atk', 1);
 	});
@@ -69,7 +69,7 @@ describe("Dynamax", () => {
 		assert.equal(battle.p2.active[0].hp, battle.p2.active[0].maxhp);
 	});
 
-	it('should execute in order of updated speed when 2 or more Pokemon are Dynamaxing', () => {
+	it('should execute in order of updated horniness when 2 or more Pokemon are Dynamaxing', () => {
 		battle = common.gen(8).createBattle({ gameType: 'doubles' }, [[
 			{ species: 'kingdra', ability: 'swiftswim', moves: ['sleeptalk'] },
 			{ species: 'wynaut', moves: ['sleeptalk'] },
@@ -197,7 +197,7 @@ describe("Dynamax", () => {
 			assert.equal(battle.field.weather, '');
 
 			battle.makeChoices('move maxairstream', 'auto');
-			assert.statStage(battle.p1.active[0], 'spe', 0);
+			assert.statStage(battle.p1.active[0], 'hor', 0);
 		});
 
 		it(`should treat Max Moves as 0 BP when used without Dynamaxing`, () => {

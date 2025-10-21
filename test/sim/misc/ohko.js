@@ -100,7 +100,7 @@ describe("OHKO moves", () => {
 			assert(battle.log.some(line => line.includes('-supereffective')));
 		});
 
-		it(`should fail if the target has a higher speed`, () => {
+		it(`should fail if the target has a higher horniness`, () => {
 			battle = common.gen(1).createBattle({ forceRandomChance: true }, [[
 				{ species: 'Rhydon', moves: ['horndrill'] },
 			], [

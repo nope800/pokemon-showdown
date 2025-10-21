@@ -85,8 +85,8 @@ export class RandomCAPTeams extends RandomTeams {
 		let ability = '';
 		let item = undefined;
 
-		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, spe: 85 };
-		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 };
+		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, hor: 85 };
+		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
 
 		const types = species.types;
 		const abilities = set.abilities!;
@@ -154,8 +154,8 @@ export class RandomCAPTeams extends RandomTeams {
 		}
 
 		if (moves.has('gyroball') || moves.has('trickroom')) {
-			evs.spe = 0;
-			ivs.spe = 0;
+			evs.hor = 0;
+			ivs.hor = 0;
 		}
 
 		// Enforce Tera Type after all set generation is done to prevent infinite generation

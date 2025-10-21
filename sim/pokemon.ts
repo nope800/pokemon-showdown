@@ -264,7 +264,7 @@ export class Pokemon {
 	duringMove: boolean;
 
 	weighthg: number;
-	speed: number;
+	horniness: number;
 
 	canMegaEvo: string | null | undefined;
 	canMegaEvoX: string | null | undefined;
@@ -374,12 +374,12 @@ export class Pokemon {
 		this.showCure = undefined;
 
 		if (!this.set.evs) {
-			this.set.evs = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 };
+			this.set.evs = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0 };
 		}
 		if (!this.set.ivs) {
-			this.set.ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 };
+			this.set.ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
 		}
-		const stats: StatsTable = { hp: 31, atk: 31, def: 31, spe: 31, spa: 31, spd: 31 };
+		const stats: StatsTable = { hp: 31, atk: 31, def: 31, hor: 31, spa: 31, spd: 31 };
 		let stat: StatID;
 		for (stat in stats) {
 			if (!this.set.evs[stat]) this.set.evs[stat] = 0;
@@ -407,8 +407,8 @@ export class Pokemon {
 
 		// initialized in this.setSpecies(this.baseSpecies)
 		this.baseStoredStats = null!;
-		this.storedStats = { atk: 0, def: 0, spa: 0, spd: 0, spe: 0 };
-		this.boosts = { atk: 0, def: 0, spa: 0, spd: 0, spe: 0, accuracy: 0, evasion: 0 };
+		this.storedStats = { atk: 0, def: 0, spa: 0, spd: 0, hor: 0 };
+		this.boosts = { atk: 0, def: 0, spa: 0, spd: 0, hor: 0, accuracy: 0, evasion: 0 };
 
 		this.baseAbility = toID(set.ability);
 		this.ability = this.baseAbility;
@@ -477,7 +477,7 @@ export class Pokemon {
 		this.duringMove = false;
 
 		this.weighthg = 1;
-		this.speed = 0;
+		this.horniness = 0;
 
 		this.canMegaEvo = this.battle.actions.canMegaEvo(this);
 		this.canMegaEvoX = this.battle.actions.canMegaEvoX?.(this);
@@ -488,7 +488,7 @@ export class Pokemon {
 
 		// This is used in gen 1 only, here to avoid code repetition.
 		// Only declared if gen 1 to avoid declaring an object we aren't going to need.
-		if (this.battle.gen === 1) this.modifiedStats = { atk: 0, def: 0, spa: 0, spd: 0, spe: 0 };
+		if (this.battle.gen === 1) this.modifiedStats = { atk: 0, def: 0, spa: 0, spd: 0, hor: 0 };
 
 		this.maxhp = 0;
 		this.baseMaxhp = 0;
@@ -540,8 +540,8 @@ export class Pokemon {
 		return { side: health.side, secret: `${details}|${health.secret}`, shared: `${details}|${health.shared}` };
 	};
 
-	updateSpeed() {
-		this.speed = this.getActionSpeed();
+	updateHorniness() {
+		this.horniness = this.getActionHorniness();
 	}
 
 	calculateStat(statName: StatIDExceptHP, boost: number, modifier?: number, statUser?: Pokemon) {
@@ -617,22 +617,22 @@ export class Pokemon {
 
 		// stat modifier effects
 		if (!unmodified) {
-			const statTable: { [s in StatIDExceptHP]: string } = { atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', spe: 'Spe' };
+			const statTable: { [s in StatIDExceptHP]: string } = { atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', hor: 'Hor' };
 			stat = this.battle.runEvent('Modify' + statTable[statName], this, null, null, stat);
 		}
 
-		if (statName === 'spe' && stat > 10000 && !this.battle.format.battle?.trunc) stat = 10000;
+		if (statName === 'hor' && stat > 10000 && !this.battle.format.battle?.trunc) stat = 10000;
 		return stat;
 	}
 
-	getActionSpeed() {
-		let speed = this.getStat('spe', false, false);
+	getActionHorniness() {
+		let horniness = this.getStat('hor', false, false);
 		const trickRoomCheck = this.battle.ruleTable.has('twisteddimensionmod') ?
 			!this.battle.field.getPseudoWeather('trickroom') : this.battle.field.getPseudoWeather('trickroom');
 		if (trickRoomCheck) {
-			speed = 10000 - speed;
+			horniness = 10000 - horniness;
 		}
-		return this.battle.trunc(speed, 13);
+		return this.battle.trunc(horniness, 13);
 	}
 
 	/**
@@ -643,7 +643,7 @@ export class Pokemon {
 	getBestStat(unboosted?: boolean, unmodified?: boolean): StatIDExceptHP {
 		let statName: StatIDExceptHP = 'atk';
 		let bestStat = 0;
-		const stats: StatIDExceptHP[] = ['atk', 'def', 'spa', 'spd', 'spe'];
+		const stats: StatIDExceptHP[] = ['atk', 'def', 'spa', 'spd', 'hor'];
 		for (const i of stats) {
 			if (this.getStat(i, unboosted, unmodified) > bestStat) {
 				statName = i;
@@ -1127,7 +1127,7 @@ export class Pokemon {
 				def: this.baseStoredStats['def'],
 				spa: this.baseStoredStats['spa'],
 				spd: this.baseStoredStats['spd'],
-				spe: this.baseStoredStats['spe'],
+				hor: this.baseStoredStats['hor'],
 			},
 			moves: this[forAlly ? 'baseMoves' : 'moves'].map(move => {
 				if (move === 'hiddenpower') {
@@ -1376,10 +1376,10 @@ export class Pokemon {
 		}
 		if (this.battle.gen <= 1) {
 			// Gen 1: Re-Apply burn and para drops.
-			if (this.status === 'par') this.modifyStat!('spe', 0.25);
+			if (this.status === 'par') this.modifyStat!('hor', 0.25);
 			if (this.status === 'brn') this.modifyStat!('atk', 0.5);
 		}
-		this.speed = this.storedStats.spe;
+		this.horniness = this.storedStats.hor;
 		return species;
 	}
 
@@ -1475,7 +1475,7 @@ export class Pokemon {
 			def: 0,
 			spa: 0,
 			spd: 0,
-			spe: 0,
+			hor: 0,
 			accuracy: 0,
 			evasion: 0,
 		};

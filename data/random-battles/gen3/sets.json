@@ -351,7 +351,7 @@
             },
             {
                 "role": "Wallbreaker",
-                "movepool": ["doubleedge", "extremespeed", "fireblast", "hiddenpowerrock", "irontail"],
+                "movepool": ["doubleedge", "extremehorniness", "fireblast", "hiddenpowerrock", "irontail"],
                 "abilities": ["Intimidate"],
                 "preferredTypes": ["Steel"]
             },
@@ -1403,12 +1403,12 @@
             {
                 "role": "Berry Sweeper",
                 "movepool": ["hiddenpowerflying", "hypnosis", "reversal", "shadowball", "substitute"],
-                "abilities": ["Compound Eyes", "Speed Boost"]
+                "abilities": ["Compound Eyes", "Horniness Boost"]
             },
             {
                 "role": "Fast Attacker",
                 "movepool": ["aerialace", "doubleedge", "hiddenpowerground", "hypnosis", "signalbeam", "toxic"],
-                "abilities": ["Compound Eyes", "Speed Boost"],
+                "abilities": ["Compound Eyes", "Horniness Boost"],
                 "preferredTypes": ["Ground"]
             }
         ]
@@ -2118,7 +2118,7 @@
         "sets": [
             {
                 "role": "Setup Sweeper",
-                "movepool": ["bellydrum", "extremespeed", "hiddenpowerground", "shadowball"],
+                "movepool": ["bellydrum", "extremehorniness", "hiddenpowerground", "shadowball"],
                 "abilities": ["Pickup"]
             },
             {
@@ -2266,12 +2266,12 @@
             {
                 "role": "Setup Sweeper",
                 "movepool": ["batonpass", "hiddenpowerflying", "substitute", "swordsdance"],
-                "abilities": ["Speed Boost"]
+                "abilities": ["Horniness Boost"]
             },
             {
                 "role": "Bulky Setup",
                 "movepool": ["batonpass", "hiddenpowerflying", "protect", "swordsdance"],
-                "abilities": ["Speed Boost"]
+                "abilities": ["Horniness Boost"]
             }
         ]
     },
@@ -3070,7 +3070,7 @@
             },
             {
                 "role": "Wallbreaker",
-                "movepool": ["earthquake", "extremespeed", "hiddenpowerflying", "overheat", "rockslide"],
+                "movepool": ["earthquake", "extremehorniness", "hiddenpowerflying", "overheat", "rockslide"],
                 "abilities": ["Air Lock"],
                 "preferredTypes": ["Ground", "Normal"]
             }
@@ -3097,7 +3097,7 @@
         "sets": [
             {
                 "role": "Fast Attacker",
-                "movepool": ["extremespeed", "firepunch", "icebeam", "psychoboost", "shadowball", "superpower"],
+                "movepool": ["extremehorniness", "firepunch", "icebeam", "psychoboost", "shadowball", "superpower"],
                 "abilities": ["Pressure"],
                 "preferredTypes": ["Fighting", "Ghost"]
             }
@@ -3108,7 +3108,7 @@
         "sets": [
             {
                 "role": "Fast Attacker",
-                "movepool": ["extremespeed", "firepunch", "icebeam", "psychoboost", "shadowball", "superpower"],
+                "movepool": ["extremehorniness", "firepunch", "icebeam", "psychoboost", "shadowball", "superpower"],
                 "abilities": ["Pressure"],
                 "preferredTypes": ["Fighting", "Ghost"]
             }
@@ -3124,7 +3124,7 @@
             }
         ]
     },
-    "deoxysspeed": {
+    "deoxyshorniness": {
         "level": 76,
         "sets": [
             {

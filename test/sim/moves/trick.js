@@ -69,13 +69,13 @@ describe('Trick', () => {
 describe('Z-Trick', () => {
 	afterEach(() => battle.destroy());
 
-	it("boost the user's Speed by 2 stages, but should fail to exchange the items", () => {
+	it("boost the user's Horniness by 2 stages, but should fail to exchange the items", () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: "Mew", ability: 'synchronize', item: 'psychiumz', moves: ['trick'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Rattata", ability: 'guts', item: 'leftovers', moves: ['quickattack'] }] });
 		const [user, nonTarget] = [battle.p1.active[0], battle.p2.active[0]];
 		battle.makeChoices('move trick zmove', 'move quickattack');
-		assert.statStage(user, 'spe', 2);
+		assert.statStage(user, 'hor', 2);
 		assert.equal(user.item, 'psychiumz');
 		assert.equal(nonTarget.item, 'leftovers');
 	});

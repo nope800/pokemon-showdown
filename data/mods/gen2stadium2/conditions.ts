@@ -28,7 +28,7 @@ export const Conditions: import('../../../sim/dex-conditions').ModdedConditionDa
 		effectType: 'Status',
 		onStart(target) {
 			this.add('-status', target, 'par');
-			target.addVolatile('parspeeddrop');
+			target.addVolatile('parhorninessdrop');
 		},
 		onBeforeMovePriority: 2,
 		onBeforeMove(pokemon) {
@@ -38,7 +38,7 @@ export const Conditions: import('../../../sim/dex-conditions').ModdedConditionDa
 			}
 		},
 		onSwitchIn(pokemon) {
-			pokemon.addVolatile('parspeeddrop');
+			pokemon.addVolatile('parhorninessdrop');
 		},
 	},
 	slp: {

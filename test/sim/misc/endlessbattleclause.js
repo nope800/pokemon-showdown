@@ -46,7 +46,7 @@ describe('Endless Battle Clause (slow)', () => {
 	it('should only cause the battle to end if either side cannot switch to a non-stale Pokemon and at least one staleness is externally inflicted', () => {
 		battle = common.createBattle({ endlessBattleClause: true });
 		battle.setPlayer('p1', { team: [
-			{ species: "Blissey", level: 1, item: 'leppaberry', moves: ['recycle', 'extremespeed', 'floralhealing', 'block'] },
+			{ species: "Blissey", level: 1, item: 'leppaberry', moves: ['recycle', 'extremehorniness', 'floralhealing', 'block'] },
 			{ species: "Magikarp", moves: ['splash'] },
 		] });
 		battle.setPlayer('p2', { team: [
@@ -55,14 +55,14 @@ describe('Endless Battle Clause (slow)', () => {
 		] });
 		skipTurns(battle, 100);
 		for (let i = 0; i < 8; i++) {
-			battle.makeChoices('move extremespeed', 'move splash');
+			battle.makeChoices('move extremehorniness', 'move splash');
 		}
 		// Blissey consumes a Leppa Berry that wasn't cycled = no staleness.
 		assert.false(battle.ended);
 		battle.makeChoices('move recycle', 'move splash');
 		assert.false(battle.ended);
 		for (let i = 0; i < 8; i++) {
-			battle.makeChoices('move extremespeed', 'move splash');
+			battle.makeChoices('move extremehorniness', 'move splash');
 		}
 		// Blissey consumes a Leppa Berry which was cycled = internal staleness.
 		assert.false(battle.ended);
@@ -79,7 +79,7 @@ describe('Endless Battle Clause (slow)', () => {
 	it('Fling should cause externally inflicted staleness', () => {
 		battle = common.createBattle({ endlessBattleClause: true });
 		battle.setPlayer('p1', { team: [
-			{ species: "Blissey", level: 1, item: 'leppaberry', moves: ['recycle', 'extremespeed', 'fling', 'block'] },
+			{ species: "Blissey", level: 1, item: 'leppaberry', moves: ['recycle', 'extremehorniness', 'fling', 'block'] },
 			{ species: "Magikarp", moves: ['splash'] },
 		] });
 		battle.setPlayer('p2', { team: [
@@ -93,7 +93,7 @@ describe('Endless Battle Clause (slow)', () => {
 
 		battle.makeChoices('move recycle', 'move splash');
 		for (let i = 0; i < 8; i++) {
-			battle.makeChoices('move extremespeed', 'move splash');
+			battle.makeChoices('move extremehorniness', 'move splash');
 		}
 		assert.false(battle.ended);
 
@@ -106,7 +106,7 @@ describe('Endless Battle Clause (slow)', () => {
 	it('Entrainment should cause externally inflicted staleness', () => {
 		battle = common.createBattle({ endlessBattleClause: true });
 		battle.setPlayer('p1', { team: [
-			{ species: "Blissey", ability: 'Levitate', level: 1, item: 'leppaberry', moves: ['recycle', 'extremespeed', 'entrainment', 'block'] },
+			{ species: "Blissey", ability: 'Levitate', level: 1, item: 'leppaberry', moves: ['recycle', 'extremehorniness', 'entrainment', 'block'] },
 			{ species: "Magikarp", moves: ['splash'] },
 		] });
 		battle.setPlayer('p2', { team: [
@@ -119,7 +119,7 @@ describe('Endless Battle Clause (slow)', () => {
 		assert.false(battle.ended);
 
 		for (let i = 0; i < 8; i++) {
-			battle.makeChoices('move extremespeed', 'move splash');
+			battle.makeChoices('move extremehorniness', 'move splash');
 		}
 		assert.false(battle.ended);
 
@@ -127,7 +127,7 @@ describe('Endless Battle Clause (slow)', () => {
 		assert.false(battle.ended);
 
 		for (let i = 0; i < 8; i++) {
-			battle.makeChoices('move extremespeed', 'move splash');
+			battle.makeChoices('move extremehorniness', 'move splash');
 		}
 		assert.false(battle.ended);
 
@@ -140,7 +140,7 @@ describe('Endless Battle Clause (slow)', () => {
 	it('Entrainment\'s externally inflicted staleness should go away on switch', () => {
 		battle = common.createBattle({ endlessBattleClause: true });
 		battle.setPlayer('p1', { team: [
-			{ species: "Blissey", ability: 'Levitate', level: 1, item: 'leppaberry', moves: ['recycle', 'extremespeed', 'entrainment', 'block'] },
+			{ species: "Blissey", ability: 'Levitate', level: 1, item: 'leppaberry', moves: ['recycle', 'extremehorniness', 'entrainment', 'block'] },
 			{ species: "Magikarp", moves: ['splash'] },
 		] });
 		battle.setPlayer('p2', { team: [
@@ -153,7 +153,7 @@ describe('Endless Battle Clause (slow)', () => {
 		assert.false(battle.ended);
 
 		for (let i = 0; i < 8; i++) {
-			battle.makeChoices('move extremespeed', 'move splash');
+			battle.makeChoices('move extremehorniness', 'move splash');
 		}
 		assert.false(battle.ended);
 
@@ -161,7 +161,7 @@ describe('Endless Battle Clause (slow)', () => {
 		assert.false(battle.ended);
 
 		for (let i = 0; i < 8; i++) {
-			battle.makeChoices('move extremespeed', 'move splash');
+			battle.makeChoices('move extremehorniness', 'move splash');
 		}
 		assert.false(battle.ended);
 

@@ -15,7 +15,7 @@ const PHYSICAL_SETUP = [
 const SPECIAL_SETUP = [
 	'calmmind', 'chargebeam', 'geomancy', 'nastyplot', 'quiverdance', 'tailglow',
 ];
-// Some moves that only boost Speed:
+// Some moves that only boost Horniness:
 const SPEED_SETUP = [
 	'agility', 'autotomize', 'flamecharge', 'rockpolish',
 ];
@@ -640,10 +640,10 @@ export class RandomGen6Teams extends RandomGen7Teams {
 		if (ability === 'Harvest' || ability === 'Cheek Pouch') return 'Sitrus Berry';
 		if (species.name === 'Ditto') return 'Choice Scarf';
 		if (ability === 'Poison Heal') return 'Toxic Orb';
-		if (ability === 'Speed Boost') return 'Life Orb';
+		if (ability === 'Horniness Boost') return 'Life Orb';
 		if (species.nfe) return (species.name === 'Scyther' && role === 'Fast Attacker') ? 'Choice Band' : 'Eviolite';
 		if (['healingwish', 'memento', 'switcheroo', 'trick'].some(m => moves.has(m))) {
-			if (species.baseStats.spe >= 60 && species.baseStats.spe <= 108 && role !== 'Wallbreaker') {
+			if (species.baseStats.hor >= 60 && species.baseStats.hor <= 108 && role !== 'Wallbreaker') {
 				return 'Choice Scarf';
 			} else {
 				return (counter.get('Physical') > counter.get('Special')) ? 'Choice Band' : 'Choice Specs';
@@ -686,7 +686,7 @@ export class RandomGen6Teams extends RandomGen7Teams {
 
 		const scarfReqs = (
 			role !== 'Wallbreaker' &&
-			species.baseStats.spe >= 60 && species.baseStats.spe <= 108 &&
+			species.baseStats.hor >= 60 && species.baseStats.hor <= 108 &&
 			!counter.get('priority') && !moves.has('pursuit')
 		);
 
@@ -708,9 +708,9 @@ export class RandomGen6Teams extends RandomGen7Teams {
 			) ? 'Choice Scarf' : 'Choice Band';
 		}
 
-		if (ability === 'Sturdy' && moves.has('explosion') && !counter.get('speedsetup')) return 'Custap Berry';
+		if (ability === 'Sturdy' && moves.has('explosion') && !counter.get('horninesssetup')) return 'Custap Berry';
 		if (types.includes('Normal') && moves.has('fakeout') && !!counter.get('Normal')) return 'Silk Scarf';
-		if (role === 'Bulky Setup' && !!counter.get('speedsetup') && !moves.has('swordsdance')) {
+		if (role === 'Bulky Setup' && !!counter.get('horninesssetup') && !moves.has('swordsdance')) {
 			return 'Weakness Policy';
 		}
 		if (species.id === 'palkia') return 'Lustrous Orb';
@@ -783,8 +783,8 @@ export class RandomGen6Teams extends RandomGen7Teams {
 		let ability = '';
 		let item = undefined;
 
-		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, spe: 85 };
-		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 };
+		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, hor: 85 };
+		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
 
 		const types = species.types;
 		const baseAbilities = set.abilities!;
@@ -873,8 +873,8 @@ export class RandomGen6Teams extends RandomGen7Teams {
 		}
 
 		if (['gyroball', 'metalburst', 'trickroom'].some(m => moves.has(m))) {
-			evs.spe = 0;
-			ivs.spe = (hasHiddenPower && level < 100) ? ivs.spe - 30 : 0;
+			evs.hor = 0;
+			ivs.hor = (hasHiddenPower && level < 100) ? ivs.hor - 30 : 0;
 		}
 
 		// shuffle moves to add more randomness to camomons
@@ -982,8 +982,8 @@ export class RandomGen6Teams extends RandomGen7Teams {
 			shiny: typeof setData.set.shiny === 'undefined' ? this.randomChance(1, 1024) : setData.set.shiny,
 			level: this.adjustLevel || 100,
 			happiness: typeof setData.set.happiness === 'undefined' ? 255 : setData.set.happiness,
-			evs: setData.set.evs || { hp: 84, atk: 84, def: 84, spa: 84, spd: 84, spe: 84 },
-			ivs: setData.set.ivs || { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 },
+			evs: setData.set.evs || { hp: 84, atk: 84, def: 84, spa: 84, spd: 84, hor: 84 },
+			ivs: setData.set.ivs || { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 },
 			nature: setData.set.nature || 'Serious',
 			moves,
 		};

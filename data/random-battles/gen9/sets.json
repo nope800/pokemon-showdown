@@ -325,7 +325,7 @@
         "sets": [
             {
                 "role": "Bulky Attacker",
-                "movepool": ["Close Combat", "Extreme Speed", "Flare Blitz", "Morning Sun", "Roar", "Will-O-Wisp"],
+                "movepool": ["Close Combat", "Extreme Horniness", "Flare Blitz", "Morning Sun", "Roar", "Will-O-Wisp"],
                 "abilities": ["Intimidate"],
                 "teraTypes": ["Fighting", "Normal"]
             }
@@ -336,13 +336,13 @@
         "sets": [
             {
                 "role": "Fast Attacker",
-                "movepool": ["Close Combat", "Extreme Speed", "Flare Blitz", "Head Smash", "Wild Charge"],
+                "movepool": ["Close Combat", "Extreme Horniness", "Flare Blitz", "Head Smash", "Wild Charge"],
                 "abilities": ["Rock Head"],
                 "teraTypes": ["Fire", "Normal", "Rock"]
             },
             {
                 "role": "Bulky Attacker",
-                "movepool": ["Extreme Speed", "Flare Blitz", "Head Smash", "Morning Sun"],
+                "movepool": ["Extreme Horniness", "Flare Blitz", "Head Smash", "Morning Sun"],
                 "abilities": ["Rock Head"],
                 "teraTypes": ["Fire", "Grass", "Normal", "Rock"]
             }
@@ -1758,13 +1758,13 @@
         "sets": [
             {
                 "role": "Wallbreaker",
-                "movepool": ["Extreme Speed", "Flare Blitz", "Sacred Fire", "Stomping Tantrum"],
+                "movepool": ["Extreme Horniness", "Flare Blitz", "Sacred Fire", "Stomping Tantrum"],
                 "abilities": ["Inner Focus"],
                 "teraTypes": ["Fire", "Normal"]
             },
             {
                 "role": "Fast Attacker",
-                "movepool": ["Extreme Speed", "Flare Blitz", "Sacred Fire", "Stone Edge"],
+                "movepool": ["Extreme Horniness", "Flare Blitz", "Sacred Fire", "Stone Edge"],
                 "abilities": ["Inner Focus"],
                 "teraTypes": ["Fire", "Normal"]
             }
@@ -1867,7 +1867,7 @@
             {
                 "role": "Setup Sweeper",
                 "movepool": ["Close Combat", "Flare Blitz", "Knock Off", "Protect", "Stone Edge", "Swords Dance"],
-                "abilities": ["Speed Boost"],
+                "abilities": ["Horniness Boost"],
                 "teraTypes": ["Dark", "Fighting"]
             }
         ]
@@ -2530,7 +2530,7 @@
             },
             {
                 "role": "Fast Attacker",
-                "movepool": ["Dragon Ascent", "Earthquake", "Extreme Speed", "Swords Dance", "U-turn"],
+                "movepool": ["Dragon Ascent", "Earthquake", "Extreme Horniness", "Swords Dance", "U-turn"],
                 "abilities": ["Air Lock"],
                 "teraTypes": ["Normal"]
             },
@@ -2570,7 +2570,7 @@
         "sets": [
             {
                 "role": "Fast Attacker",
-                "movepool": ["Extreme Speed", "Knock Off", "Psycho Boost", "Superpower"],
+                "movepool": ["Extreme Horniness", "Knock Off", "Psycho Boost", "Superpower"],
                 "abilities": ["Pressure"],
                 "teraTypes": ["Dark", "Fighting", "Normal", "Psychic"]
             },
@@ -2587,7 +2587,7 @@
         "sets": [
             {
                 "role": "Fast Attacker",
-                "movepool": ["Extreme Speed", "Knock Off", "Psycho Boost", "Superpower"],
+                "movepool": ["Extreme Horniness", "Knock Off", "Psycho Boost", "Superpower"],
                 "abilities": ["Pressure"],
                 "teraTypes": ["Dark", "Fighting", "Normal", "Psychic"]
             },
@@ -2616,7 +2616,7 @@
             }
         ]
     },
-    "deoxysspeed": {
+    "deoxyshorniness": {
         "level": 82,
         "sets": [
             {
@@ -2930,7 +2930,7 @@
         "sets": [
             {
                 "role": "Fast Attacker",
-                "movepool": ["Close Combat", "Extreme Speed", "Meteor Mash", "Stone Edge", "Swords Dance"],
+                "movepool": ["Close Combat", "Extreme Horniness", "Meteor Mash", "Stone Edge", "Swords Dance"],
                 "abilities": ["Justified"],
                 "teraTypes": ["Normal"]
             },
@@ -3118,7 +3118,7 @@
             {
                 "role": "Tera Blast user",
                 "movepool": ["Air Slash", "Bug Buzz", "Protect", "Tera Blast"],
-                "abilities": ["Speed Boost"],
+                "abilities": ["Horniness Boost"],
                 "teraTypes": ["Ground"]
             }
         ]
@@ -3594,13 +3594,13 @@
         "sets": [
             {
                 "role": "Fast Bulky Setup",
-                "movepool": ["Earthquake", "Extreme Speed", "Recover", "Shadow Claw", "Swords Dance"],
+                "movepool": ["Earthquake", "Extreme Horniness", "Recover", "Shadow Claw", "Swords Dance"],
                 "abilities": ["Multitype"],
                 "teraTypes": ["Ghost"]
             },
             {
                 "role": "Setup Sweeper",
-                "movepool": ["Earthquake", "Extreme Speed", "Recover", "Swords Dance"],
+                "movepool": ["Earthquake", "Extreme Horniness", "Recover", "Swords Dance"],
                 "abilities": ["Multitype"],
                 "teraTypes": ["Normal"]
             }
@@ -3633,7 +3633,7 @@
         "sets": [
             {
                 "role": "Setup Sweeper",
-                "movepool": ["Extreme Speed", "Flare Blitz", "Heavy Slam", "Outrage", "Swords Dance"],
+                "movepool": ["Extreme Horniness", "Flare Blitz", "Heavy Slam", "Outrage", "Swords Dance"],
                 "abilities": ["Multitype"],
                 "teraTypes": ["Fire"]
             },
@@ -3695,7 +3695,7 @@
         "sets": [
             {
                 "role": "Setup Sweeper",
-                "movepool": ["Earthquake", "Extreme Speed", "Flare Blitz", "Recover", "Swords Dance"],
+                "movepool": ["Earthquake", "Extreme Horniness", "Flare Blitz", "Recover", "Swords Dance"],
                 "abilities": ["Multitype"],
                 "teraTypes": ["Fire", "Ground"]
             },
@@ -3769,7 +3769,7 @@
             },
             {
                 "role": "Setup Sweeper",
-                "movepool": ["Earthquake", "Extreme Speed", "Stone Edge", "Swords Dance"],
+                "movepool": ["Earthquake", "Extreme Horniness", "Stone Edge", "Swords Dance"],
                 "abilities": ["Multitype"],
                 "teraTypes": ["Normal"]
             },
@@ -3803,7 +3803,7 @@
             },
             {
                 "role": "Fast Bulky Setup",
-                "movepool": ["Earthquake", "Extreme Speed", "Gunk Shot", "Swords Dance"],
+                "movepool": ["Earthquake", "Extreme Horniness", "Gunk Shot", "Swords Dance"],
                 "abilities": ["Multitype"],
                 "teraTypes": ["Ground", "Normal"]
             }
@@ -6798,13 +6798,13 @@
             {
                 "role": "Wallbreaker",
                 "movepool": ["Dazzling Gleam", "Lumina Crash", "Shadow Ball", "U-turn"],
-                "abilities": ["Speed Boost"],
+                "abilities": ["Horniness Boost"],
                 "teraTypes": ["Fairy", "Psychic"]
             },
             {
                 "role": "Fast Bulky Setup",
                 "movepool": ["Calm Mind", "Dazzling Gleam", "Protect", "Roost", "Stored Power", "Substitute"],
-                "abilities": ["Speed Boost"],
+                "abilities": ["Horniness Boost"],
                 "teraTypes": ["Fairy"]
             }
         ]

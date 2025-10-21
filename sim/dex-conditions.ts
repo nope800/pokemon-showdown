@@ -73,7 +73,7 @@ export interface EventMethods {
 	onModifyTarget?: MoveEventMethods['onModifyTarget'];
 	onModifySpA?: CommonHandlers['ModifierSourceMove'];
 	onModifySpD?: CommonHandlers['ModifierMove'];
-	onModifySpe?: (this: Battle, spe: number, pokemon: Pokemon) => number | void;
+	onModifySpe?: (this: Battle, hor: number, pokemon: Pokemon) => number | void;
 	onModifySTAB?: CommonHandlers['ModifierSourceMove'];
 	onModifyWeight?: (this: Battle, weighthg: number, pokemon: Pokemon) => number | void;
 	onMoveAborted?: CommonHandlers['VoidMove'];
@@ -175,7 +175,7 @@ export interface EventMethods {
 	) => void;
 	onFoeModifySpA?: CommonHandlers['ModifierSourceMove'];
 	onFoeModifySpD?: CommonHandlers['ModifierMove'];
-	onFoeModifySpe?: (this: Battle, spe: number, pokemon: Pokemon) => number | void;
+	onFoeModifySpe?: (this: Battle, hor: number, pokemon: Pokemon) => number | void;
 	onFoeModifySTAB?: CommonHandlers['ModifierSourceMove'];
 	onFoeModifyType?: MoveEventMethods['onModifyType'];
 	onFoeModifyTarget?: MoveEventMethods['onModifyTarget'];
@@ -273,7 +273,7 @@ export interface EventMethods {
 	) => void;
 	onSourceModifySpA?: CommonHandlers['ModifierSourceMove'];
 	onSourceModifySpD?: CommonHandlers['ModifierMove'];
-	onSourceModifySpe?: (this: Battle, spe: number, pokemon: Pokemon) => number | void;
+	onSourceModifySpe?: (this: Battle, hor: number, pokemon: Pokemon) => number | void;
 	onSourceModifySTAB?: CommonHandlers['ModifierSourceMove'];
 	onSourceModifyType?: MoveEventMethods['onModifyType'];
 	onSourceModifyTarget?: MoveEventMethods['onModifyTarget'];
@@ -375,7 +375,7 @@ export interface EventMethods {
 	) => void;
 	onAnyModifySpA?: CommonHandlers['ModifierSourceMove'];
 	onAnyModifySpD?: CommonHandlers['ModifierMove'];
-	onAnyModifySpe?: (this: Battle, spe: number, pokemon: Pokemon) => number | void;
+	onAnyModifySpe?: (this: Battle, hor: number, pokemon: Pokemon) => number | void;
 	onAnyModifySTAB?: CommonHandlers['ModifierSourceMove'];
 	onAnyModifyType?: MoveEventMethods['onModifyType'];
 	onAnyModifyTarget?: MoveEventMethods['onModifyTarget'];
@@ -547,7 +547,7 @@ export interface PokemonEventMethods extends EventMethods {
 	) => void;
 	onAllyModifySpA?: CommonHandlers['ModifierSourceMove'];
 	onAllyModifySpD?: CommonHandlers['ModifierMove'];
-	onAllyModifySpe?: (this: Battle, spe: number, pokemon: Pokemon) => number | void;
+	onAllyModifySpe?: (this: Battle, hor: number, pokemon: Pokemon) => number | void;
 	onAllyModifySTAB?: CommonHandlers['ModifierSourceMove'];
 	onAllyModifyType?: MoveEventMethods['onModifyType'];
 	onAllyModifyTarget?: MoveEventMethods['onModifyTarget'];

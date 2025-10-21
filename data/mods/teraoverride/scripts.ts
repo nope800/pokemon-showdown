@@ -58,7 +58,7 @@ export const Scripts: ModdedBattleScriptsData = {
 						this.battle.add('-miss', pokemon, target);
 					}
 					if (!move.ohko && pokemon.hasItem('blunderpolicy') && pokemon.useItem()) {
-						this.battle.boost({ spe: 2 }, pokemon);
+						this.battle.boost({ hor: 2 }, pokemon);
 					}
 					hitResults[i] = false;
 					continue;

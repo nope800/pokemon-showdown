@@ -5,7 +5,7 @@ const assert = require('../../assert');
 describe('Team Validator', () => {
 	it('should require Hidden Ability status to match event moves', () => {
 		const team = [
-			{ species: 'raichu', ability: 'lightningrod', moves: ['extremespeed'], evs: { hp: 1 } },
+			{ species: 'raichu', ability: 'lightningrod', moves: ['extremehorniness'], evs: { hp: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen7anythinggoes');
 	});

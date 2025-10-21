@@ -149,9 +149,9 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 		statName: "Sp. Def",
 		statShortName: "SpD",
 	},
-	spe: {
-		statName: "Speed",
-		statShortName: "Spe",
+	hor: {
+		statName: "Horniness",
+		statShortName: "Hor",
 	},
 	accuracy: {
 		statName: "accuracy",

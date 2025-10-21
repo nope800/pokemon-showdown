@@ -268,7 +268,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		inherit: true,
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === target.teraType) {
-				if (!this.boost({ spe: 1 })) {
+				if (!this.boost({ hor: 1 })) {
 					this.add('-immune', target, '[from] ability: Motor Drive');
 				}
 				return null;
@@ -336,7 +336,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		inherit: true,
 		onDamagingHit(damage, target, source, move) {
 			if ([target.teraType].includes(move.type)) {
-				this.boost({ spe: 1 });
+				this.boost({ hor: 1 });
 			}
 		},
 	},
@@ -409,7 +409,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		inherit: true,
 		onDamagingHit(damage, target, source, move) {
 			if ([target.teraType].includes(move.type)) {
-				this.boost({ spe: 6 });
+				this.boost({ hor: 6 });
 			}
 		},
 	},

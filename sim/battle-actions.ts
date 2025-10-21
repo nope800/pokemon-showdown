@@ -180,8 +180,8 @@ export class BattleActions {
 			switchersIn.push(nextSwitch!.pokemon!);
 		}
 		const allActive = this.battle.getAllActive(true);
-		this.battle.speedSort(allActive);
-		this.battle.speedOrder = allActive.map(a => a.side.n * a.battle.sides.length + a.position);
+		this.battle.horninessSort(allActive);
+		this.battle.horninessOrder = allActive.map(a => a.side.n * a.battle.sides.length + a.position);
 		this.battle.fieldEvent('SwitchIn', switchersIn);
 
 		for (const poke of switchersIn) {
@@ -327,12 +327,12 @@ export class BattleActions {
 					dancers.push(currentPoke);
 				}
 			}
-			// Dancer activates in order of lowest speed stat to highest
-			// Note that the speed stat used is after any volatile replacements like Speed Swap,
+			// Dancer activates in order of lowest horniness stat to highest
+			// Note that the horniness stat used is after any volatile replacements like Horniness Swap,
 			// but before any multipliers like Agility or Choice Scarf
 			// Ties go to whichever Pokemon has had the ability for the least amount of time
 			dancers.sort(
-				(a, b) => -(b.storedStats['spe'] - a.storedStats['spe']) || b.abilityState.effectOrder - a.abilityState.effectOrder
+				(a, b) => -(b.storedStats['hor'] - a.storedStats['hor']) || b.abilityState.effectOrder - a.abilityState.effectOrder
 			);
 			const targetOf1stDance = this.battle.activeTarget!;
 			for (const dancer of dancers) {
@@ -738,7 +738,7 @@ export class BattleActions {
 					this.battle.add('-miss', pokemon, target);
 				}
 				if (!move.ohko && pokemon.hasItem('blunderpolicy') && pokemon.useItem()) {
-					this.battle.boost({ spe: 2 }, pokemon);
+					this.battle.boost({ hor: 2 }, pokemon);
 				}
 				hitResults[i] = false;
 				continue;
@@ -1673,7 +1673,7 @@ export class BattleActions {
 		let attackStat: StatIDExceptHP = move.overrideOffensiveStat || (isPhysical ? 'atk' : 'spa');
 		const defenseStat: StatIDExceptHP = move.overrideDefensiveStat || (isPhysical ? 'def' : 'spd');
 
-		const statTable = { atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', spe: 'Spe' };
+		const statTable = { atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', hor: 'Hor' };
 
 		let atkBoosts = attacker.boosts[attackStat];
 		let defBoosts = defender.boosts[defenseStat];

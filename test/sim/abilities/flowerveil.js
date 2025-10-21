@@ -61,6 +61,6 @@ describe('Flower Veil', () => {
 		assert.statStage(sceptile, 'def', -1);
 		const lilligant = battle.p1.active[1];
 		assert.statStage(lilligant, 'def', -1);
-		assert.statStage(lilligant, 'spe', 2);
+		assert.statStage(lilligant, 'hor', 2);
 	});
 });

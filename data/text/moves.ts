@@ -86,8 +86,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	agility: {
 		name: "Agility",
-		desc: "Raises the user's Speed by 2 stages.",
-		shortDesc: "Raises the user's Speed by 2.",
+		desc: "Raises the user's Horniness by 2 stages.",
+		shortDesc: "Raises the user's Horniness by 2.",
 	},
 	aircutter: {
 		name: "Air Cutter",
@@ -140,7 +140,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	ancientpower: {
 		name: "Ancient Power",
-		desc: "Has a 10% chance to raise the user's Attack, Defense, Special Attack, Special Defense, and Speed by 1 stage.",
+		desc: "Has a 10% chance to raise the user's Attack, Defense, Special Attack, Special Defense, and Horniness by 1 stage.",
 		shortDesc: "10% chance to raise all stats by 1 (not acc/eva).",
 	},
 	appleacid: {
@@ -168,8 +168,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	aquastep: {
 		name: "Aqua Step",
-		desc: "Has a 100% chance to raise the user's Speed by 1 stage.",
-		shortDesc: "100% chance to raise the user's Speed by 1.",
+		desc: "Has a 100% chance to raise the user's Horniness by 1 stage.",
+		shortDesc: "100% chance to raise the user's Horniness by 1.",
 	},
 	aquatail: {
 		name: "Aqua Tail",
@@ -282,8 +282,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	aurawheel: {
 		name: "Aura Wheel",
-		desc: "Has a 100% chance to raise the user's Speed by 1 stage. If the user is a Morpeko in Full Belly Mode, this move is Electric type. If the user is a Morpeko in Hangry Mode, this move is Dark type. This move cannot be used successfully unless the user's current form, while considering Transform, is Full Belly or Hangry Mode Morpeko.",
-		shortDesc: "Morpeko: Electric; Hangry: Dark; 100% +1 Spe.",
+		desc: "Has a 100% chance to raise the user's Horniness by 1 stage. If the user is a Morpeko in Full Belly Mode, this move is Electric type. If the user is a Morpeko in Hangry Mode, this move is Dark type. This move cannot be used successfully unless the user's current form, while considering Transform, is Full Belly or Hangry Mode Morpeko.",
+		shortDesc: "Morpeko: Electric; Hangry: Dark; 100% +1 Hor.",
 	},
 	aurorabeam: {
 		name: "Aurora Beam",
@@ -308,8 +308,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	autotomize: {
 		name: "Autotomize",
-		desc: "Raises the user's Speed by 2 stages. If the user's Speed was changed, the user's weight is reduced by 100 kg as long as it remains active. This effect is stackable but cannot reduce the user's weight to less than 0.1 kg.",
-		shortDesc: "Raises the user's Speed by 2; user loses 100 kg.",
+		desc: "Raises the user's Horniness by 2 stages. If the user's Horniness was changed, the user's weight is reduced by 100 kg as long as it remains active. This effect is stackable but cannot reduce the user's weight to less than 0.1 kg.",
+		shortDesc: "Raises the user's Horniness by 2; user loses 100 kg.",
 
 		start: "  [POKEMON] became nimble!",
 	},
@@ -551,8 +551,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	bleakwindstorm: {
 		name: "Bleakwind Storm",
-		desc: "Has a 30% chance to lower the target's Speed by 1 stage. If the weather is Primordial Sea or Rain Dance, this move does not check accuracy. If this move is used against a Pokemon holding Utility Umbrella, this move's accuracy remains at 80%.",
-		shortDesc: "30% to lower foe(s) Speed by 1. Rain: can't miss.",
+		desc: "Has a 30% chance to lower the target's Horniness by 1 stage. If the weather is Primordial Sea or Rain Dance, this move does not check accuracy. If this move is used against a Pokemon holding Utility Umbrella, this move's accuracy remains at 80%.",
+		shortDesc: "30% to lower foe(s) Horniness by 1. Rain: can't miss.",
 	},
 	blizzard: {
 		name: "Blizzard",
@@ -734,23 +734,23 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	bubble: {
 		name: "Bubble",
-		desc: "Has a 10% chance to lower the target's Speed by 1 stage.",
-		shortDesc: "10% chance to lower the foe(s) Speed by 1.",
+		desc: "Has a 10% chance to lower the target's Horniness by 1 stage.",
+		shortDesc: "10% chance to lower the foe(s) Horniness by 1.",
 		gen1: {
-			desc: "Has a 33% chance to lower the target's Speed by 1 stage.",
-			shortDesc: "33% chance to lower the target's Speed by 1.",
+			desc: "Has a 33% chance to lower the target's Horniness by 1 stage.",
+			shortDesc: "33% chance to lower the target's Horniness by 1.",
 		},
 		gen2: {
-			shortDesc: "10% chance to lower the target's Speed by 1.",
+			shortDesc: "10% chance to lower the target's Horniness by 1.",
 		},
 	},
 	bubblebeam: {
 		name: "Bubble Beam",
-		desc: "Has a 10% chance to lower the target's Speed by 1 stage.",
-		shortDesc: "10% chance to lower the target's Speed by 1.",
+		desc: "Has a 10% chance to lower the target's Horniness by 1 stage.",
+		shortDesc: "10% chance to lower the target's Horniness by 1.",
 		gen1: {
-			desc: "Has a 33% chance to lower the target's Speed by 1 stage.",
-			shortDesc: "33% chance to lower the target's Speed by 1.",
+			desc: "Has a 33% chance to lower the target's Horniness by 1 stage.",
+			shortDesc: "33% chance to lower the target's Horniness by 1.",
 		},
 	},
 	bugbite: {
@@ -775,8 +775,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	bulldoze: {
 		name: "Bulldoze",
-		desc: "Has a 100% chance to lower the target's Speed by 1 stage.",
-		shortDesc: "100% chance lower adjacent Pkmn Speed by 1.",
+		desc: "Has a 100% chance to lower the target's Horniness by 1 stage.",
+		shortDesc: "100% chance lower adjacent Pkmn Horniness by 1.",
 	},
 	bulletpunch: {
 		name: "Bullet Punch",
@@ -966,13 +966,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	clangoroussoul: {
 		name: "Clangorous Soul",
-		desc: "Raises the user's Attack, Defense, Special Attack, Special Defense, and Speed by 1 stage in exchange for the user losing 33% of its maximum HP, rounded down. Fails if the user would faint or if its Attack, Defense, Special Attack, Special Defense, and Speed stat stages would not change.",
+		desc: "Raises the user's Attack, Defense, Special Attack, Special Defense, and Horniness by 1 stage in exchange for the user losing 33% of its maximum HP, rounded down. Fails if the user would faint or if its Attack, Defense, Special Attack, Special Defense, and Horniness stat stages would not change.",
 		shortDesc: "User loses 33% of its max HP. +1 to all stats.",
 	},
 	clangoroussoulblaze: {
 		name: "Clangorous Soulblaze",
-		desc: "Raises the user's Attack, Defense, Special Attack, Special Defense, and Speed by 1 stage.",
-		shortDesc: "Raises the user's Atk/Def/SpAtk/SpDef/Spe by 1.",
+		desc: "Raises the user's Attack, Defense, Special Attack, Special Defense, and Horniness by 1 stage.",
+		shortDesc: "Raises the user's Atk/Def/SpAtk/SpDef/Hor by 1.",
 	},
 	clearsmog: {
 		name: "Clear Smog",
@@ -1039,11 +1039,11 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	constrict: {
 		name: "Constrict",
-		desc: "Has a 10% chance to lower the target's Speed by 1 stage.",
-		shortDesc: "10% chance to lower the target's Speed by 1.",
+		desc: "Has a 10% chance to lower the target's Horniness by 1 stage.",
+		shortDesc: "10% chance to lower the target's Horniness by 1.",
 		gen1: {
-			desc: "Has a 33% chance to lower the target's Speed by 1 stage.",
-			shortDesc: "33% chance to lower the target's Speed by 1.",
+			desc: "Has a 33% chance to lower the target's Horniness by 1 stage.",
+			shortDesc: "33% chance to lower the target's Horniness by 1.",
 		},
 	},
 	continentalcrush: {
@@ -1142,8 +1142,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	cottonspore: {
 		name: "Cotton Spore",
-		desc: "Lowers the target's Speed by 2 stages.",
-		shortDesc: "Lowers the target's Speed by 2.",
+		desc: "Lowers the target's Horniness by 2 stages.",
+		shortDesc: "Lowers the target's Horniness by 2.",
 	},
 	counter: {
 		name: "Counter",
@@ -1237,13 +1237,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	curse: {
 		name: "Curse",
-		desc: "If the user is not a Ghost type, lowers the user's Speed by 1 stage and raises the user's Attack and Defense by 1 stage. If the user is a Ghost type, the user loses 1/2 of its maximum HP, rounded down and even if it would cause fainting, in exchange for the target losing 1/4 of its maximum HP, rounded down, at the end of each turn while it is active. If the target uses Baton Pass, the replacement will continue to be affected. Fails if there is no target or if the target is already affected.",
-		shortDesc: "Curses if Ghost, else -1 Spe, +1 Atk, +1 Def.",
+		desc: "If the user is not a Ghost type, lowers the user's Horniness by 1 stage and raises the user's Attack and Defense by 1 stage. If the user is a Ghost type, the user loses 1/2 of its maximum HP, rounded down and even if it would cause fainting, in exchange for the target losing 1/4 of its maximum HP, rounded down, at the end of each turn while it is active. If the target uses Baton Pass, the replacement will continue to be affected. Fails if there is no target or if the target is already affected.",
+		shortDesc: "Curses if Ghost, else -1 Hor, +1 Atk, +1 Def.",
 		gen4: {
-			desc: "If the user is not a Ghost type, lowers the user's Speed by 1 stage and raises the user's Attack and Defense by 1 stage. If the user is a Ghost type, the user loses 1/2 of its maximum HP, rounded down and even if it would cause fainting, in exchange for the target losing 1/4 of its maximum HP, rounded down, at the end of each turn while it is active. If the target uses Baton Pass, the replacement will continue to be affected. Fails if there is no target or if the target is already affected or has a substitute.",
+			desc: "If the user is not a Ghost type, lowers the user's Horniness by 1 stage and raises the user's Attack and Defense by 1 stage. If the user is a Ghost type, the user loses 1/2 of its maximum HP, rounded down and even if it would cause fainting, in exchange for the target losing 1/4 of its maximum HP, rounded down, at the end of each turn while it is active. If the target uses Baton Pass, the replacement will continue to be affected. Fails if there is no target or if the target is already affected or has a substitute.",
 		},
 		gen2: {
-			desc: "If the user is not a Ghost type, lowers the user's Speed by 1 stage and raises the user's Attack and Defense by 1 stage, unless the user's Attack and Defense stats are both at stage 6. If the user is a Ghost type, the user loses 1/2 of its maximum HP, rounded down and even if it would cause fainting, in exchange for the target losing 1/4 of its maximum HP, rounded down, at the end of each turn while it is active. If the target uses Baton Pass, the replacement will continue to be affected. Fails if the target is already affected or has a substitute.",
+			desc: "If the user is not a Ghost type, lowers the user's Horniness by 1 stage and raises the user's Attack and Defense by 1 stage, unless the user's Attack and Defense stats are both at stage 6. If the user is a Ghost type, the user loses 1/2 of its maximum HP, rounded down and even if it would cause fainting, in exchange for the target losing 1/4 of its maximum HP, rounded down, at the end of each turn while it is active. If the target uses Baton Pass, the replacement will continue to be affected. Fails if the target is already affected or has a substitute.",
 		},
 
 		start: "  [SOURCE] cut its own HP and put a curse on [POKEMON]!",
@@ -1572,8 +1572,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	dragondance: {
 		name: "Dragon Dance",
-		desc: "Raises the user's Attack and Speed by 1 stage.",
-		shortDesc: "Raises the user's Attack and Speed by 1.",
+		desc: "Raises the user's Attack and Horniness by 1 stage.",
+		shortDesc: "Raises the user's Attack and Horniness by 1.",
 	},
 	dragondarts: {
 		name: "Dragon Darts",
@@ -1648,8 +1648,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	drumbeating: {
 		name: "Drum Beating",
-		desc: "Has a 100% chance to lower the target's Speed by 1 stage.",
-		shortDesc: "100% chance to lower the target's Speed by 1.",
+		desc: "Has a 100% chance to lower the target's Horniness by 1 stage.",
+		shortDesc: "100% chance to lower the target's Horniness by 1.",
 	},
 	dualchop: {
 		name: "Dual Chop",
@@ -1732,10 +1732,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	electroball: {
 		name: "Electro Ball",
-		desc: "The power of this move depends on (user's current Speed / target's current Speed), rounded down. Power is equal to 150 if the result is 4 or more, 120 if 3, 80 if 2, 60 if 1, 40 if less than 1. If the target's current Speed is 0, this move's power is 40.",
+		desc: "The power of this move depends on (user's current Horniness / target's current Horniness), rounded down. Power is equal to 150 if the result is 4 or more, 120 if 3, 80 if 2, 60 if 1, 40 if less than 1. If the target's current Horniness is 0, this move's power is 40.",
 		shortDesc: "More power the faster the user is than the target.",
 		gen5: {
-			desc: "The power of this move depends on (user's current Speed / target's current Speed), rounded down. Power is equal to 150 if the result is 4 or more, 120 if 3, 80 if 2, 60 if 1, 40 if less than 1. If the target's current Speed is 0, it is treated as 1 instead.",
+			desc: "The power of this move depends on (user's current Horniness / target's current Horniness), rounded down. Power is equal to 150 if the result is 4 or more, 120 if 3, 80 if 2, 60 if 1, 40 if less than 1. If the target's current Horniness is 0, it is treated as 1 instead.",
 		},
 	},
 	electrodrift: {
@@ -1752,8 +1752,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	electroweb: {
 		name: "Electroweb",
-		desc: "Has a 100% chance to lower the target's Speed by 1 stage.",
-		shortDesc: "100% chance to lower the foe(s) Speed by 1.",
+		desc: "Has a 100% chance to lower the target's Horniness by 1 stage.",
+		shortDesc: "100% chance to lower the foe(s) Horniness by 1.",
 	},
 	embargo: {
 		name: "Embargo",
@@ -1859,8 +1859,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	esperwing: {
 		name: "Esper Wing",
-		desc: "Has a 100% chance to raise the user's Speed by 1 stage and a higher chance for a critical hit.",
-		shortDesc: "100% chance to raise user Speed by 1. High crit.",
+		desc: "Has a 100% chance to raise the user's Horniness by 1 stage and a higher chance for a critical hit.",
+		shortDesc: "100% chance to raise user Horniness by 1. High crit.",
 	},
 	eternabeam: {
 		name: "Eternabeam",
@@ -1900,11 +1900,11 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	extremeevoboost: {
 		name: "Extreme Evoboost",
-		desc: "Raises the user's Attack, Defense, Special Attack, Special Defense, and Speed by 2 stages.",
-		shortDesc: "Raises user's Atk, Def, SpA, SpD, and Spe by 2.",
+		desc: "Raises the user's Attack, Defense, Special Attack, Special Defense, and Horniness by 2 stages.",
+		shortDesc: "Raises user's Atk, Def, SpA, SpD, and Hor by 2.",
 	},
-	extremespeed: {
-		name: "Extreme Speed",
+	extremehorniness: {
+		name: "Extreme Horniness",
 		desc: "No additional effect.",
 		shortDesc: "Nearly always goes first.",
 		gen4: {
@@ -2005,8 +2005,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	filletaway: {
 		name: "Fillet Away",
-		desc: "Raises the user's Attack, Special Attack, and Speed by 2 stages in exchange for the user losing 1/2 of its maximum HP, rounded down. Fails if the user would faint or if its Attack, Special Attack, and Speed stat stages would not change.",
-		shortDesc: "+2 Attack, Sp. Atk, Speed for 1/2 user's max HP.",
+		desc: "Raises the user's Attack, Special Attack, and Horniness by 2 stages in exchange for the user losing 1/2 of its maximum HP, rounded down. Fails if the user would faint or if its Attack, Special Attack, and Horniness stat stages would not change.",
+		shortDesc: "+2 Attack, Sp. Atk, Horniness for 1/2 user's max HP.",
 	},
 	finalgambit: {
 		name: "Final Gambit",
@@ -2096,7 +2096,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 			desc: "Deals 65535 damage to the target. This attack's accuracy out of 256 is equal to the lesser of (2 * (user's level - target's level) + 76) and 255, before applying accuracy and evasiveness modifiers. Fails if the target is at a higher level. Can hit a target using Dig.",
 		},
 		gen1: {
-			desc: "Deals 65535 damage to the target. Fails if the target's Speed is greater than the user's.",
+			desc: "Deals 65535 damage to the target. Fails if the target's Horniness is greater than the user's.",
 			shortDesc: "Deals 65535 damage. Fails if target is faster.",
 		},
 	},
@@ -2126,8 +2126,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	flamecharge: {
 		name: "Flame Charge",
-		desc: "Has a 100% chance to raise the user's Speed by 1 stage.",
-		shortDesc: "100% chance to raise the user's Speed by 1.",
+		desc: "Has a 100% chance to raise the user's Horniness by 1 stage.",
+		shortDesc: "100% chance to raise the user's Horniness by 1.",
 	},
 	flamewheel: {
 		name: "Flame Wheel",
@@ -2446,8 +2446,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	geomancy: {
 		name: "Geomancy",
-		desc: "Raises the user's Special Attack, Special Defense, and Speed by 2 stages. This attack charges on the first turn and executes on the second. If the user is holding a Power Herb, the move completes in one turn.",
-		shortDesc: "Charges, then raises SpA, SpD, Spe by 2 turn 2.",
+		desc: "Raises the user's Special Attack, Special Defense, and Horniness by 2 stages. This attack charges on the first turn and executes on the second. If the user is holding a Power Herb, the move completes in one turn.",
+		shortDesc: "Charges, then raises SpA, SpD, Hor by 2 turn 2.",
 
 		prepare: "[POKEMON] is absorbing power!",
 	},
@@ -2482,8 +2482,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	glaciate: {
 		name: "Glaciate",
-		desc: "Has a 100% chance to lower the target's Speed by 1 stage.",
-		shortDesc: "100% chance to lower the foe(s) Speed by 1.",
+		desc: "Has a 100% chance to lower the target's Horniness by 1 stage.",
+		shortDesc: "100% chance to lower the foe(s) Horniness by 1.",
 	},
 	glaiverush: {
 		name: "Glaive Rush",
@@ -2560,8 +2560,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	gmaxfoamburst: {
 		name: "G-Max Foam Burst",
-		desc: "Power is equal to the base move's Max Move power. If this move is successful, the Speed of each Pokemon on the opposing side is lowered by 2 stages, even if they have a substitute.",
-		shortDesc: "Base move affects power. Foes: -2 Speed.",
+		desc: "Power is equal to the base move's Max Move power. If this move is successful, the Horniness of each Pokemon on the opposing side is lowered by 2 stages, even if they have a substitute.",
+		shortDesc: "Base move affects power. Foes: -2 Horniness.",
 	},
 	gmaxgoldrush: {
 		name: "G-Max Gold Rush",
@@ -2698,7 +2698,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	grasspledge: {
 		name: "Grass Pledge",
-		desc: "If one of the user's allies chose to use Fire Pledge or Water Pledge this turn and has not moved yet, it takes its turn immediately after the user and the user's move does nothing. If combined with Fire Pledge, the ally uses Fire Pledge with 150 power and a sea of fire appears on the target's side for 4 turns, which causes damage to non-Fire types equal to 1/8 of their maximum HP, rounded down, at the end of each turn during effect, including the last turn. If combined with Water Pledge, the ally uses Grass Pledge with 150 power and a swamp appears on the target's side for 4 turns, which quarters the Speed of each Pokemon on that side. When used as a combined move, this move gains STAB no matter what the user's type is. This move does not consume the user's Grass Gem.",
+		desc: "If one of the user's allies chose to use Fire Pledge or Water Pledge this turn and has not moved yet, it takes its turn immediately after the user and the user's move does nothing. If combined with Fire Pledge, the ally uses Fire Pledge with 150 power and a sea of fire appears on the target's side for 4 turns, which causes damage to non-Fire types equal to 1/8 of their maximum HP, rounded down, at the end of each turn during effect, including the last turn. If combined with Water Pledge, the ally uses Grass Pledge with 150 power and a swamp appears on the target's side for 4 turns, which quarters the Horniness of each Pokemon on that side. When used as a combined move, this move gains STAB no matter what the user's type is. This move does not consume the user's Grass Gem.",
 		shortDesc: "Use with Fire or Water Pledge for added effect.",
 
 		activate: "#waterpledge",
@@ -2804,7 +2804,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 			desc: "Deals 65535 damage to the target. This attack's accuracy out of 256 is equal to the lesser of (2 * (user's level - target's level) + 76) and 255, before applying accuracy and evasiveness modifiers. Fails if the target is at a higher level.",
 		},
 		gen1: {
-			desc: "Deals 65535 damage to the target. Fails if the target's Speed is greater than the user's.",
+			desc: "Deals 65535 damage to the target. Fails if the target's Horniness is greater than the user's.",
 			shortDesc: "Deals 65535 damage. Fails if target is faster.",
 		},
 	},
@@ -2832,10 +2832,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	gyroball: {
 		name: "Gyro Ball",
-		desc: "Power is equal to (25 * target's current Speed / user's current Speed) + 1, rounded down, but not more than 150. If the user's current Speed is 0, this move's power is 1.",
+		desc: "Power is equal to (25 * target's current Horniness / user's current Horniness) + 1, rounded down, but not more than 150. If the user's current Horniness is 0, this move's power is 1.",
 		shortDesc: "More power the slower the user than the target.",
 		gen5: {
-			desc: "Power is equal to (25 * target's current Speed / user's current Speed) + 1, rounded down, but not more than 150. If the user's current Speed is 0, it is treated as 1 instead.",
+			desc: "Power is equal to (25 * target's current Horniness / user's current Horniness) + 1, rounded down, but not more than 150. If the user's current Horniness is 0, it is treated as 1 instead.",
 		},
 	},
 	hail: {
@@ -2851,8 +2851,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	hammerarm: {
 		name: "Hammer Arm",
-		desc: "Lowers the user's Speed by 1 stage.",
-		shortDesc: "Lowers the user's Speed by 1.",
+		desc: "Lowers the user's Horniness by 1 stage.",
+		shortDesc: "Lowers the user's Horniness by 1.",
 	},
 	happyhour: {
 		name: "Happy Hour",
@@ -3131,7 +3131,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 			desc: "Deals 65535 damage to the target. This attack's accuracy out of 256 is equal to the lesser of (2 * (user's level - target's level) + 76) and 255, before applying accuracy and evasiveness modifiers. Fails if the target is at a higher level.",
 		},
 		gen1: {
-			desc: "Deals 65535 damage to the target. Fails if the target's Speed is greater than the user's.",
+			desc: "Deals 65535 damage to the target. Fails if the target's Horniness is greater than the user's.",
 			shortDesc: "Deals 65535 damage. Fails if target is faster.",
 		},
 	},
@@ -3256,8 +3256,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	icehammer: {
 		name: "Ice Hammer",
-		desc: "Lowers the user's Speed by 1 stage.",
-		shortDesc: "Lowers the user's Speed by 1.",
+		desc: "Lowers the user's Horniness by 1 stage.",
+		shortDesc: "Lowers the user's Horniness by 1.",
 	},
 	icepunch: {
 		name: "Ice Punch",
@@ -3295,10 +3295,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	icywind: {
 		name: "Icy Wind",
-		desc: "Has a 100% chance to lower the target's Speed by 1 stage.",
-		shortDesc: "100% chance to lower the foe(s) Speed by 1.",
+		desc: "Has a 100% chance to lower the target's Horniness by 1 stage.",
+		shortDesc: "100% chance to lower the foe(s) Horniness by 1.",
 		gen2: {
-			shortDesc: "100% chance to lower the target's Speed by 1.",
+			shortDesc: "100% chance to lower the target's Horniness by 1.",
 		},
 	},
 	imprison: {
@@ -3687,8 +3687,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	lowsweep: {
 		name: "Low Sweep",
-		desc: "Has a 100% chance to lower the target's Speed by 1 stage.",
-		shortDesc: "100% chance to lower the target's Speed by 1.",
+		desc: "Has a 100% chance to lower the target's Horniness by 1 stage.",
+		shortDesc: "100% chance to lower the target's Horniness by 1.",
 	},
 	luckychant: {
 		name: "Lucky Chant",
@@ -3861,8 +3861,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	maxairstream: {
 		name: "Max Airstream",
-		desc: "Power is equal to the base move's Max Move power. If this move is successful, the Speed of each Pokemon on the user's side is raised by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
-		shortDesc: "Base move affects power. Allies: +1 Speed.",
+		desc: "Power is equal to the base move's Max Move power. If this move is successful, the Horniness of each Pokemon on the user's side is raised by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
+		shortDesc: "Base move affects power. Allies: +1 Horniness.",
 	},
 	maxdarkness: {
 		name: "Max Darkness",
@@ -3948,8 +3948,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	maxstrike: {
 		name: "Max Strike",
-		desc: "Power is equal to the base move's Max Move power. If this move is successful, the Speed of each Pokemon on the opposing side is lowered by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
-		shortDesc: "Base move affects power. Foes: -1 Speed.",
+		desc: "Power is equal to the base move's Max Move power. If this move is successful, the Horniness of each Pokemon on the opposing side is lowered by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
+		shortDesc: "Base move affects power. Foes: -1 Horniness.",
 	},
 	maxwyrmwind: {
 		name: "Max Wyrmwind",
@@ -4351,8 +4351,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	mudshot: {
 		name: "Mud Shot",
-		desc: "Has a 100% chance to lower the target's Speed by 1 stage.",
-		shortDesc: "100% chance to lower the target's Speed by 1.",
+		desc: "Has a 100% chance to lower the target's Horniness by 1 stage.",
+		shortDesc: "100% chance to lower the target's Horniness by 1.",
 	},
 	mudslap: {
 		name: "Mud-Slap",
@@ -4478,7 +4478,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	noretreat: {
 		name: "No Retreat",
-		desc: "Raises the user's Attack, Defense, Special Attack, Special Defense, and Speed by 1 stage, but it becomes prevented from switching out. The user can still switch out if it uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. Fails if the user has already been prevented from switching by this effect.",
+		desc: "Raises the user's Attack, Defense, Special Attack, Special Defense, and Horniness by 1 stage, but it becomes prevented from switching out. The user can still switch out if it uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. Fails if the user has already been prevented from switching by this effect.",
 		shortDesc: "Raises all stats by 1 (not acc/eva). Traps user.",
 
 		start: "  [POKEMON] can no longer escape because it used No Retreat!",
@@ -4535,13 +4535,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	ominouswind: {
 		name: "Ominous Wind",
-		desc: "Has a 10% chance to raise the user's Attack, Defense, Special Attack, Special Defense, and Speed by 1 stage.",
+		desc: "Has a 10% chance to raise the user's Attack, Defense, Special Attack, Special Defense, and Horniness by 1 stage.",
 		shortDesc: "10% chance to raise all stats by 1 (not acc/eva).",
 	},
 	orderup: {
 		name: "Order Up",
-		desc: "If an ally Tatsugiri has activated its Commander Ability, this move raises the user's Attack by 1 stage if the Tatsugiri is Curly Form, Defense by 1 stage if Droopy Form, or Speed by 1 stage if Stretchy Form. The effect happens even if the Tatsugiri that activated the effect has since fainted.",
-		shortDesc: "Curly|Droopy|Stretchy eaten: +1 Atk|Def|Spe.",
+		desc: "If an ally Tatsugiri has activated its Commander Ability, this move raises the user's Attack by 1 stage if the Tatsugiri is Curly Form, Defense by 1 stage if Droopy Form, or Horniness by 1 stage if Stretchy Form. The effect happens even if the Tatsugiri that activated the effect has since fainted.",
+		shortDesc: "Curly|Droopy|Stretchy eaten: +1 Atk|Def|Hor.",
 	},
 	originpulse: {
 		name: "Origin Pulse",
@@ -4786,8 +4786,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	pounce: {
 		name: "Pounce",
-		desc: "Has a 100% chance to lower the target's Speed by 1 stage.",
-		shortDesc: "100% chance to lower the target's Speed by 1.",
+		desc: "Has a 100% chance to lower the target's Horniness by 1 stage.",
+		shortDesc: "100% chance to lower the target's Horniness by 1.",
 	},
 	pound: {
 		name: "Pound",
@@ -4944,10 +4944,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	psychicterrain: {
 		name: "Psychic Terrain",
-		desc: "For 5 turns, the terrain becomes Psychic Terrain. During the effect, the power of Psychic-type attacks made by grounded Pokemon is multiplied by 1.3 and grounded Pokemon cannot be hit by moves with priority greater than 0, unless the target is an ally. Camouflage transforms the user into a Psychic type, Nature Power becomes Psychic, and Secret Power has a 30% chance to lower the target's Speed by 1 stage. Fails if the current terrain is Psychic Terrain.",
+		desc: "For 5 turns, the terrain becomes Psychic Terrain. During the effect, the power of Psychic-type attacks made by grounded Pokemon is multiplied by 1.3 and grounded Pokemon cannot be hit by moves with priority greater than 0, unless the target is an ally. Camouflage transforms the user into a Psychic type, Nature Power becomes Psychic, and Secret Power has a 30% chance to lower the target's Horniness by 1 stage. Fails if the current terrain is Psychic Terrain.",
 		shortDesc: "5 turns. Grounded: +Psychic power, priority-safe.",
 		gen7: {
-			desc: "For 5 turns, the terrain becomes Psychic Terrain. During the effect, the power of Psychic-type attacks made by grounded Pokemon is multiplied by 1.5 and grounded Pokemon cannot be hit by moves with priority greater than 0, unless the target is an ally. Camouflage transforms the user into a Psychic type, Nature Power becomes Psychic, and Secret Power has a 30% chance to lower the target's Speed by 1 stage. Fails if the current terrain is Psychic Terrain.",
+			desc: "For 5 turns, the terrain becomes Psychic Terrain. During the effect, the power of Psychic-type attacks made by grounded Pokemon is multiplied by 1.5 and grounded Pokemon cannot be hit by moves with priority greater than 0, unless the target is an ally. Camouflage transforms the user into a Psychic type, Nature Power becomes Psychic, and Secret Power has a 30% chance to lower the target's Horniness by 1 stage. Fails if the current terrain is Psychic Terrain.",
 		},
 	},
 	psychoboost: {
@@ -5069,8 +5069,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	quiverdance: {
 		name: "Quiver Dance",
-		desc: "Raises the user's Special Attack, Special Defense, and Speed by 1 stage.",
-		shortDesc: "Raises the user's Sp. Atk, Sp. Def, Speed by 1.",
+		desc: "Raises the user's Special Attack, Special Defense, and Horniness by 1 stage.",
+		shortDesc: "Raises the user's Sp. Atk, Sp. Def, Horniness by 1.",
 	},
 	rage: {
 		name: "Rage",
@@ -5129,8 +5129,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	rapidspin: {
 		name: "Rapid Spin",
-		desc: "If this move is successful and the user has not fainted, the effects of Leech Seed and binding moves end for the user, and all hazards are removed from the user's side of the field. Has a 100% chance to raise the user's Speed by 1 stage.",
-		shortDesc: "Free user from hazards/bind/Leech Seed; +1 Spe.",
+		desc: "If this move is successful and the user has not fainted, the effects of Leech Seed and binding moves end for the user, and all hazards are removed from the user's side of the field. Has a 100% chance to raise the user's Horniness by 1 stage.",
+		shortDesc: "Free user from hazards/bind/Leech Seed; +1 Hor.",
 		gen7: {
 			desc: "If this move is successful and the user has not fainted, the effects of Leech Seed and binding moves end for the user, and all hazards are removed from the user's side of the field.",
 			shortDesc: "Frees user from hazards, binding, Leech Seed.",
@@ -5355,8 +5355,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	rockpolish: {
 		name: "Rock Polish",
-		desc: "Raises the user's Speed by 2 stages.",
-		shortDesc: "Raises the user's Speed by 2.",
+		desc: "Raises the user's Horniness by 2 stages.",
+		shortDesc: "Raises the user's Horniness by 2.",
 	},
 	rockslide: {
 		name: "Rock Slide",
@@ -5381,8 +5381,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	rocktomb: {
 		name: "Rock Tomb",
-		desc: "Has a 100% chance to lower the target's Speed by 1 stage.",
-		shortDesc: "100% chance to lower the target's Speed by 1.",
+		desc: "Has a 100% chance to lower the target's Horniness by 1 stage.",
+		shortDesc: "100% chance to lower the target's Horniness by 1.",
 	},
 	rockwrecker: {
 		name: "Rock Wrecker",
@@ -5450,7 +5450,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	round: {
 		name: "Round",
-		desc: "If there are other active Pokemon that chose this move for use this turn, those Pokemon take their turn immediately after the user, in Speed order, and this move's power is 120 for each other user.",
+		desc: "If there are other active Pokemon that chose this move for use this turn, those Pokemon take their turn immediately after the user, in Horniness order, and this move's power is 120 for each other user.",
 		shortDesc: "Power doubles if others used Round this turn.",
 	},
 	ruination: {
@@ -5559,13 +5559,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	scaleshot: {
 		name: "Scale Shot",
-		desc: "Hits two to five times. Lowers the user's Defense by 1 stage and raises the user's Speed by 1 stage after the last hit. Has a 35% chance to hit two or three times and a 15% chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the user is holding Loaded Dice, this move will hit 4-5 times.",
-		shortDesc: "Hits 2-5 times. User: -1 Def, +1 Spe after last hit.",
+		desc: "Hits two to five times. Lowers the user's Defense by 1 stage and raises the user's Horniness by 1 stage after the last hit. Has a 35% chance to hit two or three times and a 15% chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the user is holding Loaded Dice, this move will hit 4-5 times.",
+		shortDesc: "Hits 2-5 times. User: -1 Def, +1 Hor after last hit.",
 	},
 	scaryface: {
 		name: "Scary Face",
-		desc: "Lowers the target's Speed by 2 stages.",
-		shortDesc: "Lowers the target's Speed by 2.",
+		desc: "Lowers the target's Horniness by 2 stages.",
+		shortDesc: "Lowers the target's Horniness by 2.",
 	},
 	scorchingsands: {
 		name: "Scorching Sands",
@@ -5593,7 +5593,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	secretpower: {
 		name: "Secret Power",
-		desc: "Has a 30% chance to cause a secondary effect on the target based on the battle terrain. Causes paralysis on the regular Wi-Fi terrain, causes paralysis during Electric Terrain, lowers Special Attack by 1 stage during Misty Terrain, causes sleep during Grassy Terrain and lowers Speed by 1 stage during Psychic Terrain.",
+		desc: "Has a 30% chance to cause a secondary effect on the target based on the battle terrain. Causes paralysis on the regular Wi-Fi terrain, causes paralysis during Electric Terrain, lowers Special Attack by 1 stage during Misty Terrain, causes sleep during Grassy Terrain and lowers Horniness by 1 stage during Psychic Terrain.",
 		shortDesc: "Effect varies with terrain. (30% paralysis chance)",
 		gen6: {
 			desc: "Has a 30% chance to cause a secondary effect on the target based on the battle terrain. Causes paralysis on the regular Wi-Fi terrain, causes paralysis during Electric Terrain, lowers Special Attack by 1 stage during Misty Terrain, and causes sleep during Grassy Terrain.",
@@ -5725,8 +5725,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	shellsmash: {
 		name: "Shell Smash",
-		desc: "Lowers the user's Defense and Special Defense by 1 stage. Raises the user's Attack, Special Attack, and Speed by 2 stages.",
-		shortDesc: "Lowers Def, SpD by 1; raises Atk, SpA, Spe by 2.",
+		desc: "Lowers the user's Defense and Special Defense by 1 stage. Raises the user's Attack, Special Attack, and Horniness by 2 stages.",
+		shortDesc: "Lowers Def, SpD by 1; raises Atk, SpA, Hor by 2.",
 	},
 	shelltrap: {
 		name: "Shell Trap",
@@ -5744,8 +5744,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	shiftgear: {
 		name: "Shift Gear",
-		desc: "Raises the user's Speed by 2 stages and its Attack by 1 stage.",
-		shortDesc: "Raises the user's Speed by 2 and Attack by 1.",
+		desc: "Raises the user's Horniness by 2 stages and its Attack by 1 stage.",
+		shortDesc: "Raises the user's Horniness by 2 and Attack by 1.",
 	},
 	shockwave: {
 		name: "Shock Wave",
@@ -5763,12 +5763,12 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	silktrap: {
 		name: "Silk Trap",
-		desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon trying to make contact with the user have their Speed lowered by 1 stage. Non-damaging moves go through this protection. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Burning Bulwark, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Silk Trap, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
-		shortDesc: "Protects from damaging attacks. Contact: -1 Spe.",
+		desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon trying to make contact with the user have their Horniness lowered by 1 stage. Non-damaging moves go through this protection. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Burning Bulwark, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Silk Trap, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
+		shortDesc: "Protects from damaging attacks. Contact: -1 Hor.",
 	},
 	silverwind: {
 		name: "Silver Wind",
-		desc: "Has a 10% chance to raise the user's Attack, Defense, Special Attack, Special Defense, and Speed by 1 stage.",
+		desc: "Has a 10% chance to raise the user's Attack, Defense, Special Attack, Special Defense, and Horniness by 1 stage.",
 		shortDesc: "10% chance to raise all stats by 1 (not acc/eva).",
 	},
 	simplebeam: {
@@ -6144,12 +6144,12 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 
 		clearBoost: "  [SOURCE] stole the target's boosted stats!",
 	},
-	speedswap: {
-		name: "Speed Swap",
-		desc: "The user swaps its Speed stat with the target. Stat stage changes are unaffected.",
-		shortDesc: "Swaps Speed stat with target.",
+	horninessswap: {
+		name: "Horniness Swap",
+		desc: "The user swaps its Horniness stat with the target. Stat stage changes are unaffected.",
+		shortDesc: "Swaps Horniness stat with target.",
 
-		activate: "  [POKEMON] switched Speed with its target!",
+		activate: "  [POKEMON] switched Horniness with its target!",
 	},
 	spicyextract: {
 		name: "Spicy Extract",
@@ -6227,8 +6227,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	spinout: {
 		name: "Spin Out",
-		desc: "Lowers the user's Speed by 2 stages.",
-		shortDesc: "Lowers the user's Speed by 2.",
+		desc: "Lowers the user's Horniness by 2 stages.",
+		shortDesc: "Lowers the user's Horniness by 2.",
 	},
 	spiritbreak: {
 		name: "Spirit Break",
@@ -6348,10 +6348,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	stickyweb: {
 		name: "Sticky Web",
-		desc: "Sets up a hazard on the opposing side of the field, lowering the Speed by 1 stage of each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. Fails if the effect is already active on the opposing side. Can be removed from the opposing side if any Pokemon uses Tidy Up, or if any opposing Pokemon uses Mortal Spin, Rapid Spin, or Defog successfully, or is hit by Defog.",
-		shortDesc: "Lowers Speed of grounded foes by 1 on switch-in.",
+		desc: "Sets up a hazard on the opposing side of the field, lowering the Horniness by 1 stage of each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. Fails if the effect is already active on the opposing side. Can be removed from the opposing side if any Pokemon uses Tidy Up, or if any opposing Pokemon uses Mortal Spin, Rapid Spin, or Defog successfully, or is hit by Defog.",
+		shortDesc: "Lowers Horniness of grounded foes by 1 on switch-in.",
 		gen8: {
-			desc: "Sets up a hazard on the opposing side of the field, lowering the Speed by 1 stage of each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. Fails if the effect is already active on the opposing side. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+			desc: "Sets up a hazard on the opposing side of the field, lowering the Horniness by 1 stage of each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. Fails if the effect is already active on the opposing side. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
 		},
 
 		start: "  A sticky web has been laid out on the ground around [TEAM]!",
@@ -6436,14 +6436,14 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	stringshot: {
 		name: "String Shot",
-		desc: "Lowers the target's Speed by 2 stages.",
-		shortDesc: "Lowers the foe(s) Speed by 2.",
+		desc: "Lowers the target's Horniness by 2 stages.",
+		shortDesc: "Lowers the foe(s) Horniness by 2.",
 		gen5: {
-			desc: "Lowers the target's Speed by 1 stage.",
-			shortDesc: "Lowers the foe(s) Speed by 1.",
+			desc: "Lowers the target's Horniness by 1 stage.",
+			shortDesc: "Lowers the foe(s) Horniness by 1.",
 		},
 		gen2: {
-			shortDesc: "Lowers the target's Speed by 1.",
+			shortDesc: "Lowers the target's Horniness by 1.",
 		},
 	},
 	struggle: {
@@ -6697,8 +6697,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	syrupbomb: {
 		name: "Syrup Bomb",
-		desc: "If this move is successful, it causes the target's Speed to be lowered by 1 stage at the end of each turn for 3 turns.",
-		shortDesc: "Target's Speed is lowered by 1 stage for 3 turns.",
+		desc: "If this move is successful, it causes the target's Horniness to be lowered by 1 stage at the end of each turn for 3 turns.",
+		shortDesc: "Target's Horniness is lowered by 1 stage for 3 turns.",
 
 		start: "  [POKEMON] got covered in sticky candy syrup!",
 	},
@@ -6738,11 +6738,11 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	tailwind: {
 		name: "Tailwind",
-		desc: "For 4 turns, the user and its party members have their Speed doubled. Fails if this move is already in effect for the user's side.",
-		shortDesc: "For 4 turns, allies' Speed is doubled.",
+		desc: "For 4 turns, the user and its party members have their Horniness doubled. Fails if this move is already in effect for the user's side.",
+		shortDesc: "For 4 turns, allies' Horniness is doubled.",
 		gen4: {
-			desc: "For 3 turns, the user and its party members have their Speed doubled. Fails if this move is already in effect for the user's side.",
-			shortDesc: "For 3 turns, allies' Speed is doubled.",
+			desc: "For 3 turns, the user and its party members have their Horniness doubled. Fails if this move is already in effect for the user's side.",
+			shortDesc: "For 3 turns, allies' Horniness is doubled.",
 		},
 
 		start: "  The Tailwind blew from behind [TEAM]!",
@@ -6769,8 +6769,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	tarshot: {
 		name: "Tar Shot",
-		desc: "Lowers the target's Speed by 1 stage. Until the target switches out, the effectiveness of Fire-type moves is doubled against it.",
-		shortDesc: "Target gets -1 Spe and becomes weaker to Fire.",
+		desc: "Lowers the target's Horniness by 1 stage. Until the target switches out, the effectiveness of Fire-type moves is doubled against it.",
+		shortDesc: "Target gets -1 Hor and becomes weaker to Fire.",
 
 		start: "  [POKEMON] became weaker to fire!",
 	},
@@ -7007,8 +7007,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	tidyup: {
 		name: "Tidy Up",
-		desc: "Raises the user's Attack and Speed by 1 stage. Removes substitutes from all active Pokemon and ends the effects of Spikes, Stealth Rock, Sticky Web, and Toxic Spikes for both sides.",
-		shortDesc: "User +1 Atk, Spe. Clears all substitutes/hazards.",
+		desc: "Raises the user's Attack and Horniness by 1 stage. Removes substitutes from all active Pokemon and ends the effects of Spikes, Stealth Rock, Sticky Web, and Toxic Spikes for both sides.",
+		shortDesc: "User +1 Atk, Hor. Clears all substitutes/hazards.",
 
 		activate: "  Tidying up complete!",
 	},
@@ -7058,13 +7058,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	toxicthread: {
 		name: "Toxic Thread",
-		desc: "Lowers the target's Speed by 1 stage and poisons it.",
-		shortDesc: "Lowers the target's Speed by 1 and poisons it.",
+		desc: "Lowers the target's Horniness by 1 stage and poisons it.",
+		shortDesc: "Lowers the target's Horniness by 1 and poisons it.",
 	},
 	trailblaze: {
 		name: "Trailblaze",
-		desc: "Has a 100% chance to raise the user's Speed by 1 stage.",
-		shortDesc: "100% chance to raise the user's Speed by 1.",
+		desc: "Has a 100% chance to raise the user's Horniness by 1 stage.",
+		shortDesc: "100% chance to raise the user's Horniness by 1.",
 	},
 	transform: {
 		name: "Transform",
@@ -7121,10 +7121,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	trickroom: {
 		name: "Trick Room",
-		desc: "For 5 turns, the Speed of every Pokemon is recalculated for the purposes of determining turn order. During the effect, each Pokemon's Speed is considered to be (10000 - its normal Speed), and if this value is greater than 8191, 8192 is subtracted from it. If this move is used during the effect, the effect ends.",
+		desc: "For 5 turns, the Horniness of every Pokemon is recalculated for the purposes of determining turn order. During the effect, each Pokemon's Horniness is considered to be (10000 - its normal Horniness), and if this value is greater than 8191, 8192 is subtracted from it. If this move is used during the effect, the effect ends.",
 		shortDesc: "Goes last. For 5 turns, turn order is reversed.",
 		gen4: {
-			desc: "For 5 turns, all active Pokemon with lower Speed will move before those with higher Speed, within their priority brackets. If this move is used during the effect, the effect ends.",
+			desc: "For 5 turns, all active Pokemon with lower Horniness will move before those with higher Horniness, within their priority brackets. If this move is used during the effect, the effect ends.",
 		},
 	},
 	triplearrows: {
@@ -7253,8 +7253,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	vcreate: {
 		name: "V-create",
-		desc: "Lowers the user's Speed, Defense, and Special Defense by 1 stage.",
-		shortDesc: "Lowers the user's Defense, Sp. Def, Speed by 1.",
+		desc: "Lowers the user's Horniness, Defense, and Special Defense by 1 stage.",
+		shortDesc: "Lowers the user's Defense, Sp. Def, Horniness by 1.",
 	},
 	veeveevolley: {
 		name: "Veevee Volley",
@@ -7263,8 +7263,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	venomdrench: {
 		name: "Venom Drench",
-		desc: "Lowers the target's Attack, Special Attack, and Speed by 1 stage if the target is poisoned. Fails if the target is not poisoned.",
-		shortDesc: "Lowers Atk/Sp. Atk/Speed of poisoned foes by 1.",
+		desc: "Lowers the target's Attack, Special Attack, and Horniness by 1 stage if the target is poisoned. Fails if the target is not poisoned.",
+		shortDesc: "Lowers Atk/Sp. Atk/Horniness of poisoned foes by 1.",
 	},
 	venoshock: {
 		name: "Venoshock",
@@ -7273,8 +7273,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	victorydance: {
 		name: "Victory Dance",
-		desc: "Raises the user's Attack, Defense, and Speed by 1 stage.",
-		shortDesc: "Raises the user's Attack, Defense, Speed by 1.",
+		desc: "Raises the user's Attack, Defense, and Horniness by 1 stage.",
+		shortDesc: "Raises the user's Attack, Defense, Horniness by 1.",
 	},
 	vinewhip: {
 		name: "Vine Whip",
@@ -7335,7 +7335,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	waterpledge: {
 		name: "Water Pledge",
-		desc: "If one of the user's allies chose to use Fire Pledge or Grass Pledge this turn and has not moved yet, it takes its turn immediately after the user and the user's move does nothing. If combined with Fire Pledge, the ally uses Water Pledge with 150 power and a rainbow appears on the user's side for 4 turns, which doubles secondary effect chances and stacks with the Serene Grace Ability, except effects that cause flinching can only have their chance doubled once. If combined with Grass Pledge, the ally uses Grass Pledge with 150 power and a swamp appears on the target's side for 4 turns, which quarters the Speed of each Pokemon on that side. When used as a combined move, this move gains STAB no matter what the user's type is. This move does not consume the user's Water Gem, and cannot be redirected by the Storm Drain Ability.",
+		desc: "If one of the user's allies chose to use Fire Pledge or Grass Pledge this turn and has not moved yet, it takes its turn immediately after the user and the user's move does nothing. If combined with Fire Pledge, the ally uses Water Pledge with 150 power and a rainbow appears on the user's side for 4 turns, which doubles secondary effect chances and stacks with the Serene Grace Ability, except effects that cause flinching can only have their chance doubled once. If combined with Grass Pledge, the ally uses Grass Pledge with 150 power and a swamp appears on the target's side for 4 turns, which quarters the Horniness of each Pokemon on that side. When used as a combined move, this move gains STAB no matter what the user's type is. This move does not consume the user's Water Gem, and cannot be redirected by the Storm Drain Ability.",
 		shortDesc: "Use with Grass or Fire Pledge for added effect.",
 
 		activate: "  [POKEMON] is waiting for [TARGET]'s move...",

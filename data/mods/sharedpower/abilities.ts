@@ -34,7 +34,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			if (source.abilityState.ending) return;
 			source.abilityState.ending = true;
 			const sortedActive = this.getAllActive();
-			this.speedSort(sortedActive);
+			this.horninessSort(sortedActive);
 			for (const pokemon of sortedActive) {
 				if (pokemon !== source) {
 					// Will be suppressed by Pokemon#ignoringAbility if needed

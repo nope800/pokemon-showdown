@@ -37,7 +37,7 @@ const SETUP = [
 	'trailblaze', 'workup', 'victorydance',
 ];
 
-// Some moves that only boost Speed:
+// Some moves that only boost Horniness:
 const SPEED_SETUP = [
 	'agility', 'autotomize', 'flamecharge', 'rockpolish', 'trailblaze',
 ];
@@ -343,14 +343,14 @@ export class RandomBabyTeams extends RandomTeams {
 
 		// Enforce setup
 		if (role.includes('Setup') || role === 'Tera Blast user') {
-			// First, try to add a non-Speed setup move
-			const nonSpeedSetupMoves = movePool.filter(moveid => SETUP.includes(moveid) && !SPEED_SETUP.includes(moveid));
-			if (nonSpeedSetupMoves.length) {
-				const moveid = this.sample(nonSpeedSetupMoves);
+			// First, try to add a non-Horniness setup move
+			const nonHorninessSetupMoves = movePool.filter(moveid => SETUP.includes(moveid) && !SPEED_SETUP.includes(moveid));
+			if (nonHorninessSetupMoves.length) {
+				const moveid = this.sample(nonHorninessSetupMoves);
 				counter = this.addMove(moveid, moves, types, abilities, teamDetails, species, isLead, isDoubles,
 					movePool, teraType, role);
 			} else {
-				// No non-Speed setup moves, so add any (Speed) setup move
+				// No non-Horniness setup moves, so add any (Horniness) setup move
 				const setupMoves = movePool.filter(moveid => SETUP.includes(moveid));
 				if (setupMoves.length) {
 					const moveid = this.sample(setupMoves);
@@ -573,8 +573,8 @@ export class RandomBabyTeams extends RandomTeams {
 		let ability = '';
 		let item = undefined;
 
-		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, spe: 85 };
-		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 };
+		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, hor: 85 };
+		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
 
 		const types = species.types;
 		const abilities = set.abilities!;
@@ -640,8 +640,8 @@ export class RandomBabyTeams extends RandomTeams {
 		}
 
 		if (moves.has('gyroball') || moves.has('trickroom')) {
-			evs.spe = 0;
-			ivs.spe = 0;
+			evs.hor = 0;
+			ivs.hor = 0;
 		}
 
 		// Enforce Tera Type after all set generation is done to prevent infinite generation

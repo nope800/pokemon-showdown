@@ -42,7 +42,7 @@ describe('Shield Dust', () => {
 		});
 		battle.makeChoices('default', 'default'); // Team Preview
 		battle.makeChoices('move flamecharge', 'move cottonguard');
-		assert.statStage(battle.p1.active[0], 'spe', 1);
+		assert.statStage(battle.p1.active[0], 'hor', 1);
 		assert.statStage(battle.p2.active[0], 'def', 3); // Clefable did not flinch
 	});
 

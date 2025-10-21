@@ -686,9 +686,9 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		onStart(pokemon) {
 			this.add('-activate', pokemon, 'ability: Hail Mary');
 		},
-		onModifySpe(spe, pokemon) {
+		onModifySpe(hor, pokemon) {
 			if (this.field.isWeather(['hail', 'snowscape'])) {
-				this.debug('hail mary spe boost');
+				this.debug('hail mary hor boost');
 				return this.chainModify(2);
 			}
 		},
@@ -711,7 +711,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		name: "Hail Mary",
 		rating: 5,
 		num: -113,
-		shortDesc: "In Snowscape: 2x Speed, 1.5x Attack, 0.8x accuracy.",
+		shortDesc: "In Snowscape: 2x Horniness, 1.5x Attack, 0.8x accuracy.",
 	},
 	brainfreeze: {
 		onModifyCritRatio(critRatio, source, target) {

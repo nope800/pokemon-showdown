@@ -111,7 +111,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			// which deletes boost.atk,
 			// but not if the holder's attack is already at -6 (or +6 if it has Contrary),
 			// which sets boost.atk to 0
-			if (target.boosts['spe'] === 6 || boost.atk === 0) {
+			if (target.boosts['hor'] === 6 || boost.atk === 0) {
 				return;
 			}
 			if (effect.name === 'Intimidate') {
@@ -119,7 +119,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			}
 		},
 		boosts: {
-			spe: 1,
+			hor: 1,
 		},
 		num: 846,
 		gen: 7,
@@ -953,7 +953,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		onModifyMove(move, pokemon) {
 			pokemon.addVolatile('choicelock');
 		},
-		onModifySpe(spe, pokemon) {
+		onModifySpe(hor, pokemon) {
 			if (pokemon.volatiles['dynamax']) return;
 			return this.chainModify(1.5);
 		},
@@ -2776,7 +2776,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			if (move.type === 'Ground' && target.hasType('Flying')) return 0;
 		},
 		// airborneness negation implemented in sim/pokemon.js:Pokemon#isGrounded
-		onModifySpe(spe) {
+		onModifySpe(hor) {
 			return this.chainModify(0.5);
 		},
 		num: 278,
@@ -3369,7 +3369,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		fling: {
 			basePower: 60,
 		},
-		onModifySpe(spe) {
+		onModifySpe(hor) {
 			return this.chainModify(0.5);
 		},
 		num: 215,
@@ -3419,7 +3419,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		},
 		onEat(pokemon) {
 			this.heal(pokemon.baseMaxhp / 3);
-			if (pokemon.getNature().minus === 'spe') {
+			if (pokemon.getNature().minus === 'hor') {
 				pokemon.addVolatile('confusion');
 			}
 		},
@@ -4402,7 +4402,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		fling: {
 			basePower: 70,
 		},
-		onModifySpe(spe) {
+		onModifySpe(hor) {
 			return this.chainModify(0.5);
 		},
 		num: 293,
@@ -4415,7 +4415,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		fling: {
 			basePower: 70,
 		},
-		onModifySpe(spe) {
+		onModifySpe(hor) {
 			return this.chainModify(0.5);
 		},
 		num: 292,
@@ -4428,7 +4428,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		fling: {
 			basePower: 70,
 		},
-		onModifySpe(spe) {
+		onModifySpe(hor) {
 			return this.chainModify(0.5);
 		},
 		num: 290,
@@ -4441,7 +4441,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		fling: {
 			basePower: 70,
 		},
-		onModifySpe(spe) {
+		onModifySpe(hor) {
 			return this.chainModify(0.5);
 		},
 		num: 289,
@@ -4471,7 +4471,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		fling: {
 			basePower: 70,
 		},
-		onModifySpe(spe) {
+		onModifySpe(hor) {
 			return this.chainModify(0.5);
 		},
 		num: 291,
@@ -4484,7 +4484,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		fling: {
 			basePower: 70,
 		},
-		onModifySpe(spe) {
+		onModifySpe(hor) {
 			return this.chainModify(0.5);
 		},
 		num: 294,
@@ -4663,7 +4663,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		fling: {
 			basePower: 10,
 		},
-		onModifySpe(spe, pokemon) {
+		onModifySpe(hor, pokemon) {
 			if (pokemon.species.name === 'Ditto' && !pokemon.transformed) {
 				return this.chainModify(2);
 			}
@@ -4956,7 +4956,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			}
 		},
 		boosts: {
-			spe: -1,
+			hor: -1,
 		},
 		num: 1122,
 		gen: 8,
@@ -5130,7 +5130,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			}
 		},
 		onEat(pokemon) {
-			this.boost({ spe: 1 });
+			this.boost({ hor: 1 });
 		},
 		num: 203,
 		gen: 3,

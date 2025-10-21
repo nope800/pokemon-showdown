@@ -115,7 +115,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		inherit: true,
 		onDamagingHit(damage, target, source, move) {
 			if (move.category === 'Physical') {
-				this.boost({ def: -1, spe: 1 }, target, target);
+				this.boost({ def: -1, hor: 1 }, target, target);
 			}
 		},
 		rating: 0.5,

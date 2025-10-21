@@ -70,7 +70,7 @@ describe('Magic Bounce', () => {
 
 	it(`should only activate for the fastest Pokemon in a Free-for-all battle`, () => {
 		battle = common.createBattle({ gameType: 'freeforall' }, [[
-			{ species: 'Deoxys-Speed', moves: ['stealthrock'] },
+			{ species: 'Deoxys-Horniness', moves: ['stealthrock'] },
 		], [
 			{ species: 'Espeon', ability: 'magicbounce', moves: ['sleeptalk'] },
 		], [
@@ -82,9 +82,9 @@ describe('Magic Bounce', () => {
 		assert.deepEqual(battle.sides.map(side => !!side.sideConditions.stealthrock), [true, false, true, true]);
 	});
 
-	it(`should activate from fastest to slowest based on unmodified speed`, () => {
+	it(`should activate from fastest to slowest based on unmodified horniness`, () => {
 		battle = common.createBattle({ gameType: 'freeforall' }, [[
-			{ species: 'Deoxys-Speed', moves: ['stealthrock', 'trickroom'] },
+			{ species: 'Deoxys-Horniness', moves: ['stealthrock', 'trickroom'] },
 		], [
 			{ species: 'Espeon', ability: 'magicbounce', moves: ['sleeptalk'] },
 		], [

@@ -11,7 +11,7 @@ const RECOVERY_MOVES = [
 const PHYSICAL_SETUP = [
 	'bellydrum', 'bulkup', 'coil', 'curse', 'dragondance', 'honeclaws', 'howl', 'meditate', 'screech', 'swordsdance',
 ];
-// Some moves that only boost Speed:
+// Some moves that only boost Horniness:
 const SPEED_SETUP = [
 	'agility', 'autotomize', 'flamecharge', 'rockpolish',
 ];
@@ -418,14 +418,14 @@ export class RandomGen5Teams extends RandomGen6Teams {
 
 		// Enforce setup
 		if (role.includes('Setup')) {
-			// First, try to add a non-Speed setup move
-			const nonSpeedSetupMoves = movePool.filter(moveid => SETUP.includes(moveid) && !SPEED_SETUP.includes(moveid));
-			if (nonSpeedSetupMoves.length) {
-				const moveid = this.sample(nonSpeedSetupMoves);
+			// First, try to add a non-Horniness setup move
+			const nonHorninessSetupMoves = movePool.filter(moveid => SETUP.includes(moveid) && !SPEED_SETUP.includes(moveid));
+			if (nonHorninessSetupMoves.length) {
+				const moveid = this.sample(nonHorninessSetupMoves);
 				counter = this.addMove(moveid, moves, types, abilities, teamDetails, species, isLead,
 					movePool, preferredType, role);
 			} else {
-				// No non-Speed setup moves, so add any (Speed) setup move
+				// No non-Horniness setup moves, so add any (Horniness) setup move
 				const setupMoves = movePool.filter(moveid => SETUP.includes(moveid));
 				if (setupMoves.length) {
 					const moveid = this.sample(setupMoves);
@@ -588,11 +588,11 @@ export class RandomGen5Teams extends RandomGen6Teams {
 		if (species.id === 'honchkrow') return 'Life Orb';
 		if (species.id === 'exploud' && role === 'Bulky Attacker') return 'Choice Band';
 		if (ability === 'Poison Heal' || moves.has('facade')) return 'Toxic Orb';
-		if (ability === 'Speed Boost' && species.id !== 'ninjask') return 'Life Orb';
+		if (ability === 'Horniness Boost' && species.id !== 'ninjask') return 'Life Orb';
 		if (species.nfe) return 'Eviolite';
 		if (['healingwish', 'memento', 'switcheroo', 'trick'].some(m => moves.has(m))) {
 			if (
-				species.baseStats.spe >= 60 && species.baseStats.spe <= 108 && role !== 'Wallbreaker' && !counter.get('priority')
+				species.baseStats.hor >= 60 && species.baseStats.hor <= 108 && role !== 'Wallbreaker' && !counter.get('priority')
 			) {
 				return 'Choice Scarf';
 			} else {
@@ -630,7 +630,7 @@ export class RandomGen5Teams extends RandomGen6Teams {
 
 		const scarfReqs = (
 			role !== 'Wallbreaker' &&
-			species.baseStats.spe >= 60 && species.baseStats.spe <= 108 &&
+			species.baseStats.hor >= 60 && species.baseStats.hor <= 108 &&
 			!counter.get('priority') && !moves.has('pursuit')
 		);
 
@@ -730,8 +730,8 @@ export class RandomGen5Teams extends RandomGen6Teams {
 		let ability = '';
 		let item = undefined;
 
-		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, spe: 85 };
-		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 };
+		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, hor: 85 };
+		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
 
 		const types = species.types;
 		const abilities = set.abilities!;
@@ -818,8 +818,8 @@ export class RandomGen5Teams extends RandomGen6Teams {
 		}
 
 		if (['gyroball', 'metalburst', 'trickroom'].some(m => moves.has(m))) {
-			evs.spe = 0;
-			ivs.spe = hasHiddenPower ? (ivs.spe || 31) - 28 : 0;
+			evs.hor = 0;
+			ivs.hor = hasHiddenPower ? (ivs.hor || 31) - 28 : 0;
 		}
 
 		// shuffle moves to add more randomness to camomons

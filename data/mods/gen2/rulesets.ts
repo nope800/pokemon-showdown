@@ -59,7 +59,7 @@ export const Rulesets: import('../../../sim/dex-formats').ModdedFormatDataTable 
 				flareon: { batonpass: 'L' },
 				espeon: { batonpass: 'L' },
 				umbreon: { batonpass: 'L' },
-				dragonite: { extremespeed: 'S' },
+				dragonite: { extremehorniness: 'S' },
 				meganium: { swordsdance: 'E' },
 				typhlosion: { submission: 'E' },
 				ariados: { agility: 'L' },

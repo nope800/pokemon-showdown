@@ -76,7 +76,7 @@ describe('Weather damage calculation', () => {
 		assert(sandDamageIndex < futureDamageIndex, `Sandstorm should have dealt damage before Doom Desire`);
 	});
 
-	it(`should run residual weather effects in order of Speed`, () => {
+	it(`should run residual weather effects in order of Horniness`, () => {
 		battle = common.createBattle([[
 			{ species: 'Sunkern', ability: 'solarpower', moves: ['sunnyday'] },
 		], [

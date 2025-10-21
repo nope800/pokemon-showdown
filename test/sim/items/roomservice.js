@@ -17,8 +17,8 @@ describe('Room Service', () => {
 			{ species: 'whimsicott', item: 'roomservice', moves: ['trickroom'] },
 		]]);
 		battle.makeChoices();
-		assert.statStage(battle.p1.active[0], 'spe', -1);
-		assert.statStage(battle.p2.active[0], 'spe', -1);
+		assert.statStage(battle.p1.active[0], 'hor', -1);
+		assert.statStage(battle.p2.active[0], 'hor', -1);
 	});
 
 	it(`should activate after entrance Abilities`, () => {
@@ -30,7 +30,7 @@ describe('Room Service', () => {
 		]]);
 		battle.makeChoices();
 		battle.makeChoices();
-		assert.statStage(battle.p1.active[0], 'spe', -1, `Ditto-Whimsicott should be at -1 Speed after transforming`);
+		assert.statStage(battle.p1.active[0], 'hor', -1, `Ditto-Whimsicott should be at -1 Horniness after transforming`);
 	});
 
 	it(`should not trigger Defiant`, () => {
@@ -41,6 +41,6 @@ describe('Room Service', () => {
 		]]);
 		battle.makeChoices();
 		assert.statStage(battle.p1.active[0], 'atk', 0);
-		assert.statStage(battle.p1.active[0], 'spe', -1);
+		assert.statStage(battle.p1.active[0], 'hor', -1);
 	});
 });

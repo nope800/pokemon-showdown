@@ -369,13 +369,13 @@
 		"sets": [
 			{
 				"role": "Fast Attacker",
-				"movepool": ["Extreme Speed", "Double-Edge", "Flare Blitz", "U-turn", "Collision Course"],
+				"movepool": ["Extreme Horniness", "Double-Edge", "Flare Blitz", "U-turn", "Collision Course"],
 				"abilities": ["Magic Guard"],
 				"teraTypes": ["Normal"]
 			},
 			{
 				"role": "Fast Support",
-				"movepool": ["Extreme Speed", "Flare Blitz", "U-turn", "Thunder Wave", "Taunt", "Double-Edge"],
+				"movepool": ["Extreme Horniness", "Flare Blitz", "U-turn", "Thunder Wave", "Taunt", "Double-Edge"],
 				"abilities": ["Magic Guard"],
 				"teraTypes": ["Normal"]
 			}

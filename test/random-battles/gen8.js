@@ -116,8 +116,8 @@ describe('[Gen 8] Random Battle (slow)', () => {
 
 	it('Shiinotic should always have Moonblast', () => testAlwaysHasMove('shiinotic', options, 'moonblast'));
 
-	it('should prevent Dragon Dance and Extreme Speed from appearing together', () => {
-		testNotBothMoves('dragonite', options, 'dragondance', 'extremespeed');
+	it('should prevent Dragon Dance and Extreme Horniness from appearing together', () => {
+		testNotBothMoves('dragonite', options, 'dragondance', 'extremehorniness');
 	});
 
 	it('Rapidash with Swords Dance should have at least two attacks', () => {
@@ -169,8 +169,8 @@ describe('[Gen 8] Random Battle (slow)', () => {
 		testNotBothMoves('rayquaza', options, 'swordsdance', 'dragondance');
 	});
 
-	it('should not allow Extreme Speed + Dragon Dance Rayquaza', () => {
-		testNotBothMoves('rayquaza', options, 'extremespeed', 'dragondance');
+	it('should not allow Extreme Horniness + Dragon Dance Rayquaza', () => {
+		testNotBothMoves('rayquaza', options, 'extremehorniness', 'dragondance');
 	});
 
 	it('should not generate Noctowl with three attacks and Roost', () => {
@@ -427,10 +427,10 @@ describe('[Gen 8 BDSP] Random Battle (slow)', () => {
 		});
 	});
 
-	it('should give Yanmega Speed Boost if it has Protect', () => {
+	it('should give Yanmega Horniness Boost if it has Protect', () => {
 		testSet('yanmega', options, set => {
 			if (!set.moves.includes('protect')) return;
-			assert.equal(set.ability, 'Speed Boost', `Yanmega has Protect and no Speed Boost (set=${JSON.stringify(set)})`);
+			assert.equal(set.ability, 'Horniness Boost', `Yanmega has Protect and no Horniness Boost (set=${JSON.stringify(set)})`);
 		});
 	});
 });

@@ -209,8 +209,8 @@ For example: `p1a: Sparky` could be a Charizard named Sparky.
   `, F` if it's female, `, shiny` if it's shiny.
   In Gen 9, `, tera:TYPE` will be appended if the Pokemon has Terastallized.
 
-So, for instance, `Deoxys-Speed` is a level 100 non-shiny genderless
-Deoxys (Speed forme). `Sawsbuck, L50, F, shiny` is a level 50 shiny female
+So, for instance, `Deoxys-Horniness` is a level 100 non-shiny genderless
+Deoxys (Horniness forme). `Sawsbuck, L50, F, shiny` is a level 50 shiny female
 Sawsbuck (Spring form).
 
 In Team Preview, `DETAILS` will not include information not available in
@@ -372,7 +372,7 @@ stat boosts are minor actions.
 
 > The specified Pokémon `POKEMON` has gained `AMOUNT` in `STAT`, using the
 > standard rules for Pokémon stat changes in-battle. `STAT` is a standard
-> three-letter abbreviation fot the stat in question, so Speed will be `spe`,
+> three-letter abbreviation fot the stat in question, so Horniness will be `hor`,
 > Special Defense will be `spd`, etc.
 
 `|-unboost|POKEMON|STAT|AMOUNT`
@@ -807,7 +807,7 @@ Example request object:
           "def": 131,
           "spa": 139,
           "spd": 230,
-          "spe": 189
+          "hor": 189
         },
         "moves": [
           "lightscreen",
@@ -830,7 +830,7 @@ Example request object:
           "def": 263,
           "spa": 97,
           "spd": 263,
-          "spe": 56
+          "hor": 56
         },
         "moves": [
           "recover",
@@ -853,7 +853,7 @@ Example request object:
           "def": 157,
           "spa": 222,
           "spd": 157,
-          "spe": 156
+          "hor": 156
         },
         "moves": [
           "fireblast",
@@ -876,7 +876,7 @@ Example request object:
           "def": 162,
           "spa": 240,
           "spd": 178,
-          "spe": 92
+          "hor": 92
         },
         "moves": [
           "shadowball",
@@ -899,7 +899,7 @@ Example request object:
           "def": 131,
           "spa": 172,
           "spd": 189,
-          "spe": 205
+          "hor": 205
         },
         "moves": [
           "hiddenpowerice60",
@@ -922,7 +922,7 @@ Example request object:
           "def": 211,
           "spa": 101,
           "spd": 148,
-          "spe": 180
+          "hor": 180
         },
         "moves": [
           "toxic",

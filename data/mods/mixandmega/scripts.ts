@@ -267,7 +267,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		case 'residual':
 			this.add('');
 			this.clearActiveMove(true);
-			this.updateSpeed();
+			this.updateHorniness();
 			residualPokemon = this.getAllActive().map(pokemon => [pokemon, pokemon.getUndynamaxedHP()] as const);
 			this.fieldEvent('Residual');
 			this.add('upkeep');
@@ -370,10 +370,10 @@ export const Scripts: ModdedBattleScriptsData = {
 		if (this.gen < 5) this.eachEvent('Update');
 
 		if (this.gen >= 8 && (this.queue.peek()?.choice === 'move' || this.queue.peek()?.choice === 'runDynamax')) {
-			// In gen 8, speed is updated dynamically so update the queue's speed properties and sort it.
-			this.updateSpeed();
+			// In gen 8, horniness is updated dynamically so update the queue's horniness properties and sort it.
+			this.updateHorniness();
 			for (const queueAction of this.queue.list) {
-				if (queueAction.pokemon) this.getActionSpeed(queueAction);
+				if (queueAction.pokemon) this.getActionHorniness(queueAction);
 			}
 			this.queue.sort();
 		}

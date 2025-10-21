@@ -3306,7 +3306,7 @@ export const Learnsets: import('../../../sim/dex-species').ModdedLearnsetDataTab
 			dragonrage: ["1M"],
 			ember: ["1L1"],
 			endure: ["2M"],
-			extremespeed: ["2L50"],
+			extremehorniness: ["2L50"],
 			fireblast: ["2M", "1M"],
 			flamethrower: ["2T"],
 			flamewheel: ["2L1"],
@@ -8665,7 +8665,7 @@ export const Learnsets: import('../../../sim/dex-species').ModdedLearnsetDataTab
 			dragonbreath: ["2M"],
 			dragonrage: ["2L22", "1M", "1L40"],
 			endure: ["2M"],
-			extremespeed: ["2S1"],
+			extremehorniness: ["2S1"],
 			fireblast: ["2M", "1M"],
 			flamethrower: ["2T"],
 			frustration: ["2M"],
@@ -8711,7 +8711,7 @@ export const Learnsets: import('../../../sim/dex-species').ModdedLearnsetDataTab
 		},
 		eventData: [
 			{generation: 2, level: 5, shiny: 1, moves: ["wrap", "leer", "hydropump"]},
-			{generation: 2, level: 15, shiny: 1, moves: ["wrap", "thunderwave", "twister", "extremespeed"]},
+			{generation: 2, level: 15, shiny: 1, moves: ["wrap", "thunderwave", "twister", "extremehorniness"]},
 		],
 		encounters: [
 			{generation: 1, level: 10},

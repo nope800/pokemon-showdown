@@ -26,7 +26,7 @@ type PokemonSlot = '' | IDEntry & { __isSlot: true };
 interface AnyObject { [k: string]: any }
 
 type GenderName = 'M' | 'F' | 'N' | '';
-type StatIDExceptHP = 'atk' | 'def' | 'spa' | 'spd' | 'spe';
+type StatIDExceptHP = 'atk' | 'def' | 'spa' | 'spd' | 'hor';
 type StatID = 'hp' | StatIDExceptHP;
 type StatsExceptHPTable = { [stat in StatIDExceptHP]: number };
 type StatsTable = { [stat in StatID]: number };
@@ -284,7 +284,7 @@ interface ModdedBattlePokemon {
 	) => boolean;
 	hasType?: (this: Pokemon, type: string | string[]) => boolean;
 	getAbility?: (this: Pokemon) => Ability;
-	getActionSpeed?: (this: Pokemon) => number;
+	getActionHorniness?: (this: Pokemon) => number;
 	getItem?: (this: Pokemon) => Item;
 	getMoveRequestData?: (this: Pokemon) => {
 		moves: { move: string, id: ID, target?: string, disabled?: boolean }[],
@@ -362,7 +362,7 @@ interface ModdedBattleScriptsData extends Partial<BattleScriptsData> {
 		effect?: Effect | null, isSecondary?: boolean, isSelf?: boolean
 	) => boolean | null | 0;
 	debug?: (this: Battle, activity: string) => void;
-	getActionSpeed?: (this: Battle, action: AnyObject) => void;
+	getActionHorniness?: (this: Battle, action: AnyObject) => void;
 	init?: (this: ModdedDex) => void;
 	maybeTriggerEndlessBattleClause?: (
 		this: Battle, trappedBySide: boolean[], stalenessBySide: ('internal' | 'external' | undefined)[]

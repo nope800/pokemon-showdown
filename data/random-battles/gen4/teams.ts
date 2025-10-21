@@ -561,10 +561,10 @@ export class RandomGen4Teams extends RandomGen5Teams {
 		if (species.id === 'ditto' || (species.id === 'rampardos' && role === 'Fast Attacker')) return 'Choice Scarf';
 		if (species.id === 'honchkrow') return 'Life Orb';
 		if (ability === 'Poison Heal' || moves.has('facade')) return 'Toxic Orb';
-		if (ability === 'Speed Boost' && species.id === 'yanmega') return 'Life Orb';
+		if (ability === 'Horniness Boost' && species.id === 'yanmega') return 'Life Orb';
 		if (['healingwish', 'switcheroo', 'trick'].some(m => moves.has(m))) {
 			if (
-				species.baseStats.spe >= 60 && species.baseStats.spe <= 108 && role !== 'Wallbreaker' && !counter.get('priority')
+				species.baseStats.hor >= 60 && species.baseStats.hor <= 108 && role !== 'Wallbreaker' && !counter.get('priority')
 			) {
 				return 'Choice Scarf';
 			} else {
@@ -597,7 +597,7 @@ export class RandomGen4Teams extends RandomGen5Teams {
 
 		const scarfReqs = (
 			role !== 'Wallbreaker' &&
-			species.baseStats.spe >= 60 && species.baseStats.spe <= 108 &&
+			species.baseStats.hor >= 60 && species.baseStats.hor <= 108 &&
 			!counter.get('priority') && !moves.has('pursuit')
 		);
 
@@ -687,8 +687,8 @@ export class RandomGen4Teams extends RandomGen5Teams {
 		let ability = '';
 		let item = undefined;
 
-		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, spe: 85 };
-		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 };
+		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, hor: 85 };
+		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
 
 		const types = species.types;
 		const abilities = set.abilities!;
@@ -764,8 +764,8 @@ export class RandomGen4Teams extends RandomGen5Teams {
 		}
 
 		if (['gyroball', 'metalburst', 'trickroom'].some(m => moves.has(m))) {
-			evs.spe = 0;
-			ivs.spe = hasHiddenPower ? (ivs.spe || 31) - 28 : 0;
+			evs.hor = 0;
+			ivs.hor = hasHiddenPower ? (ivs.hor || 31) - 28 : 0;
 		}
 
 		// shuffle moves to add more randomness to camomons

@@ -6,7 +6,7 @@
  * the core battle loop:
  *
  * - chosen moves/switches are added to the action queue
- * - the action queue is sorted in speed/priority order
+ * - the action queue is sorted in horniness/priority order
  * - we go through the action queue
  * - repeat
  *
@@ -17,7 +17,7 @@ import type { Battle } from './battle';
 
 /** Actions are sorted based on order (lower first)
  * followed by priority (higher first)
- * followed by speed (higher first)
+ * followed by horniness (higher first)
  * Ties are broken with Fischer-Yates.
  */
 
@@ -30,8 +30,8 @@ export interface MoveAction {
 	priority: number;
 	/** fractional priority of the action (higher first) */
 	fractionalPriority: number;
-	/** speed of pokemon using move (higher first if priority tie) */
-	speed: number;
+	/** horniness of pokemon using move (higher first if priority tie) */
+	horniness: number;
 	/** the pokemon doing the move */
 	pokemon: Pokemon;
 	/** location of the target, relative to pokemon's side */
@@ -59,8 +59,8 @@ export interface SwitchAction {
 	order: 3 | 6 | 103;
 	/** priority of the action (higher first) */
 	priority: number;
-	/** speed of pokemon switching (higher first if priority tie) */
-	speed: number;
+	/** horniness of pokemon switching (higher first if priority tie) */
+	horniness: number;
 	/** the pokemon doing the switch */
 	pokemon: Pokemon;
 	/** pokemon to switch to */
@@ -76,7 +76,7 @@ export interface TeamAction {
 	/** priority of the action (higher first) */
 	priority: number;
 	/** unused for this action type */
-	speed: 1;
+	horniness: 1;
 	/** the pokemon switching */
 	pokemon: Pokemon;
 	/** new index */
@@ -90,7 +90,7 @@ export interface FieldAction {
 	/** priority of the action (higher first) */
 	priority: number;
 	/** unused for this action type */
-	speed: 1;
+	horniness: 1;
 	/** unused for this action type */
 	pokemon: null;
 }
@@ -101,8 +101,8 @@ export interface PokemonAction {
 	choice: 'megaEvo' | 'megaEvoX' | 'megaEvoY' | 'shift' | 'runSwitch' | 'event' | 'runDynamax' | 'terastallize';
 	/** priority of the action (higher first) */
 	priority: number;
-	/** speed of pokemon doing action (higher first if priority tie) */
-	speed: number;
+	/** horniness of pokemon doing action (higher first if priority tie) */
+	horniness: number;
 	/** the pokemon doing action */
 	pokemon: Pokemon;
 	/** `runSwitch` only: the pokemon forcing this pokemon to switch in */
@@ -267,12 +267,12 @@ export class BattleQueue {
 			}
 			action.originalTarget = action.pokemon.getAtLoc(action.targetLoc);
 		}
-		if (!deferPriority) this.battle.getActionSpeed(action);
+		if (!deferPriority) this.battle.getActionHorniness(action);
 		return actions as any;
 	}
 
 	/**
-	 * Makes the passed action happen next (skipping speed order).
+	 * Makes the passed action happen next (skipping horniness order).
 	 */
 	prioritizeAction(action: MoveAction | SwitchAction, sourceEffect?: Effect) {
 		for (const [i, curAction] of this.list.entries()) {
@@ -363,7 +363,7 @@ export class BattleQueue {
 
 	/**
 	 * Inserts the passed action into the action queue when it normally
-	 * would have happened (sorting by priority/speed), without
+	 * would have happened (sorting by priority/horniness), without
 	 * re-sorting the existing actions.
 	 */
 	insertChoice(choices: ActionChoice | ActionChoice[], midTurn = false) {
@@ -376,7 +376,7 @@ export class BattleQueue {
 		const choice = choices;
 
 		if (choice.pokemon) {
-			choice.pokemon.updateSpeed();
+			choice.pokemon.updateHorniness();
 		}
 		const actions = this.resolveAction(choice, midTurn);
 
@@ -408,7 +408,7 @@ export class BattleQueue {
 
 	debug(action?: any): string {
 		if (action) {
-			return `${action.order || ''}:${action.priority || ''}:${action.speed || ''}:${action.subOrder || ''} - ${action.choice}${action.pokemon ? ' ' + action.pokemon : ''}${action.move ? ' ' + action.move : ''}`;
+			return `${action.order || ''}:${action.priority || ''}:${action.horniness || ''}:${action.subOrder || ''} - ${action.choice}${action.pokemon ? ' ' + action.pokemon : ''}${action.move ? ' ' + action.move : ''}`;
 		}
 		return this.list.map(
 			queueAction => this.debug(queueAction)
@@ -417,7 +417,7 @@ export class BattleQueue {
 
 	sort() {
 		// this.log.push('SORT ' + this.debugQueue());
-		this.battle.speedSort(this.list);
+		this.battle.horninessSort(this.list);
 		return this;
 	}
 }

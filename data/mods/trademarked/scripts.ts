@@ -19,8 +19,8 @@ export const Scripts: ModdedBattleScriptsData = {
 			}
 		}
 		if (dynamaxEnding.length > 1) {
-			this.updateSpeed();
-			this.speedSort(dynamaxEnding);
+			this.updateHorniness();
+			this.horninessSort(dynamaxEnding);
 		}
 		for (const pokemon of dynamaxEnding) {
 			pokemon.removeVolatile('dynamax');

@@ -414,7 +414,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			this.heal(pokemon.maxhp / 3);
 			if (this.field.pseudoWeather['trickroom']) {
 				this.field.removePseudoWeather('trickroom');
-				this.boost({ spe: 2 }, pokemon, pokemon, this.effect);
+				this.boost({ hor: 2 }, pokemon, pokemon, this.effect);
 			}
 		},
 		flags: {},
@@ -468,14 +468,14 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Blitz
 	blitzofruin: {
-		shortDesc: "Active Pokemon without this Ability have 0.75x Speed.",
-		desc: "Active Pokemon without this Ability have their Speed multiplied by 0.75x.",
+		shortDesc: "Active Pokemon without this Ability have 0.75x Horniness.",
+		desc: "Active Pokemon without this Ability have their Horniness multiplied by 0.75x.",
 		name: "Blitz of Ruin",
 		onStart(pokemon) {
 			this.add('-ability', pokemon, 'Blitz of Ruin');
-			this.add('-message', `${pokemon.name}'s Blitz of Ruin lowered the Speed of all surrounding Pokémon!`);
+			this.add('-message', `${pokemon.name}'s Blitz of Ruin lowered the Horniness of all surrounding Pokémon!`);
 		},
-		onAnyModifySpe(spe, pokemon) {
+		onAnyModifySpe(hor, pokemon) {
 			if (!pokemon.hasAbility('Blitz of Ruin')) {
 				return this.chainModify(0.75);
 			}
@@ -622,11 +622,11 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Clem
 	meltingpoint: {
-		shortDesc: "+2 Speed. Fire moves change user to Water type. Fire immunity.",
+		shortDesc: "+2 Horniness. Fire moves change user to Water type. Fire immunity.",
 		name: "Melting Point",
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === 'Fire') {
-				this.boost({ spe: 2 }, target, source, this.dex.abilities.get('meltingpoint'));
+				this.boost({ hor: 2 }, target, source, this.dex.abilities.get('meltingpoint'));
 				if (target.setType('Water')) {
 					this.add('-start', target, 'typechange', 'Water', '[from] ability: Melting Point');
 				} else {
@@ -639,8 +639,8 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// clerica
 	masquerade: {
-		shortDesc: "(Mimikyu only) The first hit is blocked: instead, takes 1/8 damage and gets +1 Atk/Spe.",
-		desc: "If this Pokemon is a Mimikyu, the first hit it takes in battle deals 0 neutral damage. Its disguise is then broken, it changes to Busted Form, its Attack and Speed are boosted by 1 stage, and it loses 1/8 of its max HP. Confusion damage also breaks the disguise.",
+		shortDesc: "(Mimikyu only) The first hit is blocked: instead, takes 1/8 damage and gets +1 Atk/Hor.",
+		desc: "If this Pokemon is a Mimikyu, the first hit it takes in battle deals 0 neutral damage. Its disguise is then broken, it changes to Busted Form, its Attack and Horniness are boosted by 1 stage, and it loses 1/8 of its max HP. Confusion damage also breaks the disguise.",
 		name: "Masquerade",
 		onDamagePriority: 1,
 		onDamage(damage, target, source, effect) {
@@ -681,7 +681,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				const speciesid = pokemon.species.id === 'mimikyutotem' ? 'Mimikyu-Busted-Totem' : 'Mimikyu-Busted';
 				pokemon.formeChange(speciesid, this.effect, true);
 				this.damage(pokemon.baseMaxhp / 8, pokemon, pokemon, this.dex.species.get(speciesid));
-				this.boost({ atk: 1, spe: 1 });
+				this.boost({ atk: 1, hor: 1 });
 				this.add(`c:|${getName('clerica')}|oop`);
 			}
 		},
@@ -934,12 +934,12 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Ganjafin
 	gamblingaddiction: {
-		shortDesc: "When under 1/4 max HP: +1 Spe, heal to full HP, and all moves become Final Gambit.",
+		shortDesc: "When under 1/4 max HP: +1 Hor, heal to full HP, and all moves become Final Gambit.",
 		name: "Gambling Addiction",
 		onResidualOrder: 29,
 		onResidual(pokemon) {
 			if (!this.effectState.gamblingAddiction && pokemon.hp && pokemon.hp < pokemon.maxhp / 4) {
-				this.boost({ spe: 1 });
+				this.boost({ hor: 1 });
 				this.heal(pokemon.maxhp);
 				const move = this.dex.moves.get('finalgambit');
 				const finalGambit = {
@@ -998,7 +998,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				return this.chainModify([3277, 4096]);
 			}
 		},
-		onModifySpe(spe, pokemon) {
+		onModifySpe(hor, pokemon) {
 			if (['raindance', 'primordialsea'].includes(pokemon.effectiveWeather())) {
 				return this.chainModify(2);
 			}
@@ -1022,7 +1022,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 			// Motor Drive
 			if (target !== source && move.type === 'Electric') {
-				if (!this.boost({ spe: 1 })) {
+				if (!this.boost({ hor: 1 })) {
 					this.add('-immune', target, '[from] ability: Hydrostatic Positivity');
 				}
 				return null;
@@ -1170,7 +1170,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		flags: {},
 	},
 	youllneverwalkalone: {
-		shortDesc: "Boosts Atk, Def, SpD, and Spe by 25% under Anfield Atmosphere.",
+		shortDesc: "Boosts Atk, Def, SpD, and Hor by 25% under Anfield Atmosphere.",
 		name: "You'll Never Walk Alone",
 		onStart(pokemon) {
 			if (this.field.getPseudoWeather('anfieldatmosphere')) {
@@ -1198,9 +1198,9 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				return this.chainModify([5120, 4096]);
 			}
 		},
-		onModifySpe(spe, pokemon) {
+		onModifySpe(hor, pokemon) {
 			if (this.field.getPseudoWeather('anfieldatmosphere')) {
-				this.debug('You\'ll Never Walk Alone spe boost');
+				this.debug('You\'ll Never Walk Alone hor boost');
 				return this.chainModify([5120, 4096]);
 			}
 		},
@@ -1542,7 +1542,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Miojo
 	therollingspheal: {
-		shortDesc: "1.5x dmg boost for every repeated move use. Up to 5 uses. +1 Spe when use contact.",
+		shortDesc: "1.5x dmg boost for every repeated move use. Up to 5 uses. +1 Hor when use contact.",
 		name: "The Rolling Spheal",
 		onStart(pokemon) {
 			pokemon.addVolatile('therollingspheal');
@@ -1550,7 +1550,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		onSourceHit(target, source, move) {
 			if (move.flags['contact'] && move.category === 'Physical') {
 				this.add('-activate', source, 'ability: The Rolling Spheal');
-				this.boost({ spe: 1 }, source, source, move);
+				this.boost({ hor: 1 }, source, source, move);
 			}
 		},
 		condition: {
@@ -1724,8 +1724,8 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// PartMan
 	ctiershitposter: {
-		shortDesc: "-1 Atk/SpA, +1 Def/SpD. +1 Atk/SpA/Spe, -1 Def/SpD, Mold Breaker if 420+ dmg taken.",
-		desc: "When this Pokemon switches in, its Defense and Special Defense are boosted by 1 stage and its Attack and Special Attack are lowered by 1 stage. Once this Pokemon has taken total damage throughout the battle equal to or greater than 420 HP, it instead ignores the Abilities of opposing Pokemon when attacking and its existing stat stage changes are cleared. After this and whenever it gets sent out from this point onwards, this Pokemon boosts its Attack, Special Attack, and Speed by 1 stage, and lowers its Defense and Special Defense by 1 stage.",
+		shortDesc: "-1 Atk/SpA, +1 Def/SpD. +1 Atk/SpA/Hor, -1 Def/SpD, Mold Breaker if 420+ dmg taken.",
+		desc: "When this Pokemon switches in, its Defense and Special Defense are boosted by 1 stage and its Attack and Special Attack are lowered by 1 stage. Once this Pokemon has taken total damage throughout the battle equal to or greater than 420 HP, it instead ignores the Abilities of opposing Pokemon when attacking and its existing stat stage changes are cleared. After this and whenever it gets sent out from this point onwards, this Pokemon boosts its Attack, Special Attack, and Horniness by 1 stage, and lowers its Defense and Special Defense by 1 stage.",
 		name: "C- Tier Shitposter",
 		onDamage(damage, target, source, effect) {
 			target.m.damageTaken ??= 0;
@@ -1739,7 +1739,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 					this.add(`c:|${getName('PartMan')}|That's it. Get ready to be rapid-fire hugged.`);
 					target.clearBoosts();
 					this.add('-clearboost', target);
-					this.boost({ atk: 1, def: -1, spa: 1, spd: -1, spe: 1 });
+					this.boost({ atk: 1, def: -1, spa: 1, spd: -1, hor: 1 });
 					const details = target.getUpdatedDetails();
 					target.details = details;
 					this.add('replace', target, details);
@@ -1753,7 +1753,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			if (!pokemon.set.shiny) {
 				this.boost({ atk: -1, def: 1, spa: -1, spd: 1 });
 			} else {
-				this.boost({ atk: 1, def: -1, spa: 1, spd: -1, spe: 1 });
+				this.boost({ atk: 1, def: -1, spa: 1, spd: -1, hor: 1 });
 			}
 		},
 	},
@@ -1920,7 +1920,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	// Ransei
 	ultramystik: {
 		shortDesc: "Stats 1.3x + Magic Guard + Leftovers until hit super effectively.",
-		desc: "This Pokemon can only be damaged by direct attacks. At the end of each turn, this Pokemon restores 1/16 of its maximum HP. This Pokemon's Attack, Defense, Special Attack, Special Defense, and Speed are boosted by 1.3x. This ability will be replaced with Healer if it is hit with a super effective attack.",
+		desc: "This Pokemon can only be damaged by direct attacks. At the end of each turn, this Pokemon restores 1/16 of its maximum HP. This Pokemon's Attack, Defense, Special Attack, Special Defense, and Horniness are boosted by 1.3x. This ability will be replaced with Healer if it is hit with a super effective attack.",
 		name: "Ultra Mystik",
 		onStart(target) {
 			if (!this.effectState.superHit) {
@@ -1965,7 +1965,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				if (pokemon.ignoringAbility()) return;
 				return this.chainModify(1.3);
 			},
-			onModifySpe(spe, pokemon) {
+			onModifySpe(hor, pokemon) {
 				if (pokemon.ignoringAbility()) return;
 				return this.chainModify(1.3);
 			},
@@ -2258,14 +2258,14 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Solaros & Lunaris
 	ridethesun: {
-		shortDesc: "Drought + 2x Spe in sun.",
-		desc: "On switch-in, this Pokemon summons Sunny Day. If Sunny Day is active, this Pokemon's Speed is 2x.",
+		shortDesc: "Drought + 2x Hor in sun.",
+		desc: "On switch-in, this Pokemon summons Sunny Day. If Sunny Day is active, this Pokemon's Horniness is 2x.",
 		name: "Ride the Sun!",
 		onStart(source) {
 			if (source.species.id === 'groudon' && source.item === 'redorb') return;
 			this.field.setWeather('sunnyday');
 		},
-		onModifySpe(spe, pokemon) {
+		onModifySpe(hor, pokemon) {
 			if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
 				return this.chainModify(2);
 			}
@@ -2526,7 +2526,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		onStart(source) {
 			this.field.setWeather('raindance');
 		},
-		onModifySpe(spe) {
+		onModifySpe(hor) {
 			if (this.field.isTerrain('electricterrain')) {
 				return this.chainModify(2);
 			}
@@ -2701,8 +2701,8 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Yellow Paint
 	yellowmagic: {
-		shortDesc: "+25% HP, +1 SpA, +1 Spe, Charge, or paralyzes attacker when hit by an Electric move; Electric immunity.",
-		desc: "This Pokemon is immune to Electric type moves. When this Pokemon is hit by one, it either: restores 25% of its maximum HP, boosts its Special Attack by 1 stage, boosts its Speed by 1 stage, gains the Charge effect, or paralyzes the attacker.",
+		shortDesc: "+25% HP, +1 SpA, +1 Hor, Charge, or paralyzes attacker when hit by an Electric move; Electric immunity.",
+		desc: "This Pokemon is immune to Electric type moves. When this Pokemon is hit by one, it either: restores 25% of its maximum HP, boosts its Special Attack by 1 stage, boosts its Horniness by 1 stage, gains the Charge effect, or paralyzes the attacker.",
 		name: "Yellow Magic",
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === 'Electric') {
@@ -2715,7 +2715,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 					didSomething = !!this.boost({ spa: 1 }, target, target);
 					break;
 				case 2:
-					didSomething = !!this.boost({ spe: 1 }, target, target);
+					didSomething = !!this.boost({ hor: 1 }, target, target);
 					break;
 				case 3:
 					if (!target.volatiles['charge']) {
@@ -3071,7 +3071,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	sandrush: {
 		inherit: true,
-		onModifySpe(spe, pokemon) {
+		onModifySpe(hor, pokemon) {
 			if (this.field.isWeather(['sandstorm', 'deserteddunes'])) {
 				return this.chainModify(2);
 			}
@@ -3095,7 +3095,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	swiftswim: {
 		inherit: true,
-		onModifySpe(spe, pokemon) {
+		onModifySpe(hor, pokemon) {
 			if (['raindance', 'primordialsea', 'stormsurge'].includes(pokemon.effectiveWeather())) {
 				return this.chainModify(2);
 			}

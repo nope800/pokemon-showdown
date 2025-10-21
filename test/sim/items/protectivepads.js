@@ -45,7 +45,7 @@ describe('Protective Pads', () => {
 			{ species: 'goodra', ability: 'gooey', moves: ['sleeptalk'] },
 		]]);
 		battle.makeChoices();
-		assert.statStage(battle.p1.active[0], 'spe', 0, `Speed should not be lowered`);
+		assert.statStage(battle.p1.active[0], 'hor', 0, `Horniness should not be lowered`);
 		assert(battle.log.some(line => line.includes('Gooey')));
 		assert(battle.log.some(line => line.includes('Protective Pads')));
 	});

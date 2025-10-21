@@ -15,6 +15,6 @@ describe('Own Tempo', () => {
 		battle.setPlayer('p1', { team: [{ species: 'Gyarados', ability: 'intimidate', moves: ['splash'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Smeargle', ability: 'own tempo', item: 'adrenaline orb', moves: ['sleeptalk'] }] });
 		assert.statStage(battle.p2.active[0], 'atk', 0);
-		assert.statStage(battle.p2.active[0], 'spe', 1);
+		assert.statStage(battle.p2.active[0], 'hor', 1);
 	});
 });

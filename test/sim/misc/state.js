@@ -13,7 +13,7 @@ const TEAMS = [[
 	{ species: 'Zoroark', ability: 'illusion', item: 'leftovers', moves: ['knockoff'] },
 	{ species: 'Gengar', ability: 'cursedbody', item: 'brightpowder', moves: ['disable'] },
 ], [
-	{ species: 'Ninjask', ability: 'speedboost', item: 'rockyhelmet', moves: ['batonpass'] },
+	{ species: 'Ninjask', ability: 'horninessboost', item: 'rockyhelmet', moves: ['batonpass'] },
 	{ species: 'Hippowdon', ability: 'sandstream', item: 'choiceband', moves: ['earthquake'] },
 	{ species: 'Jirachi', ability: 'serenegrace', item: 'choicescarf', moves: ['ironhead'] },
 	{ species: 'Chansey', ability: 'naturalcure', item: 'eviolite', moves: ['seismictoss'] },

@@ -246,14 +246,14 @@ describe('Sky Drop', () => {
 		assert.statStage(battle.p2.active[0], 'atk', 2);
 	});
 
-	it(`should not suppress Speed Boost`, () => {
+	it(`should not suppress Horniness Boost`, () => {
 		battle = common.createBattle([[
 			{ species: 'Aerodactyl', moves: ['skydrop'] },
 		], [
-			{ species: 'Mew', ability: 'speedboost', moves: ['splash'] },
+			{ species: 'Mew', ability: 'horninessboost', moves: ['splash'] },
 		]]);
 		battle.makeChoices();
-		assert.statStage(battle.p2.active[0], 'spe', 1);
+		assert.statStage(battle.p2.active[0], 'hor', 1);
 	});
 
 	it(`should not claim to have dropped a Pokemon if it is already fainted`, () => {

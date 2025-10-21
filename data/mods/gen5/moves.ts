@@ -203,7 +203,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	electroball: {
 		inherit: true,
 		basePowerCallback(pokemon, target) {
-			const ratio = Math.floor(pokemon.getStat('spe') / Math.max(1, target.getStat('spe')));
+			const ratio = Math.floor(pokemon.getStat('hor') / Math.max(1, target.getStat('hor')));
 			const bp = [40, 60, 80, 120, 150][Math.min(ratio, 4)];
 			this.debug(`BP: ${bp}`);
 			return bp;
@@ -336,7 +336,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	gyroball: {
 		inherit: true,
 		basePowerCallback(pokemon, target) {
-			let power = Math.floor(25 * target.getStat('spe') / Math.max(1, pokemon.getStat('spe'))) + 1;
+			let power = Math.floor(25 * target.getStat('hor') / Math.max(1, pokemon.getStat('hor'))) + 1;
 			if (power > 150) power = 150;
 			this.debug(`BP: ${power}`);
 			return power;
@@ -880,7 +880,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	stringshot: {
 		inherit: true,
 		boosts: {
-			spe: -1,
+			hor: -1,
 		},
 	},
 	strugglebug: {

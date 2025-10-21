@@ -1494,7 +1494,7 @@ export const FormatsData: import('../../../sim/dex-species').ModdedSpeciesFormat
 		tier: "Uber",
 		doublesTier: "DUU",
 	},
-	deoxysspeed: {
+	deoxyshorniness: {
 		tier: "Uber",
 		doublesTier: "DUU",
 	},

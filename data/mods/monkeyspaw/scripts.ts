@@ -10,8 +10,8 @@ export const Scripts: ModdedBattleScriptsData = {
 			}
 		}
 		if (dynamaxEnding.length > 1) {
-			this.updateSpeed();
-			this.speedSort(dynamaxEnding);
+			this.updateHorniness();
+			this.horninessSort(dynamaxEnding);
 		}
 		for (const pokemon of dynamaxEnding) {
 			pokemon.removeVolatile('dynamax');
@@ -365,7 +365,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		case 'residual':
 			this.add('');
 			this.clearActiveMove(true);
-			this.updateSpeed();
+			this.updateHorniness();
 			residualPokemon = this.getAllActive().map(pokemon => [pokemon, pokemon.getUndynamaxedHP()] as const);
 			this.fieldEvent('Residual');
 			if (!this.ended) this.add('upkeep');
@@ -471,10 +471,10 @@ export const Scripts: ModdedBattleScriptsData = {
 		if (this.gen < 5) this.eachEvent('Update');
 
 		if (this.gen >= 8 && (this.queue.peek()?.choice === 'move' || this.queue.peek()?.choice === 'runDynamax')) {
-			// In gen 8, speed is updated dynamically so update the queue's speed properties and sort it.
-			this.updateSpeed();
+			// In gen 8, horniness is updated dynamically so update the queue's horniness properties and sort it.
+			this.updateHorniness();
 			for (const queueAction of this.queue.list) {
-				if (queueAction.pokemon) this.getActionSpeed(queueAction);
+				if (queueAction.pokemon) this.getActionHorniness(queueAction);
 			}
 			this.queue.sort();
 		}
@@ -558,7 +558,7 @@ export const Scripts: ModdedBattleScriptsData = {
 
 			let boost: BoostID;
 			for (boost in pokemon.boosts) {
-				if (boost === 'accuracy' || boost === 'evasion' || boost === 'spe') continue;
+				if (boost === 'accuracy' || boost === 'evasion' || boost === 'hor') continue;
 				if (positiveBoosts.includes(boost)) {
 					boostsTable[boost] = 2;
 				} else {

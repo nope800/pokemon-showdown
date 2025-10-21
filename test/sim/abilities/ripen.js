@@ -46,7 +46,7 @@ describe("Ripen", () => {
 
 	it('should allow resist Berries to quarter the damage done', () => {
 		battle = common.createBattle([[
-			{ species: 'wynaut', ability: 'ripen', item: 'colburberry', evs: { spe: 4 }, moves: ['luckychant'] },
+			{ species: 'wynaut', ability: 'ripen', item: 'colburberry', evs: { hor: 4 }, moves: ['luckychant'] },
 		], [
 			{ species: 'wynaut', moves: ['darkpulse'] },
 		]]);
@@ -58,7 +58,7 @@ describe("Ripen", () => {
 
 	it('should allow resist Berries to quarter the damage done even on a critical hit', () => {
 		battle = common.createBattle([[
-			{ species: 'wynaut', ability: 'ripen', item: 'colburberry', evs: { spe: 4 }, moves: ['sleeptalk'] },
+			{ species: 'wynaut', ability: 'ripen', item: 'colburberry', evs: { hor: 4 }, moves: ['sleeptalk'] },
 		], [
 			{ species: 'wynaut', moves: ['laserfocus', 'darkpulse'] },
 		]]);

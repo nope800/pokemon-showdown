@@ -63,7 +63,7 @@ describe('Storm Drain', () => {
 			{ species: 'Azumarill', ability: 'thickfat', moves: ['waterfall'] },
 		] });
 		const [fastGastrodon, slowGastrodon] = battle.p1.active;
-		fastGastrodon.boostBy({ spe: 6 });
+		fastGastrodon.boostBy({ hor: 6 });
 		battle.makeChoices('move sleeptalk, move sleeptalk', 'move waterfall 1, move waterfall 2');
 		assert.statStage(fastGastrodon, 'spa', 2);
 		assert.statStage(slowGastrodon, 'spa', 0);

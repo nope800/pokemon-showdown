@@ -36,9 +36,9 @@ describe('Type addition', () => {
 			it('should be able to add ' + moveData.type + ' type to Arceus', () => {
 				battle = common.createBattle();
 				battle.setPlayer('p1', { team: [{ species: "Gourgeist", ability: 'frisk', moves: [moveData.name] }] });
-				battle.setPlayer('p2', { team: [{ species: "Arceus", ability: 'multitype', moves: ['extremespeed'] }] });
+				battle.setPlayer('p2', { team: [{ species: "Arceus", ability: 'multitype', moves: ['extremehorniness'] }] });
 				const target = battle.p2.active[0];
-				assert.sets(() => target.getTypes().join('/'), `Normal/${moveData.type}`, () => battle.makeChoices('move ' + moveData.name, 'move extremespeed'));
+				assert.sets(() => target.getTypes().join('/'), `Normal/${moveData.type}`, () => battle.makeChoices('move ' + moveData.name, 'move extremehorniness'));
 			});
 
 			for (const moveData2 of adderMoves) {
@@ -46,7 +46,7 @@ describe('Type addition', () => {
 					it('should fail on repeated use', () => {
 						battle = common.createBattle();
 						battle.setPlayer('p1', { team: [{ species: "Gourgeist", ability: 'frisk', moves: [moveData.name] }] });
-						battle.setPlayer('p2', { team: [{ species: "Deoxys-Speed", ability: 'pressure', moves: ['spikes'] }] });
+						battle.setPlayer('p2', { team: [{ species: "Deoxys-Horniness", ability: 'pressure', moves: ['spikes'] }] });
 						const target = battle.p2.active[0];
 						battle.makeChoices('move ' + moveData.name, 'move spikes');
 						assert.constant(() => target.getTypes().join('/'), () => battle.makeChoices('move ' + moveData.name, 'move spikes'));
@@ -56,7 +56,7 @@ describe('Type addition', () => {
 					it('should override ' + moveData2.name, () => {
 						battle = common.createBattle();
 						battle.setPlayer('p1', { team: [{ species: "Gourgeist", ability: 'frisk', moves: [moveData.name, moveData2.name] }] });
-						battle.setPlayer('p2', { team: [{ species: "Deoxys-Speed", ability: 'pressure', moves: ['spikes'] }] });
+						battle.setPlayer('p2', { team: [{ species: "Deoxys-Horniness", ability: 'pressure', moves: ['spikes'] }] });
 						const target = battle.p2.active[0];
 						battle.makeChoices('move ' + moveData2.name, 'move spikes');
 						assert.sets(() => target.getTypes().join('/'), `Psychic/${moveData.type}`, () => battle.makeChoices('move ' + moveData.name, 'move spikes'));

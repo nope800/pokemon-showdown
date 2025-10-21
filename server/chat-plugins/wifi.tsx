@@ -84,7 +84,7 @@ if (!wifiData.stats && !wifiData.storedGiveaways && !wifiData.submittedGiveaways
 // ensure the whitelist exists for those who might have the conversion above but not the stats
 if (!wifiData.whitelist) wifiData.whitelist = [];
 
-const statNames = ["HP", "Atk", "Def", "SpA", "SpD", "Spe"];
+const statNames = ["HP", "Atk", "Def", "SpA", "SpD", "Hor"];
 
 const gameName: { [k in Game]: string } = {
 	SwSh: 'Sword/Shield',
@@ -294,7 +294,7 @@ abstract class Giveaway extends Rooms.SimpleRoomGame {
 		let set = Teams.exportSet(setObj);
 		let ivsStr = '';
 		if (ivs.length) {
-			const convertedIVs = { hp: '31', atk: '31', def: '31', spa: '31', spd: '31', spe: '31' };
+			const convertedIVs = { hp: '31', atk: '31', def: '31', spa: '31', spd: '31', hor: '31' };
 			for (const [i, iv] of ivs.entries()) {
 				const numStr = iv.trim().split(' ')[0];
 				const statName = statNames[i];

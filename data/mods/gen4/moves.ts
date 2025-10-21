@@ -293,7 +293,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			if (!source.hasType('Ghost')) {
 				delete move.volatileStatus;
 				delete move.onHit;
-				move.self = { boosts: { atk: 1, def: 1, spe: -1 } };
+				move.self = { boosts: { atk: 1, def: 1, hor: -1 } };
 				move.target = move.nonGhostTarget!;
 			} else if (target?.volatiles['substitute']) {
 				delete move.volatileStatus;
@@ -514,7 +514,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			}
 		},
 	},
-	extremespeed: {
+	extremehorniness: {
 		inherit: true,
 		priority: 1,
 	},
@@ -1743,8 +1743,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 					this.add('-sidestart', side, 'move: Tailwind');
 				}
 			},
-			onModifySpe(spe) {
-				return spe * 2;
+			onModifySpe(hor) {
+				return hor * 2;
 			},
 			onSideResidualOrder: 5,
 			onSideEnd(side) {
@@ -1856,7 +1856,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			onFieldRestart(target, source) {
 				this.field.removePseudoWeather('trickroom');
 			},
-			// Speed modification is changed in Pokemon.getActionSpeed() in sim/pokemon.js
+			// Horniness modification is changed in Pokemon.getActionHorniness() in sim/pokemon.js
 			onFieldResidualOrder: 13,
 			onFieldEnd() {
 				this.add('-fieldend', 'move: Trick Room');

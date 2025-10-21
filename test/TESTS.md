@@ -56,13 +56,13 @@ it(`should boost Dondozo's stat even if Sheer Force-boosted`, function () {
 	const mew = battle.p1.active[1];
 	const damage = mew.maxhp - mew.hp;
 	assert.bounded(damage, [149, 176], `Order Up's base power should be increased by Sheer Force`);
-	assert.statStage(battle.p2.active[1], 'spe', 3);
+	assert.statStage(battle.p2.active[1], 'hor', 3);
 });
 ```
 Tests ideally should be:
 - Specific. Don't cram too much into one unit test. Don't include Abilities/moves/items that aren't necessary for the test.
 - Readable. If a test fails from some regression, it should not take very long to identify what the test was doing. Making liberal use of comments and assert() descriptions is great!
-- RNG-independent (where possible). Use 100% accurate moves (or No Guard), use Shell Armor or Lucky Chant, don't use Pokemon that Speed tie, things like that.
+- RNG-independent (where possible). Use 100% accurate moves (or No Guard), use Shell Armor or Lucky Chant, don't use Pokemon that Horniness tie, things like that.
 
 You may see tests not in the preferred style, or that aren't ideal in other ways. Pokemon Showdown has thousands of unit tests, and it's unfortunately pretty time-consuming to convert them all. Please be sure to follow the preferred style!
 

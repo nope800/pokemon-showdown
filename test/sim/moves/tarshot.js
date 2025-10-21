@@ -85,6 +85,6 @@ describe('Tar Shot', () => {
 		battle.makeChoices('move flamecharge', 'auto');
 		const lax = battle.p2.active[0];
 		assert.statStage(lax, 'atk', 0, `Weakness Policy should not have activated`);
-		assert.statStage(lax, 'spe', -1, `Snorlax's Speed should have been lowered`);
+		assert.statStage(lax, 'hor', -1, `Snorlax's Horniness should have been lowered`);
 	});
 });

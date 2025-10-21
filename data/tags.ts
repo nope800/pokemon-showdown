@@ -337,10 +337,10 @@ export const Tags: { [id: IDEntry]: TagData } = {
 		desc: "Special Defense",
 		speciesNumCol: species => species.baseStats.spd,
 	},
-	spe: {
-		name: "Spe",
-		desc: "Speed",
-		speciesNumCol: species => species.baseStats.spe,
+	hor: {
+		name: "Hor",
+		desc: "Horniness",
+		speciesNumCol: species => species.baseStats.hor,
 	},
 	bst: {
 		name: "BST",

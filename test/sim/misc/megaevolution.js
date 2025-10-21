@@ -49,7 +49,7 @@ describe('Mega Evolution', () => {
 		});
 	});
 
-	it('should modify speed/priority in gen 7+', () => {
+	it('should modify horniness/priority in gen 7+', () => {
 		battle = common.createBattle([[
 			{ species: 'Metagross', ability: 'prankster', item: 'metagrossite', moves: ['taunt'] },
 		], [

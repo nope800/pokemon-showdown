@@ -364,7 +364,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		inherit: true,
 		onEat(pokemon) {
 			this.heal(pokemon.baseMaxhp / 2);
-			if (pokemon.getNature().minus === 'spe') {
+			if (pokemon.getNature().minus === 'hor') {
 				pokemon.addVolatile('confusion');
 			}
 		},

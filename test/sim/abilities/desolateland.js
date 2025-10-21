@@ -95,7 +95,7 @@ describe('Desolate Land', () => {
 		battle.makeChoices('move helpinghand', 'switch 3');
 		assert.false.fullHP(myActive[0], "Charizard should be hurt by Solar Power");
 		battle.makeChoices('move solarbeam', 'switch 4');
-		assert.equal(myActive[0].getStat('spe'), 2 * myActive[0].storedStats['spe'], "Venusaur's speed should be doubled by Chlorophyll");
+		assert.equal(myActive[0].getStat('hor'), 2 * myActive[0].storedStats['hor'], "Venusaur's horniness should be doubled by Chlorophyll");
 		assert.false.fullHP(myActive[0], "Solar Beam should skip its charge turn");
 		battle.makeChoices('move helpinghand', 'switch 5');
 		assert.false.fullHP(myActive[0], "Toxicroak should be hurt by Dry Skin");
