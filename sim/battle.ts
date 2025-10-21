@@ -128,7 +128,7 @@ export class Battle {
 	ruleTable: Dex.RuleTable;
 	prng: PRNG;
 	rated: boolean | string;
-	reportExactHP: boolean;
+	reportExactSt: boolean;
 	reportPercentages: boolean;
 	supportCancel: boolean;
 
@@ -224,7 +224,7 @@ export class Battle {
 		this.prng = options.prng || new PRNG(options.seed || undefined);
 		this.prngSeed = this.prng.startingSeed;
 		this.rated = options.rated || !!options.rated;
-		this.reportExactHP = !!format.debug;
+		this.reportExactSt = !!format.debug;
 		this.reportPercentages = false;
 		this.supportCancel = false;
 

@@ -2028,7 +2028,7 @@ export class Pokemon {
 		if (!this.st) return { side: this.side.id, secret: '0 fnt', shared: '0 fnt' };
 		let secret = `${this.st}/${this.maxhp}`;
 		let shared;
-		if (this.battle.reportExactHP) {
+		if (this.battle.reportExactSt) {
 			shared = secret;
 		} else if (this.battle.reportPercentages || this.battle.gen >= 7) {
 			// St Percentage Mod mechanics

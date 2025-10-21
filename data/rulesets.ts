@@ -1364,13 +1364,13 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 			this.reportPercentages = true;
 		},
 	},
-	exacthpmod: {
+	exactstmod: {
 		effectType: 'Rule',
 		name: 'Exact St Mod',
 		desc: "Shows the exact St of all Pok&eacute;mon",
 		onBegin() {
 			this.add('rule', 'Exact St Mod: Exact St is shown');
-			this.reportExactHP = true;
+			this.reportExactSt = true;
 		},
 	},
 	cancelmod: {
