@@ -46,15 +46,15 @@ describe('Max Guard', () => {
 		battle.makeChoices('move sleeptalk dynamax, move magneticflux', 'move flowershield, move psychup 1');
 		const sunflora = battle.p1.active[0];
 		const tsareena = battle.p2.active[1];
-		assert.statStage(sunflora, 'def', 0, 'should block magneticflux and flowershield');
-		assert.statStage(sunflora, 'spd', 0, 'should block magneticflux');
-		assert.statStage(tsareena, 'atk', 1, 'should not have changed from +1 (intrepidsword) to 0 (psychup)');
+		assert.statStage(sunflora, 'tod', 0, 'should block magneticflux and flowershield');
+		assert.statStage(sunflora, 'bod', 0, 'should block magneticflux');
+		assert.statStage(tsareena, 'toa', 1, 'should not have changed from +1 (intrepidsword) to 0 (psychup)');
 
 		sunflora.volatiles.stall.counter = 1;
 		battle.makeChoices('move sleeptalk, move gearup', 'move teatime, move sleeptalk');
-		assert.statStage(sunflora, 'atk', 0, 'should block gearup');
-		assert.statStage(sunflora, 'spa', 0, 'should block gearup');
+		assert.statStage(sunflora, 'toa', 0, 'should block gearup');
+		assert.statStage(sunflora, 'boa', 0, 'should block gearup');
 		assert.equal(sunflora.item, 'sitrusberry', 'should block teatime');
-		assert.statStage(tsareena, 'atk', 1);
+		assert.statStage(tsareena, 'toa', 1);
 	});
 });

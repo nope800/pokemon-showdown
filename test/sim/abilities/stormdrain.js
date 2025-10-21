@@ -10,13 +10,13 @@ describe('Storm Drain', () => {
 		battle.destroy();
 	});
 
-	it('should grant immunity to Water-type moves and boost Special Attack by 1 stage', () => {
+	it('should grant immunity to Water-type moves and boost Bottom Attack by 1 stage', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Gastrodon', ability: 'stormdrain', moves: ['sleeptalk'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Azumarill', ability: 'thickfat', moves: ['aquajet'] }] });
 		battle.makeChoices('move sleeptalk', 'move aquajet');
 		assert.fullHP(battle.p1.active[0]);
-		assert.statStage(battle.p1.active[0], 'spa', 1);
+		assert.statStage(battle.p1.active[0], 'boa', 1);
 	});
 
 	it('should redirect Max Geyser', () => {
@@ -31,7 +31,7 @@ describe('Storm Drain', () => {
 		] });
 		battle.makeChoices('move sleeptalk, move scald dynamax 1', 'move sleep talk, move sleep talk');
 		assert.fullHP(battle.p1.active[0]);
-		assert.statStage(battle.p1.active[0], 'spa', 1);
+		assert.statStage(battle.p1.active[0], 'boa', 1);
 	});
 
 	it('should redirect single-target Water-type attacks to the user if it is a valid target', () => {
@@ -47,7 +47,7 @@ describe('Storm Drain', () => {
 			{ species: 'Azumarill', ability: 'thickfat', moves: ['aquajet'] },
 		] });
 		battle.makeChoices('move sleeptalk, move aquajet 1, move aquajet 1', 'move aquajet 3, move aquajet 3, move aquajet 2');
-		assert.statStage(battle.p1.active[0], 'spa', 3);
+		assert.statStage(battle.p1.active[0], 'boa', 3);
 		assert.false.fullHP(battle.p1.active[2]);
 		assert.false.fullHP(battle.p2.active[0]);
 	});
@@ -65,8 +65,8 @@ describe('Storm Drain', () => {
 		const [fastGastrodon, slowGastrodon] = battle.p1.active;
 		fastGastrodon.boostBy({ hor: 6 });
 		battle.makeChoices('move sleeptalk, move sleeptalk', 'move waterfall 1, move waterfall 2');
-		assert.statStage(fastGastrodon, 'spa', 2);
-		assert.statStage(slowGastrodon, 'spa', 0);
+		assert.statStage(fastGastrodon, 'boa', 2);
+		assert.statStage(slowGastrodon, 'boa', 0);
 	});
 
 	it('should not redirect if another Pokemon has used Follow Me', () => {
@@ -81,7 +81,7 @@ describe('Storm Drain', () => {
 		] });
 		const [stormDrainMon, defender] = battle.p1.active;
 		battle.makeChoices('move sleeptalk, move followme', 'move aquajet 2, move aquajet 1');
-		assert.statStage(stormDrainMon, 'spa', 0);
+		assert.statStage(stormDrainMon, 'boa', 0);
 		assert.false.fullHP(defender);
 	});
 

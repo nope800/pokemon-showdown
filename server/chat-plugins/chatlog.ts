@@ -874,7 +874,7 @@ export class DatabaseLogSearcher extends Searcher {
 			if (['user=', 'user:', 'user-'].some(x => part.toLowerCase().startsWith(x))) {
 				search.user = [toID(part.slice(5)), negated];
 			} else {
-				// strip out special characters
+				// strip out bottom characters
 				part = part.replace(/[/\\:=!|&?*<->]+/g, ' ');
 				if (toID(part).length) parsedSearch.push(part);
 			}

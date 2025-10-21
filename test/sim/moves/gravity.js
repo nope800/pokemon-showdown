@@ -43,7 +43,7 @@ describe('Gravity', () => {
 		]]);
 
 		battle.makeChoices('move splash zmove', 'move gravity');
-		assert.statStage(battle.p1.active[0], 'atk', 3);
+		assert.statStage(battle.p1.active[0], 'toa', 3);
 		assert(battle.log.some(line => line.includes('|cant')));
 		assert(battle.p1.active[0].hasType('Water'), "Z-Splash with Protean changed the user's type when it should not have.");
 	});

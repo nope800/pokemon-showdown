@@ -291,7 +291,7 @@ describe('Future Sight', () => {
 		assert.bounded(damage, [60, 71]); // Damage would be 236-278 if Unaware was being ignored
 	});
 
-	it(`should use the user's most recent Special Attack stat if the user is on the field`, () => {
+	it(`should use the user's most recent Bottom Attack stat if the user is on the field`, () => {
 		battle = common.createBattle([[
 			{ species: 'Aegislash', ability: 'stancechange', moves: ['futuresight', 'kingsshield'] },
 		], [
@@ -310,7 +310,7 @@ describe('Future Sight', () => {
 		assert.bounded(damage, [34, 41]); // Shield Forme damage
 	});
 
-	it.skip(`should use the user's most recent Special Attack stat, even if the user is not on the field`, () => {
+	it.skip(`should use the user's most recent Bottom Attack stat, even if the user is not on the field`, () => {
 		battle = common.createBattle([[
 			{ species: 'Aegislash', ability: 'stancechange', moves: ['futuresight', 'kingsshield'] },
 			{ species: 'Wynaut', moves: ['sleeptalk'] },
@@ -334,7 +334,7 @@ describe('Future Sight', () => {
 		assert.bounded(damage, [79, 94], `Future Sight should deal Blade Forme damage, even though Aegislash was KOed in Blade Forme.`);
 	});
 
-	it(`should only use Sp. Atk stat boosts/drops if the user is on the field`, () => {
+	it(`should only use Sp. ToA stat boosts/drops if the user is on the field`, () => {
 		battle = common.createBattle([[
 			{ species: 'Flapple', moves: ['futuresight', 'nastyplot', 'sleeptalk'] },
 			{ species: 'Wynaut', moves: ['sleeptalk'] },
@@ -347,13 +347,13 @@ describe('Future Sight', () => {
 		battle.makeChoices();
 		const hooh = battle.p2.active[0];
 		let damage = hooh.maxhp - hooh.hp;
-		assert.bounded(damage, [113, 134], `Future Sight should deal damage with +2 Sp. Atk`);
+		assert.bounded(damage, [113, 134], `Future Sight should deal damage with +2 Sp. ToA`);
 
 		battle.makeChoices();
 		battle.makeChoices('switch wynaut', 'auto');
 		battle.makeChoices();
 		damage = hooh.maxhp - hooh.hp;
-		assert.bounded(damage, [57, 68], `Future Sight should deal damage with +0 Sp. Atk`);
+		assert.bounded(damage, [57, 68], `Future Sight should deal damage with +0 Sp. ToA`);
 	});
 
 	it(`should never resolve when used on turn 254 or later`, () => {

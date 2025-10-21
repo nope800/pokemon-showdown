@@ -37,12 +37,12 @@ describe('Z Moves', () => {
 			{ species: 'Mightyena', ability: 'intimidate', moves: ['taunt'] },
 		]]);
 		const chansey = battle.p1.active[0];
-		assert.statStage(chansey, 'atk', -1);
+		assert.statStage(chansey, 'toa', -1);
 		battle.makeChoices();
 
 		assert(battle.actions.canZMove(chansey), `Chansey should be able to use its Z Move`);
 		battle.makeChoices('move doubleteam zmove', 'auto'); // Z-Effect: Restores negative stat stages to 0
-		assert.statStage(chansey, 'atk', 0);
+		assert.statStage(chansey, 'toa', 0);
 	});
 
 	it(`should be impossible to activate them when all the base moves are disabled`, () => {
@@ -53,12 +53,12 @@ describe('Z Moves', () => {
 		]]);
 
 		const chansey = battle.p1.active[0];
-		assert.statStage(chansey, 'atk', -1);
+		assert.statStage(chansey, 'toa', -1);
 		battle.makeChoices();
 
 		assert.false(battle.actions.canZMove(chansey), `Chansey should not be able to use its Z Move`);
 		battle.makeChoices();
-		assert.statStage(chansey, 'atk', -1);
+		assert.statStage(chansey, 'toa', -1);
 		assert.cantMove(() => battle.makeChoices('move doubleteam zmove', ''));
 	});
 });

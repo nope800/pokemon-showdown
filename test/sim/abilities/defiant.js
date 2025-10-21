@@ -20,7 +20,7 @@ describe(`Defiant`, () => {
 		battle.makeChoices('auto', 'move firelash');
 		battle.makeChoices('move tackle', 'move silktrap');
 
-		assert.statStage(battle.p1.active[0], 'atk', 6);
+		assert.statStage(battle.p1.active[0], 'toa', 6);
 	});
 
 	it(`should not raise the user's attack when lowered by itself or an ally`, () => {
@@ -35,6 +35,6 @@ describe(`Defiant`, () => {
 		battle.makeChoices('move closecombat 1, move faketears -1', 'auto');
 		battle.makeChoices('move closecombat -2, move silktrap', 'auto');
 
-		assert.statStage(battle.p1.active[0], 'atk', 0);
+		assert.statStage(battle.p1.active[0], 'toa', 0);
 	});
 });

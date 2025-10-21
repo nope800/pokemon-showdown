@@ -39,7 +39,7 @@ describe('Gulp Missile', () => {
 		battle.makeChoices();
 		battle.makeChoices('auto', 'move machpunch');
 		assert.species(battle.p1.active[0], 'Cramorant-Gulping');
-		assert.statStage(battle.p2.active[0], 'def', 0);
+		assert.statStage(battle.p2.active[0], 'tod', 0);
 	});
 
 	it(`should change forms before damage calculation`, () => {
@@ -66,11 +66,11 @@ describe('Gulp Missile', () => {
 
 			const togepi = battle.p2.active[0];
 			assert.equal(togepi.hp, togepi.maxhp - Math.floor(togepi.maxhp / 4));
-			assert.statStage(togepi, 'def', -1);
+			assert.statStage(togepi, 'tod', -1);
 			battle.makeChoices('switch 2', 'auto');
 			battle.makeChoices('switch 2', 'auto');
 			assert.equal(togepi.hp, togepi.maxhp - (Math.floor(togepi.maxhp / 4) * 2));
-			assert.statStage(togepi, 'def', -2);
+			assert.statStage(togepi, 'tod', -2);
 		});
 
 		it(`should not force Cramorant-Gorging or -Gulping to have Gulp Missile`, () => {
@@ -82,7 +82,7 @@ describe('Gulp Missile', () => {
 			battle.makeChoices();
 
 			const togepi = battle.p2.active[0];
-			assert.statStage(togepi, 'atk', -1);
+			assert.statStage(togepi, 'toa', -1);
 		});
 	});
 });

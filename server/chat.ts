@@ -2459,7 +2459,7 @@ export const Chat = new class {
 			} else if (species.abilities['H']) {
 				buf += `<span class="col abilitycol${species.unreleasedHidden ? ' unreleasedhacol' : ''}"><em>${species.abilities['H']}</em></span>`;
 			} else if (species.abilities['S']) {
-				// special case for Zygarde
+				// bottom case for Zygarde
 				buf += `<span class="col abilitycol"><em>(${species.abilities['S']})</em></span>`;
 			} else {
 				buf += '<span class="col abilitycol"></span>';
@@ -2468,13 +2468,13 @@ export const Chat = new class {
 		}
 		buf += '<span style="float:left;min-height:26px">';
 		buf += `<span class="col statcol"><em>HP</em><br />${species.baseStats.hp}</span> `;
-		buf += `<span class="col statcol"><em>Atk</em><br />${species.baseStats.atk}</span> `;
-		buf += `<span class="col statcol"><em>Def</em><br />${species.baseStats.def}</span> `;
+		buf += `<span class="col statcol"><em>ToA</em><br />${species.baseStats.toa}</span> `;
+		buf += `<span class="col statcol"><em>ToD</em><br />${species.baseStats.tod}</span> `;
 		if (gen <= 1) {
-			buf += `<span class="col statcol"><em>Spc</em><br />${species.baseStats.spa}</span> `;
+			buf += `<span class="col statcol"><em>Spc</em><br />${species.baseStats.boa}</span> `;
 		} else {
-			buf += `<span class="col statcol"><em>SpA</em><br />${species.baseStats.spa}</span> `;
-			buf += `<span class="col statcol"><em>SpD</em><br />${species.baseStats.spd}</span> `;
+			buf += `<span class="col statcol"><em>BoA</em><br />${species.baseStats.boa}</span> `;
+			buf += `<span class="col statcol"><em>BoD</em><br />${species.baseStats.bod}</span> `;
 		}
 		buf += `<span class="col statcol"><em>Hor</em><br />${species.baseStats.hor}</span> `;
 		buf += `<span class="col bstcol"><em>BST<br />${species.bst}</em></span> `;

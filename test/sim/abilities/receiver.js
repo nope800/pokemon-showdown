@@ -20,7 +20,7 @@ describe(`Receiver`, () => {
 		]]);
 		battle.makeChoices();
 		const passimian = battle.p1.active[1];
-		assert.statStage(passimian, 'spa', 1);
+		assert.statStage(passimian, 'boa', 1);
 	});
 
 	it.skip(`should do weird stuff with multiple Soul-Heart and multiple Receiver`, () => {
@@ -35,7 +35,7 @@ describe(`Receiver`, () => {
 		battle.makeChoices();
 		const passimian = battle.p1.active[0];
 		const lugia = battle.p2.active[0];
-		assert.statStage(passimian, 'spa', 2);
-		assert.statStage(lugia, 'spa', 1);
+		assert.statStage(passimian, 'boa', 2);
+		assert.statStage(lugia, 'boa', 1);
 	});
 });

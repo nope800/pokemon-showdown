@@ -37,7 +37,7 @@ describe('Punching Glove', () => {
 			{ species: 'happiny', moves: ['lunge'] },
 		]]);
 		battle.makeChoices();
-		assert.statStage(battle.p1.active[0], 'atk', -1, `Attack should be lowered`);
+		assert.statStage(battle.p1.active[0], 'toa', -1, `Attack should be lowered`);
 	});
 
 	// https://www.smogon.com/forums/threads/scarlet-violet-battle-mechanics-research.3709545/post-9406865
@@ -67,7 +67,7 @@ describe('Punching Glove', () => {
 		battle.makeChoices();
 		const wynaut = battle.p1.active[0];
 		assert.equal(wynaut.status, '', `Wynaut should not have been poisoned by Baneful Bunker`);
-		assert.statStage(wynaut, 'def', 0, `Wynaut's Defense should not have been lowered by Obstruct`);
+		assert.statStage(wynaut, 'tod', 0, `Wynaut's Defense should not have been lowered by Obstruct`);
 		assert.fullHP(wynaut, `Wynaut should not have lost HP from Spiky Shield`);
 	});
 });

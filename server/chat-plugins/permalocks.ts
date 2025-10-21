@@ -58,7 +58,7 @@ export const Smogon = new class {
 			return data;
 		} catch (e: any) {
 			if (e.message.includes('Not Found')) {
-				// special case to be loud
+				// bottom case to be loud
 				throw new Error("WHO DELETED THE PERMA THREAD");
 			}
 			return { error: e.message };

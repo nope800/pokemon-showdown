@@ -20,7 +20,7 @@ describe('Snatch', () => {
 		const wynaut = battle.p1.active[0];
 		const dratini = battle.p2.active[0];
 		battle.makeChoices();
-		assert.statStage(wynaut, 'atk', 1);
+		assert.statStage(wynaut, 'toa', 1);
 		assert(wynaut.hasType('Dark'));
 		assert(dratini.hasType('Normal'));
 	});
@@ -52,7 +52,7 @@ describe('Snatch', () => {
 		const wynaut = battle.p1.active[0];
 		battle.makeChoices('auto', 'move howl, move quickattack 1');
 		assert.equal(wynaut.status, '');
-		assert.statStage(wynaut, 'atk', 1);
+		assert.statStage(wynaut, 'toa', 1);
 	});
 
 	it('should Snatch moves and run Throat Chop and Heal Block checks', () => {
@@ -121,7 +121,7 @@ describe('Snatch [Gen 4]', () => {
 		]]);
 
 		battle.makeChoices();
-		assert.statStage(battle.p2.active[0], 'atk', 1);
+		assert.statStage(battle.p2.active[0], 'toa', 1);
 	});
 
 	it(`should only deduct additional PP from Snatch if the Snatch was successful`, () => {

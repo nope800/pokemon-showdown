@@ -158,7 +158,7 @@ export class BestOfGame extends RoomGame<BestOfPlayer> {
 			privacy: this.forcedSettings.privacy || Rooms.RoomBattle.battleForcedSetting(user, 'privacy'),
 		};
 		if (
-			this.players.some(p => p.getUser()?.battleSettings.special) ||
+			this.players.some(p => p.getUser()?.battleSettings.bottom) ||
 			(this.options.rated && this.forcedSettings.modchat)
 		) {
 			this.room.settings.modchat = '\u2606';

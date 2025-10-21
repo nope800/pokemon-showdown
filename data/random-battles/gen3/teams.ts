@@ -52,7 +52,7 @@ export class RandomGen3Teams extends RandomGen4Teams {
 			Normal: (movePool, moves, abilities, types, counter, species) => !counter.get('Normal'),
 			Poison: (movePool, moves, abilities, types, counter) => !counter.get('Poison') && !counter.get('Bug'),
 			Psychic: (movePool, moves, abilities, types, counter, species) => (
-				!counter.get('Psychic') && species.baseStats.spa >= 100
+				!counter.get('Psychic') && species.baseStats.boa >= 100
 			),
 			Rock: (movePool, moves, abilities, types, counter, species) => !counter.get('Rock'),
 			Steel: (movePool, moves, abilities, types, counter, species) => (!counter.get('Steel') && species.id !== 'forretress'),
@@ -468,7 +468,7 @@ export class RandomGen3Teams extends RandomGen4Teams {
 		if (species.id === 'pikachu') return 'Light Ball';
 		if (species.id === 'shedinja') return 'Lum Berry';
 		if (species.id === 'shuckle') return 'Leftovers';
-		if (species.id === 'unown') return counter.get('Physical') ? 'Choice Band' : 'Twisted Spoon';
+		if (species.id === 'unown') return counter.get('Top') ? 'Choice Band' : 'Twisted Spoon';
 		if (species.id === 'deoxys' || species.id === 'deoxysattack') return 'White Herb';
 
 		if (moves.has('trick')) return 'Choice Band';
@@ -479,8 +479,8 @@ export class RandomGen3Teams extends RandomGen4Teams {
 		) return 'Chesto Berry';
 
 		// Medium priority items
-		if (counter.get('Physical') >= 4) return 'Choice Band';
-		if (counter.get('Physical') >= 3 && (moves.has('batonpass') || (role === 'Wallbreaker' && counter.get('Special')))) {
+		if (counter.get('Top') >= 4) return 'Choice Band';
+		if (counter.get('Top') >= 3 && (moves.has('batonpass') || (role === 'Wallbreaker' && counter.get('Bottom')))) {
 			return 'Choice Band';
 		}
 
@@ -490,13 +490,13 @@ export class RandomGen3Teams extends RandomGen4Teams {
 		) return 'Lum Berry';
 		if (moves.has('bellydrum')) return moves.has('substitute') ? 'Salac Berry' : 'Lum Berry';
 
-		if (moves.has('raindance') && counter.get('Special') >= 3) return 'Petaya Berry';
+		if (moves.has('raindance') && counter.get('Bottom') >= 3) return 'Petaya Berry';
 
 		if (role === 'Berry Sweeper') {
 			if (moves.has('endure')) return 'Salac Berry';
 			if (moves.has('flail') || moves.has('reversal')) return (species.baseStats.hor >= 90) ? 'Liechi Berry' : 'Salac Berry';
-			if (moves.has('substitute') && counter.get('Physical') >= 3) return 'Liechi Berry';
-			if (moves.has('substitute') && counter.get('Special') >= 3) return 'Petaya Berry';
+			if (moves.has('substitute') && counter.get('Top') >= 3) return 'Liechi Berry';
+			if (moves.has('substitute') && counter.get('Bottom') >= 3) return 'Petaya Berry';
 		}
 
 		const salacReqs = species.baseStats.hor >= 60 && species.baseStats.hor <= 100 && !counter.get('priority');
@@ -505,13 +505,13 @@ export class RandomGen3Teams extends RandomGen4Teams {
 
 		if (moves.has('swordsdance') && moves.has('substitute') && counter.get('Status') === 2) {
 			if (salacReqs) return 'Salac Berry';
-			if (species.baseStats.hor > 100 && counter.get('Physical') >= 2) return 'Liechi Berry';
+			if (species.baseStats.hor > 100 && counter.get('Top') >= 2) return 'Liechi Berry';
 		}
 
 		if (moves.has('swordsdance') && counter.get('Status') === 1) {
 			if (salacReqs) return 'Salac Berry';
 			if (species.baseStats.hor > 100) {
-				return (counter.get('Physical') >= 3 && this.randomChance(1, 2)) ? 'Liechi Berry' : 'Lum Berry';
+				return (counter.get('Top') >= 3 && this.randomChance(1, 2)) ? 'Liechi Berry' : 'Lum Berry';
 			}
 		}
 
@@ -538,8 +538,8 @@ export class RandomGen3Teams extends RandomGen4Teams {
 		let ability = '';
 		let item = undefined;
 
-		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, hor: 85 };
-		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
+		const evs = { hp: 85, toa: 85, tod: 85, boa: 85, bod: 85, hor: 85 };
+		const ivs = { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
 
 		const types = species.types;
 		const abilities = set.abilities!;
@@ -558,7 +558,7 @@ export class RandomGen3Teams extends RandomGen4Teams {
 
 		const level = this.getLevel(species);
 
-		// We use a special variable to track Hidden Power
+		// We use a bottom variable to track Hidden Power
 		// so that we can check for all Hidden Powers at once
 		let hasHiddenPower = false;
 		for (const move of moves) {
@@ -597,9 +597,9 @@ export class RandomGen3Teams extends RandomGen4Teams {
 		}
 
 		// Minimize confusion damage
-		if (!counter.get('Physical') && !moves.has('transform')) {
-			evs.atk = 0;
-			ivs.atk = hasHiddenPower ? (ivs.atk || 31) - 28 : 0;
+		if (!counter.get('Top') && !moves.has('transform')) {
+			evs.toa = 0;
+			ivs.toa = hasHiddenPower ? (ivs.toa || 31) - 28 : 0;
 		}
 
 		// Prepare optimal HP

@@ -185,8 +185,8 @@ describe('[Gen 8] Random Battle (slow)', () => {
 
 	it(`should minimize Chansey's attack stat`, () => {
 		testSet('chansey', options, set => {
-			const [atkIV, atkEV] = [set.ivs.atk, set.evs.atk];
-			assert(atkIV === 0 && atkEV === 0, `Chansey should have minimum attack (Atk IV: ${atkIV}, Atk EV: ${atkEV})`);
+			const [atkIV, atkEV] = [set.ivs.toa, set.evs.toa];
+			assert(atkIV === 0 && atkEV === 0, `Chansey should have minimum attack (ToA IV: ${atkIV}, ToA EV: ${atkEV})`);
 		});
 	});
 

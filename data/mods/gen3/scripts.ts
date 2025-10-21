@@ -7,7 +7,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		for (const i in this.data.Moves) {
 			if (!this.data.Moves[i]) console.log(i);
 			if (this.data.Moves[i].category === 'Status') continue;
-			newCategory = specialTypes.includes(this.data.Moves[i].type) ? 'Special' : 'Physical';
+			newCategory = specialTypes.includes(this.data.Moves[i].type) ? 'Bottom' : 'Top';
 			if (newCategory !== this.data.Moves[i].category) {
 				this.modData('Moves', i).category = newCategory;
 			}
@@ -38,7 +38,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			const type = move.type;
 
 			// Burn
-			if (pokemon.status === 'brn' && baseDamage && move.category === 'Physical' && !pokemon.hasAbility('guts')) {
+			if (pokemon.status === 'brn' && baseDamage && move.category === 'Top' && !pokemon.hasAbility('guts')) {
 				baseDamage = this.battle.modify(baseDamage, 0.5);
 			}
 
@@ -57,7 +57,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			// Weather
 			baseDamage = this.battle.runEvent('WeatherModifyDamage', pokemon, target, move, baseDamage);
 
-			if (move.category === 'Physical' && !Math.floor(baseDamage)) {
+			if (move.category === 'Top' && !Math.floor(baseDamage)) {
 				baseDamage = 1;
 			}
 

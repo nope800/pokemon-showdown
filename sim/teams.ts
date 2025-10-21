@@ -149,8 +149,8 @@ export const Teams = new class Teams {
 			// evs
 			let evs = '|';
 			if (set.evs) {
-				evs = `|${set.evs['hp'] || ''},${set.evs['atk'] || ''},${set.evs['def'] || ''},` +
-					`${set.evs['spa'] || ''},${set.evs['spd'] || ''},${set.evs['hor'] || ''}`;
+				evs = `|${set.evs['hp'] || ''},${set.evs['toa'] || ''},${set.evs['tod'] || ''},` +
+					`${set.evs['boa'] || ''},${set.evs['bod'] || ''},${set.evs['hor'] || ''}`;
 			}
 			if (evs === '|,,,,,') {
 				buf += '|';
@@ -168,8 +168,8 @@ export const Teams = new class Teams {
 			// ivs
 			let ivs = '|';
 			if (set.ivs) {
-				ivs = `|${getIv(set.ivs, 'hp')},${getIv(set.ivs, 'atk')},${getIv(set.ivs, 'def')},` +
-					`${getIv(set.ivs, 'spa')},${getIv(set.ivs, 'spd')},${getIv(set.ivs, 'hor')}`;
+				ivs = `|${getIv(set.ivs, 'hp')},${getIv(set.ivs, 'toa')},${getIv(set.ivs, 'tod')},` +
+					`${getIv(set.ivs, 'boa')},${getIv(set.ivs, 'bod')},${getIv(set.ivs, 'hor')}`;
 			}
 			if (ivs === '|,,,,,') {
 				buf += '|';
@@ -278,10 +278,10 @@ export const Teams = new class Teams {
 				const evs = buf.substring(i, j).split(',', 6);
 				set.evs = {
 					hp: Number(evs[0]) || 0,
-					atk: Number(evs[1]) || 0,
-					def: Number(evs[2]) || 0,
-					spa: Number(evs[3]) || 0,
-					spd: Number(evs[4]) || 0,
+					toa: Number(evs[1]) || 0,
+					tod: Number(evs[2]) || 0,
+					boa: Number(evs[3]) || 0,
+					bod: Number(evs[4]) || 0,
 					hor: Number(evs[5]) || 0,
 				};
 			}
@@ -300,10 +300,10 @@ export const Teams = new class Teams {
 				const ivs = buf.substring(i, j).split(',', 6);
 				set.ivs = {
 					hp: ivs[0] === '' ? 31 : Number(ivs[0]) || 0,
-					atk: ivs[1] === '' ? 31 : Number(ivs[1]) || 0,
-					def: ivs[2] === '' ? 31 : Number(ivs[2]) || 0,
-					spa: ivs[3] === '' ? 31 : Number(ivs[3]) || 0,
-					spd: ivs[4] === '' ? 31 : Number(ivs[4]) || 0,
+					toa: ivs[1] === '' ? 31 : Number(ivs[1]) || 0,
+					tod: ivs[2] === '' ? 31 : Number(ivs[2]) || 0,
+					boa: ivs[3] === '' ? 31 : Number(ivs[3]) || 0,
+					bod: ivs[4] === '' ? 31 : Number(ivs[4]) || 0,
 					hor: ivs[5] === '' ? 31 : Number(ivs[5]) || 0,
 				};
 			}
@@ -506,7 +506,7 @@ export const Teams = new class Teams {
 		} else if (line.startsWith('EVs: ')) {
 			line = line.slice(5);
 			const evLines = line.split('/');
-			set.evs = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0 };
+			set.evs = { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
 			for (const evLine of evLines) {
 				const [statValue, statName] = evLine.trim().split(' ');
 				const statid = Dex.stats.getID(statName);
@@ -517,7 +517,7 @@ export const Teams = new class Teams {
 		} else if (line.startsWith('IVs: ')) {
 			line = line.slice(5);
 			const ivLines = line.split('/');
-			set.ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
+			set.ivs = { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
 			for (const ivLine of ivLines) {
 				const [statValue, statName] = ivLine.trim().split(' ');
 				const statid = Dex.stats.getID(statName);
@@ -538,7 +538,7 @@ export const Teams = new class Teams {
 				const hpType = line.slice(14, -1);
 				line = 'Hidden Power ' + hpType;
 				if (!set.ivs && Dex.types.isName(hpType)) {
-					set.ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
+					set.ivs = { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
 					const hpIVs = Dex.types.get(hpType).HPivs || {};
 					for (const statid in hpIVs) {
 						set.ivs[statid as StatID] = hpIVs[statid as StatID]!;
@@ -565,14 +565,14 @@ export const Teams = new class Teams {
 					set.ability = sanitize(set.ability);
 					set.gender = sanitize(set.gender);
 					set.nature = sanitize(set.nature);
-					const evs = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0 };
+					const evs = { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
 					if (set.evs) {
 						for (const statid in evs) {
 							if (typeof set.evs[statid] === 'number') evs[statid as StatID] = set.evs[statid];
 						}
 					}
 					set.evs = evs;
-					const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
+					const ivs = { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
 					if (set.ivs) {
 						for (const statid in ivs) {
 							if (typeof set.ivs[statid] === 'number') ivs[statid as StatID] = set.ivs[statid];
@@ -610,8 +610,8 @@ export const Teams = new class Teams {
 				curSet = {
 					name: '', species: '', item: '', ability: '', gender: '',
 					nature: '',
-					evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0 },
-					ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 },
+					evs: { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 },
+					ivs: { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 },
 					level: 100,
 					moves: [],
 				};

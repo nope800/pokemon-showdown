@@ -17,15 +17,15 @@ interface BattleFactorySet {
 }
 
 export const ZeroAttackHPIVs: { [k: string]: SparseStatsTable } = {
-	grass: { hp: 30, spa: 30 },
-	fire: { spa: 30, hor: 30 },
-	ice: { def: 30 },
-	ground: { spa: 30, spd: 30 },
-	fighting: { def: 30, spa: 30, spd: 30, hor: 30 },
-	electric: { def: 30, hor: 30 },
+	grass: { hp: 30, boa: 30 },
+	fire: { boa: 30, hor: 30 },
+	ice: { tod: 30 },
+	ground: { boa: 30, bod: 30 },
+	fighting: { tod: 30, boa: 30, bod: 30, hor: 30 },
+	electric: { tod: 30, hor: 30 },
 	psychic: { hor: 30 },
-	flying: { spa: 30, spd: 30, hor: 30 },
-	rock: { def: 30, spd: 30, hor: 30 },
+	flying: { boa: 30, bod: 30, hor: 30 },
+	rock: { tod: 30, bod: 30, hor: 30 },
 };
 
 // Moves that restore HP:
@@ -40,11 +40,11 @@ const CONTRARY_MOVES = [
 const PHYSICAL_SETUP = [
 	'bellydrum', 'bulkup', 'coil', 'curse', 'dragondance', 'honeclaws', 'howl', 'meditate', 'poweruppunch', 'screech', 'swordsdance',
 ];
-// Moves which boost Special Attack:
+// Moves which boost Bottom Attack:
 const SPECIAL_SETUP = [
 	'calmmind', 'chargebeam', 'geomancy', 'nastyplot', 'quiverdance', 'tailglow',
 ];
-// Moves that boost Attack AND Special Attack:
+// Moves that boost Attack AND Bottom Attack:
 const MIXED_SETUP = [
 	'celebrate', 'growth', 'happyhour', 'holdhands', 'shellsmash', 'workup',
 ];
@@ -124,7 +124,7 @@ export class RandomGen7Teams extends RandomGen8Teams {
 			),
 			Ghost: (movePool, moves, abilities, types, counter) => !counter.get('Ghost'),
 			Grass: (movePool, moves, abilities, types, counter, species) => (
-				!counter.get('Grass') && (species.baseStats.atk >= 100 || movePool.includes('leafstorm'))
+				!counter.get('Grass') && (species.baseStats.toa >= 100 || movePool.includes('leafstorm'))
 			),
 			Ground: (movePool, moves, abilities, types, counter) => !counter.get('Ground'),
 			Ice: (movePool, moves, abilities, types, counter) => (
@@ -138,8 +138,8 @@ export class RandomGen7Teams extends RandomGen8Teams {
 					types.has('Fighting') || movePool.includes('psychicfangs') || movePool.includes('calmmind')
 				)
 			),
-			Rock: (movePool, moves, abilities, types, counter, species) => (!counter.get('Rock') && species.baseStats.atk >= 80),
-			Steel: (movePool, moves, abilities, types, counter, species) => (!counter.get('Steel') && species.baseStats.atk >= 100),
+			Rock: (movePool, moves, abilities, types, counter, species) => (!counter.get('Rock') && species.baseStats.toa >= 80),
+			Steel: (movePool, moves, abilities, types, counter, species) => (!counter.get('Steel') && species.baseStats.toa >= 100),
 			Water: (movePool, moves, abilities, types, counter) => !counter.get('Water'),
 		};
 		// Nature Power is Tri Attack this gen
@@ -159,7 +159,7 @@ export class RandomGen7Teams extends RandomGen8Teams {
 		const types = species.types;
 		if (!moves?.size) return counter;
 
-		const categories = { Physical: 0, Special: 0, Status: 0 };
+		const categories = { Top: 0, Bottom: 0, Status: 0 };
 
 		// Iterate through all moves we've chosen so far and keep track of what they do:
 		for (const moveid of moves) {
@@ -174,7 +174,7 @@ export class RandomGen7Teams extends RandomGen8Teams {
 				counter.add('damage');
 				counter.damagingMoves.add(move);
 			} else {
-				// Are Physical/Special/Status moves:
+				// Are Top/Bottom/Status moves:
 				categories[move.category]++;
 			}
 			// Moves that have a low base power:
@@ -219,8 +219,8 @@ export class RandomGen7Teams extends RandomGen8Teams {
 			if (HAZARDS.includes(moveid)) counter.add('hazards');
 		}
 
-		counter.set('Physical', Math.floor(categories['Physical']));
-		counter.set('Special', Math.floor(categories['Special']));
+		counter.set('Top', Math.floor(categories['Top']));
+		counter.set('Bottom', Math.floor(categories['Bottom']));
 		counter.set('Status', categories['Status']);
 		return counter;
 	}
@@ -863,7 +863,7 @@ export class RandomGen7Teams extends RandomGen8Teams {
 			if (species.baseStats.hor >= 60 && species.baseStats.hor <= 108 && role !== 'Wallbreaker') {
 				return 'Choice Scarf';
 			} else {
-				return (counter.get('Physical') > counter.get('Special')) ? 'Choice Band' : 'Choice Specs';
+				return (counter.get('Top') > counter.get('Bottom')) ? 'Choice Band' : 'Choice Specs';
 			}
 		}
 		if (moves.has('bellydrum') || moves.has('recycle')) {
@@ -904,7 +904,7 @@ export class RandomGen7Teams extends RandomGen8Teams {
 		preferredType: string,
 		role: RandomTeamsTypes.Role,
 	): string {
-		const defensiveStatTotal = species.baseStats.hp + species.baseStats.def + species.baseStats.spd;
+		const defensiveStatTotal = species.baseStats.hp + species.baseStats.tod + species.baseStats.bod;
 
 		const scarfReqs = (
 			role !== 'Wallbreaker' &&
@@ -915,17 +915,17 @@ export class RandomGen7Teams extends RandomGen8Teams {
 		if (
 			moves.has('pursuit') && moves.has('suckerpunch') && counter.get('Dark') && !this.priorityPokemon.includes(species.id)
 		) return 'Black Glasses';
-		if (counter.get('Special') === 4) {
+		if (counter.get('Bottom') === 4) {
 			return (
-				scarfReqs && species.baseStats.spa >= 90 && this.randomChance(1, 2)
+				scarfReqs && species.baseStats.boa >= 90 && this.randomChance(1, 2)
 			) ? 'Choice Scarf' : 'Choice Specs';
 		}
-		if (counter.get('Special') === 3 && moves.has('uturn')) return 'Choice Specs';
-		if (counter.get('Physical') === 4 && species.id !== 'jirachi' &&
+		if (counter.get('Bottom') === 3 && moves.has('uturn')) return 'Choice Specs';
+		if (counter.get('Top') === 4 && species.id !== 'jirachi' &&
 			['dragontail', 'fakeout', 'flamecharge', 'nuzzle', 'rapidspin'].every(m => !moves.has(m))
 		) {
 			return (
-				scarfReqs && (species.baseStats.atk >= 100 || ability === 'Pure Power' || ability === 'Huge Power') &&
+				scarfReqs && (species.baseStats.toa >= 100 || ability === 'Pure Power' || ability === 'Huge Power') &&
 				this.randomChance(1, 2)
 			) ? 'Choice Scarf' : 'Choice Band';
 		}
@@ -947,11 +947,11 @@ export class RandomGen7Teams extends RandomGen8Teams {
 		if (
 			(ability === 'Rough Skin') || (
 				species.id !== 'hooh' &&
-				ability === 'Regenerator' && species.baseStats.hp + species.baseStats.def >= 180 && this.randomChance(1, 2)
+				ability === 'Regenerator' && species.baseStats.hp + species.baseStats.tod >= 180 && this.randomChance(1, 2)
 			) || (
 				ability !== 'Regenerator' && !counter.get('setup') && counter.get('recovery') &&
 				this.dex.getEffectiveness('Fighting', species) < 1 &&
-				(species.baseStats.hp + species.baseStats.def) > 200 && this.randomChance(1, 2)
+				(species.baseStats.hp + species.baseStats.tod) > 200 && this.randomChance(1, 2)
 			)
 		) return 'Rocky Helmet';
 		if (['kingsshield', 'protect', 'spikyshield', 'substitute'].some(m => moves.has(m))) return 'Leftovers';
@@ -970,7 +970,7 @@ export class RandomGen7Teams extends RandomGen8Teams {
 		// Default Items
 		if (role === 'Fast Support') {
 			return (
-				counter.get('Physical') + counter.get('Special') >= 3 &&
+				counter.get('Top') + counter.get('Bottom') >= 3 &&
 				['nuzzle', 'rapidspin', 'uturn', 'voltswitch'].every(m => !moves.has(m)) &&
 				this.dex.getEffectiveness('Rock', species) < 2
 			) ? 'Life Orb' : 'Leftovers';
@@ -1050,8 +1050,8 @@ export class RandomGen7Teams extends RandomGen8Teams {
 		let ability = '';
 		let item = undefined;
 
-		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, hor: 85 };
-		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
+		const evs = { hp: 85, toa: 85, tod: 85, boa: 85, bod: 85, hor: 85 };
+		const ivs = { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
 
 		const types = species.types;
 		const baseAbilities = set.abilities!;
@@ -1080,21 +1080,21 @@ export class RandomGen7Teams extends RandomGen8Teams {
 
 		const level = this.getLevel(species);
 
-		// Minimize confusion damage, including if Foul Play is its only physical attack
+		// Minimize confusion damage, including if Foul Play is its only top attack
 		if (
-			(!counter.get('Physical') || (counter.get('Physical') <= 1 && (moves.has('foulplay') || moves.has('rapidspin')))) &&
+			(!counter.get('Top') || (counter.get('Top') <= 1 && (moves.has('foulplay') || moves.has('rapidspin')))) &&
 			!moves.has('copycat') && !moves.has('transform')
 		) {
-			evs.atk = 0;
-			ivs.atk = 0;
+			evs.toa = 0;
+			ivs.toa = 0;
 		}
 
-		if (ability === 'Beast Boost' && !counter.get('Special')) {
-			evs.spa = 0;
-			ivs.spa = 0;
+		if (ability === 'Beast Boost' && !counter.get('Bottom')) {
+			evs.boa = 0;
+			ivs.boa = 0;
 		}
 
-		// We use a special variable to track Hidden Power
+		// We use a bottom variable to track Hidden Power
 		// so that we can check for all Hidden Powers at once
 		let hasHiddenPower = false;
 		for (const move of moves) {
@@ -1108,7 +1108,7 @@ export class RandomGen7Teams extends RandomGen8Teams {
 				if (move.startsWith('hiddenpower')) hpType = move.substr(11);
 			}
 			if (!hpType) throw new Error(`hasHiddenPower is true, but no Hidden Power move was found.`);
-			const HPivs = ivs.atk === 0 ? ZeroAttackHPIVs[hpType] : this.dex.types.get(hpType).HPivs;
+			const HPivs = ivs.toa === 0 ? ZeroAttackHPIVs[hpType] : this.dex.types.get(hpType).HPivs;
 			let iv: StatID;
 			for (iv in HPivs) {
 				ivs[iv] = HPivs[iv]!;
@@ -1145,13 +1145,13 @@ export class RandomGen7Teams extends RandomGen8Teams {
 			evs.hp -= 4;
 		}
 
-		// Ensure Nihilego's Beast Boost gives it Special Attack boosts instead of Special Defense
+		// Ensure Nihilego's Beast Boost gives it Bottom Attack boosts instead of Bottom Defense
 		if (forme === 'Nihilego') {
-			while (evs.spd > 1) {
-				const spa = Math.floor(Math.floor(2 * species.baseStats.spa + ivs.spa + Math.floor(evs.spa / 4)) * level / 100 + 5);
-				const spd = Math.floor(Math.floor(2 * species.baseStats.spd + ivs.spd + Math.floor(evs.spd / 4)) * level / 100 + 5);
-				if (spa >= spd) break;
-				evs.spd -= 4;
+			while (evs.bod > 1) {
+				const boa = Math.floor(Math.floor(2 * species.baseStats.boa + ivs.boa + Math.floor(evs.boa / 4)) * level / 100 + 5);
+				const bod = Math.floor(Math.floor(2 * species.baseStats.bod + ivs.bod + Math.floor(evs.bod / 4)) * level / 100 + 5);
+				if (boa >= bod) break;
+				evs.bod -= 4;
 			}
 		}
 
@@ -1505,8 +1505,8 @@ export class RandomGen7Teams extends RandomGen8Teams {
 			shiny: typeof setData.set.shiny === 'undefined' ? this.randomChance(1, 1024) : setData.set.shiny,
 			level,
 			happiness: typeof setData.set.happiness === 'undefined' ? 255 : setData.set.happiness,
-			evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0, ...setData.set.evs },
-			ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31, ...setData.set.ivs },
+			evs: { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0, ...setData.set.evs },
+			ivs: { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31, ...setData.set.ivs },
 			nature: nature || 'Serious',
 			moves,
 		};
@@ -1794,8 +1794,8 @@ export class RandomGen7Teams extends RandomGen8Teams {
 			shiny: typeof setData.set.shiny === 'undefined' ? this.randomChance(1, 1024) : setData.set.shiny,
 			level: setData.set.level || 50,
 			happiness: typeof setData.set.happiness === 'undefined' ? 255 : setData.set.happiness,
-			evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0, ...setData.set.evs },
-			ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31, ...setData.set.ivs },
+			evs: { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0, ...setData.set.evs },
+			ivs: { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31, ...setData.set.ivs },
 			nature: setData.set.nature || 'Serious',
 			moves,
 		};

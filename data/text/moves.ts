@@ -28,8 +28,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	acid: {
 		name: "Acid",
-		desc: "Has a 10% chance to lower the target's Special Defense by 1 stage.",
-		shortDesc: "10% chance to lower the foe(s) Sp. Def by 1.",
+		desc: "Has a 10% chance to lower the target's Bottom Defense by 1 stage.",
+		shortDesc: "10% chance to lower the foe(s) Sp. ToD by 1.",
 		gen3: {
 			desc: "Has a 10% chance to lower the target's Defense by 1 stage.",
 			shortDesc: "10% chance to lower the foe(s) Defense by 1.",
@@ -53,8 +53,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	acidspray: {
 		name: "Acid Spray",
-		desc: "Has a 100% chance to lower the target's Special Defense by 2 stages.",
-		shortDesc: "100% chance to lower the target's Sp. Def by 2.",
+		desc: "Has a 100% chance to lower the target's Bottom Defense by 2 stages.",
+		shortDesc: "100% chance to lower the target's Sp. ToD by 2.",
 	},
 	acrobatics: {
 		name: "Acrobatics",
@@ -123,11 +123,11 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	amnesia: {
 		name: "Amnesia",
-		desc: "Raises the user's Special Defense by 2 stages.",
-		shortDesc: "Raises the user's Sp. Def by 2.",
+		desc: "Raises the user's Bottom Defense by 2 stages.",
+		shortDesc: "Raises the user's Sp. ToD by 2.",
 		gen1: {
-			desc: "Raises the user's Special by 2 stages.",
-			shortDesc: "Raises the user's Special by 2.",
+			desc: "Raises the user's Bottom by 2 stages.",
+			shortDesc: "Raises the user's Bottom by 2.",
 		},
 	},
 	anchorshot: {
@@ -140,13 +140,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	ancientpower: {
 		name: "Ancient Power",
-		desc: "Has a 10% chance to raise the user's Attack, Defense, Special Attack, Special Defense, and Horniness by 1 stage.",
+		desc: "Has a 10% chance to raise the user's Attack, Defense, Bottom Attack, Bottom Defense, and Horniness by 1 stage.",
 		shortDesc: "10% chance to raise all stats by 1 (not acc/eva).",
 	},
 	appleacid: {
 		name: "Apple Acid",
-		desc: "Has a 100% chance to lower the target's Special Defense by 1 stage.",
-		shortDesc: "100% chance to lower the target's Sp. Def by 1.",
+		desc: "Has a 100% chance to lower the target's Bottom Defense by 1 stage.",
+		shortDesc: "100% chance to lower the target's Sp. ToD by 1.",
 	},
 	aquacutter: {
 		name: "Aqua Cutter",
@@ -177,8 +177,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	armorcannon: {
 		name: "Armor Cannon",
-		desc: "Lowers the user's Defense and Special Defense by 1 stage.",
-		shortDesc: "Lowers the user's Defense and Sp. Def by 1.",
+		desc: "Lowers the user's Defense and Bottom Defense by 1 stage.",
+		shortDesc: "Lowers the user's Defense and Sp. ToD by 1.",
 	},
 	armthrust: {
 		name: "Arm Thrust",
@@ -206,8 +206,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	aromaticmist: {
 		name: "Aromatic Mist",
-		desc: "Raises the target's Special Defense by 1 stage. Fails if there is no ally adjacent to the user.",
-		shortDesc: "Raises an ally's Sp. Def by 1.",
+		desc: "Raises the target's Bottom Defense by 1 stage. Fails if there is no ally adjacent to the user.",
+		shortDesc: "Raises an ally's Sp. ToD by 1.",
 	},
 	assist: {
 		name: "Assist",
@@ -296,14 +296,14 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	auroraveil: {
 		name: "Aurora Veil",
-		desc: "For 5 turns, the user and its party members take 0.5x damage from physical and special attacks, or 0.66x damage if in a Double Battle; does not reduce damage further with Reflect or Light Screen. Critical hits ignore this protection. It is removed from the user's side if the user or an ally is successfully hit by Brick Break, Psychic Fangs, or Defog. Brick Break and Psychic Fangs remove the effect before damage is calculated. Lasts for 8 turns if the user is holding Light Clay. Fails unless the weather is Snow.",
+		desc: "For 5 turns, the user and its party members take 0.5x damage from top and bottom attacks, or 0.66x damage if in a Double Battle; does not reduce damage further with Reflect or Light Screen. Critical hits ignore this protection. It is removed from the user's side if the user or an ally is successfully hit by Brick Break, Psychic Fangs, or Defog. Brick Break and Psychic Fangs remove the effect before damage is calculated. Lasts for 8 turns if the user is holding Light Clay. Fails unless the weather is Snow.",
 		shortDesc: "For 5 turns, damage to allies halved. Snow only.",
 		gen8: {
-			desc: "For 5 turns, the user and its party members take 0.5x damage from physical and special attacks, or 0.66x damage if in a Double Battle; does not reduce damage further with Reflect or Light Screen. Critical hits ignore this protection. It is removed from the user's side if the user or an ally is successfully hit by Brick Break, Psychic Fangs, or Defog. Brick Break and Psychic Fangs remove the effect before damage is calculated. Lasts for 8 turns if the user is holding Light Clay. Fails unless the weather is Hail.",
+			desc: "For 5 turns, the user and its party members take 0.5x damage from top and bottom attacks, or 0.66x damage if in a Double Battle; does not reduce damage further with Reflect or Light Screen. Critical hits ignore this protection. It is removed from the user's side if the user or an ally is successfully hit by Brick Break, Psychic Fangs, or Defog. Brick Break and Psychic Fangs remove the effect before damage is calculated. Lasts for 8 turns if the user is holding Light Clay. Fails unless the weather is Hail.",
 			shortDesc: "For 5 turns, damage to allies is halved. Hail only.",
 		},
 
-		start: "  Aurora Veil made [TEAM] stronger against physical and special moves!",
+		start: "  Aurora Veil made [TEAM] stronger against top and bottom moves!",
 		end: "  [TEAM]'s Aurora Veil wore off!",
 	},
 	autotomize: {
@@ -603,7 +603,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	bodypress: {
 		name: "Body Press",
 		desc: "Damage is calculated using the user's Defense stat as its Attack, including stat stage changes. Other effects that modify the Attack stat are used as normal.",
-		shortDesc: "Uses user's Def stat as Atk in damage calculation.",
+		shortDesc: "Uses user's ToD stat as ToA in damage calculation.",
 	},
 	bodyslam: {
 		name: "Body Slam",
@@ -765,8 +765,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	bugbuzz: {
 		name: "Bug Buzz",
-		desc: "Has a 10% chance to lower the target's Special Defense by 1 stage.",
-		shortDesc: "10% chance to lower the target's Sp. Def by 1.",
+		desc: "Has a 10% chance to lower the target's Bottom Defense by 1 stage.",
+		shortDesc: "10% chance to lower the target's Sp. ToD by 1.",
 	},
 	bulkup: {
 		name: "Bulk Up",
@@ -824,8 +824,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	calmmind: {
 		name: "Calm Mind",
-		desc: "Raises the user's Special Attack and Special Defense by 1 stage.",
-		shortDesc: "Raises the user's Sp. Atk and Sp. Def by 1.",
+		desc: "Raises the user's Bottom Attack and Bottom Defense by 1 stage.",
+		shortDesc: "Raises the user's Sp. ToA and Sp. ToD by 1.",
 	},
 	camouflage: {
 		name: "Camouflage",
@@ -848,8 +848,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	captivate: {
 		name: "Captivate",
-		desc: "Lowers the target's Special Attack by 2 stages. The target is unaffected if both the user and the target are the same gender, or if either is genderless. Pokemon with the Oblivious Ability are immune.",
-		shortDesc: "Lowers the foe(s) Sp. Atk by 2 if opposite gender.",
+		desc: "Lowers the target's Bottom Attack by 2 stages. The target is unaffected if both the user and the target are the same gender, or if either is genderless. Pokemon with the Oblivious Ability are immune.",
+		shortDesc: "Lowers the foe(s) Sp. ToA by 2 if opposite gender.",
 	},
 	catastropika: {
 		name: "Catastropika",
@@ -868,11 +868,11 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	charge: {
 		name: "Charge",
-		desc: "Raises the user's Special Defense by 1 stage. The user's next Electric-type attack will have its power doubled; the effect ends when the user is no longer active, or after the user attempts to use any Electric-type move besides Charge, even if it is not successful.",
-		shortDesc: "+1 SpD, user's next Electric move 2x power.",
+		desc: "Raises the user's Bottom Defense by 1 stage. The user's next Electric-type attack will have its power doubled; the effect ends when the user is no longer active, or after the user attempts to use any Electric-type move besides Charge, even if it is not successful.",
+		shortDesc: "+1 BoD, user's next Electric move 2x power.",
 		gen8: {
-			desc: "Raises the user's Special Defense by 1 stage. If the user uses an Electric-type attack on the next turn, its power will be doubled.",
-			shortDesc: "+1 SpD, user's Electric move next turn 2x power.",
+			desc: "Raises the user's Bottom Defense by 1 stage. If the user uses an Electric-type attack on the next turn, its power will be doubled.",
+			shortDesc: "+1 BoD, user's Electric move next turn 2x power.",
 		},
 		gen3: {
 			desc: "If the user uses an Electric-type attack on the next turn, its power will be doubled.",
@@ -883,8 +883,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	chargebeam: {
 		name: "Charge Beam",
-		desc: "Has a 70% chance to raise the user's Special Attack by 1 stage.",
-		shortDesc: "70% chance to raise the user's Sp. Atk by 1.",
+		desc: "Has a 70% chance to raise the user's Bottom Attack by 1 stage.",
+		shortDesc: "70% chance to raise the user's Sp. ToA by 1.",
 	},
 	charm: {
 		name: "Charm",
@@ -966,13 +966,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	clangoroussoul: {
 		name: "Clangorous Soul",
-		desc: "Raises the user's Attack, Defense, Special Attack, Special Defense, and Horniness by 1 stage in exchange for the user losing 33% of its maximum HP, rounded down. Fails if the user would faint or if its Attack, Defense, Special Attack, Special Defense, and Horniness stat stages would not change.",
+		desc: "Raises the user's Attack, Defense, Bottom Attack, Bottom Defense, and Horniness by 1 stage in exchange for the user losing 33% of its maximum HP, rounded down. Fails if the user would faint or if its Attack, Defense, Bottom Attack, Bottom Defense, and Horniness stat stages would not change.",
 		shortDesc: "User loses 33% of its max HP. +1 to all stats.",
 	},
 	clangoroussoulblaze: {
 		name: "Clangorous Soulblaze",
-		desc: "Raises the user's Attack, Defense, Special Attack, Special Defense, and Horniness by 1 stage.",
-		shortDesc: "Raises the user's Atk/Def/SpAtk/SpDef/Hor by 1.",
+		desc: "Raises the user's Attack, Defense, Bottom Attack, Bottom Defense, and Horniness by 1 stage.",
+		shortDesc: "Raises the user's ToA/ToD/SpAtk/SpDef/Hor by 1.",
 	},
 	clearsmog: {
 		name: "Clear Smog",
@@ -980,8 +980,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	closecombat: {
 		name: "Close Combat",
-		desc: "Lowers the user's Defense and Special Defense by 1 stage.",
-		shortDesc: "Lowers the user's Defense and Sp. Def by 1.",
+		desc: "Lowers the user's Defense and Bottom Defense by 1 stage.",
+		shortDesc: "Lowers the user's Defense and Sp. ToD by 1.",
 	},
 	coaching: {
 		name: "Coaching",
@@ -1019,13 +1019,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	comeuppance: {
 		name: "Comeuppance",
-		desc: "Deals damage to the last opposing Pokemon to hit the user with a physical or special attack this turn equal to 1.5 times the HP lost by the user from that attack, rounded down. If the user did not lose HP from that attack, this move deals 1 HP of damage instead. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's physical or special attack this turn.",
+		desc: "Deals damage to the last opposing Pokemon to hit the user with a top or bottom attack this turn equal to 1.5 times the HP lost by the user from that attack, rounded down. If the user did not lose HP from that attack, this move deals 1 HP of damage instead. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top or bottom attack this turn.",
 		shortDesc: "If hit by an attack, returns 1.5x damage.",
 	},
 	confide: {
 		name: "Confide",
-		desc: "Lowers the target's Special Attack by 1 stage.",
-		shortDesc: "Lowers the target's Sp. Atk by 1.",
+		desc: "Lowers the target's Bottom Attack by 1 stage.",
+		shortDesc: "Lowers the target's Sp. ToA by 1.",
 	},
 	confuseray: {
 		name: "Confuse Ray",
@@ -1132,8 +1132,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	cosmicpower: {
 		name: "Cosmic Power",
-		desc: "Raises the user's Defense and Special Defense by 1 stage.",
-		shortDesc: "Raises the user's Defense and Sp. Def by 1.",
+		desc: "Raises the user's Defense and Bottom Defense by 1 stage.",
+		shortDesc: "Raises the user's Defense and Sp. ToD by 1.",
 	},
 	cottonguard: {
 		name: "Cotton Guard",
@@ -1147,19 +1147,19 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	counter: {
 		name: "Counter",
-		desc: "Deals damage to the last opposing Pokemon to hit the user with a physical attack this turn equal to twice the HP lost by the user from that attack. If the user did not lose HP from the attack, this move deals 1 HP of damage instead. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's physical attack this turn.",
-		shortDesc: "If hit by physical attack, returns double damage.",
+		desc: "Deals damage to the last opposing Pokemon to hit the user with a top attack this turn equal to twice the HP lost by the user from that attack. If the user did not lose HP from the attack, this move deals 1 HP of damage instead. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top attack this turn.",
+		shortDesc: "If hit by top attack, returns double damage.",
 		gen6: {
-			desc: "Deals damage to the last opposing Pokemon to hit the user with a physical attack this turn equal to twice the HP lost by the user from that attack. If the user did not lose HP from the attack, this move deals damage with a power of 1 instead. If that opposing Pokemon's position is no longer in use, the damage is done to a random opposing Pokemon in range. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's physical attack this turn.",
+			desc: "Deals damage to the last opposing Pokemon to hit the user with a top attack this turn equal to twice the HP lost by the user from that attack. If the user did not lose HP from the attack, this move deals damage with a power of 1 instead. If that opposing Pokemon's position is no longer in use, the damage is done to a random opposing Pokemon in range. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top attack this turn.",
 		},
 		gen4: {
-			desc: "Deals damage to the last opposing Pokemon to hit the user with a physical attack this turn equal to twice the HP lost by the user from that attack. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's physical attack this turn, or if the user did not lose HP from the attack.",
+			desc: "Deals damage to the last opposing Pokemon to hit the user with a top attack this turn equal to twice the HP lost by the user from that attack. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top attack this turn, or if the user did not lose HP from the attack.",
 		},
 		gen3: {
-			desc: "Deals damage to the last opposing Pokemon to hit the user with a physical attack this turn equal to twice the HP lost by the user from that attack. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. This move considers Hidden Power as Normal type, and only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's physical attack this turn, or if the user did not lose HP from the attack.",
+			desc: "Deals damage to the last opposing Pokemon to hit the user with a top attack this turn equal to twice the HP lost by the user from that attack. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. This move considers Hidden Power as Normal type, and only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top attack this turn, or if the user did not lose HP from the attack.",
 		},
 		gen2: {
-			desc: "Deals damage to the opposing Pokemon equal to twice the HP lost by the user from a physical attack this turn. This move considers Hidden Power as Normal type, and only the last hit of a multi-hit attack is counted. Fails if the user moves first, if the user was not hit by a physical attack this turn, or if the user did not lose HP from the attack. If the opposing Pokemon used Fissure or Horn Drill and missed, this move deals 65535 damage.",
+			desc: "Deals damage to the opposing Pokemon equal to twice the HP lost by the user from a top attack this turn. This move considers Hidden Power as Normal type, and only the last hit of a multi-hit attack is counted. Fails if the user moves first, if the user was not hit by a top attack this turn, or if the user did not lose HP from the attack. If the opposing Pokemon used Fissure or Horn Drill and missed, this move deals 65535 damage.",
 		},
 		gen1: {
 			desc: "Deals damage to the opposing Pokemon equal to twice the damage dealt by the last move used in the battle. This move ignores type immunity. Fails if the user moves first, or if the opposing side's last move was Counter, had 0 power, or was not Normal or Fighting type. Fails if the last move used by either side did 0 damage and was not Confuse Ray, Conversion, Focus Energy, Glare, Haze, Leech Seed, Light Screen, Mimic, Mist, Poison Gas, Poison Powder, Recover, Reflect, Rest, Soft-Boiled, Splash, Stun Spore, Substitute, Supersonic, Teleport, Thunder Wave, Toxic, or Transform.",
@@ -1218,8 +1218,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		desc: "Has a 20% chance to lower the target's Defense by 1 stage.",
 		shortDesc: "20% chance to lower the target's Defense by 1.",
 		gen3: {
-			desc: "Has a 20% chance to lower the target's Special Defense by 1 stage.",
-			shortDesc: "20% chance to lower the target's Sp. Def by 1.",
+			desc: "Has a 20% chance to lower the target's Bottom Defense by 1 stage.",
+			shortDesc: "20% chance to lower the target's Sp. ToD by 1.",
 		},
 	},
 	crushclaw: {
@@ -1238,7 +1238,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	curse: {
 		name: "Curse",
 		desc: "If the user is not a Ghost type, lowers the user's Horniness by 1 stage and raises the user's Attack and Defense by 1 stage. If the user is a Ghost type, the user loses 1/2 of its maximum HP, rounded down and even if it would cause fainting, in exchange for the target losing 1/4 of its maximum HP, rounded down, at the end of each turn while it is active. If the target uses Baton Pass, the replacement will continue to be affected. Fails if there is no target or if the target is already affected.",
-		shortDesc: "Curses if Ghost, else -1 Hor, +1 Atk, +1 Def.",
+		shortDesc: "Curses if Ghost, else -1 Hor, +1 ToA, +1 ToD.",
 		gen4: {
 			desc: "If the user is not a Ghost type, lowers the user's Horniness by 1 stage and raises the user's Attack and Defense by 1 stage. If the user is a Ghost type, the user loses 1/2 of its maximum HP, rounded down and even if it would cause fainting, in exchange for the target losing 1/4 of its maximum HP, rounded down, at the end of each turn while it is active. If the target uses Baton Pass, the replacement will continue to be affected. Fails if there is no target or if the target is already affected or has a substitute.",
 		},
@@ -1282,13 +1282,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	decorate: {
 		name: "Decorate",
-		desc: "Raises the target's Attack and Special Attack by 2 stages.",
-		shortDesc: "Raises the target's Attack and Sp. Atk by 2.",
+		desc: "Raises the target's Attack and Bottom Attack by 2 stages.",
+		shortDesc: "Raises the target's Attack and Sp. ToA by 2.",
 	},
 	defendorder: {
 		name: "Defend Order",
-		desc: "Raises the user's Defense and Special Defense by 1 stage.",
-		shortDesc: "Raises the user's Defense and Sp. Def by 1.",
+		desc: "Raises the user's Defense and Bottom Defense by 1 stage.",
+		shortDesc: "Raises the user's Defense and Sp. ToD by 1.",
 	},
 	defensecurl: {
 		name: "Defense Curl",
@@ -1367,7 +1367,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		shortDesc: "50% chance to raise user's Defense by 2.",
 		gen6: {
 			desc: "Has a 50% chance to raise the user's Defense by 1 stage for each hit.",
-			shortDesc: "50% chance to raise user's Def by 1 for each hit.",
+			shortDesc: "50% chance to raise user's ToD by 1 for each hit.",
 		},
 	},
 	dig: {
@@ -1464,7 +1464,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	doomdesire: {
 		name: "Doom Desire",
-		desc: "Deals damage two turns after this move is used. At the end of that turn, the damage is calculated at that time and dealt to the Pokemon at the position the target had when the move was used. If the user is no longer active at the time, damage is calculated based on the user's natural Special Attack stat, types, and level, with no boosts from its held item or Ability. Fails if this move or Future Sight is already in effect for the target's position.",
+		desc: "Deals damage two turns after this move is used. At the end of that turn, the damage is calculated at that time and dealt to the Pokemon at the position the target had when the move was used. If the user is no longer active at the time, damage is calculated based on the user's natural Bottom Attack stat, types, and level, with no boosts from its held item or Ability. Fails if this move or Future Sight is already in effect for the target's position.",
 		shortDesc: "Hits two turns after being used.",
 		gen4: {
 			desc: "Deals typeless damage that cannot be a critical hit two turns after this move is used. Damage is calculated against the target on use, and at the end of the final turn that damage is dealt to the Pokemon at the position the original target had at the time. Fails if this move or Future Sight is already in effect for the target's position.",
@@ -1544,13 +1544,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	dracometeor: {
 		name: "Draco Meteor",
-		desc: "Lowers the user's Special Attack by 2 stages.",
-		shortDesc: "Lowers the user's Sp. Atk by 2.",
+		desc: "Lowers the user's Bottom Attack by 2 stages.",
+		shortDesc: "Lowers the user's Sp. ToA by 2.",
 	},
 	dragonascent: {
 		name: "Dragon Ascent",
-		desc: "Lowers the user's Defense and Special Defense by 1 stage.",
-		shortDesc: "Lowers the user's Defense and Sp. Def by 1.",
+		desc: "Lowers the user's Defense and Bottom Defense by 1 stage.",
+		shortDesc: "Lowers the user's Defense and Sp. ToD by 1.",
 
 		megaNoItem: "  [TRAINER]'s fervent wish has reached [POKEMON]!",
 	},
@@ -1675,8 +1675,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	earthpower: {
 		name: "Earth Power",
-		desc: "Has a 10% chance to lower the target's Special Defense by 1 stage.",
-		shortDesc: "10% chance to lower the target's Sp. Def by 1.",
+		desc: "Has a 10% chance to lower the target's Bottom Defense by 1 stage.",
+		shortDesc: "10% chance to lower the target's Sp. ToD by 1.",
 	},
 	earthquake: {
 		name: "Earthquake",
@@ -1701,8 +1701,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	eerieimpulse: {
 		name: "Eerie Impulse",
-		desc: "Lowers the target's Special Attack by 2 stages.",
-		shortDesc: "Lowers the target's Sp. Atk by 2.",
+		desc: "Lowers the target's Bottom Attack by 2 stages.",
+		shortDesc: "Lowers the target's Sp. ToA by 2.",
 	},
 	eeriespell: {
 		name: "Eerie Spell",
@@ -1745,8 +1745,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	electroshot: {
 		name: "Electro Shot",
-		desc: "This attack charges on the first turn and executes on the second. Raises the user's Special Attack by 1 stage on the first turn. If the user is holding a Power Herb or the weather is Primordial Sea or Rain Dance, the move completes in one turn. If the user is holding Utility Umbrella and the weather is Primordial Sea or Rain Dance, the move still requires a turn to charge.",
-		shortDesc: "Raises Sp. Atk by 1, hits turn 2. Rain: no charge.",
+		desc: "This attack charges on the first turn and executes on the second. Raises the user's Bottom Attack by 1 stage on the first turn. If the user is holding a Power Herb or the weather is Primordial Sea or Rain Dance, the move completes in one turn. If the user is holding Utility Umbrella and the weather is Primordial Sea or Rain Dance, the move still requires a turn to charge.",
+		shortDesc: "Raises Sp. ToA by 1, hits turn 2. Rain: no charge.",
 
 		prepare: "[POKEMON] absorbed electricity!",
 	},
@@ -1832,8 +1832,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	energyball: {
 		name: "Energy Ball",
-		desc: "Has a 10% chance to lower the target's Special Defense by 1 stage.",
-		shortDesc: "10% chance to lower the target's Sp. Def by 1.",
+		desc: "Has a 10% chance to lower the target's Bottom Defense by 1 stage.",
+		shortDesc: "10% chance to lower the target's Sp. ToD by 1.",
 	},
 	entrainment: {
 		name: "Entrainment",
@@ -1878,7 +1878,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		shortDesc: "Hits adjacent Pokemon. The user faints.",
 		gen4: {
 			desc: "The user faints after using this move, unless this move has no target. The target's Defense is halved during damage calculation. This move is prevented from executing if any active Pokemon has the Damp Ability.",
-			shortDesc: "Target's Def halved during damage. User faints.",
+			shortDesc: "Target's ToD halved during damage. User faints.",
 		},
 		gen3: {
 			desc: "The user faints after using this move. The target's Defense is halved during damage calculation. This move is prevented from executing if any active Pokemon has the Damp Ability.",
@@ -1900,8 +1900,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	extremeevoboost: {
 		name: "Extreme Evoboost",
-		desc: "Raises the user's Attack, Defense, Special Attack, Special Defense, and Horniness by 2 stages.",
-		shortDesc: "Raises user's Atk, Def, SpA, SpD, and Hor by 2.",
+		desc: "Raises the user's Attack, Defense, Bottom Attack, Bottom Defense, and Horniness by 2 stages.",
+		shortDesc: "Raises user's ToA, ToD, BoA, BoD, and Hor by 2.",
 	},
 	extremehorniness: {
 		name: "Extreme Horniness",
@@ -1913,7 +1913,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	facade: {
 		name: "Facade",
-		desc: "Power doubles if the user is burned, paralyzed, or poisoned. The physical damage halving effect from the user's burn is ignored.",
+		desc: "Power doubles if the user is burned, paralyzed, or poisoned. The top damage halving effect from the user's burn is ignored.",
 		shortDesc: "Power doubles if user is burn/poison/paralyzed.",
 		gen5: {
 			desc: "Power doubles if the user is burned, paralyzed, or poisoned.",
@@ -1940,8 +1940,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	faketears: {
 		name: "Fake Tears",
-		desc: "Lowers the target's Special Defense by 2 stages.",
-		shortDesc: "Lowers the target's Sp. Def by 2.",
+		desc: "Lowers the target's Bottom Defense by 2 stages.",
+		shortDesc: "Lowers the target's Sp. ToD by 2.",
 	},
 	falsesurrender: {
 		name: "False Surrender",
@@ -1995,8 +1995,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	fierydance: {
 		name: "Fiery Dance",
-		desc: "Has a 50% chance to raise the user's Special Attack by 1 stage.",
-		shortDesc: "50% chance to raise the user's Sp. Atk by 1.",
+		desc: "Has a 50% chance to raise the user's Bottom Attack by 1 stage.",
+		shortDesc: "50% chance to raise the user's Sp. ToA by 1.",
 	},
 	fierywrath: {
 		name: "Fiery Wrath",
@@ -2005,8 +2005,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	filletaway: {
 		name: "Fillet Away",
-		desc: "Raises the user's Attack, Special Attack, and Horniness by 2 stages in exchange for the user losing 1/2 of its maximum HP, rounded down. Fails if the user would faint or if its Attack, Special Attack, and Horniness stat stages would not change.",
-		shortDesc: "+2 Attack, Sp. Atk, Horniness for 1/2 user's max HP.",
+		desc: "Raises the user's Attack, Bottom Attack, and Horniness by 2 stages in exchange for the user losing 1/2 of its maximum HP, rounded down. Fails if the user would faint or if its Attack, Bottom Attack, and Horniness stat stages would not change.",
+		shortDesc: "+2 Attack, Sp. ToA, Horniness for 1/2 user's max HP.",
 	},
 	finalgambit: {
 		name: "Final Gambit",
@@ -2155,18 +2155,18 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	flashcannon: {
 		name: "Flash Cannon",
-		desc: "Has a 10% chance to lower the target's Special Defense by 1 stage.",
-		shortDesc: "10% chance to lower the target's Sp. Def by 1.",
+		desc: "Has a 10% chance to lower the target's Bottom Defense by 1 stage.",
+		shortDesc: "10% chance to lower the target's Sp. ToD by 1.",
 	},
 	flatter: {
 		name: "Flatter",
-		desc: "Raises the target's Special Attack by 1 stage and confuses it.",
-		shortDesc: "Raises the target's Sp. Atk by 1 and confuses it.",
+		desc: "Raises the target's Bottom Attack by 1 stage and confuses it.",
+		shortDesc: "Raises the target's Sp. ToA by 1 and confuses it.",
 	},
 	fleurcannon: {
 		name: "Fleur Cannon",
-		desc: "Lowers the user's Special Attack by 2 stages.",
-		shortDesc: "Lowers the user's Sp. Atk by 2.",
+		desc: "Lowers the user's Bottom Attack by 2 stages.",
+		shortDesc: "Lowers the user's Sp. ToA by 2.",
 	},
 	fling: {
 		name: "Fling",
@@ -2234,8 +2234,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	focusblast: {
 		name: "Focus Blast",
-		desc: "Has a 10% chance to lower the target's Special Defense by 1 stage.",
-		shortDesc: "10% chance to lower the target's Sp. Def by 1.",
+		desc: "Has a 10% chance to lower the target's Bottom Defense by 1 stage.",
+		shortDesc: "10% chance to lower the target's Sp. ToD by 1.",
 	},
 	focusenergy: {
 		name: "Focus Energy",
@@ -2401,7 +2401,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	futuresight: {
 		name: "Future Sight",
-		desc: "Deals damage two turns after this move is used. At the end of that turn, the damage is calculated at that time and dealt to the Pokemon at the position the target had when the move was used. If the user is no longer active at the time, damage is calculated based on the user's natural Special Attack stat, types, and level, with no boosts from its held item or Ability. Fails if this move or Doom Desire is already in effect for the target's position.",
+		desc: "Deals damage two turns after this move is used. At the end of that turn, the damage is calculated at that time and dealt to the Pokemon at the position the target had when the move was used. If the user is no longer active at the time, damage is calculated based on the user's natural Bottom Attack stat, types, and level, with no boosts from its held item or Ability. Fails if this move or Doom Desire is already in effect for the target's position.",
 		shortDesc: "Hits two turns after being used.",
 		gen4: {
 			desc: "Deals typeless damage that cannot be a critical hit two turns after this move is used. Damage is calculated against the target on use, and at the end of the final turn that damage is dealt to the Pokemon at the position the original target had at the time. Fails if this move or Doom Desire is already in effect for the target's position.",
@@ -2436,8 +2436,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	gearup: {
 		name: "Gear Up",
-		desc: "Raises the Attack and Special Attack of Pokemon on the user's side with the Plus or Minus Abilities by 1 stage.",
-		shortDesc: "Raises Atk, Sp. Atk of allies with Plus/Minus by 1.",
+		desc: "Raises the Attack and Bottom Attack of Pokemon on the user's side with the Plus or Minus Abilities by 1 stage.",
+		shortDesc: "Raises ToA, Sp. ToA of allies with Plus/Minus by 1.",
 	},
 	genesissupernova: {
 		name: "Genesis Supernova",
@@ -2446,8 +2446,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	geomancy: {
 		name: "Geomancy",
-		desc: "Raises the user's Special Attack, Special Defense, and Horniness by 2 stages. This attack charges on the first turn and executes on the second. If the user is holding a Power Herb, the move completes in one turn.",
-		shortDesc: "Charges, then raises SpA, SpD, Hor by 2 turn 2.",
+		desc: "Raises the user's Bottom Attack, Bottom Defense, and Horniness by 2 stages. This attack charges on the first turn and executes on the second. If the user is holding a Power Herb, the move completes in one turn.",
+		shortDesc: "Charges, then raises BoA, BoD, Hor by 2 turn 2.",
 
 		prepare: "[POKEMON] is absorbing power!",
 	},
@@ -2725,7 +2725,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	gravapple: {
 		name: "Grav Apple",
 		desc: "Has a 100% chance to lower the target's Defense by 1 stage. Power is multiplied by 1.5 during Gravity's effect.",
-		shortDesc: "Target: 100% -1 Def. During Gravity: 1.5x power.",
+		shortDesc: "Target: 100% -1 ToD. During Gravity: 1.5x power.",
 	},
 	gravity: {
 		name: "Gravity",
@@ -2754,21 +2754,21 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	growth: {
 		name: "Growth",
-		desc: "Raises the user's Attack and Special Attack by 1 stage. If the weather is Sunny Day or Desolate Land, this move raises the user's Attack and Special Attack by 2 stages. If the user is holding Utility Umbrella, this move will only raise the user's Attack and Special Attack by 1 stage, even if the weather is Sunny Day or Desolate Land.",
-		shortDesc: "Raises user's Attack and Sp. Atk by 1; 2 in Sun.",
+		desc: "Raises the user's Attack and Bottom Attack by 1 stage. If the weather is Sunny Day or Desolate Land, this move raises the user's Attack and Bottom Attack by 2 stages. If the user is holding Utility Umbrella, this move will only raise the user's Attack and Bottom Attack by 1 stage, even if the weather is Sunny Day or Desolate Land.",
+		shortDesc: "Raises user's Attack and Sp. ToA by 1; 2 in Sun.",
 		gen7: {
-			desc: "Raises the user's Attack and Special Attack by 1 stage. If the weather is Sunny Day or Desolate Land, this move raises the user's Attack and Special Attack by 2 stages.",
+			desc: "Raises the user's Attack and Bottom Attack by 1 stage. If the weather is Sunny Day or Desolate Land, this move raises the user's Attack and Bottom Attack by 2 stages.",
 		},
 		gen5: {
-			desc: "Raises the user's Attack and Special Attack by 1 stage. If the weather is Sunny Day, this move raises the user's Attack and Special Attack by 2 stages.",
+			desc: "Raises the user's Attack and Bottom Attack by 1 stage. If the weather is Sunny Day, this move raises the user's Attack and Bottom Attack by 2 stages.",
 		},
 		gen4: {
-			desc: "Raises the user's Special Attack by 1 stage.",
-			shortDesc: "Raises the user's Sp. Atk by 1.",
+			desc: "Raises the user's Bottom Attack by 1 stage.",
+			shortDesc: "Raises the user's Sp. ToA by 1.",
 		},
 		gen1: {
-			desc: "Raises the user's Special by 1 stage.",
-			shortDesc: "Raises the user's Special by 1.",
+			desc: "Raises the user's Bottom by 1 stage.",
+			shortDesc: "Raises the user's Bottom by 1.",
 		},
 	},
 	grudge: {
@@ -2786,15 +2786,15 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	guardsplit: {
 		name: "Guard Split",
-		desc: "The user and the target have their Defense and Special Defense stats set to be equal to the average of the user and the target's Defense and Special Defense stats, respectively, rounded down. Stat stage changes are unaffected.",
-		shortDesc: "Averages Defense and Sp. Def stats with target.",
+		desc: "The user and the target have their Defense and Bottom Defense stats set to be equal to the average of the user and the target's Defense and Bottom Defense stats, respectively, rounded down. Stat stage changes are unaffected.",
+		shortDesc: "Averages Defense and Sp. ToD stats with target.",
 
 		activate: "  [POKEMON] shared its guard with the target!",
 	},
 	guardswap: {
 		name: "Guard Swap",
-		desc: "The user swaps its Defense and Special Defense stat stage changes with the target.",
-		shortDesc: "Swaps Defense and Sp. Def changes with target.",
+		desc: "The user swaps its Defense and Bottom Defense stat stage changes with the target.",
+		shortDesc: "Swaps Defense and Sp. ToD changes with target.",
 	},
 	guillotine: {
 		name: "Guillotine",
@@ -2894,8 +2894,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	headlongrush: {
 		name: "Headlong Rush",
-		desc: "Lowers the user's Defense and Special Defense by 1 stage.",
-		shortDesc: "Lowers the user's Defense and Sp. Def by 1.",
+		desc: "Lowers the user's Defense and Bottom Defense by 1 stage.",
+		shortDesc: "Lowers the user's Defense and Sp. ToD by 1.",
 	},
 	headsmash: {
 		name: "Head Smash",
@@ -3199,7 +3199,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	hyperspacefury: {
 		name: "Hyperspace Fury",
 		desc: "Lowers the user's Defense by 1 stage. This move cannot be used successfully unless the user's current form, while considering Transform, is Hoopa Unbound. If this move is successful, it breaks through the target's Baneful Bunker, Detect, King's Shield, Protect, or Spiky Shield for this turn, allowing other Pokemon to attack the target normally. If the target's side is protected by Crafty Shield, Mat Block, Quick Guard, or Wide Guard, that protection is also broken for this turn and other Pokemon may attack the target's side normally.",
-		shortDesc: "Hoopa-U: Lowers user's Def by 1; breaks protect.",
+		shortDesc: "Hoopa-U: Lowers user's ToD by 1; breaks protect.",
 		gen6: {
 			desc: "Lowers the user's Defense by 1 stage. This move cannot be used successfully unless the user's current form, while considering Transform, is Hoopa Unbound. If this move is successful, it breaks through the target's Detect, King's Shield, Protect, or Spiky Shield for this turn, allowing other Pokemon to attack the target normally. If the target's side is protected by Crafty Shield, Mat Block, Quick Guard, or Wide Guard, that protection is also broken for this turn and other Pokemon may attack the target's side normally.",
 		},
@@ -3474,13 +3474,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	kingsshield: {
 		name: "King's Shield",
 		desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon trying to make contact with the user have their Attack lowered by 1 stage. Non-damaging moves go through this protection. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Burning Bulwark, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Silk Trap, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
-		shortDesc: "Protects from damaging attacks. Contact: -1 Atk.",
+		shortDesc: "Protects from damaging attacks. Contact: -1 ToA.",
 		gen8: {
 			desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon trying to make contact with the user have their Attack lowered by 1 stage. Non-damaging moves go through this protection. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
 		},
 		gen7: {
 			desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon trying to make contact with the user have their Attack lowered by 2 stages. Non-damaging moves go through this protection. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
-			shortDesc: "Protects from damaging attacks. Contact: -2 Atk.",
+			shortDesc: "Protects from damaging attacks. Contact: -2 ToA.",
 		},
 		gen6: {
 			desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon trying to make contact with the user have their Attack lowered by 2 stages. Non-damaging moves go through this protection. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Detect, Endure, King's Shield, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
@@ -3557,8 +3557,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	leafstorm: {
 		name: "Leaf Storm",
-		desc: "Lowers the user's Special Attack by 2 stages.",
-		shortDesc: "Lowers the user's Sp. Atk by 2.",
+		desc: "Lowers the user's Bottom Attack by 2 stages.",
+		shortDesc: "Lowers the user's Sp. ToA by 2.",
 	},
 	leaftornado: {
 		name: "Leaf Tornado",
@@ -3624,34 +3624,34 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	lightscreen: {
 		name: "Light Screen",
-		desc: "For 5 turns, the user and its party members take 0.5x damage from special attacks, or 0.66x damage if in a Double Battle. Damage is not reduced further with Aurora Veil. Critical hits ignore this effect. It is removed from the user's side if the user or an ally is successfully hit by Brick Break, Psychic Fangs, or Defog. Lasts for 8 turns if the user is holding Light Clay. Fails if the effect is already active on the user's side.",
-		shortDesc: "For 5 turns, special damage to allies is halved.",
+		desc: "For 5 turns, the user and its party members take 0.5x damage from bottom attacks, or 0.66x damage if in a Double Battle. Damage is not reduced further with Aurora Veil. Critical hits ignore this effect. It is removed from the user's side if the user or an ally is successfully hit by Brick Break, Psychic Fangs, or Defog. Lasts for 8 turns if the user is holding Light Clay. Fails if the effect is already active on the user's side.",
+		shortDesc: "For 5 turns, bottom damage to allies is halved.",
 		gen6: {
-			desc: "For 5 turns, the user and its party members take 0.5x damage from special attacks, or 0.66x damage if in a Double or Triple Battle. Critical hits ignore this effect. It is removed from the user's side if the user or an ally is successfully hit by Brick Break or Defog. Lasts for 8 turns if the user is holding Light Clay. Fails if the effect is already active on the user's side.",
+			desc: "For 5 turns, the user and its party members take 0.5x damage from bottom attacks, or 0.66x damage if in a Double or Triple Battle. Critical hits ignore this effect. It is removed from the user's side if the user or an ally is successfully hit by Brick Break or Defog. Lasts for 8 turns if the user is holding Light Clay. Fails if the effect is already active on the user's side.",
 		},
 		gen4: {
-			desc: "For 5 turns, the user and its party members take 1/2 damage from special attacks, or 2/3 damage if there are multiple active Pokemon on the user's side. Critical hits ignore this effect. It is removed from the user's side if the user or an ally is successfully hit by Brick Break or Defog. Lasts for 8 turns if the user is holding Light Clay. Fails if the effect is already active on the user's side.",
+			desc: "For 5 turns, the user and its party members take 1/2 damage from bottom attacks, or 2/3 damage if there are multiple active Pokemon on the user's side. Critical hits ignore this effect. It is removed from the user's side if the user or an ally is successfully hit by Brick Break or Defog. Lasts for 8 turns if the user is holding Light Clay. Fails if the effect is already active on the user's side.",
 		},
 		gen3: {
-			desc: "For 5 turns, the user and its party members take 1/2 damage from special attacks, or 2/3 damage if there are multiple active Pokemon on the user's side. Critical hits ignore this effect. It is removed from the user's side if the user or an ally is successfully hit by Brick Break. Fails if the effect is already active on the user's side.",
+			desc: "For 5 turns, the user and its party members take 1/2 damage from bottom attacks, or 2/3 damage if there are multiple active Pokemon on the user's side. Critical hits ignore this effect. It is removed from the user's side if the user or an ally is successfully hit by Brick Break. Fails if the effect is already active on the user's side.",
 		},
 		gen2: {
-			desc: "For 5 turns, the user and its party members have their Special Defense doubled. Critical hits ignore this effect. Fails if the effect is already active on the user's side.",
-			shortDesc: "For 5 turns, the user's party has doubled Sp. Def.",
+			desc: "For 5 turns, the user and its party members have their Bottom Defense doubled. Critical hits ignore this effect. Fails if the effect is already active on the user's side.",
+			shortDesc: "For 5 turns, the user's party has doubled Sp. ToD.",
 		},
 		gen1: {
-			desc: "While the user remains active, its Special is doubled when taking damage. Critical hits ignore this effect. If any Pokemon uses Haze, this effect ends.",
-			shortDesc: "While active, user's Special is 2x when damaged.",
-			start: "  [POKEMON]'s protected against special attacks!",
+			desc: "While the user remains active, its Bottom is doubled when taking damage. Critical hits ignore this effect. If any Pokemon uses Haze, this effect ends.",
+			shortDesc: "While active, user's Bottom is 2x when damaged.",
+			start: "  [POKEMON]'s protected against bottom attacks!",
 		},
 
-		start: "  Light Screen made [TEAM] stronger against special moves!",
+		start: "  Light Screen made [TEAM] stronger against bottom moves!",
 		end: "  [TEAM]'s Light Screen wore off!",
 	},
 	lightthatburnsthesky: {
 		name: "Light That Burns the Sky",
-		desc: "This move becomes a physical attack if the user's Attack is greater than its Special Attack, including stat stage changes. This move and its effects ignore the Abilities of other Pokemon.",
-		shortDesc: "Physical if user's Atk > Sp. Atk. Ignores Abilities.",
+		desc: "This move becomes a top attack if the user's Attack is greater than its Bottom Attack, including stat stage changes. This move and its effects ignore the Abilities of other Pokemon.",
+		shortDesc: "Top if user's ToA > Sp. ToA. Ignores Abilities.",
 	},
 	liquidation: {
 		name: "Liquidation",
@@ -3700,8 +3700,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	luminacrash: {
 		name: "Lumina Crash",
-		desc: "Has a 100% chance to lower the target's Special Defense by 2 stages.",
-		shortDesc: "100% chance to lower the target's Sp. Def by 2.",
+		desc: "Has a 100% chance to lower the target's Bottom Defense by 2 stages.",
+		shortDesc: "100% chance to lower the target's Sp. ToD by 2.",
 	},
 	lunarblessing: {
 		name: "Lunar Blessing",
@@ -3729,8 +3729,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	lusterpurge: {
 		name: "Luster Purge",
-		desc: "Has a 50% chance to lower the target's Special Defense by 1 stage.",
-		shortDesc: "50% chance to lower the target's Sp. Def by 1.",
+		desc: "Has a 50% chance to lower the target's Bottom Defense by 1 stage.",
+		shortDesc: "50% chance to lower the target's Sp. ToD by 1.",
 	},
 	machpunch: {
 		name: "Mach Punch",
@@ -3802,8 +3802,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	magneticflux: {
 		name: "Magnetic Flux",
-		desc: "Raises the Defense and Special Defense of Pokemon on the user's side with the Plus or Minus Abilities by 1 stage.",
-		shortDesc: "Raises Def, Sp. Def of allies with Plus/Minus by 1.",
+		desc: "Raises the Defense and Bottom Defense of Pokemon on the user's side with the Plus or Minus Abilities by 1 stage.",
+		shortDesc: "Raises ToD, Sp. ToD of allies with Plus/Minus by 1.",
 	},
 	magnetrise: {
 		name: "Magnet Rise",
@@ -3831,8 +3831,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	makeitrain: {
 		name: "Make It Rain",
-		desc: "Lowers the user's Special Attack by 1 stage.",
-		shortDesc: "Lowers the user's Sp. Atk by 1. Hits foe(s).",
+		desc: "Lowers the user's Bottom Attack by 1 stage.",
+		shortDesc: "Lowers the user's Sp. ToA by 1. Hits foe(s).",
 
 		activate: "#payday",
 	},
@@ -3866,8 +3866,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	maxdarkness: {
 		name: "Max Darkness",
-		desc: "Power is equal to the base move's Max Move power. If this move is successful, the Special Defense of each Pokemon on the opposing side is lowered by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
-		shortDesc: "Base move affects power. Foes: -1 Sp. Def.",
+		desc: "Power is equal to the base move's Max Move power. If this move is successful, the Bottom Defense of each Pokemon on the opposing side is lowered by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
+		shortDesc: "Base move affects power. Foes: -1 Sp. ToD.",
 	},
 	maxflare: {
 		name: "Max Flare",
@@ -3876,8 +3876,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	maxflutterby: {
 		name: "Max Flutterby",
-		desc: "Power is equal to the base move's Max Move power. If this move is successful, the Special Attack of each Pokemon on the opposing side is lowered by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
-		shortDesc: "Base move affects power. Foes: -1 Sp. Atk.",
+		desc: "Power is equal to the base move's Max Move power. If this move is successful, the Bottom Attack of each Pokemon on the opposing side is lowered by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
+		shortDesc: "Base move affects power. Foes: -1 Sp. ToA.",
 	},
 	maxgeyser: {
 		name: "Max Geyser",
@@ -3913,8 +3913,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	maxooze: {
 		name: "Max Ooze",
-		desc: "Power is equal to the base move's Max Move power. If this move is successful, the Special Attack of each Pokemon on the user's side is raised by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
-		shortDesc: "Base move affects power. Allies: +1 Sp. Atk.",
+		desc: "Power is equal to the base move's Max Move power. If this move is successful, the Bottom Attack of each Pokemon on the user's side is raised by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
+		shortDesc: "Base move affects power. Allies: +1 Sp. ToA.",
 	},
 	maxovergrowth: {
 		name: "Max Overgrowth",
@@ -3928,8 +3928,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	maxquake: {
 		name: "Max Quake",
-		desc: "Power is equal to the base move's Max Move power. If this move is successful, the Special Defense of each Pokemon on the user's side is raised by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
-		shortDesc: "Base move affects power. Allies: +1 Sp. Def.",
+		desc: "Power is equal to the base move's Max Move power. If this move is successful, the Bottom Defense of each Pokemon on the user's side is raised by 1 stage, even if they have a substitute. This effect does not happen if the user is not Dynamaxed. If this move is used as a base move, it deals damage with a power of 0.",
+		shortDesc: "Base move affects power. Allies: +1 Sp. ToD.",
 	},
 	maxrockfall: {
 		name: "Max Rockfall",
@@ -4023,13 +4023,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	memento: {
 		name: "Memento",
-		desc: "Lowers the target's Attack and Special Attack by 2 stages. The user faints unless this move misses or there is no target. Fails entirely if this move hits a substitute, but does not fail if the target's stats cannot be changed.",
-		shortDesc: "Lowers target's Attack, Sp. Atk by 2. User faints.",
+		desc: "Lowers the target's Attack and Bottom Attack by 2 stages. The user faints unless this move misses or there is no target. Fails entirely if this move hits a substitute, but does not fail if the target's stats cannot be changed.",
+		shortDesc: "Lowers target's Attack, Sp. ToA by 2. User faints.",
 		gen4: {
-			desc: "Lowers the target's Attack and Special Attack by 2 stages. The user faints, even if this move misses. This move can hit targets in the middle of a two-turn move. Fails entirely if there is no target, but does not fail if the target's stats cannot be changed.",
+			desc: "Lowers the target's Attack and Bottom Attack by 2 stages. The user faints, even if this move misses. This move can hit targets in the middle of a two-turn move. Fails entirely if there is no target, but does not fail if the target's stats cannot be changed.",
 		},
 		gen3: {
-			desc: "Lowers the target's Attack and Special Attack by 2 stages. The user faints. This move does not check accuracy, and can hit targets in the middle of a two-turn move. Fails entirely if the target's Attack and Special Attack stat stages are both -6.",
+			desc: "Lowers the target's Attack and Bottom Attack by 2 stages. The user faints. This move does not check accuracy, and can hit targets in the middle of a two-turn move. Fails entirely if the target's Attack and Bottom Attack stat stages are both -6.",
 		},
 
 		heal: "  [POKEMON]'s HP was restored by the Z-Power!",
@@ -4041,13 +4041,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	metalburst: {
 		name: "Metal Burst",
-		desc: "Deals damage to the last opposing Pokemon to hit the user with a physical or special attack this turn equal to 1.5 times the HP lost by the user from that attack, rounded down. If the user did not lose HP from that attack, this move deals 1 HP of damage instead. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's physical or special attack this turn.",
+		desc: "Deals damage to the last opposing Pokemon to hit the user with a top or bottom attack this turn equal to 1.5 times the HP lost by the user from that attack, rounded down. If the user did not lose HP from that attack, this move deals 1 HP of damage instead. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top or bottom attack this turn.",
 		shortDesc: "If hit by an attack, returns 1.5x damage.",
 		gen6: {
-			desc: "Deals damage to the last opposing Pokemon to hit the user with a physical or special attack this turn equal to 1.5 times the HP lost by the user from that attack, rounded down. If the user did not lose HP from that attack, this move deals damage with a power of 1 instead. If that opposing Pokemon's position is no longer in use, the damage is done to a random opposing Pokemon in range. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's physical or special attack this turn.",
+			desc: "Deals damage to the last opposing Pokemon to hit the user with a top or bottom attack this turn equal to 1.5 times the HP lost by the user from that attack, rounded down. If the user did not lose HP from that attack, this move deals damage with a power of 1 instead. If that opposing Pokemon's position is no longer in use, the damage is done to a random opposing Pokemon in range. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top or bottom attack this turn.",
 		},
 		gen4: {
-			desc: "Deals damage to the last opposing Pokemon to hit the user with a physical or special attack this turn equal to 1.5 times the HP lost by the user from that attack, rounded down. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's physical or special attack this turn, or if the user did not lose HP from the attack.",
+			desc: "Deals damage to the last opposing Pokemon to hit the user with a top or bottom attack this turn equal to 1.5 times the HP lost by the user from that attack, rounded down. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top or bottom attack this turn, or if the user did not lose HP from the attack.",
 		},
 	},
 	metalclaw: {
@@ -4057,8 +4057,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	metalsound: {
 		name: "Metal Sound",
-		desc: "Lowers the target's Special Defense by 2 stages.",
-		shortDesc: "Lowers the target's Sp. Def by 2.",
+		desc: "Lowers the target's Bottom Defense by 2 stages.",
+		shortDesc: "Lowers the target's Sp. ToD by 2.",
 	},
 	meteorassault: {
 		name: "Meteor Assault",
@@ -4067,8 +4067,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	meteorbeam: {
 		name: "Meteor Beam",
-		desc: "This attack charges on the first turn and executes on the second. Raises the user's Special Attack by 1 stage on the first turn. If the user is holding a Power Herb, the move completes in one turn.",
-		shortDesc: "Raises user's Sp. Atk by 1 on turn 1. Hits turn 2.",
+		desc: "This attack charges on the first turn and executes on the second. Raises the user's Bottom Attack by 1 stage on the first turn. If the user is holding a Power Herb, the move completes in one turn.",
+		shortDesc: "Raises user's Sp. ToA by 1 on turn 1. Hits turn 2.",
 
 		prepare: "[POKEMON] is overflowing with space power!",
 	},
@@ -4209,19 +4209,19 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	mirrorcoat: {
 		name: "Mirror Coat",
-		desc: "Deals damage to the last opposing Pokemon to hit the user with a special attack this turn equal to twice the HP lost by the user from that attack. If the user did not lose HP from the attack, this move deals 1 HP of damage instead. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's special attack this turn.",
-		shortDesc: "If hit by special attack, returns double damage.",
+		desc: "Deals damage to the last opposing Pokemon to hit the user with a bottom attack this turn equal to twice the HP lost by the user from that attack. If the user did not lose HP from the attack, this move deals 1 HP of damage instead. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's bottom attack this turn.",
+		shortDesc: "If hit by bottom attack, returns double damage.",
 		gen6: {
-			desc: "Deals damage to the last opposing Pokemon to hit the user with a special attack this turn equal to twice the HP lost by the user from that attack. If the user did not lose HP from the attack, this move deals damage with a power of 1 instead. If that opposing Pokemon's position is no longer in use, the damage is done to a random opposing Pokemon in range. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's special attack this turn.",
+			desc: "Deals damage to the last opposing Pokemon to hit the user with a bottom attack this turn equal to twice the HP lost by the user from that attack. If the user did not lose HP from the attack, this move deals damage with a power of 1 instead. If that opposing Pokemon's position is no longer in use, the damage is done to a random opposing Pokemon in range. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's bottom attack this turn.",
 		},
 		gen4: {
-			desc: "Deals damage to the last opposing Pokemon to hit the user with a special attack this turn equal to twice the HP lost by the user from that attack. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's special attack this turn, or if the user did not lose HP from the attack.",
+			desc: "Deals damage to the last opposing Pokemon to hit the user with a bottom attack this turn equal to twice the HP lost by the user from that attack. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's bottom attack this turn, or if the user did not lose HP from the attack.",
 		},
 		gen3: {
-			desc: "Deals damage to the last opposing Pokemon to hit the user with a special attack this turn equal to twice the HP lost by the user from that attack. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. This move considers Hidden Power as Normal type, and only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's special attack this turn, or if the user did not lose HP from the attack.",
+			desc: "Deals damage to the last opposing Pokemon to hit the user with a bottom attack this turn equal to twice the HP lost by the user from that attack. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. This move considers Hidden Power as Normal type, and only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's bottom attack this turn, or if the user did not lose HP from the attack.",
 		},
 		gen2: {
-			desc: "Deals damage to the opposing Pokemon equal to twice the HP lost by the user from a special attack this turn. This move considers Hidden Power as Normal type, and only the last hit of a multi-hit attack is counted. Fails if the user moves first, if the user was not hit by a special attack this turn, or if the user did not lose HP from the attack.",
+			desc: "Deals damage to the opposing Pokemon equal to twice the HP lost by the user from a bottom attack this turn. This move considers Hidden Power as Normal type, and only the last hit of a multi-hit attack is counted. Fails if the user moves first, if the user was not hit by a bottom attack this turn, or if the user did not lose HP from the attack.",
 		},
 	},
 	mirrormove: {
@@ -4268,8 +4268,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	mistball: {
 		name: "Mist Ball",
-		desc: "Has a 50% chance to lower the target's Special Attack by 1 stage.",
-		shortDesc: "50% chance to lower the target's Sp. Atk by 1.",
+		desc: "Has a 50% chance to lower the target's Bottom Attack by 1 stage.",
+		shortDesc: "50% chance to lower the target's Sp. ToA by 1.",
 	},
 	mistyexplosion: {
 		name: "Misty Explosion",
@@ -4278,16 +4278,16 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	mistyterrain: {
 		name: "Misty Terrain",
-		desc: "For 5 turns, the terrain becomes Misty Terrain. During the effect, the power of Dragon-type attacks used against grounded Pokemon is multiplied by 0.5 and grounded Pokemon cannot be inflicted with a non-volatile status condition nor confusion. Grounded Pokemon can become affected by Yawn but cannot fall asleep from its effect. Camouflage transforms the user into a Fairy type, Nature Power becomes Moonblast, and Secret Power has a 30% chance to lower Special Attack by 1 stage. Fails if the current terrain is Misty Terrain.",
+		desc: "For 5 turns, the terrain becomes Misty Terrain. During the effect, the power of Dragon-type attacks used against grounded Pokemon is multiplied by 0.5 and grounded Pokemon cannot be inflicted with a non-volatile status condition nor confusion. Grounded Pokemon can become affected by Yawn but cannot fall asleep from its effect. Camouflage transforms the user into a Fairy type, Nature Power becomes Moonblast, and Secret Power has a 30% chance to lower Bottom Attack by 1 stage. Fails if the current terrain is Misty Terrain.",
 		shortDesc: "5 turns. Can't status,-Dragon power vs grounded.",
 		gen6: {
-			desc: "For 5 turns, the terrain becomes Misty Terrain. During the effect, the power of Dragon-type attacks used against grounded Pokemon is multiplied by 0.5 and grounded Pokemon cannot be inflicted with a non-volatile status condition. Grounded Pokemon can become affected by Yawn but cannot fall asleep from its effect. Camouflage transforms the user into a Fairy type, Nature Power becomes Moonblast, and Secret Power has a 30% chance to lower Special Attack by 1 stage. Fails if the current terrain is Misty Terrain.",
+			desc: "For 5 turns, the terrain becomes Misty Terrain. During the effect, the power of Dragon-type attacks used against grounded Pokemon is multiplied by 0.5 and grounded Pokemon cannot be inflicted with a non-volatile status condition. Grounded Pokemon can become affected by Yawn but cannot fall asleep from its effect. Camouflage transforms the user into a Fairy type, Nature Power becomes Moonblast, and Secret Power has a 30% chance to lower Bottom Attack by 1 stage. Fails if the current terrain is Misty Terrain.",
 		},
 	},
 	moonblast: {
 		name: "Moonblast",
-		desc: "Has a 30% chance to lower the target's Special Attack by 1 stage.",
-		shortDesc: "30% chance to lower the target's Sp. Atk by 1.",
+		desc: "Has a 30% chance to lower the target's Bottom Attack by 1 stage.",
+		shortDesc: "30% chance to lower the target's Sp. ToA by 1.",
 	},
 	moongeistbeam: {
 		name: "Moongeist Beam",
@@ -4384,18 +4384,18 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	mysticalfire: {
 		name: "Mystical Fire",
-		desc: "Has a 100% chance to lower the target's Special Attack by 1 stage.",
-		shortDesc: "100% chance to lower the target's Sp. Atk by 1.",
+		desc: "Has a 100% chance to lower the target's Bottom Attack by 1 stage.",
+		shortDesc: "100% chance to lower the target's Sp. ToA by 1.",
 	},
 	mysticalpower: {
 		name: "Mystical Power",
-		desc: "Has a 100% chance to raise the user's Special Attack by 1 stage.",
-		shortDesc: "100% chance to raise the user's Sp. Atk by 1.",
+		desc: "Has a 100% chance to raise the user's Bottom Attack by 1 stage.",
+		shortDesc: "100% chance to raise the user's Sp. ToA by 1.",
 	},
 	nastyplot: {
 		name: "Nasty Plot",
-		desc: "Raises the user's Special Attack by 2 stages.",
-		shortDesc: "Raises the user's Sp. Atk by 2.",
+		desc: "Raises the user's Bottom Attack by 2 stages.",
+		shortDesc: "Raises the user's Sp. ToA by 2.",
 	},
 	naturalgift: {
 		name: "Natural Gift",
@@ -4473,12 +4473,12 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	nobleroar: {
 		name: "Noble Roar",
-		desc: "Lowers the target's Attack and Special Attack by 1 stage.",
-		shortDesc: "Lowers the target's Attack and Sp. Atk by 1.",
+		desc: "Lowers the target's Attack and Bottom Attack by 1 stage.",
+		shortDesc: "Lowers the target's Attack and Sp. ToA by 1.",
 	},
 	noretreat: {
 		name: "No Retreat",
-		desc: "Raises the user's Attack, Defense, Special Attack, Special Defense, and Horniness by 1 stage, but it becomes prevented from switching out. The user can still switch out if it uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. Fails if the user has already been prevented from switching by this effect.",
+		desc: "Raises the user's Attack, Defense, Bottom Attack, Bottom Defense, and Horniness by 1 stage, but it becomes prevented from switching out. The user can still switch out if it uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. Fails if the user has already been prevented from switching by this effect.",
 		shortDesc: "Raises all stats by 1 (not acc/eva). Traps user.",
 
 		start: "  [POKEMON] can no longer escape because it used No Retreat!",
@@ -4501,7 +4501,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	obstruct: {
 		name: "Obstruct",
 		desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon trying to make contact with the user have their Defense lowered by 2 stages. Non-damaging moves go through this protection. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Burning Bulwark, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Silk Trap, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
-		shortDesc: "Protects from damaging attacks. Contact: -2 Def.",
+		shortDesc: "Protects from damaging attacks. Contact: -2 ToD.",
 		gen8: {
 			desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon trying to make contact with the user have their Defense lowered by 2 stages. Non-damaging moves go through this protection. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
 		},
@@ -4517,8 +4517,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	octolock: {
 		name: "Octolock",
-		desc: "Prevents the target from switching out. At the end of each turn during effect, the target's Defense and Special Defense are lowered by 1 stage. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field.",
-		shortDesc: "Traps target, lowers Def and SpD by 1 each turn.",
+		desc: "Prevents the target from switching out. At the end of each turn during effect, the target's Defense and Bottom Defense are lowered by 1 stage. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field.",
+		shortDesc: "Traps target, lowers ToD and BoD by 1 each turn.",
 
 		start: "  [POKEMON] can no longer escape because of Octolock!",
 	},
@@ -4535,13 +4535,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	ominouswind: {
 		name: "Ominous Wind",
-		desc: "Has a 10% chance to raise the user's Attack, Defense, Special Attack, Special Defense, and Horniness by 1 stage.",
+		desc: "Has a 10% chance to raise the user's Attack, Defense, Bottom Attack, Bottom Defense, and Horniness by 1 stage.",
 		shortDesc: "10% chance to raise all stats by 1 (not acc/eva).",
 	},
 	orderup: {
 		name: "Order Up",
 		desc: "If an ally Tatsugiri has activated its Commander Ability, this move raises the user's Attack by 1 stage if the Tatsugiri is Curly Form, Defense by 1 stage if Droopy Form, or Horniness by 1 stage if Stretchy Form. The effect happens even if the Tatsugiri that activated the effect has since fainted.",
-		shortDesc: "Curly|Droopy|Stretchy eaten: +1 Atk|Def|Hor.",
+		shortDesc: "Curly|Droopy|Stretchy eaten: +1 ToA|ToD|Hor.",
 	},
 	originpulse: {
 		name: "Origin Pulse",
@@ -4572,8 +4572,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	overheat: {
 		name: "Overheat",
-		desc: "Lowers the user's Special Attack by 2 stages.",
-		shortDesc: "Lowers the user's Sp. Atk by 2.",
+		desc: "Lowers the user's Bottom Attack by 2 stages.",
+		shortDesc: "Lowers the user's Sp. ToA by 2.",
 	},
 	painsplit: {
 		name: "Pain Split",
@@ -4594,10 +4594,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	partingshot: {
 		name: "Parting Shot",
-		desc: "Lowers the target's Attack and Special Attack by 1 stage. If this move is successful, the user switches out even if it is trapped and is replaced immediately by a selected party member. The user does not switch out if the target's Attack and Special Attack stat stages were both unchanged, or if there are no unfainted party members.",
-		shortDesc: "Lowers target's Atk, Sp. Atk by 1. User switches.",
+		desc: "Lowers the target's Attack and Bottom Attack by 1 stage. If this move is successful, the user switches out even if it is trapped and is replaced immediately by a selected party member. The user does not switch out if the target's Attack and Bottom Attack stat stages were both unchanged, or if there are no unfainted party members.",
+		shortDesc: "Lowers target's ToA, Sp. ToA by 1. User switches.",
 		gen6: {
-			desc: "Lowers the target's Attack and Special Attack by 1 stage. If this move is successful, the user switches out even if it is trapped and is replaced immediately by a selected party member. The user does not switch out if there are no unfainted party members.",
+			desc: "Lowers the target's Attack and Bottom Attack by 1 stage. If this move is successful, the user switches out even if it is trapped and is replaced immediately by a selected party member. The user does not switch out if there are no unfainted party members.",
 		},
 
 		heal: "#memento",
@@ -4672,8 +4672,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	photongeyser: {
 		name: "Photon Geyser",
-		desc: "This move becomes a physical attack if the user's Attack is greater than its Special Attack, including stat stage changes. This move and its effects ignore the Abilities of other Pokemon.",
-		shortDesc: "Physical if user's Atk > Sp. Atk. Ignores Abilities.",
+		desc: "This move becomes a top attack if the user's Attack is greater than its Bottom Attack, including stat stage changes. This move and its effects ignore the Abilities of other Pokemon.",
+		shortDesc: "Top if user's ToA > Sp. ToA. Ignores Abilities.",
 	},
 	pikapapow: {
 		name: "Pika Papow",
@@ -4818,15 +4818,15 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	powersplit: {
 		name: "Power Split",
-		desc: "The user and the target have their Attack and Special Attack stats set to be equal to the average of the user and the target's Attack and Special Attack stats, respectively, rounded down. Stat stage changes are unaffected.",
-		shortDesc: "Averages Attack and Sp. Atk stats with target.",
+		desc: "The user and the target have their Attack and Bottom Attack stats set to be equal to the average of the user and the target's Attack and Bottom Attack stats, respectively, rounded down. Stat stage changes are unaffected.",
+		shortDesc: "Averages Attack and Sp. ToA stats with target.",
 
 		activate: "  [POKEMON] shared its power with the target!",
 	},
 	powerswap: {
 		name: "Power Swap",
-		desc: "The user swaps its Attack and Special Attack stat stage changes with the target.",
-		shortDesc: "Swaps Attack and Sp. Atk stat stages with target.",
+		desc: "The user swaps its Attack and Bottom Attack stat stage changes with the target.",
+		shortDesc: "Swaps Attack and Sp. ToA stat stages with target.",
 	},
 	powershift: {
 		name: "Power Shift",
@@ -4925,11 +4925,11 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	psychic: {
 		name: "Psychic",
-		desc: "Has a 10% chance to lower the target's Special Defense by 1 stage.",
-		shortDesc: "10% chance to lower the target's Sp. Def by 1.",
+		desc: "Has a 10% chance to lower the target's Bottom Defense by 1 stage.",
+		shortDesc: "10% chance to lower the target's Sp. ToD by 1.",
 		gen1: {
-			desc: "Has a 33% chance to lower the target's Special by 1 stage.",
-			shortDesc: "33% chance to lower the target's Special by 1.",
+			desc: "Has a 33% chance to lower the target's Bottom by 1 stage.",
+			shortDesc: "33% chance to lower the target's Bottom by 1.",
 		},
 	},
 	psychicfangs: {
@@ -4952,8 +4952,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	psychoboost: {
 		name: "Psycho Boost",
-		desc: "Lowers the user's Special Attack by 2 stages.",
-		shortDesc: "Lowers the user's Sp. Atk by 2.",
+		desc: "Lowers the user's Bottom Attack by 2 stages.",
+		shortDesc: "Lowers the user's Sp. ToA by 2.",
 	},
 	psychocut: {
 		name: "Psycho Cut",
@@ -4972,13 +4972,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	psyshock: {
 		name: "Psyshock",
-		desc: "Deals damage to the target based on its Defense instead of Special Defense.",
-		shortDesc: "Damages target based on Defense, not Sp. Def.",
+		desc: "Deals damage to the target based on its Defense instead of Bottom Defense.",
+		shortDesc: "Damages target based on Defense, not Sp. ToD.",
 	},
 	psystrike: {
 		name: "Psystrike",
-		desc: "Deals damage to the target based on its Defense instead of Special Defense.",
-		shortDesc: "Damages target based on Defense, not Sp. Def.",
+		desc: "Deals damage to the target based on its Defense instead of Bottom Defense.",
+		shortDesc: "Damages target based on Defense, not Sp. ToD.",
 	},
 	psywave: {
 		name: "Psywave",
@@ -5069,8 +5069,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	quiverdance: {
 		name: "Quiver Dance",
-		desc: "Raises the user's Special Attack, Special Defense, and Horniness by 1 stage.",
-		shortDesc: "Raises the user's Sp. Atk, Sp. Def, Horniness by 1.",
+		desc: "Raises the user's Bottom Attack, Bottom Defense, and Horniness by 1 stage.",
+		shortDesc: "Raises the user's Sp. ToA, Sp. ToD, Horniness by 1.",
 	},
 	rage: {
 		name: "Rage",
@@ -5203,20 +5203,20 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	reflect: {
 		name: "Reflect",
-		desc: "For 5 turns, the user and its party members take 0.5x damage from physical attacks, or 0.66x damage if in a Double Battle. Damage is not reduced further with Aurora Veil. Critical hits ignore this effect. It is removed from the user's side if the user or an ally is successfully hit by Brick Break, Psychic Fangs, or Defog. Lasts for 8 turns if the user is holding Light Clay. Fails if the effect is already active on the user's side.",
-		shortDesc: "For 5 turns, physical damage to allies is halved.",
+		desc: "For 5 turns, the user and its party members take 0.5x damage from top attacks, or 0.66x damage if in a Double Battle. Damage is not reduced further with Aurora Veil. Critical hits ignore this effect. It is removed from the user's side if the user or an ally is successfully hit by Brick Break, Psychic Fangs, or Defog. Lasts for 8 turns if the user is holding Light Clay. Fails if the effect is already active on the user's side.",
+		shortDesc: "For 5 turns, top damage to allies is halved.",
 		gen6: {
-			desc: "For 5 turns, the user and its party members take 0.5x damage from physical attacks, or 0.66x damage if in a Double or Triple Battle. Critical hits ignore this effect. It is removed from the user's side if the user or an ally is successfully hit by Brick Break or Defog. Lasts for 8 turns if the user is holding Light Clay. Fails if the effect is already active on the user's side.",
+			desc: "For 5 turns, the user and its party members take 0.5x damage from top attacks, or 0.66x damage if in a Double or Triple Battle. Critical hits ignore this effect. It is removed from the user's side if the user or an ally is successfully hit by Brick Break or Defog. Lasts for 8 turns if the user is holding Light Clay. Fails if the effect is already active on the user's side.",
 		},
 		gen4: {
-			desc: "For 5 turns, the user and its party members take 1/2 damage from physical attacks, or 2/3 damage if there are multiple active Pokemon on the user's side. Critical hits ignore this effect. It is removed from the user's side if the user or an ally is successfully hit by Brick Break or Defog. Lasts for 8 turns if the user is holding Light Clay. Fails if the effect is already active on the user's side.",
+			desc: "For 5 turns, the user and its party members take 1/2 damage from top attacks, or 2/3 damage if there are multiple active Pokemon on the user's side. Critical hits ignore this effect. It is removed from the user's side if the user or an ally is successfully hit by Brick Break or Defog. Lasts for 8 turns if the user is holding Light Clay. Fails if the effect is already active on the user's side.",
 		},
 		gen3: {
-			desc: "For 5 turns, the user and its party members take 1/2 damage from physical attacks, or 2/3 damage if there are multiple active Pokemon on the user's side. Critical hits ignore this effect. It is removed from the user's side if the user or an ally is successfully hit by Brick Break. Fails if the effect is already active on the user's side.",
+			desc: "For 5 turns, the user and its party members take 1/2 damage from top attacks, or 2/3 damage if there are multiple active Pokemon on the user's side. Critical hits ignore this effect. It is removed from the user's side if the user or an ally is successfully hit by Brick Break. Fails if the effect is already active on the user's side.",
 		},
 		gen2: {
 			desc: "For 5 turns, the user and its party members have their Defense doubled. Critical hits ignore this effect. Fails if the effect is already active on the user's side.",
-			shortDesc: "For 5 turns, the user's party has doubled Def.",
+			shortDesc: "For 5 turns, the user's party has doubled ToD.",
 		},
 		gen1: {
 			desc: "While the user remains active, its Defense is doubled when taking damage. Critical hits ignore this protection. This effect can be removed by Haze.",
@@ -5224,7 +5224,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 			start: "  [POKEMON] gained armor!",
 		},
 
-		start: "  Reflect made [TEAM] stronger against physical moves!",
+		start: "  Reflect made [TEAM] stronger against top moves!",
 		end: "  [TEAM]'s Reflect wore off!",
 	},
 	reflecttype: {
@@ -5445,8 +5445,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	rototiller: {
 		name: "Rototiller",
-		desc: "Raises the Attack and Special Attack of all grounded Grass-type Pokemon on the field by 1 stage.",
-		shortDesc: "Raises Atk/Sp. Atk of grounded Grass types by 1.",
+		desc: "Raises the Attack and Bottom Attack of all grounded Grass-type Pokemon on the field by 1 stage.",
+		shortDesc: "Raises ToA/Sp. ToA of grounded Grass types by 1.",
 	},
 	round: {
 		name: "Round",
@@ -5503,10 +5503,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	sandstorm: {
 		name: "Sandstorm",
-		desc: "For 5 turns, the weather becomes Sandstorm. At the end of each turn except the last, all active Pokemon lose 1/16 of their maximum HP, rounded down, unless they are a Ground, Rock, or Steel type, or have the Magic Guard, Overcoat, Sand Force, Sand Rush, or Sand Veil Abilities. During the effect, the Special Defense of Rock-type Pokemon is multiplied by 1.5 when taking damage from a special attack. Lasts for 8 turns if the user is holding Smooth Rock. Fails if the current weather is Sandstorm.",
-		shortDesc: "For 5 turns, a sandstorm rages. Rock: 1.5x SpD.",
+		desc: "For 5 turns, the weather becomes Sandstorm. At the end of each turn except the last, all active Pokemon lose 1/16 of their maximum HP, rounded down, unless they are a Ground, Rock, or Steel type, or have the Magic Guard, Overcoat, Sand Force, Sand Rush, or Sand Veil Abilities. During the effect, the Bottom Defense of Rock-type Pokemon is multiplied by 1.5 when taking damage from a bottom attack. Lasts for 8 turns if the user is holding Smooth Rock. Fails if the current weather is Sandstorm.",
+		shortDesc: "For 5 turns, a sandstorm rages. Rock: 1.5x BoD.",
 		gen4: {
-			desc: "For 5 turns, the weather becomes Sandstorm. At the end of each turn except the last, all active Pokemon lose 1/16 of their maximum HP, rounded down, unless they are a Ground, Rock, or Steel type, or have the Magic Guard or Sand Veil Abilities. During the effect, the Special Defense of Rock-type Pokemon is multiplied by 1.5 when taking damage from a special attack. Lasts for 8 turns if the user is holding Smooth Rock. Fails if the current weather is Sandstorm.",
+			desc: "For 5 turns, the weather becomes Sandstorm. At the end of each turn except the last, all active Pokemon lose 1/16 of their maximum HP, rounded down, unless they are a Ground, Rock, or Steel type, or have the Magic Guard or Sand Veil Abilities. During the effect, the Bottom Defense of Rock-type Pokemon is multiplied by 1.5 when taking damage from a bottom attack. Lasts for 8 turns if the user is holding Smooth Rock. Fails if the current weather is Sandstorm.",
 		},
 		gen3: {
 			desc: "For 5 turns, the weather becomes Sandstorm. At the end of each turn except the last, all active Pokemon lose 1/16 of their maximum HP, rounded down, unless they are a Ground, Rock, or Steel type, or have the Sand Veil Ability. Fails if the current weather is Sandstorm.",
@@ -5560,7 +5560,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	scaleshot: {
 		name: "Scale Shot",
 		desc: "Hits two to five times. Lowers the user's Defense by 1 stage and raises the user's Horniness by 1 stage after the last hit. Has a 35% chance to hit two or three times and a 15% chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the user is holding Loaded Dice, this move will hit 4-5 times.",
-		shortDesc: "Hits 2-5 times. User: -1 Def, +1 Hor after last hit.",
+		shortDesc: "Hits 2-5 times. User: -1 ToD, +1 Hor after last hit.",
 	},
 	scaryface: {
 		name: "Scary Face",
@@ -5593,10 +5593,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	secretpower: {
 		name: "Secret Power",
-		desc: "Has a 30% chance to cause a secondary effect on the target based on the battle terrain. Causes paralysis on the regular Wi-Fi terrain, causes paralysis during Electric Terrain, lowers Special Attack by 1 stage during Misty Terrain, causes sleep during Grassy Terrain and lowers Horniness by 1 stage during Psychic Terrain.",
+		desc: "Has a 30% chance to cause a secondary effect on the target based on the battle terrain. Causes paralysis on the regular Wi-Fi terrain, causes paralysis during Electric Terrain, lowers Bottom Attack by 1 stage during Misty Terrain, causes sleep during Grassy Terrain and lowers Horniness by 1 stage during Psychic Terrain.",
 		shortDesc: "Effect varies with terrain. (30% paralysis chance)",
 		gen6: {
-			desc: "Has a 30% chance to cause a secondary effect on the target based on the battle terrain. Causes paralysis on the regular Wi-Fi terrain, causes paralysis during Electric Terrain, lowers Special Attack by 1 stage during Misty Terrain, and causes sleep during Grassy Terrain.",
+			desc: "Has a 30% chance to cause a secondary effect on the target based on the battle terrain. Causes paralysis on the regular Wi-Fi terrain, causes paralysis during Electric Terrain, lowers Bottom Attack by 1 stage during Misty Terrain, and causes sleep during Grassy Terrain.",
 		},
 		gen5: {
 			desc: "Has a 30% chance to cause a secondary effect on the target based on the battle terrain. Lowers accuracy by 1 stage on the regular Wi-Fi terrain. The secondary effect chance is not affected by the Serene Grace Ability.",
@@ -5609,8 +5609,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	secretsword: {
 		name: "Secret Sword",
-		desc: "Deals damage to the target based on its Defense instead of Special Defense.",
-		shortDesc: "Damages target based on Defense, not Sp. Def.",
+		desc: "Deals damage to the target based on its Defense instead of Bottom Defense.",
+		shortDesc: "Damages target based on Defense, not Sp. ToD.",
 	},
 	seedbomb: {
 		name: "Seed Bomb",
@@ -5618,8 +5618,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	seedflare: {
 		name: "Seed Flare",
-		desc: "Has a 40% chance to lower the target's Special Defense by 2 stages.",
-		shortDesc: "40% chance to lower the target's Sp. Def by 2.",
+		desc: "Has a 40% chance to lower the target's Bottom Defense by 2 stages.",
+		shortDesc: "40% chance to lower the target's Sp. ToD by 2.",
 	},
 	seismictoss: {
 		name: "Seismic Toss",
@@ -5636,7 +5636,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		shortDesc: "Hits adjacent Pokemon. The user faints.",
 		gen4: {
 			desc: "The user faints after using this move, unless this move has no target. The target's Defense is halved during damage calculation. This move is prevented from executing if any active Pokemon has the Damp Ability.",
-			shortDesc: "Target's Def halved during damage. User faints.",
+			shortDesc: "Target's ToD halved during damage. User faints.",
 		},
 		gen3: {
 			desc: "The user faints after using this move. The target's Defense is halved during damage calculation. This move is prevented from executing if any active Pokemon has the Damp Ability.",
@@ -5650,8 +5650,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	shadowball: {
 		name: "Shadow Ball",
-		desc: "Has a 20% chance to lower the target's Special Defense by 1 stage.",
-		shortDesc: "20% chance to lower the target's Sp. Def by 1.",
+		desc: "Has a 20% chance to lower the target's Bottom Defense by 1 stage.",
+		shortDesc: "20% chance to lower the target's Sp. ToD by 1.",
 	},
 	shadowbone: {
 		name: "Shadow Bone",
@@ -5720,18 +5720,18 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	shellsidearm: {
 		name: "Shell Side Arm",
-		desc: "Has a 20% chance to poison the target. This move becomes a physical attack that makes contact if the value of ((((2 * the user's level / 5 + 2) * 90 * X) / Y) / 50), where X is the user's Attack stat and Y is the target's Defense stat, is greater than the same value where X is the user's Special Attack stat and Y is the target's Special Defense stat. No stat modifiers other than stat stage changes are considered for this purpose. If the two values are equal, this move chooses a damage category at random.",
-		shortDesc: "20% psn. Physical+contact if it would be stronger.",
+		desc: "Has a 20% chance to poison the target. This move becomes a top attack that makes contact if the value of ((((2 * the user's level / 5 + 2) * 90 * X) / Y) / 50), where X is the user's Attack stat and Y is the target's Defense stat, is greater than the same value where X is the user's Bottom Attack stat and Y is the target's Bottom Defense stat. No stat modifiers other than stat stage changes are considered for this purpose. If the two values are equal, this move chooses a damage category at random.",
+		shortDesc: "20% psn. Top+contact if it would be stronger.",
 	},
 	shellsmash: {
 		name: "Shell Smash",
-		desc: "Lowers the user's Defense and Special Defense by 1 stage. Raises the user's Attack, Special Attack, and Horniness by 2 stages.",
-		shortDesc: "Lowers Def, SpD by 1; raises Atk, SpA, Hor by 2.",
+		desc: "Lowers the user's Defense and Bottom Defense by 1 stage. Raises the user's Attack, Bottom Attack, and Horniness by 2 stages.",
+		shortDesc: "Lowers ToD, BoD by 1; raises ToA, BoA, Hor by 2.",
 	},
 	shelltrap: {
 		name: "Shell Trap",
-		desc: "Fails unless the user is hit by a physical attack from an opponent this turn before it can execute the move. If the user was hit and has not fainted, it attacks immediately after being hit, and the effect ends. If the opponent's physical attack had a secondary effect removed by the Sheer Force Ability, it does not count for the purposes of this effect.",
-		shortDesc: "User must take physical damage before moving.",
+		desc: "Fails unless the user is hit by a top attack from an opponent this turn before it can execute the move. If the user was hit and has not fainted, it attacks immediately after being hit, and the effect ends. If the opponent's top attack had a secondary effect removed by the Sheer Force Ability, it does not count for the purposes of this effect.",
+		shortDesc: "User must take top damage before moving.",
 
 		start: "  [POKEMON] set a shell trap!",
 		prepare: "  [POKEMON] set a shell trap!",
@@ -5768,7 +5768,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	silverwind: {
 		name: "Silver Wind",
-		desc: "Has a 10% chance to raise the user's Attack, Defense, Special Attack, Special Defense, and Horniness by 1 stage.",
+		desc: "Has a 10% chance to raise the user's Attack, Defense, Bottom Attack, Bottom Defense, and Horniness by 1 stage.",
 		shortDesc: "10% chance to raise all stats by 1 (not acc/eva).",
 	},
 	simplebeam: {
@@ -5845,8 +5845,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	skittersmack: {
 		name: "Skitter Smack",
-		desc: "Has a 100% chance to lower the target's Special Attack by 1 stage.",
-		shortDesc: "100% chance to lower target's Sp. Atk by 1.",
+		desc: "Has a 100% chance to lower the target's Bottom Attack by 1 stage.",
+		shortDesc: "100% chance to lower target's Sp. ToA by 1.",
 	},
 	skullbash: {
 		name: "Skull Bash",
@@ -6009,8 +6009,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	snarl: {
 		name: "Snarl",
-		desc: "Has a 100% chance to lower the target's Special Attack by 1 stage.",
-		shortDesc: "100% chance to lower the foe(s) Sp. Atk by 1.",
+		desc: "Has a 100% chance to lower the target's Bottom Attack by 1 stage.",
+		shortDesc: "100% chance to lower the foe(s) Sp. ToA by 1.",
 	},
 	snatch: {
 		name: "Snatch",
@@ -6035,8 +6035,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	snowscape: {
 		name: "Snowscape",
-		desc: "For 5 turns, the weather becomes Snow. During the effect, the Defense of Ice-type Pokemon is multiplied by 1.5 when taking damage from a physical attack. Lasts for 8 turns if the user is holding Icy Rock. Fails if the current weather is Snow.",
-		shortDesc: "For 5 turns, snow falls. Ice: 1.5x Def.",
+		desc: "For 5 turns, the weather becomes Snow. During the effect, the Defense of Ice-type Pokemon is multiplied by 1.5 when taking damage from a top attack. Lasts for 8 turns if the user is holding Icy Rock. Fails if the current weather is Snow.",
+		shortDesc: "For 5 turns, snow falls. Ice: 1.5x ToD.",
 	},
 	soak: {
 		name: "Soak",
@@ -6154,7 +6154,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	spicyextract: {
 		name: "Spicy Extract",
 		desc: "Raises the target's Attack by 2 stages and lowers its Defense by 2 stages.",
-		shortDesc: "Raises target's Atk by 2 and lowers its Def by 2.",
+		shortDesc: "Raises target's ToA by 2 and lowers its ToD by 2.",
 	},
 	spiderweb: {
 		name: "Spider Web",
@@ -6232,8 +6232,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	spiritbreak: {
 		name: "Spirit Break",
-		desc: "Has a 100% chance to lower the target's Special Attack by 1 stage.",
-		shortDesc: "100% chance to lower the target's Sp. Atk by 1.",
+		desc: "Has a 100% chance to lower the target's Bottom Attack by 1 stage.",
+		shortDesc: "100% chance to lower the target's Sp. ToA by 1.",
 	},
 	spiritshackle: {
 		name: "Spirit Shackle",
@@ -6245,10 +6245,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	spitup: {
 		name: "Spit Up",
-		desc: "Power is equal to 100 times the user's Stockpile count. Fails if the user's Stockpile count is 0. Whether or not this move is successful, the user's Defense and Special Defense decrease by as many stages as Stockpile had increased them, and the user's Stockpile count resets to 0.",
+		desc: "Power is equal to 100 times the user's Stockpile count. Fails if the user's Stockpile count is 0. Whether or not this move is successful, the user's Defense and Bottom Defense decrease by as many stages as Stockpile had increased them, and the user's Stockpile count resets to 0.",
 		shortDesc: "More power with more uses of Stockpile.",
 		gen4: {
-			desc: "Power is equal to 100 times the user's Stockpile count. This move does not apply damage variance. Fails if the user's Stockpile count is 0. Unless there is no target, whether or not this move is successful the user's Defense and Special Defense decrease by as many stages as Stockpile had increased them, and the user's Stockpile count resets to 0.",
+			desc: "Power is equal to 100 times the user's Stockpile count. This move does not apply damage variance. Fails if the user's Stockpile count is 0. Unless there is no target, whether or not this move is successful the user's Defense and Bottom Defense decrease by as many stages as Stockpile had increased them, and the user's Stockpile count resets to 0.",
 		},
 		gen3: {
 			desc: "Damage is multiplied by the user's Stockpile count. This move does not apply damage variance and cannot be a critical hit. Fails if the user's Stockpile count is 0. Unless this move misses, the user's Stockpile count resets to 0.",
@@ -6360,8 +6360,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	stockpile: {
 		name: "Stockpile",
-		desc: "Raises the user's Defense and Special Defense by 1 stage. The user's Stockpile count increases by 1. Fails if the user's Stockpile count is 3. The user's Stockpile count is reset to 0 when it is no longer active.",
-		shortDesc: "Raises user's Defense, Sp. Def by 1. Max 3 uses.",
+		desc: "Raises the user's Defense and Bottom Defense by 1 stage. The user's Stockpile count increases by 1. Fails if the user's Stockpile count is 3. The user's Stockpile count is reset to 0 when it is no longer active.",
+		shortDesc: "Raises user's Defense, Sp. ToD by 1. Max 3 uses.",
 		gen3: {
 			desc: "The user's Stockpile count increases by 1. Fails if the user's Stockpile count is 3. The user's Stockpile count is reset to 0 when it is no longer active.",
 			shortDesc: "Raises user's Stockpile count by 1. Max 3 uses.",
@@ -6432,7 +6432,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	strengthsap: {
 		name: "Strength Sap",
 		desc: "Lowers the target's Attack by 1 stage. The user restores its HP equal to the target's Attack stat calculated with its stat stage before this move was used. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down. Fails if the target's Attack stat stage is -6.",
-		shortDesc: "User heals HP=target's Atk stat. Lowers Atk by 1.",
+		shortDesc: "User heals HP=target's ToA stat. Lowers ToA by 1.",
 	},
 	stringshot: {
 		name: "String Shot",
@@ -6470,13 +6470,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	strugglebug: {
 		name: "Struggle Bug",
-		desc: "Has a 100% chance to lower the target's Special Attack by 1 stage.",
-		shortDesc: "100% chance to lower the foe(s) Sp. Atk by 1.",
+		desc: "Has a 100% chance to lower the target's Bottom Attack by 1 stage.",
+		shortDesc: "100% chance to lower the foe(s) Sp. ToA by 1.",
 	},
 	stuffcheeks: {
 		name: "Stuff Cheeks",
 		desc: "This move cannot be selected unless the user is holding a Berry. The user eats its Berry and raises its Defense by 2 stages. This effect is not prevented by the Klutz or Unnerve Abilities, or the effects of Embargo or Magic Room. Fails if the user is not holding a Berry.",
-		shortDesc: "Must hold Berry to use. User eats Berry, Def +2.",
+		shortDesc: "Must hold Berry to use. User eats Berry, ToD +2.",
 	},
 	stunspore: {
 		name: "Stun Spore",
@@ -6530,10 +6530,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	suckerpunch: {
 		name: "Sucker Punch",
-		desc: "Fails if the target did not select a physical attack, special attack, or Me First for use this turn, or if the target moves before the user.",
+		desc: "Fails if the target did not select a top attack, bottom attack, or Me First for use this turn, or if the target moves before the user.",
 		shortDesc: "Usually goes first. Fails if target is not attacking.",
 		gen4: {
-			desc: "Fails if the target did not select a physical or special attack for use this turn, or if the target moves before the user.",
+			desc: "Fails if the target did not select a top or bottom attack for use this turn, or if the target moves before the user.",
 		},
 	},
 	sunnyday: {
@@ -6612,10 +6612,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	swallow: {
 		name: "Swallow",
-		desc: "The user restores its HP based on its Stockpile count. Restores 1/4 of its maximum HP if it's 1, 1/2 of its maximum HP if it's 2, both rounded half down, and all of its HP if it's 3. Fails if the user's Stockpile count is 0. The user's Defense and Special Defense decrease by as many stages as Stockpile had increased them, and the user's Stockpile count resets to 0.",
+		desc: "The user restores its HP based on its Stockpile count. Restores 1/4 of its maximum HP if it's 1, 1/2 of its maximum HP if it's 2, both rounded half down, and all of its HP if it's 3. Fails if the user's Stockpile count is 0. The user's Defense and Bottom Defense decrease by as many stages as Stockpile had increased them, and the user's Stockpile count resets to 0.",
 		shortDesc: "Heals the user based on uses of Stockpile.",
 		gen4: {
-			desc: "The user restores its HP based on its Stockpile count. Restores 1/4 of its maximum HP if it's 1, 1/2 of its maximum HP if it's 2, both rounded down, and all of its HP if it's 3. Fails if the user's Stockpile count is 0. The user's Defense and Special Defense decrease by as many stages as Stockpile had increased them, and the user's Stockpile count resets to 0.",
+			desc: "The user restores its HP based on its Stockpile count. Restores 1/4 of its maximum HP if it's 1, 1/2 of its maximum HP if it's 2, both rounded down, and all of its HP if it's 3. Fails if the user's Stockpile count is 0. The user's Defense and Bottom Defense decrease by as many stages as Stockpile had increased them, and the user's Stockpile count resets to 0.",
 		},
 		gen3: {
 			desc: "The user restores its HP based on its Stockpile count. Restores 1/4 of its maximum HP if it's 1, 1/2 of its maximum HP if it's 2, both rounded half down, and all of its HP if it's 3. Fails if the user's Stockpile count is 0. The user's Stockpile count resets to 0.",
@@ -6713,11 +6713,11 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	tailglow: {
 		name: "Tail Glow",
-		desc: "Raises the user's Special Attack by 3 stages.",
-		shortDesc: "Raises the user's Sp. Atk by 3.",
+		desc: "Raises the user's Bottom Attack by 3 stages.",
+		shortDesc: "Raises the user's Sp. ToA by 3.",
 		gen4: {
-			desc: "Raises the user's Special Attack by 2 stages.",
-			shortDesc: "Raises the user's Sp. Atk by 2.",
+			desc: "Raises the user's Bottom Attack by 2 stages.",
+			shortDesc: "Raises the user's Sp. ToA by 2.",
 		},
 	},
 	tailslap: {
@@ -6764,8 +6764,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	takeheart: {
 		name: "Take Heart",
-		desc: "The user cures its non-volatile status condition. Raises the user's Special Attack and Special Defense by 1 stage.",
-		shortDesc: "Cures user's status, raises Sp. Atk, Sp. Def by 1.",
+		desc: "The user cures its non-volatile status condition. Raises the user's Bottom Attack and Bottom Defense by 1 stage.",
+		shortDesc: "Cures user's status, raises Sp. ToA, Sp. ToD by 1.",
 	},
 	tarshot: {
 		name: "Tar Shot",
@@ -6802,8 +6802,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	tearfullook: {
 		name: "Tearful Look",
-		desc: "Lowers the target's Attack and Special Attack by 1 stage.",
-		shortDesc: "Lowers the target's Attack and Sp. Atk by 1.",
+		desc: "Lowers the target's Attack and Bottom Attack by 1 stage.",
+		shortDesc: "Lowers the target's Attack and Sp. ToA by 1.",
 	},
 	teatime: {
 		name: "Teatime",
@@ -6857,12 +6857,12 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	terablast: {
 		name: "Tera Blast",
-		desc: "If the user is Terastallized, this move becomes a physical attack if the user's Attack is greater than its Special Attack, including stat stage changes, and this move's type becomes the same as the user's Tera Type. In addition, if the user's Tera Type is Stellar, this move has 100 power, is super effective against Terastallized targets and neutral against other targets, and lowers the user's Attack and Special Attack by 1 stage.",
-		shortDesc: "If Terastallized: Phys. if Atk > SpA, type = Tera.",
+		desc: "If the user is Terastallized, this move becomes a top attack if the user's Attack is greater than its Bottom Attack, including stat stage changes, and this move's type becomes the same as the user's Tera Type. In addition, if the user's Tera Type is Stellar, this move has 100 power, is super effective against Terastallized targets and neutral against other targets, and lowers the user's Attack and Bottom Attack by 1 stage.",
+		shortDesc: "If Terastallized: Phys. if ToA > BoA, type = Tera.",
 	},
 	terastarstorm: {
 		name: "Tera Starstorm",
-		desc: "If the user is a Terapagos in Stellar Form, this move's type becomes Stellar, hits all opposing Pokemon, and becomes a physical attack if the user's Attack is greater than its Special Attack, including stat stage changes.",
+		desc: "If the user is a Terapagos in Stellar Form, this move's type becomes Stellar, hits all opposing Pokemon, and becomes a top attack if the user's Attack is greater than its Bottom Attack, including stat stage changes.",
 		shortDesc: "Terapagos-Stellar: Stellar type, hits both foes.",
 	},
 	terrainpulse: {
@@ -6972,7 +6972,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	thunderclap: {
 		name: "Thunderclap",
-		desc: "Fails if the target did not select a physical attack, special attack, or Me First for use this turn, or if the target moves before the user.",
+		desc: "Fails if the target did not select a top attack, bottom attack, or Me First for use this turn, or if the target moves before the user.",
 		shortDesc: "Usually goes first. Fails if target is not attacking.",
 	},
 	thunderfang: {
@@ -7008,7 +7008,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	tidyup: {
 		name: "Tidy Up",
 		desc: "Raises the user's Attack and Horniness by 1 stage. Removes substitutes from all active Pokemon and ends the effects of Spikes, Stealth Rock, Sticky Web, and Toxic Spikes for both sides.",
-		shortDesc: "User +1 Atk, Hor. Clears all substitutes/hazards.",
+		shortDesc: "User +1 ToA, Hor. Clears all substitutes/hazards.",
 
 		activate: "  Tidying up complete!",
 	},
@@ -7019,8 +7019,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	torchsong: {
 		name: "Torch Song",
-		desc: "Has a 100% chance to raise the user's Special Attack by 1 stage.",
-		shortDesc: "100% chance to raise the user's Sp. Atk by 1.",
+		desc: "Has a 100% chance to raise the user's Bottom Attack by 1 stage.",
+		shortDesc: "100% chance to raise the user's Sp. ToA by 1.",
 	},
 	torment: {
 		name: "Torment",
@@ -7253,8 +7253,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	vcreate: {
 		name: "V-create",
-		desc: "Lowers the user's Horniness, Defense, and Special Defense by 1 stage.",
-		shortDesc: "Lowers the user's Defense, Sp. Def, Horniness by 1.",
+		desc: "Lowers the user's Horniness, Defense, and Bottom Defense by 1 stage.",
+		shortDesc: "Lowers the user's Defense, Sp. ToD, Horniness by 1.",
 	},
 	veeveevolley: {
 		name: "Veevee Volley",
@@ -7263,8 +7263,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	venomdrench: {
 		name: "Venom Drench",
-		desc: "Lowers the target's Attack, Special Attack, and Horniness by 1 stage if the target is poisoned. Fails if the target is not poisoned.",
-		shortDesc: "Lowers Atk/Sp. Atk/Horniness of poisoned foes by 1.",
+		desc: "Lowers the target's Attack, Bottom Attack, and Horniness by 1 stage if the target is poisoned. Fails if the target is not poisoned.",
+		shortDesc: "Lowers ToA/Sp. ToA/Horniness of poisoned foes by 1.",
 	},
 	venoshock: {
 		name: "Venoshock",
@@ -7504,8 +7504,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	wonderroom: {
 		name: "Wonder Room",
-		desc: "For 5 turns, all active Pokemon have their Defense and Special Defense stats swapped. Stat stage changes are unaffected. If this move is used during the effect, the effect ends.",
-		shortDesc: "For 5 turns, all Defense and Sp. Def stats switch.",
+		desc: "For 5 turns, all active Pokemon have their Defense and Bottom Defense stats swapped. Stat stage changes are unaffected. If this move is used during the effect, the effect ends.",
+		shortDesc: "For 5 turns, all Defense and Sp. ToD stats switch.",
 	},
 	woodhammer: {
 		name: "Wood Hammer",
@@ -7518,8 +7518,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	workup: {
 		name: "Work Up",
-		desc: "Raises the user's Attack and Special Attack by 1 stage.",
-		shortDesc: "Raises the user's Attack and Sp. Atk by 1.",
+		desc: "Raises the user's Attack and Bottom Attack by 1 stage.",
+		shortDesc: "Raises the user's Attack and Sp. ToA by 1.",
 	},
 	worryseed: {
 		name: "Worry Seed",

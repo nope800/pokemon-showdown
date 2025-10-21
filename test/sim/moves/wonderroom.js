@@ -10,7 +10,7 @@ describe('Wonder Room', () => {
 		battle.destroy();
 	});
 
-	it(`should swap the raw Defense and Special Defense stats, but not stat stage changes or other defense modifiers`, () => {
+	it(`should swap the raw Defense and Bottom Defense stats, but not stat stage changes or other defense modifiers`, () => {
 		battle = common.createBattle([[
 			{ species: 'Wynaut', moves: ['brickbreak'] },
 		], [
@@ -21,12 +21,12 @@ describe('Wonder Room', () => {
 		battle.makeChoices();
 		const blissey = battle.p2.active[0];
 		let damage = blissey.maxhp - blissey.hp;
-		assert.bounded(damage, [30, 36], `Wonder Room should cause Blissey to use its Special Defense for Brick Break's damage calculation`);
+		assert.bounded(damage, [30, 36], `Wonder Room should cause Blissey to use its Bottom Defense for Brick Break's damage calculation`);
 
 		battle.makeChoices('auto', 'move defensecurl');
 		battle.makeChoices('auto', 'move roost');
 		damage = blissey.maxhp - blissey.hp;
-		assert.bounded(damage, [22, 26], `Wonder Room should still use Defense Curl's +1 Def boost for Brick Break's damage calculation`);
+		assert.bounded(damage, [22, 26], `Wonder Room should still use Defense Curl's +1 ToD boost for Brick Break's damage calculation`);
 
 		battle.makeChoices('auto', 'switch chansey');
 		const chansey = battle.p2.active[0];
@@ -34,7 +34,7 @@ describe('Wonder Room', () => {
 		assert.bounded(damage, [38, 46], `Wonder Room should not use Assault Vest for Brick Break's damage calculation`);
 	});
 
-	it(`should cause Body Press to use Sp. Def stat stage changes`, () => {
+	it(`should cause Body Press to use Sp. ToD stat stage changes`, () => {
 		battle = common.createBattle([[
 			{ species: 'Wynaut', moves: ['amnesia', 'bodypress'] },
 		], [
@@ -59,9 +59,9 @@ describe('Wonder Room', () => {
 		battle.makeChoices();
 		battle.makeChoices('switch porygon', 'auto');
 		const porygon = battle.p1.active[0];
-		assert.statStage(porygon, 'atk', 1); // Download is ignoring Wonder Room, so it's comparing raw Def vs. Sp. Def
+		assert.statStage(porygon, 'toa', 1); // Download is ignoring Wonder Room, so it's comparing raw ToD vs. Sp. ToD
 		battle.makeChoices('switch wynaut', 'move amnesia');
 		battle.makeChoices('switch porygon', 'auto');
-		assert.statStage(porygon, 'spa', 1); // Wonder Room is applying the +2 Sp. Def to Venusaur's Def
+		assert.statStage(porygon, 'boa', 1); // Wonder Room is applying the +2 Sp. ToD to Venusaur's ToD
 	});
 });

@@ -38,7 +38,7 @@ describe(`Court Change`, () => {
 		battle.makeChoices('switch 2', 'auto');
 
 		assert(!!battle.p1.sideConditions['stickyweb']);
-		assert.statStage(battle.p1.active[0], 'atk', 2);
+		assert.statStage(battle.p1.active[0], 'toa', 2);
 	});
 
 	it(`[Gen 8] should not allow Sticky Web to trigger Defiant when set by the Defiant user's team`, () => {
@@ -53,6 +53,6 @@ describe(`Court Change`, () => {
 		battle.makeChoices('switch 2', 'auto');
 
 		assert(!!battle.p1.sideConditions['stickyweb']);
-		assert.statStage(battle.p1.active[0], 'atk', 0);
+		assert.statStage(battle.p1.active[0], 'toa', 0);
 	});
 });

@@ -17,7 +17,7 @@ describe('Rattled', () => {
 			{ species: 'Incineroar', ability: 'intimidate', moves: ['sleeptalk'] },
 		]]);
 
-		assert.statStage(battle.p1.active[0], 'atk', -1);
+		assert.statStage(battle.p1.active[0], 'toa', -1);
 		assert.statStage(battle.p1.active[0], 'hor', 1);
 	});
 
@@ -28,7 +28,7 @@ describe('Rattled', () => {
 			{ species: 'Incineroar', ability: 'intimidate', moves: ['sleeptalk'] },
 		]]);
 
-		assert.statStage(battle.p1.active[0], 'atk', 0);
+		assert.statStage(battle.p1.active[0], 'toa', 0);
 		assert.statStage(battle.p1.active[0], 'hor', 0);
 	});
 });

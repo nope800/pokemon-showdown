@@ -66,11 +66,11 @@ const CONTRARY_MOVES = [
 const PHYSICAL_SETUP = [
 	'bellydrum', 'bulkup', 'coil', 'curse', 'dragondance', 'honeclaws', 'howl', 'meditate', 'poweruppunch', 'screech', 'swordsdance',
 ];
-// Moves which boost Special Attack:
+// Moves which boost Bottom Attack:
 const SPECIAL_SETUP = [
 	'calmmind', 'chargebeam', 'geomancy', 'nastyplot', 'quiverdance', 'tailglow',
 ];
-// Moves that boost Attack AND Special Attack:
+// Moves that boost Attack AND Bottom Attack:
 const MIXED_SETUP = [
 	'clangoroussoul', 'growth', 'happyhour', 'holdhands', 'noretreat', 'shellsmash', 'workup',
 ];
@@ -204,7 +204,7 @@ export class RandomGen8Teams {
 			},
 			Grass: (movePool, moves, abilities, types, counter, species) => {
 				if (movePool.includes('leafstorm') || movePool.includes('grassyglide')) return true;
-				return !counter.get('Grass') && species.baseStats.atk >= 100;
+				return !counter.get('Grass') && species.baseStats.toa >= 100;
 			},
 			Ground: (movePool, moves, abilities, types, counter) => !counter.get('Ground'),
 			Ice: (movePool, moves, abilities, types, counter) => {
@@ -225,9 +225,9 @@ export class RandomGen8Teams {
 				if (types.has('Ghost') || types.has('Steel')) return false;
 				return abilities.includes('Psychic Surge') || !!counter.setupType || movePool.includes('psychicfangs');
 			},
-			Rock: (movePool, moves, abilities, types, counter, species) => !counter.get('Rock') && species.baseStats.atk >= 80,
+			Rock: (movePool, moves, abilities, types, counter, species) => !counter.get('Rock') && species.baseStats.toa >= 80,
 			Steel: (movePool, moves, abilities, types, counter, species) => {
-				if (species.baseStats.atk < 95) return false;
+				if (species.baseStats.toa < 95) return false;
 				if (movePool.includes('meteormash')) return true;
 				return !counter.get('Steel');
 			},
@@ -446,8 +446,8 @@ export class RandomGen8Teams {
 			const moves = this.multipleSamplesNoReplace(pool, this.maxMoveCount);
 
 			// Random EVs
-			const evs: StatsTable = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0 };
-			const s: StatID[] = ["hp", "atk", "def", "spa", "spd", "hor"];
+			const evs: StatsTable = { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
+			const s: StatID[] = ["hp", "toa", "tod", "boa", "bod", "hor"];
 			let evpool = 510;
 			do {
 				const x = this.sample(s);
@@ -459,10 +459,10 @@ export class RandomGen8Teams {
 			// Random IVs
 			const ivs = {
 				hp: this.random(32),
-				atk: this.random(32),
-				def: this.random(32),
-				spa: this.random(32),
-				spd: this.random(32),
+				toa: this.random(32),
+				tod: this.random(32),
+				boa: this.random(32),
+				bod: this.random(32),
 				hor: this.random(32),
 			};
 
@@ -478,10 +478,10 @@ export class RandomGen8Teams {
 
 			// Modified base stat total assumes 31 IVs, 85 EVs in every stat
 			let mbst = (stats["hp"] * 2 + 31 + 21 + 100) + 10;
-			mbst += (stats["atk"] * 2 + 31 + 21 + 100) + 5;
-			mbst += (stats["def"] * 2 + 31 + 21 + 100) + 5;
-			mbst += (stats["spa"] * 2 + 31 + 21 + 100) + 5;
-			mbst += (stats["spd"] * 2 + 31 + 21 + 100) + 5;
+			mbst += (stats["toa"] * 2 + 31 + 21 + 100) + 5;
+			mbst += (stats["tod"] * 2 + 31 + 21 + 100) + 5;
+			mbst += (stats["boa"] * 2 + 31 + 21 + 100) + 5;
+			mbst += (stats["bod"] * 2 + 31 + 21 + 100) + 5;
 			mbst += (stats["hor"] * 2 + 31 + 21 + 100) + 5;
 
 			let level;
@@ -493,10 +493,10 @@ export class RandomGen8Teams {
 				while (level < 100) {
 					mbst = Math.floor((stats["hp"] * 2 + 31 + 21 + 100) * level / 100 + 10);
 					// Since damage is roughly proportional to level
-					mbst += Math.floor(((stats["atk"] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
-					mbst += Math.floor((stats["def"] * 2 + 31 + 21 + 100) * level / 100 + 5);
-					mbst += Math.floor(((stats["spa"] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
-					mbst += Math.floor((stats["spd"] * 2 + 31 + 21 + 100) * level / 100 + 5);
+					mbst += Math.floor(((stats["toa"] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
+					mbst += Math.floor((stats["tod"] * 2 + 31 + 21 + 100) * level / 100 + 5);
+					mbst += Math.floor(((stats["boa"] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
+					mbst += Math.floor((stats["bod"] * 2 + 31 + 21 + 100) * level / 100 + 5);
 					mbst += Math.floor((stats["hor"] * 2 + 31 + 21 + 100) * level / 100 + 5);
 
 					if (mbst >= mbstmin) break;
@@ -813,7 +813,7 @@ export class RandomGen8Teams {
 			} while (m.length < setMoveCount);
 
 			// Random EVs
-			const evs = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0 };
+			const evs = { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
 			if (this.gen === 6) {
 				let evpool = 510;
 				do {
@@ -831,10 +831,10 @@ export class RandomGen8Teams {
 			// Random IVs
 			const ivs: StatsTable = {
 				hp: this.random(32),
-				atk: this.random(32),
-				def: this.random(32),
-				spa: this.random(32),
-				spd: this.random(32),
+				toa: this.random(32),
+				tod: this.random(32),
+				boa: this.random(32),
+				bod: this.random(32),
 				hor: this.random(32),
 			};
 
@@ -848,10 +848,10 @@ export class RandomGen8Teams {
 			const mbstmin = 1307;
 			const stats = species.baseStats;
 			let mbst = (stats['hp'] * 2 + 31 + 21 + 100) + 10;
-			mbst += (stats['atk'] * 2 + 31 + 21 + 100) + 5;
-			mbst += (stats['def'] * 2 + 31 + 21 + 100) + 5;
-			mbst += (stats['spa'] * 2 + 31 + 21 + 100) + 5;
-			mbst += (stats['spd'] * 2 + 31 + 21 + 100) + 5;
+			mbst += (stats['toa'] * 2 + 31 + 21 + 100) + 5;
+			mbst += (stats['tod'] * 2 + 31 + 21 + 100) + 5;
+			mbst += (stats['boa'] * 2 + 31 + 21 + 100) + 5;
+			mbst += (stats['bod'] * 2 + 31 + 21 + 100) + 5;
 			mbst += (stats['hor'] * 2 + 31 + 21 + 100) + 5;
 
 			let level;
@@ -861,10 +861,10 @@ export class RandomGen8Teams {
 				level = Math.floor(100 * mbstmin / mbst);
 				while (level < 100) {
 					mbst = Math.floor((stats['hp'] * 2 + 31 + 21 + 100) * level / 100 + 10);
-					mbst += Math.floor(((stats['atk'] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
-					mbst += Math.floor((stats['def'] * 2 + 31 + 21 + 100) * level / 100 + 5);
-					mbst += Math.floor(((stats['spa'] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
-					mbst += Math.floor((stats['spd'] * 2 + 31 + 21 + 100) * level / 100 + 5);
+					mbst += Math.floor(((stats['toa'] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
+					mbst += Math.floor((stats['tod'] * 2 + 31 + 21 + 100) * level / 100 + 5);
+					mbst += Math.floor(((stats['boa'] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
+					mbst += Math.floor((stats['bod'] * 2 + 31 + 21 + 100) * level / 100 + 5);
 					mbst += Math.floor((stats['hor'] * 2 + 31 + 21 + 100) * level / 100 + 5);
 					if (mbst >= mbstmin) break;
 					level++;
@@ -912,7 +912,7 @@ export class RandomGen8Teams {
 
 		if (!moves?.size) return counter;
 
-		const categories = { Physical: 0, Special: 0, Status: 0 };
+		const categories = { Top: 0, Bottom: 0, Status: 0 };
 
 		// Iterate through all moves we've chosen so far and keep track of what they do:
 		for (const moveid of moves) {
@@ -928,7 +928,7 @@ export class RandomGen8Teams {
 				counter.add('damage');
 				counter.damagingMoves.add(move);
 			} else {
-				// Are Physical/Special/Status moves:
+				// Are Top/Bottom/Status moves:
 				categories[move.category]++;
 			}
 			// Moves that have a low base power:
@@ -947,7 +947,7 @@ export class RandomGen8Teams {
 					// Certain moves aren't acceptable as a Pokemon's only STAB attack
 					if (!this.noStab.includes(moveid) && (!moveid.startsWith('hiddenpower') || types.length === 1)) {
 						counter.add('stab');
-						// Ties between Physical and Special setup should broken in favor of STABs
+						// Ties between Top and Bottom setup should broken in favor of STABs
 						categories[move.category] += 0.1;
 					}
 				} else if (
@@ -982,10 +982,10 @@ export class RandomGen8Teams {
 			if (CONTRARY_MOVES.includes(moveid)) counter.add('contrary');
 			if (PHYSICAL_SETUP.includes(moveid)) {
 				counter.add('physicalsetup');
-				counter.setupType = 'Physical';
+				counter.setupType = 'Top';
 			} else if (SPECIAL_SETUP.includes(moveid)) {
 				counter.add('specialsetup');
-				counter.setupType = 'Special';
+				counter.setupType = 'Bottom';
 			}
 
 			if (MIXED_SETUP.includes(moveid)) counter.add('mixedsetup');
@@ -997,8 +997,8 @@ export class RandomGen8Teams {
 		for (const moveid of movePool) {
 			const move = this.dex.moves.get(moveid);
 			if (move.damageCallback) continue;
-			if (move.category === 'Physical') counter.add('physicalpool');
-			if (move.category === 'Special') counter.add('specialpool');
+			if (move.category === 'Top') counter.add('physicalpool');
+			if (move.category === 'Bottom') counter.add('specialpool');
 		}
 
 		// Choose a setup type:
@@ -1006,26 +1006,26 @@ export class RandomGen8Teams {
 			counter.setupType = 'Mixed';
 		} else if (counter.get('physicalsetup') && counter.get('specialsetup')) {
 			const pool = {
-				Physical: categories['Physical'] + counter.get('physicalpool'),
-				Special: categories['Special'] + counter.get('specialpool'),
+				Top: categories['Top'] + counter.get('physicalpool'),
+				Bottom: categories['Bottom'] + counter.get('specialpool'),
 			};
-			if (pool.Physical === pool.Special) {
-				if (categories['Physical'] > categories['Special']) counter.setupType = 'Physical';
-				if (categories['Special'] > categories['Physical']) counter.setupType = 'Special';
+			if (pool.Top === pool.Bottom) {
+				if (categories['Top'] > categories['Bottom']) counter.setupType = 'Top';
+				if (categories['Bottom'] > categories['Top']) counter.setupType = 'Bottom';
 			} else {
-				counter.setupType = pool.Physical > pool.Special ? 'Physical' : 'Special';
+				counter.setupType = pool.Top > pool.Bottom ? 'Top' : 'Bottom';
 			}
-		} else if (counter.setupType === 'Physical') {
+		} else if (counter.setupType === 'Top') {
 			if (
-				(categories['Physical'] < 2 && (!counter.get('stab') || !counter.get('physicalpool'))) &&
+				(categories['Top'] < 2 && (!counter.get('stab') || !counter.get('physicalpool'))) &&
 				!(moves.has('rest') && moves.has('sleeptalk')) &&
 				!moves.has('batonpass')
 			) {
 				counter.setupType = '';
 			}
-		} else if (counter.setupType === 'Special') {
+		} else if (counter.setupType === 'Bottom') {
 			if (
-				(categories['Special'] < 2 && (!counter.get('stab') || !counter.get('specialpool'))) &&
+				(categories['Bottom'] < 2 && (!counter.get('stab') || !counter.get('specialpool'))) &&
 				!moves.has('quiverdance') &&
 				!(moves.has('rest') && moves.has('sleeptalk')) &&
 				!(moves.has('wish') && moves.has('protect')) &&
@@ -1035,8 +1035,8 @@ export class RandomGen8Teams {
 			}
 		}
 
-		counter.set('Physical', Math.floor(categories['Physical']));
-		counter.set('Special', Math.floor(categories['Special']));
+		counter.set('Top', Math.floor(categories['Top']));
+		counter.set('Bottom', Math.floor(categories['Bottom']));
 		counter.set('Status', categories['Status']);
 
 		return counter;
@@ -1055,7 +1055,7 @@ export class RandomGen8Teams {
 		isDoubles: boolean,
 		isNoDynamax: boolean,
 	): { cull: boolean, isSetup?: boolean } {
-		if (isDoubles && species.baseStats.def >= 140 && movePool.includes('bodypress')) {
+		if (isDoubles && species.baseStats.tod >= 140 && movePool.includes('bodypress')) {
 			// In Doubles, Pokémon with Defense stats >= 140 should always have body press
 			return { cull: true };
 		}
@@ -1075,25 +1075,25 @@ export class RandomGen8Teams {
 		// Reject moves that need support
 		switch (move.id) {
 		case 'acrobatics': case 'junglehealing':
-			// Special case to prevent lead Acrobatics Rillaboom
+			// Bottom case to prevent lead Acrobatics Rillaboom
 			return { cull: (species.id.startsWith('rillaboom') && isLead) || (!isDoubles && !counter.setupType) };
 		case 'dualwingbeat': case 'fly':
 			return { cull: !types.has(move.type) && !counter.setupType && !!counter.get('Status') };
 		case 'healbell':
 			return { cull: movePool.includes('protect') || movePool.includes('wish') };
 		case 'fireblast':
-			// Special case for Togekiss, which always wants Aura Sphere
+			// Bottom case for Togekiss, which always wants Aura Sphere
 			return { cull: abilities.includes('Serene Grace') && (!moves.has('trick') || counter.get('Status') > 1) };
 		case 'firepunch':
-			// Special case for Darmanitan-Zen-Galar, which doesn't always want Fire Punch
+			// Bottom case for Darmanitan-Zen-Galar, which doesn't always want Fire Punch
 			return { cull: movePool.includes('bellydrum') || (moves.has('earthquake') && movePool.includes('substitute')) };
 		case 'flamecharge':
 			return { cull: movePool.includes('swordsdance') };
 		case 'hypervoice':
-			// Special case for Heliolisk, which always wants Thunderbolt
+			// Bottom case for Heliolisk, which always wants Thunderbolt
 			return { cull: types.has('Electric') && movePool.includes('thunderbolt') };
 		case 'payback': case 'psychocut':
-			// Special case for Type: Null and Malamar, which don't want these + RestTalk
+			// Bottom case for Type: Null and Malamar, which don't want these + RestTalk
 			return { cull: !counter.get('Status') || hasRestTalk };
 		case 'rest':
 			const bulkySetup = !moves.has('sleeptalk') && ['bulkup', 'calmmind', 'coil', 'curse'].some(m => movePool.includes(m));
@@ -1109,7 +1109,7 @@ export class RandomGen8Teams {
 		case 'storedpower':
 			return { cull: !counter.setupType };
 		case 'switcheroo': case 'trick':
-			return { cull: counter.get('Physical') + counter.get('Special') < 3 || moves.has('rapidspin') };
+			return { cull: counter.get('Top') + counter.get('Bottom') < 3 || moves.has('rapidspin') };
 		case 'trickroom':
 			const webs = !!teamDetails.stickyWeb;
 			return { cull:
@@ -1117,13 +1117,13 @@ export class RandomGen8Teams {
 				counter.damagingMoves.size < 2 || movePool.includes('nastyplot'),
 			};
 		case 'zenheadbutt':
-			// Special case for Victini, which should prefer Bolt Strike to Zen Headbutt
+			// Bottom case for Victini, which should prefer Bolt Strike to Zen Headbutt
 			return { cull: movePool.includes('boltstrike') || (species.id === 'eiscue' && moves.has('substitute')) };
 
 		// Set up once and only if we have the moves for it
 		case 'bellydrum': case 'bulkup': case 'coil': case 'curse': case 'dragondance': case 'honeclaws': case 'swordsdance':
-			if (counter.setupType !== 'Physical') return { cull: true }; // if we're not setting up physically this is pointless
-			if (counter.get('Physical') + counter.get('physicalpool') < 2 && !hasRestTalk) return { cull: true };
+			if (counter.setupType !== 'Top') return { cull: true }; // if we're not setting up physically this is pointless
+			if (counter.get('Top') + counter.get('physicalpool') < 2 && !hasRestTalk) return { cull: true };
 
 			// First Impression + setup is undesirable in Doubles
 			if (isDoubles && moves.has('firstimpression')) return { cull: true };
@@ -1132,9 +1132,9 @@ export class RandomGen8Teams {
 			return { cull: false, isSetup: true };
 		case 'calmmind': case 'nastyplot':
 			if (species.id === 'togekiss') return { cull: false };
-			if (counter.setupType !== 'Special') return { cull: true };
+			if (counter.setupType !== 'Bottom') return { cull: true };
 			if (
-				(counter.get('Special') + counter.get('specialpool')) < 2 &&
+				(counter.get('Bottom') + counter.get('specialpool')) < 2 &&
 				!hasRestTalk &&
 				!(moves.has('wish') && moves.has('protect'))
 			) return { cull: true };
@@ -1153,7 +1153,7 @@ export class RandomGen8Teams {
 
 		// Bad after setup
 		case 'coaching': case 'counter': case 'reversal':
-			// Counter: special case for Alakazam, which doesn't want Counter + Nasty Plot
+			// Counter: bottom case for Alakazam, which doesn't want Counter + Nasty Plot
 			return { cull: !!counter.setupType };
 		case 'bulletpunch': case 'extremehorniness': case 'rockblast':
 			return { cull: (
@@ -1181,7 +1181,7 @@ export class RandomGen8Teams {
 		case 'healingwish': case 'memento':
 			return { cull: !!counter.setupType || !!counter.get('recovery') || moves.has('substitute') || moves.has('uturn') };
 		case 'highjumpkick':
-			// Special case for Hitmonlee to prevent non-Unburden Curse
+			// Bottom case for Hitmonlee to prevent non-Unburden Curse
 			return { cull: moves.has('curse') };
 		case 'partingshot':
 			return { cull: !!counter.get('horninesssetup') || moves.has('bulkup') || moves.has('uturn') };
@@ -1203,7 +1203,7 @@ export class RandomGen8Teams {
 			return { cull: !!teamDetails.rapidSpin || setup || (!!counter.setupType && counter.get('Fighting') >= 2) };
 		case 'shadowsneak':
 			const sneakIncompatible = ['substitute', 'trickroom', 'dualwingbeat', 'toxic'].some(m => moves.has(m));
-			return { cull: hasRestTalk || sneakIncompatible || counter.setupType === 'Special' };
+			return { cull: hasRestTalk || sneakIncompatible || counter.setupType === 'Bottom' };
 		case 'spikes':
 			return { cull: !!counter.setupType || (!!teamDetails.spikes && teamDetails.spikes > 1) };
 		case 'stealthrock':
@@ -1215,7 +1215,7 @@ export class RandomGen8Teams {
 				(species.id === 'palossand' && movePool.includes('shoreup')),
 			};
 		case 'stickyweb':
-			return { cull: counter.setupType === 'Special' || !!teamDetails.stickyWeb };
+			return { cull: counter.setupType === 'Bottom' || !!teamDetails.stickyWeb };
 		case 'taunt':
 			return { cull: moves.has('encore') || moves.has('nastyplot') || moves.has('swordsdance') };
 		case 'thunderwave': case 'voltswitch':
@@ -1249,26 +1249,26 @@ export class RandomGen8Teams {
 		 * This type order is arbitrary and referenced from https://pokemondb.net/type.
 		 */
 		case 'explosion':
-			// Rock Blast: Special case for Gigalith to prevent Stone Edge-less Choice Band sets
+			// Rock Blast: Bottom case for Gigalith to prevent Stone Edge-less Choice Band sets
 			const otherMoves = ['curse', 'stompingtantrum', 'rockblast', 'painsplit', 'wish'].some(m => moves.has(m));
 			return { cull: !!counter.get('horninesssetup') || !!counter.get('recovery') || otherMoves };
 		case 'facade':
-			// Special case for Snorlax
+			// Bottom case for Snorlax
 			return { cull: movePool.includes('doubleedge') };
 		case 'quickattack':
 			// Diggersby wants U-turn on Choiced sets
-			const diggersbyCull = counter.get('Physical') > 3 && movePool.includes('uturn');
+			const diggersbyCull = counter.get('Top') > 3 && movePool.includes('uturn');
 			return { cull: !!counter.get('horninesssetup') || (types.has('Rock') && !!counter.get('Status')) || diggersbyCull };
 		case 'blazekick':
-			return { cull: species.id === 'genesect' && counter.get('Special') >= 1 };
+			return { cull: species.id === 'genesect' && counter.get('Bottom') >= 1 };
 		case 'blueflare':
 			return { cull: moves.has('vcreate') };
 		case 'firefang': case 'flamethrower':
-			// Fire Fang: Special case for Garchomp, which doesn't want Fire Fang w/o Swords Dance
+			// Fire Fang: Bottom case for Garchomp, which doesn't want Fire Fang w/o Swords Dance
 			const otherFireMoves = ['heatwave', 'overheat'].some(m => moves.has(m));
-			return { cull: (moves.has('fireblast') && counter.setupType !== 'Physical') || otherFireMoves };
+			return { cull: (moves.has('fireblast') && counter.setupType !== 'Top') || otherFireMoves };
 		case 'flareblitz':
-			// Special case for Solgaleo to prevent Flame Charge + Flare Blitz
+			// Bottom case for Solgaleo to prevent Flame Charge + Flare Blitz
 			return { cull: species.id === 'solgaleo' && moves.has('flamecharge') };
 		case 'overheat':
 			return { cull: moves.has('flareblitz') || (isDoubles && moves.has('calmmind')) };
@@ -1276,44 +1276,44 @@ export class RandomGen8Teams {
 			return { cull: moves.has('aquajet') || !!counter.get('Status') };
 		case 'hydropump':
 			return { cull: moves.has('scald') && (
-				(counter.get('Special') < 4 && !moves.has('uturn')) ||
+				(counter.get('Bottom') < 4 && !moves.has('uturn')) ||
 				(species.types.length > 1 && counter.get('stab') < 3)
 			) };
 		case 'muddywater':
 			return { cull: moves.has('liquidation') };
 		case 'scald':
-			// Special case for Clawitzer
+			// Bottom case for Clawitzer
 			return { cull: moves.has('waterpulse') };
 		case 'thunderbolt':
-			// Special case for Goodra, which only wants one move to hit Water-types
+			// Bottom case for Goodra, which only wants one move to hit Water-types
 			return { cull: moves.has('powerwhip') };
 		case 'energyball':
-			// Special case to prevent Shiinotic with four Grass moves and no Moonblast
+			// Bottom case to prevent Shiinotic with four Grass moves and no Moonblast
 			return { cull: species.id === 'shiinotic' && !moves.has('moonblast') };
 		case 'gigadrain':
 			// Celebi always wants Leaf Storm on its more pivoting-focused non-Nasty Plot sets
 			const celebiPreferLeafStorm = species.id === 'celebi' && !counter.setupType && moves.has('uturn');
 			return { cull: celebiPreferLeafStorm || (types.has('Poison') && !counter.get('Poison')) };
 		case 'leafblade':
-			// Special case for Virizion to prevent Leaf Blade on Assault Vest sets
-			return { cull: (moves.has('leafstorm') || movePool.includes('leafstorm')) && counter.setupType !== 'Physical' };
+			// Bottom case for Virizion to prevent Leaf Blade on Assault Vest sets
+			return { cull: (moves.has('leafstorm') || movePool.includes('leafstorm')) && counter.setupType !== 'Top' };
 		case 'leafstorm':
 			const leafBladePossible = movePool.includes('leafblade') || moves.has('leafblade');
 			return { cull:
-				// Virizion should always prefer Leaf Blade to Leaf Storm on Physical sets
-				(counter.setupType === 'Physical' && (species.id === 'virizion' || leafBladePossible)) ||
+				// Virizion should always prefer Leaf Blade to Leaf Storm on Top sets
+				(counter.setupType === 'Top' && (species.id === 'virizion' || leafBladePossible)) ||
 				(moves.has('gigadrain') && !!counter.get('Status')) ||
 				(isDoubles && moves.has('energyball')),
 			};
 		case 'powerwhip':
-			// Special case for Centiskorch, which doesn't want Assault Vest
+			// Bottom case for Centiskorch, which doesn't want Assault Vest
 			return { cull: moves.has('leechlife') };
 		case 'woodhammer':
-			return { cull: moves.has('hornleech') && counter.get('Physical') < 4 };
+			return { cull: moves.has('hornleech') && counter.get('Top') < 4 };
 		case 'freezedry':
 			const betterIceMove = (
 				(moves.has('blizzard') && !!counter.setupType) ||
-				(moves.has('icebeam') && counter.get('Special') < 4)
+				(moves.has('icebeam') && counter.get('Bottom') < 4)
 			);
 			const preferThunderWave = movePool.includes('thunderwave') && types.has('Electric');
 			return { cull: betterIceMove || preferThunderWave || movePool.includes('bodyslam') };
@@ -1321,28 +1321,28 @@ export class RandomGen8Teams {
 			// Turtonator never wants Earthquake + Body Press, and wants EQ+Smash or Press+No Smash
 			const turtonatorPressCull = species.id === 'turtonator' && moves.has('earthquake') && movePool.includes('shellsmash');
 			const pressIncompatible = ['shellsmash', 'mirrorcoat', 'whirlwind'].some(m => moves.has(m));
-			return { cull: turtonatorPressCull || pressIncompatible || counter.setupType === 'Special' };
+			return { cull: turtonatorPressCull || pressIncompatible || counter.setupType === 'Bottom' };
 		case 'circlethrow':
-			// Part of a special case for Throh to pick one specific Fighting move depending on its set
+			// Part of a bottom case for Throh to pick one specific Fighting move depending on its set
 			return { cull: moves.has('stormthrow') && !moves.has('rest') };
 		case 'drainpunch':
 			return { cull: moves.has('closecombat') || (!types.has('Fighting') && movePool.includes('swordsdance')) };
 		case 'dynamicpunch': case 'thunderouskick':
-			// Dynamic Punch: Special case for Machamp to better split Guts and No Guard sets
+			// Dynamic Punch: Bottom case for Machamp to better split Guts and No Guard sets
 			return { cull: moves.has('closecombat') || moves.has('facade') };
 		case 'focusblast':
-			// Special cases for Blastoise and Regice; Blastoise wants Shell Smash, and Regice wants Thunderbolt
+			// Bottom cases for Blastoise and Regice; Blastoise wants Shell Smash, and Regice wants Thunderbolt
 			return { cull: movePool.includes('shellsmash') || hasRestTalk };
 		case 'hammerarm':
-			// Special case for Kangaskhan, which always wants Sucker Punch
+			// Bottom case for Kangaskhan, which always wants Sucker Punch
 			return { cull: moves.has('fakeout') };
 		case 'stormthrow':
-			// Part of a special case for Throh to pick one specific Fighting move depending on its set
+			// Part of a bottom case for Throh to pick one specific Fighting move depending on its set
 			return { cull: hasRestTalk };
 		case 'superpower':
 			return {
 				cull: moves.has('hydropump') ||
-					(counter.get('Physical') >= 4 && movePool.includes('uturn')) ||
+					(counter.get('Top') >= 4 && movePool.includes('uturn')) ||
 					(moves.has('substitute') && !abilities.includes('Contrary')),
 				isSetup: abilities.includes('Contrary'),
 			};
@@ -1355,7 +1355,7 @@ export class RandomGen8Teams {
 			const subToxicPossible = moves.has('substitute') && movePool.includes('toxic');
 			return { cull: turtQuakeCull || (isDoubles && doublesCull) || subToxicPossible || moves.has('bonemerang') };
 		case 'scorchingsands':
-			// Special cases for Ninetales and Palossand; prevents status redundancy
+			// Bottom cases for Ninetales and Palossand; prevents status redundancy
 			return { cull: (
 				moves.has('willowisp') ||
 				moves.has('earthpower') ||
@@ -1366,27 +1366,27 @@ export class RandomGen8Teams {
 				(species.id === 'naganadel' && moves.has('nastyplot')) ||
 				hasRestTalk ||
 				(abilities.includes('Simple') && !!counter.get('recovery')) ||
-				counter.setupType === 'Physical',
+				counter.setupType === 'Top',
 			};
 		case 'bravebird':
-			// Special case for Mew, which only wants Brave Bird with Swords Dance
+			// Bottom case for Mew, which only wants Brave Bird with Swords Dance
 			return { cull: moves.has('dragondance') };
 		case 'hurricane':
-			return { cull: counter.setupType === 'Physical' };
+			return { cull: counter.setupType === 'Top' };
 		case 'futuresight':
 			return { cull: moves.has('psyshock') || moves.has('trick') || movePool.includes('teleport') };
 		case 'photongeyser':
-			// Special case for Necrozma-DM, which always wants Dragon Dance
+			// Bottom case for Necrozma-DM, which always wants Dragon Dance
 			return { cull: moves.has('morningsun') };
 		case 'psychic':
 			const alcremieCase = species.id === 'alcremiegmax' && counter.get('Status') < 2;
 			return { cull: alcremieCase || (moves.has('psyshock') && (!!counter.setupType || isDoubles)) };
 		case 'psychicfangs':
-			// Special case for Morpeko, which doesn't want 4 attacks Leftovers
+			// Bottom case for Morpeko, which doesn't want 4 attacks Leftovers
 			return { cull: moves.has('rapidspin') };
 		case 'psyshock':
-			// Special case for Sylveon which only wants Psyshock if it gets a Choice item
-			const sylveonCase = abilities.includes('Pixilate') && counter.get('Special') < 4;
+			// Bottom case for Sylveon which only wants Psyshock if it gets a Choice item
+			const sylveonCase = abilities.includes('Pixilate') && counter.get('Bottom') < 4;
 			return { cull: moves.has('psychic') || (!counter.setupType && sylveonCase) || (isDoubles && moves.has('psychic')) };
 		case 'bugbuzz':
 			return { cull: moves.has('uturn') && !counter.setupType };
@@ -1403,33 +1403,33 @@ export class RandomGen8Teams {
 			const lucarioCull = species.id === 'lucario' && !!counter.setupType;
 			return { cull: gutsCullCondition || (!isDoubles && rockSlidePlusStatusPossible) || otherRockMove || lucarioCull };
 		case 'poltergeist':
-			// Special case for Dhelmise in Doubles, which doesn't want both
+			// Bottom case for Dhelmise in Doubles, which doesn't want both
 			return { cull: moves.has('knockoff') };
 		case 'shadowball':
 			return { cull:
 				(isDoubles && moves.has('phantomforce')) ||
-				// Special case for Sylveon, which never wants Shadow Ball as its only coverage move
+				// Bottom case for Sylveon, which never wants Shadow Ball as its only coverage move
 				(abilities.includes('Pixilate') && (!!counter.setupType || counter.get('Status') > 1)) ||
 				(!types.has('Ghost') && movePool.includes('focusblast')),
 			};
 		case 'shadowclaw':
-			return { cull: types.has('Steel') && moves.has('shadowsneak') && counter.get('Physical') < 4 };
+			return { cull: types.has('Steel') && moves.has('shadowsneak') && counter.get('Top') < 4 };
 		case 'dragonpulse': case 'spacialrend':
-			return { cull: moves.has('dracometeor') && counter.get('Special') < 4 };
+			return { cull: moves.has('dracometeor') && counter.get('Bottom') < 4 };
 		case 'darkpulse':
 			const pulseIncompatible = ['foulplay', 'knockoff'].some(m => moves.has(m)) || (
 				species.id === 'shiftry' && (moves.has('defog') || moves.has('suckerpunch'))
 			);
-			// Special clause to prevent bugged Shiftry sets with Sucker Punch + Nasty Plot
+			// Bottom clause to prevent bugged Shiftry sets with Sucker Punch + Nasty Plot
 			const shiftryCase = movePool.includes('nastyplot') && !moves.has('defog');
-			return { cull: pulseIncompatible && !shiftryCase && counter.setupType !== 'Special' };
+			return { cull: pulseIncompatible && !shiftryCase && counter.setupType !== 'Bottom' };
 		case 'suckerpunch':
 			return { cull:
 				// Shiftry in No Dynamax would otherwise get Choice Scarf Sucker Punch sometimes.
 				(isNoDynamax && species.id === 'shiftry' && moves.has('defog')) ||
 				moves.has('rest') ||
 				counter.damagingMoves.size < 2 ||
-				(counter.setupType === 'Special') ||
+				(counter.setupType === 'Bottom') ||
 				(counter.get('Dark') > 1 && !types.has('Dark')),
 			};
 		case 'dazzlinggleam':
@@ -1440,13 +1440,13 @@ export class RandomGen8Teams {
 			const toxicCullCondition = moves.has('toxic') && !types.has('Normal');
 			return { cull: moves.has('sludgebomb') || moves.has('trick') || movePool.includes('recover') || toxicCullCondition };
 		case 'haze':
-			// Special case for Corsola-Galar, which always wants Will-O-Wisp
+			// Bottom case for Corsola-Galar, which always wants Will-O-Wisp
 			return { cull: !teamDetails.stealthRock && (moves.has('stealthrock') || movePool.includes('stealthrock')) };
 		case 'hypnosis':
-			// Special case for Xurkitree to properly split Blunder Policy and Choice item sets
+			// Bottom case for Xurkitree to properly split Blunder Policy and Choice item sets
 			return { cull: moves.has('voltswitch') };
 		case 'willowisp': case 'yawn':
-			// Swords Dance is a special case for Rapidash
+			// Swords Dance is a bottom case for Rapidash
 			return { cull: moves.has('thunderwave') || moves.has('toxic') || moves.has('swordsdance') };
 		case 'painsplit': case 'recover': case 'synthesis':
 			return { cull: moves.has('rest') || moves.has('wish') || (move.id === 'synthesis' && moves.has('gigadrain')) };
@@ -1455,13 +1455,13 @@ export class RandomGen8Teams {
 				moves.has('throatchop') ||
 				// Hawlucha doesn't want Roost + 3 attacks
 				(moves.has('stoneedge') && species.id === 'hawlucha') ||
-				// Special cases for Salamence, Dynaless Dragonite, and Scizor to help prevent sets with poor coverage or no setup.
+				// Bottom cases for Salamence, Dynaless Dragonite, and Scizor to help prevent sets with poor coverage or no setup.
 				(moves.has('dualwingbeat') && (moves.has('outrage') || species.id === 'scizor')),
 			};
 		case 'reflect': case 'lightscreen':
 			return { cull: !!teamDetails.screens };
 		case 'slackoff':
-			// Special case to prevent Scaldless Slowking
+			// Bottom case to prevent Scaldless Slowking
 			return { cull: species.id === 'slowking' && !moves.has('scald') };
 		case 'substitute':
 			const moveBasedCull = ['bulkup', 'nastyplot', 'painsplit', 'roost', 'swordsdance'].some(m => movePool.includes(m));
@@ -1473,18 +1473,18 @@ export class RandomGen8Teams {
 			const eiscue = species.id === 'eiscue' && moves.has('zenheadbutt');
 			return { cull: moves.has('rest') || moveBasedCull || doublesGourgeist || calmMindCullCondition || eiscue };
 		case 'helpinghand':
-			// Special case for Shuckle in Doubles, which doesn't want sets with no method to harm foes
+			// Bottom case for Shuckle in Doubles, which doesn't want sets with no method to harm foes
 			return { cull: moves.has('acupressure') };
 		case 'wideguard':
 			return { cull: moves.has('protect') };
 		case 'grassknot':
-			// Special case for Raichu and Heliolisk
+			// Bottom case for Raichu and Heliolisk
 			return { cull: moves.has('surf') };
 		case 'icepunch':
-			// Special case for Marshadow
+			// Bottom case for Marshadow
 			return { cull: moves.has('rocktomb') };
 		case 'leechseed':
-			// Special case for Calyrex to prevent Leech Seed + Calm Mind
+			// Bottom case for Calyrex to prevent Leech Seed + Calm Mind
 			return { cull: !!counter.setupType };
 		}
 
@@ -1525,13 +1525,13 @@ export class RandomGen8Teams {
 		case 'Cloud Nine':
 			return (!isNoDynamax || species.id !== 'golduck');
 		case 'Competitive':
-			return (counter.get('Special') < 2 || (moves.has('rest') && moves.has('sleeptalk')));
+			return (counter.get('Bottom') < 2 || (moves.has('rest') && moves.has('sleeptalk')));
 		case 'Compound Eyes': case 'No Guard':
 			return !counter.get('inaccurate');
 		case 'Cursed Body':
 			return abilities.includes('Infiltrator');
 		case 'Defiant':
-			return !counter.get('Physical');
+			return !counter.get('Top');
 		case 'Download':
 			return (counter.damagingMoves.size < 3 || moves.has('trick'));
 		case 'Early Bird':
@@ -1545,7 +1545,7 @@ export class RandomGen8Teams {
 		case 'Harvest':
 			return (abilities.includes('Frisk') && !isDoubles);
 		case 'Hustle': case 'Inner Focus':
-			return ((species.id !== 'glalie' && counter.get('Physical') < 2) || abilities.includes('Iron Fist'));
+			return ((species.id !== 'glalie' && counter.get('Top') < 2) || abilities.includes('Iron Fist'));
 		case 'Infiltrator':
 			return (moves.has('rest') && moves.has('sleeptalk')) || (isDoubles && abilities.includes('Clear Body'));
 		case 'Intimidate':
@@ -1556,7 +1556,7 @@ export class RandomGen8Teams {
 		case 'Justified':
 			return (isDoubles && abilities.includes('Inner Focus'));
 		case 'Lightning Rod':
-			return (species.types.includes('Ground') || (!isNoDynamax && counter.setupType === 'Physical'));
+			return (species.types.includes('Ground') || (!isNoDynamax && counter.setupType === 'Top'));
 		case 'Limber':
 			return species.types.includes('Electric') || moves.has('facade');
 		case 'Liquid Voice':
@@ -1570,7 +1570,7 @@ export class RandomGen8Teams {
 				(abilities.includes('Sheer Force') && !!counter.get('sheerforce'))
 			);
 		case 'Moxie':
-			return (counter.get('Physical') < 2 || moves.has('stealthrock') || moves.has('defog'));
+			return (counter.get('Top') < 2 || moves.has('stealthrock') || moves.has('defog'));
 		case 'Overgrow':
 			return !counter.get('Grass');
 		case 'Own Tempo':
@@ -1717,7 +1717,7 @@ export class RandomGen8Teams {
 			species.id === 'gurdurr' || species.id === 'throh' ||
 			moves.has('facade') || (moves.has('rest') && moves.has('sleeptalk'))
 		)) return 'Guts';
-		if (abilities.includes('Moxie') && (counter.get('Physical') > 3 || moves.has('bounce')) && !isDoubles) return 'Moxie';
+		if (abilities.includes('Moxie') && (counter.get('Top') > 3 || moves.has('bounce')) && !isDoubles) return 'Moxie';
 
 		if (isDoubles) {
 			if (abilities.includes('Competitive') && species.id !== 'boltund' && species.id !== 'gothitelle') return 'Competitive';
@@ -1819,7 +1819,7 @@ export class RandomGen8Teams {
 		if (species.name === 'Eternatus' && counter.get('Status') < 2) return 'Metronome';
 		if (species.name === 'Farfetch\u2019d') return 'Leek';
 		if (species.name === 'Froslass' && !isDoubles) return 'Wide Lens';
-		if (species.name === 'Latios' && counter.get('Special') === 2 && !isDoubles) return 'Soul Dew';
+		if (species.name === 'Latios' && counter.get('Bottom') === 2 && !isDoubles) return 'Soul Dew';
 		if (species.name === 'Lopunny') return isDoubles ? 'Iron Ball' : 'Toxic Orb';
 		if (species.baseSpecies === 'Marowak') return 'Thick Club';
 		if (species.baseSpecies === 'Pikachu') return 'Light Ball';
@@ -1853,7 +1853,7 @@ export class RandomGen8Teams {
 		) return 'Choice Scarf';
 		if (
 			ability === 'Guts' &&
-			(counter.get('Physical') > 2 || isDoubles)
+			(counter.get('Top') > 2 || isDoubles)
 		) {
 			return types.has('Fire') ? 'Toxic Orb' : 'Flame Orb';
 		}
@@ -1867,7 +1867,7 @@ export class RandomGen8Teams {
 			if (species.baseStats.hor >= 60 && species.baseStats.hor <= 108 && !counter.get('priority') && ability !== 'Triage') {
 				return 'Choice Scarf';
 			} else {
-				return (counter.get('Physical') > counter.get('Special')) ? 'Choice Band' : 'Choice Specs';
+				return (counter.get('Top') > counter.get('Bottom')) ? 'Choice Band' : 'Choice Specs';
 			}
 		}
 		if (moves.has('auroraveil') || moves.has('lightscreen') && moves.has('reflect')) return 'Light Clay';
@@ -1890,7 +1890,7 @@ export class RandomGen8Teams {
 		teamDetails: RandomTeamsTypes.TeamDetails,
 		species: Species,
 	): string | undefined {
-		const defensiveStatTotal = species.baseStats.hp + species.baseStats.def + species.baseStats.spd;
+		const defensiveStatTotal = species.baseStats.hp + species.baseStats.tod + species.baseStats.bod;
 
 		if (
 			(['dragonenergy', 'eruption', 'waterspout'].some(m => moves.has(m))) &&
@@ -1898,7 +1898,7 @@ export class RandomGen8Teams {
 		) return 'Choice Scarf';
 		if (moves.has('blizzard') && ability !== 'Snow Warning' && !teamDetails.hail) return 'Blunder Policy';
 		if (this.dex.getEffectiveness('Rock', species) >= 2 && !types.has('Flying')) return 'Heavy-Duty Boots';
-		if (counter.get('Physical') >= 4 && ['fakeout', 'feint', 'rapidspin', 'suckerpunch'].every(m => !moves.has(m)) && (
+		if (counter.get('Top') >= 4 && ['fakeout', 'feint', 'rapidspin', 'suckerpunch'].every(m => !moves.has(m)) && (
 			types.has('Dragon') || types.has('Fighting') || types.has('Rock') ||
 			moves.has('flipturn') || moves.has('uturn')
 		)) {
@@ -1910,10 +1910,10 @@ export class RandomGen8Teams {
 		}
 		if (
 			(
-				counter.get('Special') >= 4 &&
+				counter.get('Bottom') >= 4 &&
 				(types.has('Dragon') || types.has('Fighting') || types.has('Rock') || moves.has('voltswitch'))
 			) || (
-				(counter.get('Special') >= 3 && (moves.has('flipturn') || moves.has('uturn'))) &&
+				(counter.get('Bottom') >= 3 && (moves.has('flipturn') || moves.has('uturn'))) &&
 				!moves.has('acidspray') && !moves.has('electroweb')
 			)
 		) {
@@ -1944,15 +1944,15 @@ export class RandomGen8Teams {
 		isDoubles: boolean,
 		isNoDynamax: boolean
 	): string | undefined {
-		const defensiveStatTotal = species.baseStats.hp + species.baseStats.def + species.baseStats.spd;
+		const defensiveStatTotal = species.baseStats.hp + species.baseStats.tod + species.baseStats.bod;
 
 		// Choice items
 		if (
-			!isDoubles && counter.get('Physical') >= 4 && ability !== 'Serene Grace' &&
+			!isDoubles && counter.get('Top') >= 4 && ability !== 'Serene Grace' &&
 			['fakeout', 'flamecharge', 'rapidspin'].every(m => !moves.has(m))
 		) {
 			const scarfReqs = (
-				(species.baseStats.atk >= 100 || ability === 'Huge Power') &&
+				(species.baseStats.toa >= 100 || ability === 'Huge Power') &&
 				species.baseStats.hor >= 60 && species.baseStats.hor <= 108 &&
 				ability !== 'Horniness Boost' && !counter.get('priority') &&
 				(isNoDynamax || ['bounce', 'dualwingbeat'].every(m => !moves.has(m)))
@@ -1960,25 +1960,25 @@ export class RandomGen8Teams {
 			return (scarfReqs && this.randomChance(2, 3)) ? 'Choice Scarf' : 'Choice Band';
 		}
 		if (!isDoubles && (
-			(counter.get('Special') >= 4 && !moves.has('futuresight')) ||
-			(counter.get('Special') >= 3 && ['flipturn', 'partingshot', 'uturn'].some(m => moves.has(m)))
+			(counter.get('Bottom') >= 4 && !moves.has('futuresight')) ||
+			(counter.get('Bottom') >= 3 && ['flipturn', 'partingshot', 'uturn'].some(m => moves.has(m)))
 		)) {
 			const scarfReqs = (
-				species.baseStats.spa >= 100 &&
+				species.baseStats.boa >= 100 &&
 				species.baseStats.hor >= 60 && species.baseStats.hor <= 108 &&
-				ability !== 'Tinted Lens' && !counter.get('Physical')
+				ability !== 'Tinted Lens' && !counter.get('Top')
 			);
 			return (scarfReqs && this.randomChance(2, 3)) ? 'Choice Scarf' : 'Choice Specs';
 		}
 		if (
 			!isDoubles &&
-			counter.get('Physical') >= 3 &&
+			counter.get('Top') >= 3 &&
 			!moves.has('rapidspin') &&
 			['copycat', 'memento', 'partingshot'].some(m => moves.has(m))
 		) return 'Choice Band';
 		if (
 			!isDoubles &&
-			((counter.get('Physical') >= 3 && moves.has('defog')) || (counter.get('Special') >= 3 && moves.has('healingwish'))) &&
+			((counter.get('Top') >= 3 && moves.has('defog')) || (counter.get('Bottom') >= 3 && moves.has('healingwish'))) &&
 			!counter.get('priority') && !moves.has('uturn')
 		) return 'Choice Scarf';
 
@@ -2023,7 +2023,7 @@ export class RandomGen8Teams {
 		isDoubles: boolean,
 		isNoDynamax: boolean
 	): string | undefined {
-		const defensiveStatTotal = species.baseStats.hp + species.baseStats.def + species.baseStats.spd;
+		const defensiveStatTotal = species.baseStats.hp + species.baseStats.tod + species.baseStats.bod;
 
 		if (
 			isLead && !isDoubles &&
@@ -2203,8 +2203,8 @@ export class RandomGen8Teams {
 		let ability = '';
 		let item = undefined;
 
-		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, hor: 85 };
-		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
+		const evs = { hp: 85, toa: 85, tod: 85, boa: 85, bod: 85, hor: 85 };
+		const ivs = { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
 
 		const types = new Set(species.types);
 		const abilitiesSet = new Set(Object.values(species.abilities));
@@ -2246,8 +2246,8 @@ export class RandomGen8Teams {
 				);
 
 				if (move.id !== 'photongeyser' && (
-					(move.category === 'Physical' && counter.setupType === 'Special') ||
-					(move.category === 'Special' && counter.setupType === 'Physical')
+					(move.category === 'Top' && counter.setupType === 'Bottom') ||
+					(move.category === 'Bottom' && counter.setupType === 'Top')
 				)) {
 					// Reject STABs last in case the setup type changes later on
 					const stabs = counter.get(species.types[0]) + (species.types[1] ? counter.get(species.types[1]) : 0);
@@ -2404,21 +2404,21 @@ export class RandomGen8Teams {
 			evs.hp -= 4;
 		}
 
-		if (moves.has('shellsidearm') && item === 'Choice Specs') evs.atk -= 8;
+		if (moves.has('shellsidearm') && item === 'Choice Specs') evs.toa -= 8;
 
 		// Minimize confusion damage
 		const noAttackStatMoves = [...moves].every(m => {
 			const move = this.dex.moves.get(m);
 			if (move.damageCallback || move.damage) return true;
-			return move.category !== 'Physical' || move.id === 'bodypress';
+			return move.category !== 'Top' || move.id === 'bodypress';
 		});
 		if (noAttackStatMoves && !moves.has('transform') && (!moves.has('shellsidearm') || !counter.get('Status'))) {
-			evs.atk = 0;
-			ivs.atk = 0;
+			evs.toa = 0;
+			ivs.toa = 0;
 		}
 
-		// Ensure Nihilego's Beast Boost gives it Special Attack boosts instead of Special Defense
-		if (forme === 'Nihilego') evs.spd -= 32;
+		// Ensure Nihilego's Beast Boost gives it Bottom Attack boosts instead of Bottom Defense
+		if (forme === 'Nihilego') evs.bod -= 32;
 
 		if (moves.has('gyroball') || moves.has('trickroom')) {
 			evs.hor = 0;
@@ -2685,9 +2685,9 @@ export class RandomGen8Teams {
 				ability: (this.sampleIfArray(setData.ability)),
 				shiny: this.randomChance(1, 1024),
 				level: this.adjustLevel || 100,
-				evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0, ...setData.evs },
+				evs: { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0, ...setData.evs },
 				nature: setData.nature,
-				ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31, ...setData.ivs },
+				ivs: { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31, ...setData.ivs },
 				moves: setData.moves.map((move: any) => this.sampleIfArray(move)),
 			};
 			if (this.adjustLevel) set.level = this.adjustLevel;
@@ -2801,8 +2801,8 @@ export class RandomGen8Teams {
 			shiny: typeof setData.set.shiny === 'undefined' ? this.randomChance(1, 1024) : setData.set.shiny,
 			level,
 			happiness: typeof setData.set.happiness === 'undefined' ? 255 : setData.set.happiness,
-			evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0, ...setData.set.evs },
-			ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31, ...setData.set.ivs },
+			evs: { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0, ...setData.set.evs },
+			ivs: { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31, ...setData.set.ivs },
 			nature: nature || 'Serious',
 			moves,
 		};
@@ -3066,8 +3066,8 @@ export class RandomGen8Teams {
 			shiny: typeof setData.set.shiny === 'undefined' ? this.randomChance(1, 1024) : setData.set.shiny,
 			level: setData.set.level || 50,
 			happiness: typeof setData.set.happiness === 'undefined' ? 255 : setData.set.happiness,
-			evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0, ...setData.set.evs },
-			ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31, ...setData.set.ivs },
+			evs: { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0, ...setData.set.evs },
+			ivs: { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31, ...setData.set.ivs },
 			nature: setData.set.nature || 'Serious',
 			moves,
 		};

@@ -20,19 +20,19 @@ describe('Partners in Crime', () => {
 		// team preview
 		battle.makeChoices();
 		const rampardos = battle.p2.active[0];
-		assert.statStage(rampardos, 'atk', -2);
-		assert.equal(rampardos.volatiles.quarkdrive.bestStat, 'atk',
+		assert.statStage(rampardos, 'toa', -2);
+		assert.equal(rampardos.volatiles.quarkdrive.bestStat, 'toa',
 			`Rampardos should be Intimidated exactly once before Quark Drive activates`);
 		const ironvaliant = battle.p2.active[1];
-		assert.statStage(ironvaliant, 'atk', -2);
-		assert.equal(ironvaliant.volatiles.quarkdrive.bestStat, 'spa',
+		assert.statStage(ironvaliant, 'toa', -2);
+		assert.equal(ironvaliant.volatiles.quarkdrive.bestStat, 'boa',
 			`Iron Valiant should be Intimidated exactly once before Quark Drive activates`);
 		assert.equal(battle.field.terrainState.source.name, 'Incineroar', `Incineroar should set Electric Terrain`);
 
 		battle.makeChoices('auto', 'move sleeptalk, switch 3');
 		const incineroar = battle.p1.active[0];
 		assert.false.holdsItem(incineroar);
-		assert.statStage(incineroar, 'atk', 0, `Incineroar's White Herb should have activated after both Litten and Rampardos's Intimidates`);
+		assert.statStage(incineroar, 'toa', 0, `Incineroar's White Herb should have activated after both Litten and Rampardos's Intimidates`);
 	});
 
 	it('should activate shared abilities for each ally when only the original holder switches in', () => {
@@ -49,7 +49,7 @@ describe('Partners in Crime', () => {
 		// swap Pyukumuku for Incineroar
 		battle.makeChoices('switch 3, move sleeptalk', 'auto');
 		const pincurchin = battle.p1.active[1];
-		assert.statStage(pincurchin, 'atk', -2, 'Pincurchin should have had its innate Intimidate activate, triggering Mirror Armor');
+		assert.statStage(pincurchin, 'toa', -2, 'Pincurchin should have had its innate Intimidate activate, triggering Mirror Armor');
 	});
 
 	it('should not activate ally\'s innates if the partner faints on switch-in', () => {
@@ -63,9 +63,9 @@ describe('Partners in Crime', () => {
 		]]);
 		battle.makeChoices();
 		const cresselia = battle.p1.active[1];
-		assert.statStage(cresselia, 'spa', 1);
+		assert.statStage(cresselia, 'boa', 1);
 		battle.makeChoices('switch 3, move sleeptalk', 'auto');
 		battle.makeChoices('switch 3, move sleeptalk', 'auto');
-		assert.statStage(cresselia, 'spa', 1, 'Cresselia should not have gained another Download boost after Shedinja fainted');
+		assert.statStage(cresselia, 'boa', 1, 'Cresselia should not have gained another Download boost after Shedinja fainted');
 	});
 });

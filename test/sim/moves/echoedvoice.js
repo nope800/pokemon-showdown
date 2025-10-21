@@ -21,7 +21,7 @@ describe('Echoed Voice', () => {
 
 	it('should raise BP even if there is no target', () => {
 		battle = common.createBattle({ gameType: 'doubles' }, [[
-			{ species: 'Aurorus', ability: 'refrigerate', moves: ['echoedvoice'], evs: { spa: 252 } },
+			{ species: 'Aurorus', ability: 'refrigerate', moves: ['echoedvoice'], evs: { boa: 252 } },
 			{ species: 'Whimsicott', ability: 'prankster', moves: ['memento'] },
 		], [
 			{ species: 'Carnivine', moves: ['sleeptalk'] },

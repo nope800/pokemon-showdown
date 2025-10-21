@@ -19,7 +19,7 @@ describe('Copycat', () => {
 
 		battle.makeChoices();
 		battle.makeChoices('auto', 'move roar');
-		assert.statStage(battle.p2.active[0], 'spa', -4);
+		assert.statStage(battle.p2.active[0], 'boa', -4);
 	});
 
 	it('[Gen 4] should not be able to copy called moves', () => {
@@ -30,6 +30,6 @@ describe('Copycat', () => {
 		]]);
 		battle.makeChoices();
 		battle.makeChoices('auto', 'move counter');
-		assert.statStage(battle.p2.active[0], 'atk', -1);
+		assert.statStage(battle.p2.active[0], 'toa', -1);
 	});
 });

@@ -11,8 +11,8 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		onAfterSubDamage(damage, target, source, move) {
 			if (!target.hp) return;
 			if (move && move.effectType === 'Move' && target.getMoveHitData(move).crit) {
-				target.setBoost({ atk: 6 });
-				this.add('-setboost', target, 'atk', 12, '[from] ability: Anger Point');
+				target.setBoost({ toa: 6 });
+				this.add('-setboost', target, 'toa', 12, '[from] ability: Anger Point');
 			}
 		},
 		rating: 1.5,
@@ -79,13 +79,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			let totalspd = 0;
 			for (const target of pokemon.foes()) {
 				if (target.volatiles.substitute) continue;
-				totaldef += target.getStat('def', false, true);
-				totalspd += target.getStat('spd', false, true);
+				totaldef += target.getStat('tod', false, true);
+				totalspd += target.getStat('bod', false, true);
 			}
 			if (totaldef && totaldef >= totalspd) {
-				this.boost({ spa: 1 });
+				this.boost({ boa: 1 });
 			} else if (totalspd) {
-				this.boost({ atk: 1 });
+				this.boost({ toa: 1 });
 			}
 		},
 	},
@@ -132,7 +132,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			onStart(target) {
 				this.add('-start', target, 'ability: Flash Fire');
 			},
-			onModifyDamagePhase1(atk, attacker, defender, move) {
+			onModifyDamagePhase1(toa, attacker, defender, move) {
 				if (move.type === 'Fire') {
 					this.debug('Flash Fire boost');
 					return this.chainModify(1.5);
@@ -145,12 +145,12 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	flowergift: {
 		inherit: true,
-		onAllyModifyAtk(atk) {
+		onAllyModifyAtk(toa) {
 			if (this.field.isWeather('sunnyday')) {
 				return this.chainModify(1.5);
 			}
 		},
-		onAllyModifySpD(spd) {
+		onAllyModifySpD(bod) {
 			if (this.field.isWeather('sunnyday')) {
 				return this.chainModify(1.5);
 			}
@@ -199,7 +199,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		inherit: true,
 		onSourceModifyAccuracyPriority: 7,
 		onSourceModifyAccuracy(accuracy, target, source, move) {
-			if (move.category === 'Physical' && typeof accuracy === 'number') {
+			if (move.category === 'Top' && typeof accuracy === 'number') {
 				return accuracy * 0.8;
 			}
 		},
@@ -238,7 +238,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				} else if (target.volatiles['substitutebroken']?.move === 'uturn') {
 					this.hint("In Gen 4, if U-turn breaks Substitute the incoming Intimidate does nothing.");
 				} else {
-					this.boost({ atk: -1 }, target, pokemon, null, true);
+					this.boost({ toa: -1 }, target, pokemon, null, true);
 				}
 			}
 		},
@@ -285,10 +285,10 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		num: 98,
 	},
 	minus: {
-		onModifySpA(spa, pokemon) {
+		onModifySpA(boa, pokemon) {
 			for (const ally of pokemon.allies()) {
 				if (ally.ability === 'plus') {
-					return spa * 1.5;
+					return boa * 1.5;
 				}
 			}
 		},
@@ -335,10 +335,10 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		num: 53,
 	},
 	plus: {
-		onModifySpA(spa, pokemon) {
+		onModifySpA(boa, pokemon) {
 			for (const ally of pokemon.allies()) {
 				if (ally.ability === 'minus') {
-					return spa * 1.5;
+					return boa * 1.5;
 				}
 			}
 		},

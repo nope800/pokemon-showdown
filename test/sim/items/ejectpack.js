@@ -104,7 +104,7 @@ describe(`Eject Pack`, () => {
 			{ species: 'Wynaut', moves: ['sleeptalk'] },
 		]]);
 		battle.makeChoices();
-		assert.statStage(battle.p2.active[1], 'atk', -1, "Attack should be dropped before switching.");
+		assert.statStage(battle.p2.active[1], 'toa', -1, "Attack should be dropped before switching.");
 		battle.makeChoices();
 		assert.species(battle.p2.active[0], 'Zeraora', `Zeraora should not have switched out with its Eject Pack.`);
 		assert.species(battle.p2.active[1], 'Wynaut', `Mew should have switched out with its Eject Button.`);

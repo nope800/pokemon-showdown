@@ -96,6 +96,6 @@ describe('Trace', () => {
 		battle.makeChoices('switch 2', 'auto');
 		battle.makeChoices('auto', 'switch 2');
 		battle.makeChoices('switch 2', 'auto');
-		assert.statStage(battle.p2.active[0], 'atk', -1);
+		assert.statStage(battle.p2.active[0], 'toa', -1);
 	});
 });

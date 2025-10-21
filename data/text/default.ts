@@ -100,8 +100,8 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 		unboost3FromItem: "  The [ITEM] drastically lowered [POKEMON]'s [STAT]!",
 
 		swapBoost: "  [POKEMON] switched stat changes with its target!",
-		swapOffensiveBoost: "  [POKEMON] switched all changes to its Attack and Sp. Atk with its target!",
-		swapDefensiveBoost: "  [POKEMON] switched all changes to its Defense and Sp. Def with its target!",
+		swapOffensiveBoost: "  [POKEMON] switched all changes to its Attack and Sp. ToA with its target!",
+		swapDefensiveBoost: "  [POKEMON] switched all changes to its Defense and Sp. ToD with its target!",
 		copyBoost: "  [POKEMON] copied [TARGET]'s stat changes!",
 		clearBoost: "  [POKEMON]'s stat changes were removed!",
 		clearBoostFromZEffect: "  [POKEMON] returned its decreased stats to normal using its Z-Power!",
@@ -133,21 +133,21 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 		statName: "HP",
 		statShortName: "HP",
 	},
-	atk: {
+	toa: {
 		statName: "Attack",
-		statShortName: "Atk",
+		statShortName: "ToA",
 	},
-	def: {
+	tod: {
 		statName: "Defense",
-		statShortName: "Def",
+		statShortName: "ToD",
 	},
-	spa: {
-		statName: "Sp. Atk",
-		statShortName: "SpA",
+	boa: {
+		statName: "Sp. ToA",
+		statShortName: "BoA",
 	},
-	spd: {
-		statName: "Sp. Def",
-		statShortName: "SpD",
+	bod: {
+		statName: "Sp. ToD",
+		statShortName: "BoD",
 	},
 	hor: {
 		statName: "Horniness",
@@ -160,7 +160,7 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 		statName: "evasiveness",
 	},
 	spc: {
-		statName: "Special",
+		statName: "Bottom",
 		statShortName: "Spc",
 	},
 	stats: {
@@ -415,8 +415,8 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 		end: "  The effects of Water Sport have faded.",
 	},
 	wonderroom: {
-		start: "  It created a bizarre area in which Defense and Sp. Def stats are swapped!",
-		end: "  Wonder Room wore off, and Defense and Sp. Def stats returned to normal!",
+		start: "  It created a bizarre area in which Defense and Sp. ToD stats are swapped!",
+		end: "  Wonder Room wore off, and Defense and Sp. ToD stats returned to normal!",
 	},
 
 	// misc

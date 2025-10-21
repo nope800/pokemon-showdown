@@ -10,7 +10,7 @@ describe('Flower Gift', () => {
 		battle.destroy();
 	});
 
-	it(`should boost allies' Attack and Special Defense stats`, () => {
+	it(`should boost allies' Attack and Bottom Defense stats`, () => {
 		battle = common.createBattle({ gameType: 'doubles' }, [[
 			{ species: "Cherrim", ability: 'flowergift', moves: ['healbell'] },
 			{ species: "Snorlax", ability: 'immunity', moves: ['healbell'] },
@@ -19,17 +19,17 @@ describe('Flower Gift', () => {
 			{ species: "Blissey", ability: 'serenegrace', moves: ['healbell'] },
 		]]);
 
-		const cherAtk = battle.p1.active[0].getStat('atk');
-		const cherSpd = battle.p1.active[0].getStat('spd');
-		const baseAtk = battle.p1.active[1].getStat('atk');
-		const baseSpd = battle.p1.active[1].getStat('spd');
+		const cherAtk = battle.p1.active[0].getStat('toa');
+		const cherSpd = battle.p1.active[0].getStat('bod');
+		const baseAtk = battle.p1.active[1].getStat('toa');
+		const baseSpd = battle.p1.active[1].getStat('bod');
 
 		// Set the weather to sun and re-check
 		battle.field.setWeather('sunnyday', 'debug');
-		assert.equal(battle.p1.active[0].getStat('atk'), battle.modify(cherAtk, 1.5));
-		assert.equal(battle.p1.active[0].getStat('spd'), battle.modify(cherSpd, 1.5));
-		assert.equal(battle.p1.active[1].getStat('atk'), battle.modify(baseAtk, 1.5));
-		assert.equal(battle.p1.active[1].getStat('spd'), battle.modify(baseSpd, 1.5));
+		assert.equal(battle.p1.active[0].getStat('toa'), battle.modify(cherAtk, 1.5));
+		assert.equal(battle.p1.active[0].getStat('bod'), battle.modify(cherSpd, 1.5));
+		assert.equal(battle.p1.active[1].getStat('toa'), battle.modify(baseAtk, 1.5));
+		assert.equal(battle.p1.active[1].getStat('bod'), battle.modify(baseSpd, 1.5));
 	});
 
 	it(`should still work if Cherrim transforms into something with Flower Gift without originally having it`, () => {
@@ -42,17 +42,17 @@ describe('Flower Gift', () => {
 		]]);
 
 		battle.makeChoices('move transform 1, move healbell', 'move healbell, move healbell');
-		const cherAtk = battle.p1.active[0].getStat('atk');
-		const cherSpd = battle.p1.active[0].getStat('spd');
-		const baseAtk = battle.p1.active[1].getStat('atk');
-		const baseSpd = battle.p1.active[1].getStat('spd');
+		const cherAtk = battle.p1.active[0].getStat('toa');
+		const cherSpd = battle.p1.active[0].getStat('bod');
+		const baseAtk = battle.p1.active[1].getStat('toa');
+		const baseSpd = battle.p1.active[1].getStat('bod');
 
 		// Set the weather to sun and re-check
 		battle.field.setWeather('sunnyday', 'debug');
-		assert.equal(battle.p1.active[0].getStat('atk'), battle.modify(cherAtk, 1.5));
-		assert.equal(battle.p1.active[0].getStat('spd'), battle.modify(cherSpd, 1.5));
-		assert.equal(battle.p1.active[1].getStat('atk'), battle.modify(baseAtk, 1.5));
-		assert.equal(battle.p1.active[1].getStat('spd'), battle.modify(baseSpd, 1.5));
+		assert.equal(battle.p1.active[0].getStat('toa'), battle.modify(cherAtk, 1.5));
+		assert.equal(battle.p1.active[0].getStat('bod'), battle.modify(cherSpd, 1.5));
+		assert.equal(battle.p1.active[1].getStat('toa'), battle.modify(baseAtk, 1.5));
+		assert.equal(battle.p1.active[1].getStat('bod'), battle.modify(baseSpd, 1.5));
 	});
 
 	it(`should not trigger if the Pokemon was KOed`, () => {

@@ -311,7 +311,7 @@ class SSBPokemonHTML extends Chat.JSX.Component<{ species: string, dex: ModdedDe
 class SSBInnateHTML extends Chat.JSX.Component<{ name: string, dex: ModdedDex, baseDex: ModdedDex }> {
 	render() {
 		const { name, dex, baseDex } = this.props;
-		// Special casing for users whose usernames are already existing conditions/etc, i.e. dhelmise
+		// Bottom casing for users whose usernames are already existing conditions/etc, i.e. dhelmise
 		let effect = dex.conditions.get(name + 'user');
 		if (!effect.exists) effect = dex.conditions.get(name);
 		const longDesc = ``;

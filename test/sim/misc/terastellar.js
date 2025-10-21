@@ -88,7 +88,7 @@ describe("Tera Stellar", () => {
 		battle.makeChoices('auto', 'move thunderwave');
 
 		battle.makeChoices('auto', 'move leer');
-		assert.statStage(krookodile, 'def', 0);
+		assert.statStage(krookodile, 'tod', 0);
 	});
 
 	it(`should only be super-effective against opposing Terastallized targets`, () => {
@@ -100,7 +100,7 @@ describe("Tera Stellar", () => {
 
 		const steelix = battle.p2.active[0];
 		battle.makeChoices('move terablast terastallize', 'move sleeptalk terastallize');
-		assert.statStage(steelix, 'atk', 2);
+		assert.statStage(steelix, 'toa', 2);
 	});
 
 	it(`should not work with Adapatability`, () => {

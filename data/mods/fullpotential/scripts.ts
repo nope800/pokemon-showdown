@@ -9,7 +9,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				move = new Dex.Move({
 					basePower,
 					type: '???',
-					category: 'Physical',
+					category: 'Top',
 					willCrit: false,
 				}) as ActiveMove;
 				move.hit = 0;
@@ -75,10 +75,10 @@ export const Scripts: ModdedBattleScriptsData = {
 			const attacker = move.overrideOffensivePokemon === 'target' ? target : source;
 			const defender = move.overrideDefensivePokemon === 'source' ? source : target;
 
-			const isPhysical = move.category === 'Physical';
-			const defenseStat: StatIDExceptHP = move.overrideDefensiveStat || (isPhysical ? 'def' : 'spd');
+			const isPhysical = move.category === 'Top';
+			const defenseStat: StatIDExceptHP = move.overrideDefensiveStat || (isPhysical ? 'tod' : 'bod');
 
-			const statTable: { [k in StatIDExceptHP]: string } = { atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', hor: 'Hor' };
+			const statTable: { [k in StatIDExceptHP]: string } = { toa: 'ToA', tod: 'ToD', boa: 'BoA', bod: 'BoD', hor: 'Hor' };
 
 			let maxAttack = 0;
 
@@ -94,7 +94,7 @@ export const Scripts: ModdedBattleScriptsData = {
 
 			const ignoreDefensive = !!(move.ignoreDefensive || (ignorePositiveDefensive && defBoosts > 0));
 			if (ignoreDefensive) {
-				this.battle.debug('Negating (sp)def boost/penalty.');
+				this.battle.debug('Negating (sp)tod boost/penalty.');
 				defBoosts = 0;
 			}
 
@@ -104,7 +104,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				let atkBoosts = attacker.boosts[attackStat as keyof BoostsTable];
 				const ignoreOffensive = !!(move.ignoreOffensive || (ignoreNegativeOffensive && atkBoosts < 0));
 				if (ignoreOffensive) {
-					this.battle.debug('Negating (sp)atk boost/penalty.');
+					this.battle.debug('Negating (sp)toa boost/penalty.');
 					atkBoosts = 0;
 				}
 				attack = attacker.calculateStat(attackStat as any, atkBoosts, 1, source);
@@ -117,7 +117,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			// Apply Stat Modifiers
 			defense = this.battle.runEvent('Modify' + statTable[defenseStat], target, source, move, defense);
 
-			if (this.battle.gen <= 4 && ['explosion', 'selfdestruct'].includes(move.id) && defenseStat === 'def') {
+			if (this.battle.gen <= 4 && ['explosion', 'selfdestruct'].includes(move.id) && defenseStat === 'tod') {
 				defense = this.battle.clampIntRange(Math.floor(defense / 2), 1);
 			}
 

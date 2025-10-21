@@ -24,7 +24,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			return weighthg * 2;
 		},
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, pokemon) {
+		onModifyAtk(toa, pokemon) {
 			if (pokemon.status) {
 				return this.chainModify(1.5);
 			}
@@ -41,14 +41,14 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			const unawareUser = this.effectState.target;
 			if (unawareUser === pokemon) return;
 			if (unawareUser === this.activePokemon && pokemon === this.activeTarget) {
-				boosts['def'] = 0;
-				boosts['spd'] = 0;
+				boosts['tod'] = 0;
+				boosts['bod'] = 0;
 				boosts['evasion'] = 0;
 			}
 			if (pokemon === this.activePokemon && unawareUser === this.activeTarget) {
-				boosts['atk'] = 0;
-				boosts['def'] = 0;
-				boosts['spa'] = 0;
+				boosts['toa'] = 0;
+				boosts['tod'] = 0;
+				boosts['boa'] = 0;
 				boosts['accuracy'] = 0;
 			}
 		},
@@ -114,8 +114,8 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			}
 		},
 		onTryBoost(boost, target, source, effect) {
-			if (effect.name === 'Intimidate' && boost.atk) {
-				delete boost.atk;
+			if (effect.name === 'Intimidate' && boost.toa) {
+				delete boost.toa;
 				this.add('-fail', target, 'unboost', 'Attack', '[from] ability: Paw Prints', `[of] ${target}`);
 			}
 		},
@@ -153,7 +153,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Apple
 	orchardsgift: {
-		shortDesc: "Summons Grassy Terrain. 1.5x Sp. Atk and Sp. Def during Grassy Terrain.",
+		shortDesc: "Summons Grassy Terrain. 1.5x Sp. ToA and Sp. ToD during Grassy Terrain.",
 		name: "Orchard's Gift",
 		onStart(pokemon) {
 			if (this.field.setTerrain('grassyterrain')) {
@@ -163,14 +163,14 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			}
 		},
 		onModifyAtkPriority: 5,
-		onModifySpA(spa, pokemon) {
+		onModifySpA(boa, pokemon) {
 			if (this.field.isTerrain('grassyterrain')) {
 				this.debug('Orchard\'s Gift boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpDPriority: 6,
-		onModifySpD(spd, pokemon) {
+		onModifySpD(bod, pokemon) {
 			if (this.field.isTerrain('grassyterrain')) {
 				this.debug('Orchard\'s Gift boost');
 				return this.chainModify(1.5);
@@ -184,7 +184,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		name: "Served Cold",
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === 'Ice') {
-				if (!this.boost({ def: 2 })) {
+				if (!this.boost({ tod: 2 })) {
 					this.add('-immune', target, '[from] ability: Served Cold');
 				}
 				return null;
@@ -233,13 +233,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			if (this.suppressingAbility(pokemon)) return;
 			this.add('-ability', pokemon, 'Quag of Ruin');
 		},
-		onAnyModifyDef(def, target, source, move) {
+		onAnyModifyDef(tod, target, source, move) {
 			if (!move) return;
 			const abilityHolder = this.effectState.target;
 			if (target.hasAbility('Quag of Ruin')) return;
 			if (!move.ruinedDef?.hasAbility('Quag of Ruin')) move.ruinedDef = abilityHolder;
 			if (move.ruinedDef !== abilityHolder) return;
-			this.debug('Quag of Ruin Def drop');
+			this.debug('Quag of Ruin ToD drop');
 			return this.chainModify(0.85);
 		},
 		onModifyMove(move) {
@@ -255,27 +255,27 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		onStart(pokemon) {
 			this.add('-ability', pokemon, 'Clod of Ruin');
 		},
-		onAnyModifyAtk(atk, target, source, move) {
+		onAnyModifyAtk(toa, target, source, move) {
 			if (!move) return;
 			const abilityHolder = this.effectState.target;
 			if (target.hasAbility('Clod of Ruin')) return;
 			if (!move.ruinedAtk?.hasAbility('Clod of Ruin')) move.ruinedAtk = abilityHolder;
 			if (move.ruinedAtk !== abilityHolder) return;
-			this.debug('Clod of Ruin Atk drop');
+			this.debug('Clod of Ruin ToA drop');
 			return this.chainModify(0.85);
 		},
 		onAnyModifyBoost(boosts, pokemon) {
 			const unawareUser = this.effectState.target;
 			if (unawareUser === pokemon) return;
 			if (unawareUser === this.activePokemon && pokemon === this.activeTarget) {
-				boosts['def'] = 0;
-				boosts['spd'] = 0;
+				boosts['tod'] = 0;
+				boosts['bod'] = 0;
 				boosts['evasion'] = 0;
 			}
 			if (pokemon === this.activePokemon && unawareUser === this.activeTarget) {
-				boosts['atk'] = 0;
-				boosts['def'] = 0;
-				boosts['spa'] = 0;
+				boosts['toa'] = 0;
+				boosts['tod'] = 0;
+				boosts['boa'] = 0;
 				boosts['accuracy'] = 0;
 			}
 		},
@@ -354,14 +354,14 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			const unawareUser = this.effectState.target;
 			if (unawareUser === pokemon) return;
 			if (unawareUser === this.activePokemon && pokemon === this.activeTarget) {
-				boosts['def'] = 0;
-				boosts['spd'] = 0;
+				boosts['tod'] = 0;
+				boosts['bod'] = 0;
 				boosts['evasion'] = 0;
 			}
 			if (pokemon === this.activePokemon && unawareUser === this.activeTarget) {
-				boosts['atk'] = 0;
-				boosts['def'] = 0;
-				boosts['spa'] = 0;
+				boosts['toa'] = 0;
+				boosts['tod'] = 0;
+				boosts['boa'] = 0;
 				boosts['accuracy'] = 0;
 			}
 		},
@@ -639,7 +639,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// clerica
 	masquerade: {
-		shortDesc: "(Mimikyu only) The first hit is blocked: instead, takes 1/8 damage and gets +1 Atk/Hor.",
+		shortDesc: "(Mimikyu only) The first hit is blocked: instead, takes 1/8 damage and gets +1 ToA/Hor.",
 		desc: "If this Pokemon is a Mimikyu, the first hit it takes in battle deals 0 neutral damage. Its disguise is then broken, it changes to Busted Form, its Attack and Horniness are boosted by 1 stage, and it loses 1/8 of its max HP. Confusion damage also breaks the disguise.",
 		name: "Masquerade",
 		onDamagePriority: 1,
@@ -681,7 +681,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				const speciesid = pokemon.species.id === 'mimikyutotem' ? 'Mimikyu-Busted-Totem' : 'Mimikyu-Busted';
 				pokemon.formeChange(speciesid, this.effect, true);
 				this.damage(pokemon.baseMaxhp / 8, pokemon, pokemon, this.dex.species.get(speciesid));
-				this.boost({ atk: 1, hor: 1 });
+				this.boost({ toa: 1, hor: 1 });
 				this.add(`c:|${getName('clerica')}|oop`);
 			}
 		},
@@ -745,7 +745,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			}
 		},
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, pokemon) {
+		onModifyAtk(toa, pokemon) {
 			if (this.field.isTerrain('grassyterrain')) {
 				this.debug('Grassy Emperor boost');
 				return this.chainModify([5461, 4096]);
@@ -756,8 +756,8 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Dawn of Artemis
 	formchange: {
-		shortDesc: ">50% HP Necrozma, else Necrozma-Ultra. SpA boosts become Atk boosts and vice versa.",
-		desc: "If this Pokemon is a Necrozma, it changes to Necrozma-Ultra and switches its Attack and Special Attack stat stage changes if it has 1/2 or less of its maximum HP at the end of a turn. If Necrozma-Ultra's HP is above 1/2 of its maximum HP at the end of a turn, it changes back to Necrozma and switches its Attack and Special Attack stat stage changes.",
+		shortDesc: ">50% HP Necrozma, else Necrozma-Ultra. BoA boosts become ToA boosts and vice versa.",
+		desc: "If this Pokemon is a Necrozma, it changes to Necrozma-Ultra and switches its Attack and Bottom Attack stat stage changes if it has 1/2 or less of its maximum HP at the end of a turn. If Necrozma-Ultra's HP is above 1/2 of its maximum HP at the end of a turn, it changes back to Necrozma and switches its Attack and Bottom Attack stat stage changes.",
 		name: "Form Change",
 		onResidual(pokemon) {
 			if (pokemon.baseSpecies.baseSpecies !== 'Necrozma' || pokemon.transformed || !pokemon.hp) return;
@@ -772,10 +772,10 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			}
 			this.add('-activate', pokemon, 'ability: Form Change');
 			changeSet(this, pokemon, ssbSets[newSet]);
-			[pokemon.boosts['atk'], pokemon.boosts['spa']] = [pokemon.boosts['spa'], pokemon.boosts['atk']];
-			this.add('-setboost', pokemon, 'spa', pokemon.boosts['spa'], '[silent]');
-			this.add('-setboost', pokemon, 'atk', pokemon.boosts['atk'], '[silent]');
-			this.add('-message', `${pokemon.name} swapped its Attack and Special Attack boosts!`);
+			[pokemon.boosts['toa'], pokemon.boosts['boa']] = [pokemon.boosts['boa'], pokemon.boosts['toa']];
+			this.add('-setboost', pokemon, 'boa', pokemon.boosts['boa'], '[silent]');
+			this.add('-setboost', pokemon, 'toa', pokemon.boosts['toa'], '[silent]');
+			this.add('-message', `${pokemon.name} swapped its Attack and Bottom Attack boosts!`);
 		},
 		flags: {},
 	},
@@ -898,7 +898,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		onTryHitPriority: 1,
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === 'Ice') {
-				if (!this.boost({ atk: 2 })) {
+				if (!this.boost({ toa: 2 })) {
 					this.add('-immune', target, '[from] ability: Snowballer');
 				}
 				return null;
@@ -986,15 +986,15 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// HoeenHero
 	misspelled: {
-		shortDesc: "Swift Swim + Special Attack 1.5x, Accuracy 0.8x. Never misses, only misspells.",
+		shortDesc: "Swift Swim + Bottom Attack 1.5x, Accuracy 0.8x. Never misses, only misspells.",
 		name: "Misspelled",
 		onModifySpAPriority: 5,
-		onModifySpA(spa) {
-			return this.modify(spa, 1.5);
+		onModifySpA(boa) {
+			return this.modify(boa, 1.5);
 		},
 		onSourceModifyAccuracyPriority: -1,
 		onSourceModifyAccuracy(accuracy, target, source, move) {
-			if (move.category === 'Special' && typeof accuracy === 'number') {
+			if (move.category === 'Bottom' && typeof accuracy === 'number') {
 				return this.chainModify([3277, 4096]);
 			}
 		},
@@ -1014,7 +1014,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		onTryHit(target, source, move) {
 			// Storm Drain
 			if (target !== source && move.type === 'Water') {
-				if (!this.boost({ spa: 1 })) {
+				if (!this.boost({ boa: 1 })) {
 					this.add('-immune', target, '[from] ability: Hydrostatic Positivity');
 				}
 				return null;
@@ -1098,15 +1098,15 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// J0rdy004
 	fortifyingfrost: {
-		shortDesc: "If Snow is active, this Pokemon's Sp. Atk and Sp. Def are 1.5x.",
+		shortDesc: "If Snow is active, this Pokemon's Sp. ToA and Sp. ToD are 1.5x.",
 		name: "Fortifying Frost",
 		onModifySpAPriority: 5,
-		onModifySpA(spa, pokemon) {
+		onModifySpA(boa, pokemon) {
 			if (['hail', 'snowscape'].includes(pokemon.effectiveWeather())) {
 				return this.chainModify(1.5);
 			}
 		},
-		onModifySpD(spd, pokemon) {
+		onModifySpD(bod, pokemon) {
 			if (['hail', 'snowscape'].includes(pokemon.effectiveWeather())) {
 				return this.chainModify(1.5);
 			}
@@ -1170,7 +1170,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		flags: {},
 	},
 	youllneverwalkalone: {
-		shortDesc: "Boosts Atk, Def, SpD, and Hor by 25% under Anfield Atmosphere.",
+		shortDesc: "Boosts ToA, ToD, BoD, and Hor by 25% under Anfield Atmosphere.",
 		name: "You'll Never Walk Alone",
 		onStart(pokemon) {
 			if (this.field.getPseudoWeather('anfieldatmosphere')) {
@@ -1178,23 +1178,23 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			}
 		},
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, source, target, move) {
+		onModifyAtk(toa, source, target, move) {
 			if (this.field.getPseudoWeather('anfieldatmosphere')) {
-				this.debug('You\'ll Never Walk Alone atk boost');
+				this.debug('You\'ll Never Walk Alone toa boost');
 				return this.chainModify([5120, 4096]);
 			}
 		},
 		onModifyDefPriority: 6,
-		onModifyDef(def, target, source, move) {
+		onModifyDef(tod, target, source, move) {
 			if (this.field.getPseudoWeather('anfieldatmosphere')) {
-				this.debug('You\'ll Never Walk Alone def boost');
+				this.debug('You\'ll Never Walk Alone tod boost');
 				return this.chainModify([5120, 4096]);
 			}
 		},
 		onModifySpDPriority: 6,
-		onModifySpD(spd, target, source, move) {
+		onModifySpD(bod, target, source, move) {
 			if (this.field.getPseudoWeather('anfieldatmosphere')) {
-				this.debug('You\'ll Never Walk Alone spd boost');
+				this.debug('You\'ll Never Walk Alone bod boost');
 				return this.chainModify([5120, 4096]);
 			}
 		},
@@ -1282,16 +1282,16 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		shortDesc: "Heatproof + If attacker's used offensive stat has positive stat changes, take 0.75x damage.",
 		name: "Flash Freeze",
 		onSourceModifyAtkPriority: 6,
-		onSourceModifyAtk(atk, attacker, defender, move) {
+		onSourceModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Fire') {
-				this.debug('Heatproof Atk weaken');
+				this.debug('Heatproof ToA weaken');
 				return this.chainModify(0.5);
 			}
 		},
 		onSourceModifySpAPriority: 5,
-		onSourceModifySpA(atk, attacker, defender, move) {
+		onSourceModifySpA(toa, attacker, defender, move) {
 			if (move.type === 'Fire') {
-				this.debug('Heatproof SpA weaken');
+				this.debug('Heatproof BoA weaken');
 				return this.chainModify(0.5);
 			}
 		},
@@ -1302,8 +1302,8 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		},
 		onSourceModifyDamage(damage, source, target, move) {
 			if (
-				(move.category === 'Special' && source.boosts['spa'] > 0) ||
-				(move.category === 'Physical' && source.boosts['atk'] > 0)
+				(move.category === 'Bottom' && source.boosts['boa'] > 0) ||
+				(move.category === 'Top' && source.boosts['toa'] > 0)
 			) {
 				return this.chainModify(0.75);
 			}
@@ -1420,7 +1420,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Maia
 	powerabuse: {
-		shortDesc: "Drought + 60% damage reduction + 20% burn after physical move.",
+		shortDesc: "Drought + 60% damage reduction + 20% burn after top move.",
 		name: "Power Abuse",
 		onStart() {
 			this.field.setWeather('sunnyday');
@@ -1429,7 +1429,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			return this.chainModify(0.4);
 		},
 		onDamagingHit(damage, target, source, move) {
-			if (move.category === "Physical" && this.randomChance(1, 5)) {
+			if (move.category === "Top" && this.randomChance(1, 5)) {
 				source.trySetStatus('brn', target);
 			}
 		},
@@ -1514,13 +1514,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Meteordash
 	tatsuglare: {
-		shortDesc: "Fur Coat + All of the user's moves use the Special Attack stat.",
+		shortDesc: "Fur Coat + All of the user's moves use the Bottom Attack stat.",
 		name: "TatsuGlare",
 		onModifyMove(move, pokemon, target) {
-			if (move.category !== "Status") move.overrideOffensiveStat = 'spa';
+			if (move.category !== "Status") move.overrideOffensiveStat = 'boa';
 		},
 		onModifyDefPriority: 6,
-		onModifyDef(def) {
+		onModifyDef(tod) {
 			return this.chainModify(2);
 		},
 		flags: { breakable: 1 },
@@ -1548,7 +1548,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			pokemon.addVolatile('therollingspheal');
 		},
 		onSourceHit(target, source, move) {
-			if (move.flags['contact'] && move.category === 'Physical') {
+			if (move.flags['contact'] && move.category === 'Top') {
 				this.add('-activate', source, 'ability: The Rolling Spheal');
 				this.boost({ hor: 1 }, source, source, move);
 			}
@@ -1611,13 +1611,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// MyPearl
 	eoncall: {
-		shortDesc: "Changes into Latios after status move, Latias after special move.",
-		desc: "If this Pokemon is a Latios, it changes into Latias after using a status move. If this Pokemon is a Latias, it changes into Latios after using a special attack.",
+		shortDesc: "Changes into Latios after status move, Latias after bottom move.",
+		desc: "If this Pokemon is a Latios, it changes into Latias after using a status move. If this Pokemon is a Latias, it changes into Latios after using a bottom attack.",
 		name: "Eon Call",
 		onAfterMove(source, target, move) {
 			if (move.category === 'Status' && source.species.baseSpecies === 'Latias') {
 				changeSet(this, source, ssbSets['MyPearl'], true);
-			} else if (move.category === 'Special' && source.species.baseSpecies === 'Latios') {
+			} else if (move.category === 'Bottom' && source.species.baseSpecies === 'Latios') {
 				changeSet(this, source, ssbSets['MyPearl-Latias'], true);
 			}
 		},
@@ -1629,14 +1629,14 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		shortDesc: "Water-/Fire-type moves against this Pokemon deal damage with a halved offensive stat.",
 		name: "Weatherproof",
 		onSourceModifyAtkPriority: 6,
-		onSourceModifyAtk(atk, attacker, defender, move) {
+		onSourceModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Water' || move.type === 'Fire') {
 				this.debug('Weatherproof weaken');
 				return this.chainModify(0.5);
 			}
 		},
 		onSourceModifySpAPriority: 5,
-		onSourceModifySpA(atk, attacker, defender, move) {
+		onSourceModifySpA(toa, attacker, defender, move) {
 			if (move.type === 'Water' || move.type === 'Fire') {
 				this.debug('Weatherproof weaken');
 				return this.chainModify(0.5);
@@ -1706,14 +1706,14 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			}
 		},
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, attacker, defender) {
+		onModifyAtk(toa, attacker, defender) {
 			if (defender && !defender.activeTurns) {
 				this.debug('Stakeout boost');
 				return this.chainModify(2);
 			}
 		},
 		onModifySpAPriority: 5,
-		onModifySpA(atk, attacker, defender) {
+		onModifySpA(toa, attacker, defender) {
 			if (defender && !defender.activeTurns) {
 				this.debug('Stakeout boost');
 				return this.chainModify(2);
@@ -1724,8 +1724,8 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// PartMan
 	ctiershitposter: {
-		shortDesc: "-1 Atk/SpA, +1 Def/SpD. +1 Atk/SpA/Hor, -1 Def/SpD, Mold Breaker if 420+ dmg taken.",
-		desc: "When this Pokemon switches in, its Defense and Special Defense are boosted by 1 stage and its Attack and Special Attack are lowered by 1 stage. Once this Pokemon has taken total damage throughout the battle equal to or greater than 420 HP, it instead ignores the Abilities of opposing Pokemon when attacking and its existing stat stage changes are cleared. After this and whenever it gets sent out from this point onwards, this Pokemon boosts its Attack, Special Attack, and Horniness by 1 stage, and lowers its Defense and Special Defense by 1 stage.",
+		shortDesc: "-1 ToA/BoA, +1 ToD/BoD. +1 ToA/BoA/Hor, -1 ToD/BoD, Mold Breaker if 420+ dmg taken.",
+		desc: "When this Pokemon switches in, its Defense and Bottom Defense are boosted by 1 stage and its Attack and Bottom Attack are lowered by 1 stage. Once this Pokemon has taken total damage throughout the battle equal to or greater than 420 HP, it instead ignores the Abilities of opposing Pokemon when attacking and its existing stat stage changes are cleared. After this and whenever it gets sent out from this point onwards, this Pokemon boosts its Attack, Bottom Attack, and Horniness by 1 stage, and lowers its Defense and Bottom Defense by 1 stage.",
 		name: "C- Tier Shitposter",
 		onDamage(damage, target, source, effect) {
 			target.m.damageTaken ??= 0;
@@ -1739,7 +1739,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 					this.add(`c:|${getName('PartMan')}|That's it. Get ready to be rapid-fire hugged.`);
 					target.clearBoosts();
 					this.add('-clearboost', target);
-					this.boost({ atk: 1, def: -1, spa: 1, spd: -1, hor: 1 });
+					this.boost({ toa: 1, tod: -1, boa: 1, bod: -1, hor: 1 });
 					const details = target.getUpdatedDetails();
 					target.details = details;
 					this.add('replace', target, details);
@@ -1751,9 +1751,9 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		},
 		onStart(pokemon) {
 			if (!pokemon.set.shiny) {
-				this.boost({ atk: -1, def: 1, spa: -1, spd: 1 });
+				this.boost({ toa: -1, tod: 1, boa: -1, bod: 1 });
 			} else {
-				this.boost({ atk: 1, def: -1, spa: 1, spd: -1, hor: 1 });
+				this.boost({ toa: 1, tod: -1, boa: 1, bod: -1, hor: 1 });
 			}
 		},
 	},
@@ -1888,10 +1888,10 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// R8
 	antipelau: {
-		shortDesc: "Boosts Sp. Atk by 2 and sets a 25% Wish upon switch-in.",
+		shortDesc: "Boosts Sp. ToA by 2 and sets a 25% Wish upon switch-in.",
 		name: "Anti-Pelau",
 		onStart(target) {
-			this.boost({ spa: 2 }, target);
+			this.boost({ boa: 2 }, target);
 			this.actions.useMove(this.dex.getActiveMove('wish'), target,
 				{ target, sourceEffect: this.dex.abilities.get('antipelau') });
 		},
@@ -1920,7 +1920,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	// Ransei
 	ultramystik: {
 		shortDesc: "Stats 1.3x + Magic Guard + Leftovers until hit super effectively.",
-		desc: "This Pokemon can only be damaged by direct attacks. At the end of each turn, this Pokemon restores 1/16 of its maximum HP. This Pokemon's Attack, Defense, Special Attack, Special Defense, and Horniness are boosted by 1.3x. This ability will be replaced with Healer if it is hit with a super effective attack.",
+		desc: "This Pokemon can only be damaged by direct attacks. At the end of each turn, this Pokemon restores 1/16 of its maximum HP. This Pokemon's Attack, Defense, Bottom Attack, Bottom Defense, and Horniness are boosted by 1.3x. This ability will be replaced with Healer if it is hit with a super effective attack.",
 		name: "Ultra Mystik",
 		onStart(target) {
 			if (!this.effectState.superHit) {
@@ -1946,22 +1946,22 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				this.add('-start', pokemon, 'ultramystik');
 			},
 			onModifyAtkPriority: 5,
-			onModifyAtk(atk, pokemon) {
+			onModifyAtk(toa, pokemon) {
 				if (pokemon.ignoringAbility()) return;
 				return this.chainModify(1.3);
 			},
 			onModifyDefPriority: 6,
-			onModifyDef(def, pokemon) {
+			onModifyDef(tod, pokemon) {
 				if (pokemon.ignoringAbility()) return;
 				return this.chainModify(1.3);
 			},
 			onModifySpAPriority: 5,
-			onModifySpA(spa, pokemon) {
+			onModifySpA(boa, pokemon) {
 				if (pokemon.ignoringAbility()) return;
 				return this.chainModify(1.3);
 			},
 			onModifySpDPriority: 6,
-			onModifySpD(spd, pokemon) {
+			onModifySpD(bod, pokemon) {
 				if (pokemon.ignoringAbility()) return;
 				return this.chainModify(1.3);
 			},
@@ -1986,19 +1986,19 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// ReturnToMonkey
 	monkeseemonkedo: {
-		shortDesc: "Boosts Atk or SpA by 1 based on foe's defenses, then copies foe's Ability.",
+		shortDesc: "Boosts ToA or BoA by 1 based on foe's defenses, then copies foe's Ability.",
 		name: "Monke See Monke Do",
 		onStart(pokemon) {
 			let totaldef = 0;
 			let totalspd = 0;
 			for (const target of pokemon.foes()) {
-				totaldef += target.getStat('def', false, true);
-				totalspd += target.getStat('spd', false, true);
+				totaldef += target.getStat('tod', false, true);
+				totalspd += target.getStat('bod', false, true);
 			}
 			if (totaldef && totaldef >= totalspd) {
-				this.boost({ spa: 1 });
+				this.boost({ boa: 1 });
 			} else if (totalspd) {
-				this.boost({ atk: 1 });
+				this.boost({ toa: 1 });
 			}
 
 			// n.b. only affects Hackmons
@@ -2034,7 +2034,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		shortDesc: "Stamina + Normal-type moves get +1 priority.",
 		name: "Built Different",
 		onDamagingHit(damage, target, source, effect) {
-			this.boost({ def: 1 });
+			this.boost({ tod: 1 });
 		},
 		onModifyPriority(priority, pokemon, target, move) {
 			if (move?.type === 'Normal') return priority + 1;
@@ -2129,7 +2129,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		shortDesc: "This Pokemon's Defense is doubled and its status moves gain +1 priority.",
 		name: "Youkai of the Dusk",
 		onModifyDefPriority: 6,
-		onModifyDef(def) {
+		onModifyDef(tod) {
 			return this.chainModify(2);
 		},
 		onModifyPriority(priority, pokemon, target, move) {
@@ -2171,13 +2171,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Siegfried
 	magicalmysterycharge: {
-		shortDesc: "Summons Electric Terrain upon switch-in, +1 boost to Sp. Def during Electric Terrain.",
+		shortDesc: "Summons Electric Terrain upon switch-in, +1 boost to Sp. ToD during Electric Terrain.",
 		name: "Magical Mystery Charge",
 		onStart(source) {
 			this.field.setTerrain('electricterrain');
 		},
 		onModifySpDPriority: 5,
-		onModifySpD(spd, pokemon) {
+		onModifySpD(bod, pokemon) {
 			if (this.field.isTerrain('electricterrain')) {
 				return this.chainModify(1.5);
 			}
@@ -2191,14 +2191,14 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		shortDesc: "Fire-/Ice-type moves against this Pokemon deal damage with a halved offensive stat.",
 		name: "Perfectly Imperfect",
 		onSourceModifyAtkPriority: 6,
-		onSourceModifyAtk(atk, attacker, defender, move) {
+		onSourceModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Ice' || move.type === 'Fire') {
 				this.debug('Perfectly Imperfect weaken');
 				return this.chainModify(0.5);
 			}
 		},
 		onSourceModifySpAPriority: 5,
-		onSourceModifySpA(atk, attacker, defender, move) {
+		onSourceModifySpA(toa, attacker, defender, move) {
 			if (move.type === 'Ice' || move.type === 'Fire') {
 				this.debug('Perfectly Imperfect weaken');
 				return this.chainModify(0.5);
@@ -2275,7 +2275,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// spoo
 	icanheartheheartbeatingasone: {
-		shortDesc: "Pixilate + Sharpness. -1 Atk upon KOing an opposing Pokemon.",
+		shortDesc: "Pixilate + Sharpness. -1 ToA upon KOing an opposing Pokemon.",
 		name: "I Can Hear The Heart Beating As One",
 		onModifyTypePriority: -1,
 		onModifyType(move, pokemon) {
@@ -2298,7 +2298,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		},
 		onSourceAfterFaint(length, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				this.boost({ atk: -length }, source);
+				this.boost({ toa: -length }, source);
 			}
 		},
 		flags: {},
@@ -2343,7 +2343,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			}
 		},
 		onDamagingHit(damage, target, source, effect) {
-			this.boost({ def: 1 });
+			this.boost({ tod: 1 });
 		},
 	},
 
@@ -2513,7 +2513,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				return null;
 			}
 		},
-		onModifyDef(def) {
+		onModifyDef(tod) {
 			return this.chainModify(2);
 		},
 		flags: { breakable: 1 },
@@ -2548,12 +2548,12 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Venous
 	concreteoverwater: {
-		shortDesc: "Gains +1 Defense and Sp. Def before getting hit by a super effective move.",
+		shortDesc: "Gains +1 Defense and Sp. ToD before getting hit by a super effective move.",
 		name: "Concrete Over Water",
 		onTryHit(target, source, move) {
 			if (target === source || move.category === 'Status') return;
 			if (target.runEffectiveness(move) > 0) {
-				this.boost({ def: 1, spd: 1 }, target);
+				this.boost({ tod: 1, bod: 1 }, target);
 			}
 		},
 		flags: {},
@@ -2680,7 +2680,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// xy01
 	panic: {
-		shortDesc: "Lowers the foe's Atk and Sp. Atk by 1 upon switch-in.",
+		shortDesc: "Lowers the foe's ToA and Sp. ToA by 1 upon switch-in.",
 		name: "Panic",
 		onStart(pokemon) {
 			let activated = false;
@@ -2692,7 +2692,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				if (target.volatiles['substitute']) {
 					this.add('-immune', target);
 				} else {
-					this.boost({ atk: -1, spa: -1 }, target, pokemon, null, true);
+					this.boost({ toa: -1, boa: -1 }, target, pokemon, null, true);
 				}
 			}
 		},
@@ -2701,8 +2701,8 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Yellow Paint
 	yellowmagic: {
-		shortDesc: "+25% HP, +1 SpA, +1 Hor, Charge, or paralyzes attacker when hit by an Electric move; Electric immunity.",
-		desc: "This Pokemon is immune to Electric type moves. When this Pokemon is hit by one, it either: restores 25% of its maximum HP, boosts its Special Attack by 1 stage, boosts its Horniness by 1 stage, gains the Charge effect, or paralyzes the attacker.",
+		shortDesc: "+25% HP, +1 BoA, +1 Hor, Charge, or paralyzes attacker when hit by an Electric move; Electric immunity.",
+		desc: "This Pokemon is immune to Electric type moves. When this Pokemon is hit by one, it either: restores 25% of its maximum HP, boosts its Bottom Attack by 1 stage, boosts its Horniness by 1 stage, gains the Charge effect, or paralyzes the attacker.",
 		name: "Yellow Magic",
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === 'Electric') {
@@ -2712,7 +2712,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 					didSomething = !!this.heal(target.baseMaxhp / 4);
 					break;
 				case 1:
-					didSomething = !!this.boost({ spa: 1 }, target, target);
+					didSomething = !!this.boost({ boa: 1 }, target, target);
 					break;
 				case 2:
 					didSomething = !!this.boost({ hor: 1 }, target, target);
@@ -2857,7 +2857,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// YveltalNL
 	heightadvantage: {
-		shortDesc: "If this Pokemon's height is more than that of the foe, -1 to foe's Attack/Sp. Atk.",
+		shortDesc: "If this Pokemon's height is more than that of the foe, -1 to foe's Attack/Sp. ToA.",
 		name: "Height Advantage",
 		onStart(pokemon) {
 			let activated = false;
@@ -2870,7 +2870,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 					this.add('-immune', target);
 				} else {
 					if (this.dex.species.get(pokemon.species).heightm > this.dex.species.get(target.species).heightm) {
-						this.boost({ atk: -1, spa: -1 }, target, pokemon, null, true);
+						this.boost({ toa: -1, boa: -1 }, target, pokemon, null, true);
 					}
 				}
 			}

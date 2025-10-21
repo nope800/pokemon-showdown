@@ -70,7 +70,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	magnezone: {
 		inherit: true,
 		evoType: "levelExtra",
-		evoCondition: "in a special magnetic field",
+		evoCondition: "in a bottom magnetic field",
 	},
 	leafeon: {
 		inherit: true,
@@ -181,11 +181,11 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	aegislash: {
 		inherit: true,
-		baseStats: { hp: 60, atk: 50, def: 150, spa: 50, spd: 150, hor: 60 },
+		baseStats: { hp: 60, toa: 50, tod: 150, boa: 50, bod: 150, hor: 60 },
 	},
 	aegislashblade: {
 		inherit: true,
-		baseStats: { hp: 60, atk: 150, def: 50, spa: 150, spd: 50, hor: 60 },
+		baseStats: { hp: 60, toa: 150, tod: 50, boa: 150, bod: 50, hor: 60 },
 	},
 	pumpkaboosmall: {
 		inherit: true,
@@ -226,7 +226,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	vikavolt: {
 		inherit: true,
 		evoType: "levelExtra",
-		evoCondition: "near a special magnetic field",
+		evoCondition: "near a bottom magnetic field",
 	},
 	crabominable: {
 		inherit: true,
@@ -259,12 +259,12 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	pyroak: {
 		inherit: true,
-		baseStats: { hp: 120, atk: 70, def: 105, spa: 95, spd: 90, hor: 60 },
+		baseStats: { hp: 120, toa: 70, tod: 105, boa: 95, bod: 90, hor: 60 },
 		abilities: { 0: "Rock Head", 1: "Battle Armor", H: "White Smoke" },
 	},
 	voodoom: {
 		inherit: true,
-		baseStats: { hp: 90, atk: 85, def: 80, spa: 105, spd: 80, hor: 110 },
+		baseStats: { hp: 90, toa: 85, tod: 80, boa: 105, bod: 80, hor: 110 },
 	},
 	mumbao: {
 		inherit: true,

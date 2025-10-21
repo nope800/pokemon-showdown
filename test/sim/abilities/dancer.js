@@ -17,8 +17,8 @@ describe('Dancer', () => {
 			{ species: 'Oricorio', ability: 'dancer', moves: ['howl'] },
 		]]);
 		battle.makeChoices('move swordsdance', 'move howl');
-		assert.statStage(battle.p1.active[0], 'atk', 2);
-		assert.statStage(battle.p2.active[0], 'atk', 3);
+		assert.statStage(battle.p1.active[0], 'toa', 2);
+		assert.statStage(battle.p2.active[0], 'toa', 3);
 	});
 
 	it('should activate in order of lowest to highest raw horniness', () => {
@@ -94,12 +94,12 @@ describe('Dancer', () => {
 		const wynaut = battle.p1.active[1];
 		const oricorio = battle.p2.active[0];
 
-		mew.boostBy({ atk: 6, hor: 6 });
-		oricorio.boostBy({ atk: -6 });
+		mew.boostBy({ toa: 6, hor: 6 });
+		oricorio.boostBy({ toa: -6 });
 
 		battle.makeChoices('move dragondance, move featherdance 1', 'move revelationdance -2, move finalgambit 1');
 		assert.fullHP(oricorio, `Nothing should target Oricorio because Revelation Dance failed from Wonder Guard`);
-		assert.statStage(wynaut, 'atk', 0, `Wynaut's attack should not have changed from either Feather Dance or Dragon Dance, because both failed`);
+		assert.statStage(wynaut, 'toa', 0, `Wynaut's attack should not have changed from either Feather Dance or Dragon Dance, because both failed`);
 	});
 
 	it(`should not copy a move that missed`, () => {
@@ -179,8 +179,8 @@ describe('Dancer', () => {
 		battle.makeChoices('move featherdance 1, move copycat', 'auto');
 		const flamigo = battle.p1.active[1];
 		const [fletchinder, squawkabilly] = battle.p2.active;
-		assert.equal(flamigo.boosts.atk, 0);
-		assert.equal(fletchinder.boosts.atk, -2);
-		assert.equal(squawkabilly.boosts.atk, -4);
+		assert.equal(flamigo.boosts.toa, 0);
+		assert.equal(fletchinder.boosts.toa, -2);
+		assert.equal(squawkabilly.boosts.toa, -4);
 	});
 });

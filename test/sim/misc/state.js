@@ -43,7 +43,7 @@ describe('State', () => {
 			control.destroy();
 			test.destroy();
 		});
-		it('should require special treatment for complex objects', () => {
+		it('should require bottom treatment for complex objects', () => {
 			const battle = common.createBattle(TEAMS);
 			battle.foo = new Map();
 			assert.throws(() => battle.toJSON(), /Unsupported type Map/);

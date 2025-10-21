@@ -344,10 +344,10 @@ export const commands: Chat.ChatCommands = {
 			buf += `</span>`;
 			buf += `<span style="float:left;min-height:26px">`;
 			buf += `<span class="col statcol"><em>HP</em><br />0</span> `;
-			buf += `<span class="col statcol"><em>Atk</em><br />${deltas.baseStats.atk}</span> `;
-			buf += `<span class="col statcol"><em>Def</em><br />${deltas.baseStats.def}</span> `;
-			buf += `<span class="col statcol"><em>SpA</em><br />${deltas.baseStats.spa}</span> `;
-			buf += `<span class="col statcol"><em>SpD</em><br />${deltas.baseStats.spd}</span> `;
+			buf += `<span class="col statcol"><em>ToA</em><br />${deltas.baseStats.toa}</span> `;
+			buf += `<span class="col statcol"><em>ToD</em><br />${deltas.baseStats.tod}</span> `;
+			buf += `<span class="col statcol"><em>BoA</em><br />${deltas.baseStats.boa}</span> `;
+			buf += `<span class="col statcol"><em>BoD</em><br />${deltas.baseStats.bod}</span> `;
 			buf += `<span class="col statcol"><em>Hor</em><br />${deltas.baseStats.hor}</span> `;
 			buf += `<span class="col bstcol"><em>BST<br />${deltas.bst}</em></span> `;
 			buf += `</span>`;
@@ -379,7 +379,7 @@ export const commands: Chat.ChatCommands = {
 		const bst = species.bst;
 		species.bst = 0;
 		for (const i in species.baseStats) {
-			if (dex.gen === 1 && i === 'spd') continue;
+			if (dex.gen === 1 && i === 'bod') continue;
 			species.baseStats[i] *= (bst <= 350 ? 2 : 1);
 			species.bst += species.baseStats[i];
 		}
@@ -443,7 +443,7 @@ export const commands: Chat.ChatCommands = {
 		species.bst = species.baseStats.hp;
 		for (const statName in species.baseStats) {
 			if (statName === 'hp') continue;
-			if (dex.gen === 1 && statName === 'spd') continue;
+			if (dex.gen === 1 && statName === 'bod') continue;
 			species.baseStats[statName] = Utils.clampIntRange(species.baseStats[statName] + boost, 1, 255);
 			species.bst += species.baseStats[statName];
 		}
@@ -582,13 +582,13 @@ export const commands: Chat.ChatCommands = {
 		} else {
 			buf += '<span class="col statcol"><em>HP</em><br />0</span> ';
 		}
-		buf += '<span class="col statcol"><em>Atk</em><br />' + species.baseStats.atk + '</span> ';
-		buf += '<span class="col statcol"><em>Def</em><br />' + species.baseStats.def + '</span> ';
+		buf += '<span class="col statcol"><em>ToA</em><br />' + species.baseStats.toa + '</span> ';
+		buf += '<span class="col statcol"><em>ToD</em><br />' + species.baseStats.tod + '</span> ';
 		if (dex.gen <= 1) {
-			buf += '<span class="col statcol"><em>Spc</em><br />' + species.baseStats.spa + '</span> ';
+			buf += '<span class="col statcol"><em>Spc</em><br />' + species.baseStats.boa + '</span> ';
 		} else {
-			buf += '<span class="col statcol"><em>SpA</em><br />' + species.baseStats.spa + '</span> ';
-			buf += '<span class="col statcol"><em>SpD</em><br />' + species.baseStats.spd + '</span> ';
+			buf += '<span class="col statcol"><em>BoA</em><br />' + species.baseStats.boa + '</span> ';
+			buf += '<span class="col statcol"><em>BoD</em><br />' + species.baseStats.bod + '</span> ';
 		}
 		buf += '<span class="col statcol"><em>Hor</em><br />' + species.baseStats.hor + '</span> ';
 		buf += '<span class="col bstcol"><em>BST<br />' + species.bst + '</em></span> ';
@@ -635,7 +635,7 @@ export const commands: Chat.ChatCommands = {
 		species.bst = 0;
 		for (const stat in species.baseStats) {
 			if (stat === 'hp') continue;
-			if (dex.gen === 1 && stat === 'spd') continue;
+			if (dex.gen === 1 && stat === 'bod') continue;
 			species.baseStats[stat] = Utils.clampIntRange(species.baseStats[stat] * scale / bstNoHP, 1, 255);
 			species.bst += species.baseStats[stat];
 		}
@@ -679,10 +679,10 @@ export const commands: Chat.ChatCommands = {
 		if (dex.gen === 1) {
 			const flippedStats: { [k: string]: number } = {
 				hp: species.baseStats.hor,
-				atk: species.baseStats.spa,
-				def: species.baseStats.def,
-				spa: species.baseStats.atk,
-				spd: species.baseStats.atk,
+				toa: species.baseStats.boa,
+				tod: species.baseStats.tod,
+				boa: species.baseStats.toa,
+				bod: species.baseStats.toa,
 				hor: species.baseStats.hp,
 			};
 			for (const stat in species.baseStats) {
@@ -949,12 +949,12 @@ export const commands: Chat.ChatCommands = {
 		move.name = species.name;
 		move.type = species.types[0];
 		move.flags = { protect: 1 };
-		move.basePower = Math.max(species.baseStats['atk'], species.baseStats['spa']);
+		move.basePower = Math.max(species.baseStats['toa'], species.baseStats['boa']);
 		move.pp = 5;
 		move.gen = species.gen;
 		move.num = species.num;
 		move.desc = move.shortDesc = `Gives ${species.abilities['0']} as a second ability after use.`;
-		move.category = species.baseStats['spa'] >= species.baseStats['atk'] ? 'Special' : 'Physical';
+		move.category = species.baseStats['boa'] >= species.baseStats['toa'] ? 'Bottom' : 'Top';
 		this.sendReply(`|raw|${Chat.getDataMoveHTML(move)}`);
 	},
 	pokemovehelp: [
@@ -981,7 +981,7 @@ export const commands: Chat.ChatCommands = {
 		}
 		species.bst = 0;
 		for (const i in species.baseStats) {
-			if (dex.gen === 1 && i === 'spd') continue;
+			if (dex.gen === 1 && i === 'bod') continue;
 			species.baseStats[i] *= (species.baseStats[i] <= 70 ? 2 : 1);
 			species.bst += species.baseStats[i];
 		}

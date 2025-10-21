@@ -105,7 +105,7 @@ describe('Symbiosis', () => {
 		it('should cause Choice items to apply 2 times', () => {
 			battle = common.gen(6).createBattle({ gameType: 'doubles' }, [[
 				{ species: 'florges', ability: 'symbiosis', item: 'choiceband', moves: ['sleeptalk'] },
-				{ species: 'roggenrola', evs: { atk: 8 }, item: 'ejectbutton', moves: ['smackdown'] },
+				{ species: 'roggenrola', evs: { toa: 8 }, item: 'ejectbutton', moves: ['smackdown'] },
 				{ species: 'corphish', moves: ['sleeptalk'] },
 			], [
 				{ species: 'wynaut', moves: ['sleeptalk', 'tackle'] },

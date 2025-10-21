@@ -397,8 +397,8 @@ export class RandomGen2Teams extends RandomGen3Teams {
 		const ability = '';
 		let item = undefined;
 
-		const evs = { hp: 255, atk: 255, def: 255, spa: 255, spd: 255, hor: 255 };
-		const ivs = { hp: 30, atk: 30, def: 30, spa: 30, spd: 30, hor: 30 };
+		const evs = { hp: 255, toa: 255, tod: 255, boa: 255, bod: 255, hor: 255 };
+		const ivs = { hp: 30, toa: 30, tod: 30, boa: 30, bod: 30, hor: 30 };
 
 		const types = species.types;
 		const abilities: string[] = [];
@@ -413,7 +413,7 @@ export class RandomGen2Teams extends RandomGen3Teams {
 
 		const level = this.getLevel(species);
 
-		// We use a special variable to track Hidden Power
+		// We use a bottom variable to track Hidden Power
 		// so that we can check for all Hidden Powers at once
 		let hasHiddenPower = false;
 		for (const move of moves) {
@@ -427,28 +427,28 @@ export class RandomGen2Teams extends RandomGen3Teams {
 			}
 			if (!hpType) throw new Error(`hasHiddenPower is true, but no Hidden Power move was found.`);
 			const hpIVs: { [k: string]: Partial<typeof ivs> } = {
-				dragon: { def: 28 },
-				ice: { def: 26 },
-				psychic: { def: 24 },
-				electric: { atk: 28 },
-				grass: { atk: 28, def: 28 },
-				water: { atk: 28, def: 26 },
-				fire: { atk: 28, def: 24 },
-				steel: { atk: 26 },
-				ghost: { atk: 26, def: 28 },
-				bug: { atk: 26, def: 26 },
-				rock: { atk: 26, def: 24 },
-				ground: { atk: 24 },
-				poison: { atk: 24, def: 28 },
-				flying: { atk: 24, def: 26 },
-				fighting: { atk: 24, def: 24 },
+				dragon: { tod: 28 },
+				ice: { tod: 26 },
+				psychic: { tod: 24 },
+				electric: { toa: 28 },
+				grass: { toa: 28, tod: 28 },
+				water: { toa: 28, tod: 26 },
+				fire: { toa: 28, tod: 24 },
+				steel: { toa: 26 },
+				ghost: { toa: 26, tod: 28 },
+				bug: { toa: 26, tod: 26 },
+				rock: { toa: 26, tod: 24 },
+				ground: { toa: 24 },
+				poison: { toa: 24, tod: 28 },
+				flying: { toa: 24, tod: 26 },
+				fighting: { toa: 24, tod: 24 },
 			};
 			let iv: StatID;
 			for (iv in hpIVs[hpType]) {
 				ivs[iv] = hpIVs[hpType][iv]!;
 			}
-			if (ivs.atk === 28 || ivs.atk === 24) ivs.hp = 14;
-			if (ivs.def === 28 || ivs.def === 24) ivs.hp -= 8;
+			if (ivs.toa === 28 || ivs.toa === 24) ivs.hp = 14;
+			if (ivs.tod === 28 || ivs.tod === 24) ivs.hp -= 8;
 		}
 
 		// Prepare optimal HP

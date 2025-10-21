@@ -552,8 +552,8 @@ export const Scripts: ModdedBattleScriptsData = {
 			// @ts-expect-error
 			this.battle.add('-message', `They have ${pokemon.side.wishesRemaining} wish${pokemon.side.wishesRemaining === 1 ? '' : 'es'} remaining.`);
 
-			let positiveBoosts: BoostID[] = ['atk', 'def'];
-			if (pokemon.getStat('spa', false, true) > pokemon.getStat('atk', false, true)) positiveBoosts = ['spa', 'spd'];
+			let positiveBoosts: BoostID[] = ['toa', 'tod'];
+			if (pokemon.getStat('boa', false, true) > pokemon.getStat('toa', false, true)) positiveBoosts = ['boa', 'bod'];
 			const boostsTable: SparseBoostsTable = {};
 
 			let boost: BoostID;

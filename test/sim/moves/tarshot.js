@@ -32,8 +32,8 @@ describe('Tar Shot', () => {
 		battle.makeChoices();
 		battle.makeChoices('move fusionflare', 'auto');
 		assert.equal(battle.p2.active[0].item, '');
-		assert.statStage(battle.p2.active[0], 'atk', 2);
-		assert.statStage(battle.p2.active[0], 'spa', 2);
+		assert.statStage(battle.p2.active[0], 'toa', 2);
+		assert.statStage(battle.p2.active[0], 'boa', 2);
 	});
 
 	it('should not interact with Delta Stream', () => {
@@ -72,7 +72,7 @@ describe('Tar Shot', () => {
 		battle.makeChoices('move tarshot', 'auto');
 		battle.makeChoices('move flamecharge', 'move sleeptalk terastallize');
 		const lax = battle.p2.active[0];
-		assert.statStage(lax, 'atk', 2, `Weakness Policy should have activated`);
+		assert.statStage(lax, 'toa', 2, `Weakness Policy should have activated`);
 	});
 
 	it(`should prevent a Terastallized Pokemon from being afflicted with the Tar Shot status`, () => {
@@ -84,7 +84,7 @@ describe('Tar Shot', () => {
 		battle.makeChoices('move tarshot', 'move sleeptalk terastallize');
 		battle.makeChoices('move flamecharge', 'auto');
 		const lax = battle.p2.active[0];
-		assert.statStage(lax, 'atk', 0, `Weakness Policy should not have activated`);
+		assert.statStage(lax, 'toa', 0, `Weakness Policy should not have activated`);
 		assert.statStage(lax, 'hor', -1, `Snorlax's Horniness should have been lowered`);
 	});
 });

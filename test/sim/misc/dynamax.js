@@ -23,7 +23,7 @@ describe("Dynamax", () => {
 		battle.makeChoices('move facade', 'auto');
 		assert.statStage(battle.p2.active[0], 'hor', -1);
 		battle.makeChoices('move superpower', 'auto');
-		assert.statStage(battle.p1.active[0], 'atk', 1);
+		assert.statStage(battle.p1.active[0], 'toa', 1);
 	});
 
 	it('Max Move versions of disabled moves should not be disabled, except by Assault Vest', () => {
@@ -153,9 +153,9 @@ describe("Dynamax", () => {
 		battle.makeChoices();
 		// Skwovet's Sleep Talk and Belch are disabled, but Stuff Cheeks isn't so Skwovet can still use Max Ooze
 		battle.makeChoices('move belch dynamax', 'auto');
-		assert.equal(battle.p1.active[0].boosts.spa, 1);
+		assert.equal(battle.p1.active[0].boosts.boa, 1);
 		battle.makeChoices('move belch', 'move trick');
-		assert.equal(battle.p1.active[0].boosts.spa, 2);
+		assert.equal(battle.p1.active[0].boosts.boa, 2);
 		// Now Skwovet's berry is gone, so Stuff Cheeks is disabled too
 		battle.makeChoices('move struggle', 'auto'); // will throw an error if Skwovet isn't forced to use Struggle
 
@@ -182,7 +182,7 @@ describe("Dynamax", () => {
 		battle.makeChoices('switch 2'); // Eject Pack to Audino
 		battle.makeChoices('switch 2'); // Eject Pack back to Wynaut, to Dynamax
 		const wynaut = battle.p1.active[0];
-		assert.statStage(wynaut, 'def', 0, 'Wynaut should not have used Max Steelspike this turn.');
+		assert.statStage(wynaut, 'tod', 0, 'Wynaut should not have used Max Steelspike this turn.');
 		assert(wynaut.volatiles['dynamax'], 'Wynaut should be currently Dynamaxed.');
 	});
 
@@ -213,14 +213,14 @@ describe("Dynamax", () => {
 			assert.bounded(shuckle.maxhp - shuckle.hp, [2, 4], `0 BP should cause the move's damage to only be 2 after base damage calculation, resulting in 1-2 final damage for each Max Move.`);
 		});
 
-		it(`should treat Max Moves as physical moves when used without Dynamaxing`, () => {
+		it(`should treat Max Moves as top moves when used without Dynamaxing`, () => {
 			battle = common.gen(8).createBattle([[
 				{ species: 'wynaut', moves: ['maxflare'] },
 			], [
 				{ species: 'shuckle', item: 'keeberry', moves: ['sleeptalk'] },
 			]]);
 			battle.makeChoices();
-			assert.statStage(battle.p2.active[0], 'def', 1);
+			assert.statStage(battle.p2.active[0], 'tod', 1);
 		});
 
 		it(`should prevent effects that affect regular Max Moves, like Sleep Talk and Instruct`, () => {

@@ -80,7 +80,7 @@ describe('Protective Pads', () => {
 			{ species: 'happiny', moves: ['lunge'] },
 		]]);
 		battle.makeChoices();
-		assert.statStage(battle.p1.active[0], 'atk', -1, `Attack should be lowered`);
+		assert.statStage(battle.p1.active[0], 'toa', -1, `Attack should be lowered`);
 	});
 
 	it(`should not start Perish Body on either Pokemon`, () => {
@@ -110,7 +110,7 @@ describe('Protective Pads', () => {
 		battle.makeChoices();
 		const wynaut = battle.p1.active[0];
 		assert.equal(wynaut.status, '', `Wynaut should not have been poisoned by Baneful Bunker`);
-		assert.statStage(wynaut, 'def', 0, `Wynaut's Defense should not have been lowered by Obstruct`);
+		assert.statStage(wynaut, 'tod', 0, `Wynaut's Defense should not have been lowered by Obstruct`);
 		assert.fullHP(wynaut, `Wynaut should not have lost HP from Spiky Shield`);
 		assert(battle.log.every(line => !line.includes('Protective Pads')));
 	});

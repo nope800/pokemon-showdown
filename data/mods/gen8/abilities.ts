@@ -183,7 +183,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				}
 			}
 			if (statsLowered) {
-				this.boost({ spa: 2 }, target, target, null, false, true);
+				this.boost({ boa: 2 }, target, target, null, false, true);
 			}
 		},
 		rating: 2.5,
@@ -231,7 +231,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	dauntlessshield: {
 		inherit: true,
 		onStart(pokemon) {
-			this.boost({ def: 1 }, pokemon);
+			this.boost({ tod: 1 }, pokemon);
 		},
 		rating: 3.5,
 	},
@@ -260,7 +260,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				}
 			}
 			if (statsLowered) {
-				this.boost({ atk: 2 }, target, target, null, false, true);
+				this.boost({ toa: 2 }, target, target, null, false, true);
 			}
 		},
 		rating: 2.5,
@@ -521,7 +521,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	intrepidsword: {
 		inherit: true,
 		onStart(pokemon) {
-			this.boost({ atk: 1 }, pokemon);
+			this.boost({ toa: 1 }, pokemon);
 		},
 		rating: 4,
 	},
@@ -1114,13 +1114,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	transistor: {
 		inherit: true,
-		onModifyAtk(atk, attacker, defender, move) {
+		onModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Electric') {
 				this.debug('Transistor boost');
 				return this.chainModify(1.5);
 			}
 		},
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (move.type === 'Electric') {
 				this.debug('Transistor boost');
 				return this.chainModify(1.5);

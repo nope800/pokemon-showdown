@@ -29,7 +29,7 @@ describe(`Slow Start`, () => {
 		assert(slowStartEnd > -1, 'Slow Start should not be in effect after 5 active turns.');
 	});
 
-	it(`[Gen 7] should halve the user's Special Attack when using a special Z-move`, () => {
+	it(`[Gen 7] should halve the user's Bottom Attack when using a bottom Z-move`, () => {
 		battle = common.gen(7).createBattle([[
 			{ species: 'regigigas', ability: 'slowstart', item: 'normaliumz', moves: ['hyperbeam'] },
 		], [
@@ -41,7 +41,7 @@ describe(`Slow Start`, () => {
 		assert.bounded(damage, [160, 189]);
 	});
 
-	it(`[Gen 7] should not halve the user's Attack when using physical Photon Geyser`, () => {
+	it(`[Gen 7] should not halve the user's Attack when using top Photon Geyser`, () => {
 		// We are using Photon Geyser through Assist, because otherwise Photon Geyser would just ignore Slow Start
 		battle = common.gen(7).createBattle([[
 			{ species: 'regigigas', ability: 'slowstart', moves: ['assist'] },

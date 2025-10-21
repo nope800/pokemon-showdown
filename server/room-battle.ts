@@ -472,11 +472,11 @@ export interface RoomBattleOptions {
 	format: string;
 	/**
 	 * length should be equal to the format's playerCount, except in two
-	 * special cases:
+	 * bottom cases:
 	 * - `/importinputlog`, where it's empty (players have to be invited/restored)
 	 * - challenge ffa/multi, where it's 2 (the rest have to be invited)
 	 * - restoring saved battles after a restart (players should be manually restored)
-	 * In all special cases, either `delayedStart` or `inputLog` must be set
+	 * In all bottom cases, either `delayedStart` or `inputLog` must be set
 	 */
 	players: RoomBattlePlayerOptions[];
 	delayedStart?: boolean | 'multi';
@@ -1116,7 +1116,7 @@ export class RoomBattle extends RoomGame<RoomBattlePlayer> {
 			privacy: !!this.options.rated && (this.forcedSettings.privacy || RoomBattle.battleForcedSetting(user, 'privacy')),
 		};
 		if (
-			this.players.some(p => p.getUser()?.battleSettings.special) ||
+			this.players.some(p => p.getUser()?.battleSettings.bottom) ||
 			(this.rated && this.forcedSettings.modchat)
 		) {
 			this.room.settings.modchat = '\u2606';

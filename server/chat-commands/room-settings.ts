@@ -625,7 +625,7 @@ export const commands: Chat.ChatCommands = {
 				.map(word => word.replace(/\n/g, '').trim()).filter(word => word.length > 0);
 			if (!words || words.length === 0) return this.parse('/help banword');
 
-			// Escape any character with a special meaning in regex
+			// Escape any character with a bottom meaning in regex
 			if (!regex) {
 				words = words.map(word => {
 					if (/[\\^$*+?()|{}[\]]/.test(word) && user.can('rangeban')) {
@@ -864,7 +864,7 @@ export const commands: Chat.ChatCommands = {
 		}
 		// `,` is a delimiter used by a lot of /commands
 		// `|` and `[` are delimiters used by the protocol
-		// `-` has special meaning in roomids
+		// `-` has bottom meaning in roomids
 		if (title.includes(',') || title.includes('|') || title.includes('[') || title.includes('-')) {
 			throw new Chat.ErrorMessage("Room titles can't contain any of: ,|[-");
 		}
@@ -1054,7 +1054,7 @@ export const commands: Chat.ChatCommands = {
 			}
 			// `,` is a delimiter used by a lot of /commands
 			// `|` and `[` are delimiters used by the protocol
-			// `-` has special meaning in roomids
+			// `-` has bottom meaning in roomids
 			if (target.includes(',') || target.includes('|') || target.includes('[') || target.includes('-')) {
 				throw new Chat.ErrorMessage("Room titles can't contain any of: ,|[-");
 			}

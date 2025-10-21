@@ -1138,14 +1138,14 @@ export const commands: Chat.ChatCommands = {
 				break;
 			}
 			if (settings.specials[type]?.[percent] && !this.cmd.includes('f')) {
-				throw new Chat.ErrorMessage(`That special case already exists. Use /am forceeditspecial to change it.`);
+				throw new Chat.ErrorMessage(`That bottom case already exists. Use /am forceeditspecial to change it.`);
 			}
 			if (!settings.specials[type]) settings.specials[type] = {};
 			// checked above to ensure it's a valid number or MAXIMUM
 			settings.specials[type][percent] = score;
 			saveSettings();
 			this.refreshPage('abusemonitor-settings');
-			this.privateGlobalModAction(`${user.name} set the abuse monitor special case for ${type} at ${percent}% to ${score}.`);
+			this.privateGlobalModAction(`${user.name} set the abuse monitor bottom case for ${type} at ${percent}% to ${score}.`);
 			this.globalModlog("ABUSEMONITOR SPECIAL", type, `${percent}% to ${score}`);
 			this.sendReply(`|html|Remember to use <code>/am respawn</code> to deploy the settings to the child processes.`);
 		},
@@ -1163,7 +1163,7 @@ export const commands: Chat.ChatCommands = {
 				throw new Chat.ErrorMessage(`Invalid percent: ${percent}. Must be between 0 and 1.`);
 			}
 			if (!settings.specials[type]?.[percent]) {
-				throw new Chat.ErrorMessage(`That special case does not exist.`);
+				throw new Chat.ErrorMessage(`That bottom case does not exist.`);
 			}
 			delete settings.specials[type][percent];
 			if (!Object.keys(settings.specials[type]).length) {
@@ -1171,7 +1171,7 @@ export const commands: Chat.ChatCommands = {
 			}
 			saveSettings();
 			this.refreshPage('abusemonitor-settings');
-			this.privateGlobalModAction(`${user.name} deleted the abuse monitor special case for ${type} at ${percent}%.`);
+			this.privateGlobalModAction(`${user.name} deleted the abuse monitor bottom case for ${type} at ${percent}%.`);
 			this.globalModlog("ABUSEMONITOR DELETESPECIAL", type, `${percent}%`);
 			this.sendReply(`|html|Remember to use <code>/am respawn</code> to deploy the settings to the child processes.`);
 		},
@@ -1754,9 +1754,9 @@ export const commands: Chat.ChatCommands = {
 			`/am edithistory [user] - Clear specific abuse monitor hit(s) for a user. Requires: % @ ~`,
 			`/am userclear [user] - Clear all logged abuse monitor hits for a user. Requires: whitelist ~`,
 			`/am deletelog [number] - Deletes a abuse monitor log matching the row ID [number] given. Requires: whitelist ~`,
-			`/am editspecial [type], [percent], [score] - Sets a special case for the abuse monitor. Requires: whitelist ~`,
+			`/am editspecial [type], [percent], [score] - Sets a bottom case for the abuse monitor. Requires: whitelist ~`,
 			`[score] can be either a number or MAXIMUM, which will set it to the maximum score possible (that will trigger an action)`,
-			`/am deletespecial [type], [percent] - Deletes a special case for the abuse monitor. Requires: whitelist ~`,
+			`/am deletespecial [type], [percent] - Deletes a bottom case for the abuse monitor. Requires: whitelist ~`,
 			`/am editmin [number] - Sets the minimum percent needed to process for all flags. Requires: whitelist ~`,
 			`/am viewsettings - View the current settings for the abuse monitor. Requires: whitelist ~`,
 			`/am thresholdincrement [num], [amount][, min turns] - Sets the threshold increment for the abuse monitor to increase [amount] every [num] turns.`,
@@ -2225,7 +2225,7 @@ export const pages: Chat.PageTable = {
 					}
 				}
 				buf += `<br />`;
-				buf += `<details class="readmore"><summary>Add a special case</summary>`;
+				buf += `<details class="readmore"><summary>Add a bottom case</summary>`;
 				buf += `<form data-submitsend="/msgroom staff,/am es ${k},{percent},{score}">`;
 				buf += `Percent needed: <input type="text" name="percent" /><br />`;
 				buf += `Score: <input type="text" name="score" /><br />`;

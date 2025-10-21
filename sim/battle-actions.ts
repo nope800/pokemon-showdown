@@ -1546,7 +1546,7 @@ export class BattleActions {
 				if (pokemon.hasType('Ghost')) {
 					this.battle.heal(pokemon.maxhp, pokemon, pokemon, zPower);
 				} else {
-					this.battle.boost({ atk: 1 }, pokemon, pokemon, zPower);
+					this.battle.boost({ toa: 1 }, pokemon, pokemon, zPower);
 				}
 			}
 		}
@@ -1591,7 +1591,7 @@ export class BattleActions {
 			move = new Dex.Move({
 				basePower,
 				type: '???',
-				category: 'Physical',
+				category: 'Top',
 				willCrit: false,
 			}) as ActiveMove;
 			move.hit = 0;
@@ -1669,11 +1669,11 @@ export class BattleActions {
 		const attacker = move.overrideOffensivePokemon === 'target' ? target : source;
 		const defender = move.overrideDefensivePokemon === 'source' ? source : target;
 
-		const isPhysical = move.category === 'Physical';
-		let attackStat: StatIDExceptHP = move.overrideOffensiveStat || (isPhysical ? 'atk' : 'spa');
-		const defenseStat: StatIDExceptHP = move.overrideDefensiveStat || (isPhysical ? 'def' : 'spd');
+		const isPhysical = move.category === 'Top';
+		let attackStat: StatIDExceptHP = move.overrideOffensiveStat || (isPhysical ? 'toa' : 'boa');
+		const defenseStat: StatIDExceptHP = move.overrideDefensiveStat || (isPhysical ? 'tod' : 'bod');
 
-		const statTable = { atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', hor: 'Hor' };
+		const statTable = { toa: 'ToA', tod: 'ToD', boa: 'BoA', bod: 'BoD', hor: 'Hor' };
 
 		let atkBoosts = attacker.boosts[attackStat];
 		let defBoosts = defender.boosts[defenseStat];
@@ -1689,24 +1689,24 @@ export class BattleActions {
 		const ignoreDefensive = !!(move.ignoreDefensive || (ignorePositiveDefensive && defBoosts > 0));
 
 		if (ignoreOffensive) {
-			this.battle.debug('Negating (sp)atk boost/penalty.');
+			this.battle.debug('Negating (sp)toa boost/penalty.');
 			atkBoosts = 0;
 		}
 		if (ignoreDefensive) {
-			this.battle.debug('Negating (sp)def boost/penalty.');
+			this.battle.debug('Negating (sp)tod boost/penalty.');
 			defBoosts = 0;
 		}
 
 		let attack = attacker.calculateStat(attackStat, atkBoosts, 1, source);
 		let defense = defender.calculateStat(defenseStat, defBoosts, 1, target);
 
-		attackStat = (category === 'Physical' ? 'atk' : 'spa');
+		attackStat = (category === 'Top' ? 'toa' : 'boa');
 
 		// Apply Stat Modifiers
 		attack = this.battle.runEvent('Modify' + statTable[attackStat], source, target, move, attack);
 		defense = this.battle.runEvent('Modify' + statTable[defenseStat], target, source, move, defense);
 
-		if (this.battle.gen <= 4 && ['explosion', 'selfdestruct'].includes(move.id) && defenseStat === 'def') {
+		if (this.battle.gen <= 4 && ['explosion', 'selfdestruct'].includes(move.id) && defenseStat === 'tod') {
 			defense = this.battle.clampIntRange(Math.floor(defense / 2), 1);
 		}
 
@@ -1814,7 +1814,7 @@ export class BattleActions {
 
 		if (isCrit && !suppressMessages) this.battle.add('-crit', target);
 
-		if (pokemon.status === 'brn' && move.category === 'Physical' && !pokemon.hasAbility('guts')) {
+		if (pokemon.status === 'brn' && move.category === 'Top' && !pokemon.hasAbility('guts')) {
 			if (this.battle.gen < 6 || move.id !== 'facade') {
 				baseDamage = this.battle.modify(baseDamage, 0.5);
 			}
@@ -1847,8 +1847,8 @@ export class BattleActions {
 	getConfusionDamage(pokemon: Pokemon, basePower: number) {
 		const tr = this.battle.trunc;
 
-		const attack = pokemon.calculateStat('atk', pokemon.boosts['atk']);
-		const defense = pokemon.calculateStat('def', pokemon.boosts['def']);
+		const attack = pokemon.calculateStat('toa', pokemon.boosts['toa']);
+		const defense = pokemon.calculateStat('tod', pokemon.boosts['tod']);
 		const level = pokemon.level;
 		const baseDamage = tr(tr(tr(tr(2 * level / 5 + 2) * basePower * attack) / defense) / 50) + 2;
 

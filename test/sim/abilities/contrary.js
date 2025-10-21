@@ -19,8 +19,8 @@ describe('Contrary', () => {
 		]]);
 		const contraryMon = battle.p1.active[0];
 		battle.makeChoices('move superpower', 'move dragondance');
-		assert.statStage(contraryMon, 'atk', 1);
-		assert.statStage(contraryMon, 'def', 1);
+		assert.statStage(contraryMon, 'toa', 1);
+		assert.statStage(contraryMon, 'tod', 1);
 	});
 
 	it('should not invert absolute stat changes', () => {
@@ -31,7 +31,7 @@ describe('Contrary', () => {
 		]]);
 		const contraryMon = battle.p1.active[0];
 		battle.makeChoices('move leechseed', 'move topsyturvy');
-		assert.statStage(contraryMon, 'atk', -1);
+		assert.statStage(contraryMon, 'toa', -1);
 	});
 
 	it('should invert Belly Drum\'s maximizing Attack', () => {
@@ -42,7 +42,7 @@ describe('Contrary', () => {
 		]]);
 		const contraryMon = battle.p1.active[0];
 		battle.makeChoices('move bellydrum', 'move dragondance');
-		assert.statStage(contraryMon, 'atk', -6);
+		assert.statStage(contraryMon, 'toa', -6);
 	});
 
 	it('should be suppressed by Mold Breaker', () => {
@@ -53,6 +53,6 @@ describe('Contrary', () => {
 		]]);
 		const contraryMon = battle.p1.active[0];
 		battle.makeChoices('move tackle', 'move growl');
-		assert.statStage(contraryMon, 'atk', -1);
+		assert.statStage(contraryMon, 'toa', -1);
 	});
 });

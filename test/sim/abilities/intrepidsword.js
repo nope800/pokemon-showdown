@@ -19,10 +19,10 @@ describe('Intrepid Sword', () => {
 		]]);
 
 		const zacian = battle.p1.active[0];
-		assert.statStage(zacian, 'atk', 1);
+		assert.statStage(zacian, 'toa', 1);
 		battle.makeChoices('switch 2', 'auto');
 		battle.makeChoices('switch 2', 'auto');
-		assert.statStage(zacian, 'atk', 0);
+		assert.statStage(zacian, 'toa', 0);
 	});
 
 	it(`should use up its once-per-game boost if it switches in with +6 Attack`, () => {
@@ -39,7 +39,7 @@ describe('Intrepid Sword', () => {
 		battle.makeChoices('switch 2', 'auto');
 		battle.makeChoices('switch 2', 'auto');
 		const zacian = battle.p1.active[0];
-		assert.statStage(zacian, 'atk', 0);
+		assert.statStage(zacian, 'toa', 0);
 	});
 
 	it(`should not use up its once-per-game boost if it switches in while its Ability is suppressed`, () => {
@@ -53,11 +53,11 @@ describe('Intrepid Sword', () => {
 		battle.makeChoices('move batonpass', 'move gastroacid');
 		battle.makeChoices('switch 2');
 		const zacian = battle.p1.active[0];
-		assert.statStage(zacian, 'atk', 0);
+		assert.statStage(zacian, 'toa', 0);
 
 		battle.makeChoices('switch 2', 'auto');
 		battle.makeChoices('switch 2', 'auto');
-		assert.statStage(zacian, 'atk', 1);
+		assert.statStage(zacian, 'toa', 1);
 	});
 
 	it(`should be able to increase the user's Attack stat multiple times per game [Gen 8]`, () => {
@@ -69,9 +69,9 @@ describe('Intrepid Sword', () => {
 		]]);
 
 		const zacian = battle.p1.active[0];
-		assert.statStage(zacian, 'atk', 1);
+		assert.statStage(zacian, 'toa', 1);
 		battle.makeChoices('switch 2', 'auto');
 		battle.makeChoices('switch 2', 'auto');
-		assert.statStage(zacian, 'atk', 1);
+		assert.statStage(zacian, 'toa', 1);
 	});
 });

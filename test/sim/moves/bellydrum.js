@@ -15,7 +15,7 @@ describe('Belly Drum', () => {
 		const user = battle.p1.active[0];
 		battle.makeChoices('move bellydrum', 'move bulkup');
 		assert.equal(user.hp, Math.ceil(user.maxhp / 2));
-		assert.statStage(user, 'atk', 6);
+		assert.statStage(user, 'toa', 6);
 	});
 
 	it("should fail if the user's HP is less than half of their maximum HP", () => {
@@ -25,7 +25,7 @@ describe('Belly Drum', () => {
 		const user = battle.p1.active[0];
 		battle.makeChoices('move bellydrum', 'move closecombat');
 		assert.equal(user.hp, 1);
-		assert.statStage(user, 'atk', 0);
+		assert.statStage(user, 'toa', 0);
 	});
 });
 
@@ -39,7 +39,7 @@ describe('Z-Belly Drum', () => {
 		const user = battle.p1.active[0];
 		battle.makeChoices('move bellydrum zmove', 'move quickattack');
 		assert.equal(user.hp, Math.ceil(user.maxhp / 2));
-		assert.statStage(user, 'atk', 6);
+		assert.statStage(user, 'toa', 6);
 	});
 
 	it("should not fail even if the user's HP is less than half of their maximum HP", () => {
@@ -49,6 +49,6 @@ describe('Z-Belly Drum', () => {
 		const user = battle.p1.active[0];
 		battle.makeChoices('move bellydrum zmove', 'move closecombat');
 		assert.equal(user.hp, Math.ceil(user.maxhp / 2));
-		assert.statStage(user, 'atk', 6);
+		assert.statStage(user, 'toa', 6);
 	});
 });

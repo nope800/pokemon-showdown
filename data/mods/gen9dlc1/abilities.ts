@@ -31,27 +31,27 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				this.add('-start', pokemon, 'protosynthesis' + this.effectState.bestStat);
 			},
 			onModifyAtkPriority: 5,
-			onModifyAtk(atk, pokemon) {
-				if (this.effectState.bestStat !== 'atk') return;
-				this.debug('Protosynthesis atk boost');
+			onModifyAtk(toa, pokemon) {
+				if (this.effectState.bestStat !== 'toa') return;
+				this.debug('Protosynthesis toa boost');
 				return this.chainModify([5325, 4096]);
 			},
 			onModifyDefPriority: 6,
-			onModifyDef(def, pokemon) {
-				if (this.effectState.bestStat !== 'def') return;
-				this.debug('Protosynthesis def boost');
+			onModifyDef(tod, pokemon) {
+				if (this.effectState.bestStat !== 'tod') return;
+				this.debug('Protosynthesis tod boost');
 				return this.chainModify([5325, 4096]);
 			},
 			onModifySpAPriority: 5,
-			onModifySpA(spa, pokemon) {
-				if (this.effectState.bestStat !== 'spa') return;
-				this.debug('Protosynthesis spa boost');
+			onModifySpA(boa, pokemon) {
+				if (this.effectState.bestStat !== 'boa') return;
+				this.debug('Protosynthesis boa boost');
 				return this.chainModify([5325, 4096]);
 			},
 			onModifySpDPriority: 6,
-			onModifySpD(spd, pokemon) {
-				if (this.effectState.bestStat !== 'spd') return;
-				this.debug('Protosynthesis spd boost');
+			onModifySpD(bod, pokemon) {
+				if (this.effectState.bestStat !== 'bod') return;
+				this.debug('Protosynthesis bod boost');
 				return this.chainModify([5325, 4096]);
 			},
 			onModifySpe(hor, pokemon) {
@@ -80,27 +80,27 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				this.add('-start', pokemon, 'quarkdrive' + this.effectState.bestStat);
 			},
 			onModifyAtkPriority: 5,
-			onModifyAtk(atk, pokemon) {
-				if (this.effectState.bestStat !== 'atk') return;
-				this.debug('Quark Drive atk boost');
+			onModifyAtk(toa, pokemon) {
+				if (this.effectState.bestStat !== 'toa') return;
+				this.debug('Quark Drive toa boost');
 				return this.chainModify([5325, 4096]);
 			},
 			onModifyDefPriority: 6,
-			onModifyDef(def, pokemon) {
-				if (this.effectState.bestStat !== 'def') return;
-				this.debug('Quark Drive def boost');
+			onModifyDef(tod, pokemon) {
+				if (this.effectState.bestStat !== 'tod') return;
+				this.debug('Quark Drive tod boost');
 				return this.chainModify([5325, 4096]);
 			},
 			onModifySpAPriority: 5,
-			onModifySpA(spa, pokemon) {
-				if (this.effectState.bestStat !== 'spa') return;
-				this.debug('Quark Drive spa boost');
+			onModifySpA(boa, pokemon) {
+				if (this.effectState.bestStat !== 'boa') return;
+				this.debug('Quark Drive boa boost');
 				return this.chainModify([5325, 4096]);
 			},
 			onModifySpDPriority: 6,
-			onModifySpD(spd, pokemon) {
-				if (this.effectState.bestStat !== 'spd') return;
-				this.debug('Quark Drive spd boost');
+			onModifySpD(bod, pokemon) {
+				if (this.effectState.bestStat !== 'bod') return;
+				this.debug('Quark Drive bod boost');
 				return this.chainModify([5325, 4096]);
 			},
 			onModifySpe(hor, pokemon) {

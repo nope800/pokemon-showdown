@@ -15,13 +15,13 @@ describe('Stockpile', () => {
 			[{ species: 'Seviper', ability: 'shedskin', moves: ['stockpile', 'spitup'] }],
 			[{ species: 'Zangoose', ability: 'immunity', moves: ['sleeptalk'] }],
 		]);
-		battle.boost({ def: 4, spd: 5 }, battle.p1.active[0]);
+		battle.boost({ tod: 4, bod: 5 }, battle.p1.active[0]);
 
 		battle.makeChoices('move stockpile', 'move sleeptalk');
 		battle.makeChoices('move stockpile', 'move sleeptalk');
 		battle.makeChoices('move spitup', 'move sleeptalk');
 
-		assert.equal(battle.p1.active[0].boosts.def, 4);
-		assert.equal(battle.p1.active[0].boosts.spd, 5);
+		assert.equal(battle.p1.active[0].boosts.tod, 4);
+		assert.equal(battle.p1.active[0].boosts.bod, 5);
 	});
 });

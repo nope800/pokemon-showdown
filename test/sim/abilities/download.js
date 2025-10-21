@@ -16,20 +16,20 @@ describe('Download', () => {
 			{ species: 'stonjourner', moves: ['sleeptalk'] },
 			{ species: 'chansey', moves: ['sleeptalk'] },
 		]]);
-		assert.statStage(battle.p1.active[0], 'spa', 1);
+		assert.statStage(battle.p1.active[0], 'boa', 1);
 		battle.makeChoices('switch 2', 'switch 2');
 		battle.makeChoices('switch 2', 'auto');
-		assert.statStage(battle.p1.active[0], 'atk', 1);
+		assert.statStage(battle.p1.active[0], 'toa', 1);
 	});
 
-	it('should boost Special Attack if both stats are tied', () => {
+	it('should boost Bottom Attack if both stats are tied', () => {
 		battle = common.createBattle([[
 			{ species: 'porygon', moves: ['sleeptalk'], ability: 'download' },
 		], [
 			{ species: 'mew', moves: ['sleeptalk'] },
 		]]);
-		assert.statStage(battle.p1.active[0], 'spa', 1);
-		assert.statStage(battle.p1.active[0], 'atk', 0);
+		assert.statStage(battle.p1.active[0], 'boa', 1);
+		assert.statStage(battle.p1.active[0], 'toa', 0);
 	});
 
 	it('should boost based on the total of both foes in a Double Battle', () => {
@@ -40,8 +40,8 @@ describe('Download', () => {
 			{ species: 'blissey', level: 1, moves: ['sleeptalk'] },
 			{ species: 'stonjourner', moves: ['sleeptalk'] },
 		]]);
-		assert.statStage(battle.p1.active[0], 'spa', 1);
-		assert.statStage(battle.p1.active[0], 'atk', 0);
+		assert.statStage(battle.p1.active[0], 'boa', 1);
+		assert.statStage(battle.p1.active[0], 'toa', 0);
 	});
 
 	it('should trigger even if the foe is behind a Substitute', () => {
@@ -53,7 +53,7 @@ describe('Download', () => {
 		]]);
 		battle.makeChoices();
 		battle.makeChoices('switch 2', 'auto');
-		assert.statStage(battle.p1.active[0], 'atk', 1);
+		assert.statStage(battle.p1.active[0], 'toa', 1);
 	});
 
 	describe('[Gen 4]', () => {
@@ -66,8 +66,8 @@ describe('Download', () => {
 			]]);
 			battle.makeChoices();
 			battle.makeChoices('switch 2', 'auto');
-			assert.statStage(battle.p1.active[0], 'atk', 0);
-			assert.statStage(battle.p1.active[0], 'spa', 0);
+			assert.statStage(battle.p1.active[0], 'toa', 0);
+			assert.statStage(battle.p1.active[0], 'boa', 0);
 		});
 
 		it('in Double Battles, should only account for foes not behind a Substitute', () => {
@@ -81,12 +81,12 @@ describe('Download', () => {
 			]]);
 			battle.makeChoices();
 			battle.makeChoices('move 1, switch 3', 'auto');
-			assert.statStage(battle.p1.active[1], 'atk', 0);
-			assert.statStage(battle.p1.active[1], 'spa', 1);
+			assert.statStage(battle.p1.active[1], 'toa', 0);
+			assert.statStage(battle.p1.active[1], 'boa', 1);
 			battle.makeChoices('move 1, switch 3', 'move 1, move 2');
 			battle.makeChoices('move 1, switch 3', 'auto');
-			assert.statStage(battle.p1.active[1], 'atk', 0);
-			assert.statStage(battle.p1.active[1], 'spa', 0);
+			assert.statStage(battle.p1.active[1], 'toa', 0);
+			assert.statStage(battle.p1.active[1], 'boa', 0);
 		});
 
 		it('should ignore the effect of the Simple ability', () => {
@@ -94,12 +94,12 @@ describe('Download', () => {
 				{ species: 'furret', moves: ['sleeptalk'] },
 				{ species: 'porygon', ability: 'download', moves: ['sleeptalk'] },
 			], [
-				{ species: 'bibarel', ability: 'simple', moves: ['calmmind'], evs: { def: 252 }, nature: 'lax' },
+				{ species: 'bibarel', ability: 'simple', moves: ['calmmind'], evs: { tod: 252 }, nature: 'lax' },
 			]]);
 			battle.makeChoices();
 			battle.makeChoices('switch 2', 'auto');
-			assert.statStage(battle.p1.active[0], 'atk', 0);
-			assert.statStage(battle.p1.active[0], 'spa', 1);
+			assert.statStage(battle.p1.active[0], 'toa', 0);
+			assert.statStage(battle.p1.active[0], 'boa', 1);
 		});
 	});
 });

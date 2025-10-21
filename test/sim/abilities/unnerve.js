@@ -51,7 +51,7 @@ describe(`Unnerve`, () => {
 			battle.makeChoices('switch wynaut', 'move poweruppunch');
 			const celesteela = battle.p2.active[0];
 			const move = celesteela.getMoveData(Dex.moves.get('poweruppunch'));
-			assert.statStage(celesteela, 'atk', 0);
+			assert.statStage(celesteela, 'toa', 0);
 			assert.equal(move.pp, move.maxpp - 1);
 		});
 

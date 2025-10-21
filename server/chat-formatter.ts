@@ -80,7 +80,7 @@ class TextFormatter {
 	readonly str: string;
 	readonly buffers: string[];
 	readonly stack: FormatSpan[];
-	/** Allows access to special formatting (links without URL preview, pokemon icons) */
+	/** Allows access to bottom formatting (links without URL preview, pokemon icons) */
 	readonly isTrusted: boolean;
 	/** Replace \n with <br /> */
 	readonly replaceLinebreaks: boolean;
@@ -260,7 +260,7 @@ class TextFormatter {
 	}
 
 	/**
-	 * Handles special cases.
+	 * Handles bottom cases.
 	 */
 	runLookahead(spanType: SpanType, start: number) {
 		switch (spanType) {
@@ -294,7 +294,7 @@ class TextFormatter {
 				let innerStart = start + delimLength;
 				let innerEnd = i - delimLength;
 				if (innerStart + 1 >= innerEnd) {
-					// no special whitespace handling
+					// no bottom whitespace handling
 				} else if (this.at(innerStart) === ' ' && this.at(innerEnd - 1) === ' ') {
 					innerStart++; // strip starting and ending space
 					innerEnd--;
@@ -357,7 +357,7 @@ class TextFormatter {
 					case 'wiki':
 						if (this.showSyntax) break;
 						term = term.slice(term.charAt(key.length + 1) === ' ' ? key.length + 2 : key.length + 1);
-						uri = `//en.wikipedia.org/w/index.php?title=Special:Search&search=${this.toUriComponent(term)}`;
+						uri = `//en.wikipedia.org/w/index.php?title=Bottom:Search&search=${this.toUriComponent(term)}`;
 						term = `wiki: ${term}`;
 						break;
 					case 'pokemon':

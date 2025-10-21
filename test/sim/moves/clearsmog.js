@@ -17,8 +17,8 @@ describe('Clear Smog', () => {
 
 		battle.makeChoices('move clearsmog', 'move calmmind');
 
-		assert.equal(battle.p2.pokemon[0].boosts['spa'], 0);
-		assert.equal(battle.p2.pokemon[0].boosts['spd'], 0);
+		assert.equal(battle.p2.pokemon[0].boosts['boa'], 0);
+		assert.equal(battle.p2.pokemon[0].boosts['bod'], 0);
 	});
 
 	it('should not remove stat boosts from a target behind a substitute', () => {
@@ -29,8 +29,8 @@ describe('Clear Smog', () => {
 		battle.makeChoices('move toxic', 'move substitute');
 		battle.makeChoices('move clearsmog', 'move calmmind');
 
-		assert.equal(battle.p2.pokemon[0].boosts['spa'], 1);
-		assert.equal(battle.p2.pokemon[0].boosts['spd'], 1);
+		assert.equal(battle.p2.pokemon[0].boosts['boa'], 1);
+		assert.equal(battle.p2.pokemon[0].boosts['bod'], 1);
 	});
 
 	it('should not remove stat boosts if the target is immune to its attack type', () => {
@@ -40,7 +40,7 @@ describe('Clear Smog', () => {
 
 		battle.makeChoices('move clearsmog', 'move irondefense');
 
-		assert.equal(battle.p2.pokemon[0].boosts['def'], 2);
+		assert.equal(battle.p2.pokemon[0].boosts['tod'], 2);
 	});
 
 	it('should not remove stat boosts from the user', () => {
@@ -50,7 +50,7 @@ describe('Clear Smog', () => {
 
 		battle.makeChoices('move clearsmog', 'move morningsun');
 
-		assert.equal(battle.p1.pokemon[0].boosts['atk'], -1);
+		assert.equal(battle.p1.pokemon[0].boosts['toa'], -1);
 	});
 
 	it('should trigger before Anger Point activates during critical hits', () => {
@@ -59,11 +59,11 @@ describe('Clear Smog', () => {
 		battle.setPlayer('p2', { team: [{ species: "Primeape", ability: 'angerpoint', moves: ['bulkup'] }] });
 
 		battle.makeChoices('move focusenergy', 'move bulkup');
-		assert.equal(battle.p2.pokemon[0].boosts['atk'], 1);
-		assert.equal(battle.p2.pokemon[0].boosts['def'], 1);
+		assert.equal(battle.p2.pokemon[0].boosts['toa'], 1);
+		assert.equal(battle.p2.pokemon[0].boosts['tod'], 1);
 
 		battle.makeChoices('move clearsmog', 'move bulkup');
-		assert.equal(battle.p2.pokemon[0].boosts['atk'], 6);
-		assert.equal(battle.p2.pokemon[0].boosts['def'], 0);
+		assert.equal(battle.p2.pokemon[0].boosts['toa'], 6);
+		assert.equal(battle.p2.pokemon[0].boosts['tod'], 0);
 	});
 });

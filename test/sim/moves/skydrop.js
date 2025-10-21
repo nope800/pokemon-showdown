@@ -107,7 +107,7 @@ describe('Sky Drop', () => {
 
 		battle.makeChoices('move skydrop 1, move sheercold -1', 'auto');
 		const lairon = battle.p2.active[0];
-		assert.statStage(lairon, 'atk', 2);
+		assert.statStage(lairon, 'toa', 2);
 	});
 
 	it(`should pick up Flying-type Pokemon but do no damage`, () => {
@@ -148,7 +148,7 @@ describe('Sky Drop', () => {
 		]]);
 		const aerodactyl = battle.p1.active[0];
 		battle.makeChoices();
-		assert.statStage(aerodactyl, 'atk', 0);
+		assert.statStage(aerodactyl, 'toa', 0);
 		battle.makeChoices('auto', 'switch 2');
 		assert.fullHP(aerodactyl);
 		battle.makeChoices();
@@ -243,7 +243,7 @@ describe('Sky Drop', () => {
 			{ species: 'Clamperl', moves: ['sleeptalk'] },
 		]]);
 		battle.makeChoices();
-		assert.statStage(battle.p2.active[0], 'atk', 2);
+		assert.statStage(battle.p2.active[0], 'toa', 2);
 	});
 
 	it(`should not suppress Horniness Boost`, () => {

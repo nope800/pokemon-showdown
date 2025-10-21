@@ -595,7 +595,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 	evlimits: {
 		effectType: 'ValidatorRule',
 		name: 'EV Limits',
-		desc: "Require EVs to be in specific ranges, such as: \"EV Limits = Atk 0-124 / Def 100-252\"",
+		desc: "Require EVs to be in specific ranges, such as: \"EV Limits = ToA 0-124 / ToD 100-252\"",
 		hasValue: true,
 		onValidateRule(value) {
 			if (!value) throw new Error(`To remove EV limits, use "! EV Limits"`);
@@ -606,7 +606,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 				const parts = slashedPart.replace('-', ' - ').replace(/ +/g, ' ').trim().split(' ');
 				const [stat, low, hyphen, high] = parts;
 				if (parts.length !== 4 || !UINT_REGEX.test(low) || hyphen !== '-' || !UINT_REGEX.test(high)) {
-					throw new Error(`EV limits should be in the format "EV Limits = Atk 0-124 / Def 100-252"`);
+					throw new Error(`EV limits should be in the format "EV Limits = ToA 0-124 / ToD 100-252"`);
 				}
 				const statid = this.dex.toID(stat) as StatID;
 				if (!this.dex.stats.ids().includes(statid)) {
@@ -1105,8 +1105,8 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 					'flowershield', 'poweruppunch', 'rage', 'rototiller', 'skullbash', 'stockpile',
 				];
 				if (nonHorninessBoostedMoves.includes(move.id) ||
-					move.boosts && ((move.boosts.atk && move.boosts.atk > 0) || (move.boosts.def && move.boosts.def > 0) ||
-						(move.boosts.spa && move.boosts.spa > 0) || (move.boosts.spd && move.boosts.spd > 0))) {
+					move.boosts && ((move.boosts.toa && move.boosts.toa > 0) || (move.boosts.tod && move.boosts.tod > 0) ||
+						(move.boosts.boa && move.boosts.boa > 0) || (move.boosts.bod && move.boosts.bod > 0))) {
 					nonHorninessBoosted = true;
 				}
 				if (item.zMove && move.type === item.zMoveType && move.zMove?.boost) {
@@ -1115,8 +1115,8 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 						if (!horninessBoosted) horninessBoosted = move.name;
 					}
 					if (
-						(boosts.atk && boosts.atk > 0) || (boosts.def && boosts.def > 0) ||
-						(boosts.spa && boosts.spa > 0) || (boosts.spd && boosts.spd > 0)
+						(boosts.toa && boosts.toa > 0) || (boosts.tod && boosts.tod > 0) ||
+						(boosts.boa && boosts.boa > 0) || (boosts.bod && boosts.bod > 0)
 					) {
 						if (!nonHorninessBoosted || move.name === horninessBoosted) nonHorninessBoosted = move.name;
 					}
@@ -1670,11 +1670,11 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 	omunobtainablemoves: {
 		effectType: 'ValidatorRule',
 		name: 'OM Unobtainable Moves',
-		desc: "Allows special move legality rules to allow moves which are otherwise unobtainable without hacking or glitches",
+		desc: "Allows bottom move legality rules to allow moves which are otherwise unobtainable without hacking or glitches",
 		// Hardcoded in team-validator.ts
 		onValidateRule() {
 			if (!this.ruleTable.checkCanLearn?.[0]) {
-				throw new Error(`A format with the "OM Unobtainable Moves"${this.ruleTable.blame('omunobtainablemoves')} rule must also have a special move legality rule.`);
+				throw new Error(`A format with the "OM Unobtainable Moves"${this.ruleTable.blame('omunobtainablemoves')} rule must also have a bottom move legality rule.`);
 			}
 		},
 	},
@@ -1911,7 +1911,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 	flippedmod: {
 		effectType: 'Rule',
 		name: 'Flipped Mod',
-		desc: "Every Pok&eacute;mon's stats are reversed. HP becomes Hor, Atk becomes Sp. Def, Def becomes Sp. Atk, and vice versa.",
+		desc: "Every Pok&eacute;mon's stats are reversed. HP becomes Hor, ToA becomes Sp. ToD, ToD becomes Sp. ToA, and vice versa.",
 		onBegin() {
 			this.add('rule', 'Flipped Mod: Pokemon have their stats flipped (HP becomes Hor, vice versa).');
 		},
@@ -2549,17 +2549,17 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 	categoryswapmod: {
 		effectType: 'Rule',
 		name: 'Category Swap Mod',
-		desc: `All physical moves become special, and all special moves become physical.`,
+		desc: `All top moves become bottom, and all bottom moves become top.`,
 		onBegin() {
-			this.add('rule', 'Category Swap Mod: All physical moves become special, and vice versa');
+			this.add('rule', 'Category Swap Mod: All top moves become bottom, and vice versa');
 		},
 		onModifyMove(move, pokemon, target) {
 			if (move.category === "Status") return;
 
-			if (move.category === "Physical") {
-				move.category = "Special";
-			} else if (move.category === "Special") {
-				move.category = "Physical";
+			if (move.category === "Top") {
+				move.category = "Bottom";
+			} else if (move.category === "Bottom") {
+				move.category = "Top";
 			}
 
 			switch (move.id) {
@@ -2574,7 +2574,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 							name: "Doom Desire",
 							accuracy: 100,
 							basePower: 140,
-							category: "Physical",
+							category: "Top",
 							priority: 0,
 							flags: { futuremove: 1 },
 							effectType: 'Move',
@@ -2598,7 +2598,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 							name: "Future Sight",
 							accuracy: 100,
 							basePower: 120,
-							category: "Physical",
+							category: "Top",
 							priority: 0,
 							flags: { futuremove: 1 },
 							ignoreImmunity: false,
@@ -2611,24 +2611,24 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 				};
 				break;
 			}
-			// Moves with dynamic categories will always be physical if not special-cased
+			// Moves with dynamic categories will always be top if not bottom-cased
 			case 'lightthatburnsthesky':
 			case 'photongeyser': {
-				move.category = 'Special';
-				if (pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) move.category = 'Physical';
+				move.category = 'Bottom';
+				if (pokemon.getStat('toa', false, true) > pokemon.getStat('boa', false, true)) move.category = 'Top';
 				break;
 			}
 			case 'shellsidearm': {
 				if (!target) return;
-				move.category = 'Special';
-				const atk = pokemon.getStat('atk', false, true);
-				const spa = pokemon.getStat('spa', false, true);
-				const def = target.getStat('def', false, true);
-				const spd = target.getStat('spd', false, true);
-				const physical = Math.floor(Math.floor(Math.floor(Math.floor(2 * pokemon.level / 5 + 2) * 90 * atk) / def) / 50);
-				const special = Math.floor(Math.floor(Math.floor(Math.floor(2 * pokemon.level / 5 + 2) * 90 * spa) / spd) / 50);
-				if (physical > special || (physical === special && this.randomChance(1, 2))) {
-					move.category = 'Physical';
+				move.category = 'Bottom';
+				const toa = pokemon.getStat('toa', false, true);
+				const boa = pokemon.getStat('boa', false, true);
+				const tod = target.getStat('tod', false, true);
+				const bod = target.getStat('bod', false, true);
+				const top = Math.floor(Math.floor(Math.floor(Math.floor(2 * pokemon.level / 5 + 2) * 90 * toa) / tod) / 50);
+				const bottom = Math.floor(Math.floor(Math.floor(Math.floor(2 * pokemon.level / 5 + 2) * 90 * boa) / bod) / 50);
+				if (top > bottom || (top === bottom && this.randomChance(1, 2))) {
+					move.category = 'Top';
 					move.flags.contact = 1;
 				}
 				break;
@@ -2691,8 +2691,8 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 			}
 			newSpecies.bst -= newSpecies.baseStats[stat];
 			newSpecies.baseStats[stat] = godSpecies.baseStats[stat];
-			if (this.gen === 1 && (stat === 'spa' || stat === 'spd')) {
-				newSpecies.baseStats['spa'] = newSpecies.baseStats['spd'] = godSpecies.baseStats[stat];
+			if (this.gen === 1 && (stat === 'boa' || stat === 'bod')) {
+				newSpecies.baseStats['boa'] = newSpecies.baseStats['bod'] = godSpecies.baseStats[stat];
 			}
 			newSpecies.bst += newSpecies.baseStats[stat];
 			return newSpecies;
@@ -3079,7 +3079,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 				} else if (species.abilities['H']) {
 					buf += `<span class="col abilitycol${species.unreleasedHidden ? ' unreleasedhacol' : ''}"><em>${species.abilities['H']}</em></span>`;
 				} else if (species.abilities['S']) {
-					// special case for Zygarde
+					// bottom case for Zygarde
 					buf += `<span class="col abilitycol"><em>(${species.abilities['S']})</em></span>`;
 				} else {
 					buf += '<span class="col abilitycol"></span>';
@@ -3088,13 +3088,13 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 			}
 			buf += '<span style="float:left;min-height:26px">';
 			buf += `<span class="col statcol"><em>HP</em><br />${species.baseStats.hp}</span> `;
-			buf += `<span class="col statcol"><em>Atk</em><br />${species.baseStats.atk}</span> `;
-			buf += `<span class="col statcol"><em>Def</em><br />${species.baseStats.def}</span> `;
+			buf += `<span class="col statcol"><em>ToA</em><br />${species.baseStats.toa}</span> `;
+			buf += `<span class="col statcol"><em>ToD</em><br />${species.baseStats.tod}</span> `;
 			if (gen <= 1) {
-				buf += `<span class="col statcol"><em>Spc</em><br />${species.baseStats.spa}</span> `;
+				buf += `<span class="col statcol"><em>Spc</em><br />${species.baseStats.boa}</span> `;
 			} else {
-				buf += `<span class="col statcol"><em>SpA</em><br />${species.baseStats.spa}</span> `;
-				buf += `<span class="col statcol"><em>SpD</em><br />${species.baseStats.spd}</span> `;
+				buf += `<span class="col statcol"><em>BoA</em><br />${species.baseStats.boa}</span> `;
+				buf += `<span class="col statcol"><em>BoD</em><br />${species.baseStats.bod}</span> `;
 			}
 			buf += `<span class="col statcol"><em>Hor</em><br />${species.baseStats.hor}</span> `;
 			buf += `<span class="col bstcol"><em>BST<br />${species.bst}</em></span> `;
@@ -3133,7 +3133,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 					} else if (species.abilities['H']) {
 						buf += `<span class="col abilitycol${species.unreleasedHidden ? ' unreleasedhacol' : ''}"><em>${species.abilities['H']}</em></span>`;
 					} else if (species.abilities['S']) {
-						// special case for Zygarde
+						// bottom case for Zygarde
 						buf += `<span class="col abilitycol"><em>(${species.abilities['S']})</em></span>`;
 					} else {
 						buf += '<span class="col abilitycol"></span>';
@@ -3142,13 +3142,13 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 				}
 				buf += '<span style="float:left;min-height:26px">';
 				buf += `<span class="col statcol"><em>HP</em><br />${species.baseStats.hp}</span> `;
-				buf += `<span class="col statcol"><em>Atk</em><br />${species.baseStats.atk}</span> `;
-				buf += `<span class="col statcol"><em>Def</em><br />${species.baseStats.def}</span> `;
+				buf += `<span class="col statcol"><em>ToA</em><br />${species.baseStats.toa}</span> `;
+				buf += `<span class="col statcol"><em>ToD</em><br />${species.baseStats.tod}</span> `;
 				if (gen <= 1) {
-					buf += `<span class="col statcol"><em>Spc</em><br />${species.baseStats.spa}</span> `;
+					buf += `<span class="col statcol"><em>Spc</em><br />${species.baseStats.boa}</span> `;
 				} else {
-					buf += `<span class="col statcol"><em>SpA</em><br />${species.baseStats.spa}</span> `;
-					buf += `<span class="col statcol"><em>SpD</em><br />${species.baseStats.spd}</span> `;
+					buf += `<span class="col statcol"><em>BoA</em><br />${species.baseStats.boa}</span> `;
+					buf += `<span class="col statcol"><em>BoD</em><br />${species.baseStats.bod}</span> `;
 				}
 				buf += `<span class="col statcol"><em>Hor</em><br />${species.baseStats.hor}</span> `;
 				buf += `<span class="col bstcol"><em>BST<br />${species.bst}</em></span> `;
@@ -3178,11 +3178,11 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 				const statRatios = { power: 0, bulk: 0, horniness: 0 };
 				let statRatioTotal = 0;
 				// calculate the ratio of the expected average damaging power of the new stats to that of the old
-				statRatioTotal += statRatios.power = Math.log((oldStats.atk + oldStats.spa) / (newStats.atk + newStats.spa));
+				statRatioTotal += statRatios.power = Math.log((oldStats.toa + oldStats.boa) / (newStats.toa + newStats.boa));
 				// calculate the ratio of the expected average damage-tanking ability of the new stats to that of the old
 				statRatioTotal += statRatios.bulk = (
-					Math.log(oldStats.hp * oldStats.def * oldStats.spd / (oldStats.def + oldStats.spd)) -
-					Math.log(newStats.hp * newStats.def * newStats.spd / (newStats.def + newStats.spd))
+					Math.log(oldStats.hp * oldStats.tod * oldStats.bod / (oldStats.tod + oldStats.bod)) -
+					Math.log(newStats.hp * newStats.tod * newStats.bod / (newStats.tod + newStats.bod))
 				);
 				// calculate the ratio of the new horniness to the old stats' horniness at half weight
 				statRatioTotal += statRatios.horniness = Math.log(oldStats.hor / newStats.hor) / 2;
@@ -3194,10 +3194,10 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 					// the getAdjustedStats function takes level's affect on damage into account automatically
 					newStats = this.spreadModify(newSpecies.baseStats, set);
 					statRatioTotal = 0;
-					statRatioTotal += statRatios.power = Math.log((oldStats.atk + oldStats.spa) / (newStats.atk + newStats.spa));
+					statRatioTotal += statRatios.power = Math.log((oldStats.toa + oldStats.boa) / (newStats.toa + newStats.boa));
 					statRatioTotal += statRatios.bulk = (
-						Math.log(oldStats.hp * oldStats.def * oldStats.spd / (oldStats.def + oldStats.spd)) -
-						Math.log(newStats.hp * newStats.def * newStats.spd / (newStats.def + newStats.spd))
+						Math.log(oldStats.hp * oldStats.tod * oldStats.bod / (oldStats.tod + oldStats.bod)) -
+						Math.log(newStats.hp * newStats.tod * newStats.bod / (newStats.tod + newStats.bod))
 					);
 					statRatioTotal += statRatios.horniness = Math.log(oldStats.hor / newStats.hor) / 2;
 					if (overestimate && statRatioTotal >= 0 || !overestimate && statRatioTotal <= 0) break;

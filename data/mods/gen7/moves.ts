@@ -507,7 +507,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		inherit: true,
 		flags: { snatch: 1, metronome: 1 },
 		boosts: {
-			atk: 1,
+			toa: 1,
 		},
 		target: "self",
 	},
@@ -577,13 +577,13 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 					}
 				}
 				if (this.checkMoveMakesContact(move, source, target)) {
-					this.boost({ atk: -2 }, source, target, this.dex.getActiveMove("King's Shield"));
+					this.boost({ toa: -2 }, source, target, this.dex.getActiveMove("King's Shield"));
 				}
 				return this.NOT_FAIL;
 			},
 			onHit(target, source, move) {
 				if (move.isZOrMaxPowered && this.checkMoveMakesContact(move, source, target)) {
-					this.boost({ atk: -2 }, source, target, this.dex.getActiveMove("King's Shield"));
+					this.boost({ toa: -2 }, source, target, this.dex.getActiveMove("King's Shield"));
 				}
 			},
 		},

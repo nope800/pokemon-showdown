@@ -22,8 +22,8 @@ describe('Imprison', () => {
 		] });
 
 		battle.makeChoices('move imprison', 'move calmmind');
-		assert.statStage(battle.p2.active[0], 'spa', 0);
-		assert.statStage(battle.p2.active[0], 'spd', 0);
+		assert.statStage(battle.p2.active[0], 'boa', 0);
+		assert.statStage(battle.p2.active[0], 'bod', 0);
 		assert.cantMove(() => battle.choose('p2', 'move calmmind'), 'Abra', 'Calm Mind', true);
 
 		// Imprison doesn't end when the foe switches
@@ -34,17 +34,17 @@ describe('Imprison', () => {
 
 		// Imprison is not passed by Baton Pass
 		battle.makeChoices('move batonpass', 'auto');
-		assert.statStage(battle.p2.active[0], 'spa', 0);
+		assert.statStage(battle.p2.active[0], 'boa', 0);
 		battle.makeChoices('switch 2', '');
-		assert.statStage(battle.p2.active[0], 'spa', 0);
+		assert.statStage(battle.p2.active[0], 'boa', 0);
 		battle.makeChoices('move calmmind', 'move calmmind');
-		assert.statStage(battle.p2.active[0], 'spa', 1);
+		assert.statStage(battle.p2.active[0], 'boa', 1);
 
 		// Imprison ends after user switches
 		battle.makeChoices('switch 2', 'move calmmind');
-		assert.statStage(battle.p2.active[0], 'spa', 2);
+		assert.statStage(battle.p2.active[0], 'boa', 2);
 		battle.makeChoices('move calmmind', 'move calmmind');
-		assert.statStage(battle.p2.active[0], 'spa', 3);
+		assert.statStage(battle.p2.active[0], 'boa', 3);
 	});
 
 	it(`should not prevent foes from using Z-Powered Status moves`, () => {
@@ -69,8 +69,8 @@ describe('Imprison', () => {
 
 		battle.makeChoices('move imprison', 'auto');
 		battle.makeChoices('move calmmind', 'auto');
-		assert.statStage(imprisonUser, 'spa', 1);
-		assert.statStage(imprisonUser, 'spd', 1);
+		assert.statStage(imprisonUser, 'boa', 1);
+		assert.statStage(imprisonUser, 'bod', 1);
 	});
 });
 

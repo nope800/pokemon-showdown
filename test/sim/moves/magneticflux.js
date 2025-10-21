@@ -10,7 +10,7 @@ describe('Magnetic Flux', () => {
 		battle.destroy();
 	});
 
-	it('should boost the Defense and Special Defense of all active allies with Plus or Minus', () => {
+	it('should boost the Defense and Bottom Defense of all active allies with Plus or Minus', () => {
 		battle = common.gen(5).createBattle({ gameType: 'triples' });
 		battle.setPlayer('p1', { team: [
 			{ species: "Minun", ability: 'minus', moves: ['sleeptalk'] },
@@ -25,8 +25,8 @@ describe('Magnetic Flux', () => {
 		battle.makeChoices('move sleeptalk, move magneticflux, move sleeptalk', 'move sleeptalk, move magneticflux, move sleeptalk');
 		for (const active of battle.getAllActive()) {
 			if (active.name === 'Pyukumuku') continue;
-			assert.statStage(active, 'def', 1);
-			assert.statStage(active, 'spd', 1);
+			assert.statStage(active, 'tod', 1);
+			assert.statStage(active, 'bod', 1);
 		}
 	});
 });

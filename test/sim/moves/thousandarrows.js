@@ -31,11 +31,11 @@ describe('Thousand Arrows', () => {
 		]]);
 		const hooh = battle.p2.active[0];
 		battle.makeChoices();
-		assert.statStage(hooh, 'atk', 0);
-		assert.statStage(hooh, 'spa', 0);
+		assert.statStage(hooh, 'toa', 0);
+		assert.statStage(hooh, 'boa', 0);
 		battle.makeChoices(); // Now Ho-Oh is grounded
-		assert.statStage(hooh, 'atk', 2);
-		assert.statStage(hooh, 'spa', 2);
+		assert.statStage(hooh, 'toa', 2);
+		assert.statStage(hooh, 'boa', 2);
 	});
 
 	it(`should not ignore type effectiveness on the first hit against Flying-type Pokemon with Ring Target`, () => {
@@ -105,8 +105,8 @@ describe('Thousand Arrows', () => {
 		]]);
 		const eelektross = battle.p2.active[0];
 		battle.makeChoices();
-		assert.statStage(eelektross, 'atk', 2);
-		assert.statStage(eelektross, 'spa', 2);
+		assert.statStage(eelektross, 'toa', 2);
+		assert.statStage(eelektross, 'boa', 2);
 	});
 
 	it(`should hit Pokemon with Air Balloon`, () => {

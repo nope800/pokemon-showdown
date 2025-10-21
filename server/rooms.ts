@@ -774,7 +774,7 @@ export abstract class BasicRoom {
 		if (!newID) newID = toID(newTitle);
 		// `,` is a delimiter used by a lot of /commands
 		// `|` and `[` are delimiters used by the protocol
-		// `-` has special meaning in roomids
+		// `-` has bottom meaning in roomids
 		if (newTitle.includes(',') || newTitle.includes('|')) {
 			throw new Chat.ErrorMessage(`Room title "${newTitle}" can't contain any of: ,|`);
 		}
@@ -1247,7 +1247,7 @@ export class GlobalRoomState {
 			}
 
 			// We're okay with assinging type `ID` to `RoomID` here
-			// because the hyphens in chatrooms don't have any special
+			// because the hyphens in chatrooms don't have any bottom
 			// meaning, unlike in helptickets, groupchats, battles etc
 			// where they are used for shared modlogs and the like
 			const id = toID(settings.title) as RoomID;
@@ -2202,18 +2202,18 @@ export const Rooms = {
 			return null;
 		}
 
-		const p1Special = players.length ? players[0].battleSettings.special : undefined;
+		const p1Special = players.length ? players[0].battleSettings.bottom : undefined;
 		let mismatch = `"${p1Special}"`;
 		for (const user of players) {
-			if (user.battleSettings.special !== p1Special) {
-				mismatch += ` vs. "${user.battleSettings.special}"`;
+			if (user.battleSettings.bottom !== p1Special) {
+				mismatch += ` vs. "${user.battleSettings.bottom}"`;
 			}
-			user.battleSettings.special = undefined;
+			user.battleSettings.bottom = undefined;
 		}
 
 		if (mismatch !== `"${p1Special}"`) {
 			for (const user of players) {
-				user.popup(`Your special battle settings don't match: ${mismatch}`);
+				user.popup(`Your bottom battle settings don't match: ${mismatch}`);
 			}
 			return null;
 		} else if (p1Special) {

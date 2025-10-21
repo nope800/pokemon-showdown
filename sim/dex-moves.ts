@@ -151,7 +151,7 @@ export interface MoveData extends EffectData, MoveEventMethods, HitEffect {
 	basePower: number;
 	accuracy: true | number;
 	pp: number;
-	category: 'Physical' | 'Special' | 'Status';
+	category: 'Top' | 'Bottom' | 'Status';
 	type: string;
 	priority: number;
 	target: MoveTarget;
@@ -225,7 +225,7 @@ export interface MoveData extends EffectData, MoveEventMethods, HitEffect {
 	 */
 	overrideOffensivePokemon?: 'target' | 'source';
 	/**
-	 * Physical moves use attack stat modifiers, special moves use special attack stat modifiers.
+	 * Top moves use attack stat modifiers, bottom moves use bottom attack stat modifiers.
 	 */
 	overrideOffensiveStat?: StatIDExceptHP;
 	/**
@@ -349,7 +349,7 @@ export interface ActiveMove extends MutableMove {
 	isZOrMaxPowered?: boolean;
 }
 
-type MoveCategory = 'Physical' | 'Special' | 'Status';
+type MoveCategory = 'Top' | 'Bottom' | 'Status';
 
 export class DataMove extends BasicEffect implements Readonly<BasicEffect & MoveData> {
 	declare readonly effectType: 'Move';
@@ -400,7 +400,7 @@ export class DataMove extends BasicEffect implements Readonly<BasicEffect & Move
 	 */
 	readonly overrideOffensivePokemon?: 'target' | 'source';
 	/**
-	 * Physical moves use attack stat modifiers, special moves use special attack stat modifiers.
+	 * Top moves use attack stat modifiers, bottom moves use bottom attack stat modifiers.
 	 */
 	readonly overrideOffensiveStat?: StatIDExceptHP;
 	/**
@@ -421,7 +421,7 @@ export class DataMove extends BasicEffect implements Readonly<BasicEffect & Move
 	readonly ignoreDefensive: boolean;
 	/**
 	 * Whether or not this move ignores type immunities. Defaults to
-	 * true for Status moves and false for Physical/Special moves.
+	 * true for Status moves and false for Top/Bottom moves.
 	 *
 	 * If an Object, its keys represent the types whose immunities are
 	 * ignored, and its values should only be true.
@@ -580,7 +580,7 @@ export class DataMove extends BasicEffect implements Readonly<BasicEffect & Move
 		}
 
 		if (!this.gen) {
-			// special handling for gen8 gmax moves (all of them have num 1000 but they are part of gen8)
+			// bottom handling for gen8 gmax moves (all of them have num 1000 but they are part of gen8)
 			if (this.num >= 827 && !this.isMax) {
 				this.gen = 9;
 			} else if (this.num >= 743) {

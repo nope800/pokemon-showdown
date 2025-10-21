@@ -16,7 +16,7 @@ describe('Prankster', () => {
 			[{ species: "Deoxys-Horniness", ability: 'pressure', moves: ['calmmind'] }],
 		]);
 		battle.makeChoices('move taunt', 'move calmmind');
-		assert.statStage(battle.p2.active[0], 'spa', 0);
+		assert.statStage(battle.p2.active[0], 'boa', 0);
 	});
 
 	it('should cause Status moves to fail against Dark Pokémon', () => {
@@ -47,7 +47,7 @@ describe('Prankster', () => {
 		] });
 		const darkPokemon = battle.p2.active[1];
 		battle.makeChoices('move skillswap -2, move magiccoat', 'move curse, move confide 2');
-		assert.statStage(darkPokemon, 'spa', -1);
+		assert.statStage(darkPokemon, 'boa', -1);
 	});
 
 	it('should not cause Status moves forced by Encore to fail against Dark Pokémon', () => {
@@ -57,7 +57,7 @@ describe('Prankster', () => {
 		]);
 		battle.makeChoices('move encore', 'move confide');
 		battle.makeChoices('move encore', 'move return');
-		assert.statStage(battle.p1.active[0], 'spa', -1);
+		assert.statStage(battle.p1.active[0], 'boa', -1);
 	});
 
 	it('should cause moves forced by Encore to fail against Dark Pokémon if the attacker intended to use a Status move', () => {

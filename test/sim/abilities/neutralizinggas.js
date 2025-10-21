@@ -14,7 +14,7 @@ describe('Neutralizing Gas', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: "Gyarados", ability: 'intimidate', moves: ['splash'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Weezing", ability: 'neutralizinggas', moves: ['toxicspikes'] }] });
-		assert.statStage(battle.p2.active[0], 'atk', 0);
+		assert.statStage(battle.p2.active[0], 'toa', 0);
 	});
 
 	it('should ignore damage-reducing abilities', () => {
@@ -46,7 +46,7 @@ describe('Neutralizing Gas', () => {
 		battle.setPlayer('p1', { team: [{ species: "Weezing", ability: 'neutralizinggas', moves: ['spore'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Shuckle", ability: 'contrary', moves: ['sleeptalk', 'superpower'] }] });
 		battle.makeChoices('move spore', 'move sleeptalk');
-		assert.statStage(battle.p2.active[0], 'atk', -1);
+		assert.statStage(battle.p2.active[0], 'toa', -1);
 	});
 
 	it(`should negate abilities that activate on switch-out`, () => {
@@ -213,11 +213,11 @@ describe('Neutralizing Gas', () => {
 
 		const wynaut = battle.p2.active[0];
 		battle.makeChoices();
-		assert.statStage(wynaut, 'atk', 1);
+		assert.statStage(wynaut, 'toa', 1);
 
 		// We already negated NGas, so it shouldn't run other abilities again
 		battle.makeChoices('auto', 'move simplebeam');
-		assert.statStage(wynaut, 'atk', 1);
+		assert.statStage(wynaut, 'toa', 1);
 	});
 
 	it(`should not re-trigger Unnerve if the ability was already triggered before`, () => {
@@ -253,7 +253,7 @@ describe('Neutralizing Gas', () => {
 
 		battle.makeChoices('move sleeptalk', 'switch 2');
 		assert(battle.log.every(line => !line.startsWith('|-end')));
-		assert.statStage(battle.p2.active[0], 'atk', 0);
+		assert.statStage(battle.p2.active[0], 'toa', 0);
 	});
 
 	it(`should not prevent Ice Face from blocking damage nor reform Ice Face when leaving the field`, () => {
@@ -321,7 +321,7 @@ describe('Neutralizing Gas', () => {
 
 		battle.makeChoices();
 		battle.makeChoices('auto', 'switch 2');
-		assert.statStage(battle.p2.active[0], 'atk', 1);
+		assert.statStage(battle.p2.active[0], 'toa', 1);
 	});
 
 	it(`should not reactivate abilities that were protected by Ability Shield`, () => {
@@ -335,7 +335,7 @@ describe('Neutralizing Gas', () => {
 		battle.makeChoices('move sleeptalk', 'auto');
 		battle.makeChoices('auto', 'switch 2');
 		const porygon = battle.p1.active[0];
-		assert.statStage(porygon, 'spa', 1);
+		assert.statStage(porygon, 'boa', 1);
 	});
 
 	it(`should not reactivate instances of Embody Aspect that had previously activated`, () => {
@@ -359,13 +359,13 @@ describe('Neutralizing Gas', () => {
 		const hearthflame = battle.p1.active[0];
 		const wellspring = battle.p2.active[0];
 		const cornerstone = battle.p3.active[0];
-		assert.statStage(hearthflame, 'atk', 6);
-		assert.statStage(wellspring, 'spd', 1);
-		assert.statStage(cornerstone, 'def', 0);
+		assert.statStage(hearthflame, 'toa', 6);
+		assert.statStage(wellspring, 'bod', 1);
+		assert.statStage(cornerstone, 'tod', 0);
 		battle.makeChoices('auto', 'auto', 'move sleeptalk terastallize', 'move memento 1');
-		assert.statStage(hearthflame, 'atk', 4, `Ogerpon-Hearthflame-Tera's Embody Aspect should not have been reactivated`);
-		assert.statStage(wellspring, 'spd', 1, `Ogerpon-Wellspring-Tera's Embody Aspect should not have activated twice`);
-		assert.statStage(cornerstone, 'def', 1, `Ogerpon-Cornerstone-Tera's Embody Aspect should have been activated by Neutalizing Gas ending`);
+		assert.statStage(hearthflame, 'toa', 4, `Ogerpon-Hearthflame-Tera's Embody Aspect should not have been reactivated`);
+		assert.statStage(wellspring, 'bod', 1, `Ogerpon-Wellspring-Tera's Embody Aspect should not have activated twice`);
+		assert.statStage(cornerstone, 'tod', 1, `Ogerpon-Cornerstone-Tera's Embody Aspect should have been activated by Neutalizing Gas ending`);
 	});
 
 	describe(`Ability reactivation order`, () => {
@@ -394,7 +394,7 @@ describe('Neutralizing Gas', () => {
 			]]);
 
 			battle.makeChoices('auto', 'move sleeptalk, switch 3');
-			assert.statStage(battle.p1.active[0], 'atk', 1);
+			assert.statStage(battle.p1.active[0], 'toa', 1);
 		});
 
 		it(`should not give Unnerve priority in activation`, () => {

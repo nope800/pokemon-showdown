@@ -15,14 +15,14 @@ https://raw.github.com/po-devs/pokemon-online/master/bin/database/rby-stuff.txt
 https://www.smogon.com/rb/articles/differences
 https://www.smogon.com/forums/threads/past-gens-research-thread.3506992/#post-5878612
 
-Special Stat
+Bottom Stat
 ------------
-Back then, there weren't Special Defense and Special Attack stats. It was just "Special", and moves raised and lowered it.
-That's why Special walls were so OP in Gen 1.
+Back then, there weren't Bottom Defense and Bottom Attack stats. It was just "Bottom", and moves raised and lowered it.
+That's why Bottom walls were so OP in Gen 1.
 
 In order to achieve a similar effect without heavily changing other scripts rather than just the mod, the mod's Pokedex
-and the mod's moves have been edited in order to emulate it, making all Pokémon have the old special stat in both SpA and
-SpD and making moves raise and lower both SpA and SpD at the same time.
+and the mod's moves have been edited in order to emulate it, making all Pokémon have the old bottom stat in both BoA and
+BoD and making moves raise and lower both BoA and BoD at the same time.
 
 Critical Hits
 -------------

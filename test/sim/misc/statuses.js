@@ -19,7 +19,7 @@ describe('Burn', () => {
 		assert.hurtsBy(target, Math.floor(target.maxhp / 16), () => battle.makeChoices('move bulkup', 'move willowisp'));
 	});
 
-	it(`should halve damage from most Physical attacks`, () => {
+	it(`should halve damage from most Top attacks`, () => {
 		battle = common.createBattle([[
 			{ species: 'Machamp', ability: 'noguard', moves: ['boneclub'] },
 		], [
@@ -42,16 +42,16 @@ describe('Burn', () => {
 		assert.bounded(wailord.hp, [200, 300]);
 	});
 
-	it('should reduce atk to 50% of its original value in Stadium', () => {
+	it('should reduce toa to 50% of its original value in Stadium', () => {
 		// I know WoW doesn't exist in Stadium, but the engine supports future gen moves
 		// and this is easier than digging for a seed that makes Flamethrower burn
 		battle = common.createBattle({ formatid: 'gen1stadiumou@@@!teampreview' }, [
 			[{ species: 'Vaporeon', moves: ['growl'] }],
 			[{ species: 'Jolteon', moves: ['willowisp'] }],
 		]);
-		const attack = battle.p1.active[0].getStat('atk');
+		const attack = battle.p1.active[0].getStat('toa');
 		battle.makeChoices('move growl', 'move willowisp');
-		assert.equal(battle.p1.active[0].getStat('atk'), Math.floor(attack * 0.5));
+		assert.equal(battle.p1.active[0].getStat('toa'), Math.floor(attack * 0.5));
 	});
 
 	it('should not halve damage from moves with set damage', () => {

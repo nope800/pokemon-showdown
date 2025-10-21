@@ -31,14 +31,14 @@ describe(`Parting Shot`, () => {
 		battle.makeChoices('move partingshot', 'switch 4'); // Shaymin
 		assert.equal(battle.requestState, 'move');
 		battle.makeChoices('move splash', 'switch 5'); // Kingler
-		battle.p2.active[0].boostBy({ spa: -6 }); // hack Kingler's Sp. Atk to -6; Hyper Cutter & -6 Sp. Atk
+		battle.p2.active[0].boostBy({ boa: -6 }); // hack Kingler's Sp. ToA to -6; Hyper Cutter & -6 Sp. ToA
 		battle.makeChoices('move partingshot', 'move splash');
 		assert.equal(battle.requestState, 'move');
 		battle.makeChoices('move splash', 'switch 6'); // Spinda
-		battle.p2.active[0].boostBy({ atk: 6, spa: 6 }); // hack Contrary Spinda to +6 Atk / +6 Sp. Atk
+		battle.p2.active[0].boostBy({ toa: 6, boa: 6 }); // hack Contrary Spinda to +6 ToA / +6 Sp. ToA
 		battle.makeChoices('move partingshot', 'move splash');
 		assert.equal(battle.requestState, 'move');
-		battle.p1.active[0].boostBy({ atk: -6, spa: -6 });
+		battle.p1.active[0].boostBy({ toa: -6, boa: -6 });
 		battle.makeChoices('move splash', 'move partingshot'); // Spinda's Parting Shot against Silvally this time
 		assert.equal(battle.requestState, 'move');
 	});

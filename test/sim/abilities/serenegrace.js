@@ -54,9 +54,9 @@ describe(`Serene Grace`, () => {
 		battle.makeChoices('move poweruppunch 1, move acidspray 2', 'auto');
 
 		const wynaut = battle.p1.active[0];
-		assert.statStage(wynaut, 'atk', 0);
+		assert.statStage(wynaut, 'toa', 0);
 		const feebas = battle.p2.active[1];
-		assert.statStage(feebas, 'spd', 0);
+		assert.statStage(feebas, 'bod', 0);
 	});
 
 	it(`should not overflow when quadrupling a status effect with Pledge Rainbow`, () => {

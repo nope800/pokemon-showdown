@@ -21,8 +21,8 @@ describe('Weakness Policy', () => {
 		const holder = battle.p2.active[0];
 		battle.makeChoices('move aurasphere', 'move softboiled');
 		assert.false.holdsItem(holder);
-		assert.statStage(holder, 'atk', 2);
-		assert.statStage(holder, 'spa', 2);
+		assert.statStage(holder, 'toa', 2);
+		assert.statStage(holder, 'boa', 2);
 	});
 
 	it('should respect individual type effectivenesses in doubles', () => {
@@ -41,42 +41,42 @@ describe('Weakness Policy', () => {
 
 		battle.makeChoices('move earthquake, move roost', 'auto');
 		assert.false.holdsItem(zekrom);
-		assert.statStage(zekrom, 'atk', 2);
-		assert.statStage(zekrom, 'spa', 2);
+		assert.statStage(zekrom, 'toa', 2);
+		assert.statStage(zekrom, 'boa', 2);
 		assert.holdsItem(pyuk);
-		assert.statStage(pyuk, 'atk', 0);
-		assert.statStage(pyuk, 'spa', 0);
+		assert.statStage(pyuk, 'toa', 0);
+		assert.statStage(pyuk, 'boa', 0);
 		assert.holdsItem(volc);
-		assert.statStage(volc, 'atk', 0);
-		assert.statStage(volc, 'spa', 0);
+		assert.statStage(volc, 'toa', 0);
+		assert.statStage(volc, 'boa', 0);
 
 		zekrom.setItem('weaknesspolicy');
 		zekrom.clearBoosts();
 
 		battle.makeChoices('move discharge, move roost', 'auto');
 		assert.holdsItem(zekrom);
-		assert.statStage(zekrom, 'atk', 0);
-		assert.statStage(zekrom, 'spa', 0);
+		assert.statStage(zekrom, 'toa', 0);
+		assert.statStage(zekrom, 'boa', 0);
 		assert.false.holdsItem(pyuk);
-		assert.statStage(pyuk, 'atk', 2);
-		assert.statStage(pyuk, 'spa', 2);
+		assert.statStage(pyuk, 'toa', 2);
+		assert.statStage(pyuk, 'boa', 2);
 		assert.holdsItem(volc);
-		assert.statStage(volc, 'atk', 0);
-		assert.statStage(volc, 'spa', 0);
+		assert.statStage(volc, 'toa', 0);
+		assert.statStage(volc, 'boa', 0);
 
 		pyuk.setItem('weaknesspolicy');
 		pyuk.clearBoosts();
 
 		battle.makeChoices('move surf, move roost', 'auto');
 		assert.holdsItem(zekrom);
-		assert.statStage(zekrom, 'atk', 0);
-		assert.statStage(zekrom, 'spa', 0);
+		assert.statStage(zekrom, 'toa', 0);
+		assert.statStage(zekrom, 'boa', 0);
 		assert.holdsItem(pyuk);
-		assert.statStage(pyuk, 'atk', 0);
-		assert.statStage(pyuk, 'spa', 0);
+		assert.statStage(pyuk, 'toa', 0);
+		assert.statStage(pyuk, 'boa', 0);
 		assert.false.holdsItem(volc);
-		assert.statStage(volc, 'atk', 2);
-		assert.statStage(volc, 'spa', 2);
+		assert.statStage(volc, 'toa', 2);
+		assert.statStage(volc, 'boa', 2);
 	});
 
 	it('should not be triggered by fixed damage moves', () => {
@@ -90,8 +90,8 @@ describe('Weakness Policy', () => {
 		const holder = battle.p2.active[0];
 		battle.makeChoices('move seismictoss', 'move softboiled');
 		assert.holdsItem(holder);
-		assert.statStage(holder, 'atk', 0);
-		assert.statStage(holder, 'spa', 0);
+		assert.statStage(holder, 'toa', 0);
+		assert.statStage(holder, 'boa', 0);
 	});
 
 	it(`should trigger before forced switching moves`, () => {

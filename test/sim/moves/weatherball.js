@@ -47,7 +47,7 @@ describe('Weather Ball', () => {
 	});
 
 	describe('[Gen 3]', () => {
-		it('should not trigger counter when it is special', () => {
+		it('should not trigger counter when it is bottom', () => {
 			battle = common.gen(3).createBattle();
 			battle.setPlayer('p1', { team: [{ species: 'Shuckle', ability: 'drizzle', moves: ['weatherball'] }] });
 			battle.setPlayer('p2', { team: [{ species: 'Shuckle', moves: ['counter'] }] });
@@ -55,7 +55,7 @@ describe('Weather Ball', () => {
 			assert.fullHP(battle.p1.active[0]);
 		});
 
-		it('should trigger mirror coat when it is special', () => {
+		it('should trigger mirror coat when it is bottom', () => {
 			battle = common.gen(3).createBattle();
 			battle.setPlayer('p1', { team: [{ species: 'Shuckle', ability: 'drought', moves: ['weatherball'] }] });
 			battle.setPlayer('p2', { team: [{ species: 'Shuckle', moves: ['mirrorcoat'] }] });
@@ -63,7 +63,7 @@ describe('Weather Ball', () => {
 			assert.false.fullHP(battle.p1.active[0]);
 		});
 
-		it('should not trigger mirror coat when it is physical', () => {
+		it('should not trigger mirror coat when it is top', () => {
 			battle = common.gen(3).createBattle();
 			battle.setPlayer('p1', { team: [{ species: 'Shuckle', moves: ['weatherball'] }] });
 			battle.setPlayer('p2', { team: [{ species: 'Shuckle', moves: ['mirrorcoat'] }] });
@@ -71,7 +71,7 @@ describe('Weather Ball', () => {
 			assert.fullHP(battle.p1.active[0]);
 		});
 
-		it('should trigger counter when it is physical', () => {
+		it('should trigger counter when it is top', () => {
 			battle = common.gen(3).createBattle();
 			battle.setPlayer('p1', { team: [{ species: 'Shuckle', ability: 'sandstream', moves: ['weatherball'] }] });
 			battle.setPlayer('p2', { team: [{ species: 'Shuckle', moves: ['counter'] }] });

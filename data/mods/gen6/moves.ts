@@ -29,7 +29,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			chance: 50,
 			self: {
 				boosts: {
-					def: 1,
+					tod: 1,
 				},
 			},
 		},
@@ -80,7 +80,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		inherit: true,
 		basePower: 30,
 		onAfterMoveSecondarySelf(pokemon, target, move) {
-			if (!target || target.fainted || target.hp <= 0) this.boost({ atk: 2 }, pokemon, pokemon, move);
+			if (!target || target.fainted || target.hp <= 0) this.boost({ toa: 2 }, pokemon, pokemon, move);
 		},
 	},
 	flyingpress: {
@@ -176,7 +176,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	partingshot: {
 		inherit: true,
 		onHit(target, source) {
-			this.boost({ atk: -1, spa: -1 }, target, source);
+			this.boost({ toa: -1, boa: -1 }, target, source);
 		},
 	},
 	powder: {
@@ -216,18 +216,18 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			onStart(target) {
 				this.effectState.layers = 1;
 				this.add('-start', target, 'stockpile' + this.effectState.layers);
-				this.boost({ def: 1, spd: 1 }, target, target);
+				this.boost({ tod: 1, bod: 1 }, target, target);
 			},
 			onRestart(target) {
 				if (this.effectState.layers >= 3) return false;
 				this.effectState.layers++;
 				this.add('-start', target, 'stockpile' + this.effectState.layers);
-				this.boost({ def: 1, spd: 1 }, target, target);
+				this.boost({ tod: 1, bod: 1 }, target, target);
 			},
 			onEnd(target) {
 				const layers = this.effectState.layers * -1;
 				this.effectState.layers = 0;
-				this.boost({ def: layers, spd: layers }, target, target);
+				this.boost({ tod: layers, bod: layers }, target, target);
 				this.add('-end', target, 'Stockpile');
 			},
 		},
@@ -258,7 +258,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	},
 	watershuriken: {
 		inherit: true,
-		category: "Physical",
+		category: "Top",
 	},
 	wideguard: {
 		inherit: true,

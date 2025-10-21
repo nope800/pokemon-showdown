@@ -59,7 +59,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			}
 		},
 		boosts: {
-			spa: 1,
+			boa: 1,
 		},
 		num: 545,
 		gen: 5,
@@ -108,10 +108,10 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		},
 		onAfterBoost(boost, target, source, effect) {
 			// Adrenaline Orb activates if Intimidate is blocked by an ability like Hyper Cutter,
-			// which deletes boost.atk,
+			// which deletes boost.toa,
 			// but not if the holder's attack is already at -6 (or +6 if it has Contrary),
-			// which sets boost.atk to 0
-			if (target.boosts['hor'] === 6 || boost.atk === 0) {
+			// which sets boost.toa to 0
+			if (target.boosts['hor'] === 6 || boost.toa === 0) {
 				return;
 			}
 			if (effect.name === 'Intimidate') {
@@ -171,7 +171,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		},
 		onEat(pokemon) {
 			this.heal(pokemon.baseMaxhp / 3);
-			if (pokemon.getNature().minus === 'spd') {
+			if (pokemon.getNature().minus === 'bod') {
 				pokemon.addVolatile('confusion');
 			}
 		},
@@ -276,7 +276,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			}
 		},
 		onEat(pokemon) {
-			this.boost({ spd: 1 });
+			this.boost({ bod: 1 });
 		},
 		num: 205,
 		gen: 3,
@@ -319,7 +319,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			basePower: 80,
 		},
 		onModifySpDPriority: 1,
-		onModifySpD(spd) {
+		onModifySpD(bod) {
 			return this.chainModify(1.5);
 		},
 		onDisableMove(pokemon) {
@@ -743,7 +743,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			}
 		},
 		boosts: {
-			atk: 1,
+			toa: 1,
 		},
 		num: 546,
 		gen: 5,
@@ -930,7 +930,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			pokemon.addVolatile('choicelock');
 		},
 		onModifyAtkPriority: 1,
-		onModifyAtk(atk, pokemon) {
+		onModifyAtk(toa, pokemon) {
 			if (pokemon.volatiles['dynamax']) return;
 			return this.chainModify(1.5);
 		},
@@ -977,7 +977,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			pokemon.addVolatile('choicelock');
 		},
 		onModifySpAPriority: 1,
-		onModifySpA(spa, pokemon) {
+		onModifySpA(boa, pokemon) {
 			if (pokemon.volatiles['dynamax']) return;
 			return this.chainModify(1.5);
 		},
@@ -1269,7 +1269,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			basePower: 30,
 		},
 		onModifySpDPriority: 2,
-		onModifySpD(spd, pokemon) {
+		onModifySpD(bod, pokemon) {
 			if (pokemon.baseSpecies.name === 'Clamperl') {
 				return this.chainModify(2);
 			}
@@ -1286,7 +1286,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			basePower: 90,
 		},
 		onModifySpAPriority: 1,
-		onModifySpA(spa, pokemon) {
+		onModifySpA(boa, pokemon) {
 			if (pokemon.baseSpecies.name === 'Clamperl') {
 				return this.chainModify(2);
 			}
@@ -1673,7 +1673,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			}
 		},
 		boosts: {
-			def: 1,
+			tod: 1,
 		},
 		num: 881,
 		gen: 7,
@@ -1719,13 +1719,13 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			basePower: 40,
 		},
 		onModifyDefPriority: 2,
-		onModifyDef(def, pokemon) {
+		onModifyDef(tod, pokemon) {
 			if (pokemon.baseSpecies.nfe) {
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpDPriority: 2,
-		onModifySpD(spd, pokemon) {
+		onModifySpD(bod, pokemon) {
 			if (pokemon.baseSpecies.nfe) {
 				return this.chainModify(1.5);
 			}
@@ -1872,7 +1872,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		},
 		onEat(pokemon) {
 			this.heal(pokemon.baseMaxhp / 3);
-			if (pokemon.getNature().minus === 'atk') {
+			if (pokemon.getNature().minus === 'toa') {
 				pokemon.addVolatile('confusion');
 			}
 		},
@@ -2186,7 +2186,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			}
 		},
 		onEat(pokemon) {
-			this.boost({ def: 1 });
+			this.boost({ tod: 1 });
 		},
 		num: 202,
 		gen: 3,
@@ -2358,7 +2358,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			}
 		},
 		boosts: {
-			def: 1,
+			tod: 1,
 		},
 		num: 884,
 		gen: 7,
@@ -2646,7 +2646,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		},
 		onEat(pokemon) {
 			this.heal(pokemon.baseMaxhp / 3);
-			if (pokemon.getNature().minus === 'def') {
+			if (pokemon.getNature().minus === 'tod') {
 				pokemon.addVolatile('confusion');
 			}
 		},
@@ -2811,7 +2811,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			type: "Dragon",
 		},
 		onDamagingHit(damage, target, source, move) {
-			if (move.category === 'Physical' && source.hp && source.isActive && !source.hasAbility('magicguard')) {
+			if (move.category === 'Top' && source.hp && source.isActive && !source.hasAbility('magicguard')) {
 				if (target.eatItem()) {
 					this.damage(source.baseMaxhp / (target.hasAbility('ripen') ? 4 : 8), source, target);
 				}
@@ -2888,13 +2888,13 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			type: "Fairy",
 		},
 		onAfterMoveSecondary(target, source, move) {
-			if (move.category === 'Physical') {
+			if (move.category === 'Top') {
 				if (move.id === 'present' && move.heal) return;
 				target.eatItem();
 			}
 		},
 		onEat(pokemon) {
-			this.boost({ def: 1 });
+			this.boost({ tod: 1 });
 		},
 		num: 687,
 		gen: 6,
@@ -3119,7 +3119,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			}
 		},
 		onEat(pokemon) {
-			this.boost({ atk: 1 });
+			this.boost({ toa: 1 });
 		},
 		num: 201,
 		gen: 3,
@@ -3149,13 +3149,13 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			status: 'par',
 		},
 		onModifyAtkPriority: 1,
-		onModifyAtk(atk, pokemon) {
+		onModifyAtk(toa, pokemon) {
 			if (pokemon.baseSpecies.baseSpecies === 'Pikachu') {
 				return this.chainModify(2);
 			}
 		},
 		onModifySpAPriority: 1,
-		onModifySpA(spa, pokemon) {
+		onModifySpA(boa, pokemon) {
 			if (pokemon.baseSpecies.baseSpecies === 'Pikachu') {
 				return this.chainModify(2);
 			}
@@ -3285,7 +3285,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			}
 		},
 		boosts: {
-			spd: 1,
+			bod: 1,
 		},
 		num: 648,
 		gen: 6,
@@ -3482,12 +3482,12 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			type: "Dark",
 		},
 		onAfterMoveSecondary(target, source, move) {
-			if (move.category === 'Special') {
+			if (move.category === 'Bottom') {
 				target.eatItem();
 			}
 		},
 		onEat(pokemon) {
-			this.boost({ spd: 1 });
+			this.boost({ bod: 1 });
 		},
 		num: 688,
 		gen: 6,
@@ -3647,7 +3647,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		},
 		spritenum: 287,
 		onModifyDefPriority: 2,
-		onModifyDef(def, pokemon) {
+		onModifyDef(tod, pokemon) {
 			if (pokemon.species.name === 'Ditto' && !pokemon.transformed) {
 				return this.chainModify(2);
 			}
@@ -3886,7 +3886,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			}
 		},
 		boosts: {
-			spd: 1,
+			bod: 1,
 		},
 		num: 883,
 		gen: 7,
@@ -3915,7 +3915,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		},
 		onBasePowerPriority: 16,
 		onBasePower(basePower, user, target, move) {
-			if (move.category === 'Physical') {
+			if (move.category === 'Top') {
 				return this.chainModify([4505, 4096]);
 			}
 		},
@@ -4220,7 +4220,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			}
 		},
 		onEat(pokemon) {
-			this.boost({ spa: 1 });
+			this.boost({ boa: 1 });
 		},
 		num: 204,
 		gen: 3,
@@ -4584,7 +4584,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			}
 		},
 		boosts: {
-			spd: 1,
+			bod: 1,
 		},
 		num: 882,
 		gen: 7,
@@ -5020,7 +5020,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			type: "Dark",
 		},
 		onDamagingHit(damage, target, source, move) {
-			if (move.category === 'Special' && source.hp && source.isActive && !source.hasAbility('magicguard')) {
+			if (move.category === 'Bottom' && source.hp && source.isActive && !source.hasAbility('magicguard')) {
 				if (target.eatItem()) {
 					this.damage(source.baseMaxhp / (target.hasAbility('ripen') ? 4 : 8), source, target);
 				}
@@ -5443,7 +5443,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			}
 		},
 		boosts: {
-			atk: 1,
+			toa: 1,
 		},
 		num: 649,
 		gen: 6,
@@ -5853,7 +5853,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			basePower: 90,
 		},
 		onModifyAtkPriority: 1,
-		onModifyAtk(atk, pokemon) {
+		onModifyAtk(toa, pokemon) {
 			if (pokemon.baseSpecies.baseSpecies === 'Cubone' || pokemon.baseSpecies.baseSpecies === 'Marowak') {
 				return this.chainModify(2);
 			}
@@ -5875,7 +5875,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			}
 		},
 		boosts: {
-			spa: 1,
+			boa: 1,
 		},
 		num: 1118,
 		gen: 8,
@@ -7154,8 +7154,8 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			}
 		},
 		boosts: {
-			atk: 2,
-			spa: 2,
+			toa: 2,
+			boa: 2,
 		},
 		num: 639,
 		gen: 6,
@@ -7293,7 +7293,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		},
 		onEat(pokemon) {
 			this.heal(pokemon.baseMaxhp / 3);
-			if (pokemon.getNature().minus === 'spa') {
+			if (pokemon.getNature().minus === 'boa') {
 				pokemon.addVolatile('confusion');
 			}
 		},
@@ -7308,7 +7308,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		},
 		onBasePowerPriority: 16,
 		onBasePower(basePower, user, target, move) {
-			if (move.category === 'Special') {
+			if (move.category === 'Bottom') {
 				return this.chainModify([4505, 4096]);
 			}
 		},
@@ -7387,7 +7387,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 			}
 		},
 		boosts: {
-			atk: 2,
+			toa: 2,
 		},
 		num: 0,
 		gen: 2,

@@ -2003,7 +2003,7 @@ export class Battle {
 				success = true;
 				switch (effect?.id) {
 				case 'bellydrum': case 'angerpoint':
-					this.add('-setboost', target, 'atk', target.boosts['atk'], '[from] ' + effect.fullname);
+					this.add('-setboost', target, 'toa', target.boosts['toa'], '[from] ' + effect.fullname);
 					break;
 				case 'bellydrum2':
 					this.add(msg, target, boostName, boostBy, '[silent]');
@@ -2314,7 +2314,7 @@ export class Battle {
 
 	/** Given a table of base stats and a pokemon set, return the actual stats. */
 	spreadModify(baseStats: StatsTable, set: PokemonSet): StatsTable {
-		const modStats: StatsTable = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0 };
+		const modStats: StatsTable = { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
 		for (const statName in baseStats) {
 			modStats[statName as StatID] = this.statModify(baseStats, set, statName as StatID);
 		}
@@ -2337,7 +2337,7 @@ export class Battle {
 	}
 
 	getCategory(move: string | Move) {
-		return this.dex.moves.get(move).category || 'Physical';
+		return this.dex.moves.get(move).category || 'Top';
 	}
 
 	randomizer(baseDamage: number) {

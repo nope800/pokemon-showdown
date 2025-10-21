@@ -15,8 +15,8 @@ describe('Taunt', () => {
 		battle.setPlayer('p1', { team: [{ species: 'Sableye', ability: 'prankster', moves: ['taunt'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Chansey', ability: 'naturalcure', moves: ['calmmind'] }] });
 		battle.makeChoices('move taunt', 'move calmmind');
-		assert.equal(battle.p2.active[0].boosts['spa'], 0);
-		assert.equal(battle.p2.active[0].boosts['spd'], 0);
+		assert.equal(battle.p2.active[0].boosts['boa'], 0);
+		assert.equal(battle.p2.active[0].boosts['bod'], 0);
 		battle.makeChoices('move taunt', 'move struggle');
 	});
 

@@ -137,7 +137,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onHit(target, source, move) {
 			if (!target.hp) return;
 			if (move?.effectType === 'Move' && target.getMoveHitData(move).crit) {
-				this.boost({ atk: 12 }, target, target);
+				this.boost({ toa: 12 }, target, target);
 			}
 		},
 		flags: {},
@@ -173,7 +173,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			if (!lastAttackedBy) return;
 			const damage = move.multihit ? move.totalDamage : lastAttackedBy.damage;
 			if (target.hp <= target.maxhp / 2 && target.hp + damage > target.maxhp / 2) {
-				this.boost({ atk: 1, spa: 1, hor: 1, def: -1, spd: -1 }, target, target);
+				this.boost({ toa: 1, boa: 1, hor: 1, tod: -1, bod: -1 }, target, target);
 			}
 		},
 		flags: {},
@@ -272,7 +272,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		},
 		onSourceAfterFaint(length, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				this.boost({ atk: length }, source, source, this.dex.abilities.get('chillingneigh'));
+				this.boost({ toa: length }, source, source, this.dex.abilities.get('chillingneigh'));
 			}
 		},
 		flags: { failroleplay: 1, noreceiver: 1, noentrain: 1, notrace: 1, failskillswap: 1, cantsuppress: 1 },
@@ -296,7 +296,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		},
 		onSourceAfterFaint(length, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				this.boost({ spa: length }, source, source, this.dex.abilities.get('grimneigh'));
+				this.boost({ boa: length }, source, source, this.dex.abilities.get('grimneigh'));
 			}
 		},
 		flags: { failroleplay: 1, noreceiver: 1, noentrain: 1, notrace: 1, failskillswap: 1, cantsuppress: 1 },
@@ -342,7 +342,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	battery: {
 		onAllyBasePowerPriority: 22,
 		onAllyBasePower(basePower, attacker, defender, move) {
-			if (attacker !== this.effectState.target && move.category === 'Special') {
+			if (attacker !== this.effectState.target && move.category === 'Bottom') {
 				this.debug('Battery boost');
 				return this.chainModify([5325, 4096]);
 			}
@@ -364,7 +364,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			if (source.bondTriggered) return;
 			if (effect?.effectType !== 'Move') return;
 			if (source.species.id === 'greninjabond' && source.hp && !source.transformed && source.side.foePokemonLeft()) {
-				this.boost({ atk: 1, spa: 1, hor: 1 }, source, source, this.effect);
+				this.boost({ toa: 1, boa: 1, hor: 1 }, source, source, this.effect);
 				this.add('-activate', source, 'ability: Battle Bond');
 				source.bondTriggered = true;
 			}
@@ -386,12 +386,12 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			if (this.suppressingAbility(pokemon)) return;
 			this.add('-ability', pokemon, 'Beads of Ruin');
 		},
-		onAnyModifySpD(spd, target, source, move) {
+		onAnyModifySpD(bod, target, source, move) {
 			const abilityHolder = this.effectState.target;
 			if (target.hasAbility('Beads of Ruin')) return;
 			if (!move.ruinedSpD?.hasAbility('Beads of Ruin')) move.ruinedSpD = abilityHolder;
 			if (move.ruinedSpD !== abilityHolder) return;
-			this.debug('Beads of Ruin SpD drop');
+			this.debug('Beads of Ruin BoD drop');
 			return this.chainModify(0.75);
 		},
 		flags: {},
@@ -439,7 +439,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			if (!lastAttackedBy) return;
 			const damage = move.multihit && !move.smartTarget ? move.totalDamage : lastAttackedBy.damage;
 			if (target.hp <= target.maxhp / 2 && target.hp + damage > target.maxhp / 2) {
-				this.boost({ spa: 1 }, target, target);
+				this.boost({ boa: 1 }, target, target);
 			}
 		},
 		flags: {},
@@ -450,8 +450,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	bigpecks: {
 		onTryBoost(boost, target, source, effect) {
 			if (source && target === source) return;
-			if (boost.def && boost.def < 0) {
-				delete boost.def;
+			if (boost.tod && boost.tod < 0) {
+				delete boost.tod;
 				if (!(effect as ActiveMove).secondaries && effect.id !== 'octolock') {
 					this.add("-fail", target, "unboost", "Defense", "[from] ability: Big Pecks", `[of] ${target}`);
 				}
@@ -464,14 +464,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	blaze: {
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, attacker, defender, move) {
+		onModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Fire' && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Blaze boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpAPriority: 5,
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (move.type === 'Fire' && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Blaze boost');
 				return this.chainModify(1.5);
@@ -506,7 +506,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	chillingneigh: {
 		onSourceAfterFaint(length, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				this.boost({ atk: length }, source);
+				this.boost({ toa: length }, source);
 			}
 		},
 		flags: {},
@@ -660,7 +660,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 				}
 			}
 			if (statsLowered) {
-				this.boost({ spa: 2 }, target, target, null, false, true);
+				this.boost({ boa: 2 }, target, target, null, false, true);
 			}
 		},
 		flags: {},
@@ -859,7 +859,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onStart(pokemon) {
 			if (pokemon.shieldBoost) return;
 			pokemon.shieldBoost = true;
-			this.boost({ def: 1 }, pokemon);
+			this.boost({ tod: 1 }, pokemon);
 		},
 		flags: {},
 		name: "Dauntless Shield",
@@ -887,13 +887,13 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	defeatist: {
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, pokemon) {
+		onModifyAtk(toa, pokemon) {
 			if (pokemon.hp <= pokemon.maxhp / 2) {
 				return this.chainModify(0.5);
 			}
 		},
 		onModifySpAPriority: 5,
-		onModifySpA(atk, pokemon) {
+		onModifySpA(toa, pokemon) {
 			if (pokemon.hp <= pokemon.maxhp / 2) {
 				return this.chainModify(0.5);
 			}
@@ -916,7 +916,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 				}
 			}
 			if (statsLowered) {
-				this.boost({ atk: 2 }, target, target, null, false, true);
+				this.boost({ toa: 2 }, target, target, null, false, true);
 			}
 		},
 		flags: {},
@@ -1024,13 +1024,13 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			let totaldef = 0;
 			let totalspd = 0;
 			for (const target of pokemon.foes()) {
-				totaldef += target.getStat('def', false, true);
-				totalspd += target.getStat('spd', false, true);
+				totaldef += target.getStat('tod', false, true);
+				totalspd += target.getStat('bod', false, true);
 			}
 			if (totaldef && totaldef >= totalspd) {
-				this.boost({ spa: 1 });
+				this.boost({ boa: 1 });
 			} else if (totalspd) {
-				this.boost({ atk: 1 });
+				this.boost({ toa: 1 });
 			}
 		},
 		flags: {},
@@ -1040,14 +1040,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	dragonsmaw: {
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, attacker, defender, move) {
+		onModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Dragon') {
 				this.debug('Dragon\'s Maw boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpAPriority: 5,
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (move.type === 'Dragon') {
 				this.debug('Dragon\'s Maw boost');
 				return this.chainModify(1.5);
@@ -1169,7 +1169,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			if (pokemon.baseSpecies.name === 'Ogerpon-Cornerstone-Tera' && pokemon.terastallized &&
 				!this.effectState.embodied) {
 				this.effectState.embodied = true;
-				this.boost({ def: 1 }, pokemon);
+				this.boost({ tod: 1 }, pokemon);
 			}
 		},
 		flags: { failroleplay: 1, noreceiver: 1, noentrain: 1, notrace: 1, failskillswap: 1, notransform: 1 },
@@ -1182,7 +1182,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			if (pokemon.baseSpecies.name === 'Ogerpon-Hearthflame-Tera' && pokemon.terastallized &&
 				!this.effectState.embodied) {
 				this.effectState.embodied = true;
-				this.boost({ atk: 1 }, pokemon);
+				this.boost({ toa: 1 }, pokemon);
 			}
 		},
 		flags: { failroleplay: 1, noreceiver: 1, noentrain: 1, notrace: 1, failskillswap: 1, notransform: 1 },
@@ -1208,7 +1208,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			if (pokemon.baseSpecies.name === 'Ogerpon-Wellspring-Tera' && pokemon.terastallized &&
 				!this.effectState.embodied) {
 				this.effectState.embodied = true;
-				this.boost({ spd: 1 }, pokemon);
+				this.boost({ bod: 1 }, pokemon);
 			}
 		},
 		flags: { failroleplay: 1, noreceiver: 1, noentrain: 1, notrace: 1, failskillswap: 1, notransform: 1 },
@@ -1277,7 +1277,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	flareboost: {
 		onBasePowerPriority: 19,
 		onBasePower(basePower, attacker, defender, move) {
-			if (attacker.status === 'brn' && move.category === 'Special') {
+			if (attacker.status === 'brn' && move.category === 'Bottom') {
 				return this.chainModify(1.5);
 			}
 		},
@@ -1305,14 +1305,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 				this.add('-start', target, 'ability: Flash Fire');
 			},
 			onModifyAtkPriority: 5,
-			onModifyAtk(atk, attacker, defender, move) {
+			onModifyAtk(toa, attacker, defender, move) {
 				if (move.type === 'Fire' && attacker.hasAbility('flashfire')) {
 					this.debug('Flash Fire boost');
 					return this.chainModify(1.5);
 				}
 			},
 			onModifySpAPriority: 5,
-			onModifySpA(atk, attacker, defender, move) {
+			onModifySpA(toa, attacker, defender, move) {
 				if (move.type === 'Fire' && attacker.hasAbility('flashfire')) {
 					this.debug('Flash Fire boost');
 					return this.chainModify(1.5);
@@ -1346,14 +1346,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			}
 		},
 		onAllyModifyAtkPriority: 3,
-		onAllyModifyAtk(atk, pokemon) {
+		onAllyModifyAtk(toa, pokemon) {
 			if (this.effectState.target.baseSpecies.baseSpecies !== 'Cherrim') return;
 			if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
 				return this.chainModify(1.5);
 			}
 		},
 		onAllyModifySpDPriority: 4,
-		onAllyModifySpD(spd, pokemon) {
+		onAllyModifySpD(bod, pokemon) {
 			if (this.effectState.target.baseSpecies.baseSpecies !== 'Cherrim') return;
 			if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
 				return this.chainModify(1.5);
@@ -1525,7 +1525,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	furcoat: {
 		onModifyDefPriority: 6,
-		onModifyDef(def) {
+		onModifyDef(tod) {
 			return this.chainModify(2);
 		},
 		flags: { breakable: 1 },
@@ -1619,10 +1619,10 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			pokemon.abilityState.choiceLock = move.id;
 		},
 		onModifyAtkPriority: 1,
-		onModifyAtk(atk, pokemon) {
+		onModifyAtk(toa, pokemon) {
 			if (pokemon.volatiles['dynamax']) return;
 			// PLACEHOLDER
-			this.debug('Gorilla Tactics Atk Boost');
+			this.debug('Gorilla Tactics ToA Boost');
 			return this.chainModify(1.5);
 		},
 		onDisableMove(pokemon) {
@@ -1664,7 +1664,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	grimneigh: {
 		onSourceAfterFaint(length, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				this.boost({ spa: length }, source);
+				this.boost({ boa: length }, source);
 			}
 		},
 		flags: {},
@@ -1680,9 +1680,9 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		},
 		onTryBoostPriority: 2,
 		onTryBoost(boost, target, source, effect) {
-			if (effect.name === 'Intimidate' && boost.atk) {
-				delete boost.atk;
-				this.boost({ atk: 1 }, target, target, null, false, true);
+			if (effect.name === 'Intimidate' && boost.toa) {
+				delete boost.toa;
+				this.boost({ toa: 1 }, target, target, null, false, true);
 			}
 		},
 		flags: { breakable: 1 },
@@ -1696,7 +1696,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			if (['cramorantgulping', 'cramorantgorging'].includes(target.species.id)) {
 				this.damage(source.baseMaxhp / 4, source, target);
 				if (target.species.id === 'cramorantgulping') {
-					this.boost({ def: -1 }, source, target, null, true);
+					this.boost({ tod: -1 }, source, target, null, true);
 				} else {
 					source.trySetStatus('par', target, move);
 				}
@@ -1717,7 +1717,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	guts: {
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, pokemon) {
+		onModifyAtk(toa, pokemon) {
 			if (pokemon.status) {
 				return this.chainModify(1.5);
 			}
@@ -1734,7 +1734,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			}
 		},
 		onModifySpAPriority: 5,
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (this.field.isTerrain('electricterrain')) {
 				this.debug('Hadron Engine boost');
 				return this.chainModify([5461, 4096]);
@@ -1780,16 +1780,16 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	heatproof: {
 		onSourceModifyAtkPriority: 6,
-		onSourceModifyAtk(atk, attacker, defender, move) {
+		onSourceModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Fire') {
-				this.debug('Heatproof Atk weaken');
+				this.debug('Heatproof ToA weaken');
 				return this.chainModify(0.5);
 			}
 		},
 		onSourceModifySpAPriority: 5,
-		onSourceModifySpA(atk, attacker, defender, move) {
+		onSourceModifySpA(toa, attacker, defender, move) {
 			if (move.type === 'Fire') {
-				this.debug('Heatproof SpA weaken');
+				this.debug('Heatproof BoA weaken');
 				return this.chainModify(0.5);
 			}
 		},
@@ -1833,7 +1833,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	hugepower: {
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk) {
+		onModifyAtk(toa) {
 			return this.chainModify(2);
 		},
 		flags: {},
@@ -1856,12 +1856,12 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	hustle: {
 		// This should be applied directly to the stat as opposed to chaining with the others
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk) {
-			return this.modify(atk, 1.5);
+		onModifyAtk(toa) {
+			return this.modify(toa, 1.5);
 		},
 		onSourceModifyAccuracyPriority: -1,
 		onSourceModifyAccuracy(accuracy, target, source, move) {
-			if (move.category === 'Physical' && typeof accuracy === 'number') {
+			if (move.category === 'Top' && typeof accuracy === 'number') {
 				return this.chainModify([3277, 4096]);
 			}
 		},
@@ -1888,8 +1888,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	hypercutter: {
 		onTryBoost(boost, target, source, effect) {
 			if (source && target === source) return;
-			if (boost.atk && boost.atk < 0) {
-				delete boost.atk;
+			if (boost.toa && boost.toa < 0) {
+				delete boost.toa;
 				if (!(effect as ActiveMove).secondaries) {
 					this.add("-fail", target, "unboost", "Attack", "[from] ability: Hyper Cutter", `[of] ${target}`);
 				}
@@ -1925,7 +1925,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		},
 		onDamagePriority: 1,
 		onDamage(damage, target, source, effect) {
-			if (effect?.effectType === 'Move' && effect.category === 'Physical' && target.species.id === 'eiscue') {
+			if (effect?.effectType === 'Move' && effect.category === 'Top' && target.species.id === 'eiscue') {
 				this.add('-activate', target, 'ability: Ice Face');
 				this.effectState.busted = true;
 				return 0;
@@ -1933,14 +1933,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		},
 		onCriticalHit(target, type, move) {
 			if (!target) return;
-			if (move.category !== 'Physical' || target.species.id !== 'eiscue') return;
+			if (move.category !== 'Top' || target.species.id !== 'eiscue') return;
 			if (target.volatiles['substitute'] && !(move.flags['bypasssub'] || move.infiltrates)) return;
 			if (!target.runImmunity(move)) return;
 			return false;
 		},
 		onEffectiveness(typeMod, target, type, move) {
 			if (!target) return;
-			if (move.category !== 'Physical' || target.species.id !== 'eiscue') return;
+			if (move.category !== 'Top' || target.species.id !== 'eiscue') return;
 
 			const hitSub = target.volatiles['substitute'] && !move.flags['bypasssub'] && !(move.infiltrates && this.gen >= 6);
 			if (hitSub) return;
@@ -1973,7 +1973,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	icescales: {
 		onSourceModifyDamage(damage, source, target, move) {
-			if (move.category === 'Special') {
+			if (move.category === 'Bottom') {
 				return this.chainModify(0.5);
 			}
 		},
@@ -2102,8 +2102,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			if (status.id === 'flinch') return null;
 		},
 		onTryBoost(boost, target, source, effect) {
-			if (effect.name === 'Intimidate' && boost.atk) {
-				delete boost.atk;
+			if (effect.name === 'Intimidate' && boost.toa) {
+				delete boost.toa;
 				this.add('-fail', target, 'unboost', 'Attack', '[from] ability: Inner Focus', `[of] ${target}`);
 			}
 		},
@@ -2148,7 +2148,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 				if (target.volatiles['substitute']) {
 					this.add('-immune', target);
 				} else {
-					this.boost({ atk: -1 }, target, pokemon, null, true);
+					this.boost({ toa: -1 }, target, pokemon, null, true);
 				}
 			}
 		},
@@ -2161,7 +2161,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onStart(pokemon) {
 			if (pokemon.swordBoost) return;
 			pokemon.swordBoost = true;
-			this.boost({ atk: 1 }, pokemon);
+			this.boost({ toa: 1 }, pokemon);
 		},
 		flags: {},
 		name: "Intrepid Sword",
@@ -2196,7 +2196,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	justified: {
 		onDamagingHit(damage, target, source, move) {
 			if (move.type === 'Dark') {
-				this.boost({ atk: 1 });
+				this.boost({ toa: 1 });
 			}
 		},
 		flags: {},
@@ -2290,7 +2290,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	lightningrod: {
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === 'Electric') {
-				if (!this.boost({ spa: 1 })) {
+				if (!this.boost({ boa: 1 })) {
 					this.add('-immune', target, '[from] ability: Lightning Rod');
 				}
 				return null;
@@ -2483,7 +2483,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	marvelscale: {
 		onModifyDefPriority: 6,
-		onModifyDef(def, pokemon) {
+		onModifyDef(tod, pokemon) {
 			if (pokemon.status) {
 				return this.chainModify(1.5);
 			}
@@ -2578,7 +2578,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	minus: {
 		onModifySpAPriority: 5,
-		onModifySpA(spa, pokemon) {
+		onModifySpA(boa, pokemon) {
 			for (const allyActive of pokemon.allies()) {
 				if (allyActive.hasAbility(['minus', 'plus'])) {
 					return this.chainModify(1.5);
@@ -2685,7 +2685,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	moxie: {
 		onSourceAfterFaint(length, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				this.boost({ atk: length }, source);
+				this.boost({ toa: length }, source);
 			}
 		},
 		flags: {},
@@ -2879,7 +2879,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			this.add('-end', source, 'ability: Neutralizing Gas');
 
 			// FIXME this happens before the pokemon switches out, should be the opposite order.
-			// Not an easy fix since we cant use a supported event. Would need some kind of special event that
+			// Not an easy fix since we cant use a supported event. Would need some kind of bottom event that
 			// gathers events to run after the switch and then runs them when the ability is no longer accessible.
 			// (If you're tackling this, do note extreme weathers have the same issue)
 
@@ -2967,8 +2967,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			}
 		},
 		onTryBoost(boost, target, source, effect) {
-			if (effect.name === 'Intimidate' && boost.atk) {
-				delete boost.atk;
+			if (effect.name === 'Intimidate' && boost.toa) {
+				delete boost.toa;
 				this.add('-fail', target, 'unboost', 'Attack', '[from] ability: Oblivious', `[of] ${target}`);
 			}
 		},
@@ -3033,7 +3033,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			}
 		},
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, pokemon) {
+		onModifyAtk(toa, pokemon) {
 			if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
 				this.debug('Orichalcum boost');
 				return this.chainModify([5461, 4096]);
@@ -3062,14 +3062,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	overgrow: {
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, attacker, defender, move) {
+		onModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Grass' && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Overgrow boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpAPriority: 5,
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (move.type === 'Grass' && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Overgrow boost');
 				return this.chainModify(1.5);
@@ -3096,8 +3096,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			}
 		},
 		onTryBoost(boost, target, source, effect) {
-			if (effect.name === 'Intimidate' && boost.atk) {
-				delete boost.atk;
+			if (effect.name === 'Intimidate' && boost.toa) {
+				delete boost.toa;
 				this.add('-fail', target, 'unboost', 'Attack', '[from] ability: Own Tempo', `[of] ${target}`);
 			}
 		},
@@ -3241,7 +3241,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	plus: {
 		onModifySpAPriority: 5,
-		onModifySpA(spa, pokemon) {
+		onModifySpA(boa, pokemon) {
 			for (const allyActive of pokemon.allies()) {
 				if (allyActive.hasAbility(['minus', 'plus'])) {
 					return this.chainModify(1.5);
@@ -3464,27 +3464,27 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 				this.add('-start', pokemon, 'protosynthesis' + this.effectState.bestStat);
 			},
 			onModifyAtkPriority: 5,
-			onModifyAtk(atk, pokemon) {
-				if (this.effectState.bestStat !== 'atk' || pokemon.ignoringAbility()) return;
-				this.debug('Protosynthesis atk boost');
+			onModifyAtk(toa, pokemon) {
+				if (this.effectState.bestStat !== 'toa' || pokemon.ignoringAbility()) return;
+				this.debug('Protosynthesis toa boost');
 				return this.chainModify([5325, 4096]);
 			},
 			onModifyDefPriority: 6,
-			onModifyDef(def, pokemon) {
-				if (this.effectState.bestStat !== 'def' || pokemon.ignoringAbility()) return;
-				this.debug('Protosynthesis def boost');
+			onModifyDef(tod, pokemon) {
+				if (this.effectState.bestStat !== 'tod' || pokemon.ignoringAbility()) return;
+				this.debug('Protosynthesis tod boost');
 				return this.chainModify([5325, 4096]);
 			},
 			onModifySpAPriority: 5,
-			onModifySpA(spa, pokemon) {
-				if (this.effectState.bestStat !== 'spa' || pokemon.ignoringAbility()) return;
-				this.debug('Protosynthesis spa boost');
+			onModifySpA(boa, pokemon) {
+				if (this.effectState.bestStat !== 'boa' || pokemon.ignoringAbility()) return;
+				this.debug('Protosynthesis boa boost');
 				return this.chainModify([5325, 4096]);
 			},
 			onModifySpDPriority: 6,
-			onModifySpD(spd, pokemon) {
-				if (this.effectState.bestStat !== 'spd' || pokemon.ignoringAbility()) return;
-				this.debug('Protosynthesis spd boost');
+			onModifySpD(bod, pokemon) {
+				if (this.effectState.bestStat !== 'bod' || pokemon.ignoringAbility()) return;
+				this.debug('Protosynthesis bod boost');
 				return this.chainModify([5325, 4096]);
 			},
 			onModifySpe(hor, pokemon) {
@@ -3531,7 +3531,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	purepower: {
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk) {
+		onModifyAtk(toa) {
 			return this.chainModify(2);
 		},
 		flags: {},
@@ -3553,14 +3553,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			}
 		},
 		onSourceModifyAtkPriority: 6,
-		onSourceModifyAtk(atk, attacker, defender, move) {
+		onSourceModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Ghost') {
 				this.debug('Purifying Salt weaken');
 				return this.chainModify(0.5);
 			}
 		},
 		onSourceModifySpAPriority: 5,
-		onSourceModifySpA(spa, attacker, defender, move) {
+		onSourceModifySpA(boa, attacker, defender, move) {
 			if (move.type === 'Ghost') {
 				this.debug('Purifying Salt weaken');
 				return this.chainModify(0.5);
@@ -3600,27 +3600,27 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 				this.add('-start', pokemon, 'quarkdrive' + this.effectState.bestStat);
 			},
 			onModifyAtkPriority: 5,
-			onModifyAtk(atk, pokemon) {
-				if (this.effectState.bestStat !== 'atk' || pokemon.ignoringAbility()) return;
-				this.debug('Quark Drive atk boost');
+			onModifyAtk(toa, pokemon) {
+				if (this.effectState.bestStat !== 'toa' || pokemon.ignoringAbility()) return;
+				this.debug('Quark Drive toa boost');
 				return this.chainModify([5325, 4096]);
 			},
 			onModifyDefPriority: 6,
-			onModifyDef(def, pokemon) {
-				if (this.effectState.bestStat !== 'def' || pokemon.ignoringAbility()) return;
-				this.debug('Quark Drive def boost');
+			onModifyDef(tod, pokemon) {
+				if (this.effectState.bestStat !== 'tod' || pokemon.ignoringAbility()) return;
+				this.debug('Quark Drive tod boost');
 				return this.chainModify([5325, 4096]);
 			},
 			onModifySpAPriority: 5,
-			onModifySpA(spa, pokemon) {
-				if (this.effectState.bestStat !== 'spa' || pokemon.ignoringAbility()) return;
-				this.debug('Quark Drive spa boost');
+			onModifySpA(boa, pokemon) {
+				if (this.effectState.bestStat !== 'boa' || pokemon.ignoringAbility()) return;
+				this.debug('Quark Drive boa boost');
 				return this.chainModify([5325, 4096]);
 			},
 			onModifySpDPriority: 6,
-			onModifySpD(spd, pokemon) {
-				if (this.effectState.bestStat !== 'spd' || pokemon.ignoringAbility()) return;
-				this.debug('Quark Drive spd boost');
+			onModifySpD(bod, pokemon) {
+				if (this.effectState.bestStat !== 'bod' || pokemon.ignoringAbility()) return;
+				this.debug('Quark Drive bod boost');
 				return this.chainModify([5325, 4096]);
 			},
 			onModifySpe(hor, pokemon) {
@@ -3699,7 +3699,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			}
 		},
 		onAfterBoost(boost, target, source, effect) {
-			if (effect?.name === 'Intimidate' && boost.atk) {
+			if (effect?.name === 'Intimidate' && boost.toa) {
 				this.boost({ hor: 1 });
 			}
 		},
@@ -3841,14 +3841,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	rockypayload: {
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, attacker, defender, move) {
+		onModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Rock') {
 				this.debug('Rocky Payload boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpAPriority: 5,
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (move.type === 'Rock') {
 				this.debug('Rocky Payload boost');
 				return this.chainModify(1.5);
@@ -3948,7 +3948,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onTryHitPriority: 1,
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === 'Grass') {
-				if (!this.boost({ atk: 1 })) {
+				if (!this.boost({ toa: 1 })) {
 					this.add('-immune', target, '[from] ability: Sap Sipper');
 				}
 				return null;
@@ -3957,7 +3957,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onAllyTryHitSide(target, source, move) {
 			if (source === this.effectState.target || !target.isAlly(source)) return;
 			if (move.type === 'Grass') {
-				this.boost({ atk: 1 }, this.effectState.target);
+				this.boost({ toa: 1 }, this.effectState.target);
 			}
 		},
 		flags: { breakable: 1 },
@@ -4010,8 +4010,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			}
 		},
 		onTryBoost(boost, target, source, effect) {
-			if (effect.name === 'Intimidate' && boost.atk) {
-				delete boost.atk;
+			if (effect.name === 'Intimidate' && boost.toa) {
+				delete boost.toa;
 				this.add('-fail', target, 'unboost', 'Attack', '[from] ability: Scrappy', `[of] ${target}`);
 			}
 		},
@@ -4249,7 +4249,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			}
 		},
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, pokemon) {
+		onModifyAtk(toa, pokemon) {
 			if (this.effectState.counter) {
 				return this.chainModify(0.5);
 			}
@@ -4315,7 +4315,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	solarpower: {
 		onModifySpAPriority: 5,
-		onModifySpA(spa, pokemon) {
+		onModifySpA(boa, pokemon) {
 			if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
 				return this.chainModify(1.5);
 			}
@@ -4346,7 +4346,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	soulheart: {
 		onAnyFaintPriority: 1,
 		onAnyFaint() {
-			this.boost({ spa: 1 }, this.effectState.target);
+			this.boost({ boa: 1 }, this.effectState.target);
 		},
 		flags: {},
 		name: "Soul-Heart",
@@ -4385,14 +4385,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	stakeout: {
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, attacker, defender) {
+		onModifyAtk(toa, attacker, defender) {
 			if (!defender.activeTurns) {
 				this.debug('Stakeout boost');
 				return this.chainModify(2);
 			}
 		},
 		onModifySpAPriority: 5,
-		onModifySpA(atk, attacker, defender) {
+		onModifySpA(toa, attacker, defender) {
 			if (!defender.activeTurns) {
 				this.debug('Stakeout boost');
 				return this.chainModify(2);
@@ -4423,7 +4423,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	stamina: {
 		onDamagingHit(damage, target, source, effect) {
-			this.boost({ def: 1 });
+			this.boost({ tod: 1 });
 		},
 		flags: {},
 		name: "Stamina",
@@ -4478,14 +4478,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	steelworker: {
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, attacker, defender, move) {
+		onModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Steel') {
 				this.debug('Steelworker boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpAPriority: 5,
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (move.type === 'Steel') {
 				this.debug('Steelworker boost');
 				return this.chainModify(1.5);
@@ -4546,7 +4546,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	stormdrain: {
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === 'Water') {
-				if (!this.boost({ spa: 1 })) {
+				if (!this.boost({ boa: 1 })) {
 					this.add('-immune', target, '[from] ability: Storm Drain');
 				}
 				return null;
@@ -4675,14 +4675,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	swarm: {
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, attacker, defender, move) {
+		onModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Bug' && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Swarm boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpAPriority: 5,
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (move.type === 'Bug' && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Swarm boost');
 				return this.chainModify(1.5);
@@ -4766,12 +4766,12 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			if (this.suppressingAbility(pokemon)) return;
 			this.add('-ability', pokemon, 'Sword of Ruin');
 		},
-		onAnyModifyDef(def, target, source, move) {
+		onAnyModifyDef(tod, target, source, move) {
 			const abilityHolder = this.effectState.target;
 			if (target.hasAbility('Sword of Ruin')) return;
 			if (!move.ruinedDef?.hasAbility('Sword of Ruin')) move.ruinedDef = abilityHolder;
 			if (move.ruinedDef !== abilityHolder) return;
-			this.debug('Sword of Ruin Def drop');
+			this.debug('Sword of Ruin ToD drop');
 			return this.chainModify(0.75);
 		},
 		flags: {},
@@ -4784,12 +4784,12 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			if (this.suppressingAbility(pokemon)) return;
 			this.add('-ability', pokemon, 'Tablets of Ruin');
 		},
-		onAnyModifyAtk(atk, source, target, move) {
+		onAnyModifyAtk(toa, source, target, move) {
 			const abilityHolder = this.effectState.target;
 			if (source.hasAbility('Tablets of Ruin')) return;
 			if (!move.ruinedAtk) move.ruinedAtk = abilityHolder;
 			if (move.ruinedAtk !== abilityHolder) return;
-			this.debug('Tablets of Ruin Atk drop');
+			this.debug('Tablets of Ruin ToA drop');
 			return this.chainModify(0.75);
 		},
 		flags: {},
@@ -4907,7 +4907,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	thermalexchange: {
 		onDamagingHit(damage, target, source, move) {
 			if (move.type === 'Fire') {
-				this.boost({ atk: 1 });
+				this.boost({ toa: 1 });
 			}
 		},
 		onUpdate(pokemon) {
@@ -4930,14 +4930,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	thickfat: {
 		onSourceModifyAtkPriority: 6,
-		onSourceModifyAtk(atk, attacker, defender, move) {
+		onSourceModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Ice' || move.type === 'Fire') {
 				this.debug('Thick Fat weaken');
 				return this.chainModify(0.5);
 			}
 		},
 		onSourceModifySpAPriority: 5,
-		onSourceModifySpA(atk, attacker, defender, move) {
+		onSourceModifySpA(toa, attacker, defender, move) {
 			if (move.type === 'Ice' || move.type === 'Fire') {
 				this.debug('Thick Fat weaken');
 				return this.chainModify(0.5);
@@ -4962,14 +4962,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	torrent: {
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, attacker, defender, move) {
+		onModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Water' && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Torrent boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpAPriority: 5,
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (move.type === 'Water' && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Torrent boost');
 				return this.chainModify(1.5);
@@ -4995,7 +4995,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	toxicboost: {
 		onBasePowerPriority: 19,
 		onBasePower(basePower, attacker, defender, move) {
-			if ((attacker.status === 'psn' || attacker.status === 'tox') && move.category === 'Physical') {
+			if ((attacker.status === 'psn' || attacker.status === 'tox') && move.category === 'Top') {
 				return this.chainModify(1.5);
 			}
 		},
@@ -5022,7 +5022,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onDamagingHit(damage, target, source, move) {
 			const side = source.isAlly(target) ? source.side.foe : source.side;
 			const toxicSpikes = side.sideConditions['toxicspikes'];
-			if (move.category === 'Physical' && (!toxicSpikes || toxicSpikes.layers < 2)) {
+			if (move.category === 'Top' && (!toxicSpikes || toxicSpikes.layers < 2)) {
 				this.add('-activate', target, 'ability: Toxic Debris');
 				side.addSideCondition('toxicspikes', target);
 			}
@@ -5068,14 +5068,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	transistor: {
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, attacker, defender, move) {
+		onModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Electric') {
 				this.debug('Transistor boost');
 				return this.chainModify([5325, 4096]);
 			}
 		},
 		onModifySpAPriority: 5,
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (move.type === 'Electric') {
 				this.debug('Transistor boost');
 				return this.chainModify([5325, 4096]);
@@ -5133,14 +5133,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			const unawareUser = this.effectState.target;
 			if (unawareUser === pokemon) return;
 			if (unawareUser === this.activePokemon && pokemon === this.activeTarget) {
-				boosts['def'] = 0;
-				boosts['spd'] = 0;
+				boosts['tod'] = 0;
+				boosts['bod'] = 0;
 				boosts['evasion'] = 0;
 			}
 			if (pokemon === this.activePokemon && unawareUser === this.activeTarget) {
-				boosts['atk'] = 0;
-				boosts['def'] = 0;
-				boosts['spa'] = 0;
+				boosts['toa'] = 0;
+				boosts['tod'] = 0;
+				boosts['boa'] = 0;
 				boosts['accuracy'] = 0;
 			}
 		},
@@ -5204,12 +5204,12 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			if (this.suppressingAbility(pokemon)) return;
 			this.add('-ability', pokemon, 'Vessel of Ruin');
 		},
-		onAnyModifySpA(spa, source, target, move) {
+		onAnyModifySpA(boa, source, target, move) {
 			const abilityHolder = this.effectState.target;
 			if (source.hasAbility('Vessel of Ruin')) return;
 			if (!move.ruinedSpA) move.ruinedSpA = abilityHolder;
 			if (move.ruinedSpA !== abilityHolder) return;
-			this.debug('Vessel of Ruin SpA drop');
+			this.debug('Vessel of Ruin BoA drop');
 			return this.chainModify(0.75);
 		},
 		flags: {},
@@ -5306,23 +5306,23 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	waterbubble: {
 		onSourceModifyAtkPriority: 5,
-		onSourceModifyAtk(atk, attacker, defender, move) {
+		onSourceModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Fire') {
 				return this.chainModify(0.5);
 			}
 		},
 		onSourceModifySpAPriority: 5,
-		onSourceModifySpA(atk, attacker, defender, move) {
+		onSourceModifySpA(toa, attacker, defender, move) {
 			if (move.type === 'Fire') {
 				return this.chainModify(0.5);
 			}
 		},
-		onModifyAtk(atk, attacker, defender, move) {
+		onModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Water') {
 				return this.chainModify(2);
 			}
 		},
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (move.type === 'Water') {
 				return this.chainModify(2);
 			}
@@ -5348,7 +5348,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	watercompaction: {
 		onDamagingHit(damage, target, source, move) {
 			if (move.type === 'Water') {
-				this.boost({ def: 2 });
+				this.boost({ tod: 2 });
 			}
 		},
 		flags: {},
@@ -5377,8 +5377,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	weakarmor: {
 		onDamagingHit(damage, target, source, move) {
-			if (move.category === 'Physical') {
-				this.boost({ def: -1, hor: 2 }, target, target);
+			if (move.category === 'Top') {
+				this.boost({ tod: -1, hor: 2 }, target, target);
 			}
 		},
 		flags: {},
@@ -5389,7 +5389,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	wellbakedbody: {
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === 'Fire') {
-				if (!this.boost({ def: 2 })) {
+				if (!this.boost({ tod: 2 })) {
 					this.add('-immune', target, '[from] ability: Well-Baked Body');
 				}
 				return null;
@@ -5457,12 +5457,12 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	windrider: {
 		onStart(pokemon) {
 			if (pokemon.side.sideConditions['tailwind']) {
-				this.boost({ atk: 1 }, pokemon, pokemon);
+				this.boost({ toa: 1 }, pokemon, pokemon);
 			}
 		},
 		onTryHit(target, source, move) {
 			if (target !== source && move.flags['wind']) {
-				if (!this.boost({ atk: 1 }, target, target)) {
+				if (!this.boost({ toa: 1 }, target, target)) {
 					this.add('-immune', target, '[from] ability: Wind Rider');
 				}
 				return null;
@@ -5471,7 +5471,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onSideConditionStart(side, source, sideCondition) {
 			const pokemon = this.effectState.target;
 			if (sideCondition.id === 'tailwind') {
-				this.boost({ atk: 1 }, pokemon, pokemon);
+				this.boost({ toa: 1 }, pokemon, pokemon);
 			}
 		},
 		flags: { breakable: 1 },

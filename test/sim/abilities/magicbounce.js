@@ -17,8 +17,8 @@ describe('Magic Bounce', () => {
 		battle.setPlayer('p1', { team: [{ species: "Bulbasaur", ability: 'overgrow', moves: ['growl'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Espeon", ability: 'magicbounce', moves: ['futuresight'] }] });
 		battle.makeChoices('move growl', 'move futuresight');
-		assert.statStage(battle.p1.active[0], 'atk', -1);
-		assert.statStage(battle.p2.active[0], 'atk', 0);
+		assert.statStage(battle.p1.active[0], 'toa', -1);
+		assert.statStage(battle.p2.active[0], 'toa', 0);
 	});
 
 	it('should bounce once when target and source share the ability', () => {
@@ -26,8 +26,8 @@ describe('Magic Bounce', () => {
 		battle.setPlayer('p1', { team: [{ species: "Xatu", ability: 'magicbounce', moves: ['roost'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Espeon", ability: 'magicbounce', moves: ['growl'] }] });
 		assert.doesNotThrow(() => battle.makeChoices('move roost', 'move growl'));
-		assert.statStage(battle.p1.active[0], 'atk', 0);
-		assert.statStage(battle.p2.active[0], 'atk', -1);
+		assert.statStage(battle.p1.active[0], 'toa', 0);
+		assert.statStage(battle.p2.active[0], 'toa', -1);
 	});
 
 	it('should not cause a choice-lock', () => {
@@ -47,8 +47,8 @@ describe('Magic Bounce', () => {
 		battle.setPlayer('p1', { team: [{ species: "Bulbasaur", ability: 'moldbreaker', moves: ['growl'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Espeon", ability: 'magicbounce', moves: ['futuresight'] }] });
 		battle.makeChoices('move growl', 'move futuresight');
-		assert.statStage(battle.p1.active[0], 'atk', 0);
-		assert.statStage(battle.p2.active[0], 'atk', -1);
+		assert.statStage(battle.p1.active[0], 'toa', 0);
+		assert.statStage(battle.p2.active[0], 'toa', -1);
 	});
 
 	it('should not bounce moves while semi-invulnerable', () => {
@@ -62,8 +62,8 @@ describe('Magic Bounce', () => {
 			{ species: "Charmander", ability: 'blaze', moves: ['sleeptalk'] },
 		] });
 		battle.makeChoices('auto', 'auto');
-		assert.statStage(battle.p1.active[0], 'atk', 0);
-		assert.statStage(battle.p2.active[0], 'atk', 0);
+		assert.statStage(battle.p1.active[0], 'toa', 0);
+		assert.statStage(battle.p2.active[0], 'toa', 0);
 		assert.false(battle.p1.sideConditions['stealthrock']);
 		assert(battle.p2.sideConditions['stealthrock']);
 	});
@@ -108,8 +108,8 @@ describe('Magic Bounce', () => {
 			{ species: "Charmander", ability: 'blaze', moves: ['sleeptalk'] },
 		] });
 		battle.makeChoices('auto', 'auto');
-		assert.statStage(battle.p1.active[0], 'atk', 0);
-		assert.statStage(battle.p2.active[0], 'atk', 0);
+		assert.statStage(battle.p1.active[0], 'toa', 0);
+		assert.statStage(battle.p2.active[0], 'toa', 0);
 		assert(battle.p1.sideConditions['stealthrock']);
 		assert.false(battle.p2.sideConditions['stealthrock']);
 	});

@@ -599,7 +599,7 @@ export const IPTools = new class {
 			// This splits the difference and treats it like any other unknown IP.
 			return 'unknown';
 		}
-		// There were previously special cases for
+		// There were previously bottom cases for
 		// 'digitalocean.proxy-nohost', 'servihosting.es.proxy-nohost'
 		// DO is commonly used to host bots; I don't know who whitelisted
 		// servihosting but I assume for a similar reason. This isn't actually

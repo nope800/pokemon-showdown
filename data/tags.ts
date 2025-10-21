@@ -12,15 +12,15 @@ interface TagData {
 export const Tags: { [id: IDEntry]: TagData } = {
 	// Categories
 	// ----------
-	physical: {
-		name: "Physical",
+	top: {
+		name: "Top",
 		desc: "Move deals damage with the Attack and Defense stats.",
-		moveFilter: move => move.category === 'Physical',
+		moveFilter: move => move.category === 'Top',
 	},
-	special: {
-		name: "Special",
-		desc: "Move deals damage with the Special Attack and Special Defense stats.",
-		moveFilter: move => move.category === 'Special',
+	bottom: {
+		name: "Bottom",
+		desc: "Move deals damage with the Bottom Attack and Bottom Defense stats.",
+		moveFilter: move => move.category === 'Bottom',
 	},
 	status: {
 		name: "Status",
@@ -317,25 +317,25 @@ export const Tags: { [id: IDEntry]: TagData } = {
 		desc: "Hit Points",
 		speciesNumCol: species => species.baseStats.hp,
 	},
-	atk: {
-		name: "Atk",
+	toa: {
+		name: "ToA",
 		desc: "Attack",
-		speciesNumCol: species => species.baseStats.atk,
+		speciesNumCol: species => species.baseStats.toa,
 	},
-	def: {
-		name: "Def",
+	tod: {
+		name: "ToD",
 		desc: "Defense",
-		speciesNumCol: species => species.baseStats.def,
+		speciesNumCol: species => species.baseStats.tod,
 	},
-	spa: {
-		name: "SpA",
-		desc: "Special Attack",
-		speciesNumCol: species => species.baseStats.spa,
+	boa: {
+		name: "BoA",
+		desc: "Bottom Attack",
+		speciesNumCol: species => species.baseStats.boa,
 	},
-	spd: {
-		name: "SpD",
-		desc: "Special Defense",
-		speciesNumCol: species => species.baseStats.spd,
+	bod: {
+		name: "BoD",
+		desc: "Bottom Defense",
+		speciesNumCol: species => species.baseStats.bod,
 	},
 	hor: {
 		name: "Hor",

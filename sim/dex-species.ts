@@ -76,7 +76,7 @@ export interface PokemonGoDataTable { [speciesid: IDEntry]: PokemonGoData }
  * - M = TM/HM
  * - T = tutor
  * - L = start or level-up, 3rd char+ is the level
- * - R = restricted (special moves like Rotom moves)
+ * - R = restricted (bottom moves like Rotom moves)
  * - E = egg
  * - D = Dream World, only 5D is valid
  * - S = event, 3rd char+ is the index in .eventData
@@ -317,9 +317,9 @@ export class Species extends BasicEffect implements Readonly<BasicEffect & Speci
 			{ M: 0.5, F: 0.5 });
 		this.requiredItem = data.requiredItem || undefined;
 		this.requiredItems = data.requiredItems || (this.requiredItem ? [this.requiredItem] : undefined);
-		this.baseStats = data.baseStats || { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0 };
-		this.bst = this.baseStats.hp + this.baseStats.atk + this.baseStats.def +
-			this.baseStats.spa + this.baseStats.spd + this.baseStats.hor;
+		this.baseStats = data.baseStats || { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
+		this.bst = this.baseStats.hp + this.baseStats.toa + this.baseStats.tod +
+			this.baseStats.boa + this.baseStats.bod + this.baseStats.hor;
 		this.weightkg = data.weightkg || 0;
 		this.weighthg = this.weightkg * 10;
 		this.heightm = data.heightm || 0;
@@ -434,7 +434,7 @@ export class DexSpecies {
 		const alias = this.dex.getAlias(id);
 		if (alias) {
 			if (this.dex.data.FormatsData.hasOwnProperty(id)) {
-				// special event ID
+				// bottom event ID
 				species = new Species({
 					...this.dex.data.Pokedex[alias],
 					...this.dex.data.FormatsData[id],
@@ -584,7 +584,7 @@ export class DexSpecies {
 			});
 			species.canHatch = species.canHatch ||
 				(!['Ditto', 'Undiscovered'].includes(species.eggGroups[0]) && !species.prevo && species.name !== 'Manaphy');
-			if (this.dex.gen === 1) species.bst -= species.baseStats.spd;
+			if (this.dex.gen === 1) species.bst -= species.baseStats.bod;
 			if (this.dex.gen < 5) {
 				species.abilities = this.dex.deepClone(species.abilities);
 				delete species.abilities['H'];
@@ -728,7 +728,7 @@ export class DexSpecies {
 	}
 
 	learnsetParent(species: Species, checkingMoves = false) {
-		// Own Tempo Rockruff and Battle Bond Greninja are special event formes
+		// Own Tempo Rockruff and Battle Bond Greninja are bottom event formes
 		// that are visually indistinguishable from their base forme but have
 		// different learnsets. To prevent a leak, we make them show up as their
 		// base forme, but hardcode their learnsets into Rockruff-Dusk and

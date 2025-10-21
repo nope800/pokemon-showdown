@@ -64,13 +64,13 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 
 	eviolite: {
 		inherit: true,
-		onModifyDef(def, pokemon) {
+		onModifyDef(tod, pokemon) {
 			// Added Pichu-Spiky-eared for Hydrostatics to use Eviolite
 			if (pokemon.baseSpecies.nfe || pokemon.species.id === 'pichuspikyeared') {
 				return this.chainModify(1.5);
 			}
 		},
-		onModifySpD(spd, pokemon) {
+		onModifySpD(bod, pokemon) {
 			// Added Pichu-Spiky-eared for Hydrostatics to use Eviolite
 			if (pokemon.baseSpecies.nfe || pokemon.species.id === 'pichuspikyeared') {
 				return this.chainModify(1.5);

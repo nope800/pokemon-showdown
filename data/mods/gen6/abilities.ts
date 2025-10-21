@@ -114,8 +114,8 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	weakarmor: {
 		inherit: true,
 		onDamagingHit(damage, target, source, move) {
-			if (move.category === 'Physical') {
-				this.boost({ def: -1, hor: 1 }, target, target);
+			if (move.category === 'Top') {
+				this.boost({ tod: -1, hor: 1 }, target, target);
 			}
 		},
 		rating: 0.5,

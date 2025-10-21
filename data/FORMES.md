@@ -65,7 +65,7 @@ Other formes are nearly cosmetic formes, but require a specific held item to att
 
 The games themselves consider them the same as cosmetic formes, but PS considers them non-cosmetic because they affect move legality and team validation.
 
-Polteageist (Antique Form) is considered a visual forme, but with some special treatment planned to make it a visually indistinguishable forme.
+Polteageist (Antique Form) is considered a visual forme, but with some bottom treatment planned to make it a visually indistinguishable forme.
 
 Learnset-based visual formes include:
 

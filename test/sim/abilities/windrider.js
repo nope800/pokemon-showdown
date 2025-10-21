@@ -20,7 +20,7 @@ describe("Wind Rider", () => {
 		const brambleghast = battle.p2.active[0];
 		assert.fullHP(brambleghast);
 		assert.statStage(brambleghast, 'hor', 0);
-		assert.statStage(brambleghast, 'atk', 1);
+		assert.statStage(brambleghast, 'toa', 1);
 	});
 
 	it("should be bypassed by Mold Breaker", () => {
@@ -31,7 +31,7 @@ describe("Wind Rider", () => {
 		]]);
 		battle.makeChoices();
 		assert.false.fullHP(battle.p2.active[0]);
-		assert.statStage(battle.p2.active[0], 'atk', 0);
+		assert.statStage(battle.p2.active[0], 'toa', 0);
 	});
 
 	it("should not interact with Sandstorm", () => {
@@ -42,7 +42,7 @@ describe("Wind Rider", () => {
 		]]);
 		battle.makeChoices();
 		assert.equal(battle.field.weather, 'sandstorm');
-		assert.statStage(battle.p2.active[0], 'atk', 0);
+		assert.statStage(battle.p2.active[0], 'toa', 0);
 	});
 
 	it("should activate when Tailwind is used on the Pokemon's side", () => {
@@ -54,7 +54,7 @@ describe("Wind Rider", () => {
 			{ species: 'pelipper', ability: 'keeneye', moves: ['tailwind'] },
 		]]);
 		battle.makeChoices();
-		assert.statStage(battle.p2.active[0], 'atk', 1);
+		assert.statStage(battle.p2.active[0], 'toa', 1);
 	});
 
 	it("should activate on switch-in if Tailwind is active on the Pokemon's side", () => {
@@ -66,6 +66,6 @@ describe("Wind Rider", () => {
 		]]);
 		battle.makeChoices();
 		battle.makeChoices('auto', 'switch 2');
-		assert.statStage(battle.p2.active[0], 'atk', 1);
+		assert.statStage(battle.p2.active[0], 'toa', 1);
 	});
 });

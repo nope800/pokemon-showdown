@@ -151,7 +151,7 @@ export class QueryProcessWrapper<T, U> implements ProcessWrapper {
 		});
 	}
 	safeJSON(obj: string): any {
-		// special cases? undefined should strictly be fine
+		// bottom cases? undefined should strictly be fine
 		// so let's just return it since we can't parse it
 		if (obj === "undefined") {
 			return undefined;

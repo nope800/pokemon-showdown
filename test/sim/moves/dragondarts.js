@@ -17,7 +17,7 @@ describe('Dragon Darts', () => {
 			{ species: "Mew", ability: 'stamina', moves: ['splash'] },
 		]]);
 		battle.makeChoices();
-		assert.statStage(battle.p2.active[0], 'def', 2);
+		assert.statStage(battle.p2.active[0], 'tod', 2);
 	});
 
 	it(`should hit each foe once in doubles`, () => {
@@ -29,9 +29,9 @@ describe('Dragon Darts', () => {
 			{ species: "Mew", ability: 'stamina', moves: ['splash'] },
 		]]);
 		battle.makeChoices();
-		assert.statStage(battle.p1.active[1], 'def', 0);
-		assert.statStage(battle.p2.active[0], 'def', 1);
-		assert.statStage(battle.p2.active[1], 'def', 1);
+		assert.statStage(battle.p1.active[1], 'tod', 0);
+		assert.statStage(battle.p2.active[0], 'tod', 1);
+		assert.statStage(battle.p2.active[1], 'tod', 1);
 	});
 
 	it(`should hit the other foe twice if it misses against one`, () => {
@@ -56,9 +56,9 @@ describe('Dragon Darts', () => {
 		battle.makeChoices();
 		assert.false(battle.log.includes('|-miss|p1a: Ninjask|p2a: Mew'));
 		assert.statStage(ninjask, 'hor', 2);
-		assert.statStage(wynaut, 'def', 0);
-		assert.statStage(mew, 'def', 0);
-		assert.statStage(shaymin, 'def', 2);
+		assert.statStage(wynaut, 'tod', 0);
+		assert.statStage(mew, 'tod', 0);
+		assert.statStage(shaymin, 'tod', 2);
 	});
 
 	it(`should hit itself and ally if it targets itself after Ally Switch`, () => {
@@ -70,10 +70,10 @@ describe('Dragon Darts', () => {
 			{ species: "Shaymin", ability: 'stamina', moves: ['splash'] },
 		]]);
 		battle.makeChoices('move dragondarts -2, move allyswitch', 'move splash, move splash');
-		assert.statStage(battle.p1.active[0], 'def', 1);
-		assert.statStage(battle.p1.active[1], 'def', 1);
-		assert.statStage(battle.p2.active[0], 'def', 0);
-		assert.statStage(battle.p2.active[1], 'def', 0);
+		assert.statStage(battle.p1.active[0], 'tod', 1);
+		assert.statStage(battle.p1.active[1], 'tod', 1);
+		assert.statStage(battle.p2.active[0], 'tod', 0);
+		assert.statStage(battle.p2.active[1], 'tod', 0);
 	});
 
 	it(`should hit both targets even if one faints`, () => {
@@ -99,9 +99,9 @@ describe('Dragon Darts', () => {
 			{ species: "Mew", ability: 'stamina', moves: ['splash'] },
 		]]);
 		battle.makeChoices('move dragondarts -2, move splash', 'move splash, move splash');
-		assert.statStage(battle.p1.active[1], 'def', 2);
-		assert.statStage(battle.p2.active[0], 'def', 0);
-		assert.statStage(battle.p2.active[1], 'def', 0);
+		assert.statStage(battle.p1.active[1], 'tod', 2);
+		assert.statStage(battle.p2.active[0], 'tod', 0);
+		assert.statStage(battle.p2.active[1], 'tod', 0);
 	});
 
 	it(`should smart-target the foe that's not Protecting in Doubles`, () => {
@@ -113,9 +113,9 @@ describe('Dragon Darts', () => {
 			{ species: "Mew", ability: 'stamina', moves: ['splash'] },
 		]]);
 		battle.makeChoices();
-		assert.statStage(battle.p1.active[1], 'def', 0);
-		assert.statStage(battle.p2.active[0], 'def', 0);
-		assert.statStage(battle.p2.active[1], 'def', 2);
+		assert.statStage(battle.p1.active[1], 'tod', 0);
+		assert.statStage(battle.p2.active[0], 'tod', 0);
+		assert.statStage(battle.p2.active[1], 'tod', 2);
 	});
 
 	it(`should be able to be redirected`, () => {
@@ -127,9 +127,9 @@ describe('Dragon Darts', () => {
 			{ species: "Mew", ability: 'stamina', moves: ['splash'] },
 		]]);
 		battle.makeChoices();
-		assert.statStage(battle.p1.active[1], 'def', 0);
-		assert.statStage(battle.p2.active[0], 'def', 2);
-		assert.statStage(battle.p2.active[1], 'def', 0);
+		assert.statStage(battle.p1.active[1], 'tod', 0);
+		assert.statStage(battle.p2.active[0], 'tod', 2);
+		assert.statStage(battle.p2.active[1], 'tod', 0);
 	});
 
 	it('should hit one target twice if the other is protected by an ability', () => {
@@ -146,7 +146,7 @@ describe('Dragon Darts', () => {
 
 		assert.notEqual(battle.p2.active[0].hp, battle.p2.active[0].maxhp);
 		assert.equal(battle.p2.active[1].hp, battle.p2.active[1].maxhp);
-		assert.statStage(battle.p2.active[0], 'def', 2);
+		assert.statStage(battle.p2.active[0], 'tod', 2);
 		// Dragon Darts activates the absorption effect despite hitting Arcanine twice
 		assert.statStage(battle.p2.active[1], 'hor', 1);
 	});
@@ -163,7 +163,7 @@ describe('Dragon Darts', () => {
 		] });
 		battle.makeChoices('move dragondarts 2, move sleeptalk', 'move sleeptalk, move sleeptalk');
 
-		assert.statStage(battle.p2.active[0], 'def', 2);
+		assert.statStage(battle.p2.active[0], 'tod', 2);
 		assert.equal(battle.p2.active[1].hp, battle.p2.active[1].maxhp);
 	});
 
@@ -179,7 +179,7 @@ describe('Dragon Darts', () => {
 		] });
 		battle.makeChoices('move dragondarts 2, move sleeptalk', 'move sleeptalk, move phantomforce 1');
 
-		assert.statStage(battle.p2.active[0], 'def', 2);
+		assert.statStage(battle.p2.active[0], 'tod', 2);
 		assert.equal(battle.p2.active[1].hp, battle.p2.active[1].maxhp);
 	});
 
@@ -197,7 +197,7 @@ describe('Dragon Darts', () => {
 		battle.p2.active[1].faint();
 		battle.makeChoices('move dragondarts 2, move sleeptalk', 'move sleeptalk, move sleeptalk');
 
-		assert.statStage(battle.p2.active[0], 'def', 2);
+		assert.statStage(battle.p2.active[0], 'tod', 2);
 		assert.equal(battle.p2.active[1].hp, 0);
 	});
 
@@ -214,7 +214,7 @@ describe('Dragon Darts', () => {
 
 		battle.makeChoices();
 
-		assert.statStage(battle.p2.active[0], 'def', 2);
+		assert.statStage(battle.p2.active[0], 'tod', 2);
 		assert.equal(battle.p2.active[1].hp, battle.p2.active[1].maxhp);
 	});
 

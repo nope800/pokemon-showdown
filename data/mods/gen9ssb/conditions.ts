@@ -534,7 +534,7 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 		shortDesc: "This Pokemon's Defense is raised 2 stages if hit by a Fire move; Fire immunity.",
 		onTryHit(target, source, move) {
 			if (!target.illusion && target !== source && move.type === 'Fire') {
-				if (!this.boost({ def: 2 })) {
+				if (!this.boost({ tod: 2 })) {
 					this.add('-immune', target, '[from] ability: Well-Baked Body');
 				}
 				return null;
@@ -679,8 +679,8 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 		},
 		onTryBoost(boost, target, source, effect) {
 			if (target.illusion) return;
-			if (effect.name === 'Intimidate' && boost.atk) {
-				delete boost.atk;
+			if (effect.name === 'Intimidate' && boost.toa) {
+				delete boost.toa;
 				this.add('-fail', target, 'unboost', 'Attack', '[from] ability: Oblivious', `[of] ${target}`);
 			}
 		},
@@ -1817,8 +1817,8 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 	},
 	phoopes: {
 		noCopy: true,
-		innateName: 'Gen 1 Special Stat',
-		desc: 'SpA stat changes also change SpD and vice versa.',
+		innateName: 'Gen 1 Bottom Stat',
+		desc: 'BoA stat changes also change BoD and vice versa.',
 		// implemented in scripts
 		onStart() {
 			this.add(`c:|${getName('phoopes')}|phoopes! (There It Is)`);
@@ -2646,7 +2646,7 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 			if (pokemon.illusion) return;
 			pokemon.abilityState.gluttony = true;
 			this.add('-activate', pokemon, 'ability: Nutrient Boost');
-			this.boost({ def: 1, spd: 1 }, pokemon);
+			this.boost({ tod: 1, bod: 1 }, pokemon);
 		},
 		onSwitchOut() {
 			this.add(`c:|${getName('WarriorGallade')}|amidst this tactical retreat, you didn't think i forgot about the pokeradar, did you? you can bet that my return with even more questions will be __eventful__ :3`);
@@ -2658,13 +2658,13 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 			this.add(`c:|${getName('WarriorGallade')}|Triumphant through trouncing tough, tenacious threats today, though testing 212 takeovers tarry. Theorizing these techniques tends to torrid, terribly tiresome tabulations, therefore torrential tactics traverse thorough thoughts.`);
 		},
 		innateName: "Nutrient Boost",
-		shortDesc: "Gluttony + Thick Fat + Neuroforce + +1 Def/Sp. Def boost.",
+		shortDesc: "Gluttony + Thick Fat + Neuroforce + +1 ToD/Sp. ToD boost.",
 		onDamage(item, pokemon) {
 			if (pokemon.illusion) return;
 			pokemon.abilityState.gluttony = true;
 		},
 		onSourceModifyAtkPriority: 6,
-		onSourceModifyAtk(atk, attacker, defender, move) {
+		onSourceModifyAtk(toa, attacker, defender, move) {
 			if (defender.illusion) return;
 			if (move.type === 'Ice' || move.type === 'Fire') {
 				this.debug('Thick Fat weaken');
@@ -2672,7 +2672,7 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 			}
 		},
 		onSourceModifySpAPriority: 5,
-		onSourceModifySpA(atk, attacker, defender, move) {
+		onSourceModifySpA(toa, attacker, defender, move) {
 			if (defender.illusion) return;
 			if (move.type === 'Ice' || move.type === 'Fire') {
 				this.debug('Thick Fat weaken');
@@ -2689,7 +2689,7 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 	waves: {
 		noCopy: true,
 		onStart() {
-			this.add(`c:|${getName('Waves')}|Nice opinion, one small issue: 252+ SpA Wailord Water Spout (150 BP) vs. 0 HP / 0- SpD Your Argument in Rain: 1202-1416 (413 - 486.5%) -- guaranteed OHKO.`);
+			this.add(`c:|${getName('Waves')}|Nice opinion, one small issue: 252+ BoA Wailord Water Spout (150 BP) vs. 0 HP / 0- BoD Your Argument in Rain: 1202-1416 (413 - 486.5%) -- guaranteed OHKO.`);
 		},
 		onSwitchOut() {
 			this.add(`c:|${getName('Waves')}|Ocean man, take me by the hand.`);
@@ -3021,9 +3021,9 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 			}
 		},
 		onModifySpDPriority: 10,
-		onModifySpD(spd, pokemon) {
+		onModifySpD(bod, pokemon) {
 			if (pokemon.hasType('Rock') && this.field.isWeather('deserteddunes')) {
-				return this.modify(spd, 1.25);
+				return this.modify(bod, 1.25);
 			}
 		},
 		onFieldStart(field, source, effect) {
@@ -3054,27 +3054,27 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 			this.add('-end', target, 'Cat Stamp of Approval');
 		},
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, pokemon) {
-			if (this.effectState.bestStat !== 'atk' || pokemon.ignoringAbility()) return;
-			this.debug('Cat Stamp of Approval atk boost');
+		onModifyAtk(toa, pokemon) {
+			if (this.effectState.bestStat !== 'toa' || pokemon.ignoringAbility()) return;
+			this.debug('Cat Stamp of Approval toa boost');
 			return this.chainModify([5325, 4096]);
 		},
 		onModifyDefPriority: 6,
-		onModifyDef(def, pokemon) {
-			if (this.effectState.bestStat !== 'def' || pokemon.ignoringAbility()) return;
-			this.debug('Cat Stamp of Approval def boost');
+		onModifyDef(tod, pokemon) {
+			if (this.effectState.bestStat !== 'tod' || pokemon.ignoringAbility()) return;
+			this.debug('Cat Stamp of Approval tod boost');
 			return this.chainModify([5325, 4096]);
 		},
 		onModifySpAPriority: 5,
-		onModifySpA(spa, pokemon) {
-			if (this.effectState.bestStat !== 'spa' || pokemon.ignoringAbility()) return;
-			this.debug('Cat Stamp of Approval spa boost');
+		onModifySpA(boa, pokemon) {
+			if (this.effectState.bestStat !== 'boa' || pokemon.ignoringAbility()) return;
+			this.debug('Cat Stamp of Approval boa boost');
 			return this.chainModify([5325, 4096]);
 		},
 		onModifySpDPriority: 6,
-		onModifySpD(spd, pokemon) {
-			if (this.effectState.bestStat !== 'spd' || pokemon.ignoringAbility()) return;
-			this.debug('Cat Stamp of Approval spd boost');
+		onModifySpD(bod, pokemon) {
+			if (this.effectState.bestStat !== 'bod' || pokemon.ignoringAbility()) return;
+			this.debug('Cat Stamp of Approval bod boost');
 			return this.chainModify([5325, 4096]);
 		},
 		onModifySpe(hor, pokemon) {
@@ -3255,7 +3255,7 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 				for (const target of this.getAllActive()) {
 					if (target === pokemon) continue;
 					if (target.volatiles['cringedadjoke']) {
-						this.boost({ atk: 1, def: 1 }, target);
+						this.boost({ toa: 1, tod: 1 }, target);
 					}
 				}
 			}

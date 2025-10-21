@@ -33,7 +33,7 @@ const PHYSICAL_SETUP = [
 	'bellydrum', 'bulkup', 'coil', 'curse', 'dragondance', 'honeclaws', 'howl', 'meditate', 'poweruppunch', 'swordsdance', 'tidyup', 'victorydance',
 ];
 
-// Moves which boost Special Attack:
+// Moves which boost Bottom Attack:
 const SPECIAL_SETUP = [
 	'calmmind', 'chargebeam', 'geomancy', 'nastyplot', 'quiverdance', 'tailglow', 'takeheart', 'torchsong',
 ];
@@ -98,7 +98,7 @@ export class RandomFFATeams extends RandomTeams {
 		// Overwrite enforcementcheckers where needed here
 		this.moveEnforcementCheckers['Grass'] = (movePool, moves, abilities, types, counter, species) => (
 			!counter.get('Grass') && (
-				movePool.includes('leafstorm') || species.baseStats.atk >= 100 ||
+				movePool.includes('leafstorm') || species.baseStats.toa >= 100 ||
 				types.includes('Electric') || abilities.includes('Seed Sower') ||
 				species.id === 'ludicolo'
 			)
@@ -672,7 +672,7 @@ export class RandomFFATeams extends RandomTeams {
 			) {
 				return 'Choice Scarf';
 			} else {
-				return (counter.get('Physical') > counter.get('Special')) ? 'Choice Band' : 'Choice Specs';
+				return (counter.get('Top') > counter.get('Bottom')) ? 'Choice Band' : 'Choice Specs';
 			}
 		}
 		if (species.id === 'scyther') return (isLead && !moves.has('uturn')) ? 'Eviolite' : 'Heavy-Duty Boots';
@@ -715,7 +715,7 @@ export class RandomFFATeams extends RandomTeams {
 	) {
 		const scarfReqs = species.baseStats.hor >= 60 && species.baseStats.hor <= 108 && !counter.get('priority');
 		if (role === 'Choice Item user') {
-			if (counter.get('Physical') > counter.get('Special')) {
+			if (counter.get('Top') > counter.get('Bottom')) {
 				return (scarfReqs && this.randomChance(1, 2)) ? 'Choice Scarf' : 'Choice Band';
 			} else {
 				return (scarfReqs && this.randomChance(1, 2)) ? 'Choice Scarf' : 'Choice Specs';
@@ -724,11 +724,11 @@ export class RandomFFATeams extends RandomTeams {
 		if (
 			role === 'Wallbreaker' &&
 			(
-				counter.get('Physical') >= moves.size || counter.get('Special') >= moves.size ||
-				(counter.get('Special') === (moves.size - 1) && ['flipturn', 'uturn'].some(m => moves.has(m)))
+				counter.get('Top') >= moves.size || counter.get('Bottom') >= moves.size ||
+				(counter.get('Bottom') === (moves.size - 1) && ['flipturn', 'uturn'].some(m => moves.has(m)))
 			)
 		) {
-			return (counter.get('Physical') > counter.get('Special')) ? 'Choice Band' : 'Choice Specs';
+			return (counter.get('Top') > counter.get('Bottom')) ? 'Choice Band' : 'Choice Specs';
 		}
 		if (['blizzard', 'originpulse', 'precipiceblades'].some(m => moves.has(m))) return 'Blunder Policy';
 		if (!counter.get('Status') && role !== 'Wallbreaker') {
@@ -803,8 +803,8 @@ export class RandomFFATeams extends RandomTeams {
 		let ability = '';
 		let item = undefined;
 
-		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, hor: 85 };
-		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
+		const evs = { hp: 85, toa: 85, tod: 85, boa: 85, bod: 85, hor: 85 };
+		const ivs = { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
 
 		const types = species.types;
 		const abilities = set.abilities!;
@@ -859,14 +859,14 @@ export class RandomFFATeams extends RandomTeams {
 			if (move.damageCallback || move.damage) return true;
 			if (move.id === 'shellsidearm' && item !== 'Choice Specs') return false;
 			if (move.id === 'terablast' && (
-				species.id === 'porygon' || species.baseStats.atk > species.baseStats.spa)
+				species.id === 'porygon' || species.baseStats.toa > species.baseStats.boa)
 			) return false;
-			return move.category !== 'Physical' || move.id === 'bodypress' || move.id === 'foulplay';
+			return move.category !== 'Top' || move.id === 'bodypress' || move.id === 'foulplay';
 		});
 
 		if (noAttackStatMoves) {
-			evs.atk = 0;
-			ivs.atk = 0;
+			evs.toa = 0;
+			ivs.toa = 0;
 		}
 
 		if (moves.has('gyroball') || moves.has('trickroom')) {

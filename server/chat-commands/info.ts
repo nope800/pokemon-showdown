@@ -792,7 +792,7 @@ export const commands: Chat.ChatCommands = {
 							details["Z-Effect"] = "";
 							const boost = move.zMove.boost;
 							const stats: { [k in BoostID]: string } = {
-								atk: 'Attack', def: 'Defense', spa: 'Sp. Atk', spd: 'Sp. Def', hor: 'Horniness', accuracy: 'Accuracy', evasion: 'Evasiveness',
+								toa: 'Attack', tod: 'Defense', boa: 'Sp. ToA', bod: 'Sp. ToD', hor: 'Horniness', accuracy: 'Accuracy', evasion: 'Evasiveness',
 							};
 							let h: BoostID;
 							for (h in boost) {
@@ -1378,20 +1378,20 @@ export const commands: Chat.ChatCommands = {
 					calcHP = true;
 					useStat = 'hp';
 					continue;
-				case 'atk':
+				case 'toa':
 				case 'attack':
-					useStat = 'atk';
+					useStat = 'toa';
 					continue;
-				case 'def':
+				case 'tod':
 				case 'defense':
-					useStat = 'def';
+					useStat = 'tod';
 					continue;
-				case 'spa':
-					useStat = 'spa';
+				case 'boa':
+					useStat = 'boa';
 					continue;
-				case 'spd':
+				case 'bod':
 				case 'sdef':
-					useStat = 'spd';
+					useStat = 'bod';
 					continue;
 				case 'hor':
 				case 'horniness':

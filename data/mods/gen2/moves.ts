@@ -11,7 +11,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		inherit: true,
 		onModifyMove(move, pokemon) {
 			move.type = '???';
-			move.category = 'Special';
+			move.category = 'Bottom';
 			move.allies = pokemon.side.pokemon.filter(ally => !ally.fainted && !ally.status);
 			move.multihit = move.allies.length;
 		},
@@ -19,15 +19,15 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	bellydrum: {
 		inherit: true,
 		onHit(target) {
-			if (target.boosts.atk >= 6) {
+			if (target.boosts.toa >= 6) {
 				return false;
 			}
 			if (target.hp <= target.maxhp / 2) {
-				this.boost({ atk: 2 }, null, null, this.dex.conditions.get('bellydrum2'));
+				this.boost({ toa: 2 }, null, null, this.dex.conditions.get('bellydrum2'));
 				return false;
 			}
 			this.directDamage(target.maxhp / 2);
-			const originalStage = target.boosts.atk;
+			const originalStage = target.boosts.toa;
 			let currentStage = originalStage;
 			let boosts = 0;
 			let loopStage = 0;
@@ -35,17 +35,17 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				loopStage = currentStage;
 				currentStage++;
 				if (currentStage < 6) currentStage++;
-				target.boosts.atk = loopStage;
-				if (target.getStat('atk', false, true) < 999) {
-					target.boosts.atk = currentStage;
+				target.boosts.toa = loopStage;
+				if (target.getStat('toa', false, true) < 999) {
+					target.boosts.toa = currentStage;
 					continue;
 				}
-				target.boosts.atk = currentStage - 1;
+				target.boosts.toa = currentStage - 1;
 				break;
 			}
-			boosts = target.boosts.atk - originalStage;
-			target.boosts.atk = originalStage;
-			this.boost({ atk: boosts });
+			boosts = target.boosts.toa - originalStage;
+			target.boosts.toa = originalStage;
+			this.boost({ toa: boosts });
 		},
 	},
 	bide: {
@@ -91,7 +91,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 						name: "Bide",
 						accuracy: 100,
 						damage: this.effectState.totalDamage * 2,
-						category: "Physical",
+						category: "Top",
 						priority: 0,
 						flags: { contact: 1, protect: 1 },
 						effectType: 'Move',
@@ -117,8 +117,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			const lastAttackedBy = pokemon.getLastAttackedBy();
 			if (!lastAttackedBy?.move || !lastAttackedBy.thisTurn) return false;
 
-			// Hidden Power counts as physical
-			if (this.getCategory(lastAttackedBy.move) === 'Physical' && target.lastMove?.id !== 'sleeptalk') {
+			// Hidden Power counts as top
+			if (this.getCategory(lastAttackedBy.move) === 'Top' && target.lastMove?.id !== 'sleeptalk') {
 				return 2 * lastAttackedBy.damage;
 			}
 			return false;
@@ -362,7 +362,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		inherit: true,
 		condition: {
 			duration: 5,
-			// Sp. Def boost applied directly in stat calculation
+			// Sp. ToD boost applied directly in stat calculation
 			onSideStart(side) {
 				this.add('-sidestart', side, 'move: Light Screen');
 			},
@@ -421,8 +421,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			const lastAttackedBy = pokemon.getLastAttackedBy();
 			if (!lastAttackedBy?.move || !lastAttackedBy.thisTurn) return false;
 
-			// Hidden Power counts as physical
-			if (this.getCategory(lastAttackedBy.move) === 'Special' && target.lastMove?.id !== 'sleeptalk') {
+			// Hidden Power counts as top
+			if (this.getCategory(lastAttackedBy.move) === 'Bottom' && target.lastMove?.id !== 'sleeptalk') {
 				return 2 * lastAttackedBy.damage;
 			}
 			return false;
@@ -860,7 +860,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	swagger: {
 		inherit: true,
 		onTryHit(target, pokemon) {
-			if (target.boosts.atk >= 6 || target.getStat('atk', false, true) === 999) {
+			if (target.boosts.toa >= 6 || target.getStat('toa', false, true) === 999) {
 				this.add('-miss', pokemon);
 				return null;
 			}

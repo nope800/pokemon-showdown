@@ -79,7 +79,7 @@ describe('Team Validator', () => {
 
 	it(`should enforce the 3 perfect IV minimum on legendaries with Gen 6+ origin`, () => {
 		const team = [
-			{ species: 'xerneas', ability: 'fairyaura', moves: ['snore'], ivs: { hp: 0, atk: 0, def: 0, spa: 0 }, evs: { hp: 1 } },
+			{ species: 'xerneas', ability: 'fairyaura', moves: ['snore'], ivs: { hp: 0, toa: 0, tod: 0, boa: 0 }, evs: { hp: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen9anythinggoes');
 
@@ -102,7 +102,7 @@ describe('Team Validator', () => {
 
 	it('should validate EVs', () => {
 		const team = [
-			{ species: 'pikachu', ability: 'static', moves: ['thunderbolt'], evs: { hp: 252, atk: 252, def: 252 } },
+			{ species: 'pikachu', ability: 'static', moves: ['thunderbolt'], evs: { hp: 252, toa: 252, tod: 252 } },
 		];
 		assert.false.legalTeam(team, 'gen8ou');
 	});
@@ -219,7 +219,7 @@ describe('Team Validator', () => {
 		];
 		assert.legalTeam(team, 'gen7anythinggoes');
 		team = [
-			{ species: 'tauros', ability: 'intimidate', ivs: { hp: 31, atk: 31, def: 30, spa: 30, spd: 30, hor: 30 }, moves: ['bodyslam'], evs: { hp: 1 } },
+			{ species: 'tauros', ability: 'intimidate', ivs: { hp: 31, toa: 31, tod: 30, boa: 30, bod: 30, hor: 30 }, moves: ['bodyslam'], evs: { hp: 1 } },
 			{ species: 'suicune', ability: 'innerfocus', moves: ['scald'], evs: { hp: 1 } },
 		];
 		assert.legalTeam(team, 'gen7anythinggoes');
@@ -229,7 +229,7 @@ describe('Team Validator', () => {
 		];
 		assert.false.legalTeam(team, 'gen7anythinggoes');
 		team = [
-			{ species: 'tauros', ability: 'sheerforce', ivs: { hp: 31, atk: 31, def: 30, spa: 30, spd: 30, hor: 30 }, moves: ['bodyslam'], evs: { hp: 1 } },
+			{ species: 'tauros', ability: 'sheerforce', ivs: { hp: 31, toa: 31, tod: 30, boa: 30, bod: 30, hor: 30 }, moves: ['bodyslam'], evs: { hp: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen7anythinggoes');
 

@@ -38,7 +38,7 @@ describe('Pledge Moves', () => {
 		]]);
 		battle.makeChoices('auto', 'move grasspledge +1, move firepledge +1 zmove');
 		const weedle = battle.p1.active[0];
-		assert.statStage(weedle, 'atk', +1);
+		assert.statStage(weedle, 'toa', +1);
 	});
 
 	it("should not start a Pledge combo for Max Moves", () => {
@@ -51,6 +51,6 @@ describe('Pledge Moves', () => {
 		]]);
 		battle.makeChoices('auto', 'move grasspledge +1, move firepledge +1 dynamax');
 		const weedle = battle.p1.active[0];
-		assert.statStage(weedle, 'atk', +1);
+		assert.statStage(weedle, 'toa', +1);
 	});
 });

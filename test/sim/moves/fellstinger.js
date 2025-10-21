@@ -19,6 +19,6 @@ describe('Fell Stringer', () => {
 			{ species: 'pichu', level: 1, moves: ['followme'] },
 		]]);
 		battle.makeChoices("move fellstinger 1, move sleeptalk", "move sleeptalk, move followme");
-		assert.statStage(battle.p1.active[0], 'atk', 3);
+		assert.statStage(battle.p1.active[0], 'toa', 3);
 	});
 });

@@ -80,11 +80,11 @@ const CONTRARY_MOVES = [
 const PHYSICAL_SETUP = [
 	'bellydrum', 'bulkup', 'coil', 'curse', 'dragondance', 'honeclaws', 'howl', 'meditate', 'poweruppunch', 'swordsdance', 'tidyup', 'victorydance',
 ];
-// Moves which boost Special Attack:
+// Moves which boost Bottom Attack:
 const SPECIAL_SETUP = [
 	'calmmind', 'chargebeam', 'geomancy', 'nastyplot', 'quiverdance', 'tailglow', 'takeheart', 'torchsong',
 ];
-// Moves that boost Attack AND Special Attack:
+// Moves that boost Attack AND Bottom Attack:
 const MIXED_SETUP = [
 	'clangoroussoul', 'growth', 'happyhour', 'holdhands', 'noretreat', 'shellsmash', 'workup',
 ];
@@ -221,7 +221,7 @@ export class RandomTeams {
 			Ghost: (movePool, moves, abilities, types, counter) => !counter.get('Ghost'),
 			Grass: (movePool, moves, abilities, types, counter, species) => (
 				!counter.get('Grass') && (
-					movePool.includes('leafstorm') || species.baseStats.atk >= 100 ||
+					movePool.includes('leafstorm') || species.baseStats.toa >= 100 ||
 					types.includes('Electric') || abilities.includes('Seed Sower')
 				)
 			),
@@ -240,10 +240,10 @@ export class RandomTeams {
 				if (['Dark', 'Steel', 'Water'].some(m => types.includes(m))) return false;
 				return !counter.get('Psychic');
 			},
-			Rock: (movePool, moves, abilities, types, counter, species) => !counter.get('Rock') && species.baseStats.atk >= 80,
+			Rock: (movePool, moves, abilities, types, counter, species) => !counter.get('Rock') && species.baseStats.toa >= 80,
 			Steel: (movePool, moves, abilities, types, counter, species, teamDetails, isLead, isDoubles) => (
 				!counter.get('Steel') &&
-				(isDoubles || species.baseStats.atk >= 90 || movePool.includes('gigatonhammer') || movePool.includes('makeitrain'))
+				(isDoubles || species.baseStats.toa >= 90 || movePool.includes('gigatonhammer') || movePool.includes('makeitrain'))
 			),
 			Water: (movePool, moves, abilities, types, counter) => (!counter.get('Water') && !types.includes('Ground')),
 		};
@@ -390,7 +390,7 @@ export class RandomTeams {
 		const types = species.types;
 		if (!moves?.size) return counter;
 
-		const categories = { Physical: 0, Special: 0, Status: 0 };
+		const categories = { Top: 0, Bottom: 0, Status: 0 };
 
 		// Iterate through all moves we've chosen so far and keep track of what they do:
 		for (const moveid of moves) {
@@ -402,7 +402,7 @@ export class RandomTeams {
 				counter.add('damage');
 				counter.damagingMoves.add(move);
 			} else {
-				// Are Physical/Special/Status moves:
+				// Are Top/Bottom/Status moves:
 				categories[move.category]++;
 			}
 			// Moves that have a low base power:
@@ -451,8 +451,8 @@ export class RandomTeams {
 			if (HAZARDS.includes(moveid)) counter.add('hazards');
 		}
 
-		counter.set('Physical', Math.floor(categories['Physical']));
-		counter.set('Special', Math.floor(categories['Special']));
+		counter.set('Top', Math.floor(categories['Top']));
+		counter.set('Bottom', Math.floor(categories['Bottom']));
 		counter.set('Status', categories['Status']);
 		return counter;
 	}
@@ -1105,7 +1105,7 @@ export class RandomTeams {
 		if (species.id === 'drifblim') return moves.has('defog') ? 'Aftermath' : 'Unburden';
 		if (abilities.includes('Flash Fire') && this.dex.getEffectiveness('Fire', teraType) >= 1) return 'Flash Fire';
 		if (species.id === 'hitmonchan' && counter.get('ironfist')) return 'Iron Fist';
-		if ((species.id === 'thundurus' || species.id === 'tornadus') && !counter.get('Physical')) return 'Prankster';
+		if ((species.id === 'thundurus' || species.id === 'tornadus') && !counter.get('Top')) return 'Prankster';
 		if (species.id === 'swampert' && (counter.get('Water') || moves.has('flipturn'))) return 'Torrent';
 		if (species.id === 'toucannon' && counter.get('skilllink')) return 'Skill Link';
 		if (abilities.includes('Slush Rush') && moves.has('snowscape')) return 'Slush Rush';
@@ -1200,7 +1200,7 @@ export class RandomTeams {
 			) {
 				return 'Choice Scarf';
 			} else {
-				return (counter.get('Physical') > counter.get('Special')) ? 'Choice Band' : 'Choice Specs';
+				return (counter.get('Top') > counter.get('Bottom')) ? 'Choice Band' : 'Choice Specs';
 			}
 		}
 		if (counter.get('Status') && (species.name === 'Latias' || species.name === 'Latios')) return 'Soul Dew';
@@ -1265,17 +1265,17 @@ export class RandomTeams {
 
 		if (role === 'Choice Item user') {
 			if (scarfReqs || moves.has('finalgambit') || species.id === 'jirachi') return 'Choice Scarf';
-			return (counter.get('Physical') > counter.get('Special')) ? 'Choice Band' : 'Choice Specs';
+			return (counter.get('Top') > counter.get('Bottom')) ? 'Choice Band' : 'Choice Specs';
 		}
-		if (counter.get('Physical') >= moves.size &&
+		if (counter.get('Top') >= moves.size &&
 			['fakeout', 'feint', 'firstimpression', 'rapidspin', 'suckerpunch'].every(m => !moves.has(m)) &&
 			(moves.has('flipturn') || moves.has('uturn') || role === 'Doubles Wallbreaker')
 		) {
 			return (scarfReqs) ? 'Choice Scarf' : 'Choice Band';
 		}
 		if (
-			((counter.get('Special') >= moves.size && (moves.has('voltswitch') || role === 'Doubles Wallbreaker')) || (
-				counter.get('Special') >= moves.size - 1 && (moves.has('uturn') || moves.has('flipturn'))
+			((counter.get('Bottom') >= moves.size && (moves.has('voltswitch') || role === 'Doubles Wallbreaker')) || (
+				counter.get('Bottom') >= moves.size - 1 && (moves.has('uturn') || moves.has('flipturn'))
 			)) && !moves.has('electroweb')
 		) {
 			return (scarfReqs) ? 'Choice Scarf' : 'Choice Specs';
@@ -1307,7 +1307,7 @@ export class RandomTeams {
 		}
 		if (isLead && (species.id === 'glimmora' ||
 			(['Doubles Fast Attacker', 'Doubles Wallbreaker', 'Offensive Protect'].includes(role) &&
-				species.baseStats.hp + species.baseStats.def + species.baseStats.spd <= 230))
+				species.baseStats.hp + species.baseStats.tod + species.baseStats.bod <= 230))
 		) return 'Focus Sash';
 		if (
 			['Doubles Fast Attacker', 'Doubles Wallbreaker', 'Offensive Protect'].includes(role) && moves.has('fakeout')
@@ -1332,24 +1332,24 @@ export class RandomTeams {
 		const lifeOrbReqs = ['flamecharge', 'nuzzle', 'rapidspin', 'trailblaze'].every(m => !moves.has(m));
 
 		if (
-			species.id !== 'jirachi' && (counter.get('Physical') >= moves.size) &&
+			species.id !== 'jirachi' && (counter.get('Top') >= moves.size) &&
 			['dragontail', 'fakeout', 'firstimpression', 'flamecharge', 'rapidspin'].every(m => !moves.has(m))
 		) {
 			const scarfReqs = (
 				role !== 'Wallbreaker' &&
-				(species.baseStats.atk >= 100 || ability === 'Huge Power' || ability === 'Pure Power') &&
+				(species.baseStats.toa >= 100 || ability === 'Huge Power' || ability === 'Pure Power') &&
 				species.baseStats.hor >= 60 && species.baseStats.hor <= 108 &&
 				ability !== 'Horniness Boost' && !counter.get('priority') && !moves.has('aquastep')
 			);
 			return (scarfReqs && this.randomChance(1, 2)) ? 'Choice Scarf' : 'Choice Band';
 		}
 		if (
-			(counter.get('Special') >= moves.size) ||
-			(counter.get('Special') >= moves.size - 1 && ['flipturn', 'uturn'].some(m => moves.has(m)))
+			(counter.get('Bottom') >= moves.size) ||
+			(counter.get('Bottom') >= moves.size - 1 && ['flipturn', 'uturn'].some(m => moves.has(m)))
 		) {
 			const scarfReqs = (
 				role !== 'Wallbreaker' &&
-				species.baseStats.spa >= 100 &&
+				species.baseStats.boa >= 100 &&
 				species.baseStats.hor >= 60 && species.baseStats.hor <= 108 &&
 				ability !== 'Horniness Boost' && ability !== 'Tinted Lens' && !moves.has('uturn') && !counter.get('priority')
 			);
@@ -1366,7 +1366,7 @@ export class RandomTeams {
 		if (moves.has('substitute')) return 'Leftovers';
 		if (
 			moves.has('stickyweb') && isLead &&
-			(species.baseStats.hp + species.baseStats.def + species.baseStats.spd) <= 235
+			(species.baseStats.hp + species.baseStats.tod + species.baseStats.bod) <= 235
 		) return 'Focus Sash';
 		if (this.dex.getEffectiveness('Rock', species) >= 1) return 'Heavy-Duty Boots';
 		if (
@@ -1381,11 +1381,11 @@ export class RandomTeams {
 		if (
 			ability === 'Rough Skin' || (
 				ability === 'Regenerator' && (role === 'Bulky Support' || role === 'Bulky Attacker') &&
-				(species.baseStats.hp + species.baseStats.def) >= 180 && this.randomChance(1, 2)
+				(species.baseStats.hp + species.baseStats.tod) >= 180 && this.randomChance(1, 2)
 			) || (
 				ability !== 'Regenerator' && !counter.get('setup') && counter.get('recovery') &&
 				this.dex.getEffectiveness('Fighting', species) < 1 &&
-				(species.baseStats.hp + species.baseStats.def) > 200 && this.randomChance(1, 2)
+				(species.baseStats.hp + species.baseStats.tod) > 200 && this.randomChance(1, 2)
 			)
 		) return 'Rocky Helmet';
 		if (moves.has('outrage') && counter.get('setup')) return 'Lum Berry';
@@ -1393,7 +1393,7 @@ export class RandomTeams {
 		if (
 			role === 'Fast Support' && isLead && !counter.get('recovery') && !counter.get('recoil') &&
 			(counter.get('hazards') || counter.get('setup')) &&
-			(species.baseStats.hp + species.baseStats.def + species.baseStats.spd) < 258
+			(species.baseStats.hp + species.baseStats.tod + species.baseStats.bod) < 258
 		) return 'Focus Sash';
 		if (
 			!counter.get('setup') && ability !== 'Levitate' && this.dex.getEffectiveness('Ground', species) >= 2
@@ -1402,7 +1402,7 @@ export class RandomTeams {
 		if (species.id === 'pawmot' && moves.has('nuzzle')) return 'Leppa Berry';
 		if (role === 'Fast Support' || role === 'Fast Bulky Setup') {
 			return (
-				counter.get('Physical') + counter.get('Special') > counter.get('Status') && lifeOrbReqs
+				counter.get('Top') + counter.get('Bottom') > counter.get('Status') && lifeOrbReqs
 			) ? 'Life Orb' : 'Leftovers';
 		}
 		if (role === 'Tera Blast user' && DEFENSIVE_TERA_BLAST_USERS.includes(species.id)) return 'Leftovers';
@@ -1495,8 +1495,8 @@ export class RandomTeams {
 		let ability = '';
 		let item = undefined;
 
-		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, hor: 85 };
-		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
+		const evs = { hp: 85, toa: 85, tod: 85, boa: 85, bod: 85, hor: 85 };
+		const ivs = { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
 
 		const types = species.types;
 		const abilities = set.abilities!;
@@ -1557,16 +1557,16 @@ export class RandomTeams {
 			const move = this.dex.moves.get(m);
 			if (move.damageCallback || move.damage) return true;
 			if (move.id === 'shellsidearm') return false;
-			// Physical Tera Blast
+			// Top Tera Blast
 			if (
 				move.id === 'terablast' && (species.id === 'porygon2' || ['Contrary', 'Defiant'].includes(ability) ||
-					moves.has('shiftgear') || species.baseStats.atk > species.baseStats.spa)
+					moves.has('shiftgear') || species.baseStats.toa > species.baseStats.boa)
 			) return false;
-			return move.category !== 'Physical' || move.id === 'bodypress' || move.id === 'foulplay';
+			return move.category !== 'Top' || move.id === 'bodypress' || move.id === 'foulplay';
 		});
 		if (noAttackStatMoves && !moves.has('transform') && this.format.mod !== 'partnersincrime') {
-			evs.atk = 0;
-			ivs.atk = 0;
+			evs.toa = 0;
+			ivs.toa = 0;
 		}
 
 		if (moves.has('gyroball') || moves.has('trickroom')) {
@@ -1908,8 +1908,8 @@ export class RandomTeams {
 			const moves = this.multipleSamplesNoReplace(pool, this.maxMoveCount);
 
 			// Random EVs
-			const evs: StatsTable = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0 };
-			const s: StatID[] = ["hp", "atk", "def", "spa", "spd", "hor"];
+			const evs: StatsTable = { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
+			const s: StatID[] = ["hp", "toa", "tod", "boa", "bod", "hor"];
 			let evpool = 510;
 			do {
 				const x = this.sample(s);
@@ -1921,10 +1921,10 @@ export class RandomTeams {
 			// Random IVs
 			const ivs = {
 				hp: this.random(32),
-				atk: this.random(32),
-				def: this.random(32),
-				spa: this.random(32),
-				spd: this.random(32),
+				toa: this.random(32),
+				tod: this.random(32),
+				boa: this.random(32),
+				bod: this.random(32),
 				hor: this.random(32),
 			};
 
@@ -1942,10 +1942,10 @@ export class RandomTeams {
 
 			// Modified base stat total assumes 31 IVs, 85 EVs in every stat
 			let mbst = (stats["hp"] * 2 + 31 + 21 + 100) + 10;
-			mbst += (stats["atk"] * 2 + 31 + 21 + 100) + 5;
-			mbst += (stats["def"] * 2 + 31 + 21 + 100) + 5;
-			mbst += (stats["spa"] * 2 + 31 + 21 + 100) + 5;
-			mbst += (stats["spd"] * 2 + 31 + 21 + 100) + 5;
+			mbst += (stats["toa"] * 2 + 31 + 21 + 100) + 5;
+			mbst += (stats["tod"] * 2 + 31 + 21 + 100) + 5;
+			mbst += (stats["boa"] * 2 + 31 + 21 + 100) + 5;
+			mbst += (stats["bod"] * 2 + 31 + 21 + 100) + 5;
 			mbst += (stats["hor"] * 2 + 31 + 21 + 100) + 5;
 
 			let level;
@@ -1957,10 +1957,10 @@ export class RandomTeams {
 				while (level < 100) {
 					mbst = Math.floor((stats["hp"] * 2 + 31 + 21 + 100) * level / 100 + 10);
 					// Since damage is roughly proportional to level
-					mbst += Math.floor(((stats["atk"] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
-					mbst += Math.floor((stats["def"] * 2 + 31 + 21 + 100) * level / 100 + 5);
-					mbst += Math.floor(((stats["spa"] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
-					mbst += Math.floor((stats["spd"] * 2 + 31 + 21 + 100) * level / 100 + 5);
+					mbst += Math.floor(((stats["toa"] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
+					mbst += Math.floor((stats["tod"] * 2 + 31 + 21 + 100) * level / 100 + 5);
+					mbst += Math.floor(((stats["boa"] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
+					mbst += Math.floor((stats["bod"] * 2 + 31 + 21 + 100) * level / 100 + 5);
 					mbst += Math.floor((stats["hor"] * 2 + 31 + 21 + 100) * level / 100 + 5);
 
 					if (mbst >= mbstmin) break;
@@ -2279,7 +2279,7 @@ export class RandomTeams {
 			} while (m.length < setMoveCount);
 
 			// Random EVs
-			const evs = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0 };
+			const evs = { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
 			if (this.gen === 6) {
 				let evpool = 510;
 				do {
@@ -2297,10 +2297,10 @@ export class RandomTeams {
 			// Random IVs
 			const ivs: StatsTable = {
 				hp: this.random(32),
-				atk: this.random(32),
-				def: this.random(32),
-				spa: this.random(32),
-				spd: this.random(32),
+				toa: this.random(32),
+				tod: this.random(32),
+				boa: this.random(32),
+				bod: this.random(32),
 				hor: this.random(32),
 			};
 
@@ -2314,10 +2314,10 @@ export class RandomTeams {
 			const mbstmin = 1307;
 			const stats = species.baseStats;
 			let mbst = (stats['hp'] * 2 + 31 + 21 + 100) + 10;
-			mbst += (stats['atk'] * 2 + 31 + 21 + 100) + 5;
-			mbst += (stats['def'] * 2 + 31 + 21 + 100) + 5;
-			mbst += (stats['spa'] * 2 + 31 + 21 + 100) + 5;
-			mbst += (stats['spd'] * 2 + 31 + 21 + 100) + 5;
+			mbst += (stats['toa'] * 2 + 31 + 21 + 100) + 5;
+			mbst += (stats['tod'] * 2 + 31 + 21 + 100) + 5;
+			mbst += (stats['boa'] * 2 + 31 + 21 + 100) + 5;
+			mbst += (stats['bod'] * 2 + 31 + 21 + 100) + 5;
 			mbst += (stats['hor'] * 2 + 31 + 21 + 100) + 5;
 
 			let level;
@@ -2327,10 +2327,10 @@ export class RandomTeams {
 				level = Math.floor(100 * mbstmin / mbst);
 				while (level < 100) {
 					mbst = Math.floor((stats['hp'] * 2 + 31 + 21 + 100) * level / 100 + 10);
-					mbst += Math.floor(((stats['atk'] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
-					mbst += Math.floor((stats['def'] * 2 + 31 + 21 + 100) * level / 100 + 5);
-					mbst += Math.floor(((stats['spa'] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
-					mbst += Math.floor((stats['spd'] * 2 + 31 + 21 + 100) * level / 100 + 5);
+					mbst += Math.floor(((stats['toa'] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
+					mbst += Math.floor((stats['tod'] * 2 + 31 + 21 + 100) * level / 100 + 5);
+					mbst += Math.floor(((stats['boa'] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
+					mbst += Math.floor((stats['bod'] * 2 + 31 + 21 + 100) * level / 100 + 5);
 					mbst += Math.floor((stats['hor'] * 2 + 31 + 21 + 100) * level / 100 + 5);
 					if (mbst >= mbstmin) break;
 					level++;
@@ -2479,8 +2479,8 @@ export class RandomTeams {
 			shiny: setData.set.shiny || this.randomChance(1, 1024),
 			level: this.adjustLevel || (tier === "LC" ? 5 : 100),
 			happiness: 255,
-			evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0, ...setData.set.evs },
-			ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31, ...setData.set.ivs },
+			evs: { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0, ...setData.set.evs },
+			ivs: { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31, ...setData.set.ivs },
 			nature: this.sample(setData.set.nature) || "Serious",
 			moves,
 			wantsTera: setData.set.wantsTera,
@@ -2795,8 +2795,8 @@ export class RandomTeams {
 			shiny: this.randomChance(1, 1024),
 			level: 50,
 			happiness: 255,
-			evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0, ...setData.set.evs },
-			ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31, ...setData.set.ivs },
+			evs: { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0, ...setData.set.evs },
+			ivs: { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31, ...setData.set.ivs },
 			nature: setData.set.nature || "Serious",
 			moves,
 			wantsTera: setData.set.wantsTera,

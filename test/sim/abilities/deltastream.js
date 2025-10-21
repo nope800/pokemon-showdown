@@ -28,8 +28,8 @@ describe('Delta Stream', () => {
 		const pokemon = battle.p1.active[0];
 		for (let i = 1; i <= 3; i++) {
 			battle.makeChoices('move recover', 'move ' + i);
-			assert.statStage(pokemon, 'atk', 0);
-			assert.statStage(pokemon, 'spa', 0);
+			assert.statStage(pokemon, 'toa', 0);
+			assert.statStage(pokemon, 'boa', 0);
 			assert.holdsItem(pokemon);
 		}
 	});
@@ -42,8 +42,8 @@ describe('Delta Stream', () => {
 		]]);
 		battle.makeChoices('move recover', 'move dragonpulse');
 		const pokemon = battle.p1.active[0];
-		assert.statStage(pokemon, 'atk', 2);
-		assert.statStage(pokemon, 'spa', 2);
+		assert.statStage(pokemon, 'toa', 2);
+		assert.statStage(pokemon, 'boa', 2);
 		assert.false.holdsItem(pokemon);
 	});
 

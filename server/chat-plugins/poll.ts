@@ -634,7 +634,7 @@ export const commands: Chat.ChatCommands = {
 			this.checkCan('mute', null, room);
 			const poll = this.requireMinorActivity(Poll);
 			let num = parseInt(target);
-			if (this.meansNo(target)) { // special case for convenience
+			if (this.meansNo(target)) { // bottom case for convenience
 				num = 0;
 			}
 			if (isNaN(num)) {

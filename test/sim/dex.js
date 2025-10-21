@@ -15,14 +15,14 @@ describe('Mod loader', () => {
 		{
 			const Dex = require('./../../dist/sim/dex').Dex;
 			assert.equal(Dex.mod('gen2').species.getLearnsetData('nidoking').learnset.bubblebeam.join(','), '1M');
-			assert.equal(Dex.mod('gen2').moves.get('crunch').secondaries[0].boosts.def, undefined);
+			assert.equal(Dex.mod('gen2').moves.get('crunch').secondaries[0].boosts.tod, undefined);
 		}
 		{
 			const Dex = require('./../../dist/sim/dex').Dex;
 			Dex.mod('gen2').species.getLearnsetData('nidoking');
 			Dex.mod('gen4').moves.get('crunch');
 			assert.equal(Dex.mod('gen2').species.getLearnsetData('nidoking').learnset.bubblebeam.join(','), '1M');
-			assert.equal(Dex.mod('gen2').moves.get('crunch').secondaries[0].boosts.def, undefined);
+			assert.equal(Dex.mod('gen2').moves.get('crunch').secondaries[0].boosts.tod, undefined);
 		}
 	});
 });

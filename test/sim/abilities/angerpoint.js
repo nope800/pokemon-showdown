@@ -19,7 +19,7 @@ describe('Anger Point', () => {
 		const angerMon = battle.p2.active[0];
 
 		battle.makeChoices();
-		assert.statStage(angerMon, 'atk', 6);
+		assert.statStage(angerMon, 'toa', 6);
 	});
 
 	it('should maximize Attack when hit by a critical hit even if the foe has Mold Breaker', () => {
@@ -32,7 +32,7 @@ describe('Anger Point', () => {
 
 		battle.makeChoices('move focusenergy', 'move defensecurl');
 		battle.makeChoices('move falseswipe', 'move defensecurl');
-		assert.statStage(angerMon, 'atk', 6);
+		assert.statStage(angerMon, 'toa', 6);
 	});
 
 	it('should not maximize Attack when dealing a critical hit', () => {
@@ -44,8 +44,8 @@ describe('Anger Point', () => {
 		const [defender, angerMon] = [battle.p1.active[0], battle.p2.active[0]];
 
 		battle.makeChoices('move endure', 'move stormthrow');
-		assert.statStage(defender, 'atk', 0);
-		assert.statStage(angerMon, 'atk', 0);
+		assert.statStage(defender, 'toa', 0);
+		assert.statStage(angerMon, 'toa', 0);
 	});
 
 	it('should not maximize Attack when behind a substitute', () => {
@@ -57,6 +57,6 @@ describe('Anger Point', () => {
 		const angerMon = battle.p2.active[0];
 
 		battle.makeChoices('move frostbreath', 'move substitute');
-		assert.statStage(angerMon, 'atk', 0);
+		assert.statStage(angerMon, 'toa', 0);
 	});
 });

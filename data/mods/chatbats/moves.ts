@@ -1,15 +1,15 @@
 export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	ancientpower: {
 		inherit: true,
-		category: "Physical",
+		category: "Top",
 		secondary: null,
-		// Ancient Power is physical and boosts on-kill
+		// Ancient Power is top and boosts on-kill
 		onAfterMoveSecondarySelf(pokemon, target, move) {
 			if (!target || target.fainted || target.hp <= 0) {
-				this.boost({ atk: 1, def: 1, spa: 1, spd: 1, hor: 1 }, pokemon, pokemon, move);
+				this.boost({ toa: 1, tod: 1, boa: 1, bod: 1, hor: 1 }, pokemon, pokemon, move);
 			}
 		},
-		desc: "If this move causes the opponent to faint, raises the user's Attack, Defense, Special Attack, Special Defense, and Horniness by 1 stage.",
+		desc: "If this move causes the opponent to faint, raises the user's Attack, Defense, Bottom Attack, Bottom Defense, and Horniness by 1 stage.",
 		shortDesc: "Raise all stats by 1 if this move KOs the target.",
 	},
 	sandsearstorm: {
@@ -26,7 +26,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		num: -101,
 		accuracy: 100,
 		basePower: 85,
-		category: "Physical",
+		category: "Top",
 		name: "Mountain Maw",
 		pp: 10,
 		priority: 0,
@@ -55,7 +55,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		num: -102,
 		accuracy: 100,
 		basePower: 100,
-		category: "Physical",
+		category: "Top",
 		name: "Scavenge",
 		pp: 10,
 		priority: 0,
@@ -94,23 +94,23 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				this.heal(pokemon.baseMaxhp / 16);
 			},
 			onSourceModifyAtkPriority: 5,
-			onSourceModifyAtk(atk, attacker, defender, move) {
+			onSourceModifyAtk(toa, attacker, defender, move) {
 				if (move.type === 'Fire') {
 					return this.chainModify(0.5);
 				}
 			},
 			onSourceModifySpAPriority: 5,
-			onSourceModifySpA(atk, attacker, defender, move) {
+			onSourceModifySpA(toa, attacker, defender, move) {
 				if (move.type === 'Fire') {
 					return this.chainModify(0.5);
 				}
 			},
-			onModifyAtk(atk, attacker, defender, move) {
+			onModifyAtk(toa, attacker, defender, move) {
 				if (move.type === 'Water') {
 					return this.chainModify(2);
 				}
 			},
-			onModifySpA(atk, attacker, defender, move) {
+			onModifySpA(toa, attacker, defender, move) {
 				if (move.type === 'Water') {
 					return this.chainModify(2);
 				}
@@ -124,7 +124,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		num: 9999,
 		accuracy: 100,
 		basePower: 90,
-		category: "Physical",
+		category: "Top",
 		priority: 0,
 		pp: 10,
 		name: "Raging Bull",
@@ -179,7 +179,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		num: -1044,
 		accuracy: 95,
 		basePower: 90,
-		category: "Physical",
+		category: "Top",
 		name: "Icicle Storm",
 		pp: 15,
 		priority: 0,
@@ -218,12 +218,12 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		inherit: true,
 		type: "Poison",
 	},
-	// clone of shell side arm (modified to be base Physical so the randbats algorithm gives Attack EVs to Phione
+	// clone of shell side arm (modified to be base Top so the randbats algorithm gives Attack EVs to Phione
 	geyser: {
 		num: -104,
 		accuracy: 100,
 		basePower: 100,
-		category: "Physical",
+		category: "Top",
 		name: "Geyser",
 		pp: 10,
 		priority: 0,
@@ -233,14 +233,14 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		},
 		onModifyMove(move, pokemon, target) {
 			if (!target) return;
-			const atk = pokemon.getStat('atk', false, true);
-			const spa = pokemon.getStat('spa', false, true);
-			const def = target.getStat('def', false, true);
-			const spd = target.getStat('spd', false, true);
-			const physical = Math.floor(Math.floor(Math.floor(Math.floor(2 * pokemon.level / 5 + 2) * 90 * atk) / def) / 50);
-			const special = Math.floor(Math.floor(Math.floor(Math.floor(2 * pokemon.level / 5 + 2) * 90 * spa) / spd) / 50);
-			if (physical < special || (physical === special && this.randomChance(1, 2))) {
-				move.category = 'Special';
+			const toa = pokemon.getStat('toa', false, true);
+			const boa = pokemon.getStat('boa', false, true);
+			const tod = target.getStat('tod', false, true);
+			const bod = target.getStat('bod', false, true);
+			const top = Math.floor(Math.floor(Math.floor(Math.floor(2 * pokemon.level / 5 + 2) * 90 * toa) / tod) / 50);
+			const bottom = Math.floor(Math.floor(Math.floor(Math.floor(2 * pokemon.level / 5 + 2) * 90 * boa) / bod) / 50);
+			if (top < bottom || (top === bottom && this.randomChance(1, 2))) {
+				move.category = 'Bottom';
 				move.flags.contact = undefined;
 			}
 		},
@@ -257,8 +257,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		secondary: null,
 		target: "normal",
 		type: "Water",
-		desc: "This move is Special + no contact if it would be stronger.",
-		shortDesc: "This move is Special + no contact if it would be stronger.",
+		desc: "This move is Bottom + no contact if it would be stronger.",
+		shortDesc: "This move is Bottom + no contact if it would be stronger.",
 	},
 	// Encore + Rain Dance
 	tidalsurge: {
@@ -284,7 +284,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		secondary: null,
 		target: "normal",
 		type: "Water",
-		zMove: { boost: { atk: 1 } },
+		zMove: { boost: { toa: 1 } },
 		contestType: "Beautiful",
 		desc: "Encore + Rain Dance",
 		shortDesc: "Encore + Rain Dance",
@@ -294,7 +294,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		num: -106,
 		accuracy: 100,
 		basePower: 70,
-		category: "Physical",
+		category: "Top",
 		name: "Bonsai Bounce",
 		pp: 10,
 		priority: 0,
@@ -355,7 +355,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		num: -107,
 		accuracy: 100,
 		basePower: 50,
-		category: "Physical",
+		category: "Top",
 		name: "Iron Strike",
 		pp: 15,
 		priority: 0,
@@ -379,7 +379,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		type: "Electric",
 		basePower: 50,
 		accuracy: 100,
-		category: "Physical",
+		category: "Top",
 		priority: 0,
 		pp: 5,
 		target: "normal",
@@ -399,10 +399,10 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		onHit(target, source, move) {
 			// random # 0 or 1
 			const randomNum = this.random(2);
-			// 50% chance to drop def
+			// 50% chance to drop tod
 			if (randomNum === 0) {
-				if (target.boosts.def !== -6) {
-					this.boost({ def: -1 }, target, source, move);
+				if (target.boosts.tod !== -6) {
+					this.boost({ tod: -1 }, target, source, move);
 				}
 			} else {
 				this.add('-message', `${source.name} follows up with a Thunder Kick!`);
@@ -447,7 +447,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		secondary: null,
 		target: "foeSide",
 		type: "Rock",
-		zMove: { boost: { def: 1 } },
+		zMove: { boost: { tod: 1 } },
 		contestType: "Cool",
 	},
 	spikes: {
@@ -490,14 +490,14 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		secondary: null,
 		target: "foeSide",
 		type: "Ground",
-		zMove: { boost: { def: 1 } },
+		zMove: { boost: { tod: 1 } },
 		contestType: "Clever",
 	},
 	orderup: {
 		num: 856,
 		accuracy: 100,
 		basePower: 80,
-		category: "Physical",
+		category: "Top",
 		name: "Order Up",
 		pp: 10,
 		priority: 0,
@@ -524,10 +524,10 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 					}
 					this.add('-message', `Dondozo enjoyed its meal!`);
 					// applies boost based on eaten mon stats
-					if (this.effectState.eatenBoost === 'atk' || this.effectState.eatenBoost === 'spa') {
-						this.boost({ atk: 3 }, pokemon);
-					} else if (this.effectState.eatenBoost === 'def' || this.effectState.eatenBoost === 'spd') {
-						this.boost({ def: 2, spd: 2 }, pokemon);
+					if (this.effectState.eatenBoost === 'toa' || this.effectState.eatenBoost === 'boa') {
+						this.boost({ toa: 3 }, pokemon);
+					} else if (this.effectState.eatenBoost === 'tod' || this.effectState.eatenBoost === 'bod') {
+						this.boost({ tod: 2, bod: 2 }, pokemon);
 					} else {
 						this.boost({ hor: 3 }, pokemon);
 					}
@@ -541,7 +541,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 					// faints the eaten mon
 					pokemon.faint();
 					// finds highest stat of eaten mon, stored in effectState eatenBoost
-					const stats = ['atk', 'def', 'spa', 'spd', 'hor'];
+					const stats = ['toa', 'tod', 'boa', 'bod', 'hor'];
 					let highestStat = stats[0];
 					let maxStatValue = meal.storedStats[highestStat as StatIDExceptHP];
 
@@ -588,7 +588,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		hasSheerForce: true,
 		target: "normal",
 		type: "Dragon",
-		desc: "Dondozo eats a mon on the user's team, KOing it. Dondozo then gains a stat boost depending on the eaten mon's highest stat: +3 Attack for Atk/SpA, +2 Def/+2 SpD for Def/SpD, and +3 Horniness for Horniness.",
+		desc: "Dondozo eats a mon on the user's team, KOing it. Dondozo then gains a stat boost depending on the eaten mon's highest stat: +3 Attack for ToA/BoA, +2 ToD/+2 BoD for ToD/BoD, and +3 Horniness for Horniness.",
 		shortDesc: "Dondozo KOs an ally mon. Gain stat boost in ally's highest stat.",
 	},
 	toxicspikes: {
@@ -645,7 +645,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		num: -1002,
 		accuracy: true,
 		basePower: 90,
-		category: "Physical",
+		category: "Top",
 		name: "Shattered Seal",
 		pp: 15,
 		pseudoWeather: 'gravity',
@@ -669,7 +669,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		num: -1003,
 		accuracy: 100,
 		basePower: 120,
-		category: "Physical",
+		category: "Top",
 		name: "All-Out Assault",
 		pp: 5,
 		priority: 0,
@@ -681,9 +681,9 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		},
 		onAfterMoveSecondarySelf(pokemon, target, move) {
 			if (!target || target.fainted || target.hp <= 0) {
-				this.boost({ atk: 1 }, pokemon, pokemon, move);
+				this.boost({ toa: 1 }, pokemon, pokemon, move);
 			} else {
-				this.boost({ atk: -1 }, pokemon, pokemon, move);
+				this.boost({ toa: -1 }, pokemon, pokemon, move);
 			}
 		},
 		flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
@@ -692,7 +692,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		type: "Fighting",
 		contestType: "Clever",
 		desc: "If this move KOs the target, raise the user's attack by 1. Otherwise, lower attack by 1.",
-		shortDesc: "On KO: +1 Atk. Otherwise -1 Atk.",
+		shortDesc: "On KO: +1 ToA. Otherwise -1 ToA.",
 	},
 	wickedblow: {
 		inherit: true,
@@ -808,7 +808,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		num: 239,
 		accuracy: 100,
 		basePower: 80,
-		category: "Special",
+		category: "Bottom",
 		name: "Twister",
 		pp: 20,
 		priority: 0,
@@ -844,7 +844,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		num: 443,
 		accuracy: true,
 		basePower: 90,
-		category: "Special",
+		category: "Bottom",
 		name: "Magnet Bomb",
 		pp: 20,
 		priority: 0,
@@ -882,7 +882,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	},
 	zippyzap: {
 		inherit: true,
-		category: "Special",
+		category: "Bottom",
 		onTryMove() {
 			this.attrLastMove('[still]');
 		},
@@ -898,7 +898,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		num: -1004,
 		accuracy: 100,
 		basePower: 70,
-		category: "Special",
+		category: "Bottom",
 		name: "Burn Out",
 		pp: 20,
 		priority: 0,
@@ -1073,7 +1073,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			this.add('-anim', source, 'Glare', target);
 			this.add('-anim', source, 'Ivy Cudgel Rock', target);
 		},
-		category: "Physical",
+		category: "Top",
 		name: "Salt Curse",
 		pp: 10,
 		priority: 0,
@@ -1089,7 +1089,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		num: -1006,
 		accuracy: 100,
 		basePower: 70,
-		category: "Special",
+		category: "Bottom",
 		name: "Fly-by",
 		pp: 20,
 		priority: 0,
@@ -1104,7 +1104,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		secondary: {
 			chance: 50,
 			boosts: {
-				atk: -1,
+				toa: -1,
 			},
 		},
 		target: "normal",
@@ -1168,7 +1168,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				move.drain = [3, 4];
 			}
 		},
-		category: "Special",
+		category: "Bottom",
 		name: "Heat Sink",
 		pp: 20,
 		priority: 0,
@@ -1192,8 +1192,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			move.type = type;
 			if (pokemon.species.name === 'Terapagos-Stellar') {
 				move.type = 'Stellar';
-				if (pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) {
-					move.category = 'Physical';
+				if (pokemon.getStat('toa', false, true) > pokemon.getStat('boa', false, true)) {
+					move.category = 'Top';
 				}
 			}
 		},
@@ -1204,7 +1204,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		num: -1008,
 		accuracy: 100,
 		basePower: 100,
-		category: "Physical",
+		category: "Top",
 		name: "Grab Apple",
 		pp: 10,
 		priority: 0,
@@ -1295,7 +1295,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		num: -1010,
 		accuracy: 100,
 		basePower: 12,
-		category: "Physical",
+		category: "Top",
 		name: "Crowverload",
 		pp: 10,
 		priority: -4,
@@ -1383,7 +1383,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		num: -1012,
 		accuracy: 100,
 		basePower: 55,
-		category: "Physical",
+		category: "Top",
 		name: "Misty March",
 		pp: 20,
 		priority: 0,
@@ -1410,7 +1410,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		num: -1013,
 		accuracy: 100,
 		basePower: 55,
-		category: "Physical",
+		category: "Top",
 		name: "Lightning Leap",
 		pp: 20,
 		priority: 0,
@@ -1437,7 +1437,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		num: -1014,
 		accuracy: 100,
 		basePower: 80,
-		category: "Physical",
+		category: "Top",
 		name: "Wacky Whack",
 		pp: 20,
 		priority: 0,

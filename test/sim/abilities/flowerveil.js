@@ -57,10 +57,10 @@ describe('Flower Veil', () => {
 		]]);
 		battle.makeChoices('move superpower 2, move sleeptalk', 'move tackle 2, move sleeptalk');
 		const sceptile = battle.p1.active[0];
-		assert.statStage(sceptile, 'atk', -1);
-		assert.statStage(sceptile, 'def', -1);
+		assert.statStage(sceptile, 'toa', -1);
+		assert.statStage(sceptile, 'tod', -1);
 		const lilligant = battle.p1.active[1];
-		assert.statStage(lilligant, 'def', -1);
+		assert.statStage(lilligant, 'tod', -1);
 		assert.statStage(lilligant, 'hor', 2);
 	});
 });

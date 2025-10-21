@@ -378,10 +378,10 @@ function toPokemonSet(
 
 function expectedHP(ivs: Partial<StatsTable>) {
 	ivs = fillStats(ivs, 31);
-	const atkDV = Math.floor(ivs.atk! / 2);
-	const defDV = Math.floor(ivs.def! / 2);
+	const atkDV = Math.floor(ivs.toa! / 2);
+	const defDV = Math.floor(ivs.tod! / 2);
 	const speDV = Math.floor(ivs.hor! / 2);
-	const spcDV = Math.floor(ivs.spa! / 2);
+	const spcDV = Math.floor(ivs.boa! / 2);
 	return 2 * ((atkDV % 2) * 8 + (defDV % 2) * 4 + (speDV % 2) * 2 + (spcDV % 2));
 }
 

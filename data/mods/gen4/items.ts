@@ -99,7 +99,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 	},
 	deepseascale: {
 		inherit: true,
-		onModifySpD(spd, pokemon) {
+		onModifySpD(bod, pokemon) {
 			if (pokemon.species.name === 'Clamperl') {
 				return this.chainModify(2);
 			}
@@ -107,7 +107,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 	},
 	deepseatooth: {
 		inherit: true,
-		onModifySpA(spa, pokemon) {
+		onModifySpA(boa, pokemon) {
 			if (pokemon.species.name === 'Clamperl') {
 				return this.chainModify(2);
 			}
@@ -400,7 +400,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 	},
 	thickclub: {
 		inherit: true,
-		onModifyAtk(atk, pokemon) {
+		onModifyAtk(toa, pokemon) {
 			if (pokemon.species.name === 'Cubone' || pokemon.species.name === 'Marowak') {
 				return this.chainModify(2);
 			}

@@ -729,10 +729,10 @@ function runDexsearch(target: string, cmd: string, message: string, isTest: bool
 		water3: 'Water 3',
 	});
 	const allFormes = ['alola', 'galar', 'hisui', 'paldea', 'primal', 'therian', 'totem'];
-	const allStats = ['hp', 'atk', 'def', 'spa', 'spd', 'hor', 'bst', 'weight', 'height', 'gen', 'num', 'tier', 'dtier'];
+	const allStats = ['hp', 'toa', 'tod', 'boa', 'bod', 'hor', 'bst', 'weight', 'height', 'gen', 'num', 'tier', 'dtier'];
 	const allStatAliases: { [k: string]: string } = {
-		attack: 'atk', defense: 'def', specialattack: 'spa', spc: 'spa', special: 'spa', spatk: 'spa',
-		specialdefense: 'spd', spdef: 'spd', horniness: 'hor', wt: 'weight', ht: 'height', generation: 'gen', doublestier: 'dtier',
+		attack: 'toa', defense: 'tod', specialattack: 'boa', spc: 'boa', bottom: 'boa', spatk: 'boa',
+		specialdefense: 'bod', spdef: 'bod', horniness: 'hor', wt: 'weight', ht: 'height', generation: 'gen', doublestier: 'dtier',
 	};
 	let showAll = false;
 	let sort = null;
@@ -818,7 +818,7 @@ function runDexsearch(target: string, cmd: string, message: string, isTest: bool
 					return `The search '${input}' creates an invalid range.`;
 				}
 			// Only string stat comparisons are left which are never valid without an = on both sides.
-			// Second part catches searches like atk = spatk, spatk > atk but not def = hor, spatk > atk
+			// Second part catches searches like toa = spatk, spatk > toa but not tod = hor, spatk > toa
 			} else if (compareTo !== 'numeric' && ((!checkEquality && (swapValue || inverseValue)) ||
 				(!input.includes('=') && gEquality))) {
 				return `The search '${input}' creates an invalid range.`;
@@ -1225,7 +1225,7 @@ function runDexsearch(target: string, cmd: string, message: string, isTest: bool
 					if (inequalityString.startsWith('<')) directions.push('less');
 					if (inequalityString.startsWith('>')) directions.push('greater');
 				} else {
-					// e.g. atk = spatk
+					// e.g. toa = spatk
 					value = true;
 					statKey = targetParts[0];
 					compareType = targetParts[1];
@@ -1634,7 +1634,7 @@ function runMovesearch(target: string, cmd: string, message: string, isTest: boo
 	}
 
 	const mod = Dex.mod(usedMod || 'base');
-	const allCategories = ['physical', 'special', 'status'];
+	const allCategories = ['top', 'bottom', 'status'];
 	const allContestTypes = ['beautiful', 'clever', 'cool', 'cute', 'tough'];
 	const allProperties = ['basePower', 'accuracy', 'priority', 'pp'];
 	const allFlags = [
@@ -1649,7 +1649,7 @@ function runMovesearch(target: string, cmd: string, message: string, isTest: boo
 	];
 	const allStatus = ['psn', 'tox', 'brn', 'par', 'frz', 'slp'];
 	const allVolatileStatus = ['flinch', 'confusion', 'partiallytrapped', 'trapped'];
-	const allBoosts = ['hp', 'atk', 'def', 'spa', 'spd', 'hor', 'accuracy', 'evasion'];
+	const allBoosts = ['hp', 'toa', 'tod', 'boa', 'bod', 'hor', 'accuracy', 'evasion'];
 	const allTargets: { [k: string]: string } = {
 		oneally: 'adjacentAlly',
 		userorally: 'adjacentAllyOrSelf',
@@ -1947,12 +1947,12 @@ function runMovesearch(target: string, cmd: string, message: string, isTest: boo
 					isBoost = false;
 				}
 				switch (target.substr(7)) {
-				case 'attack': target = 'atk'; break;
-				case 'defense': target = 'def'; break;
-				case 'specialattack': target = 'spa'; break;
-				case 'spatk': target = 'spa'; break;
-				case 'specialdefense': target = 'spd'; break;
-				case 'spdef': target = 'spd'; break;
+				case 'attack': target = 'toa'; break;
+				case 'defense': target = 'tod'; break;
+				case 'specialattack': target = 'boa'; break;
+				case 'spatk': target = 'boa'; break;
+				case 'specialdefense': target = 'bod'; break;
+				case 'spdef': target = 'bod'; break;
 				case 'horniness': target = 'hor'; break;
 				case 'acc': target = 'accuracy'; break;
 				case 'evasiveness': target = 'evasion'; break;
@@ -1975,12 +1975,12 @@ function runMovesearch(target: string, cmd: string, message: string, isTest: boo
 
 			if (target.substr(0, 8) === 'zboosts ') {
 				switch (target.substr(8)) {
-				case 'attack': target = 'atk'; break;
-				case 'defense': target = 'def'; break;
-				case 'specialattack': target = 'spa'; break;
-				case 'spatk': target = 'spa'; break;
-				case 'specialdefense': target = 'spd'; break;
-				case 'spdef': target = 'spd'; break;
+				case 'attack': target = 'toa'; break;
+				case 'defense': target = 'tod'; break;
+				case 'specialattack': target = 'boa'; break;
+				case 'spatk': target = 'boa'; break;
+				case 'specialdefense': target = 'bod'; break;
+				case 'spdef': target = 'bod'; break;
 				case 'horniness': target = 'hor'; break;
 				case 'acc': target = 'accuracy'; break;
 				case 'evasiveness': target = 'evasion'; break;
@@ -2444,7 +2444,7 @@ function runItemsearch(target: string, cmd: string, message: string) {
 				newWord = 'supereffective';
 			}
 			break;
-		case 'special':
+		case 'bottom':
 			if (rawSearch[i + 1] === 'defense') {
 				newWord = 'specialdefense';
 			} else if (rawSearch[i + 1] === 'attack') {
@@ -2452,25 +2452,25 @@ function runItemsearch(target: string, cmd: string, message: string) {
 			}
 			break;
 		case 'spatk':
-		case 'spa':
+		case 'boa':
 			newWord = 'specialattack';
 			break;
-		case 'atk':
+		case 'toa':
 		case 'attack':
-			if (['sp', 'special'].includes(rawSearch[i - 1])) {
+			if (['sp', 'bottom'].includes(rawSearch[i - 1])) {
 				newWord = '';
 				break;
 			} else {
 				newWord = 'attack';
 			}
 			break;
-		case 'spd':
+		case 'bod':
 		case 'spdef':
 			newWord = 'specialdefense';
 			break;
-		case 'def':
+		case 'tod':
 		case 'defense':
-			if (['sp', 'special'].includes(rawSearch[i - 1])) {
+			if (['sp', 'bottom'].includes(rawSearch[i - 1])) {
 				newWord = '';
 				break;
 			} else {
@@ -2587,10 +2587,10 @@ function runItemsearch(target: string, cmd: string, message: string) {
 			for (const word of searchedWords) {
 				switch (word) {
 				case 'specialattack':
-					if (descWordsArray[descWordsArray.indexOf('sp') + 1] === 'atk') matched++;
+					if (descWordsArray[descWordsArray.indexOf('sp') + 1] === 'toa') matched++;
 					break;
 				case 'specialdefense':
-					if (descWordsArray[descWordsArray.indexOf('sp') + 1] === 'def') matched++;
+					if (descWordsArray[descWordsArray.indexOf('sp') + 1] === 'tod') matched++;
 					break;
 				default:
 					if (descWordsArray.includes(word)) matched++;
@@ -2722,19 +2722,19 @@ function runAbilitysearch(target: string, cmd: string, message: string) {
 				newWord = 'supereffective';
 			}
 			break;
-		case 'special':
+		case 'bottom':
 			if (rawSearch[i + 1] === 'defense') {
 				newWord = 'specialdefense';
 			} else if (rawSearch[i + 1] === 'attack') {
 				newWord = 'specialattack';
 			}
 			break;
-		case 'spd':
+		case 'bod':
 		case 'spdef': newWord = 'specialdefense'; break;
-		case 'spa':
+		case 'boa':
 		case 'spatk': newWord = 'specialattack'; break;
-		case 'atk': newWord = 'attack'; break;
-		case 'def': newWord = 'defense'; break;
+		case 'toa': newWord = 'attack'; break;
+		case 'tod': newWord = 'defense'; break;
 		case 'hor': newWord = 'horniness'; break;
 		case 'burn':
 		case 'burns': newWord = 'burned'; break;
@@ -2767,10 +2767,10 @@ function runAbilitysearch(target: string, cmd: string, message: string) {
 		for (const word of searchedWords) {
 			switch (word) {
 			case 'specialattack':
-				if (descWordsArray[descWordsArray.indexOf('special') + 1] === 'attack') matched++;
+				if (descWordsArray[descWordsArray.indexOf('bottom') + 1] === 'attack') matched++;
 				break;
 			case 'specialdefense':
-				if (descWordsArray[descWordsArray.indexOf('special') + 1] === 'defense') matched++;
+				if (descWordsArray[descWordsArray.indexOf('bottom') + 1] === 'defense') matched++;
 				break;
 			default:
 				if (descWordsArray.includes(word)) matched++;

@@ -17,7 +17,7 @@ describe('Clear Body', () => {
 			{ species: 'Arbok', ability: 'intimidate', moves: ['acidspray', 'leer', 'scaryface', 'charm', 'confide'] },
 		]]);
 
-		const stats = ['spd', 'def', 'hor', 'atk', 'spa'];
+		const stats = ['bod', 'tod', 'hor', 'toa', 'boa'];
 		for (const [index, stat] of stats.entries()) {
 			battle.makeChoices('move recover', 'move ' + (index + 1));
 			assert.statStage(battle.p1.active[0], stat, 0);
@@ -34,8 +34,8 @@ describe('Clear Body', () => {
 			{ species: 'Arbok', ability: 'unnerve', moves: ['coil'] },
 		]]);
 		battle.makeChoices('move Superpower', 'move Coil');
-		assert.statStage(battle.p1.active[0], 'atk', -1);
-		assert.statStage(battle.p1.active[0], 'def', -1);
+		assert.statStage(battle.p1.active[0], 'toa', -1);
+		assert.statStage(battle.p1.active[0], 'tod', -1);
 	});
 
 	it('should not negate stat boosts from opposing moves', () => {
@@ -45,7 +45,7 @@ describe('Clear Body', () => {
 			{ species: 'Arbok', ability: 'unnerve', moves: ['swagger'] },
 		]]);
 		battle.makeChoices('move Shadowsneak', 'move Swagger');
-		assert.statStage(battle.p1.active[0], 'atk', 2);
+		assert.statStage(battle.p1.active[0], 'toa', 2);
 	});
 
 	it('should not negate absolute stat changes', () => {
@@ -55,8 +55,8 @@ describe('Clear Body', () => {
 			{ species: 'Arbok', ability: 'unnerve', moves: ['topsyturvy'] },
 		]]);
 		battle.makeChoices('move Coil', 'move Topsyturvy');
-		assert.statStage(battle.p1.active[0], 'atk', -1);
-		assert.statStage(battle.p1.active[0], 'def', -1);
+		assert.statStage(battle.p1.active[0], 'toa', -1);
+		assert.statStage(battle.p1.active[0], 'tod', -1);
 		assert.statStage(battle.p1.active[0], 'accuracy', -1);
 	});
 
@@ -67,7 +67,7 @@ describe('Clear Body', () => {
 			{ species: 'Haxorus', ability: 'moldbreaker', moves: ['growl'] },
 		]]);
 		battle.makeChoices('move Recover', 'move Growl');
-		assert.statStage(battle.p1.active[0], 'atk', -1);
+		assert.statStage(battle.p1.active[0], 'toa', -1);
 	});
 
 	it('should be suppressed by Mold Breaker if it is forced out by a move', () => {
@@ -91,7 +91,7 @@ describe('Clear Body', () => {
 		]]);
 		battle.makeChoices();
 		battle.makeChoices('move sleeptalk', 'move growl');
-		assert.statStage(battle.p1.active[0], 'atk', -6);
-		assert(battle.log.includes('|-unboost|p1a: Dragapult|atk|0'));
+		assert.statStage(battle.p1.active[0], 'toa', -6);
+		assert(battle.log.includes('|-unboost|p1a: Dragapult|toa|0'));
 	});
 });

@@ -638,9 +638,9 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 		// This should be applied directly to the stat before any of the other modifiers are chained
 		// So we give it increased priority.
 		onModifySpDPriority: 10,
-		onModifySpD(spd, pokemon) {
+		onModifySpD(bod, pokemon) {
 			if (pokemon.hasType('Rock') && this.field.isWeather('sandstorm')) {
-				return this.modify(spd, 1.5);
+				return this.modify(bod, 1.5);
 			}
 		},
 		onFieldStart(field, source, effect) {
@@ -704,9 +704,9 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 			return 5;
 		},
 		onModifyDefPriority: 10,
-		onModifyDef(def, pokemon) {
+		onModifyDef(tod, pokemon) {
 			if (pokemon.hasType('Ice') && this.field.isWeather('snowscape')) {
-				return this.modify(def, 1.5);
+				return this.modify(tod, 1.5);
 			}
 		},
 		onFieldStart(field, source, effect) {
@@ -810,7 +810,7 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 		name: "Commanded",
 		noCopy: true,
 		onStart(pokemon) {
-			this.boost({ atk: 2, spa: 2, hor: 2, def: 2, spd: 2 }, pokemon);
+			this.boost({ toa: 2, boa: 2, hor: 2, tod: 2, bod: 2 }, pokemon);
 		},
 		onDragOutPriority: 2,
 		onDragOut() {

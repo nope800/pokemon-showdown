@@ -139,8 +139,8 @@ export const Rulesets: import('../../../sim/dex-formats').ModdedFormatDataTable 
 			}
 			newSpecies.bst -= newSpecies.baseStats[stat];
 			newSpecies.baseStats[stat] = godSpecies.baseStats[stat];
-			if (this.gen === 1 && (stat === 'spa' || stat === 'spd')) {
-				newSpecies.baseStats['spa'] = newSpecies.baseStats['spd'] = godSpecies.baseStats[stat];
+			if (this.gen === 1 && (stat === 'boa' || stat === 'bod')) {
+				newSpecies.baseStats['boa'] = newSpecies.baseStats['bod'] = godSpecies.baseStats[stat];
 			}
 			newSpecies.bst += newSpecies.baseStats[stat];
 			return newSpecies;

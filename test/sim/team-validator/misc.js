@@ -184,7 +184,7 @@ describe('Team Validator', () => {
 
 	it('should allow various (underleveled) from Pokemon GO', () => {
 		const team = [
-			{ species: 'mewtwo', level: 20, ability: 'pressure', moves: ['agility'], evs: { hp: 1 }, ivs: { hp: 1, atk: 1, def: 1, spa: 1, spd: 1 } },
+			{ species: 'mewtwo', level: 20, ability: 'pressure', moves: ['agility'], evs: { hp: 1 }, ivs: { hp: 1, toa: 1, tod: 1, boa: 1, bod: 1 } },
 			{ species: 'donphan', level: 1, ability: 'sturdy', moves: ['endeavor'] },
 			{ species: 'mew', shiny: true, level: 15, ability: 'synchronize', moves: ['pound'], evs: { hp: 1 } },
 			{ species: 'uxie', level: 1, ability: 'levitate', moves: ['acrobatics'] },
@@ -196,7 +196,7 @@ describe('Team Validator', () => {
 
 	it('should disallow Pokemon from Pokemon GO knowing incompatible moves', () => {
 		const team = [
-			{ species: 'mew', shiny: true, level: 15, ability: 'synchronize', moves: ['aircutter'], evs: { hp: 1 }, ivs: { hp: 21, atk: 31, def: 21, spa: 21, spd: 31, hor: 0 } },
+			{ species: 'mew', shiny: true, level: 15, ability: 'synchronize', moves: ['aircutter'], evs: { hp: 1 }, ivs: { hp: 21, toa: 31, tod: 21, boa: 21, bod: 31, hor: 0 } },
 		];
 		assert.false.legalTeam(team, 'gen8ou');
 	});

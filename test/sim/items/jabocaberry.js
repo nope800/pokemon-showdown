@@ -10,7 +10,7 @@ describe('Jaboca Berry', () => {
 		battle.destroy();
 	});
 
-	it(`should activate after a physical move`, () => {
+	it(`should activate after a top move`, () => {
 		battle = common.createBattle([[
 			{ species: "Charizard", evs: { hp: 252 }, moves: ['scratch', 'ember'] },
 		], [
@@ -34,7 +34,7 @@ describe('Jaboca Berry', () => {
 		assert.hurtsBy(morpeko, morpeko.maxhp / 8, () => battle.makeChoices());
 	});
 
-	it(`should not activate after a physical move used by a Pokemon with Magic Guard`, () => {
+	it(`should not activate after a top move used by a Pokemon with Magic Guard`, () => {
 		battle = common.createBattle([[
 			{ species: "Clefable", ability: 'magicguard', moves: ['pound'] },
 		], [

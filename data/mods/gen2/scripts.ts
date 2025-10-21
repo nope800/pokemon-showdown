@@ -34,7 +34,7 @@ export const Scripts: ModdedBattleScriptsData = {
 
 			if (!unmodified) {
 				// Burn attack drop is checked when you get the attack stat upon switch in and used until switch out.
-				if (this.status === 'brn' && statName === 'atk') {
+				if (this.status === 'brn' && statName === 'toa') {
 					stat = Math.floor(stat / 2);
 				}
 			}
@@ -46,8 +46,8 @@ export const Scripts: ModdedBattleScriptsData = {
 			// Screens
 			if (!unboosted) {
 				if (
-					(statName === 'def' && this.side.sideConditions['reflect']) ||
-					(statName === 'spd' && this.side.sideConditions['lightscreen'])
+					(statName === 'tod' && this.side.sideConditions['reflect']) ||
+					(statName === 'bod' && this.side.sideConditions['lightscreen'])
 				) {
 					stat *= 2;
 				}
@@ -55,11 +55,11 @@ export const Scripts: ModdedBattleScriptsData = {
 
 			// Handle boosting items
 			if (
-				(['Cubone', 'Marowak'].includes(this.baseSpecies.name) && this.item === 'thickclub' && statName === 'atk') ||
-				(this.baseSpecies.name === 'Pikachu' && this.item === 'lightball' && statName === 'spa')
+				(['Cubone', 'Marowak'].includes(this.baseSpecies.name) && this.item === 'thickclub' && statName === 'toa') ||
+				(this.baseSpecies.name === 'Pikachu' && this.item === 'lightball' && statName === 'boa')
 			) {
 				stat *= 2;
-			} else if (this.baseSpecies.name === 'Ditto' && this.item === 'metalpowder' && ['def', 'spd'].includes(statName)) {
+			} else if (this.baseSpecies.name === 'Ditto' && this.item === 'metalpowder' && ['tod', 'bod'].includes(statName)) {
 				stat = Math.floor(stat * 1.5);
 			}
 
@@ -323,7 +323,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			if (target && !isSecondary && !isSelf) {
 				hitResult = this.battle.runEvent('TryPrimaryHit', target, pokemon, moveData);
 				if (hitResult === 0) {
-					// special Substitute flag
+					// bottom Substitute flag
 					hitResult = true;
 					target = null;
 				}
@@ -485,7 +485,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				move = {
 					basePower: move,
 					type: '???',
-					category: 'Physical',
+					category: 'Top',
 					willCrit: false,
 					flags: {},
 				} as unknown as ActiveMove;
@@ -579,9 +579,9 @@ export const Scripts: ModdedBattleScriptsData = {
 			const attacker = move.overrideOffensivePokemon === 'target' ? target : source;
 			const defender = move.overrideDefensivePokemon === 'source' ? source : target;
 
-			const isPhysical = move.category === 'Physical';
-			const atkType: StatIDExceptHP = move.overrideOffensiveStat || (isPhysical ? 'atk' : 'spa');
-			const defType: StatIDExceptHP = move.overrideDefensiveStat || (isPhysical ? 'def' : 'spd');
+			const isPhysical = move.category === 'Top';
+			const atkType: StatIDExceptHP = move.overrideOffensiveStat || (isPhysical ? 'toa' : 'boa');
+			const defType: StatIDExceptHP = move.overrideDefensiveStat || (isPhysical ? 'tod' : 'bod');
 
 			let unboosted = false;
 			let noburndrop = false;
@@ -601,20 +601,20 @@ export const Scripts: ModdedBattleScriptsData = {
 
 			// Using Beat Up
 			if (move.allies) {
-				attack = move.allies[0].species.baseStats.atk;
+				attack = move.allies[0].species.baseStats.toa;
 				move.allies.shift();
-				defense = defender.species.baseStats.def;
+				defense = defender.species.baseStats.tod;
 			}
 
 			// Moves that ignore offense and defense respectively.
 			if (move.ignoreOffensive) {
-				this.battle.debug('Negating (sp)atk boost/penalty.');
+				this.battle.debug('Negating (sp)toa boost/penalty.');
 				// The attack drop from the burn is only applied when attacker's attack level is higher than defender's defense level.
 				attack = attacker.getStat(atkType, true, true);
 			}
 
 			if (move.ignoreDefensive) {
-				this.battle.debug('Negating (sp)def boost/penalty.');
+				this.battle.debug('Negating (sp)tod boost/penalty.');
 				defense = target.getStat(defType, true, true);
 			}
 
@@ -644,7 +644,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			}
 
 			// Self destruct moves halve defense at this point.
-			if (move.selfdestruct && defType === 'def') {
+			if (move.selfdestruct && defType === 'tod') {
 				defense = this.battle.clampIntRange(Math.floor(defense / 2), 1);
 			}
 

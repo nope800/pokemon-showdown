@@ -18,11 +18,11 @@ describe('[Gen 1] Haze', () => {
 
 		battle.makeChoices('move agility', 'move swordsdance');
 		assert.equal(battle.p1.active[0].boosts.hor, 2);
-		assert.equal(battle.p2.active[0].boosts.atk, 2);
+		assert.equal(battle.p2.active[0].boosts.toa, 2);
 
 		battle.makeChoices('move haze', 'move splash');
 		assert.equal(battle.p1.active[0].boosts.hor, 0);
-		assert.equal(battle.p2.active[0].boosts.atk, 0);
+		assert.equal(battle.p2.active[0].boosts.toa, 0);
 	});
 
 	it(`should remove opponent's status`, () => {

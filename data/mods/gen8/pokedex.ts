@@ -41,7 +41,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	cresselia: {
 		inherit: true,
-		baseStats: { hp: 120, atk: 70, def: 120, spa: 75, spd: 130, hor: 85 },
+		baseStats: { hp: 120, toa: 70, tod: 120, boa: 75, bod: 130, hor: 85 },
 	},
 	samurotthisui: {
 		inherit: true,
@@ -79,19 +79,19 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	zacian: {
 		inherit: true,
-		baseStats: { hp: 92, atk: 130, def: 115, spa: 80, spd: 115, hor: 138 },
+		baseStats: { hp: 92, toa: 130, tod: 115, boa: 80, bod: 115, hor: 138 },
 	},
 	zaciancrowned: {
 		inherit: true,
-		baseStats: { hp: 92, atk: 170, def: 115, spa: 80, spd: 115, hor: 148 },
+		baseStats: { hp: 92, toa: 170, tod: 115, boa: 80, bod: 115, hor: 148 },
 	},
 	zamazenta: {
 		inherit: true,
-		baseStats: { hp: 92, atk: 130, def: 115, spa: 80, spd: 115, hor: 138 },
+		baseStats: { hp: 92, toa: 130, tod: 115, boa: 80, bod: 115, hor: 138 },
 	},
 	zamazentacrowned: {
 		inherit: true,
-		baseStats: { hp: 92, atk: 130, def: 145, spa: 80, spd: 145, hor: 128 },
+		baseStats: { hp: 92, toa: 130, tod: 145, boa: 80, bod: 145, hor: 128 },
 	},
 	kleavor: {
 		inherit: true,
@@ -118,7 +118,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	kitsunoh: {
 		inherit: true,
-		baseStats: { hp: 80, atk: 103, def: 85, spa: 55, spd: 80, hor: 110 },
+		baseStats: { hp: 80, toa: 103, tod: 85, boa: 55, bod: 80, hor: 110 },
 		abilities: { 0: "Frisk", 1: "Limber", H: "Iron Fist" },
 	},
 };

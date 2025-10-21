@@ -34,10 +34,10 @@ export class RandomGen1Teams extends RandomGen2Teams {
 
 			// Modified base stat total assumes 15 DVs, 255 EVs in every stat
 			let mbst = (stats["hp"] * 2 + 30 + 63 + 100) + 10;
-			mbst += (stats["atk"] * 2 + 30 + 63 + 100) + 5;
-			mbst += (stats["def"] * 2 + 30 + 63 + 100) + 5;
-			mbst += (stats["spa"] * 2 + 30 + 63 + 100) + 5;
-			mbst += (stats["spd"] * 2 + 30 + 63 + 100) + 5;
+			mbst += (stats["toa"] * 2 + 30 + 63 + 100) + 5;
+			mbst += (stats["tod"] * 2 + 30 + 63 + 100) + 5;
+			mbst += (stats["boa"] * 2 + 30 + 63 + 100) + 5;
+			mbst += (stats["bod"] * 2 + 30 + 63 + 100) + 5;
 			mbst += (stats["hor"] * 2 + 30 + 63 + 100) + 5;
 
 			let level;
@@ -49,10 +49,10 @@ export class RandomGen1Teams extends RandomGen2Teams {
 				while (level < 100) {
 					mbst = Math.floor((stats["hp"] * 2 + 30 + 63 + 100) * level / 100 + 10);
 					// Since damage is roughly proportional to lvl
-					mbst += Math.floor(((stats["atk"] * 2 + 30 + 63 + 100) * level / 100 + 5) * level / 100);
-					mbst += Math.floor((stats["def"] * 2 + 30 + 63 + 100) * level / 100 + 5);
-					mbst += Math.floor(((stats["spa"] * 2 + 30 + 63 + 100) * level / 100 + 5) * level / 100);
-					mbst += Math.floor((stats["spd"] * 2 + 30 + 63 + 100) * level / 100 + 5);
+					mbst += Math.floor(((stats["toa"] * 2 + 30 + 63 + 100) * level / 100 + 5) * level / 100);
+					mbst += Math.floor((stats["tod"] * 2 + 30 + 63 + 100) * level / 100 + 5);
+					mbst += Math.floor(((stats["boa"] * 2 + 30 + 63 + 100) * level / 100 + 5) * level / 100);
+					mbst += Math.floor((stats["bod"] * 2 + 30 + 63 + 100) * level / 100 + 5);
 					mbst += Math.floor((stats["hor"] * 2 + 30 + 63 + 100) * level / 100 + 5);
 
 					if (mbst >= mbstmin) break;
@@ -63,21 +63,21 @@ export class RandomGen1Teams extends RandomGen2Teams {
 			// Random DVs.
 			const ivs = {
 				hp: 0,
-				atk: this.random(16),
-				def: this.random(16),
-				spa: this.random(16),
-				spd: 0,
+				toa: this.random(16),
+				tod: this.random(16),
+				boa: this.random(16),
+				bod: 0,
 				hor: this.random(16),
 			};
-			ivs["hp"] = (ivs["atk"] % 2) * 16 + (ivs["def"] % 2) * 8 + (ivs["hor"] % 2) * 4 + (ivs["spa"] % 2) * 2;
-			ivs["atk"] *= 2;
-			ivs["def"] *= 2;
-			ivs["spa"] *= 2;
-			ivs["spd"] = ivs["spa"];
+			ivs["hp"] = (ivs["toa"] % 2) * 16 + (ivs["tod"] % 2) * 8 + (ivs["hor"] % 2) * 4 + (ivs["boa"] % 2) * 2;
+			ivs["toa"] *= 2;
+			ivs["tod"] *= 2;
+			ivs["boa"] *= 2;
+			ivs["bod"] = ivs["boa"];
 			ivs["hor"] *= 2;
 
 			// Maxed EVs.
-			const evs = { hp: 255, atk: 255, def: 255, spa: 255, spd: 255, hor: 255 };
+			const evs = { hp: 255, toa: 255, tod: 255, boa: 255, bod: 255, hor: 255 };
 
 			// Four random unique moves from movepool. don't worry about "attacking" or "viable".
 			// Since Gens 1 and 2 learnsets are shared, we need to weed out Gen 2 moves.
@@ -257,8 +257,8 @@ export class RandomGen1Teams extends RandomGen2Teams {
 
 		const level = this.getLevel(species);
 
-		const evs = { hp: 255, atk: 255, def: 255, spa: 255, spd: 255, hor: 255 };
-		const ivs = { hp: 30, atk: 30, def: 30, spa: 30, spd: 30, hor: 30 };
+		const evs = { hp: 255, toa: 255, tod: 255, boa: 255, bod: 255, hor: 255 };
+		const ivs = { hp: 30, toa: 30, tod: 30, boa: 30, bod: 30, hor: 30 };
 
 		// Should be able to use Substitute four times from full HP without fainting
 		if (moves.has('substitute')) {
@@ -273,12 +273,12 @@ export class RandomGen1Teams extends RandomGen2Teams {
 		const noAttackStatMoves = [...moves].every(m => {
 			const move = this.dex.moves.get(m);
 			if (move.damageCallback || move.damage) return true;
-			return move.category !== 'Physical';
+			return move.category !== 'Top';
 		});
 		if (noAttackStatMoves && !moves.has('mimic') && !moves.has('transform')) {
-			evs.atk = 0;
+			evs.toa = 0;
 			// We don't want to lower the HP DV/IV
-			ivs.atk = 2;
+			ivs.toa = 2;
 		}
 
 		// shuffle moves to add more randomness to camomons
@@ -318,17 +318,17 @@ export class RandomGen1Teams extends RandomGen2Teams {
 					types: [this.sample(typesPool), this.sample(typesPool)],
 					baseStats: {
 						hp: Utils.clampIntRange(this.random(256), 1),
-						atk: Utils.clampIntRange(this.random(256), 1),
-						def: Utils.clampIntRange(this.random(256), 1),
-						spa: Utils.clampIntRange(this.random(256), 1),
-						spd: 0,
+						toa: Utils.clampIntRange(this.random(256), 1),
+						tod: Utils.clampIntRange(this.random(256), 1),
+						boa: Utils.clampIntRange(this.random(256), 1),
+						bod: 0,
 						hor: Utils.clampIntRange(this.random(256), 1),
 					},
 				};
 				if (this.forceMonotype && !hackmonsCup[species.id].types.includes(this.forceMonotype)) {
 					hackmonsCup[species.id].types[1] = this.forceMonotype;
 				}
-				hackmonsCup[species.id].baseStats.spd = hackmonsCup[species.id].baseStats.spa;
+				hackmonsCup[species.id].baseStats.bod = hackmonsCup[species.id].baseStats.boa;
 			}
 			if (hackmonsCup[species.id].types[0] === hackmonsCup[species.id].types[1]) {
 				hackmonsCup[species.id].types.splice(1, 1);
@@ -346,29 +346,29 @@ export class RandomGen1Teams extends RandomGen2Teams {
 			// Random EVs
 			const evs = {
 				hp: this.random(256),
-				atk: this.random(256),
-				def: this.random(256),
-				spa: this.random(256),
-				spd: 0,
+				toa: this.random(256),
+				tod: this.random(256),
+				boa: this.random(256),
+				bod: 0,
 				hor: this.random(256),
 			};
-			evs['spd'] = evs['spa'];
+			evs['bod'] = evs['boa'];
 
 			// Random DVs
 			const ivs: StatsTable = {
 				hp: 0,
-				atk: this.random(16),
-				def: this.random(16),
-				spa: this.random(16),
-				spd: 0,
+				toa: this.random(16),
+				tod: this.random(16),
+				boa: this.random(16),
+				bod: 0,
 				hor: this.random(16),
 			};
-			ivs["hp"] = (ivs["atk"] % 2) * 16 + (ivs["def"] % 2) * 8 + (ivs["hor"] % 2) * 4 + (ivs["spa"] % 2) * 2;
+			ivs["hp"] = (ivs["toa"] % 2) * 16 + (ivs["tod"] % 2) * 8 + (ivs["hor"] % 2) * 4 + (ivs["boa"] % 2) * 2;
 			for (const iv in ivs) {
-				if (iv === 'hp' || iv === 'spd') continue;
+				if (iv === 'hp' || iv === 'bod') continue;
 				ivs[iv as keyof StatsTable] *= 2;
 			}
-			ivs['spd'] = ivs['spa'];
+			ivs['bod'] = ivs['boa'];
 
 			// Level balance
 			const mbstmin = 425;

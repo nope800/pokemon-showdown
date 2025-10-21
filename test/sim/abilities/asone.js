@@ -24,6 +24,6 @@ describe(`As One`, () => {
 		assert.equal(calyrex.status, 'par', `Calyrex should not have eaten its Berry, being affected by Ditto-Calyrex's Unnerve`);
 
 		battle.makeChoices('move astralbarrage', 'move sleeptalk');
-		assert.statStage(ditto, 'spa', 1);
+		assert.statStage(ditto, 'boa', 1);
 	});
 });

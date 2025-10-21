@@ -96,7 +96,7 @@ export const Conditions: import('../../../sim/dex-conditions').ModdedConditionDa
 				basePower: 40,
 				type: '???',
 				baseMoveType: move.type,
-				category: 'Physical',
+				category: 'Top',
 				willCrit: false,
 				isConfusionSelfHit: true,
 				noDamageVariance: true,

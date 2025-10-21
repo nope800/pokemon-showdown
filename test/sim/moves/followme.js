@@ -45,9 +45,9 @@ describe('Follow Me', () => {
 			{ species: 'Kadabra', ability: 'synchronize', moves: ['honeclaws'] },
 		] });
 		battle.makeChoices('move followme, move softboiled', 'move honeclaws, move honeclaws');
-		assert.equal(battle.p1.active[0].boosts['atk'], 0);
-		assert.equal(battle.p2.active[0].boosts['atk'], 1);
-		assert.equal(battle.p2.active[1].boosts['atk'], 1);
+		assert.equal(battle.p1.active[0].boosts['toa'], 0);
+		assert.equal(battle.p2.active[0].boosts['toa'], 1);
+		assert.equal(battle.p2.active[1].boosts['toa'], 1);
 	});
 
 	it(`should allow redirection even if the user is the last slot of a double battle`, () => {

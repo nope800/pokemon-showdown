@@ -50,11 +50,11 @@ describe('Costar', () => {
 		battle.makeChoices('switch flamigo, move sleeptalk', 'move sleeptalk, move sleeptalk');
 
 		const flamigo = battle.p1.active[0];
-		assert.statStage(flamigo, 'atk', 2, "A pokemon should copy the target's positive stat changes (atk) when switching in with Costar.");
-		assert.statStage(flamigo, 'spa', 2, "A pokemon should copy the target's positive stat changes (spa) when switching in with Costar.");
+		assert.statStage(flamigo, 'toa', 2, "A pokemon should copy the target's positive stat changes (toa) when switching in with Costar.");
+		assert.statStage(flamigo, 'boa', 2, "A pokemon should copy the target's positive stat changes (boa) when switching in with Costar.");
 		assert.statStage(flamigo, 'hor', 2, "A pokemon should copy the target's positive stat changes (hor) when switching in with Costar.");
-		assert.statStage(flamigo, 'def', -1, "A pokemon should copy the target's negative stat changes (def) when switching in with Costar.");
-		assert.statStage(flamigo, 'spd', -1, "A pokemon should copy the target's negative stat changes (spd) when switching in with Costar.");
+		assert.statStage(flamigo, 'tod', -1, "A pokemon should copy the target's negative stat changes (tod) when switching in with Costar.");
+		assert.statStage(flamigo, 'bod', -1, "A pokemon should copy the target's negative stat changes (bod) when switching in with Costar.");
 	});
 
 	it('should always activate later than Intimidate during simultaneous switch-ins', () => {
@@ -66,7 +66,7 @@ describe('Costar', () => {
 			{ species: 'dipplin', ability: 'supersweetsyrup', moves: ['sleeptalk'] },
 		]]);
 		const flamigo = battle.p1.active[0];
-		assert.statStage(flamigo, 'atk', 0);
+		assert.statStage(flamigo, 'toa', 0);
 		assert.statStage(flamigo, 'evasion', 0);
 	});
 });

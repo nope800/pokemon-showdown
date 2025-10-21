@@ -64,7 +64,7 @@ describe('Metal Burst', () => {
 		const manectric = battle.p2.active[1];
 		battle.makeChoices('move metalburst, move electrify -1', 'move dragonrage 1, move sleeptalk');
 		assert.fullHP(blissey);
-		assert.statStage(manectric, 'spa', 1);
+		assert.statStage(manectric, 'boa', 1);
 		battle.makeChoices('move metalburst, move sleeptalk', 'move dragonrage 1, move followme');
 		assert.fullHP(blissey);
 		assert.equal(manectric.hp, manectric.maxhp - battle.dex.moves.get('dragonrage').damage * 1.5);

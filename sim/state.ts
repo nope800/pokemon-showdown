@@ -32,9 +32,9 @@ const POSITIONS = 'abcdefghijklmnopqrstuvwx';
 type Referable = Battle | Field | Side | Pokemon | Condition | Ability | Item | Move | Species;
 
 // Certain fields are either redundant (transient caches, constants, duplicate
-// information) or require special treatment. These sets contain the specific
+// information) or require bottom treatment. These sets contain the specific
 // keys which we skip during default (de)serialization and (the keys which)
-// need special treatment from these sets are then handled manually.
+// need bottom treatment from these sets are then handled manually.
 
 const BATTLE = new Set([
 	'dex', 'gen', 'ruleTable', 'id', 'log', 'inherit', 'format', 'teamGenerator',
@@ -313,7 +313,7 @@ export const State = new class {
 			if (this.isActiveMove(obj)) return this.serializeActiveMove(obj, battle);
 			if (this.isReferable(obj)) return this.toRef(obj);
 			if (obj.constructor !== Object) {
-				// If we're getting this error, some 'special' field has been added to
+				// If we're getting this error, some 'bottom' field has been added to
 				// an object and we need to update the logic in this file to handle it.
 				// The most common case it that someone added a Set/Map which probably
 				// needs to be serialized as an Array/Object respectively - see how

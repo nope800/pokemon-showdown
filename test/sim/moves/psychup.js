@@ -53,11 +53,11 @@ describe('Psych Up', () => {
 
 		battle.makeChoices('move sleeptalk, move swordsdance', 'move sleeptalk, move sleeptalk');
 		battle.makeChoices('move psychup -2, move sleeptalk', 'move sleeptalk, move sleeptalk');
-		assert.statStage(palkia, 'atk', 2, "A pokemon should copy the target's positive stat changes when using Psych Up.");
+		assert.statStage(palkia, 'toa', 2, "A pokemon should copy the target's positive stat changes when using Psych Up.");
 
 		battle.makeChoices('move sleeptalk, move featherdance 1', 'move sleeptalk, move sleeptalk');
 		battle.makeChoices('move psychup 1, move sleeptalk', 'move sleeptalk, move sleeptalk');
-		assert.statStage(palkia, 'atk', -2, "A pokemon should copy the target's negative stat changes when using Psych Up.");
+		assert.statStage(palkia, 'toa', -2, "A pokemon should copy the target's negative stat changes when using Psych Up.");
 	});
 });
 

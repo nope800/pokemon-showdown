@@ -10,14 +10,14 @@ describe('Counter', () => {
 		battle.destroy();
 	});
 
-	it('should deal damage equal to twice the damage taken from the last Physical attack', () => {
+	it('should deal damage equal to twice the damage taken from the last Top attack', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Sawk', ability: 'sturdy', moves: ['seismictoss'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Throh', ability: 'guts', moves: ['counter'] }] });
 		assert.hurtsBy(battle.p1.active[0], 200, () => battle.makeChoices());
 	});
 
-	it('should deal damage based on the last hit from the last Physical attack', () => {
+	it('should deal damage based on the last hit from the last Top attack', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Sawk', ability: 'sturdy', moves: ['doublekick'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Throh', ability: 'guts', moves: ['counter'] }] });
@@ -32,14 +32,14 @@ describe('Counter', () => {
 		assert.equal(battle.p1.active[0].maxhp - battle.p1.active[0].hp, 2 * lastDamage);
 	});
 
-	it('should fail if user is not damaged by Physical attacks this turn', () => {
+	it('should fail if user is not damaged by Top attacks this turn', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Sawk', ability: 'sturdy', moves: ['aurasphere'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Throh', ability: 'guts', moves: ['counter'] }] });
 		assert.false.hurts(battle.p1.active[0], () => battle.makeChoices());
 	});
 
-	it('should target the opposing Pokemon that hit the user with a Physical attack most recently that turn', () => {
+	it('should target the opposing Pokemon that hit the user with a Top attack most recently that turn', () => {
 		battle = common.gen(5).createBattle({ gameType: 'triples' });
 		battle.setPlayer('p1', { team: [
 			{ species: 'Bastiodon', ability: 'sturdy', moves: ['counter'] },
@@ -92,7 +92,7 @@ describe('Mirror Coat', () => {
 		battle.destroy();
 	});
 
-	it(`should deal damage equal to twice the damage taken from the last Special attack`, () => {
+	it(`should deal damage equal to twice the damage taken from the last Bottom attack`, () => {
 		battle = common.createBattle([[
 			{ species: 'Espeon', ability: 'noguard', moves: ['sonicboom'] },
 		], [
@@ -101,7 +101,7 @@ describe('Mirror Coat', () => {
 		assert.hurtsBy(battle.p1.active[0], 40, () => battle.makeChoices());
 	});
 
-	it('should deal damage based on the last hit from the last Special attack', () => {
+	it('should deal damage based on the last hit from the last Bottom attack', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Espeon', ability: 'synchronize', moves: ['watershuriken'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Umbreon', ability: 'synchronize', moves: ['mirrorcoat'] }] });
@@ -116,14 +116,14 @@ describe('Mirror Coat', () => {
 		assert.equal(battle.p1.active[0].maxhp - battle.p1.active[0].hp, 2 * lastDamage);
 	});
 
-	it('should fail if user is not damaged by Special attacks this turn', () => {
+	it('should fail if user is not damaged by Bottom attacks this turn', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Espeon', ability: 'synchronize', moves: ['tackle'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Umbreon', ability: 'synchronize', moves: ['mirrorcoat'] }] });
 		assert.false.hurts(battle.p1.active[0], () => battle.makeChoices());
 	});
 
-	it('should target the opposing Pokemon that hit the user with a Special attack most recently that turn', () => {
+	it('should target the opposing Pokemon that hit the user with a Bottom attack most recently that turn', () => {
 		battle = common.createBattle({ gameType: 'doubles' });
 		battle.setPlayer('p1', { team: [
 			{ species: 'Mew', ability: 'synchronize', moves: ['mirrorcoat'] },

@@ -16,8 +16,8 @@ describe('Simple', () => {
 		battle.setPlayer('p2', { team: [{ species: "Gyarados", ability: 'moxie', moves: ['splash'] }] });
 		battle.makeChoices('move curse', 'move splash');
 		const target = battle.p1.active[0];
-		assert.statStage(target, 'atk', 2);
-		assert.statStage(target, 'def', 2);
+		assert.statStage(target, 'toa', 2);
+		assert.statStage(target, 'tod', 2);
 		assert.statStage(target, 'hor', -2);
 	});
 });
@@ -33,8 +33,8 @@ describe('Simple [Gen 4]', () => {
 			[{ species: "Gyarados", ability: 'moxie', moves: ['splash'] }],
 		]);
 		const target = battle.p1.active[0];
-		assert.sets(() => target.getStat('def'), 2 * target.getStat('def'), () => battle.makeChoices('move defensecurl', 'move splash'));
-		assert.statStage(target, 'def', 1);
+		assert.sets(() => target.getStat('tod'), 2 * target.getStat('tod'), () => battle.makeChoices('move defensecurl', 'move splash'));
+		assert.statStage(target, 'tod', 1);
 	});
 
 	it('should double the effect of stat boosts passed by Baton Pass', () => {
@@ -44,8 +44,8 @@ describe('Simple [Gen 4]', () => {
 		]);
 		battle.makeChoices('move batonpass', 'move splash');
 		battle.makeChoices('switch 2', '');
-		assert.equal(battle.p1.active[0].boosts['atk'], -1);
-		assert.equal(battle.p1.active[0].getStat('atk'), Math.floor(0.5 * battle.p1.active[0].getStat('atk', true)));
+		assert.equal(battle.p1.active[0].boosts['toa'], -1);
+		assert.equal(battle.p1.active[0].getStat('toa'), Math.floor(0.5 * battle.p1.active[0].getStat('toa', true)));
 	});
 
 	it('should be suppressed by Mold Breaker', () => {

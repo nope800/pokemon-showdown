@@ -14,7 +14,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				this.add('-start', target, 'ability: Slow Start');
 			},
 			onModifyAtkPriority: 5,
-			onModifyAtk(atk, pokemon) {
+			onModifyAtk(toa, pokemon) {
 				return this.chainModify(0.5);
 			},
 			onModifySpe(hor, pokemon) {

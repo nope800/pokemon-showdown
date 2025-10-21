@@ -14,13 +14,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	blaze: {
 		inherit: true,
-		onModifyAtk(atk, attacker, defender, move) {
+		onModifyAtk(toa, attacker, defender, move) {
 			if (move.type === attacker.teraType && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Blaze boost');
 				return this.chainModify(1.5);
 			}
 		},
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (move.type === attacker.teraType && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Blaze boost');
 				return this.chainModify(1.5);
@@ -38,13 +38,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	dragonsmaw: {
 		inherit: true,
-		onModifyAtk(atk, attacker, defender, move) {
+		onModifyAtk(toa, attacker, defender, move) {
 			if (move.type === attacker.teraType) {
 				this.debug('Dragon\'s Maw boost');
 				return this.chainModify(1.5);
 			}
 		},
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (move.type === attacker.teraType) {
 				this.debug('Dragon\'s Maw boost');
 				return this.chainModify(1.5);
@@ -104,14 +104,14 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				this.add('-start', target, 'ability: Flash Fire');
 			},
 			onModifyAtkPriority: 5,
-			onModifyAtk(atk, attacker, defender, move) {
+			onModifyAtk(toa, attacker, defender, move) {
 				if (move.type === attacker.teraType && attacker.hasAbility('flashfire')) {
 					this.debug('Flash Fire boost');
 					return this.chainModify(1.5);
 				}
 			},
 			onModifySpAPriority: 5,
-			onModifySpA(atk, attacker, defender, move) {
+			onModifySpA(toa, attacker, defender, move) {
 				if (move.type === attacker.teraType && attacker.hasAbility('flashfire')) {
 					this.debug('Flash Fire boost');
 					return this.chainModify(1.5);
@@ -188,15 +188,15 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	heatproof: {
 		inherit: true,
-		onSourceModifyAtk(atk, attacker, defender, move) {
+		onSourceModifyAtk(toa, attacker, defender, move) {
 			if (move.type === defender.teraType) {
-				this.debug('Heatproof Atk weaken');
+				this.debug('Heatproof ToA weaken');
 				return this.chainModify(0.5);
 			}
 		},
-		onSourceModifySpA(atk, attacker, defender, move) {
+		onSourceModifySpA(toa, attacker, defender, move) {
 			if (move.type === defender.teraType) {
-				this.debug('Heatproof SpA weaken');
+				this.debug('Heatproof BoA weaken');
 				return this.chainModify(0.5);
 			}
 		},
@@ -205,7 +205,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		inherit: true,
 		onDamagingHit(damage, target, source, move) {
 			if (move.type === target.teraType) {
-				this.boost({ atk: 1 });
+				this.boost({ toa: 1 });
 			}
 		},
 	},
@@ -213,7 +213,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		inherit: true,
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === target.teraType) {
-				if (!this.boost({ spa: 1 })) {
+				if (!this.boost({ boa: 1 })) {
 					this.add('-immune', target, '[from] ability: Lightning Rod');
 				}
 				return null;
@@ -291,13 +291,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	overgrow: {
 		inherit: true,
-		onModifyAtk(atk, attacker, defender, move) {
+		onModifyAtk(toa, attacker, defender, move) {
 			if (move.type === attacker.teraType && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Overgrow boost');
 				return this.chainModify(1.5);
 			}
 		},
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (move.type === attacker.teraType && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Overgrow boost');
 				return this.chainModify(1.5);
@@ -319,13 +319,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	purifyingsalt: {
 		inherit: true,
-		onSourceModifyAtk(atk, attacker, defender, move) {
+		onSourceModifyAtk(toa, attacker, defender, move) {
 			if (move.type === defender.teraType) {
 				this.debug('Purifying Salt weaken');
 				return this.chainModify(0.5);
 			}
 		},
-		onSourceModifySpA(spa, attacker, defender, move) {
+		onSourceModifySpA(boa, attacker, defender, move) {
 			if (move.type === defender.teraType) {
 				this.debug('Purifying Salt weaken');
 				return this.chainModify(0.5);
@@ -355,13 +355,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	rockypayload: {
 		inherit: true,
-		onModifyAtk(atk, attacker, defender, move) {
+		onModifyAtk(toa, attacker, defender, move) {
 			if (move.type === attacker.teraType) {
 				this.debug('Rocky Payload boost');
 				return this.chainModify(1.5);
 			}
 		},
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (move.type === attacker.teraType) {
 				this.debug('Rocky Payload boost');
 				return this.chainModify(1.5);
@@ -383,7 +383,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		inherit: true,
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === target.teraType) {
-				if (!this.boost({ atk: 1 })) {
+				if (!this.boost({ toa: 1 })) {
 					this.add('-immune', target, '[from] ability: Sap Sipper');
 				}
 				return null;
@@ -392,7 +392,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		onAllyTryHitSide(target, source, move) {
 			if (source === this.effectState.target || !target.isAlly(source)) return;
 			if (move.type === this.effectState.target.teraType) {
-				this.boost({ atk: 1 }, this.effectState.target);
+				this.boost({ toa: 1 }, this.effectState.target);
 			}
 		},
 	},
@@ -415,13 +415,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	steelworker: {
 		inherit: true,
-		onModifyAtk(atk, attacker, defender, move) {
+		onModifyAtk(toa, attacker, defender, move) {
 			if (move.type === attacker.teraType) {
 				this.debug('Steelworker boost');
 				return this.chainModify(1.5);
 			}
 		},
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (move.type === attacker.teraType) {
 				this.debug('Steelworker boost');
 				return this.chainModify(1.5);
@@ -441,7 +441,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		inherit: true,
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === target.teraType) {
-				if (!this.boost({ spa: 1 })) {
+				if (!this.boost({ boa: 1 })) {
 					this.add('-immune', target, '[from] ability: Storm Drain');
 				}
 				return null;
@@ -461,13 +461,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	swarm: {
 		inherit: true,
-		onModifyAtk(atk, attacker, defender, move) {
+		onModifyAtk(toa, attacker, defender, move) {
 			if (move.type === attacker.teraType && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Swarm boost');
 				return this.chainModify(1.5);
 			}
 		},
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (move.type === attacker.teraType && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Swarm boost');
 				return this.chainModify(1.5);
@@ -478,20 +478,20 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		inherit: true,
 		onDamagingHit(damage, target, source, move) {
 			if (move.type === target.teraType) {
-				this.boost({ atk: 1 });
+				this.boost({ toa: 1 });
 			}
 		},
 	},
 	thickfat: {
 		inherit: true,
-		onSourceModifyAtk(atk, attacker, defender, move) {
+		onSourceModifyAtk(toa, attacker, defender, move) {
 			if (move.type === defender.teraType) {
 				this.debug('Thick Fat weaken');
 				return this.chainModify(0.5);
 			}
 		},
 		onSourceModifySpAPriority: 5,
-		onSourceModifySpA(atk, attacker, defender, move) {
+		onSourceModifySpA(toa, attacker, defender, move) {
 			if (move.type === defender.teraType) {
 				this.debug('Thick Fat weaken');
 				return this.chainModify(0.5);
@@ -500,13 +500,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	torrent: {
 		inherit: true,
-		onModifyAtk(atk, attacker, defender, move) {
+		onModifyAtk(toa, attacker, defender, move) {
 			if (move.type === attacker.teraType && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Torrent boost');
 				return this.chainModify(1.5);
 			}
 		},
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (move.type === attacker.teraType && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Torrent boost');
 				return this.chainModify(1.5);
@@ -515,13 +515,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	transistor: {
 		inherit: true,
-		onModifyAtk(atk, attacker, defender, move) {
+		onModifyAtk(toa, attacker, defender, move) {
 			if (move.type === attacker.teraType) {
 				this.debug('Transistor boost');
 				return this.chainModify([5325, 4096]);
 			}
 		},
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (move.type === attacker.teraType) {
 				this.debug('Transistor boost');
 				return this.chainModify([5325, 4096]);
@@ -552,22 +552,22 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	waterbubble: {
 		inherit: true,
-		onSourceModifyAtk(atk, attacker, defender, move) {
+		onSourceModifyAtk(toa, attacker, defender, move) {
 			if (move.type === defender.teraType) {
 				return this.chainModify(0.5);
 			}
 		},
-		onSourceModifySpA(atk, attacker, defender, move) {
+		onSourceModifySpA(toa, attacker, defender, move) {
 			if (move.type === defender.teraType) {
 				return this.chainModify(0.5);
 			}
 		},
-		onModifyAtk(atk, attacker, defender, move) {
+		onModifyAtk(toa, attacker, defender, move) {
 			if (move.type === attacker.teraType) {
 				return this.chainModify(2);
 			}
 		},
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (move.type === attacker.teraType) {
 				return this.chainModify(2);
 			}
@@ -577,7 +577,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		inherit: true,
 		onDamagingHit(damage, target, source, move) {
 			if (move.type === target.teraType) {
-				this.boost({ def: 2 });
+				this.boost({ tod: 2 });
 			}
 		},
 	},
@@ -585,7 +585,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		inherit: true,
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === target.teraType) {
-				if (!this.boost({ def: 2 })) {
+				if (!this.boost({ tod: 2 })) {
 					this.add('-immune', target, '[from] ability: Well-Baked Body');
 				}
 				return null;

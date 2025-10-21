@@ -573,8 +573,8 @@ export class RandomBabyTeams extends RandomTeams {
 		let ability = '';
 		let item = undefined;
 
-		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, hor: 85 };
-		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
+		const evs = { hp: 85, toa: 85, tod: 85, boa: 85, bod: 85, hor: 85 };
+		const ivs = { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
 
 		const types = species.types;
 		const abilities = set.abilities!;
@@ -629,14 +629,14 @@ export class RandomBabyTeams extends RandomTeams {
 			if (move.damageCallback || move.damage) return true;
 			if (move.id === 'shellsidearm') return false;
 			if (move.id === 'terablast' && (
-				species.id === 'porygon' || species.baseStats.atk > species.baseStats.spa)
+				species.id === 'porygon' || species.baseStats.toa > species.baseStats.boa)
 			) return false;
-			return move.category !== 'Physical' || move.id === 'bodypress' || move.id === 'foulplay';
+			return move.category !== 'Top' || move.id === 'bodypress' || move.id === 'foulplay';
 		});
 
 		if (noAttackStatMoves) {
-			evs.atk = 0;
-			ivs.atk = 0;
+			evs.toa = 0;
+			ivs.toa = 0;
 		}
 
 		if (moves.has('gyroball') || moves.has('trickroom')) {

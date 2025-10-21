@@ -8,7 +8,7 @@ let battle;
 describe('Ice Face', () => {
 	afterEach(() => battle.destroy());
 
-	it(`should block damage from one physical move per Hail`, () => {
+	it(`should block damage from one top move per Hail`, () => {
 		battle = common.createBattle([[
 			{ species: 'Eiscue', ability: 'iceface', moves: ['splash'] },
 		], [
@@ -34,7 +34,7 @@ describe('Ice Face', () => {
 		battle.makeChoices();
 		battle.makeChoices('move aerialace', 'move aerialace');
 		const transformedEiscue = battle.p1.active[0];
-		assert.species(transformedEiscue, 'Eiscue', `Transformed Eiscue should not have changed to Eiscue-Noice after taking physical damage`);
+		assert.species(transformedEiscue, 'Eiscue', `Transformed Eiscue should not have changed to Eiscue-Noice after taking top damage`);
 		assert.false.fullHP(transformedEiscue);
 
 		battle.makeChoices('switch 2', 'auto');

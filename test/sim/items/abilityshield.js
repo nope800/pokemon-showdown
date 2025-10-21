@@ -173,7 +173,7 @@ describe('Ability Shield', () => {
 		]]);
 
 		battle.makeChoices();
-		assert.statStage(battle.p2.active[0], 'atk', 0);
+		assert.statStage(battle.p2.active[0], 'toa', 0);
 	});
 
 	// https://www.smogon.com/forums/threads/scarlet-violet-battle-mechanics-research.3709545/post-9414273

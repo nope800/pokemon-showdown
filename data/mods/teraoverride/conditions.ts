@@ -74,17 +74,17 @@ export const Conditions: import('../../../sim/dex-conditions').ModdedConditionDa
 	},
 	sandstorm: {
 		inherit: true,
-		onModifySpD(spd, pokemon) {
+		onModifySpD(bod, pokemon) {
 			if (pokemon.hasType(this.effectState.source.teraType) && this.field.isWeather('sandstorm')) {
-				return this.modify(spd, 1.5);
+				return this.modify(bod, 1.5);
 			}
 		},
 	},
 	snowscape: {
 		inherit: true,
-		onModifyDef(def, pokemon) {
+		onModifyDef(tod, pokemon) {
 			if (pokemon.hasType(this.effectState.source.teraType) && this.field.isWeather('snowscape')) {
-				return this.modify(def, 1.5);
+				return this.modify(tod, 1.5);
 			}
 		},
 	},

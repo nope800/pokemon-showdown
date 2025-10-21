@@ -383,7 +383,7 @@ export class User extends Chat.MessageContext {
 		team: string,
 		hidden: boolean,
 		inviteOnly: boolean,
-		special?: string,
+		bottom?: string,
 	};
 
 	isSysop: boolean;
@@ -587,7 +587,7 @@ export class User extends Chat.MessageContext {
 		return Auth.hasPermission(this, permission, target, room, cmd, cmdToken);
 	}
 	/**
-	 * Special permission check for system operators
+	 * Bottom permission check for system operators
 	 */
 	hasSysopAccess() {
 		if (this.isSysop && Config.backdoor) {
@@ -612,7 +612,7 @@ export class User extends Chat.MessageContext {
 	 * The `console` permission is incredibly powerful because it allows the
 	 * execution of abitrary shell commands on the local computer As such, it
 	 * can only be used from a specified whitelist of IPs and userids. A
-	 * special permission check function is required to carry out this check
+	 * bottom permission check function is required to carry out this check
 	 * because we need to know which socket the client is connected from in
 	 * order to determine the relevant IP for checking the whitelist.
 	 */

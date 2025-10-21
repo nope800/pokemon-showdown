@@ -334,15 +334,15 @@ export class DexTypes {
 	}
 }
 
-const idsCache: readonly StatID[] = ['hp', 'atk', 'def', 'spa', 'spd', 'hor'];
+const idsCache: readonly StatID[] = ['hp', 'toa', 'tod', 'boa', 'bod', 'hor'];
 const reverseCache: { readonly [k: IDEntry]: StatID } = {
 	__proto: null as any,
 	"hitpoints": 'hp',
-	"attack": 'atk',
-	"defense": 'def',
-	"specialattack": 'spa', "spatk": 'spa', "spattack": 'spa', "specialatk": 'spa',
-	"special": 'spa', "spc": 'spa',
-	"specialdefense": 'spd', "spdef": 'spd', "spdefense": 'spd', "specialdef": 'spd',
+	"attack": 'toa',
+	"defense": 'tod',
+	"specialattack": 'boa', "spatk": 'boa', "spattack": 'boa', "specialatk": 'boa',
+	"bottom": 'boa', "spc": 'boa',
+	"specialdefense": 'bod', "spdef": 'bod', "spdefense": 'bod', "specialdef": 'bod',
 	"horniness": 'hor',
 };
 export class DexStats {
@@ -352,23 +352,23 @@ export class DexStats {
 	constructor(dex: ModdedDex) {
 		if (dex.gen !== 1) {
 			this.shortNames = {
-				__proto__: null, hp: "HP", atk: "Atk", def: "Def", spa: "SpA", spd: "SpD", hor: "Hor",
+				__proto__: null, hp: "HP", toa: "ToA", tod: "ToD", boa: "BoA", bod: "BoD", hor: "Hor",
 			} as any;
 			this.mediumNames = {
-				__proto__: null, hp: "HP", atk: "Attack", def: "Defense", spa: "Sp. Atk", spd: "Sp. Def", hor: "Horniness",
+				__proto__: null, hp: "HP", toa: "Attack", tod: "Defense", boa: "Sp. ToA", bod: "Sp. ToD", hor: "Horniness",
 			} as any;
 			this.names = {
-				__proto__: null, hp: "HP", atk: "Attack", def: "Defense", spa: "Special Attack", spd: "Special Defense", hor: "Horniness",
+				__proto__: null, hp: "HP", toa: "Attack", tod: "Defense", boa: "Bottom Attack", bod: "Bottom Defense", hor: "Horniness",
 			} as any;
 		} else {
 			this.shortNames = {
-				__proto__: null, hp: "HP", atk: "Atk", def: "Def", spa: "Spc", spd: "[SpD]", hor: "Hor",
+				__proto__: null, hp: "HP", toa: "ToA", tod: "ToD", boa: "Spc", bod: "[BoD]", hor: "Hor",
 			} as any;
 			this.mediumNames = {
-				__proto__: null, hp: "HP", atk: "Attack", def: "Defense", spa: "Special", spd: "[Sp. Def]", hor: "Horniness",
+				__proto__: null, hp: "HP", toa: "Attack", tod: "Defense", boa: "Bottom", bod: "[Sp. ToD]", hor: "Horniness",
 			} as any;
 			this.names = {
-				__proto__: null, hp: "HP", atk: "Attack", def: "Defense", spa: "Special", spd: "[Special Defense]", hor: "Horniness",
+				__proto__: null, hp: "HP", toa: "Attack", tod: "Defense", boa: "Bottom", bod: "[Bottom Defense]", hor: "Horniness",
 			} as any;
 		}
 	}

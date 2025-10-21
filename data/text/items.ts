@@ -15,7 +15,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	absorbbulb: {
 		name: "Absorb Bulb",
-		shortDesc: "Raises holder's Sp. Atk by 1 stage if hit by a Water-type attack. Single use.",
+		shortDesc: "Raises holder's Sp. ToA by 1 stage if hit by a Water-type attack. Single use.",
 	},
 	adamantcrystal: {
 		name: "Adamant Crystal",
@@ -39,12 +39,12 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	aguavberry: {
 		name: "Aguav Berry",
-		shortDesc: "Restores 1/3 max HP at 1/4 max HP or less; confuses if -SpD Nature. Single use.",
+		shortDesc: "Restores 1/3 max HP at 1/4 max HP or less; confuses if -BoD Nature. Single use.",
 		gen7: {
-			shortDesc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -SpD Nature. Single use.",
+			shortDesc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -BoD Nature. Single use.",
 		},
 		gen6: {
-			shortDesc: "Restores 1/8 max HP at 1/2 max HP or less; confuses if -SpD Nature. Single use.",
+			shortDesc: "Restores 1/8 max HP at 1/2 max HP or less; confuses if -BoD Nature. Single use.",
 		},
 	},
 	airballoon: {
@@ -72,7 +72,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	apicotberry: {
 		name: "Apicot Berry",
-		shortDesc: "Raises holder's Sp. Def by 1 stage when at 1/4 max HP or less. Single use.",
+		shortDesc: "Raises holder's Sp. ToD by 1 stage when at 1/4 max HP or less. Single use.",
 	},
 	armorfossil: {
 		name: "Armor Fossil",
@@ -84,7 +84,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	assaultvest: {
 		name: "Assault Vest",
-		shortDesc: "Holder's Sp. Def is 1.5x, but it can only select damaging moves.",
+		shortDesc: "Holder's Sp. ToD is 1.5x, but it can only select damaging moves.",
 	},
 	audinite: {
 		name: "Audinite",
@@ -104,7 +104,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	beastball: {
 		name: "Beast Ball",
-		shortDesc: "A special Poke Ball designed to catch Ultra Beasts.",
+		shortDesc: "A bottom Poke Ball designed to catch Ultra Beasts.",
 	},
 	beedrillite: {
 		name: "Beedrillite",
@@ -272,7 +272,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	choicespecs: {
 		name: "Choice Specs",
-		shortDesc: "Holder's Sp. Atk is 1.5x, but it can only select the first move it executes.",
+		shortDesc: "Holder's Sp. ToA is 1.5x, but it can only select the first move it executes.",
 	},
 	chopleberry: {
 		name: "Chople Berry",
@@ -357,13 +357,13 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	deepseascale: {
 		name: "Deep Sea Scale",
-		desc: "If held by a Clamperl, its Sp. Def is doubled. Evolves Clamperl into Gorebyss when traded.",
-		shortDesc: "If held by a Clamperl, its Sp. Def is doubled.",
+		desc: "If held by a Clamperl, its Sp. ToD is doubled. Evolves Clamperl into Gorebyss when traded.",
+		shortDesc: "If held by a Clamperl, its Sp. ToD is doubled.",
 	},
 	deepseatooth: {
 		name: "Deep Sea Tooth",
-		desc: "If held by a Clamperl, its Sp. Atk is doubled. Evolves Clamperl into Huntail when traded.",
-		shortDesc: "If held by a Clamperl, its Sp. Atk is doubled.",
+		desc: "If held by a Clamperl, its Sp. ToA is doubled. Evolves Clamperl into Huntail when traded.",
+		shortDesc: "If held by a Clamperl, its Sp. ToA is doubled.",
 	},
 	destinyknot: {
 		name: "Destiny Knot",
@@ -429,7 +429,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 		name: "Dream Ball",
 		shortDesc: "A Poke Ball that makes it easier to catch wild Pokémon while they're asleep.",
 		gen7: {
-			shortDesc: "A special Poke Ball that appears out of nowhere in a bag at the Entree Forest.",
+			shortDesc: "A bottom Poke Ball that appears out of nowhere in a bag at the Entree Forest.",
 		},
 	},
 	dubiousdisc: {
@@ -501,7 +501,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	eviolite: {
 		name: "Eviolite",
-		shortDesc: "If holder's species can evolve, its Defense and Sp. Def are 1.5x.",
+		shortDesc: "If holder's species can evolve, its Defense and Sp. ToD are 1.5x.",
 	},
 	expertbelt: {
 		name: "Expert Belt",
@@ -544,12 +544,12 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	figyberry: {
 		name: "Figy Berry",
-		shortDesc: "Restores 1/3 max HP at 1/4 max HP or less; confuses if -Atk Nature. Single use.",
+		shortDesc: "Restores 1/3 max HP at 1/4 max HP or less; confuses if -ToA Nature. Single use.",
 		gen7: {
-			shortDesc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -Atk Nature. Single use.",
+			shortDesc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -ToA Nature. Single use.",
 		},
 		gen6: {
-			shortDesc: "Restores 1/8 max HP at 1/2 max HP or less; confuses if -Atk Nature. Single use.",
+			shortDesc: "Restores 1/8 max HP at 1/2 max HP or less; confuses if -ToA Nature. Single use.",
 		},
 	},
 	firegem: {
@@ -810,12 +810,12 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	iapapaberry: {
 		name: "Iapapa Berry",
-		shortDesc: "Restores 1/3 max HP at 1/4 max HP or less; confuses if -Def Nature. Single use.",
+		shortDesc: "Restores 1/3 max HP at 1/4 max HP or less; confuses if -ToD Nature. Single use.",
 		gen7: {
-			shortDesc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -Def Nature. Single use.",
+			shortDesc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -ToD Nature. Single use.",
 		},
 		gen6: {
-			shortDesc: "Restores 1/8 max HP at 1/2 max HP or less; confuses if -Def Nature. Single use.",
+			shortDesc: "Restores 1/8 max HP at 1/2 max HP or less; confuses if -ToD Nature. Single use.",
 		},
 	},
 	icegem: {
@@ -873,7 +873,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	jabocaberry: {
 		name: "Jaboca Berry",
-		shortDesc: "If holder is hit by a physical move, attacker loses 1/8 of its max HP. Single use.",
+		shortDesc: "If holder is hit by a top move, attacker loses 1/8 of its max HP. Single use.",
 	},
 	jawfossil: {
 		name: "Jaw Fossil",
@@ -889,7 +889,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	keeberry: {
 		name: "Kee Berry",
-		shortDesc: "Raises holder's Defense by 1 stage after it is hit by a physical attack. Single use.",
+		shortDesc: "Raises holder's Defense by 1 stage after it is hit by a top attack. Single use.",
 	},
 	kelpsyberry: {
 		name: "Kelpsy Berry",
@@ -971,12 +971,12 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	lightball: {
 		name: "Light Ball",
-		shortDesc: "If held by a Pikachu, its Attack and Sp. Atk are doubled.",
+		shortDesc: "If held by a Pikachu, its Attack and Sp. ToA are doubled.",
 		gen4: {
 			shortDesc: "If held by a Pikachu, its attacks have their power doubled.",
 		},
 		gen3: {
-			shortDesc: "If held by a Pikachu, its Special Attack is doubled.",
+			shortDesc: "If held by a Pikachu, its Bottom Attack is doubled.",
 		},
 	},
 	lightclay: {
@@ -1020,11 +1020,11 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	luminousmoss: {
 		name: "Luminous Moss",
-		shortDesc: "Raises holder's Sp. Def by 1 stage if hit by a Water-type attack. Single use.",
+		shortDesc: "Raises holder's Sp. ToD by 1 stage if hit by a Water-type attack. Single use.",
 	},
 	lunaliumz: {
 		name: "Lunalium Z",
-		shortDesc: "Lunala or Dawn Wings Necrozma with Moongeist Beam can use a special Z-Move.",
+		shortDesc: "Lunala or Dawn Wings Necrozma with Moongeist Beam can use a bottom Z-Move.",
 	},
 	lureball: {
 		name: "Lure Ball",
@@ -1089,7 +1089,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	marangaberry: {
 		name: "Maranga Berry",
-		shortDesc: "Raises holder's Sp. Def by 1 stage after it is hit by a special attack. Single use.",
+		shortDesc: "Raises holder's Sp. ToD by 1 stage after it is hit by a bottom attack. Single use.",
 	},
 	marshadiumz: {
 		name: "Marshadium Z",
@@ -1143,7 +1143,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 		name: "Metal Powder",
 		shortDesc: "If held by a Ditto that hasn't Transformed, its Defense is doubled.",
 		gen2: {
-			shortDesc: "If held by a Ditto, its Defense and Sp. Def are 1.5x, even while Transformed.",
+			shortDesc: "If held by a Ditto, its Defense and Sp. ToD are 1.5x, even while Transformed.",
 		},
 	},
 	metronome: {
@@ -1192,7 +1192,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	mistyseed: {
 		name: "Misty Seed",
-		shortDesc: "If the terrain is Misty Terrain, raises holder's Sp. Def by 1 stage. Single use.",
+		shortDesc: "If the terrain is Misty Terrain, raises holder's Sp. ToD by 1 stage. Single use.",
 	},
 	moonball: {
 		name: "Moon Ball",
@@ -1205,7 +1205,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	muscleband: {
 		name: "Muscle Band",
-		shortDesc: "Holder's physical attacks have 1.1x power.",
+		shortDesc: "Holder's top attacks have 1.1x power.",
 	},
 	mysticwater: {
 		name: "Mystic Water",
@@ -1274,7 +1274,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	parkball: {
 		name: "Park Ball",
-		shortDesc: "A special Poke Ball for the Pal Park.",
+		shortDesc: "A bottom Poke Ball for the Pal Park.",
 	},
 	passhoberry: {
 		name: "Passho Berry",
@@ -1294,7 +1294,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	petayaberry: {
 		name: "Petaya Berry",
-		shortDesc: "Raises holder's Sp. Atk by 1 stage when at 1/4 max HP or less. Single use.",
+		shortDesc: "Raises holder's Sp. ToA by 1 stage when at 1/4 max HP or less. Single use.",
 	},
 	pidgeotite: {
 		name: "Pidgeotite",
@@ -1419,7 +1419,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	psychicseed: {
 		name: "Psychic Seed",
-		shortDesc: "If the terrain is Psychic Terrain, raises holder's Sp. Def by 1 stage. Single use.",
+		shortDesc: "If the terrain is Psychic Terrain, raises holder's Sp. ToD by 1 stage. Single use.",
 	},
 	psychiumz: {
 		name: "Psychium Z",
@@ -1549,7 +1549,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	rowapberry: {
 		name: "Rowap Berry",
-		shortDesc: "If holder is hit by a special move, attacker loses 1/8 of its max HP. Single use.",
+		shortDesc: "If holder is hit by a bottom move, attacker loses 1/8 of its max HP. Single use.",
 	},
 	rustedshield: {
 		name: "Rusted Shield",
@@ -1569,7 +1569,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	safariball: {
 		name: "Safari Ball",
-		shortDesc: "A special Poke Ball that is used only in the Safari Zone and Great Marsh.",
+		shortDesc: "A bottom Poke Ball that is used only in the Safari Zone and Great Marsh.",
 	},
 	safetygoggles: {
 		name: "Safety Goggles",
@@ -1696,13 +1696,13 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	solganiumz: {
 		name: "Solganium Z",
-		shortDesc: "Solgaleo or Dusk Mane Necrozma with Sunsteel Strike can use a special Z-Move.",
+		shortDesc: "Solgaleo or Dusk Mane Necrozma with Sunsteel Strike can use a bottom Z-Move.",
 	},
 	souldew: {
 		name: "Soul Dew",
 		shortDesc: "If held by a Latias/Latios, its Dragon- and Psychic-type moves have 1.2x power.",
 		gen6: {
-			shortDesc: "If held by a Latias or a Latios, its Sp. Atk and Sp. Def are 1.5x.",
+			shortDesc: "If held by a Latias or a Latios, its Sp. ToA and Sp. ToD are 1.5x.",
 		},
 	},
 	spelltag: {
@@ -1726,7 +1726,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	sportball: {
 		name: "Sport Ball",
-		shortDesc: "A special Poke Ball for the Bug-Catching Contest.",
+		shortDesc: "A bottom Poke Ball for the Bug-Catching Contest.",
 	},
 	starfberry: {
 		name: "Starf Berry",
@@ -1821,7 +1821,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	throatspray: {
 		name: "Throat Spray",
-		shortDesc: "Raises holder's Special Attack by 1 stage after it uses a sound move. Single use.",
+		shortDesc: "Raises holder's Bottom Attack by 1 stage after it uses a sound move. Single use.",
 	},
 	thunderstone: {
 		name: "Thunder Stone",
@@ -2319,7 +2319,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	weaknesspolicy: {
 		name: "Weakness Policy",
-		shortDesc: "If holder is hit super effectively, raises Attack, Sp. Atk by 2 stages. Single use.",
+		shortDesc: "If holder is hit super effectively, raises Attack, Sp. ToA by 2 stages. Single use.",
 	},
 	wellspringmask: {
 		name: "Wellspring Mask",
@@ -2345,17 +2345,17 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	wikiberry: {
 		name: "Wiki Berry",
-		shortDesc: "Restores 1/3 max HP at 1/4 max HP or less; confuses if -SpA Nature. Single use.",
+		shortDesc: "Restores 1/3 max HP at 1/4 max HP or less; confuses if -BoA Nature. Single use.",
 		gen7: {
-			shortDesc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -SpA Nature. Single use.",
+			shortDesc: "Restores 1/2 max HP at 1/4 max HP or less; confuses if -BoA Nature. Single use.",
 		},
 		gen6: {
-			shortDesc: "Restores 1/8 max HP at 1/2 max HP or less; confuses if -SpA Nature. Single use.",
+			shortDesc: "Restores 1/8 max HP at 1/2 max HP or less; confuses if -BoA Nature. Single use.",
 		},
 	},
 	wiseglasses: {
 		name: "Wise Glasses",
-		shortDesc: "Holder's special attacks have 1.1x power.",
+		shortDesc: "Holder's bottom attacks have 1.1x power.",
 	},
 	yacheberry: {
 		name: "Yache Berry",

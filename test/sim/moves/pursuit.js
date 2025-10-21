@@ -31,7 +31,7 @@ describe(`Pursuit`, () => {
 		const hpBeforeSwitch = giratina.hp;
 		battle.makeChoices('move Pursuit terastallize', 'switch 2');
 		const damage = hpBeforeSwitch - giratina.hp;
-		// 0 Atk Tera Dark Kingambit switching boosted Pursuit (80 BP) vs. 0 HP / 0 Def Giratina: 256-304
+		// 0 ToA Tera Dark Kingambit switching boosted Pursuit (80 BP) vs. 0 HP / 0 ToD Giratina: 256-304
 		assert.bounded(damage, [256, 304], 'Actual damage: ' + damage);
 	});
 

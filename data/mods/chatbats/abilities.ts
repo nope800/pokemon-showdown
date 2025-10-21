@@ -222,7 +222,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		onDamagingHit(damage, target, source, move) {
 			this.field.setTerrain('grassyterrain');
 		},
-		shortDesc: "Starts Grassy Terrain on hit. 1.5x Def in Grassy Terrain.",
+		shortDesc: "Starts Grassy Terrain on hit. 1.5x ToD in Grassy Terrain.",
 	},
 	aquaveil: {
 		onSwitchInPriority: -1,
@@ -236,23 +236,23 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			this.heal(pokemon.baseMaxhp / 16);
 		},
 		onSourceModifyAtkPriority: 5,
-		onSourceModifyAtk(atk, attacker, defender, move) {
+		onSourceModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Fire') {
 				return this.chainModify(0.5);
 			}
 		},
 		onSourceModifySpAPriority: 5,
-		onSourceModifySpA(atk, attacker, defender, move) {
+		onSourceModifySpA(toa, attacker, defender, move) {
 			if (move.type === 'Fire') {
 				return this.chainModify(0.5);
 			}
 		},
-		onModifyAtk(atk, attacker, defender, move) {
+		onModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Water') {
 				return this.chainModify(2);
 			}
 		},
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (move.type === 'Water') {
 				return this.chainModify(2);
 			}
@@ -270,14 +270,14 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			const unawareUser = this.effectState.target;
 			if (unawareUser === pokemon) return;
 			if (unawareUser === this.activePokemon && pokemon === this.activeTarget) {
-				boosts['def'] = 0;
-				boosts['spd'] = 0;
+				boosts['tod'] = 0;
+				boosts['bod'] = 0;
 				boosts['evasion'] = 0;
 			}
 			if (pokemon === this.activePokemon && unawareUser === this.activeTarget) {
-				boosts['atk'] = 0;
-				boosts['def'] = 0;
-				boosts['spa'] = 0;
+				boosts['toa'] = 0;
+				boosts['tod'] = 0;
+				boosts['boa'] = 0;
 				boosts['accuracy'] = 0;
 			}
 		},
@@ -477,14 +477,14 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		onTryHit(target, source, move) {
 			// Storm Drain effect while cramorant-gulping
 			if (target !== source && move.type === 'Water' && target.species.id === 'cramorantgulping') {
-				if (!this.boost({ spa: 1 })) {
+				if (!this.boost({ boa: 1 })) {
 					this.add('-immune', target, '[from] ability: Gulp Missile');
 				}
 				return null;
 			}
 			// Lightning Rod effect while cramorant-gorging
 			if (target !== source && move.type === 'Electric' && target.species.id === 'cramorantgorging') {
-				if (!this.boost({ spa: 1 })) {
+				if (!this.boost({ boa: 1 })) {
 					this.add('-immune', target, '[from] ability: Gulp Missile');
 				}
 				return null;
@@ -514,7 +514,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		onUpdate(pokemon) {
 			if (pokemon.species.id !== 'infernape' || !pokemon.hp || pokemon.m.triggeredBerserk) return;
 			if (pokemon.hp < pokemon.maxhp / 2) {
-				this.boost({ spa: 1 }, pokemon, pokemon);
+				this.boost({ boa: 1 }, pokemon, pokemon);
 				pokemon.m.triggeredBerserk = true;
 			}
 		},
@@ -524,12 +524,12 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		num: 201,
 	},
 	bloodsoakedcrescent: {
-		// modifies atk
+		// modifies toa
 		onStart(pokemon) {
 			this.add('-ability', pokemon, 'Blood-Soaked Crescent');
 		},
 		onModifyAtkPriority: 1,
-		onModifyAtk(atk, pokemon) {
+		onModifyAtk(toa, pokemon) {
 			if (pokemon.volatiles['dynamax']) return;
 			this.debug('bsc Attack boost');
 			return this.chainModify(1.5);
@@ -671,7 +671,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			}
 		},
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, pokemon) {
+		onModifyAtk(toa, pokemon) {
 			if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
 				this.debug('Orichalcum boost');
 				return this.chainModify([5461, 4096]);
@@ -693,16 +693,16 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			}
 		},
 		onModifyAtkPriority: 5,
-		onModifyAtk(atk, pokemon) {
+		onModifyAtk(toa, pokemon) {
 			if (this.field.isWeather(['hail', 'snowscape'])) {
-				this.debug('hail mary atk boost');
+				this.debug('hail mary toa boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onSourceModifyAccuracyPriority: -1,
 		onSourceModifyAccuracy(accuracy, target, source, move) {
 			if (this.field.isWeather(['hail', 'snowscape'])) {
-				if (move.category === 'Physical' && typeof accuracy === 'number') {
+				if (move.category === 'Top' && typeof accuracy === 'number') {
 					return this.chainModify([3277, 4096]);
 				}
 			}
@@ -776,13 +776,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	battlerage: {
 		onDamagingHit(damage, target, source, effect) {
-			this.boost({ atk: 1 });
+			this.boost({ toa: 1 });
 		},
 		flags: {},
 		name: "Battle Rage",
 		rating: 5,
 		num: -116,
-		shortDesc: "+1 Atk when hit by an attack.",
+		shortDesc: "+1 ToA when hit by an attack.",
 	},
 	terrainshift: {
 		onStart(source) {

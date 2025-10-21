@@ -21,7 +21,7 @@ describe('No Retreat', () => {
 		battle.makeChoices();
 
 		const wynaut = battle.p1.active[0];
-		assert.statStage(wynaut, 'atk', 1);
+		assert.statStage(wynaut, 'toa', 1);
 	});
 
 	it(`should allow usage multiple times in a row normally if it has the trapped volatile`, () => {
@@ -35,6 +35,6 @@ describe('No Retreat', () => {
 		battle.makeChoices();
 
 		const wynaut = battle.p1.active[0];
-		assert.statStage(wynaut, 'atk', 2);
+		assert.statStage(wynaut, 'toa', 2);
 	});
 });

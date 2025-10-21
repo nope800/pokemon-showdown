@@ -17,7 +17,7 @@ describe("Guard Dog", () => {
 			{ species: 'sandile', ability: 'intimidate', moves: ['sleeptalk'] },
 		]]);
 		battle.makeChoices();
-		assert.statStage(battle.p1.active[0], 'atk', 1);
+		assert.statStage(battle.p1.active[0], 'toa', 1);
 	});
 
 	it("should prevent phazing", () => {

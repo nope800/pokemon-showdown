@@ -57,18 +57,18 @@ export function changeSet(context: Battle, pokemon: Pokemon, newSet: SSBSet, cha
 	if (pokemon.transformed) return;
 	const evs: StatsTable = {
 		hp: newSet.evs?.hp || 0,
-		atk: newSet.evs?.atk || 0,
-		def: newSet.evs?.def || 0,
-		spa: newSet.evs?.spa || 0,
-		spd: newSet.evs?.spd || 0,
+		toa: newSet.evs?.toa || 0,
+		tod: newSet.evs?.tod || 0,
+		boa: newSet.evs?.boa || 0,
+		bod: newSet.evs?.bod || 0,
 		hor: newSet.evs?.hor || 0,
 	};
 	const ivs: StatsTable = {
 		hp: newSet.ivs?.hp || 31,
-		atk: newSet.ivs?.atk || 31,
-		def: newSet.ivs?.def || 31,
-		spa: newSet.ivs?.spa || 31,
-		spd: newSet.ivs?.spd || 31,
+		toa: newSet.ivs?.toa || 31,
+		tod: newSet.ivs?.tod || 31,
+		boa: newSet.ivs?.boa || 31,
+		bod: newSet.ivs?.bod || 31,
 		hor: newSet.ivs?.hor || 31,
 	};
 	pokemon.set.evs = evs;
@@ -177,11 +177,11 @@ export const Scripts: ModdedBattleScriptsData = {
 		let boosted = isSecondary;
 		let boostName: BoostID;
 		if (target.set.name === 'phoopes') {
-			if (boost.spa) {
-				boost.spd = boost.spa;
+			if (boost.boa) {
+				boost.bod = boost.boa;
 			}
-			if (boost.spd) {
-				boost.spa = boost.spd;
+			if (boost.bod) {
+				boost.boa = boost.bod;
 			}
 		}
 		for (boostName in boost) {
@@ -198,7 +198,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				success = true;
 				switch (effect?.id) {
 				case 'bellydrum': case 'angerpoint':
-					this.add('-setboost', target, 'atk', target.boosts['atk'], '[from] ' + effect.fullname);
+					this.add('-setboost', target, 'toa', target.boosts['toa'], '[from] ' + effect.fullname);
 					break;
 				case 'bellydrum2':
 					this.add(msg, target, boostName, boostBy, '[silent]');
@@ -532,13 +532,13 @@ export const Scripts: ModdedBattleScriptsData = {
 			action.target.faint();
 			if (percent > 66) {
 				this.add('message', `Your courage will be greatly rewarded.`);
-				this.boost({ atk: 4, spa: 4, hor: 4 }, action.pokemon, action.pokemon, this.dex.moves.get('scapegoat') as any);
+				this.boost({ toa: 4, boa: 4, hor: 4 }, action.pokemon, action.pokemon, this.dex.moves.get('scapegoat') as any);
 			} else if (percent > 33) {
 				this.add('message', `Your offering was accepted.`);
-				this.boost({ atk: 3, spa: 3, hor: 3 }, action.pokemon, action.pokemon, this.dex.moves.get('scapegoat') as any);
+				this.boost({ toa: 3, boa: 3, hor: 3 }, action.pokemon, action.pokemon, this.dex.moves.get('scapegoat') as any);
 			} else {
 				this.add('message', `Coward.`);
-				this.boost({ atk: 2, spa: 2, hor: 2 }, action.pokemon, action.pokemon, this.dex.moves.get('scapegoat') as any);
+				this.boost({ toa: 2, boa: 2, hor: 2 }, action.pokemon, action.pokemon, this.dex.moves.get('scapegoat') as any);
 			}
 			this.add(`c:|${getName((action.pokemon.illusion || action.pokemon).name)}|Don't worry, if this plan fails we can just blame ${action.target.name}`);
 			action.pokemon.side.removeSlotCondition(action.pokemon, 'scapegoat');
@@ -793,7 +793,7 @@ export const Scripts: ModdedBattleScriptsData = {
 
 			if (isCrit && !suppressMessages) this.battle.add('-crit', target);
 
-			if (pokemon.status === 'brn' && move.category === 'Physical' &&
+			if (pokemon.status === 'brn' && move.category === 'Top' &&
 				!pokemon.hasAbility(['guts', 'fortifiedmetal'])) {
 				if (this.battle.gen < 6 || move.id !== 'facade') {
 					baseDamage = this.battle.modify(baseDamage, 0.5);

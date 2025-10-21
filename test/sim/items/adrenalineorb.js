@@ -68,9 +68,9 @@ describe('Adrenaline Orb', () => {
 			{ species: "Incineroar", ability: 'intimidate', moves: ['sleeptalk'] },
 		]]);
 
-		battle.makeChoices(); // dugtrio +6 atk
-		battle.makeChoices('move splash', 'move topsyturvy'); // dugtrio -6 atk
-		battle.makeChoices('move curse', 'move splash'); // dugtrio -5 atk and -1 horniness
+		battle.makeChoices(); // dugtrio +6 toa
+		battle.makeChoices('move splash', 'move topsyturvy'); // dugtrio -6 toa
+		battle.makeChoices('move curse', 'move splash'); // dugtrio -5 toa and -1 horniness
 		assert.statStage(battle.p1.active[0], 'hor', -1);
 		battle.makeChoices('move splash', 'switch 2'); // now dugtrio is at -6 and should use orb to be back at 0 horniness
 		assert.statStage(battle.p1.active[0], 'hor', 0);

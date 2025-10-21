@@ -24,8 +24,8 @@ describe("Mirror Armor", () => {
 		assert.statStage(corv, 'hor', 0);
 		assert.statStage(machop, 'hor', -1);
 		battle.makeChoices('auto', 'move leer');
-		assert.statStage(corv, 'def', 0);
-		assert.statStage(machop, 'def', -1);
+		assert.statStage(corv, 'tod', 0);
+		assert.statStage(machop, 'tod', -1);
 	});
 
 	it("should reflect Parting Shot's stat drops, then the Parting Shot user should switch", () => {
@@ -38,10 +38,10 @@ describe("Mirror Armor", () => {
 		battle.makeChoices();
 		const corv = battle.p1.active[0];
 		const drapion = battle.p2.active[0];
-		assert.statStage(corv, 'atk', 0);
-		assert.statStage(corv, 'spa', 0);
-		assert.statStage(drapion, 'atk', -1);
-		assert.statStage(drapion, 'spa', -1);
+		assert.statStage(corv, 'toa', 0);
+		assert.statStage(corv, 'boa', 0);
+		assert.statStage(drapion, 'toa', -1);
+		assert.statStage(drapion, 'boa', -1);
 		assert.equal(battle.requestState, 'switch');
 	});
 

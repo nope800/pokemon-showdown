@@ -56,7 +56,7 @@ describe('Target Resolution', () => {
 			]]);
 			let redirector = battle.p2.active[0];
 			battle.makeChoices('move waterpulse 2, auto', 'auto');
-			assert.statStage(redirector, 'spa', 1);
+			assert.statStage(redirector, 'boa', 1);
 
 			// Do it again with swapped positions
 			battle.destroy();
@@ -72,7 +72,7 @@ describe('Target Resolution', () => {
 			]]);
 			redirector = battle.p2.active[2];
 			battle.makeChoices('move watergun 2, auto', 'auto');
-			assert.statStage(redirector, 'spa', 1);
+			assert.statStage(redirector, 'boa', 1);
 
 			// Test Storm Drain on the user's side
 			battle.destroy();
@@ -87,7 +87,7 @@ describe('Target Resolution', () => {
 			]]);
 			redirector = battle.p1.active[1];
 			battle.makeChoices('move watergun 3, auto', 'move swordsdance, move swordsdance, move finalgambit -2');
-			assert.statStage(redirector, 'spa', 1);
+			assert.statStage(redirector, 'boa', 1);
 		});
 
 		it(`should not redirect non-pulse/flying moves in Triples if the Pokemon is out of range`, () => {
@@ -115,7 +115,7 @@ describe('Target Resolution', () => {
 			]]);
 			const redirector = battle.p2.active[0];
 			battle.makeChoices('move watergun -2, auto', 'auto');
-			assert.statStage(redirector, 'spa', 1);
+			assert.statStage(redirector, 'boa', 1);
 		});
 
 		it(`should not redirect to another random target if the intended one is fainted in FFA`, () => {
@@ -199,7 +199,7 @@ describe('Target Resolution', () => {
 
 			battle.makeChoices('auto', 'auto'); // Shedinjas faint
 			battle.makeChoices('move waterpulse 2, pass', 'auto');
-			assert.statStage(redirector, 'spa', 2);
+			assert.statStage(redirector, 'boa', 2);
 		});
 
 		it(`should support RedirectTarget event for a fainted ally and type 'any'`, () => {
@@ -214,7 +214,7 @@ describe('Target Resolution', () => {
 
 			battle.makeChoices('auto', 'auto'); // Shedinjas faint
 			battle.makeChoices('move waterpulse -2, pass', 'auto');
-			assert.statStage(redirector, 'spa', 2);
+			assert.statStage(redirector, 'boa', 2);
 		});
 	});
 

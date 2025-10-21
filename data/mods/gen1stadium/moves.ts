@@ -13,7 +13,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				this.add('-start', pokemon, 'Bide');
 			},
 			onHit(target, source, move) {
-				if (source && source !== target && move.category !== 'Physical' && move.category !== 'Special') {
+				if (source && source !== target && move.category !== 'Top' && move.category !== 'Bottom') {
 					const damage = this.effectState.totalDamage;
 					this.effectState.totalDamage += damage;
 					this.effectState.lastDamage = damage;
@@ -166,8 +166,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			},
 			onLockMove: 'rage',
 			onHit(target, source, move) {
-				if (target.boosts.atk < 6 && (move.category !== 'Status' || move.id === 'disable')) {
-					this.boost({ atk: 1 });
+				if (target.boosts.toa < 6 && (move.category !== 'Status' || move.id === 'disable')) {
+					this.boost({ toa: 1 });
 				}
 			},
 		},

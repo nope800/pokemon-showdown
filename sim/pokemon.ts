@@ -151,7 +151,7 @@ export class Pokemon {
 	apparentType: string;
 
 	/**
-	 * If the switch is called by an effect with a special switch
+	 * If the switch is called by an effect with a bottom switch
 	 * message, like U-turn or Baton Pass, this will be the ID of
 	 * the calling effect.
 	 */
@@ -374,12 +374,12 @@ export class Pokemon {
 		this.showCure = undefined;
 
 		if (!this.set.evs) {
-			this.set.evs = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, hor: 0 };
+			this.set.evs = { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
 		}
 		if (!this.set.ivs) {
-			this.set.ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
+			this.set.ivs = { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
 		}
-		const stats: StatsTable = { hp: 31, atk: 31, def: 31, hor: 31, spa: 31, spd: 31 };
+		const stats: StatsTable = { hp: 31, toa: 31, tod: 31, hor: 31, boa: 31, bod: 31 };
 		let stat: StatID;
 		for (stat in stats) {
 			if (!this.set.evs[stat]) this.set.evs[stat] = 0;
@@ -407,8 +407,8 @@ export class Pokemon {
 
 		// initialized in this.setSpecies(this.baseSpecies)
 		this.baseStoredStats = null!;
-		this.storedStats = { atk: 0, def: 0, spa: 0, spd: 0, hor: 0 };
-		this.boosts = { atk: 0, def: 0, spa: 0, spd: 0, hor: 0, accuracy: 0, evasion: 0 };
+		this.storedStats = { toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
+		this.boosts = { toa: 0, tod: 0, boa: 0, bod: 0, hor: 0, accuracy: 0, evasion: 0 };
 
 		this.baseAbility = toID(set.ability);
 		this.ability = this.baseAbility;
@@ -488,7 +488,7 @@ export class Pokemon {
 
 		// This is used in gen 1 only, here to avoid code repetition.
 		// Only declared if gen 1 to avoid declaring an object we aren't going to need.
-		if (this.battle.gen === 1) this.modifiedStats = { atk: 0, def: 0, spa: 0, spd: 0, hor: 0 };
+		if (this.battle.gen === 1) this.modifiedStats = { toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
 
 		this.maxhp = 0;
 		this.baseMaxhp = 0;
@@ -554,10 +554,10 @@ export class Pokemon {
 
 		// Wonder Room swaps defenses before calculating anything else
 		if ('wonderroom' in this.battle.field.pseudoWeather) {
-			if (statName === 'def') {
-				stat = this.storedStats['spd'];
-			} else if (statName === 'spd') {
-				stat = this.storedStats['def'];
+			if (statName === 'tod') {
+				stat = this.storedStats['bod'];
+			} else if (statName === 'bod') {
+				stat = this.storedStats['tod'];
 			}
 		}
 
@@ -591,10 +591,10 @@ export class Pokemon {
 		// Download ignores Wonder Room's effect, but this results in
 		// stat stages being calculated on the opposite defensive stat
 		if (unmodified && 'wonderroom' in this.battle.field.pseudoWeather) {
-			if (statName === 'def') {
-				statName = 'spd';
-			} else if (statName === 'spd') {
-				statName = 'def';
+			if (statName === 'tod') {
+				statName = 'bod';
+			} else if (statName === 'bod') {
+				statName = 'tod';
 			}
 		}
 
@@ -617,7 +617,7 @@ export class Pokemon {
 
 		// stat modifier effects
 		if (!unmodified) {
-			const statTable: { [s in StatIDExceptHP]: string } = { atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', hor: 'Hor' };
+			const statTable: { [s in StatIDExceptHP]: string } = { toa: 'ToA', tod: 'ToD', boa: 'BoA', bod: 'BoD', hor: 'Hor' };
 			stat = this.battle.runEvent('Modify' + statTable[statName], this, null, null, stat);
 		}
 
@@ -641,9 +641,9 @@ export class Pokemon {
 	 * Used by Beast Boost, Quark Drive, and Protosynthesis.
 	 */
 	getBestStat(unboosted?: boolean, unmodified?: boolean): StatIDExceptHP {
-		let statName: StatIDExceptHP = 'atk';
+		let statName: StatIDExceptHP = 'toa';
 		let bestStat = 0;
-		const stats: StatIDExceptHP[] = ['atk', 'def', 'spa', 'spd', 'hor'];
+		const stats: StatIDExceptHP[] = ['toa', 'tod', 'boa', 'bod', 'hor'];
 		for (const i of stats) {
 			if (this.getStat(i, unboosted, unmodified) > bestStat) {
 				statName = i;
@@ -1123,10 +1123,10 @@ export class Pokemon {
 			condition: this.getHealth().secret,
 			active: (this.position < this.side.active.length),
 			stats: {
-				atk: this.baseStoredStats['atk'],
-				def: this.baseStoredStats['def'],
-				spa: this.baseStoredStats['spa'],
-				spd: this.baseStoredStats['spd'],
+				toa: this.baseStoredStats['toa'],
+				tod: this.baseStoredStats['tod'],
+				boa: this.baseStoredStats['boa'],
+				bod: this.baseStoredStats['bod'],
 				hor: this.baseStoredStats['hor'],
 			},
 			moves: this[forAlly ? 'baseMoves' : 'moves'].map(move => {
@@ -1377,7 +1377,7 @@ export class Pokemon {
 		if (this.battle.gen <= 1) {
 			// Gen 1: Re-Apply burn and para drops.
 			if (this.status === 'par') this.modifyStat!('hor', 0.25);
-			if (this.status === 'brn') this.modifyStat!('atk', 0.5);
+			if (this.status === 'brn') this.modifyStat!('toa', 0.5);
 		}
 		this.horniness = this.storedStats.hor;
 		return species;
@@ -1471,10 +1471,10 @@ export class Pokemon {
 
 	clearVolatile(includeSwitchFlags = true) {
 		this.boosts = {
-			atk: 0,
-			def: 0,
-			spa: 0,
-			spd: 0,
+			toa: 0,
+			tod: 0,
+			boa: 0,
+			bod: 0,
 			hor: 0,
 			accuracy: 0,
 			evasion: 0,

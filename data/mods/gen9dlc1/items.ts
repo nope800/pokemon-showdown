@@ -21,12 +21,12 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 	},
 	eviolite: {
 		inherit: true,
-		onModifyDef(def, pokemon) {
+		onModifyDef(tod, pokemon) {
 			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.id === 'dipplin') {
 				return this.chainModify(1.5);
 			}
 		},
-		onModifySpD(spd, pokemon) {
+		onModifySpD(bod, pokemon) {
 			if (pokemon.baseSpecies.nfe || pokemon.baseSpecies.id === 'dipplin') {
 				return this.chainModify(1.5);
 			}

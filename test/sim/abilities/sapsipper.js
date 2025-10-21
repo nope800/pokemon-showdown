@@ -20,6 +20,6 @@ describe('Sap Sipper', () => {
 		]]);
 
 		battle.makeChoices();
-		assert.statStage(battle.p1.active[1], 'atk', 1);
+		assert.statStage(battle.p1.active[1], 'toa', 1);
 	});
 });

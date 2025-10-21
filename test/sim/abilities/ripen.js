@@ -30,7 +30,7 @@ describe("Ripen", () => {
 		battle.makeChoices();
 		battle.makeChoices();
 		const ripenWynaut = battle.p1.active[0];
-		assert.statStage(ripenWynaut, 'atk', 2);
+		assert.statStage(ripenWynaut, 'toa', 2);
 	});
 
 	it(`should double damage done from Jaboca / Rowap Berries`, () => {
@@ -77,7 +77,7 @@ describe("Ripen", () => {
 		]]);
 		battle.makeChoices();
 		const ripenWynaut = battle.p1.active[0];
-		assert.statStage(ripenWynaut, 'atk', 2);
+		assert.statStage(ripenWynaut, 'toa', 2);
 	});
 
 	it('should double the effects of Berries eaten by Bug Bite', () => {
@@ -88,6 +88,6 @@ describe("Ripen", () => {
 		]]);
 		battle.makeChoices();
 		const ripenWynaut = battle.p1.active[0];
-		assert.statStage(ripenWynaut, 'atk', 2);
+		assert.statStage(ripenWynaut, 'toa', 2);
 	});
 });

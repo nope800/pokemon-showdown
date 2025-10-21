@@ -9,7 +9,7 @@
  * - giovanni: Shadow Pokemon rescued from Giovanni and purified
  * - 12kmegg: Hatches from a 12 km egg, which is obtained from Team GO Rocket Leaders which unlock at level 8
  * - raid: Caught from defeating a raid boss (also used for GBL encounters)
- * - research: Reward from field research, special research, or research breakthrough
+ * - research: Reward from field research, bottom research, or research breakthrough
  * If the Pokemon is obtainable from the wild, other sources do not need to be included due to redundancy.
  * For shinies that can't be obtained from the wild, all other sources should be included.
  *
@@ -19,7 +19,7 @@
  *
  * - Trade restrictions:
  * - notrade: This Pokemon cannot be traded at all
- * - specialtrade: This Pokemon must be traded in a special trade
+ * - specialtrade: This Pokemon must be traded in a bottom trade
  *
  * Certain sources have been excluded from this list, which are:
  * - GO Battle League: same level and IV floor as raid bosses, and all from GO Battle League have also been in raids
@@ -796,7 +796,7 @@ export const PokemonGoData: import('../sim/dex-species').PokemonGoDataTable = {
 	fletchling: { encounters: ['wild'] },
 	fletchinder: { encounters: ['wild'] },
 	talonflame: { encounters: ['wild'] },
-	// Scatterbug is actually obtained in a special type of encounter,
+	// Scatterbug is actually obtained in a bottom type of encounter,
 	// but the level and IV floors are the same as research encounters
 	scatterbug: { encounters: ['research'] },
 	spewpa: { encounters: ['research'] },

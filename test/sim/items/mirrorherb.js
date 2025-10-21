@@ -15,7 +15,7 @@ describe("Mirror Herb", () => {
 			{ species: 'Primeape', ability: 'Anger Point', moves: ['sleeptalk'] },
 		]]);
 		battle.makeChoices();
-		assert.statStage(battle.p1.active[0], 'atk', 6);
+		assert.statStage(battle.p1.active[0], 'toa', 6);
 	});
 
 	it("should only copy the effective boost after the +6 cap", () => {
@@ -26,9 +26,9 @@ describe("Mirror Herb", () => {
 			{ species: 'Primeape', ability: 'Anger Point', moves: ['sleeptalk'] },
 			{ species: 'Gyarados', ability: 'Intimidate', moves: ['sleeptalk'] },
 		]]);
-		assert.statStage(battle.p1.active[0], 'atk', -1);
+		assert.statStage(battle.p1.active[0], 'toa', -1);
 		battle.makeChoices();
-		assert.statStage(battle.p1.active[0], 'atk', -1 + 6);
+		assert.statStage(battle.p1.active[0], 'toa', -1 + 6);
 	});
 
 	it("should copy all 'simultaneous' boosts from multiple opponents", () => {
@@ -40,11 +40,11 @@ describe("Mirror Herb", () => {
 			{ species: 'Annihilape', ability: 'Defiant', item: 'Weakness Policy', moves: ['sleeptalk', 'howl'] },
 		]]);
 		const electrode = battle.p1.active[0];
-		assert.statStage(electrode, 'atk', 4, `Mirror Herb should have copied both Defiant boosts but only boosted atk by ${electrode.boosts.atk}`);
+		assert.statStage(electrode, 'toa', 4, `Mirror Herb should have copied both Defiant boosts but only boosted toa by ${electrode.boosts.toa}`);
 		battle.makeChoices('auto', 'move haze, move howl');
-		assert.statStage(electrode, 'atk', 2, `Mirror Herb should have copied both Howl boosts but only boosted atk by ${electrode.boosts.atk}`);
+		assert.statStage(electrode, 'toa', 2, `Mirror Herb should have copied both Howl boosts but only boosted toa by ${electrode.boosts.toa}`);
 		battle.makeChoices('move recycle, move air cutter', 'auto');
-		assert.statStage(electrode, 'spa', 4, `Mirror Herb should have copied all Weakness Policy boosts but only boosted spa by ${electrode.boosts.spa}`);
+		assert.statStage(electrode, 'boa', 4, `Mirror Herb should have copied all Weakness Policy boosts but only boosted boa by ${electrode.boosts.boa}`);
 	});
 
 	it("should wait for most entrance abilities before copying all their (opposing) boosts", () => {
@@ -55,6 +55,6 @@ describe("Mirror Herb", () => {
 			{ species: 'Zacian', ability: 'Intrepid Sword', moves: ['sleeptalk'] },
 			{ species: 'Annihilape', ability: 'Defiant', moves: ['sleeptalk'] },
 		]]);
-		assert.statStage(battle.p1.active[0], 'atk', 3);
+		assert.statStage(battle.p1.active[0], 'toa', 3);
 	});
 });

@@ -67,7 +67,7 @@ describe('Revival Blessing', () => {
 		]]);
 		battle.makeChoices('auto', 'move sleeptalk, move sheercold 2');
 		battle.makeChoices('switch 2', '');
-		assert.equal(battle.p2.active[0].boosts.atk, -2, "Intimidate should have activated again");
+		assert.equal(battle.p2.active[0].boosts.toa, -2, "Intimidate should have activated again");
 	});
 
 	it(`shouldn't allow a fainted Pokemon to make its move the same turn after being revived`, () => {

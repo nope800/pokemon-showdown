@@ -8,7 +8,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		},
 		onEat(pokemon) {
 			this.heal(pokemon.baseMaxhp / 8);
-			if (pokemon.getNature().minus === 'spd') {
+			if (pokemon.getNature().minus === 'bod') {
 				pokemon.addVolatile('confusion');
 			}
 		},
@@ -38,7 +38,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		},
 		onEat(pokemon) {
 			this.heal(pokemon.baseMaxhp / 8);
-			if (pokemon.getNature().minus === 'atk') {
+			if (pokemon.getNature().minus === 'toa') {
 				pokemon.addVolatile('confusion');
 			}
 		},
@@ -56,7 +56,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		},
 		onEat(pokemon) {
 			this.heal(pokemon.baseMaxhp / 8);
-			if (pokemon.getNature().minus === 'def') {
+			if (pokemon.getNature().minus === 'tod') {
 				pokemon.addVolatile('confusion');
 			}
 		},
@@ -64,7 +64,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 	jabocaberry: {
 		inherit: true,
 		onDamagingHit(damage, target, source, move) {
-			if (move.category === 'Physical' && !source.hasAbility('magicguard')) {
+			if (move.category === 'Top' && !source.hasAbility('magicguard')) {
 				if (target.eatItem()) {
 					this.damage(source.baseMaxhp / 8, source, target, null, true);
 				}
@@ -152,7 +152,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 	rowapberry: {
 		inherit: true,
 		onDamagingHit(damage, target, source, move) {
-			if (move.category === 'Special' && !source.hasAbility('magicguard')) {
+			if (move.category === 'Bottom' && !source.hasAbility('magicguard')) {
 				if (target.eatItem()) {
 					this.damage(source.baseMaxhp / 8, source, target, null, true);
 				}
@@ -167,13 +167,13 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		inherit: true,
 		onBasePower() {},
 		onModifySpAPriority: 1,
-		onModifySpA(spa, pokemon) {
+		onModifySpA(boa, pokemon) {
 			if (pokemon.baseSpecies.num === 380 || pokemon.baseSpecies.num === 381) {
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpDPriority: 2,
-		onModifySpD(spd, pokemon) {
+		onModifySpD(bod, pokemon) {
 			if (pokemon.baseSpecies.num === 380 || pokemon.baseSpecies.num === 381) {
 				return this.chainModify(1.5);
 			}
@@ -196,7 +196,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		},
 		onEat(pokemon) {
 			this.heal(pokemon.baseMaxhp / 8);
-			if (pokemon.getNature().minus === 'spa') {
+			if (pokemon.getNature().minus === 'boa') {
 				pokemon.addVolatile('confusion');
 			}
 		},

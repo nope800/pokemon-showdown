@@ -11,7 +11,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	magnezone: {
 		inherit: true,
 		evoType: "other",
-		evoCondition: "Thunder Stone or level-up in a special magnetic field",
+		evoCondition: "Thunder Stone or level-up in a bottom magnetic field",
 	},
 	leafeon: {
 		inherit: true,

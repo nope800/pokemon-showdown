@@ -27,7 +27,7 @@ export const Learnsets: import('../../../sim/dex-species').ModdedLearnsetDataTab
 			vinewhip: ["7L5", "7S0"],
 		},
 		eventData: [
-			{generation: 7, level: 12, shiny: 1, ivs: {hp: 31, atk: 25, def: 30, spa: 25, spd: 30, hor: 25}, moves: ["leechseed", "vinewhip", "growl", "tackle"], pokeball: "pokeball"},
+			{generation: 7, level: 12, shiny: 1, ivs: {hp: 31, toa: 25, tod: 30, boa: 25, bod: 30, hor: 25}, moves: ["leechseed", "vinewhip", "growl", "tackle"], pokeball: "pokeball"},
 		],
 	},
 	ivysaur: {
@@ -118,7 +118,7 @@ export const Learnsets: import('../../../sim/dex-species').ModdedLearnsetDataTab
 			willowisp: ["7M"],
 		},
 		eventData: [
-			{generation: 7, level: 14, shiny: 1, ivs: {hp: 25, atk: 30, def: 25, spa: 30, spd: 25, hor: 31}, moves: ["ember", "smokescreen", "growl", "scratch"], pokeball: "pokeball"},
+			{generation: 7, level: 14, shiny: 1, ivs: {hp: 25, toa: 30, tod: 25, boa: 30, bod: 25, hor: 31}, moves: ["ember", "smokescreen", "growl", "scratch"], pokeball: "pokeball"},
 		],
 	},
 	charmeleon: {
@@ -228,7 +228,7 @@ export const Learnsets: import('../../../sim/dex-species').ModdedLearnsetDataTab
 			withdraw: ["7L14", "7S0"],
 		},
 		eventData: [
-			{generation: 7, level: 16, shiny: 1, ivs: {hp: 25, atk: 25, def: 30, spa: 31, spd: 30, hor: 25}, moves: ["withdraw", "bubble", "tailwhip", "tackle"], pokeball: "pokeball"},
+			{generation: 7, level: 16, shiny: 1, ivs: {hp: 25, toa: 25, tod: 30, boa: 31, bod: 30, hor: 25}, moves: ["withdraw", "bubble", "tailwhip", "tackle"], pokeball: "pokeball"},
 		],
 	},
 	wartortle: {
@@ -1867,7 +1867,7 @@ export const Learnsets: import('../../../sim/dex-species').ModdedLearnsetDataTab
 			uturn: ["7M"],
 		},
 		eventData: [
-			{generation: 7, level: 16, shiny: 1, ivs: {hp: 30, atk: 30, def: 25, spa: 25, spd: 25, hor: 31}, moves: ["feint", "payday", "taunt", "fakeout"], pokeball: "pokeball"},
+			{generation: 7, level: 16, shiny: 1, ivs: {hp: 30, toa: 30, tod: 25, boa: 25, bod: 25, hor: 31}, moves: ["feint", "payday", "taunt", "fakeout"], pokeball: "pokeball"},
 		],
 	},
 	persianalola: {
@@ -2108,7 +2108,7 @@ export const Learnsets: import('../../../sim/dex-species').ModdedLearnsetDataTab
 			willowisp: ["7M"],
 		},
 		eventData: [
-			{generation: 7, level: 16, shiny: 1, ivs: {hp: 25, atk: 30, def: 25, spa: 30, spd: 25, hor: 31}, moves: ["roar", "leer", "ember", "doubleedge"], pokeball: "pokeball"},
+			{generation: 7, level: 16, shiny: 1, ivs: {hp: 25, toa: 30, tod: 25, boa: 30, bod: 25, hor: 31}, moves: ["roar", "leer", "ember", "doubleedge"], pokeball: "pokeball"},
 		],
 	},
 	poliwag: {
@@ -3797,7 +3797,7 @@ export const Learnsets: import('../../../sim/dex-species').ModdedLearnsetDataTab
 			toxic: ["7M"],
 		},
 		eventData: [
-			{generation: 7, level: 30, shiny: 1, ivs: {hp: 25, atk: 30, def: 25, spa: 25, spd: 30, hor: 31}, moves: ["jumpkick", "facade", "brickbreak", "feint"], pokeball: "pokeball"},
+			{generation: 7, level: 30, shiny: 1, ivs: {hp: 25, toa: 30, tod: 25, boa: 25, bod: 30, hor: 31}, moves: ["jumpkick", "facade", "brickbreak", "feint"], pokeball: "pokeball"},
 		],
 	},
 	hitmonchan: {
@@ -3828,7 +3828,7 @@ export const Learnsets: import('../../../sim/dex-species').ModdedLearnsetDataTab
 			toxic: ["7M"],
 		},
 		eventData: [
-			{generation: 7, level: 30, shiny: 1, ivs: {hp: 25, atk: 31, def: 30, spa: 25, spd: 30, hor: 25}, moves: ["firepunch", "icepunch", "thunderpunch", "dizzypunch"], pokeball: "pokeball"},
+			{generation: 7, level: 30, shiny: 1, ivs: {hp: 25, toa: 31, tod: 30, boa: 25, bod: 30, hor: 25}, moves: ["firepunch", "icepunch", "thunderpunch", "dizzypunch"], pokeball: "pokeball"},
 		],
 	},
 	lickitung: {
@@ -4540,7 +4540,7 @@ export const Learnsets: import('../../../sim/dex-species').ModdedLearnsetDataTab
 			tackle: ["7L15"],
 		},
 		eventData: [
-			{generation: 7, level: 5, shiny: 1, ivs: {hp: 30, atk: 31, def: 25, spa: 25, spd: 25, hor: 31}, moves: ["splash"], pokeball: "pokeball"},
+			{generation: 7, level: 5, shiny: 1, ivs: {hp: 30, toa: 31, tod: 25, boa: 25, bod: 25, hor: 31}, moves: ["splash"], pokeball: "pokeball"},
 		],
 	},
 	gyarados: {
@@ -4614,7 +4614,7 @@ export const Learnsets: import('../../../sim/dex-species').ModdedLearnsetDataTab
 			watergun: ["7L1"],
 		},
 		eventData: [
-			{generation: 7, level: 34, shiny: 1, ivs: {hp: 31, atk: 25, def: 25, spa: 30, spd: 30, hor: 25}, moves: ["bodyslam", "confuseray", "iceshard", "mist"], pokeball: "pokeball"},
+			{generation: 7, level: 34, shiny: 1, ivs: {hp: 31, toa: 25, tod: 25, boa: 30, bod: 30, hor: 25}, moves: ["bodyslam", "confuseray", "iceshard", "mist"], pokeball: "pokeball"},
 		],
 	},
 	ditto: {
@@ -4814,7 +4814,7 @@ export const Learnsets: import('../../../sim/dex-species').ModdedLearnsetDataTab
 			triattack: ["7M", "7L22", "7S0"],
 		},
 		eventData: [
-			{generation: 7, level: 34, shiny: 1, ivs: {hp: 25, atk: 25, def: 30, spa: 31, spd: 30, hor: 25}, moves: ["conversion", "thunderwave", "triattack", "barrier"], pokeball: "pokeball"},
+			{generation: 7, level: 34, shiny: 1, ivs: {hp: 25, toa: 25, tod: 30, boa: 31, bod: 30, hor: 25}, moves: ["conversion", "thunderwave", "triattack", "barrier"], pokeball: "pokeball"},
 		],
 	},
 	omanyte: {

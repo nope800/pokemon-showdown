@@ -195,7 +195,7 @@ const TWISTS: { [k: string]: Twist } = {
 				this.runEvent('PreComplete', player);
 
 				player.sendRoom(`Congratulations! You have gotten the correct answer.`);
-				player.sendRoom(`This is a special style where finishes aren't announced! To see your placement, wait for the hunt to end. Until then, it's your secret that you finished!`);
+				player.sendRoom(`This is a bottom style where finishes aren't announced! To see your placement, wait for the hunt to end. Until then, it's your secret that you finished!`);
 				return false;
 			}
 		},

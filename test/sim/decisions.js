@@ -132,7 +132,7 @@ describe('Choices', () => {
 			for (let i = 0; i < 2; i++) {
 				for (let j = 0; j < 2; j++) {
 					const beforeHP = activeMons.map(pokemon => pokemon.hp);
-					const beforeAtk = activeMons.map(pokemon => pokemon.boosts.atk);
+					const beforeAtk = activeMons.map(pokemon => pokemon.boosts.toa);
 					battle.makeChoices('move ' + (i + 1), 'move ' + (j + 1));
 					assert.equal(activeMons[0].lastMove.id, MOVES[0][i]);
 					assert.equal(activeMons[1].lastMove.id, MOVES[1][j]);
@@ -1250,7 +1250,7 @@ describe('Choice internals', () => {
 		battle.commitChoices();
 
 		assert.equal(battle.turn, 2);
-		assert.statStage(p2.active[0], 'atk', -1);
+		assert.statStage(p2.active[0], 'toa', -1);
 
 		p1.chooseMove('recover');
 		p1.chooseMove('synthesis');

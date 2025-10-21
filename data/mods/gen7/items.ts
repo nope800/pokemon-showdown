@@ -19,7 +19,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		inherit: true,
 		onEat(pokemon) {
 			this.heal(pokemon.baseMaxhp / 2);
-			if (pokemon.getNature().minus === 'spd') {
+			if (pokemon.getNature().minus === 'bod') {
 				pokemon.addVolatile('confusion');
 			}
 		},
@@ -194,7 +194,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		inherit: true,
 		onEat(pokemon) {
 			this.heal(pokemon.baseMaxhp / 2);
-			if (pokemon.getNature().minus === 'atk') {
+			if (pokemon.getNature().minus === 'toa') {
 				pokemon.addVolatile('confusion');
 			}
 		},
@@ -287,7 +287,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		inherit: true,
 		onEat(pokemon) {
 			this.heal(pokemon.baseMaxhp / 2);
-			if (pokemon.getNature().minus === 'def') {
+			if (pokemon.getNature().minus === 'tod') {
 				pokemon.addVolatile('confusion');
 			}
 		},
@@ -638,7 +638,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		isNonstandard: null,
 		onEat(pokemon) {
 			this.heal(pokemon.baseMaxhp / 2);
-			if (pokemon.getNature().minus === 'spa') {
+			if (pokemon.getNature().minus === 'boa') {
 				pokemon.addVolatile('confusion');
 			}
 		},

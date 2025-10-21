@@ -84,23 +84,23 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		onModifyMove(move, pokemon) {
 			pokemon.addVolatile('beatup');
 			move.type = '???';
-			move.category = 'Physical';
+			move.category = 'Top';
 			move.allies = pokemon.side.pokemon.filter(ally => !ally.fainted && !ally.status);
 			move.multihit = move.allies.length;
 		},
 		condition: {
 			duration: 1,
 			onModifyAtkPriority: -101,
-			onModifyAtk(atk, pokemon, defender, move) {
+			onModifyAtk(toa, pokemon, defender, move) {
 				// https://www.smogon.com/forums/posts/8992145/
 				// this.add('-activate', pokemon, 'move: Beat Up', '[of] ' + move.allies![0].name);
 				this.event.modifier = 1;
-				return this.dex.species.get(move.allies!.shift()!.set.species).baseStats.atk;
+				return this.dex.species.get(move.allies!.shift()!.set.species).baseStats.toa;
 			},
 			onFoeModifyDefPriority: -101,
-			onFoeModifyDef(def, pokemon) {
+			onFoeModifyDef(tod, pokemon) {
 				this.event.modifier = 1;
-				return this.dex.species.get(pokemon.set.species).baseStats.def;
+				return this.dex.species.get(pokemon.set.species).baseStats.tod;
 			},
 		},
 	},
@@ -149,7 +149,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 						name: "Bide",
 						accuracy: true,
 						damage: this.effectState.totalDamage * 2,
-						category: "Physical",
+						category: "Top",
 						priority: 1,
 						flags: { contact: 1, protect: 1 },
 						ignoreImmunity: true,
@@ -293,7 +293,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			if (!source.hasType('Ghost')) {
 				delete move.volatileStatus;
 				delete move.onHit;
-				move.self = { boosts: { atk: 1, def: 1, hor: -1 } };
+				move.self = { boosts: { toa: 1, tod: 1, hor: -1 } };
 				move.target = move.nonGhostTarget!;
 			} else if (target?.volatiles['substitute']) {
 				delete move.volatileStatus;
@@ -399,7 +399,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			const moveData = {
 				name: "Doom Desire",
 				basePower: 120,
-				category: "Special",
+				category: "Bottom",
 				flags: { metronome: 1, futuremove: 1 },
 				willCrit: false,
 				type: '???',
@@ -415,7 +415,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 					accuracy: 85,
 					basePower: 0,
 					damage,
-					category: "Special",
+					category: "Bottom",
 					flags: { metronome: 1, futuremove: 1 },
 					effectType: 'Move',
 					type: '???',
@@ -639,7 +639,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			const moveData = {
 				name: "Future Sight",
 				basePower: 80,
-				category: "Special",
+				category: "Bottom",
 				flags: { metronome: 1, futuremove: 1 },
 				willCrit: false,
 				type: '???',
@@ -655,7 +655,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 					accuracy: 90,
 					basePower: 0,
 					damage,
-					category: "Special",
+					category: "Bottom",
 					flags: { metronome: 1, futuremove: 1 },
 					effectType: 'Move',
 					type: '???',
@@ -753,7 +753,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		inherit: true,
 		onModifyMove() {},
 		boosts: {
-			spa: 1,
+			boa: 1,
 		},
 	},
 	haze: {
@@ -951,7 +951,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				return 5;
 			},
 			onAnyModifyDamagePhase1(damage, source, target, move) {
-				if (target !== source && this.effectState.target.hasAlly(target) && this.getCategory(move) === 'Special') {
+				if (target !== source && this.effectState.target.hasAlly(target) && this.getCategory(move) === 'Bottom') {
 					if (!target.getMoveHitData(move).crit && !move.infiltrates) {
 						this.debug('Light Screen weaken');
 						if (target.alliesAndSelf().length > 1) return this.chainModify(2, 3);
@@ -1392,7 +1392,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				return 5;
 			},
 			onAnyModifyDamagePhase1(damage, source, target, move) {
-				if (target !== source && this.effectState.target.hasAlly(target) && this.getCategory(move) === 'Physical') {
+				if (target !== source && this.effectState.target.hasAlly(target) && this.getCategory(move) === 'Top') {
 					if (!target.getMoveHitData(move).crit && !move.infiltrates) {
 						this.debug('Reflect weaken');
 						if (target.alliesAndSelf().length > 1) return this.chainModify(2, 3);
@@ -1722,7 +1722,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	tailglow: {
 		inherit: true,
 		boosts: {
-			spa: 2,
+			boa: 2,
 		},
 	},
 	tailwind: {

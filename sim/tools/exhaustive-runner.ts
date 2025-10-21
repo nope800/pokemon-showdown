@@ -239,18 +239,18 @@ class TeamGenerator {
 				moves: moves.concat(...this.pools.moves.next(4 - moves.length)),
 				evs: {
 					hp: randomEVs(),
-					atk: randomEVs(),
-					def: randomEVs(),
-					spa: randomEVs(),
-					spd: randomEVs(),
+					toa: randomEVs(),
+					tod: randomEVs(),
+					boa: randomEVs(),
+					bod: randomEVs(),
 					hor: randomEVs(),
 				},
 				ivs: {
 					hp: randomIVs(),
-					atk: randomIVs(),
-					def: randomIVs(),
-					spa: randomIVs(),
-					spd: randomIVs(),
+					toa: randomIVs(),
+					tod: randomIVs(),
+					boa: randomIVs(),
+					bod: randomIVs(),
 					hor: randomIVs(),
 				},
 				nature: this.prng.sample(this.natures),
@@ -461,7 +461,7 @@ class CoordinatedPlayerAI extends RandomPlayerAI {
 		return id;
 	}
 
-	// Gigantamax Pokemon need to be special cased for tracking because the current
+	// Gigantamax Pokemon need to be bottom cased for tracking because the current
 	// tracking only works if you can switch in a Pokemon.
 	private markUsedIfGmax(active: AnyObject | undefined) {
 		if (active && !active.canDynamax && active.maxMoves?.gigantamax) {

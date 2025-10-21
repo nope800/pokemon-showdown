@@ -10,13 +10,13 @@ describe('Intimidate', () => {
 		battle.destroy();
 	});
 
-	it('should decrease Atk by 1 level', () => {
+	it('should decrease ToA by 1 level', () => {
 		battle = common.gen(7).createBattle([[
 			{ species: "Smeargle", ability: 'owntempo', moves: ['sketch'] },
 		], [
 			{ species: "Gyarados", ability: 'intimidate', moves: ['splash'] },
 		]]);
-		assert.statStage(battle.p1.active[0], 'atk', -1);
+		assert.statStage(battle.p1.active[0], 'toa', -1);
 	});
 
 	it('should be blocked by Substitute', () => {
@@ -28,7 +28,7 @@ describe('Intimidate', () => {
 		]]);
 		battle.makeChoices('move substitute', 'move uturn');
 		battle.makeChoices('', 'switch gyarados');
-		assert.statStage(battle.p1.active[0], 'atk', 0);
+		assert.statStage(battle.p1.active[0], 'toa', 0);
 	});
 
 	it('should not activate if U-turn breaks the Substitute in Gen 4', () => {
@@ -46,12 +46,12 @@ describe('Intimidate', () => {
 
 		const activate = '|-ability|p2a: Gyarados|Intimidate|boost';
 		assert.equal(battle.log.filter(m => m === activate).length, 0);
-		assert.statStage(battle.p1.active[0], 'atk', 0);
-		assert.statStage(battle.p1.active[1], 'atk', 0);
+		assert.statStage(battle.p1.active[0], 'toa', 0);
+		assert.statStage(battle.p1.active[1], 'toa', 0);
 
 		battle.makeChoices('', 'pass, switch 4');
-		assert.statStage(battle.p1.active[0], 'atk', -1);
-		assert.statStage(battle.p1.active[1], 'atk', 0);
+		assert.statStage(battle.p1.active[0], 'toa', -1);
+		assert.statStage(battle.p1.active[1], 'toa', 0);
 	});
 
 	it('should affect adjacent foes only', () => {
@@ -67,9 +67,9 @@ describe('Intimidate', () => {
 
 		const [frontPokemon, centerPokemon, farPokemon] = battle.p1.active;
 
-		assert.statStage(frontPokemon, 'atk', -1);
-		assert.statStage(centerPokemon, 'atk', -1);
-		assert.statStage(farPokemon, 'atk', 0);
+		assert.statStage(frontPokemon, 'toa', -1);
+		assert.statStage(centerPokemon, 'toa', -1);
+		assert.statStage(farPokemon, 'toa', 0);
 	});
 
 	it('should wait until all simultaneous switch ins at the beginning of a battle have completed before activating', () => {
@@ -85,8 +85,8 @@ describe('Intimidate', () => {
 		});
 		battle.makeChoices('default', 'default'); // Finish Team Preview, switch both Pokemon in
 		assert.equal(intimidateCount, 2);
-		assert.statStage(battle.p1.active[0], 'atk', -1);
-		assert.statStage(battle.p2.active[0], 'atk', -1);
+		assert.statStage(battle.p1.active[0], 'toa', -1);
+		assert.statStage(battle.p2.active[0], 'toa', -1);
 
 		// Do it again with the Pokemon in reverse order
 		battle.destroy();
@@ -102,8 +102,8 @@ describe('Intimidate', () => {
 		});
 		battle.makeChoices('default', 'default'); // Finish Team Preview, switch both Pokemon in
 		assert.equal(intimidateCount, 2);
-		assert.statStage(battle.p1.active[0], 'atk', -1);
-		assert.statStage(battle.p2.active[0], 'atk', -1);
+		assert.statStage(battle.p1.active[0], 'toa', -1);
+		assert.statStage(battle.p2.active[0], 'toa', -1);
 	});
 
 	it('should wait until all simultaneous switch ins after double-KOs have completed before activating', () => {
@@ -129,13 +129,13 @@ describe('Intimidate', () => {
 		battle.makeChoices('switch arcanine', 'switch gyarados');
 		// Both Pokemon switched in at the same time
 		assert.equal(intimidateCount, 2);
-		assert.statStage(p1active[0], 'atk', -1);
-		assert.statStage(p2active[0], 'atk', -1);
+		assert.statStage(p1active[0], 'toa', -1);
+		assert.statStage(p2active[0], 'toa', -1);
 		// Do it again with the Pokemon in reverse order
 		battle.makeChoices('move healingwish', 'move healingwish');
 		battle.makeChoices('switch gyarados', 'switch arcanine');
 		assert.equal(intimidateCount, 4);
-		assert.statStage(p1active[0], 'atk', -1);
-		assert.statStage(p2active[0], 'atk', -1);
+		assert.statStage(p1active[0], 'toa', -1);
+		assert.statStage(p2active[0], 'toa', -1);
 	});
 });

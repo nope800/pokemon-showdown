@@ -12,7 +12,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		secondary: {
 			chance: 10,
 			boosts: {
-				def: -1,
+				tod: -1,
 			},
 		},
 	},
@@ -36,23 +36,23 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		onModifyMove(move, pokemon) {
 			pokemon.addVolatile('beatup');
 			move.type = '???';
-			move.category = 'Special';
+			move.category = 'Bottom';
 			move.allies = pokemon.side.pokemon.filter(ally => !ally.fainted && !ally.status);
 			move.multihit = move.allies.length;
 		},
 		condition: {
 			duration: 1,
 			onModifySpAPriority: -101,
-			onModifySpA(atk, pokemon, defender, move) {
+			onModifySpA(toa, pokemon, defender, move) {
 				// https://www.smogon.com/forums/posts/8992145/
 				// this.add('-activate', pokemon, 'move: Beat Up', '[of] ' + move.allies![0].name);
 				this.event.modifier = 1;
-				return this.dex.species.get(move.allies!.shift()!.set.species).baseStats.atk;
+				return this.dex.species.get(move.allies!.shift()!.set.species).baseStats.toa;
 			},
 			onFoeModifySpDPriority: -101,
-			onFoeModifySpD(def, pokemon) {
+			onFoeModifySpD(tod, pokemon) {
 				this.event.modifier = 1;
-				return this.dex.species.get(pokemon.set.species).baseStats.def;
+				return this.dex.species.get(pokemon.set.species).baseStats.tod;
 			},
 		},
 	},
@@ -98,7 +98,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 						name: "Bide",
 						accuracy: 100,
 						damage: this.effectState.totalDamage * 2,
-						category: "Physical",
+						category: "Top",
 						priority: 0,
 						flags: { contact: 1, protect: 1 },
 						effectType: 'Move',
@@ -196,7 +196,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			onDamage(damage, target, source, effect) {
 				if (
 					effect.effectType === 'Move' && !source.isAlly(target) &&
-					(effect.category === 'Physical' || effect.id === 'hiddenpower')
+					(effect.category === 'Top' || effect.id === 'hiddenpower')
 				) {
 					this.effectState.slot = source.getSlot();
 					this.effectState.damage = 2 * damage;
@@ -213,7 +213,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		secondary: {
 			chance: 20,
 			boosts: {
-				spd: -1,
+				bod: -1,
 			},
 		},
 	},
@@ -280,7 +280,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			const moveData = {
 				name: "Doom Desire",
 				basePower: 120,
-				category: "Physical",
+				category: "Top",
 				flags: { metronome: 1, futuremove: 1 },
 				willCrit: false,
 				type: '???',
@@ -296,7 +296,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 					accuracy: 85,
 					basePower: 0,
 					damage,
-					category: "Physical",
+					category: "Top",
 					flags: { metronome: 1, futuremove: 1 },
 					effectType: 'Move',
 					type: '???',
@@ -442,11 +442,11 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	},
 	hiddenpower: {
 		inherit: true,
-		category: "Physical",
+		category: "Top",
 		onModifyMove(move, pokemon) {
 			move.type = pokemon.hpType || 'Dark';
 			const specialTypes = ['Fire', 'Water', 'Grass', 'Ice', 'Electric', 'Dark', 'Psychic', 'Dragon'];
-			move.category = specialTypes.includes(move.type) ? 'Special' : 'Physical';
+			move.category = specialTypes.includes(move.type) ? 'Bottom' : 'Top';
 		},
 	},
 	highjumpkick: {
@@ -517,7 +517,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			onDamage(damage, target, source, effect) {
 				if (
 					effect.effectType === 'Move' && !source.isAlly(target) &&
-					effect.category === 'Special' && effect.id !== 'hiddenpower'
+					effect.category === 'Bottom' && effect.id !== 'hiddenpower'
 				) {
 					this.effectState.slot = source.getSlot();
 					this.effectState.damage = 2 * damage;
@@ -768,18 +768,18 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			switch (this.field.effectiveWeather()) {
 			case 'sunnyday':
 				move.type = 'Fire';
-				move.category = 'Special';
+				move.category = 'Bottom';
 				break;
 			case 'raindance':
 				move.type = 'Water';
-				move.category = 'Special';
+				move.category = 'Bottom';
 				break;
 			case 'sandstorm':
 				move.type = 'Rock';
 				break;
 			case 'hail':
 				move.type = 'Ice';
-				move.category = 'Special';
+				move.category = 'Bottom';
 				break;
 			}
 			if (this.field.effectiveWeather()) move.basePower *= 2;

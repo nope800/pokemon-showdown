@@ -21,12 +21,12 @@ describe(`Spectral Thief`, () => {
 		battle.makeChoices('move calmmind', 'move swordsdance');
 		battle.makeChoices('move calmmind', 'move swordsdance');
 
-		assert.statStage(thief, 'atk', -1);
-		assert.statStage(victim, 'atk', 6);
+		assert.statStage(thief, 'toa', -1);
+		assert.statStage(victim, 'toa', 6);
 
 		battle.makeChoices('move spectralthief', 'move roar');
-		assert.statStage(thief, 'atk', 5);
-		assert.statStage(victim, 'atk', 0);
+		assert.statStage(thief, 'toa', 5);
+		assert.statStage(victim, 'toa', 0);
 
 		assert.atLeast(victim.maxhp - victim.hp, 3 * minusOneDmg);
 	});
@@ -39,12 +39,12 @@ describe(`Spectral Thief`, () => {
 		const [thief, victim] = battle.sides.map(s => s.active[0]);
 
 		battle.makeChoices('move calmmind', 'move swordsdance');
-		assert.statStage(thief, 'atk', 0);
-		assert.statStage(victim, 'atk', 2);
+		assert.statStage(thief, 'toa', 0);
+		assert.statStage(victim, 'toa', 2);
 
 		battle.makeChoices('move spectralthief', 'move roar');
-		assert.statStage(thief, 'atk', 4);
-		assert.statStage(victim, 'atk', 0);
+		assert.statStage(thief, 'toa', 4);
+		assert.statStage(victim, 'toa', 0);
 	});
 
 	it(`should only steal boosts once if the user has Parental Bond`, () => {
@@ -55,13 +55,13 @@ describe(`Spectral Thief`, () => {
 		const [thief, victim] = battle.sides.map(s => s.active[0]);
 
 		battle.makeChoices('move calmmind', 'move swordsdance');
-		assert.statStage(thief, 'atk', 0);
-		assert.statStage(victim, 'atk', 2);
+		assert.statStage(thief, 'toa', 0);
+		assert.statStage(victim, 'toa', 2);
 
 		battle.makeChoices('move spectralthief', 'move roar');
 		assert.false.holdsItem(victim); // Weakness Policy activated!
-		assert.statStage(thief, 'atk', 2);
-		assert.statStage(victim, 'atk', 2);
+		assert.statStage(thief, 'toa', 2);
+		assert.statStage(victim, 'toa', 2);
 	});
 
 	it(`should not steal boosts if the target is immune to the hit`, () => {
@@ -72,8 +72,8 @@ describe(`Spectral Thief`, () => {
 		const [thief, victim] = battle.sides.map(s => s.active[0]);
 
 		battle.makeChoices('move spectralthief', 'move swordsdance');
-		assert.statStage(thief, 'atk', 0);
-		assert.statStage(victim, 'atk', 2);
+		assert.statStage(thief, 'toa', 0);
+		assert.statStage(victim, 'toa', 2);
 	});
 
 	it(`should zero target's boosts if the target has Contrary`, () => {
@@ -83,7 +83,7 @@ describe(`Spectral Thief`, () => {
 		]);
 		const victim = battle.p2.active[0];
 		battle.makeChoices('move spectralthief', 'move leafstorm');
-		assert.statStage(victim, 'spa', 0);
+		assert.statStage(victim, 'boa', 0);
 		assert.false.fainted(victim);
 	});
 
@@ -94,7 +94,7 @@ describe(`Spectral Thief`, () => {
 		]);
 		const victim = battle.p2.active[0];
 		battle.makeChoices('move spectralthief', 'move swordsdance');
-		assert.statStage(victim, 'atk', 0);
+		assert.statStage(victim, 'toa', 0);
 		assert.false.fainted(victim);
 	});
 
@@ -105,7 +105,7 @@ describe(`Spectral Thief`, () => {
 		]);
 		const victim = battle.p2.active[0];
 		battle.makeChoices('move spectralthief', 'move amnesia');
-		assert.statStage(victim, 'spd', 0);
+		assert.statStage(victim, 'bod', 0);
 		assert.false.fainted(victim);
 	});
 });

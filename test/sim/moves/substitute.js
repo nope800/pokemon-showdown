@@ -25,8 +25,8 @@ describe('Substitute', () => {
 		battle.setPlayer('p2', { team: [{ species: 'Mewtwo', ability: 'pressure', moves: ['recover'] }] });
 		battle.makeChoices('move substitute', 'move recover');
 		battle.makeChoices('move calmmind', 'move recover');
-		assert.equal(battle.p1.active[0].boosts['spa'], 1);
-		assert.equal(battle.p1.active[0].boosts['spd'], 1);
+		assert.equal(battle.p1.active[0].boosts['boa'], 1);
+		assert.equal(battle.p1.active[0].boosts['bod'], 1);
 	});
 
 	it('should block damage from most moves', () => {
@@ -128,9 +128,9 @@ describe('Substitute', () => {
 
 	it(`[Gen 1] should track what the actual damage would have been without the Substitute`, () => {
 		battle = common.gen(1).createBattle([[
-			{ species: 'Rapidash', moves: ['substitute'], evs: { hp: 252, spd: 252 } },
+			{ species: 'Rapidash', moves: ['substitute'], evs: { hp: 252, bod: 252 } },
 		], [
-			{ species: 'Squirtle', moves: ['clamp'], evs: { spa: 252 } },
+			{ species: 'Squirtle', moves: ['clamp'], evs: { boa: 252 } },
 		]]);
 		const rapidash = battle.p1.active[0];
 		battle.makeChoices();

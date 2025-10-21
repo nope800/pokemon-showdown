@@ -38,7 +38,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			const type = move.type;
 
 			// Burn
-			if (pokemon.status === 'brn' && baseDamage && move.category === 'Physical' && !pokemon.hasAbility('guts')) {
+			if (pokemon.status === 'brn' && baseDamage && move.category === 'Top' && !pokemon.hasAbility('guts')) {
 				baseDamage = this.battle.modify(baseDamage, 0.5);
 			}
 
@@ -55,7 +55,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			// Weather
 			baseDamage = this.battle.runEvent('WeatherModifyDamage', pokemon, target, move, baseDamage);
 
-			if (this.battle.gen === 3 && move.category === 'Physical' && !Math.floor(baseDamage)) {
+			if (this.battle.gen === 3 && move.category === 'Top' && !Math.floor(baseDamage)) {
 				baseDamage = 1;
 			}
 

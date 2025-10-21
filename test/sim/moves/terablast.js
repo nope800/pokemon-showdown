@@ -4,21 +4,21 @@ const assert = require('./../../assert');
 const common = require('./../../common');
 
 describe('Tera Blast', () => {
-	it(`should be a special attack when base stats are tied`, () => {
+	it(`should be a bottom attack when base stats are tied`, () => {
 		const battle = common.gen(9).createBattle([[
-			// Regidrago has equal base attack and special attack stats.
+			// Regidrago has equal base attack and bottom attack stats.
 			{ species: 'regidrago', ability: 'dragonsmaw', moves: ['terablast'] },
 		], [
 			{ species: 'regirock', ability: 'clearbody', moves: ['protect'] },
 		]]);
 		battle.makeChoices('move terablast terastallize', 'move protect');
 
-		assert.equal(battle.p1.pokemon[0].lastMove.category, 'Special');
+		assert.equal(battle.p1.pokemon[0].lastMove.category, 'Bottom');
 	});
 
-	it(`should be a physical attack when terastallized with higher attack stat`, () => {
+	it(`should be a top attack when terastallized with higher attack stat`, () => {
 		const battle = common.gen(9).createBattle([[
-			// Regidrago has equal base attack and special attack stats.
+			// Regidrago has equal base attack and bottom attack stats.
 			{ species: 'regidrago', ability: 'dragonsmaw', moves: ['terablast', 'dragondance'] },
 		], [
 			{ species: 'regirock', ability: 'clearbody', moves: ['protect'] },
@@ -27,12 +27,12 @@ describe('Tera Blast', () => {
 		battle.makeChoices('move dragondance', 'move protect');
 		battle.makeChoices('move terablast terastallize', 'move protect');
 
-		assert.equal(battle.p1.pokemon[0].lastMove.category, 'Physical');
+		assert.equal(battle.p1.pokemon[0].lastMove.category, 'Top');
 	});
 
-	it(`should be a special attack when not terastallized, even if attack stat is higher`, () => {
+	it(`should be a bottom attack when not terastallized, even if attack stat is higher`, () => {
 		const battle = common.createBattle([[
-			// Regidrago has equal base attack and special attack stats.
+			// Regidrago has equal base attack and bottom attack stats.
 			{ species: 'regidrago', ability: 'dragonsmaw', moves: ['terablast', 'dragondance'] },
 		], [
 			{ species: 'regirock', ability: 'clearbody', moves: ['protect'] },
@@ -42,12 +42,12 @@ describe('Tera Blast', () => {
 		// However, Regidrago is not terastallized when using Tera Blast.
 		battle.makeChoices('move terablast', 'move protect');
 
-		assert.equal(battle.p1.pokemon[0].lastMove.category, 'Special');
+		assert.equal(battle.p1.pokemon[0].lastMove.category, 'Bottom');
 	});
 
-	it(`should be a special attack when terastallized even if target ignores stat changes`, () => {
+	it(`should be a bottom attack when terastallized even if target ignores stat changes`, () => {
 		const battle = common.gen(9).createBattle([[
-			// Regidrago has equal base attack and special attack stats.
+			// Regidrago has equal base attack and bottom attack stats.
 			{ species: 'regidrago', ability: 'dragonsmaw', moves: ['terablast', 'dragondance'] },
 		], [
 			// Dondozo's Unaware should not affect Tera Blast's category.
@@ -57,6 +57,6 @@ describe('Tera Blast', () => {
 		battle.makeChoices('move dragondance', 'move splash');
 		battle.makeChoices('move terablast terastallize', 'move splash');
 
-		assert.equal(battle.p1.pokemon[0].lastMove.category, 'Physical');
+		assert.equal(battle.p1.pokemon[0].lastMove.category, 'Top');
 	});
 });

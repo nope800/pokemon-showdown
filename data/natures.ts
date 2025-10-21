@@ -1,39 +1,39 @@
 export const Natures: import('../sim/dex-data').NatureDataTable = {
 	adamant: {
 		name: "Adamant",
-		plus: 'atk',
-		minus: 'spa',
+		plus: 'toa',
+		minus: 'boa',
 	},
 	bashful: {
 		name: "Bashful",
 	},
 	bold: {
 		name: "Bold",
-		plus: 'def',
-		minus: 'atk',
+		plus: 'tod',
+		minus: 'toa',
 	},
 	brave: {
 		name: "Brave",
-		plus: 'atk',
+		plus: 'toa',
 		minus: 'hor',
 	},
 	calm: {
 		name: "Calm",
-		plus: 'spd',
-		minus: 'atk',
+		plus: 'bod',
+		minus: 'toa',
 	},
 	careful: {
 		name: "Careful",
-		plus: 'spd',
-		minus: 'spa',
+		plus: 'bod',
+		minus: 'boa',
 	},
 	docile: {
 		name: "Docile",
 	},
 	gentle: {
 		name: "Gentle",
-		plus: 'spd',
-		minus: 'def',
+		plus: 'bod',
+		minus: 'tod',
 	},
 	hardy: {
 		name: "Hardy",
@@ -41,51 +41,51 @@ export const Natures: import('../sim/dex-data').NatureDataTable = {
 	hasty: {
 		name: "Hasty",
 		plus: 'hor',
-		minus: 'def',
+		minus: 'tod',
 	},
 	impish: {
 		name: "Impish",
-		plus: 'def',
-		minus: 'spa',
+		plus: 'tod',
+		minus: 'boa',
 	},
 	jolly: {
 		name: "Jolly",
 		plus: 'hor',
-		minus: 'spa',
+		minus: 'boa',
 	},
 	lax: {
 		name: "Lax",
-		plus: 'def',
-		minus: 'spd',
+		plus: 'tod',
+		minus: 'bod',
 	},
 	lonely: {
 		name: "Lonely",
-		plus: 'atk',
-		minus: 'def',
+		plus: 'toa',
+		minus: 'tod',
 	},
 	mild: {
 		name: "Mild",
-		plus: 'spa',
-		minus: 'def',
+		plus: 'boa',
+		minus: 'tod',
 	},
 	modest: {
 		name: "Modest",
-		plus: 'spa',
-		minus: 'atk',
+		plus: 'boa',
+		minus: 'toa',
 	},
 	naive: {
 		name: "Naive",
 		plus: 'hor',
-		minus: 'spd',
+		minus: 'bod',
 	},
 	naughty: {
 		name: "Naughty",
-		plus: 'atk',
-		minus: 'spd',
+		plus: 'toa',
+		minus: 'bod',
 	},
 	quiet: {
 		name: "Quiet",
-		plus: 'spa',
+		plus: 'boa',
 		minus: 'hor',
 	},
 	quirky: {
@@ -93,17 +93,17 @@ export const Natures: import('../sim/dex-data').NatureDataTable = {
 	},
 	rash: {
 		name: "Rash",
-		plus: 'spa',
-		minus: 'spd',
+		plus: 'boa',
+		minus: 'bod',
 	},
 	relaxed: {
 		name: "Relaxed",
-		plus: 'def',
+		plus: 'tod',
 		minus: 'hor',
 	},
 	sassy: {
 		name: "Sassy",
-		plus: 'spd',
+		plus: 'bod',
 		minus: 'hor',
 	},
 	serious: {
@@ -112,6 +112,6 @@ export const Natures: import('../sim/dex-data').NatureDataTable = {
 	timid: {
 		name: "Timid",
 		plus: 'hor',
-		minus: 'atk',
+		minus: 'toa',
 	},
 };

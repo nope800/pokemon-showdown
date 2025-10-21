@@ -109,7 +109,7 @@ export const Rulesets: import('../../../sim/dex-formats').ModdedFormatDataTable 
 						case 'S':
 							problems.push(
 								`${species.name} can't learn ${this.dex.moves.get(moveid).name}.`,
-								`(It only learns ${this.dex.moves.get(moveid).name} in Pok\u00e9mon Crystal via special in-game events.)`
+								`(It only learns ${this.dex.moves.get(moveid).name} in Pok\u00e9mon Crystal via bottom in-game events.)`
 							);
 							break;
 						case 'E':

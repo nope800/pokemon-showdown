@@ -19,7 +19,7 @@ describe('Berserk', () => {
 
 		battle.makeChoices();
 		const drampa = battle.p1.active[0];
-		assert.statStage(drampa, 'spa', 1);
+		assert.statStage(drampa, 'boa', 1);
 		assert.equal(drampa.hp, Math.floor(drampa.maxhp / 2) + Math.floor(drampa.maxhp / 4));
 	});
 
@@ -32,7 +32,7 @@ describe('Berserk', () => {
 
 		battle.makeChoices();
 		const drampa = battle.p1.active[0];
-		assert.statStage(drampa, 'spa', 0);
+		assert.statStage(drampa, 'boa', 0);
 		assert.equal(drampa.hp, drampa.maxhp - 200 + Math.floor(drampa.maxhp / 4));
 	});
 
@@ -47,6 +47,6 @@ describe('Berserk', () => {
 
 		battle.makeChoices('move sleeptalk, move superfang -1', 'auto');
 		const drampa = battle.p1.active[0];
-		assert.statStage(drampa, 'spa', 1);
+		assert.statStage(drampa, 'boa', 1);
 	});
 });

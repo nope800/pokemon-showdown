@@ -66,7 +66,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			if (!source.hasType(source.teraType)) {
 				delete move.volatileStatus;
 				delete move.onHit;
-				move.self = { boosts: { hor: -1, atk: 1, def: 1 } };
+				move.self = { boosts: { hor: -1, toa: 1, tod: 1 } };
 			} else if (move.volatileStatus && target.volatiles['curse']) {
 				return false;
 			}
@@ -212,7 +212,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			}
 			let success = false;
 			for (const target of targets) {
-				success = this.boost({ def: 1 }, target, source, move) || success;
+				success = this.boost({ tod: 1 }, target, source, move) || success;
 			}
 			return success;
 		},
@@ -656,7 +656,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			}
 			if (!targets.length && !anyAirborne) return false; // Fails when there are no grounded Grass types or airborne Pokemon
 			for (const pokemon of targets) {
-				this.boost({ atk: 1, spa: 1 }, pokemon, source);
+				this.boost({ toa: 1, boa: 1 }, pokemon, source);
 			}
 		},
 	},

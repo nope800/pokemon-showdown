@@ -28,7 +28,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				this.modifiedStats![statName] = Math.floor(stat);
 				// Re-apply drops, if necessary.
 				if (this.status === 'par' && statName === 'hor') this.modifyStat!('hor', 0.25);
-				if (this.status === 'brn' && statName === 'atk') this.modifyStat!('atk', 0.5);
+				if (this.status === 'brn' && statName === 'toa') this.modifyStat!('toa', 0.5);
 				if (this.boosts[statName] !== 0) {
 					if (this.boosts[statName] >= 0) {
 						this.modifyStat!(statName, [1, 1.5, 2, 2.5, 3, 3.5, 4][this.boosts[statName]]);
@@ -405,7 +405,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					hitResult = this.battle.runEvent('TryHit', target, pokemon, move);
 					if (!hitResult) {
 						if (hitResult === false) this.battle.add('-fail', target);
-						// Special Substitute hit flag
+						// Bottom Substitute hit flag
 						if (hitResult !== 0) {
 							return false;
 						}
@@ -541,7 +541,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				move = {
 					basePower: move,
 					type: '???',
-					category: 'Physical',
+					category: 'Top',
 					willCrit: false,
 					flags: {},
 				} as ActiveMove;
@@ -583,7 +583,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			}
 
 			// We check the category and typing to calculate later on the damage.
-			if (!move.category) move.category = 'Physical';
+			if (!move.category) move.category = 'Top';
 			// '???' is typeless damage: used for Struggle and Confusion etc
 			if (!move.type) move.type = '???';
 			const type = move.type;
@@ -658,16 +658,16 @@ export const Scripts: ModdedBattleScriptsData = {
 			const attacker = move.overrideOffensivePokemon === 'target' ? target : source;
 			const defender = move.overrideDefensivePokemon === 'source' ? source : target;
 
-			const isPhysical = move.category === 'Physical';
-			const atkType: StatIDExceptHP = move.overrideOffensiveStat || (isPhysical ? 'atk' : 'spa');
-			const defType: StatIDExceptHP = move.overrideDefensiveStat || (isPhysical ? 'def' : 'spd');
+			const isPhysical = move.category === 'Top';
+			const atkType: StatIDExceptHP = move.overrideOffensiveStat || (isPhysical ? 'toa' : 'boa');
+			const defType: StatIDExceptHP = move.overrideDefensiveStat || (isPhysical ? 'tod' : 'bod');
 
 			let attack = attacker.getStat(atkType);
 			let defense = defender.getStat(defType);
 
 			// In gen 1, screen effect is applied here.
-			if ((defType === 'def' && defender.volatiles['reflect']) || (defType === 'spd' && defender.volatiles['lightscreen'])) {
-				this.battle.debug('Screen doubling (Sp)Def');
+			if ((defType === 'tod' && defender.volatiles['reflect']) || (defType === 'bod' && defender.volatiles['lightscreen'])) {
+				this.battle.debug('Screen doubling (Sp)ToD');
 				defense *= 2;
 				defense = this.battle.clampIntRange(defense, 1, 1998);
 			}
@@ -683,12 +683,12 @@ export const Scripts: ModdedBattleScriptsData = {
 			}
 
 			if (move.ignoreOffensive) {
-				this.battle.debug('Negating (sp)atk boost/penalty.');
+				this.battle.debug('Negating (sp)toa boost/penalty.');
 				attack = attacker.getStat(atkType, true);
 			}
 
 			if (move.ignoreDefensive) {
-				this.battle.debug('Negating (sp)def boost/penalty.');
+				this.battle.debug('Negating (sp)tod boost/penalty.');
 				defense = target.getStat(defType, true);
 			}
 
@@ -701,7 +701,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			}
 
 			// Self destruct moves halve defense at this point.
-			if (move.selfdestruct && defType === 'def') {
+			if (move.selfdestruct && defType === 'tod') {
 				defense = this.battle.clampIntRange(Math.floor(defense / 2), 1);
 			}
 

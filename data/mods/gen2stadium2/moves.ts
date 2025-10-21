@@ -3,11 +3,11 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	bellydrum: {
 		inherit: true,
 		onHit(target) {
-			if (target.boosts.atk >= 6 || target.hp <= target.maxhp / 2) {
+			if (target.boosts.toa >= 6 || target.hp <= target.maxhp / 2) {
 				return false;
 			}
 			this.directDamage(target.maxhp / 2);
-			const originalStage = target.boosts.atk;
+			const originalStage = target.boosts.toa;
 			let currentStage = originalStage;
 			let boosts = 0;
 			let loopStage = 0;
@@ -15,17 +15,17 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				loopStage = currentStage;
 				currentStage++;
 				if (currentStage < 6) currentStage++;
-				target.boosts.atk = loopStage;
-				if (target.getStat('atk', false, true) < 999) {
-					target.boosts.atk = currentStage;
+				target.boosts.toa = loopStage;
+				if (target.getStat('toa', false, true) < 999) {
+					target.boosts.toa = currentStage;
 					continue;
 				}
-				target.boosts.atk = currentStage - 1;
+				target.boosts.toa = currentStage - 1;
 				break;
 			}
-			boosts = target.boosts.atk - originalStage;
-			target.boosts.atk = originalStage;
-			this.boost({ atk: boosts });
+			boosts = target.boosts.toa - originalStage;
+			target.boosts.toa = originalStage;
+			this.boost({ toa: boosts });
 		},
 	},
 	destinybond: {

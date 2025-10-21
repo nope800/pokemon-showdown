@@ -14,7 +14,7 @@ describe(`Instruct`, () => {
 			[{ species: "Oranguru", moves: ['instruct'] }],
 		]);
 		battle.makeChoices();
-		assert.equal(battle.p1.active[0].boosts.def, 2);
+		assert.equal(battle.p1.active[0].boosts.tod, 2);
 	});
 
 	it(`should not trigger AfterMove effects of the instructed move for the Instruct user`, () => {
@@ -24,6 +24,6 @@ describe(`Instruct`, () => {
 		]);
 		battle.makeChoices();
 		battle.makeChoices('move spitup', 'move instruct');
-		assert.equal(battle.p2.active[0].boosts.def, 1);
+		assert.equal(battle.p2.active[0].boosts.tod, 1);
 	});
 });

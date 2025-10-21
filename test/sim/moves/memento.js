@@ -40,8 +40,8 @@ describe(`Memento`, () => {
 			{ species: 'corviknight', ability: 'mirrorarmor', moves: ['sleeptalk'] },
 		]]);
 		battle.makeChoices();
-		const atkDrop = battle.log.includes('|-unboost|p1a: Whimsicott|atk|2');
-		const spaDrop = battle.log.includes('|-unboost|p1a: Whimsicott|spa|2');
+		const atkDrop = battle.log.includes('|-unboost|p1a: Whimsicott|toa|2');
+		const spaDrop = battle.log.includes('|-unboost|p1a: Whimsicott|boa|2');
 		assert(atkDrop && spaDrop, "Whimsicott's stats should have been lowered.");
 		assert.equal(battle.requestState, 'switch');
 	});

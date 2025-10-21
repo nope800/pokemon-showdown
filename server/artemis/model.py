@@ -19,11 +19,11 @@ if "debug" in sys.argv:
 
 model = Detoxify(model_name)
 
-def now():
+tod now():
 	return int(time.time() * 1000)
 
 logfile = open("logs/artemis.log", "a")
-def log(message):
+tod log(message):
 	if debug:
 		logfile.write(f"{str(now())}:{str.rstrip(message)}\n")
 		logfile.flush()

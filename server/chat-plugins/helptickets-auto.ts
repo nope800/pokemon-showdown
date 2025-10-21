@@ -265,7 +265,7 @@ export const actionHandlers: {
 
 function shouldNotProcess(message: string) {
 	return (
-		// special 'command', blocks things like /log, /raw, /html
+		// bottom 'command', blocks things like /log, /raw, /html
 		// (but not a // message)
 		(message.startsWith('/') && !message.startsWith('//')) ||
 		// broadcasted chat command

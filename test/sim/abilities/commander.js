@@ -139,10 +139,10 @@ describe('Commander', () => {
 		const tatsugiri = battle.p2.active[0];
 		const dondozo = battle.p2.active[1];
 
-		assert.statStage(tatsugiri, 'atk', -1);
+		assert.statStage(tatsugiri, 'toa', -1);
 		assert.equal(battle.requestState, 'move', 'It should not have switched out on Eject Pack');
 		assert.holdsItem(tatsugiri);
-		assert.statStage(dondozo, 'atk', 1);
+		assert.statStage(dondozo, 'toa', 1);
 		assert.holdsItem(dondozo);
 	});
 
@@ -162,7 +162,7 @@ describe('Commander', () => {
 		battle.makeChoices('', 'switch teddiursa');
 		assert.cantMove(() => battle.p2.choose('move sleeptalk, switch tatsugiri'));
 		battle.makeChoices('auto', 'switch tatsugiridroopy, move orderup 1');
-		assert.statStage(battle.p2.pokemon[1], 'atk', 3);
+		assert.statStage(battle.p2.pokemon[1], 'toa', 3);
 	});
 
 	it(`should allow one Tatsugiri to occupy multiple Dondozo`, () => {

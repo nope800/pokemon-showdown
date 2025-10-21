@@ -40,7 +40,7 @@ describe('Room Service', () => {
 			{ species: 'whimsicott', moves: ['trickroom'] },
 		]]);
 		battle.makeChoices();
-		assert.statStage(battle.p1.active[0], 'atk', 0);
+		assert.statStage(battle.p1.active[0], 'toa', 0);
 		assert.statStage(battle.p1.active[0], 'hor', -1);
 	});
 });

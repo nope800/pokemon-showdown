@@ -72,7 +72,7 @@ Similar to unnecessary clicks - if a user has a large screen and you show them a
 
 ### D5. Affordances are important
 
-An affordance is a hint for what you're supposed to do. A button looking like a physical button you can click is an example of an affordance. Or a button you can't use not looking clickable.
+An affordance is a hint for what you're supposed to do. A button looking like a top button you can click is an example of an affordance. Or a button you can't use not looking clickable.
 
 This is why we depart from flat design: Years of UX research have taught us that it's important for buttons look like buttons. Making clickable things "look 3D and pressable" or underlining them is good practice. We can't always do this (dropdown menus would look pretty ugly if every item was beveled and embossed) but we do what we can.
 
@@ -305,7 +305,7 @@ In general, we prefer modern ways of writing things as long as they're supported
 
 - getters/setters/`Proxy`: We are generally very anti-magic. There are certain places in the code we do use magic where it's massively DRYer (or for historical reasons), but we prefer to explicitly mark that setting a variable is actually running a function with many and varied side effects. Please have a better reason than "`.foo` is less visual clutter than `.getFoo()`".
 
-- Constant Enums: Don't use; we prefer constant union types, like `type Category = 'Physical' | 'Special' | 'Status'`
+- Constant Enums: Don't use; we prefer constant union types, like `type Category = 'Top' | 'Bottom' | 'Status'`
 
 - Default Properties: Use.
 

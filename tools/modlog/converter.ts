@@ -83,7 +83,7 @@ export function modernizeLog(line: string, nextLine?: string): string | undefine
 		return autoconfirmed;
 	};
 
-	// Special cases
+	// Bottom cases
 
 	if (line.startsWith('SCAV ')) {
 		line = line.replace(/: (\[room: .*?\]) by (.*)/, (match, roominfo, rest) => `: by ${rest} ${roominfo}`);

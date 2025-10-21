@@ -109,7 +109,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 			basePower: 130,
 		},
 		onModifyAtkPriority: 1,
-		onModifyAtk(atk, pokemon) {
+		onModifyAtk(toa, pokemon) {
 			if (pokemon.baseSpecies.baseSpecies === 'Mandibuzz' || pokemon.baseSpecies.baseSpecies === 'Mew') {
 				return this.chainModify(2);
 			}

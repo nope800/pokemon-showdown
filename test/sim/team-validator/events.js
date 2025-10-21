@@ -54,7 +54,7 @@ describe('Team Validator', () => {
 		assert.false.legalTeam(team, 'gen7anythinggoes');
 
 		team = [
-			{ species: 'greninja-ash', ability: 'battlebond', moves: ['protect'], ivs: { atk: 0 }, evs: { hp: 1 } },
+			{ species: 'greninja-ash', ability: 'battlebond', moves: ['protect'], ivs: { toa: 0 }, evs: { hp: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen7anythinggoes');
 

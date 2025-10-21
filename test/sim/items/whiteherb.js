@@ -20,8 +20,8 @@ describe("White Herb", () => {
 		battle.makeChoices();
 		const wynaut = battle.p2.active[0];
 		assert.false.holdsItem(wynaut);
-		assert.statStage(wynaut, 'atk', 0);
-		assert.statStage(wynaut, 'spa', 0);
+		assert.statStage(wynaut, 'toa', 0);
+		assert.statStage(wynaut, 'boa', 0);
 	});
 
 	it('should activate after Costar', () => {
@@ -37,11 +37,11 @@ describe("White Herb", () => {
 		battle.makeChoices('switch 3, move sleeptalk', 'auto');
 		const flamigo = battle.p1.active[0];
 		assert.false.holdsItem(flamigo);
-		assert.statStage(flamigo, 'atk', 2);
-		assert.statStage(flamigo, 'spa', 2);
+		assert.statStage(flamigo, 'toa', 2);
+		assert.statStage(flamigo, 'boa', 2);
 		assert.statStage(flamigo, 'hor', 2);
-		assert.statStage(flamigo, 'def', 0);
-		assert.statStage(flamigo, 'spd', 0);
+		assert.statStage(flamigo, 'tod', 0);
+		assert.statStage(flamigo, 'bod', 0);
 	});
 
 	it('should activate after Abilities that boost stats on KOs', () => {
@@ -54,7 +54,7 @@ describe("White Herb", () => {
 		battle.makeChoices();
 		const wynaut = battle.p2.active[0];
 		assert.false.holdsItem(wynaut);
-		assert.statStage(wynaut, 'spa', 0);
+		assert.statStage(wynaut, 'boa', 0);
 	});
 
 	it('should activate after two Intimidate switch in at the same time', () => {
@@ -72,13 +72,13 @@ describe("White Herb", () => {
 		battle.makeChoices();
 		const wynaut = battle.p2.active[0];
 		assert.false.holdsItem(wynaut);
-		assert.statStage(wynaut, 'atk', 0);
+		assert.statStage(wynaut, 'toa', 0);
 
 		// After a double KO
 		battle.makeChoices('move sleeptalk, move finalgambit -1', 'move recycle, move sleeptalk');
 		battle.makeChoices('switch 3, switch 4');
 		assert.false.holdsItem(wynaut);
-		assert.statStage(wynaut, 'atk', 0);
+		assert.statStage(wynaut, 'toa', 0);
 	});
 
 	it('should activate before Opportunist during switch-ins', () => {
@@ -95,6 +95,6 @@ describe("White Herb", () => {
 		battle.makeChoices('switch 3, switch 4');
 		const flittle = battle.p2.active[0];
 		assert.false.holdsItem(flittle);
-		assert.statStage(flittle, 'atk', 1);
+		assert.statStage(flittle, 'toa', 1);
 	});
 });

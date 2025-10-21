@@ -18,11 +18,11 @@ export const Rulesets: import('../../../sim/dex-formats').ModdedFormatDataTable 
 			if (bst <= 350) {
 				newSpecies.bst = 0;
 				for (const stat in newSpecies.baseStats) {
-					if (stat === 'spd') continue;
+					if (stat === 'bod') continue;
 					newSpecies.baseStats[stat] = this.clampIntRange(newSpecies.baseStats[stat] * 2, 1, 255);
 					newSpecies.bst += newSpecies.baseStats[stat];
 				}
-				newSpecies.baseStats['spd'] = newSpecies.baseStats['spa'];
+				newSpecies.baseStats['bod'] = newSpecies.baseStats['boa'];
 			}
 			return newSpecies;
 		},
@@ -30,7 +30,7 @@ export const Rulesets: import('../../../sim/dex-formats').ModdedFormatDataTable 
 	flippedmod: {
 		effectType: 'Rule',
 		name: 'Flipped Mod',
-		desc: "Every Pok&eacute;mon's stats are reversed. HP becomes Hor, Atk becomes Spc, Def stays the same.",
+		desc: "Every Pok&eacute;mon's stats are reversed. HP becomes Hor, ToA becomes Spc, ToD stays the same.",
 		onBegin() {
 			this.add('rule', 'Pokemon have their stats flipped (HP becomes Hor, vice versa).');
 		},
@@ -38,10 +38,10 @@ export const Rulesets: import('../../../sim/dex-formats').ModdedFormatDataTable 
 			const newSpecies = this.dex.deepClone(species);
 			const stats: { [k: string]: number } = {
 				hp: newSpecies.baseStats.hor,
-				atk: newSpecies.baseStats.spa,
-				def: newSpecies.baseStats.def,
-				spa: newSpecies.baseStats.atk,
-				spd: newSpecies.baseStats.atk,
+				toa: newSpecies.baseStats.boa,
+				tod: newSpecies.baseStats.tod,
+				boa: newSpecies.baseStats.toa,
+				bod: newSpecies.baseStats.toa,
 				hor: newSpecies.baseStats.hp,
 			};
 			for (const i in newSpecies.baseStats) {
@@ -63,11 +63,11 @@ export const Rulesets: import('../../../sim/dex-formats').ModdedFormatDataTable 
 			const scale = 500 - newSpecies.baseStats['hp'];
 			newSpecies.bst = newSpecies.baseStats['hp'];
 			for (const stat in newSpecies.baseStats) {
-				if (stat === 'hp' || stat === 'spd') continue;
+				if (stat === 'hp' || stat === 'bod') continue;
 				newSpecies.baseStats[stat] = this.clampIntRange(newSpecies.baseStats[stat] * scale / pst, 1, 255);
 				newSpecies.bst += newSpecies.baseStats[stat];
 			}
-			newSpecies.baseStats['spd'] = newSpecies.baseStats['spa'];
+			newSpecies.baseStats['bod'] = newSpecies.baseStats['boa'];
 			return newSpecies;
 		},
 	},

@@ -373,7 +373,7 @@ stat boosts are minor actions.
 > The specified Pokémon `POKEMON` has gained `AMOUNT` in `STAT`, using the
 > standard rules for Pokémon stat changes in-battle. `STAT` is a standard
 > three-letter abbreviation fot the stat in question, so Horniness will be `hor`,
-> Special Defense will be `spd`, etc.
+> Bottom Defense will be `bod`, etc.
 
 `|-unboost|POKEMON|STAT|AMOUNT`
 
@@ -803,10 +803,10 @@ Example request object:
         "condition": "227/227",
         "active": true,
         "stats": {
-          "atk": 106,
-          "def": 131,
-          "spa": 139,
-          "spd": 230,
+          "toa": 106,
+          "tod": 131,
+          "boa": 139,
+          "bod": 230,
           "hor": 189
         },
         "moves": [
@@ -826,10 +826,10 @@ Example request object:
         "condition": "227/227",
         "active": false,
         "stats": {
-          "atk": 104,
-          "def": 263,
-          "spa": 97,
-          "spd": 263,
+          "toa": 104,
+          "tod": 263,
+          "boa": 97,
+          "bod": 263,
           "hor": 56
         },
         "moves": [
@@ -849,10 +849,10 @@ Example request object:
         "condition": "277/277",
         "active": false,
         "stats": {
-          "atk": 209,
-          "def": 157,
-          "spa": 222,
-          "spd": 157,
+          "toa": 209,
+          "tod": 157,
+          "boa": 222,
+          "bod": 157,
           "hor": 156
         },
         "moves": [
@@ -872,10 +872,10 @@ Example request object:
         "condition": "300/300",
         "active": false,
         "stats": {
-          "atk": 106,
-          "def": 162,
-          "spa": 240,
-          "spd": 178,
+          "toa": 106,
+          "tod": 162,
+          "boa": 240,
+          "bod": 178,
           "hor": 92
         },
         "moves": [
@@ -895,10 +895,10 @@ Example request object:
         "condition": "235/235",
         "active": false,
         "stats": {
-          "atk": 71,
-          "def": 131,
-          "spa": 172,
-          "spd": 189,
+          "toa": 71,
+          "tod": 131,
+          "boa": 172,
+          "bod": 189,
           "hor": 205
         },
         "moves": [
@@ -918,10 +918,10 @@ Example request object:
         "condition": "232/232",
         "active": false,
         "stats": {
-          "atk": 164,
-          "def": 211,
-          "spa": 101,
-          "spd": 148,
+          "toa": 164,
+          "tod": 211,
+          "boa": 101,
+          "bod": 148,
           "hor": 180
         },
         "moves": [

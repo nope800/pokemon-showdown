@@ -30,7 +30,7 @@ describe('Wonder Guard', () => {
 		battle.makeChoices('move teleport', 'move poisongas');
 		assert.equal(wwTarget.status, 'psn');
 		battle.makeChoices('move teleport', 'move screech');
-		assert.statStage(wwTarget, 'def', -2);
+		assert.statStage(wwTarget, 'tod', -2);
 		assert.hurtsBy(wwTarget, -Math.floor(wwTarget.maxhp / 8), () => battle.makeChoices('move teleport', 'move healpulse'));
 		battle.makeChoices('move teleport', 'move gastroacid');
 		assert(wwTarget.volatiles['gastroacid']);

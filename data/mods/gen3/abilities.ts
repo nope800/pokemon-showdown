@@ -85,7 +85,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				if (target.volatiles['substitute']) {
 					this.add('-immune', target);
 				} else {
-					this.boost({ atk: -1 }, target, pokemon, null, true);
+					this.boost({ toa: -1 }, target, pokemon, null, true);
 				}
 			}
 		},
@@ -122,7 +122,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	minus: {
 		inherit: true,
-		onModifySpA(spa, pokemon) {
+		onModifySpA(boa, pokemon) {
 			for (const active of this.getAllActive()) {
 				if (!active.fainted && active.hasAbility('plus')) {
 					return this.chainModify(1.5);
@@ -132,7 +132,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	plus: {
 		inherit: true,
-		onModifySpA(spa, pokemon) {
+		onModifySpA(boa, pokemon) {
 			for (const active of this.getAllActive()) {
 				if (!active.fainted && active.hasAbility('minus')) {
 					return this.chainModify(1.5);

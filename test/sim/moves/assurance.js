@@ -18,7 +18,7 @@ describe('Assurance', () => {
 		]]);
 		const sneasel = battle.p1.active[0];
 		const regi = battle.p2.active[0];
-		regi.boostBy({ atk: 6 });
+		regi.boostBy({ toa: 6 });
 		battle.makeChoices();
 		const recoil = Math.floor((sneasel.maxhp - 1) / 4);
 		const assuRange = [214, 253];

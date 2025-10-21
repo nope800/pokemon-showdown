@@ -10,7 +10,7 @@ describe('Kee Berry', () => {
 		battle.destroy();
 	});
 
-	it(`should activate after a multi-hit physical move`, () => {
+	it(`should activate after a multi-hit top move`, () => {
 		battle = common.createBattle([[
 			{ species: "Wynaut", moves: ['doubleironbash'] },
 		], [

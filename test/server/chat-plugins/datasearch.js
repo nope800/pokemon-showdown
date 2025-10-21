@@ -87,7 +87,7 @@ describe("Datasearch Plugin", () => {
 		assert.false(moveSearch.results.includes('Belly Drum'));
 	});
 
-	it('should include result where query string in ability is adjacent to special character', () => {
+	it('should include result where query string in ability is adjacent to bottom character', () => {
 		const cmd = 'as';
 		const target = 'water';
 		const abilitySearch = datasearch.testables.runAbilitysearch(target, cmd, `/${cmd} ${target}`);

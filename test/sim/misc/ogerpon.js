@@ -77,7 +77,7 @@ describe(`[Hackmons] Ogerpon`, () => {
 		battle.makeChoices('move ivycudgel terastallize', 'auto');
 		assert.species(ogerpon, 'Ogerpon-Wellspring-Tera');
 		assert.equal(ogerpon.ability, 'embodyaspectwellspring');
-		assert.statStage(ogerpon, 'spd', 1);
+		assert.statStage(ogerpon, 'bod', 1);
 		assert.equal(ogerpon.getTypes().join(''), 'Rock');
 		assert.fullHP(battle.p2.active[0]);
 	});
@@ -93,7 +93,7 @@ describe(`[Hackmons] Ogerpon`, () => {
 		battle.makeChoices('move ivycudgel terastallize', 'auto');
 		assert.species(ogerpon, 'Ogerpon-Wellspring-Tera');
 		assert.equal(ogerpon.ability, 'embodyaspectwellspring');
-		assert.statStage(ogerpon, 'spd', 1);
+		assert.statStage(ogerpon, 'bod', 1);
 		assert.equal(ogerpon.getTypes().join(''), 'Water');
 		assert.fullHP(battle.p2.active[0]);
 	});
@@ -109,7 +109,7 @@ describe(`[Hackmons] Ogerpon`, () => {
 		battle.makeChoices('move ivycudgel terastallize', 'auto');
 		assert.species(ogerpon, 'Ogerpon-Wellspring-Tera');
 		assert.equal(ogerpon.ability, 'embodyaspectwellspring');
-		assert.statStage(ogerpon, 'spd', 1);
+		assert.statStage(ogerpon, 'bod', 1);
 		assert.equal(ogerpon.getTypes().join(''), 'Rock');
 		assert.fullHP(battle.p2.active[0]);
 	});
@@ -134,7 +134,7 @@ describe(`[Hackmons] Ogerpon`, () => {
 		battle.makeChoices('move ivycudgel', 'auto');
 		assert.species(ogerpon, 'Ogerpon-Wellspring');
 		assert.equal(ogerpon.ability, 'waterabsorb');
-		assert.statStage(ogerpon, 'spd', 0);
+		assert.statStage(ogerpon, 'bod', 0);
 		assert.equal(ogerpon.getTypes().join(''), 'Fairy');
 		assert.fullHP(battle.p2.active[0]);
 	});
@@ -149,9 +149,9 @@ describe(`[Hackmons] Ogerpon`, () => {
 		const ogerpon = battle.p1.active[0];
 		battle.makeChoices();
 		assert.species(ogerpon, 'Ogerpon-Wellspring-Tera');
-		assert.statStage(ogerpon, 'spd', 0);
+		assert.statStage(ogerpon, 'bod', 0);
 		battle.makeChoices('move sleeptalk terastallize', 'auto');
 		assert.species(ogerpon, 'Ogerpon-Wellspring-Tera');
-		assert.statStage(ogerpon, 'spd', 1);
+		assert.statStage(ogerpon, 'bod', 1);
 	});
 });

@@ -81,13 +81,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	purifyingsalt: {
 		inherit: true,
-		onSourceModifyAtk(atk, attacker, defender, move) {
+		onSourceModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Psychic') {
 				this.debug('Purifying Salt weaken');
 				return this.chainModify(0.5);
 			}
 		},
-		onSourceModifySpA(spa, attacker, defender, move) {
+		onSourceModifySpA(boa, attacker, defender, move) {
 			if (move.type === 'Psychic') {
 				this.debug('Purifying Salt weaken');
 				return this.chainModify(0.5);
@@ -117,13 +117,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	rockypayload: {
 		inherit: true,
-		onModifyAtk(atk, attacker, defender, move) {
+		onModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Fighting') {
 				this.debug('Rocky Payload boost');
 				return this.chainModify(1.5);
 			}
 		},
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (move.type === 'Fighting') {
 				this.debug('Rocky Payload boost');
 				return this.chainModify(1.5);
@@ -143,13 +143,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	swarm: {
 		inherit: true,
-		onModifyAtk(atk, attacker, defender, move) {
+		onModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Grass' && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Swarm boost');
 				return this.chainModify(1.5);
 			}
 		},
-		onModifySpA(atk, attacker, defender, move) {
+		onModifySpA(toa, attacker, defender, move) {
 			if (move.type === 'Grass' && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Swarm boost');
 				return this.chainModify(1.5);
@@ -158,13 +158,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	thickfat: {
 		inherit: true,
-		onSourceModifyAtk(atk, attacker, defender, move) {
+		onSourceModifyAtk(toa, attacker, defender, move) {
 			if (move.type === 'Water' || move.type === 'Fire') {
 				this.debug('Thick Fat weaken');
 				return this.chainModify(0.5);
 			}
 		},
-		onSourceModifySpA(atk, attacker, defender, move) {
+		onSourceModifySpA(toa, attacker, defender, move) {
 			if (move.type === 'Water' || move.type === 'Fire') {
 				this.debug('Thick Fat weaken');
 				return this.chainModify(0.5);

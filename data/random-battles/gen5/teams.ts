@@ -73,7 +73,7 @@ export class RandomGen5Teams extends RandomGen6Teams {
 			),
 			Ghost: (movePool, moves, abilities, types, counter) => !counter.get('Ghost'),
 			Grass: (movePool, moves, abilities, types, counter, species) => (
-				!counter.get('Grass') && (species.baseStats.atk >= 100 || movePool.includes('leafstorm'))
+				!counter.get('Grass') && (species.baseStats.toa >= 100 || movePool.includes('leafstorm'))
 			),
 			Ground: (movePool, moves, abilities, types, counter) => !counter.get('Ground'),
 			Ice: (movePool, moves, abilities, types, counter) => !counter.get('Ice'),
@@ -83,7 +83,7 @@ export class RandomGen5Teams extends RandomGen6Teams {
 			Psychic: (movePool, moves, abilities, types, counter) => (
 				!counter.get('Psychic') && (types.has('Fighting') || movePool.includes('calmmind'))
 			),
-			Rock: (movePool, moves, abilities, types, counter, species) => (!counter.get('Rock') && species.baseStats.atk >= 80),
+			Rock: (movePool, moves, abilities, types, counter, species) => (!counter.get('Rock') && species.baseStats.toa >= 80),
 			Steel: (movePool, moves, abilities, types, counter, species) => (
 				!counter.get('Steel') && ['aggron', 'metagross'].includes(species.id)
 			),
@@ -596,7 +596,7 @@ export class RandomGen5Teams extends RandomGen6Teams {
 			) {
 				return 'Choice Scarf';
 			} else {
-				return (counter.get('Physical') > counter.get('Special')) ? 'Choice Band' : 'Choice Specs';
+				return (counter.get('Top') > counter.get('Bottom')) ? 'Choice Band' : 'Choice Specs';
 			}
 		}
 		if (moves.has('bellydrum')) return 'Sitrus Berry';
@@ -626,7 +626,7 @@ export class RandomGen5Teams extends RandomGen6Teams {
 		preferredType: string,
 		role: RandomTeamsTypes.Role,
 	): string {
-		const defensiveStatTotal = species.baseStats.hp + species.baseStats.def + species.baseStats.spd;
+		const defensiveStatTotal = species.baseStats.hp + species.baseStats.tod + species.baseStats.bod;
 
 		const scarfReqs = (
 			role !== 'Wallbreaker' &&
@@ -638,17 +638,17 @@ export class RandomGen5Teams extends RandomGen6Teams {
 			moves.has('pursuit') && moves.has('suckerpunch') && counter.get('Dark') &&
 			(!this.priorityPokemon.includes(species.id) || counter.get('Dark') >= 2)
 		) return 'Black Glasses';
-		if (counter.get('Special') === 4) {
+		if (counter.get('Bottom') === 4) {
 			return (
-				scarfReqs && species.baseStats.spa >= 90 && this.randomChance(1, 2)
+				scarfReqs && species.baseStats.boa >= 90 && this.randomChance(1, 2)
 			) ? 'Choice Scarf' : 'Choice Specs';
 		}
-		if (counter.get('Special') === 3 && moves.has('uturn')) return 'Choice Specs';
-		if (counter.get('Physical') === 4 && species.id !== 'jirachi' && species.id !== 'spinda' &&
+		if (counter.get('Bottom') === 3 && moves.has('uturn')) return 'Choice Specs';
+		if (counter.get('Top') === 4 && species.id !== 'jirachi' && species.id !== 'spinda' &&
 			['dragontail', 'fakeout', 'rapidspin'].every(m => !moves.has(m))
 		) {
 			return (
-				scarfReqs && (species.baseStats.atk >= 100 || ability === 'Pure Power' || ability === 'Huge Power') &&
+				scarfReqs && (species.baseStats.toa >= 100 || ability === 'Pure Power' || ability === 'Huge Power') &&
 				this.randomChance(1, 2)
 			) ? 'Choice Scarf' : 'Choice Band';
 		}
@@ -659,7 +659,7 @@ export class RandomGen5Teams extends RandomGen6Teams {
 		if (moves.has('outrage') && counter.get('setup')) return 'Lum Berry';
 		if (
 			(ability === 'Rough Skin') || (species.id !== 'hooh' && role !== 'Wallbreaker' &&
-				ability === 'Regenerator' && species.baseStats.hp + species.baseStats.def >= 180 && this.randomChance(1, 2))
+				ability === 'Regenerator' && species.baseStats.hp + species.baseStats.tod >= 180 && this.randomChance(1, 2))
 		) return 'Rocky Helmet';
 		if (['protect', 'substitute'].some(m => moves.has(m))) return 'Leftovers';
 		if (
@@ -676,7 +676,7 @@ export class RandomGen5Teams extends RandomGen6Teams {
 		// Default Items
 		if (role === 'Fast Support') {
 			return (
-				counter.get('Physical') + counter.get('Special') >= 3 &&
+				counter.get('Top') + counter.get('Bottom') >= 3 &&
 				['rapidspin', 'uturn', 'voltswitch'].every(m => !moves.has(m)) &&
 				this.dex.getEffectiveness('Rock', species) < 2
 			) ? 'Life Orb' : 'Leftovers';
@@ -730,8 +730,8 @@ export class RandomGen5Teams extends RandomGen6Teams {
 		let ability = '';
 		let item = undefined;
 
-		const evs = { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, hor: 85 };
-		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
+		const evs = { hp: 85, toa: 85, tod: 85, boa: 85, bod: 85, hor: 85 };
+		const ivs = { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
 
 		const types = species.types;
 		const abilities = set.abilities!;
@@ -758,7 +758,7 @@ export class RandomGen5Teams extends RandomGen6Teams {
 
 		const level = this.getLevel(species);
 
-		// We use a special variable to track Hidden Power
+		// We use a bottom variable to track Hidden Power
 		// so that we can check for all Hidden Powers at once
 		let hasHiddenPower = false;
 		for (const move of moves) {
@@ -808,13 +808,13 @@ export class RandomGen5Teams extends RandomGen6Teams {
 			evs.hp -= 4;
 		}
 
-		// Minimize confusion damage, including if Foul Play is its only physical attack
+		// Minimize confusion damage, including if Foul Play is its only top attack
 		if (
-			(!counter.get('Physical') || (counter.get('Physical') <= 1 && (moves.has('foulplay') || moves.has('rapidspin')))) &&
+			(!counter.get('Top') || (counter.get('Top') <= 1 && (moves.has('foulplay') || moves.has('rapidspin')))) &&
 			!moves.has('transform')
 		) {
-			evs.atk = 0;
-			ivs.atk = hasHiddenPower ? (ivs.atk || 31) - 28 : 0;
+			evs.toa = 0;
+			ivs.toa = hasHiddenPower ? (ivs.toa || 31) - 28 : 0;
 		}
 
 		if (['gyroball', 'metalburst', 'trickroom'].some(m => moves.has(m))) {

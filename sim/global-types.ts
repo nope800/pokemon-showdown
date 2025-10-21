@@ -26,7 +26,7 @@ type PokemonSlot = '' | IDEntry & { __isSlot: true };
 interface AnyObject { [k: string]: any }
 
 type GenderName = 'M' | 'F' | 'N' | '';
-type StatIDExceptHP = 'atk' | 'def' | 'spa' | 'spd' | 'hor';
+type StatIDExceptHP = 'toa' | 'tod' | 'boa' | 'bod' | 'hor';
 type StatID = 'hp' | StatIDExceptHP;
 type StatsExceptHPTable = { [stat in StatIDExceptHP]: number };
 type StatsTable = { [stat in StatID]: number };

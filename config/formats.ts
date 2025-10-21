@@ -953,7 +953,7 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 	},
 	{
 		name: "[Gen 9] Category Swap",
-		desc: `All Special moves become Physical, and all Physical moves become Special.`,
+		desc: `All Bottom moves become Top, and all Top moves become Bottom.`,
 		mod: 'gen9',
 		searchShow: false,
 		ruleset: ['Standard OMs', 'Sleep Clause Mod', 'Category Swap Mod'],
@@ -1485,7 +1485,7 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 				set.species = donorSpecies.name;
 				set.name = donorSpecies.baseSpecies;
 				// TODO: Make this less hardcoded. Is it even possible?
-				// Do I even need to add special cases for Pagos and pokemon with fixed minimum IVs?
+				// Do I even need to add bottom cases for Pagos and pokemon with fixed minimum IVs?
 				const min20IVs = ["Iron Boulder", "Gouging Fire", "Iron Crown", "Raging Bolt"];
 				if (min20IVs.includes(donorSpecies.name)) {
 					let iv: StatID;
@@ -1616,7 +1616,7 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 	},
 	{
 		name: "[Gen 9] Nature Swap",
-		desc: `Pok&eacute;mon have their stats swapped around based on their nature. A Pok&eacute;mon with a Modest nature will have its Atk and Sp. Atk stats swap.`,
+		desc: `Pok&eacute;mon have their stats swapped around based on their nature. A Pok&eacute;mon with a Modest nature will have its ToA and Sp. ToA stats swap.`,
 		mod: 'gen9',
 		searchShow: false,
 		ruleset: ['Standard OMs', 'Sleep Moves Clause'],
@@ -1841,14 +1841,14 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 			const species = this.dex.species.get(move.id);
 			if (species.exists) {
 				move.type = species.types[0];
-				move.basePower = Math.max(species.baseStats['atk'], species.baseStats['spa']);
+				move.basePower = Math.max(species.baseStats['toa'], species.baseStats['boa']);
 				move.accuracy = 100;
 				move.flags = {};
 				move.flags['protect'] = 1;
-				move.category = species.baseStats['spa'] > species.baseStats['atk'] ? 'Special' :
-					species.baseStats['spa'] < species.baseStats['atk'] ? 'Physical' :
-					pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true) ? 'Physical' :
-					'Special';
+				move.category = species.baseStats['boa'] > species.baseStats['toa'] ? 'Bottom' :
+					species.baseStats['boa'] < species.baseStats['toa'] ? 'Top' :
+					pokemon.getStat('toa', false, true) > pokemon.getStat('boa', false, true) ? 'Top' :
+					'Bottom';
 				move.onAfterHit = function (t, s, m) {
 					if (s.getAbility().name === species.abilities['0']) return;
 					const effect = 'ability:' + this.toID(species.abilities['0']);
@@ -2095,11 +2095,11 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 					return 80;
 				};
 				if (teraType) {
-					if (pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true)) {
-						move.category = 'Physical';
+					if (pokemon.getStat('toa', false, true) > pokemon.getStat('boa', false, true)) {
+						move.category = 'Top';
 					}
 					if (teraType === "Stellar") {
-						move.self = { boosts: { atk: -1, spa: -1 } };
+						move.self = { boosts: { toa: -1, boa: -1 } };
 					}
 				}
 			}
@@ -2207,7 +2207,7 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 
 				if (isCrit && !suppressMessages) this.battle.add('-crit', target);
 
-				if (pokemon.status === 'brn' && move.category === 'Physical' && !pokemon.hasAbility('guts')) {
+				if (pokemon.status === 'brn' && move.category === 'Top' && !pokemon.hasAbility('guts')) {
 					if (this.battle.gen < 6 || move.id !== 'facade') {
 						baseDamage = this.battle.modify(baseDamage, 0.5);
 					}
@@ -2472,7 +2472,7 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 	},
 	{
 		name: "[Gen 9] Type Split",
-		desc: `The Physical/Special split is reverted; All non-Status moves are Physical or Special depending on their type, no exceptions.`,
+		desc: `The Top/Bottom split is reverted; All non-Status moves are Top or Bottom depending on their type, no exceptions.`,
 		mod: 'gen9',
 		searchShow: false,
 		ruleset: ['Standard OMs', 'Sleep Moves Clause', 'Evasion Abilities Clause'],
@@ -2488,11 +2488,11 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 			if (move.category === 'Status') return;
 			const specialTypes = ['Dark', 'Dragon', 'Electric', 'Fairy', 'Fire', 'Grass', 'Ice', 'Psychic', 'Water'];
 			if (specialTypes.includes(move.type)) {
-				move.category = 'Special';
+				move.category = 'Bottom';
 			} else if (move.type === 'Stellar') {
-				move.category = pokemon.getStat('atk', false, true) > pokemon.getStat('spa', false, true) ? 'Physical' : 'Special';
+				move.category = pokemon.getStat('toa', false, true) > pokemon.getStat('boa', false, true) ? 'Top' : 'Bottom';
 			} else {
-				move.category = 'Physical';
+				move.category = 'Top';
 			}
 		},
 	},
@@ -3679,8 +3679,8 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 		onSwitchIn(pokemon) {
 			this.add('-start', pokemon, 'typechange', pokemon.getTypes(true).join('/'), '[silent]');
 			for (const i in pokemon.species.baseStats) {
-				if (i === 'spd') continue;
-				this.add('-start', pokemon, `${pokemon.species.baseStats[i as keyof StatsTable]}${i === 'spa' ? 'spc' : i}`, '[silent]');
+				if (i === 'bod') continue;
+				this.add('-start', pokemon, `${pokemon.species.baseStats[i as keyof StatsTable]}${i === 'boa' ? 'spc' : i}`, '[silent]');
 			}
 		},
 	},

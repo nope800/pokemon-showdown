@@ -21,7 +21,7 @@ describe(`Baton Pass`, () => {
 		battle.makeChoices('switch wingull');
 		const wingull = battle.p1.active[0];
 		assert.species(wingull, 'Wingull');
-		assert.statStage(wingull, 'atk', 2);
+		assert.statStage(wingull, 'toa', 2);
 		assert('focusenergy' in wingull.volatiles);
 		assert('substitute' in wingull.volatiles);
 		assert('leechseed' in wingull.volatiles);

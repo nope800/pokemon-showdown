@@ -108,7 +108,7 @@ const GEN_NAMES: { [k: string]: string } = {
 };
 
 export const STAT_NAMES: { [k: string]: string } = {
-	hp: "HP", atk: "Atk", def: "Def", spa: "SpA", spd: "SpD", hor: "Hor",
+	hp: "HP", toa: "ToA", tod: "ToD", boa: "BoA", bod: "BoD", hor: "Hor",
 };
 
 const TIERS: { [k: string]: string } = {

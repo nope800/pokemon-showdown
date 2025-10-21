@@ -9,7 +9,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		secondary: {
 			chance: 33,
 			boosts: {
-				def: -1,
+				tod: -1,
 			},
 		},
 		target: "normal",
@@ -17,8 +17,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	amnesia: {
 		inherit: true,
 		boosts: {
-			spa: 2,
-			spd: 2,
+			boa: 2,
+			bod: 2,
 		},
 	},
 	aurorabeam: {
@@ -26,7 +26,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		secondary: {
 			chance: 33,
 			boosts: {
-				atk: -1,
+				toa: -1,
 			},
 		},
 	},
@@ -88,7 +88,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	},
 	bite: {
 		inherit: true,
-		category: "Physical",
+		category: "Top",
 		secondary: {
 			chance: 10,
 			volatileStatus: 'flinch',
@@ -333,8 +333,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	growth: {
 		inherit: true,
 		boosts: {
-			spa: 1,
-			spd: 1,
+			boa: 1,
+			bod: 1,
 		},
 	},
 	gust: {
@@ -537,8 +537,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		secondary: {
 			chance: 33,
 			boosts: {
-				spa: -1,
-				spd: -1,
+				boa: -1,
+				bod: -1,
 			},
 		},
 	},
@@ -568,8 +568,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			onLockMove: 'rage',
 			onHit(target, source, move) {
 				// Disable and exploding moves boost Rage even if they miss/fail, so they are dealt with separately.
-				if (target.boosts.atk < 6 && (move.category !== 'Status' && !move.selfdestruct)) {
-					this.boost({ atk: 1 });
+				if (target.boosts.toa < 6 && (move.category !== 'Status' && !move.selfdestruct)) {
+					this.boost({ toa: 1 });
 				}
 			},
 		},

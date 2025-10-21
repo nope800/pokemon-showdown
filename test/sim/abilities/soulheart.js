@@ -21,7 +21,7 @@ describe('Soul-Heart', () => {
 
 		const magearna = battle.p2.active[0];
 		battle.makeChoices('move sleeptalk, move finalgambit 2', 'auto');
-		assert.statStage(magearna, 'spa', 2);
+		assert.statStage(magearna, 'boa', 2);
 
 		const log = battle.getDebugLog();
 		const soulHeartFirstIndex = log.indexOf('|Soul-Heart');

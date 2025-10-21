@@ -34,18 +34,18 @@ export class RandomLetsGoTeams extends RandomGen8Teams {
 		case 'bulkup': case 'swordsdance':
 			return {
 				cull: (
-					counter.setupType !== 'Physical' ||
+					counter.setupType !== 'Top' ||
 					counter.get('physicalsetup') > 1 ||
-					counter.get('Physical') + counter.get('physicalpool') < 2
+					counter.get('Top') + counter.get('physicalpool') < 2
 				),
 				isSetup: true,
 			};
 		case 'calmmind': case 'nastyplot': case 'quiverdance':
 			return {
 				cull: (
-					counter.setupType !== 'Special' ||
+					counter.setupType !== 'Bottom' ||
 					counter.get('specialsetup') > 1 ||
-					counter.get('Special') + counter.get('specialpool') < 2
+					counter.get('Bottom') + counter.get('specialpool') < 2
 				),
 				isSetup: true,
 			};
@@ -107,8 +107,8 @@ export class RandomLetsGoTeams extends RandomGen8Teams {
 
 		// This move doesn't satisfy our setup requirements:
 		if (
-			(move.category === 'Physical' && counter.setupType === 'Special') ||
-			(move.category === 'Special' && counter.setupType === 'Physical')
+			(move.category === 'Top' && counter.setupType === 'Bottom') ||
+			(move.category === 'Bottom' && counter.setupType === 'Top')
 		) {
 			// Reject STABs last in case the setup type changes later on
 			if (!types.has(move.type) || counter.get('stab') > 1 || counter.get(move.category) < 2) return { cull: true };
@@ -199,9 +199,9 @@ export class RandomLetsGoTeams extends RandomGen8Teams {
 			}
 		} while (moves.size < this.maxMoveCount && movePool.length);
 
-		const ivs = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, hor: 31 };
+		const ivs = { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
 		// Minimize confusion damage
-		if (!counter.get('Physical') && !moves.has('transform')) ivs.atk = 0;
+		if (!counter.get('Top') && !moves.has('transform')) ivs.toa = 0;
 
 		const requiredItem = species.requiredItem || (species.requiredItems ? this.sample(species.requiredItems) : null);
 		return {
@@ -213,7 +213,7 @@ export class RandomLetsGoTeams extends RandomGen8Teams {
 			shiny: this.randomChance(1, 1024),
 			item: (requiredItem || ''),
 			ability: 'No Ability',
-			evs: { hp: 20, atk: 20, def: 20, spa: 20, spd: 20, hor: 20 },
+			evs: { hp: 20, toa: 20, tod: 20, boa: 20, bod: 20, hor: 20 },
 			moves: Array.from(moves),
 			ivs,
 		};

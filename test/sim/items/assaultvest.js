@@ -22,7 +22,7 @@ describe('Assault Vest', () => {
 		battle.setPlayer('p1', { team: [{ species: 'Lopunny', ability: 'klutz', item: 'assaultvest', moves: ['trick'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Abra', ability: 'synchronize', item: 'ironball', moves: ['calmmind'] }] });
 		battle.makeChoices('move trick', 'move calmmind');
-		assert.statStage(battle.p2.active[0], 'spa', 1);
-		assert.statStage(battle.p2.active[0], 'spd', 1);
+		assert.statStage(battle.p2.active[0], 'boa', 1);
+		assert.statStage(battle.p2.active[0], 'bod', 1);
 	});
 });

@@ -10,15 +10,15 @@ describe(`Tera Starstorm`, () => {
 		battle.destroy();
 	});
 
-	it(`should be a physical attack when terastallized with higher attack stat and the user is Terapagos-Stellar`, () => {
+	it(`should be a top attack when terastallized with higher attack stat and the user is Terapagos-Stellar`, () => {
 		battle = common.gen(9).createBattle([[
-			{ species: 'terapagos', evs: { atk: 252 }, ability: 'terashift', moves: ['terastarstorm'], teraType: 'Stellar' },
+			{ species: 'terapagos', evs: { toa: 252 }, ability: 'terashift', moves: ['terastarstorm'], teraType: 'Stellar' },
 		], [
 			{ species: 'regirock', moves: ['sleeptalk'] },
 		]]);
 
 		battle.makeChoices('move terastarstorm terastallize', 'auto');
-		assert.equal(battle.p1.pokemon[0].lastMove.category, 'Physical');
+		assert.equal(battle.p1.pokemon[0].lastMove.category, 'Top');
 	});
 
 	it(`should be a spread move when the user is Terapagos-Stellar`, () => {
@@ -50,6 +50,6 @@ describe(`Tera Starstorm`, () => {
 
 		assert.fullHP(battle.p2.active[0]);
 		assert.fullHP(battle.p2.active[1]);
-		assert.equal(battle.p1.pokemon[0].lastMove.category, 'Special');
+		assert.equal(battle.p1.pokemon[0].lastMove.category, 'Bottom');
 	});
 });
