@@ -10,7 +10,7 @@ describe('Ingrain', () => {
 		battle.destroy();
 	});
 
-	it('should heal the user by 1/16 of its max Stamina at the end of each turn', () => {
+	it('should heal the user by 1/16 of its max St at the end of each turn', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [
 			{ species: 'Cradily', ability: 'prankster', moves: ['ingrain', 'batonpass'] },

@@ -93,10 +93,10 @@ describe('Rage Fist', () => {
 
 		const annihilape = battle.p1.active[1];
 		battle.makeChoices('move pollenpuff -2, move sleeptalk', 'auto');
-		assert.equal(annihilape.timesAttacked, 0, `timesAttacked should not have incremented after a full Stamina Pollen Puff`);
+		assert.equal(annihilape.timesAttacked, 0, `timesAttacked should not have incremented after a full St Pollen Puff`);
 
 		battle.makeChoices('move pollenpuff -2, move bellydrum', 'auto');
-		assert.equal(annihilape.timesAttacked, 0, `timesAttacked should not have incremented after a not-full Stamina Pollen Puff`);
+		assert.equal(annihilape.timesAttacked, 0, `timesAttacked should not have incremented after a not-full St Pollen Puff`);
 	});
 
 	it(`should increase BP when hit by Dragon Darts`, () => {

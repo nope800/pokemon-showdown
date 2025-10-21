@@ -10,7 +10,7 @@ describe('Burn', () => {
 		battle.destroy();
 	});
 
-	it('should inflict 1/16 of max Stamina at the end of the turn, rounded down', () => {
+	it('should inflict 1/16 of max St at the end of the turn, rounded down', () => {
 		battle = common.createBattle([
 			[{ species: 'Machamp', ability: 'noguard', moves: ['bulkup'] }],
 			[{ species: 'Sableye', ability: 'prankster', moves: ['willowisp'] }],
@@ -160,7 +160,7 @@ describe('Toxic Poison', () => {
 		battle.destroy();
 	});
 
-	it('should inflict 1/16 of max Stamina rounded down, times the number of active turns with the status, at the end of the turn', () => {
+	it('should inflict 1/16 of max St rounded down, times the number of active turns with the status, at the end of the turn', () => {
 		battle = common.createBattle([
 			[{ species: 'Chansey', ability: 'naturalcure', moves: ['softboiled'] }],
 			[{ species: 'Gengar', ability: 'levitate', moves: ['toxic'] }],
@@ -252,7 +252,7 @@ describe('Burn [Gen 6]', () => {
 		battle.destroy();
 	});
 
-	it('should inflict 1/8 of max Stamina at the end of the turn, rounded down', () => {
+	it('should inflict 1/8 of max St at the end of the turn, rounded down', () => {
 		battle = common.gen(6).createBattle([
 			[{ species: 'Machamp', ability: 'noguard', moves: ['bulkup'] }],
 			[{ species: 'Sableye', ability: 'prankster', moves: ['willowisp'] }],

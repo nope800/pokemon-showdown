@@ -68,6 +68,6 @@ describe('Punching Glove', () => {
 		const wynaut = battle.p1.active[0];
 		assert.equal(wynaut.status, '', `Wynaut should not have been poisoned by Baneful Bunker`);
 		assert.statStage(wynaut, 'tod', 0, `Wynaut's Defense should not have been lowered by Obstruct`);
-		assert.fullHP(wynaut, `Wynaut should not have lost Stamina from Spiky Shield`);
+		assert.fullHP(wynaut, `Wynaut should not have lost St from Spiky Shield`);
 	});
 });

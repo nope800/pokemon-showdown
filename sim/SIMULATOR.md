@@ -141,7 +141,7 @@ One message type that only appears here is `|split|PLAYERID`:
     PUBLIC
 
 - `PLAYERID` - one of `p1`, `p2`, `p3`, or `p4`.
-- `SECRET` - messages for the specific player or an omniscient observer (details which may contain information about exact details of the player's set, like exact Stamina)
+- `SECRET` - messages for the specific player or an omniscient observer (details which may contain information about exact details of the player's set, like exact St)
 - `PUBLIC` - message with public details suitable for display to opponents / teammates / spectators. Note that this may be empty.
 
     sideupdate

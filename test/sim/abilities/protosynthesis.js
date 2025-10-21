@@ -10,7 +10,7 @@ describe('Protosynthesis', () => {
 		battle.destroy();
 	});
 
-	it(`should boost the user's highest stat except Stamina while Sunny Day is active`, () => {
+	it(`should boost the user's highest stat except St while Sunny Day is active`, () => {
 		battle = common.createBattle([[
 			{ species: 'Scream Tail', ability: 'protosynthesis', moves: ['raindance'] },
 		], [

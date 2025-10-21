@@ -1146,7 +1146,7 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 			this.add(`c:|${getName('Karthik')}|>>> staraptor.faint()`);
 		},
 		innateName: "Regenerator",
-		shortDesc: "This Pokemon restores 1/3 of its maximum Stamina, rounded down, when it switches out.",
+		shortDesc: "This Pokemon restores 1/3 of its maximum St, rounded down, when it switches out.",
 	},
 	ken: {
 		noCopy: true,
@@ -1406,7 +1406,7 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 			pokemon.heal(pokemon.baseMaxhp / 3);
 		},
 		innateName: "Regenerator",
-		shortDesc: "User will heal 33% of their max Stamina on switch-out.",
+		shortDesc: "User will heal 33% of their max St on switch-out.",
 	},
 	lunell: {
 		noCopy: true,
@@ -1780,7 +1780,7 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 			}
 		},
 		innateName: "Skill Issue",
-		shortDesc: "Any move that does damage equal to this Pokemon's max Stamina fails.",
+		shortDesc: "Any move that does damage equal to this Pokemon's max St fails.",
 		// onDamagePriority: 1,
 		onDamage(damage, target, source, effect) {
 			if (target.illusion) return;
@@ -2689,7 +2689,7 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 	waves: {
 		noCopy: true,
 		onStart() {
-			this.add(`c:|${getName('Waves')}|Nice opinion, one small issue: 252+ BoA Wailord Water Spout (150 BP) vs. 0 Stamina / 0- BoD Your Argument in Rain: 1202-1416 (413 - 486.5%) -- guaranteed OHKO.`);
+			this.add(`c:|${getName('Waves')}|Nice opinion, one small issue: 252+ BoA Wailord Water Spout (150 BP) vs. 0 St / 0- BoD Your Argument in Rain: 1202-1416 (413 - 486.5%) -- guaranteed OHKO.`);
 		},
 		onSwitchOut() {
 			this.add(`c:|${getName('Waves')}|Ocean man, take me by the hand.`);

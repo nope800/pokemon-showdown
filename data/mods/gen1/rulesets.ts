@@ -2,7 +2,7 @@ export const Rulesets: import('../../../sim/dex-formats').ModdedFormatDataTable 
 	standard: {
 		effectType: 'ValidatorRule',
 		name: 'Standard',
-		ruleset: ['Obtainable', 'Desync Clause Mod', 'Sleep Clause Mod', 'Freeze Clause Mod', 'Species Clause', 'Nickname Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'Stamina Percentage Mod', 'Cancel Mod'],
+		ruleset: ['Obtainable', 'Desync Clause Mod', 'Sleep Clause Mod', 'Freeze Clause Mod', 'Species Clause', 'Nickname Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'St Percentage Mod', 'Cancel Mod'],
 		banlist: ['Dig', 'Fly'],
 	},
 	'350cupmod': {
@@ -30,9 +30,9 @@ export const Rulesets: import('../../../sim/dex-formats').ModdedFormatDataTable 
 	flippedmod: {
 		effectType: 'Rule',
 		name: 'Flipped Mod',
-		desc: "Every Pok&eacute;mon's stats are reversed. Stamina becomes Hor, ToA becomes Spc, ToD stays the same.",
+		desc: "Every Pok&eacute;mon's stats are reversed. St becomes Hor, ToA becomes Spc, ToD stays the same.",
 		onBegin() {
-			this.add('rule', 'Pokemon have their stats flipped (Stamina becomes Hor, vice versa).');
+			this.add('rule', 'Pokemon have their stats flipped (St becomes Hor, vice versa).');
 		},
 		onModifySpecies(species) {
 			const newSpecies = this.dex.deepClone(species);
@@ -53,9 +53,9 @@ export const Rulesets: import('../../../sim/dex-formats').ModdedFormatDataTable 
 	scalemonsmod: {
 		effectType: 'Rule',
 		name: 'Scalemons Mod',
-		desc: "Every Pok&eacute;mon's stats, barring Stamina, are scaled to give them a BST as close to 500 as possible",
+		desc: "Every Pok&eacute;mon's stats, barring St, are scaled to give them a BST as close to 500 as possible",
 		onBegin() {
-			this.add('rule', 'Scalemons Mod: Every Pokemon\'s stats, barring Stamina, are scaled to come as close to a BST of 500 as possible');
+			this.add('rule', 'Scalemons Mod: Every Pokemon\'s stats, barring St, are scaled to come as close to a BST of 500 as possible');
 		},
 		onModifySpecies(species, target, source) {
 			const newSpecies = this.dex.deepClone(species);

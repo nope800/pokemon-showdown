@@ -327,7 +327,7 @@ describe('Counter', () => {
 		assert.equal(pidgeot.maxhp - pidgeot.st, 300);
 	});
 
-	it(`[Gen 1] Moves with unique damage calculation don't overdamage a target with less Stamina`, () => {
+	it(`[Gen 1] Moves with unique damage calculation don't overdamage a target with less St`, () => {
 		battle = common.gen(1).createBattle([[
 			{ species: 'Gengar', moves: ['seismictoss'] },
 		], [

@@ -60,7 +60,7 @@ describe('Healing Wish', () => {
 			{ species: 'Garchomp', ability: 'sandveil', moves: ['sleeptalk'] },
 			{ species: 'Shedinja', ability: 'wonderguard', moves: ['endeavor', 'protect'] },
 		] });
-		// set up Healing Wish, Caterpie is at 1 Stamina
+		// set up Healing Wish, Caterpie is at 1 St
 		battle.makeChoices('move healingwish, move stringshot', 'move sleeptalk, move endeavor 2');
 		assert.equal(battle.requestState, 'switch');
 		// Rotom does not consume Healing Wish

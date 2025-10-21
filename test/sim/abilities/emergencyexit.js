@@ -10,7 +10,7 @@ const EMPTY_IVS = { st: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
 describe(`Emergency Exit`, () => {
 	afterEach(() => battle.destroy());
 
-	it(`should request switch-out if damaged below 50% Stamina`, () => {
+	it(`should request switch-out if damaged below 50% St`, () => {
 		battle = common.createBattle([[
 			{ species: "Golisopod", ability: 'emergencyexit', moves: ['sleeptalk'], ivs: EMPTY_IVS },
 			{ species: "Clefable", ability: 'unaware', moves: ['sleeptalk'] },
@@ -35,7 +35,7 @@ describe(`Emergency Exit`, () => {
 		assert.equal(battle.requestState, 'switch');
 	});
 
-	it(`should request switch-out if brought below half Stamina by residual damage`, () => {
+	it(`should request switch-out if brought below half St by residual damage`, () => {
 		battle = common.createBattle([[
 			{ species: 'Crobat', moves: ['toxic'] },
 		], [
@@ -47,7 +47,7 @@ describe(`Emergency Exit`, () => {
 		assert.equal(battle.requestState, 'switch');
 	});
 
-	it(`should request switch-out if brought below half Stamina by Photon Geyser`, () => {
+	it(`should request switch-out if brought below half St by Photon Geyser`, () => {
 		battle = common.createBattle([[
 			{ species: "Mew", moves: ['photongeyser'] },
 		], [
@@ -252,7 +252,7 @@ describe(`Emergency Exit`, () => {
 		assert.equal(battle.requestState, 'move');
 	});
 
-	it('should not request switchout if its Stamina is already below 50%', () => {
+	it('should not request switchout if its St is already below 50%', () => {
 		battle = common.createBattle([[
 			{ species: "Golisopod", evs: { st: 4 }, ability: 'emergencyexit', moves: ['sleeptalk', 'tackle'] },
 			{ species: "Wynaut", moves: ['sleeptalk'] },
@@ -268,7 +268,7 @@ describe(`Emergency Exit`, () => {
 		assert.equal(battle.requestState, 'move');
 	});
 
-	it('should request switchout if its Stamina was restored to above 50% and brought down again', () => {
+	it('should request switchout if its St was restored to above 50% and brought down again', () => {
 		battle = common.createBattle([[
 			{ species: "Golisopod", evs: { st: 4 }, ability: 'emergencyexit', moves: ['sleeptalk'] },
 			{ species: "Wynaut", moves: ['sleeptalk'] },
@@ -284,7 +284,7 @@ describe(`Emergency Exit`, () => {
 		assert.equal(battle.requestState, 'switch');
 	});
 
-	it('should not request switchout if its Stamina is already below 50% and an effect heals it', () => {
+	it('should not request switchout if its St is already below 50% and an effect heals it', () => {
 		battle = common.createBattle([[
 			{ species: "Golisopod", level: 65, item: 'figyberry', ability: 'emergencyexit', moves: ['sleeptalk'] },
 			{ species: "Wynaut", moves: ['sleeptalk'] },
@@ -296,7 +296,7 @@ describe(`Emergency Exit`, () => {
 		assert.equal(battle.requestState, 'move');
 	});
 
-	it('should request switchout if its Stamina drops to below 50% while dynamaxed', () => {
+	it('should request switchout if its St drops to below 50% while dynamaxed', () => {
 		battle = common.gen(8).createBattle([
 			[{ species: "Golisopod", ability: 'emergencyexit', moves: ['closecombat'], ivs: EMPTY_IVS, level: 30 }, { species: "Clefable", ability: 'Unaware', moves: ['metronome'] }],
 			[{ species: "Gengar", ability: 'cursedbody', moves: ['nightshade'] }],
@@ -307,7 +307,7 @@ describe(`Emergency Exit`, () => {
 		assert.equal(battle.requestState, 'switch');
 	});
 
-	it('should not request switchout if its Stamina is below 50% when its dynamax ends', () => {
+	it('should not request switchout if its St is below 50% when its dynamax ends', () => {
 		battle = common.gen(8).createBattle([
 			[{ species: "Golisopod", ability: 'emergencyexit', moves: ['drillrun'], ivs: EMPTY_IVS }, { species: "Clefable", ability: 'Unaware', moves: ['metronome'] }],
 			[{ species: "Landorus", ability: 'sheerforce', moves: ['sludgewave'] }],
@@ -352,7 +352,7 @@ describe(`Emergency Exit`, () => {
 		battle.makeChoices('switch 3');
 		battle.makeChoices('move firepledge 1, move grasspledge 1', 'auto');
 
-		// Halve Golisopod's Stamina
+		// Halve Golisopod's St
 		battle.makeChoices('move sleeptalk, move sleeptalk', 'switch 3, move superfang -1');
 
 		const golisopod = battle.p2.active[0];

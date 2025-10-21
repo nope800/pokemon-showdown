@@ -10,7 +10,7 @@ describe('Aftermath', () => {
 		battle.destroy();
 	});
 
-	it("should hurt attackers by 1/4 their max Stamina when this Pokemon is KOed by a contact move", () => {
+	it("should hurt attackers by 1/4 their max St when this Pokemon is KOed by a contact move", () => {
 		battle = common.createBattle([[
 			{ species: 'galvantula', moves: ['lunge'] },
 		], [

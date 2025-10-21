@@ -70,7 +70,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		name: "Call Illumise",
 		rating: 5,
 		num: -100,
-		shortDesc: "When Volbeat gets low on Stamina, it calls Illumise for aid.",
+		shortDesc: "When Volbeat gets low on St, it calls Illumise for aid.",
 	},
 	callvolbeat: {
 		onDamagePriority: -30,
@@ -125,7 +125,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		name: "Call Volbeat",
 		rating: 5,
 		num: -101,
-		shortDesc: "When Illumise gets low on Stamina, it calls Volbeat for aid.",
+		shortDesc: "When Illumise gets low on St, it calls Volbeat for aid.",
 	},
 	shortfuse: {
 		onDamagePriority: -30,
@@ -172,7 +172,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		},
 		onSwitchInPriority: -1,
 		onUpdate(pokemon) {
-			// checks if Glastrier is below 50% Stamina, if so transforms into Caly-Ice and sets ability to As One
+			// checks if Glastrier is below 50% St, if so transforms into Caly-Ice and sets ability to As One
 			if (pokemon.species.id !== 'glastrier' || !pokemon.st) return;
 			if (pokemon.st < pokemon.maxhp / 2) {
 				if (pokemon.species.id !== 'calyrexice' && pokemon.ability === 'frozenarmor') {
@@ -188,7 +188,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		name: "Frozen Armor",
 		rating: 5,
 		num: -105,
-		shortDesc: "-20 BP on attacks targeting Glastrier, at 50% Stamina become Calyrex-Ice.",
+		shortDesc: "-20 BP on attacks targeting Glastrier, at 50% St become Calyrex-Ice.",
 	},
 	flipflop: {
 		onDamagingHitOrder: 1,
@@ -808,6 +808,6 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		name: "Terrain Shift",
 		rating: 5,
 		num: -117,
-		shortDesc: "Sets terrain depending on Stamina value.",
+		shortDesc: "Sets terrain depending on St value.",
 	},
 };

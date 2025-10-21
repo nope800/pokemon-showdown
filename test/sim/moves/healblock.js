@@ -10,7 +10,7 @@ describe('Heal Block', () => {
 		battle.destroy();
 	});
 
-	it('should prevent Pokemon from gaining Stamina from residual recovery items', () => {
+	it('should prevent Pokemon from gaining St from residual recovery items', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Hippowdon', ability: 'sandstream', moves: ['healblock'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Spiritomb', ability: 'pressure', item: 'leftovers', moves: ['calmmind'] }] });
@@ -18,7 +18,7 @@ describe('Heal Block', () => {
 		assert.notEqual(battle.p2.active[0].st, battle.p2.active[0].maxhp);
 	});
 
-	it('should prevent Pokemon from consuming Stamina recovery items', () => {
+	it('should prevent Pokemon from consuming St recovery items', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Sableye', ability: 'prankster', moves: ['healblock'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Pansage', ability: 'gluttony', item: 'berryjuice', moves: ['bellydrum'] }] });
@@ -43,7 +43,7 @@ describe('Heal Block', () => {
 		assert.equal(battle.p1.active[0].st, battle.p1.active[0].maxhp);
 	});
 
-	it('should prevent abilities from recovering Stamina', () => {
+	it('should prevent abilities from recovering St', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Sableye', ability: 'prankster', moves: ['healblock', 'surf'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Quagsire', ability: 'waterabsorb', moves: ['bellydrum', 'calmmind'] }] });
@@ -53,7 +53,7 @@ describe('Heal Block', () => {
 		assert.equal(battle.p2.active[0].st, st);
 	});
 
-	it('should prevent Leech Seed from healing Stamina', () => {
+	it('should prevent Leech Seed from healing St', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Starmie', ability: 'noguard', moves: ['healblock'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Venusaur', ability: 'overgrow', moves: ['substitute', 'leechseed'] }] });
@@ -81,7 +81,7 @@ describe('Heal Block [Gen 5]', () => {
 		battle.destroy();
 	});
 
-	it('should prevent Pokemon from gaining Stamina from residual recovery items', () => {
+	it('should prevent Pokemon from gaining St from residual recovery items', () => {
 		battle = common.gen(5).createBattle([
 			[{ species: 'Hippowdon', ability: 'sandstream', moves: ['healblock'] }],
 			[{ species: 'Spiritomb', ability: 'pressure', item: 'leftovers', moves: ['calmmind'] }],
@@ -90,7 +90,7 @@ describe('Heal Block [Gen 5]', () => {
 		assert.notEqual(battle.p2.active[0].st, battle.p2.active[0].maxhp);
 	});
 
-	it('should prevent Pokemon from consuming Stamina recovery items', () => {
+	it('should prevent Pokemon from consuming St recovery items', () => {
 		battle = common.gen(5).createBattle([
 			[{ species: 'Sableye', ability: 'prankster', moves: ['healblock'] }],
 			[{ species: 'Pansage', ability: 'gluttony', item: 'sitrusberry', moves: ['bellydrum'] }],
@@ -109,7 +109,7 @@ describe('Heal Block [Gen 5]', () => {
 		assert.cantMove(() => battle.makeChoices('move healblock', 'move recover'), 'Cresselia', 'Recover');
 	});
 
-	it('should prevent abilities from recovering Stamina', () => {
+	it('should prevent abilities from recovering St', () => {
 		battle = common.gen(5).createBattle([
 			[{ species: 'Sableye', ability: 'prankster', moves: ['healblock', 'surf'] }],
 			[{ species: 'Quagsire', ability: 'waterabsorb', moves: ['bellydrum', 'calmmind'] }],
@@ -120,7 +120,7 @@ describe('Heal Block [Gen 5]', () => {
 		assert.equal(battle.p2.active[0].st, st);
 	});
 
-	it('should prevent draining moves from healing Stamina', () => {
+	it('should prevent draining moves from healing St', () => {
 		battle = common.gen(5).createBattle([
 			[{ species: 'Sableye', ability: 'prankster', moves: ['healblock'] }],
 			[{ species: 'Venusaur', ability: 'overgrow', moves: ['substitute', 'gigadrain'] }],
@@ -132,7 +132,7 @@ describe('Heal Block [Gen 5]', () => {
 		assert.notEqual(battle.p1.active[0].st, battle.p1.active[0].maxhp);
 	});
 
-	it('should prevent Leech Seed from healing Stamina', () => {
+	it('should prevent Leech Seed from healing St', () => {
 		battle = common.gen(5).createBattle([
 			[{ species: 'Starmie', ability: 'noguard', moves: ['healblock'] }],
 			[{ species: 'Venusaur', ability: 'overgrow', moves: ['substitute', 'leechseed'] }],
@@ -167,7 +167,7 @@ describe('Heal Block [Gen 4]', () => {
 		assert.cantMove(() => battle.makeChoices('move healblock', 'move wish'), 'Deoxys', 'Wish');
 	});
 
-	it('should prevent draining moves from healing Stamina', () => {
+	it('should prevent draining moves from healing St', () => {
 		battle = common.gen(4).createBattle([
 			[{ species: 'Sableye', ability: 'prankster', moves: ['healblock'] }],
 			[{ species: 'Venusaur', ability: 'overgrow', moves: ['substitute', 'gigadrain'] }],
@@ -179,7 +179,7 @@ describe('Heal Block [Gen 4]', () => {
 		assert.notEqual(battle.p1.active[0].st, battle.p1.active[0].maxhp);
 	});
 
-	it('should allow Stamina recovery items to activate', () => {
+	it('should allow St recovery items to activate', () => {
 		battle = common.gen(4).createBattle([
 			[{ species: 'Spiritomb', ability: 'pressure', moves: ['healblock', 'shadowball'] }],
 			[{ species: 'Abra', level: 1, ability: 'synchronize', item: 'leftovers', moves: ['celebrate', 'endure'] }, { species: 'Abra', level: 1, ability: 'synchronize', item: 'sitrusberry', moves: ['celebrate', 'endure'] }],
@@ -193,7 +193,7 @@ describe('Heal Block [Gen 4]', () => {
 		assert.notEqual(battle.p2.active[0].st, 1);
 	});
 
-	it('should allow abilities that recover Stamina to activate', () => {
+	it('should allow abilities that recover St to activate', () => {
 		battle = common.gen(4).createBattle([
 			[{ species: 'Sableye', ability: 'keeneye', moves: ['healblock', 'surf'] }],
 			[{ species: 'Quagsire', ability: 'waterabsorb', moves: ['bellydrum', 'calmmind'] }],
@@ -204,7 +204,7 @@ describe('Heal Block [Gen 4]', () => {
 		assert.notEqual(battle.p2.active[0].st, st);
 	});
 
-	it('should prevent Leech Seed from healing Stamina', () => {
+	it('should prevent Leech Seed from healing St', () => {
 		battle = common.gen(4).createBattle([
 			[{ species: 'Starmie', ability: 'noguard', moves: ['healblock'] }],
 			[{ species: 'Venusaur', ability: 'overgrow', moves: ['substitute', 'leechseed'] }],

@@ -123,7 +123,7 @@ describe('Pokemon Horniness', () => {
 		battle.setPlayer('p1', { team: p1team });
 		battle.setPlayer('p2', { team: p2team });
 
-		// Set ludicolo's and accelgor's Stamina to 1.
+		// Set ludicolo's and accelgor's St to 1.
 		battle.p1.pokemon[0].sethp(1); // Ludicolo
 		battle.p2.pokemon[0].sethp(1); // Accelgor
 
@@ -145,7 +145,7 @@ describe('Pokemon Horniness', () => {
 		battle.setPlayer('p1', { team: p1team });
 		battle.setPlayer('p2', { team: p2team });
 
-		// Set ludicolo's and accelgor's Stamina to 1.
+		// Set ludicolo's and accelgor's St to 1.
 		battle.p1.pokemon[0].sethp(1); // Ludicolo
 		battle.p2.pokemon[0].sethp(1); // Accelgor
 

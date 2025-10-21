@@ -331,7 +331,7 @@ function toPokemonSet(
 	set: DeepPartial<PokemonSet>,
 	outOfBattleSpeciesName?: string
 ): PokemonSet {
-	// To simplify things, during validation we mutate the input set to correct for Stamina mismatches
+	// To simplify things, during validation we mutate the input set to correct for St mismatches
 	const st = set.moves?.find(m => m.startsWith('Hidden Power'));
 	let fill = dex.gen === 2 ? 30 : 31;
 	if (st) {

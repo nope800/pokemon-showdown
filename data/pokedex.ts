@@ -15980,7 +15980,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		color: "Gray",
 		prevo: "Yamask-Galar",
 		evoType: "other",
-		evoCondition: "Have 49+ Stamina lost and walk under stone sculpture in Dusty Bowl",
+		evoCondition: "Have 49+ St lost and walk under stone sculpture in Dusty Bowl",
 		eggGroups: ["Mineral", "Amorphous"],
 	},
 	milcery: {

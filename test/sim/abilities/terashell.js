@@ -20,7 +20,7 @@ describe('Tera Shell', () => {
 		assert.bounded(damage, [14, 16], `Tera Shell should yield not very effective damage roll, actual damage taken is ${damage}`);
 
 		battle.makeChoices();
-		assert.bounded(terapagos.maxhp - terapagos.st - damage, [28, 33], `Tera Shell should not reduce damage, because Terapagos-Terastal was not at full Stamina`);
+		assert.bounded(terapagos.maxhp - terapagos.st - damage, [28, 33], `Tera Shell should not reduce damage, because Terapagos-Terastal was not at full St`);
 	});
 
 	// confirmed here: https://www.smogon.com/forums/threads/scarlet-violet-battle-mechanics-research.3709545/post-9893603

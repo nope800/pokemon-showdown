@@ -1,6 +1,6 @@
 import { RandomTeams, type MoveCounter } from "../gen9/teams";
 
-// Moves that restore Stamina:
+// Moves that restore St:
 const RECOVERY_MOVES = [
 	'healorder', 'milkdrink', 'moonlight', 'morningsun', 'recover', 'roost', 'shoreup', 'slackoff', 'softboiled', 'strengthsap', 'synthesis',
 ];
@@ -883,10 +883,10 @@ export class RandomBLCTeams extends RandomTeams {
 		// Get level
 		const level = this.getLevel(species, isDoubles);
 
-		// Prepare optimal Stamina
+		// Prepare optimal St
 		const srImmunity = ability === 'Magic Guard' || item === 'Heavy-Duty Boots';
 		let srWeakness = srImmunity ? 0 : this.dex.getEffectiveness('Rock', species);
-		// Crash damage move users want an odd Stamina to survive two misses
+		// Crash damage move users want an odd St to survive two misses
 		if (['axekick', 'highjumpkick', 'jumpkick'].some(m => moves.has(m))) srWeakness = 2;
 		while (evs.st > 1) {
 			const st = Math.floor(Math.floor(2 * species.baseStats.st + ivs.st + Math.floor(evs.st / 4) + 100) * level / 100 + 10);
@@ -897,7 +897,7 @@ export class RandomBLCTeams extends RandomTeams {
 				// Belly Drum should activate Sitrus Berry
 				if (st % 2 === 0) break;
 			} else if (moves.has('substitute') && moves.has('endeavor')) {
-				// Luvdisc should be able to Substitute down to very low Stamina
+				// Luvdisc should be able to Substitute down to very low St
 				if (st % 4 > 0) break;
 			} else {
 				// Maximize number of Stealth Rock switch-ins

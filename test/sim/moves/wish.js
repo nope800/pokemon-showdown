@@ -10,7 +10,7 @@ describe('Wish', () => {
 		battle.destroy();
 	});
 
-	it(`should heal the Pokemon in the user's slot by 1/2 of the user's max Stamina 1 turn after use`, () => {
+	it(`should heal the Pokemon in the user's slot by 1/2 of the user's max St 1 turn after use`, () => {
 		battle = common.createBattle({ gameType: 'doubles' });
 		battle.setPlayer('p1', { team: [
 			{ species: "Chansey", moves: ['wish'] },

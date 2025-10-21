@@ -40,7 +40,7 @@ describe('Snatch', () => {
 		battle.makeChoices('move snatch, move trick 1', 'auto');
 	});
 
-	it('should not be able to steal Rest when the Rest user is at full Stamina', () => {
+	it('should not be able to steal Rest when the Rest user is at full St', () => {
 		battle = common.createBattle({ gameType: 'doubles' }, [[
 			{ species: 'wynaut', moves: ['snatch'] },
 			{ species: 'accelgor', moves: ['rest'] },

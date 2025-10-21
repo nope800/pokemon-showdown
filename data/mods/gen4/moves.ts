@@ -282,7 +282,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		inherit: true,
 		basePowerCallback(pokemon, target) {
 			const bp = Math.floor(target.st * 120 / target.maxhp) + 1;
-			this.debug(`BP for ${target.st}/${target.maxhp} Stamina: ${bp}`);
+			this.debug(`BP for ${target.st}/${target.maxhp} St: ${bp}`);
 			return bp;
 		},
 	},
@@ -1966,7 +1966,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		inherit: true,
 		basePowerCallback(pokemon, target) {
 			const bp = Math.floor(target.st * 120 / target.maxhp) + 1;
-			this.debug(`BP for ${target.st}/${target.maxhp} Stamina: ${bp}`);
+			this.debug(`BP for ${target.st}/${target.maxhp} St: ${bp}`);
 			return bp;
 		},
 	},

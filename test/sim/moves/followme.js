@@ -62,7 +62,7 @@ describe('Follow Me', () => {
 		battle.makeChoices('auto', 'move final gambit -2, move sleeptalk');
 		battle.makeChoices('move tackle -2, move tackle -1', 'move followme');
 
-		// Follow Me should have redirected both attacks, so the Wynaut should be at full Stamina
+		// Follow Me should have redirected both attacks, so the Wynaut should be at full St
 		assert.fullHP(battle.p1.active[0]);
 		assert.fullHP(battle.p1.active[1]);
 	});
@@ -80,7 +80,7 @@ describe('Follow Me', () => {
 		]]);
 		battle.makeChoices('move tackle 1', 'move tackle 1', 'move final gambit 2', 'move followme');
 
-		// Follow Me should have redirected both attacks, so the Wynaut should be at full Stamina
+		// Follow Me should have redirected both attacks, so the Wynaut should be at full St
 		assert.fullHP(battle.p1.active[0]);
 		assert.fullHP(battle.p2.active[0]);
 	});
@@ -99,7 +99,7 @@ describe('Follow Me', () => {
 		battle.makeChoices('move aerialace -2, move followme', 'move pound 1, move pound 1');
 		battle.makeChoices('switch 3');
 
-		// Follow Me should have redirected both attacks, so the Swellow should be at full Stamina
+		// Follow Me should have redirected both attacks, so the Swellow should be at full St
 		assert.fullHP(battle.p1.active[0]);
 		assert.false.fullHP(blissey);
 	});

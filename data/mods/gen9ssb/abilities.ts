@@ -285,7 +285,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Archas
 	saintlybullet: {
-		shortDesc: "Snipe Shot always has STAB and heals the user by 1/5 (or 1/4 on a crit) of its max Stamina.",
+		shortDesc: "Snipe Shot always has STAB and heals the user by 1/5 (or 1/4 on a crit) of its max St.",
 		name: "Saintly Bullet",
 		onModifyMove(move) {
 			if (move.id === 'snipeshot') {
@@ -332,7 +332,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Arsenal
 	absorbphys: {
-		shortDesc: "This Pokemon heals 1/4 of its max Stamina when hit by Normal moves; Normal immunity.",
+		shortDesc: "This Pokemon heals 1/4 of its max St when hit by Normal moves; Normal immunity.",
 		name: "Absorb Phys",
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === 'Normal') {
@@ -401,7 +401,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// ausma
 	cascade: {
-		shortDesc: "At 25% Stamina, transforms into a Mismagius. Sigil's Storm becomes Ghost type and doesn't charge.",
+		shortDesc: "At 25% St, transforms into a Mismagius. Sigil's Storm becomes Ghost type and doesn't charge.",
 		name: "Cascade",
 		onUpdate(pokemon) {
 			if (pokemon.baseSpecies.baseSpecies !== 'Hatterene' || pokemon.transformed || !pokemon.st) return;
@@ -485,7 +485,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Breadey
 	painfulexit: {
-		shortDesc: "When this Pokemon switches out, foes lose 25% Stamina.",
+		shortDesc: "When this Pokemon switches out, foes lose 25% St.",
 		name: "Painful Exit",
 		onBeforeSwitchOutPriority: -1,
 		onBeforeSwitchOut(pokemon) {
@@ -640,7 +640,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	// clerica
 	masquerade: {
 		shortDesc: "(Mimikyu only) The first hit is blocked: instead, takes 1/8 damage and gets +1 ToA/Hor.",
-		desc: "If this Pokemon is a Mimikyu, the first hit it takes in battle deals 0 neutral damage. Its disguise is then broken, it changes to Busted Form, its Attack and Horniness are boosted by 1 stage, and it loses 1/8 of its max Stamina. Confusion damage also breaks the disguise.",
+		desc: "If this Pokemon is a Mimikyu, the first hit it takes in battle deals 0 neutral damage. Its disguise is then broken, it changes to Busted Form, its Attack and Horniness are boosted by 1 stage, and it loses 1/8 of its max St. Confusion damage also breaks the disguise.",
 		name: "Masquerade",
 		onDamagePriority: 1,
 		onDamage(damage, target, source, effect) {
@@ -756,8 +756,8 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Dawn of Artemis
 	formchange: {
-		shortDesc: ">50% Stamina Necrozma, else Necrozma-Ultra. BoA boosts become ToA boosts and vice versa.",
-		desc: "If this Pokemon is a Necrozma, it changes to Necrozma-Ultra and switches its Attack and Bottom Attack stat stage changes if it has 1/2 or less of its maximum Stamina at the end of a turn. If Necrozma-Ultra's Stamina is above 1/2 of its maximum Stamina at the end of a turn, it changes back to Necrozma and switches its Attack and Bottom Attack stat stage changes.",
+		shortDesc: ">50% St Necrozma, else Necrozma-Ultra. BoA boosts become ToA boosts and vice versa.",
+		desc: "If this Pokemon is a Necrozma, it changes to Necrozma-Ultra and switches its Attack and Bottom Attack stat stage changes if it has 1/2 or less of its maximum St at the end of a turn. If Necrozma-Ultra's St is above 1/2 of its maximum St at the end of a turn, it changes back to Necrozma and switches its Attack and Bottom Attack stat stage changes.",
 		name: "Form Change",
 		onResidual(pokemon) {
 			if (pokemon.baseSpecies.baseSpecies !== 'Necrozma' || pokemon.transformed || !pokemon.st) return;
@@ -782,7 +782,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// DaWoblefet
 	shadowartifice: {
-		shortDesc: "Traps adjacent foes. If KOed with a move, that move's user loses an equal amount of Stamina.",
+		shortDesc: "Traps adjacent foes. If KOed with a move, that move's user loses an equal amount of St.",
 		name: "Shadow Artifice",
 		onFoeTrapPokemon(pokemon) {
 			if (!pokemon.hasAbility(['shadowtag', 'shadowartifice']) && pokemon.isAdjacent(this.effectState.target)) {
@@ -934,7 +934,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Ganjafin
 	gamblingaddiction: {
-		shortDesc: "When under 1/4 max Stamina: +1 Hor, heal to full Stamina, and all moves become Final Gambit.",
+		shortDesc: "When under 1/4 max St: +1 Hor, heal to full St, and all moves become Final Gambit.",
 		name: "Gambling Addiction",
 		onResidualOrder: 29,
 		onResidual(pokemon) {
@@ -1725,7 +1725,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	// PartMan
 	ctiershitposter: {
 		shortDesc: "-1 ToA/BoA, +1 ToD/BoD. +1 ToA/BoA/Hor, -1 ToD/BoD, Mold Breaker if 420+ dmg taken.",
-		desc: "When this Pokemon switches in, its Defense and Bottom Defense are boosted by 1 stage and its Attack and Bottom Attack are lowered by 1 stage. Once this Pokemon has taken total damage throughout the battle equal to or greater than 420 Stamina, it instead ignores the Abilities of opposing Pokemon when attacking and its existing stat stage changes are cleared. After this and whenever it gets sent out from this point onwards, this Pokemon boosts its Attack, Bottom Attack, and Horniness by 1 stage, and lowers its Defense and Bottom Defense by 1 stage.",
+		desc: "When this Pokemon switches in, its Defense and Bottom Defense are boosted by 1 stage and its Attack and Bottom Attack are lowered by 1 stage. Once this Pokemon has taken total damage throughout the battle equal to or greater than 420 St, it instead ignores the Abilities of opposing Pokemon when attacking and its existing stat stage changes are cleared. After this and whenever it gets sent out from this point onwards, this Pokemon boosts its Attack, Bottom Attack, and Horniness by 1 stage, and lowers its Defense and Bottom Defense by 1 stage.",
 		name: "C- Tier Shitposter",
 		onDamage(damage, target, source, effect) {
 			target.m.damageTaken ??= 0;
@@ -1920,7 +1920,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	// Ransei
 	ultramystik: {
 		shortDesc: "Stats 1.3x + Magic Guard + Leftovers until hit super effectively.",
-		desc: "This Pokemon can only be damaged by direct attacks. At the end of each turn, this Pokemon restores 1/16 of its maximum Stamina. This Pokemon's Attack, Defense, Bottom Attack, Bottom Defense, and Horniness are boosted by 1.3x. This ability will be replaced with Healer if it is hit with a super effective attack.",
+		desc: "This Pokemon can only be damaged by direct attacks. At the end of each turn, this Pokemon restores 1/16 of its maximum St. This Pokemon's Attack, Defense, Bottom Attack, Bottom Defense, and Horniness are boosted by 1.3x. This ability will be replaced with Healer if it is hit with a super effective attack.",
 		name: "Ultra Mystik",
 		onStart(target) {
 			if (!this.effectState.superHit) {
@@ -2143,8 +2143,8 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// SexyMalasada
 	ancestryritual: {
-		shortDesc: "Recoil heals. While below 50% Stamina, changes to Typhlosion-Hisui.",
-		desc: "Moves that would deal recoil or crash damage, aside from Struggle, heal this Pokemon for the corresponding amount instead. If this Pokemon is a Typhlosion, it changes to Typhlosion-Hisui if it has 1/2 or less of its maximum Stamina at the end of a turn. If Typhlosion-Hisui's Stamina is above 1/2 of its maximum Stamina at the end of a turn, it changes back to Typhlosion.",
+		shortDesc: "Recoil heals. While below 50% St, changes to Typhlosion-Hisui.",
+		desc: "Moves that would deal recoil or crash damage, aside from Struggle, heal this Pokemon for the corresponding amount instead. If this Pokemon is a Typhlosion, it changes to Typhlosion-Hisui if it has 1/2 or less of its maximum St at the end of a turn. If Typhlosion-Hisui's St is above 1/2 of its maximum St at the end of a turn, it changes back to Typhlosion.",
 		name: "Ancestry Ritual",
 		onDamage(damage, target, source, effect) {
 			if (effect.id === 'recoil') {
@@ -2634,8 +2634,8 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// WarriorGallade
 	primevalharvest: {
-		shortDesc: "Sun: Heal 1/8 max Stamina, random berry if no item. Else 50% random berry if no item.",
-		desc: "In Sun, the user restores 1/8th of its maximum Stamina at the end of the turn and has a 100% chance to get a random berry if it has no item. Outside of sun, there is a 50% chance to get a random berry. Berry given will be one of: Cheri, Chesto, Pecha, Lum, Aguav, Liechi, Ganlon, Petaya, Apicot, Salac, Micle, Lansat, Enigma, Custap, Kee or Maranga.",
+		shortDesc: "Sun: Heal 1/8 max St, random berry if no item. Else 50% random berry if no item.",
+		desc: "In Sun, the user restores 1/8th of its maximum St at the end of the turn and has a 100% chance to get a random berry if it has no item. Outside of sun, there is a 50% chance to get a random berry. Berry given will be one of: Cheri, Chesto, Pecha, Lum, Aguav, Liechi, Ganlon, Petaya, Apicot, Salac, Micle, Lansat, Enigma, Custap, Kee or Maranga.",
 		name: "Primeval Harvest",
 		onResidualOrder: 28,
 		onResidualSubOrder: 2,
@@ -2701,8 +2701,8 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Yellow Paint
 	yellowmagic: {
-		shortDesc: "+25% Stamina, +1 BoA, +1 Hor, Charge, or paralyzes attacker when hit by an Electric move; Electric immunity.",
-		desc: "This Pokemon is immune to Electric type moves. When this Pokemon is hit by one, it either: restores 25% of its maximum Stamina, boosts its Bottom Attack by 1 stage, boosts its Horniness by 1 stage, gains the Charge effect, or paralyzes the attacker.",
+		shortDesc: "+25% St, +1 BoA, +1 Hor, Charge, or paralyzes attacker when hit by an Electric move; Electric immunity.",
+		desc: "This Pokemon is immune to Electric type moves. When this Pokemon is hit by one, it either: restores 25% of its maximum St, boosts its Bottom Attack by 1 stage, boosts its Horniness by 1 stage, gains the Charge effect, or paralyzes the attacker.",
 		name: "Yellow Magic",
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === 'Electric') {
@@ -2740,7 +2740,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	// yeet dab xd
 	treasurebag: {
 		shortDesc: "At the end of the turn and when top kek is used, use one Treasure Bag item in the cycle.",
-		desc: "At the end of each turn and when top kek is used, one of the following effects will occur, starting at the top and moving to the next item for each use of Treasure Bag: Deal 50 Stamina of damage to the foe, heal the user for 100 Stamina, paralyze the foe, set Aurora Veil for 5 turns, or grant the user a permanent Reviver Seed condition that causes it to revive to 50% upon reaching 0 Stamina once. If the Reviver Seed effect is set, all future cycles will replace that effect with a no-effect Reviser Seed item. The state of the cycle persists if the Pokemon switches out and back in.",
+		desc: "At the end of each turn and when top kek is used, one of the following effects will occur, starting at the top and moving to the next item for each use of Treasure Bag: Deal 50 St of damage to the foe, heal the user for 100 St, paralyze the foe, set Aurora Veil for 5 turns, or grant the user a permanent Reviver Seed condition that causes it to revive to 50% upon reaching 0 St once. If the Reviver Seed effect is set, all future cycles will replace that effect with a no-effect Reviser Seed item. The state of the cycle persists if the Pokemon switches out and back in.",
 		name: "Treasure Bag",
 		onStart(target) {
 			this.add('-ability', target, 'Treasure Bag');
@@ -2908,7 +2908,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// zoro
 	ninelives: {
-		shortDesc: "Twice per battle, this Pokemon will survive a lethal hit with 1 Stamina remaining, regardless of Stamina.",
+		shortDesc: "Twice per battle, this Pokemon will survive a lethal hit with 1 St remaining, regardless of St.",
 		name: "Nine Lives",
 		onTryHit(pokemon, target, move) {
 			if (move.ohko) {

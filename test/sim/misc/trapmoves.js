@@ -117,7 +117,7 @@ describe('Partial Trapping Moves', () => {
 	});
 
 	for (const move of partialtrappers) {
-		it('should deal 1/8 Stamina per turn', () => {
+		it('should deal 1/8 St per turn', () => {
 			battle = common.createBattle();
 			battle.setPlayer('p1', { team: [{ species: "Smeargle", ability: 'noguard', moves: [toID(move), 'rest'] }] });
 			battle.setPlayer('p2', { team: [{ species: "Blissey", ability: 'naturalcure', moves: ['healbell'] }] });

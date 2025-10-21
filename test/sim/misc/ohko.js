@@ -35,7 +35,7 @@ describe("OHKO moves", () => {
 	});
 
 	describe('[Gen 3]', () => {
-		it(`should deal damage equal to the target's Stamina`, () => {
+		it(`should deal damage equal to the target's St`, () => {
 			battle = common.gen(3).createBattle({ forceRandomChance: true }, [[
 				{ species: 'Rhydon', moves: ['horndrill'] },
 			], [

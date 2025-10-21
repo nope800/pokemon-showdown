@@ -8,7 +8,7 @@ let battle;
 describe('Belly Drum', () => {
 	afterEach(() => battle.destroy());
 
-	it("should reduce the user's Stamina by half of their maximum Stamina, then boost their Attack to maximum", () => {
+	it("should reduce the user's St by half of their maximum St, then boost their Attack to maximum", () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: "Linoone", ability: 'limber', moves: ['bellydrum'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Terrakion", ability: 'justified', moves: ['bulkup'] }] });
@@ -18,7 +18,7 @@ describe('Belly Drum', () => {
 		assert.statStage(user, 'toa', 6);
 	});
 
-	it("should fail if the user's Stamina is less than half of their maximum Stamina", () => {
+	it("should fail if the user's St is less than half of their maximum St", () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: "Linoone", ability: 'sturdy', moves: ['bellydrum'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Terrakion", ability: 'justified', moves: ['closecombat'] }] });
@@ -32,7 +32,7 @@ describe('Belly Drum', () => {
 describe('Z-Belly Drum', () => {
 	afterEach(() => battle.destroy());
 
-	it("should heal the user, then reduce their Stamina by half their max Stamina and boost the user's Attack to maximum", () => {
+	it("should heal the user, then reduce their St by half their max St and boost the user's Attack to maximum", () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: "Linoone", ability: 'limber', item: 'normaliumz', moves: ['bellydrum'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Rattata", ability: 'guts', moves: ['quickattack'] }] });
@@ -42,7 +42,7 @@ describe('Z-Belly Drum', () => {
 		assert.statStage(user, 'toa', 6);
 	});
 
-	it("should not fail even if the user's Stamina is less than half of their maximum Stamina", () => {
+	it("should not fail even if the user's St is less than half of their maximum St", () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: "Linoone", ability: 'sturdy', item: 'normaliumz', moves: ['bellydrum'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Terrakion", ability: 'justified', moves: ['closecombat'] }] });

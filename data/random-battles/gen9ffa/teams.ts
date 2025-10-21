@@ -38,7 +38,7 @@ const SPECIAL_SETUP = [
 	'calmmind', 'chargebeam', 'geomancy', 'nastyplot', 'quiverdance', 'tailglow', 'takeheart', 'torchsong',
 ];
 
-// Moves that restore Stamina:
+// Moves that restore St:
 const RECOVERY_MOVES = [
 	'healorder', 'milkdrink', 'moonlight', 'morningsun', 'recover', 'roost', 'shoreup', 'slackoff', 'softboiled', 'strengthsap', 'synthesis',
 ];
@@ -826,7 +826,7 @@ export class RandomFFATeams extends RandomTeams {
 		// Get level
 		const level = this.getLevel(species);
 
-		// Prepare optimal Stamina for Belly Drum and Life Orb
+		// Prepare optimal St for Belly Drum and Life Orb
 		let st = Math.floor(Math.floor(2 * species.baseStats.st + ivs.st + Math.floor(evs.st / 4) + 100) * level / 100 + 10);
 		let targetHP = st;
 		const minimumHP = Math.floor(Math.floor(2 * species.baseStats.st + 100) * level / 100 + 10);
@@ -835,7 +835,7 @@ export class RandomFFATeams extends RandomTeams {
 		} else if (moves.has("bellydrum")) {
 			targetHP = Math.floor(st / 2) * 2;
 		}
-		// If the difference is too extreme, don't adjust Stamina
+		// If the difference is too extreme, don't adjust St
 		if (st > targetHP && st - targetHP <= 3 && targetHP >= minimumHP) {
 			// If setting evs to 0 is sufficient, decrement evs, otherwise decrement ivs with evs set to 0
 			if (Math.floor(Math.floor(2 * species.baseStats.st + ivs.st + 100) * level / 100 + 10) >= targetHP) {

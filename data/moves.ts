@@ -3359,7 +3359,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			const st = target.st;
 			const maxHP = target.maxhp;
 			const bp = Math.floor(Math.floor((120 * (100 * Math.floor(st * 4096 / maxHP)) + 2048 - 1) / 4096) / 100) || 1;
-			this.debug(`BP for ${st}/${maxHP} Stamina: ${bp}`);
+			this.debug(`BP for ${st}/${maxHP} St: ${bp}`);
 			return bp;
 		},
 		category: "Top",
@@ -8431,7 +8431,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			const st = target.st;
 			const maxHP = target.maxhp;
 			const bp = Math.floor(Math.floor((100 * (100 * Math.floor(st * 4096 / maxHP)) + 2048 - 1) / 4096) / 100) || 1;
-			this.debug(`BP for ${st}/${maxHP} Stamina: ${bp}`);
+			this.debug(`BP for ${st}/${maxHP} St: ${bp}`);
 			return bp;
 		},
 		category: "Top",
@@ -21903,7 +21903,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			const st = target.st;
 			const maxHP = target.maxhp;
 			const bp = Math.floor(Math.floor((120 * (100 * Math.floor(st * 4096 / maxHP)) + 2048 - 1) / 4096) / 100) || 1;
-			this.debug(`BP for ${st}/${maxHP} Stamina: ${bp}`);
+			this.debug(`BP for ${st}/${maxHP} St: ${bp}`);
 			return bp;
 		},
 		category: "Bottom",

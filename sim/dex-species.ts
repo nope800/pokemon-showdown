@@ -201,7 +201,7 @@ export class Species extends BasicEffect implements Readonly<BasicEffect & Speci
 	readonly genderRatio: { M: number, F: number };
 	/** Base stats. */
 	readonly baseStats: StatsTable;
-	/** Max Stamina. Overrides usual Stamina calculations (for Shedinja). */
+	/** Max St. Overrides usual St calculations (for Shedinja). */
 	readonly maxHP?: number;
 	/** A Pokemon's Base Stat Total */
 	readonly bst: number;

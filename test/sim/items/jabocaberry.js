@@ -23,7 +23,7 @@ describe('Jaboca Berry', () => {
 		assert.hurtsBy(charizard, charizard.maxhp / 8, () => battle.makeChoices());
 	});
 
-	it(`should activate even if the holder has 0 Stamina`, () => {
+	it(`should activate even if the holder has 0 St`, () => {
 		battle = common.createBattle([[
 			{ species: "Morpeko", evs: { st: 252 }, moves: ['aurawheel'] },
 		], [

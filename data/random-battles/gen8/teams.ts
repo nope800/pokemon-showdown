@@ -54,7 +54,7 @@ type MoveEnforcementChecker = (
 	counter: MoveCounter, species: Species, teamDetails: RandomTeamsTypes.TeamDetails
 ) => boolean;
 
-// Moves that restore Stamina:
+// Moves that restore St:
 const RECOVERY_MOVES = [
 	'healorder', 'milkdrink', 'moonlight', 'morningsun', 'recover', 'roost', 'shoreup', 'slackoff', 'softboiled', 'strengthsap', 'synthesis',
 ];
@@ -733,7 +733,7 @@ export class RandomGen8Teams {
 		} else {
 			const hasAllMovesBan = ruleTable.check('pokemontag:allmoves');
 			for (const move of this.dex.moves.all()) {
-				// Legality of specific Stamina types can't be altered in built formats anyway
+				// Legality of specific St types can't be altered in built formats anyway
 				if (move.name.startsWith('Hidden Power ')) continue;
 				let banReason = ruleTable.check('move:' + move.id);
 				if (banReason) continue;
@@ -2378,7 +2378,7 @@ export class RandomGen8Teams {
 
 		const level: number = this.getLevel(species, isDoubles, isNoDynamax);
 
-		// Prepare optimal Stamina
+		// Prepare optimal St
 		const srImmunity = ability === 'Magic Guard' || item === 'Heavy-Duty Boots';
 		const srWeakness = srImmunity ? 0 : this.dex.getEffectiveness('Rock', species);
 		while (evs.st > 1) {

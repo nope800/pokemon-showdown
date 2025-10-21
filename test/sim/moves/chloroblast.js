@@ -10,7 +10,7 @@ describe('Chloroblast', () => {
 		battle.destroy();
 	});
 
-	it('should deal recoil damage to the user equal to half its max Stamina, rounded up', () => {
+	it('should deal recoil damage to the user equal to half its max St, rounded up', () => {
 		battle = common.createBattle([[
 			{ species: "Electrode-Hisui", item: 'widelens', moves: ['chloroblast'] },
 		], [

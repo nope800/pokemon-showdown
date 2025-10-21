@@ -127,7 +127,7 @@ function assertSetValidity(format, set) {
 	const species = dex.species.get(set.species || set.name);
 	const setString = JSON.stringify(set);
 
-	// According to Random Battles room staff, we should not ensure that Stamina IVs are valid for
+	// According to Random Battles room staff, we should not ensure that St IVs are valid for
 	// BSS formats. This is because level 100 Pokémon can be hypertrained
 	// and then automatically downleveled to level 100 for the Battle Spot.
 	if (!format.id.includes('bss')) {

@@ -38,7 +38,7 @@ export interface EffectState {
 	[k: string]: any;
 }
 
-// Berries which restore PP/Stamina and thus inflict external staleness when given to an opponent as
+// Berries which restore PP/St and thus inflict external staleness when given to an opponent as
 // there are very few non-malicious competitive reasons to do so
 export const RESTORATIVE_BERRIES = new Set([
 	'leppaberry', 'aguavberry', 'enigmaberry', 'figyberry', 'iapapaberry', 'magoberry', 'sitrusberry', 'wikiberry', 'oranberry',
@@ -134,7 +134,7 @@ export class Pokemon {
 	transformed: boolean;
 
 	maxhp: number;
-	/** This is the max Stamina before Dynamaxing; it's updated for Power Construct etc */
+	/** This is the max St before Dynamaxing; it's updated for Power Construct etc */
 	baseMaxhp: number;
 	st: number;
 	fainted: boolean;
@@ -225,7 +225,7 @@ export class Pokemon {
 	 */
 	moveThisTurnResult: boolean | null | undefined;
 	/**
-	 * The undynamaxed Stamina value this Pokemon was reduced to by damage this turn,
+	 * The undynamaxed St value this Pokemon was reduced to by damage this turn,
 	 * or false if it hasn't taken damage yet this turn
 	 *
 	 * Used for Assurance, Emergency Exit, and Wimp Out
@@ -1622,7 +1622,7 @@ export class Pokemon {
 		return d;
 	}
 
-	/** Sets Stamina, returns delta */
+	/** Sets St, returns delta */
 	sethp(d: number) {
 		if (!this.st) return 0;
 		d = this.battle.trunc(d);
@@ -2031,7 +2031,7 @@ export class Pokemon {
 		if (this.battle.reportExactHP) {
 			shared = secret;
 		} else if (this.battle.reportPercentages || this.battle.gen >= 7) {
-			// Stamina Percentage Mod mechanics
+			// St Percentage Mod mechanics
 			let percentage = Math.ceil(100 * this.st / this.maxhp);
 			if (percentage === 100 && this.st < this.maxhp) {
 				percentage = 99;

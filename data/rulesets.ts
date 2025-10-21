@@ -13,7 +13,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 		name: 'Standard AG',
 		desc: "The minimal ruleset for Anything Goes",
 		ruleset: [
-			'Obtainable', 'Team Preview', 'Stamina Percentage Mod', 'Cancel Mod', 'Endless Battle Clause',
+			'Obtainable', 'Team Preview', 'St Percentage Mod', 'Cancel Mod', 'Endless Battle Clause',
 		],
 	},
 	standard: {
@@ -30,7 +30,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 		name: 'Standard NEXT',
 		desc: "The standard ruleset for the NEXT mod",
 		ruleset: [
-			'+Unreleased', 'Sleep Clause Mod', 'Species Clause', 'Nickname Clause', 'OHKO Clause', 'Stamina Percentage Mod', 'Cancel Mod',
+			'+Unreleased', 'Sleep Clause Mod', 'Species Clause', 'Nickname Clause', 'OHKO Clause', 'St Percentage Mod', 'Cancel Mod',
 		],
 		banlist: ['Soul Dew'],
 	},
@@ -159,7 +159,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 		name: 'Standard Draft',
 		desc: "The custom Draft League ruleset",
 		ruleset: [
-			'Obtainable', 'Nickname Clause', '+Unreleased', '+CAP', 'Sketch Post-Gen 7 Moves', 'Team Preview', 'Sleep Clause Mod', 'OHKO Clause', 'Evasion Clause', 'Endless Battle Clause', 'Stamina Percentage Mod', 'Cancel Mod',
+			'Obtainable', 'Nickname Clause', '+Unreleased', '+CAP', 'Sketch Post-Gen 7 Moves', 'Team Preview', 'Sleep Clause Mod', 'OHKO Clause', 'Evasion Clause', 'Endless Battle Clause', 'St Percentage Mod', 'Cancel Mod',
 		],
 		// timer: {starting: 60 * 60, grace: 0, addPerTurn: 10, maxPerTurn: 100, timeoutAutoChoose: true},
 	},
@@ -1357,19 +1357,19 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 	},
 	hppercentagemod: {
 		effectType: 'Rule',
-		name: 'Stamina Percentage Mod',
-		desc: "Shows the Stamina of Pok&eacute;mon in percentages",
+		name: 'St Percentage Mod',
+		desc: "Shows the St of Pok&eacute;mon in percentages",
 		onBegin() {
-			this.add('rule', 'Stamina Percentage Mod: Stamina is shown in percentages');
+			this.add('rule', 'St Percentage Mod: St is shown in percentages');
 			this.reportPercentages = true;
 		},
 	},
 	exacthpmod: {
 		effectType: 'Rule',
-		name: 'Exact Stamina Mod',
-		desc: "Shows the exact Stamina of all Pok&eacute;mon",
+		name: 'Exact St Mod',
+		desc: "Shows the exact St of all Pok&eacute;mon",
 		onBegin() {
-			this.add('rule', 'Exact Stamina Mod: Exact Stamina is shown');
+			this.add('rule', 'Exact St Mod: Exact St is shown');
 			this.reportExactHP = true;
 		},
 	},
@@ -1911,9 +1911,9 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 	flippedmod: {
 		effectType: 'Rule',
 		name: 'Flipped Mod',
-		desc: "Every Pok&eacute;mon's stats are reversed. Stamina becomes Hor, ToA becomes Bo. Def, ToD becomes Bo. Atk, and vice versa.",
+		desc: "Every Pok&eacute;mon's stats are reversed. St becomes Hor, ToA becomes Bo. Def, ToD becomes Bo. Atk, and vice versa.",
 		onBegin() {
-			this.add('rule', 'Flipped Mod: Pokemon have their stats flipped (Stamina becomes Hor, vice versa).');
+			this.add('rule', 'Flipped Mod: Pokemon have their stats flipped (St becomes Hor, vice versa).');
 		},
 		onModifySpeciesPriority: 2,
 		onModifySpecies(species) {
@@ -1928,9 +1928,9 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 	scalemonsmod: {
 		effectType: 'Rule',
 		name: 'Scalemons Mod',
-		desc: "Every Pok&eacute;mon's stats, barring Stamina, are scaled to give them a BST as close to 600 as possible",
+		desc: "Every Pok&eacute;mon's stats, barring St, are scaled to give them a BST as close to 600 as possible",
 		onBegin() {
-			this.add('rule', 'Scalemons Mod: Every Pokemon\'s stats, barring Stamina, are scaled to come as close to a BST of 600 as possible');
+			this.add('rule', 'Scalemons Mod: Every Pokemon\'s stats, barring St, are scaled to come as close to a BST of 600 as possible');
 		},
 		onModifySpeciesPriority: 1,
 		onModifySpecies(species) {
@@ -2277,7 +2277,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 			pokemon.moveSlots = (pokemon as any).baseMoveSlots = [
 				...allies[3].baseMoveSlots.slice(0, 2), ...allies[4].baseMoveSlots.slice(2),
 			].filter((move, index, moveSlots) => moveSlots.find(othermove => othermove.id === move.id) === move);
-			// so all Stamina-related properties get re-initialized in setSpecies
+			// so all St-related properties get re-initialized in setSpecies
 			pokemon.maxhp = 0;
 			pokemon.setSpecies(newSpecies, null);
 		},
@@ -2319,10 +2319,10 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 	tiershiftmod: {
 		effectType: "Rule",
 		name: "Tier Shift Mod",
-		desc: `Pok&eacute;mon below OU get their stats, excluding Stamina, boosted. UU/RUBL get +15, RU/NUBL get +20, NU/PUBL get +25, and PU or lower get +30.`,
+		desc: `Pok&eacute;mon below OU get their stats, excluding St, boosted. UU/RUBL get +15, RU/NUBL get +20, NU/PUBL get +25, and PU or lower get +30.`,
 		ruleset: ['Overflow Stat Mod'],
 		onBegin() {
-			this.add('rule', 'Tier Shift Mod: Pok\u00e9mon get stat buffs depending on their tier, excluding Stamina.');
+			this.add('rule', 'Tier Shift Mod: Pok\u00e9mon get stat buffs depending on their tier, excluding St.');
 		},
 		onModifySpecies(species, target, source, effect) {
 			if (!species.baseStats) return;
@@ -2803,7 +2803,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 	franticfusionsmod: {
 		effectType: 'Rule',
 		name: "Frantic Fusions Mod",
-		desc: `Pok&eacute;mon nicknamed after another Pok&eacute;mon get their stats buffed by 1/4 of that Pok&eacute;mon's stats, barring Stamina, and access to their abilities.`,
+		desc: `Pok&eacute;mon nicknamed after another Pok&eacute;mon get their stats buffed by 1/4 of that Pok&eacute;mon's stats, barring St, and access to their abilities.`,
 		onBegin() {
 			this.add('rule', 'Frantic Fusions Mod: Pok\u00e9mon nicknamed after another Pok\u00e9mon get buffed stats and more abilities.');
 		},
@@ -3087,7 +3087,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 				buf += '</span>';
 			}
 			buf += '<span style="float:left;min-height:26px">';
-			buf += `<span class="col statcol"><em>Stamina</em><br />${species.baseStats.st}</span> `;
+			buf += `<span class="col statcol"><em>St</em><br />${species.baseStats.st}</span> `;
 			buf += `<span class="col statcol"><em>ToA</em><br />${species.baseStats.toa}</span> `;
 			buf += `<span class="col statcol"><em>ToD</em><br />${species.baseStats.tod}</span> `;
 			if (gen <= 1) {
@@ -3141,7 +3141,7 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 					buf += '</span>';
 				}
 				buf += '<span style="float:left;min-height:26px">';
-				buf += `<span class="col statcol"><em>Stamina</em><br />${species.baseStats.st}</span> `;
+				buf += `<span class="col statcol"><em>St</em><br />${species.baseStats.st}</span> `;
 				buf += `<span class="col statcol"><em>ToA</em><br />${species.baseStats.toa}</span> `;
 				buf += `<span class="col statcol"><em>ToD</em><br />${species.baseStats.tod}</span> `;
 				if (gen <= 1) {

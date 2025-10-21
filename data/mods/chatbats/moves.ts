@@ -116,8 +116,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				}
 			},
 		},
-		shortDesc: "2x Water power, 0.5x Fire damage, heal 1/16 Stamina per turn.",
-		desc: "User recovers 1/16 max Stamina per turn. While this is active, this Pokemon's Water power is 2x and Fire power against it is halved.",
+		shortDesc: "2x Water power, 0.5x Fire damage, heal 1/16 St per turn.",
+		desc: "User recovers 1/16 max St per turn. While this is active, this Pokemon's Water power is 2x and Fire power against it is halved.",
 	},
 
 	ragingbull: {
@@ -1048,8 +1048,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			}
 		},
 		target: "self",
-		desc: "Heals for 25% Stamina, or 50% if foe is statused.",
-		shortDesc: "Heals for 25% Stamina, or 50% if foe is statused.",
+		desc: "Heals for 25% St, or 50% if foe is statused.",
+		shortDesc: "Heals for 25% St, or 50% if foe is statused.",
 	},
 	saltcurse: {
 		num: -1006,
@@ -1280,8 +1280,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		type: "Normal",
 		zMove: { effect: 'clearnegativeboost' },
 		contestType: "Cute",
-		shortDesc: "User switches. Next Pokemon heals 1/3 Stamina.",
-		desc: "User switches. Next Pokemon heals 1/3 Stamina.",
+		shortDesc: "User switches. Next Pokemon heals 1/3 St.",
+		desc: "User switches. Next Pokemon heals 1/3 St.",
 	},
 	technoblast: {
 		inherit: true,

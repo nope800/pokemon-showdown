@@ -113,7 +113,7 @@ describe('Curse', () => {
 		const caterpie = battle.p2.active[0];
 		const metapod = battle.p2.active[1];
 		assert.fullHP(wynaut);
-		assert(caterpie.maxhp !== caterpie.st || metapod.maxhp !== metapod.st, `Either Caterpie or Metapod should have lost Stamina from Curse`);
+		assert(caterpie.maxhp !== caterpie.st || metapod.maxhp !== metapod.st, `Either Caterpie or Metapod should have lost St from Curse`);
 	});
 
 	it(`[Gen 7] should target the ally if the target is an ally`, () => {
@@ -161,12 +161,12 @@ describe('XY/ORAS Curse targeting when becoming Ghost the same turn', () => {
 		);
 
 		assert(curseUser.hasType('Ghost')); // Curse user must be Ghost
-		assert(curseUser.st < curseUser.maxhp / 2); // Curse user cut its Stamina down
+		assert(curseUser.st < curseUser.maxhp / 2); // Curse user cut its St down
 
 		const foeHP = [p2active[0].st, p2active[1].st];
 		battle.makeChoices(`move 2, move 2`, `move 2, move 2`);
 
-		assert.notEqual(curseUser.st, curseUser.maxhp); // Curse user cut its Stamina down
+		assert.notEqual(curseUser.st, curseUser.maxhp); // Curse user cut its St down
 		if (curseUser.position === 0) {
 			// Expected behavior
 			assert.equal(cursePartner.st, cursePartner.maxhp); // Partner unaffected by Curse
@@ -193,13 +193,13 @@ describe('XY/ORAS Curse targeting when becoming Ghost the same turn', () => {
 		);
 
 		assert(curseUser.hasType('Ghost')); // Curse user must be Ghost
-		assert(curseUser.st < curseUser.maxhp / 2); // Curse user cut its Stamina down
+		assert(curseUser.st < curseUser.maxhp / 2); // Curse user cut its St down
 
 		let cursedFoe = false;
 		for (let i = 0; i < 3; i++) {
 			const allyPokemon = p1active[i];
 			if (allyPokemon === curseUser) {
-				assert.notEqual(allyPokemon.st, allyPokemon.maxhp); // Curse user cut its Stamina down
+				assert.notEqual(allyPokemon.st, allyPokemon.maxhp); // Curse user cut its St down
 			} else {
 				assert.equal(allyPokemon.st, allyPokemon.maxhp); // Partners unaffected by Curse
 			}

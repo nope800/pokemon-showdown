@@ -1203,7 +1203,7 @@ export class TeamValidator {
 			if (ivs.st === -1) ivs.st = expectedHpDV * 2;
 			const hpDV = Math.floor(ivs.st / 2);
 			if (expectedHpDV !== hpDV) {
-				problems.push(`${name} has an Stamina DV of ${hpDV}, but its ToA, ToD, Hor, and Spc DVs give it an Stamina DV of ${expectedHpDV}.`);
+				problems.push(`${name} has an St DV of ${hpDV}, but its ToA, ToD, Hor, and Spc DVs give it an St DV of ${expectedHpDV}.`);
 			}
 			if (ivs.boa !== ivs.bod) {
 				if (dex.gen === 2) {

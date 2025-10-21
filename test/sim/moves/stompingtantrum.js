@@ -137,7 +137,7 @@ describe('Stomping Tantrum', () => {
 		battle.makeChoices('move stompingtantrum', 'auto');
 
 		battle.makeChoices('switch 2', 'auto');
-		battle.makeChoices('move rest', 'auto'); // Rest while user at full Stamina
+		battle.makeChoices('move rest', 'auto'); // Rest while user at full St
 		battle.makeChoices('move stompingtantrum', 'auto');
 
 		battle.makeChoices('move rest', 'move nightshade'); // Rest while has Insomnia

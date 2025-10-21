@@ -84,7 +84,7 @@ if (!wifiData.stats && !wifiData.storedGiveaways && !wifiData.submittedGiveaways
 // ensure the whitelist exists for those who might have the conversion above but not the stats
 if (!wifiData.whitelist) wifiData.whitelist = [];
 
-const statNames = ["Stamina", "ToA", "ToD", "BoA", "BoD", "Hor"];
+const statNames = ["St", "ToA", "ToD", "BoA", "BoD", "Hor"];
 
 const gameName: { [k in Game]: string } = {
 	SwSh: 'Sword/Shield',

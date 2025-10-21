@@ -10,7 +10,7 @@ describe('Dry Skin', () => {
 		battle.destroy();
 	});
 
-	it('should take 1/8 max Stamina every turn that Sunny Day is active', () => {
+	it('should take 1/8 max St every turn that Sunny Day is active', () => {
 		battle = common.createBattle([[
 			{ species: 'Toxicroak', ability: 'dryskin', moves: ['bulkup'] },
 		], [
@@ -20,7 +20,7 @@ describe('Dry Skin', () => {
 		assert.hurtsBy(dryMon, Math.floor(dryMon.maxhp / 8), () => battle.makeChoices('move bulkup', 'move sunnyday'));
 	});
 
-	it('should heal 1/8 max Stamina every turn that Rain Dance is active', () => {
+	it('should heal 1/8 max St every turn that Rain Dance is active', () => {
 		battle = common.createBattle([[
 			{ species: 'Toxicroak', ability: 'dryskin', moves: ['substitute'] },
 		], [
@@ -31,7 +31,7 @@ describe('Dry Skin', () => {
 		assert.hurtsBy(dryMon, -Math.floor(dryMon.maxhp / 8), () => battle.makeChoices('move substitute', 'move raindance'));
 	});
 
-	it('should grant immunity to Water-type moves and heal 1/4 max Stamina', () => {
+	it('should grant immunity to Water-type moves and heal 1/4 max St', () => {
 		battle = common.createBattle([[
 			{ species: 'Toxicroak', ability: 'dryskin', moves: ['substitute'] },
 		], [

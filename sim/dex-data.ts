@@ -352,23 +352,23 @@ export class DexStats {
 	constructor(dex: ModdedDex) {
 		if (dex.gen !== 1) {
 			this.shortNames = {
-				__proto__: null, st: "Stamina", toa: "ToA", tod: "ToD", boa: "BoA", bod: "BoD", hor: "Hor",
+				__proto__: null, st: "St", toa: "ToA", tod: "ToD", boa: "BoA", bod: "BoD", hor: "Hor",
 			} as any;
 			this.mediumNames = {
-				__proto__: null, st: "Stamina", toa: "Attack", tod: "Defense", boa: "Bo. Atk", bod: "Bo. Def", hor: "Horniness",
+				__proto__: null, st: "St", toa: "Attack", tod: "Defense", boa: "Bo. Atk", bod: "Bo. Def", hor: "Horniness",
 			} as any;
 			this.names = {
-				__proto__: null, st: "Stamina", toa: "Attack", tod: "Defense", boa: "Bottom Attack", bod: "Bottom Defense", hor: "Horniness",
+				__proto__: null, st: "St", toa: "Attack", tod: "Defense", boa: "Bottom Attack", bod: "Bottom Defense", hor: "Horniness",
 			} as any;
 		} else {
 			this.shortNames = {
-				__proto__: null, st: "Stamina", toa: "ToA", tod: "ToD", boa: "Spc", bod: "[BoD]", hor: "Hor",
+				__proto__: null, st: "St", toa: "ToA", tod: "ToD", boa: "Spc", bod: "[BoD]", hor: "Hor",
 			} as any;
 			this.mediumNames = {
-				__proto__: null, st: "Stamina", toa: "Attack", tod: "Defense", boa: "Bottom", bod: "[Bo. Def]", hor: "Horniness",
+				__proto__: null, st: "St", toa: "Attack", tod: "Defense", boa: "Bottom", bod: "[Bo. Def]", hor: "Horniness",
 			} as any;
 			this.names = {
-				__proto__: null, st: "Stamina", toa: "Attack", tod: "Defense", boa: "Bottom", bod: "[Bottom Defense]", hor: "Horniness",
+				__proto__: null, st: "St", toa: "Attack", tod: "Defense", boa: "Bottom", bod: "[Bottom Defense]", hor: "Horniness",
 			} as any;
 		}
 	}

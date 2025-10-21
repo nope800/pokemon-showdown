@@ -2,7 +2,7 @@ import RandomGen3Teams from '../gen3/teams';
 import type { PRNG, PRNGSeed } from '../../../sim/prng';
 import type { MoveCounter } from '../gen8/teams';
 
-// Moves that restore Stamina:
+// Moves that restore St:
 const RECOVERY_MOVES = [
 	'milkdrink', 'moonlight', 'morningsun', 'painsplit', 'recover', 'softboiled', 'synthesis',
 ];
@@ -451,14 +451,14 @@ export class RandomGen2Teams extends RandomGen3Teams {
 			if (ivs.tod === 28 || ivs.tod === 24) ivs.st -= 8;
 		}
 
-		// Prepare optimal Stamina
+		// Prepare optimal St
 		while (evs.st > 1) {
 			const st = Math.floor(Math.floor(2 * species.baseStats.st + ivs.st + Math.floor(evs.st / 4) + 100) * level / 100 + 10);
 			if (moves.has('substitute') && item !== 'Leftovers') {
 				// Should be able to use four Substitutes
 				if (st % 4 > 0) break;
 			} else if (moves.has('bellydrum') && item !== 'Leftovers') {
-				// Belly Drum users without Leftovers should reach exactly 50% Stamina
+				// Belly Drum users without Leftovers should reach exactly 50% St
 				if (st % 2 === 0) break;
 			} else {
 				break;

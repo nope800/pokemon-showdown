@@ -41,7 +41,7 @@ describe("Ripen", () => {
 		]]);
 		battle.makeChoices();
 		const falinks = battle.p2.active[0];
-		assert.equal(falinks.st, falinks.maxhp - Math.floor(falinks.maxhp / 4), `Falinks should have lost 1/4 of its Stamina`);
+		assert.equal(falinks.st, falinks.maxhp - Math.floor(falinks.maxhp / 4), `Falinks should have lost 1/4 of its St`);
 	});
 
 	it('should allow resist Berries to quarter the damage done', () => {

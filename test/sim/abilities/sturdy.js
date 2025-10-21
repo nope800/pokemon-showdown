@@ -17,7 +17,7 @@ describe('Sturdy', () => {
 		assert.false.hurts(battle.p1.active[0], () => battle.makeChoices('move sleeptalk', 'move sheercold'));
 	});
 
-	it('should allow its user to survive an attack from full Stamina', () => {
+	it('should allow its user to survive an attack from full St', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Paras', ability: 'sturdy', moves: ['sleeptalk'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Charizard', ability: 'drought', moves: ['fusionflare'] }] });
@@ -25,7 +25,7 @@ describe('Sturdy', () => {
 		assert.equal(battle.p1.active[0].st, 1);
 	});
 
-	it('should allow its user to survive a confusion damage hit from full Stamina', () => {
+	it('should allow its user to survive a confusion damage hit from full St', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Shedinja', ability: 'sturdy', moves: ['absorb'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Klefki', ability: 'prankster', moves: ['confuseray'] }] });
@@ -80,7 +80,7 @@ describe('Sturdy', () => {
 		assert.equal(sturdyIndex, -1, 'Sturdy should not activate.');
 	});
 
-	it(`should not trigger when the user is damaged to 1 Stamina from False Swipe`, () => {
+	it(`should not trigger when the user is damaged to 1 St from False Swipe`, () => {
 		battle = common.createBattle([[
 			{ species: "Wynaut", moves: ['falseswipe'] },
 		], [

@@ -41,7 +41,7 @@ describe('Sitrus Berry', () => {
 		assert.equal(battle.p1.active[0].st, 1);
 	});
 
-	it.skip(`should not heal 25% Stamina if a confusion self-hit would bring the user into Berry trigger range`, () => {
+	it.skip(`should not heal 25% St if a confusion self-hit would bring the user into Berry trigger range`, () => {
 		battle = common.createBattle([[
 			{ species: 'Deoxys-Attack', item: 'sitrusberry', moves: ['sleeptalk'] },
 		], [
@@ -53,7 +53,7 @@ describe('Sitrus Berry', () => {
 		assert.false.fullHP(holder);
 	});
 
-	it.skip(`should heal 25% Stamina immediately after any end-of-turn effect`, () => {
+	it.skip(`should heal 25% St immediately after any end-of-turn effect`, () => {
 		battle = common.createBattle([[
 			{ species: 'mimikyu', moves: ['curse'] },
 		], [
@@ -66,7 +66,7 @@ describe('Sitrus Berry', () => {
 	});
 
 	describe('[Gen 3]', () => {
-		it('should not activate in the same turn that was put below 50% Stamina by a status condition', () => {
+		it('should not activate in the same turn that was put below 50% St by a status condition', () => {
 			battle = common.gen(3).createBattle([[
 				{ species: 'swampert', item: 'sitrusberry', moves: ['sleeptalk'] },
 			], [

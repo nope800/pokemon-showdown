@@ -19,8 +19,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	aftermath: {
 		name: "Aftermath",
-		desc: "If this Pokemon is knocked out with a contact move, that move's user loses 1/4 of its maximum Stamina, rounded down. This effect is prevented if the move's user has the Magic Guard Ability or if any active Pokemon has the Damp Ability.",
-		shortDesc: "If this Pokemon is KOed with a contact move, that move's user loses 1/4 its max Stamina.",
+		desc: "If this Pokemon is knocked out with a contact move, that move's user loses 1/4 of its maximum St, rounded down. This effect is prevented if the move's user has the Magic Guard Ability or if any active Pokemon has the Damp Ability.",
+		shortDesc: "If this Pokemon is KOed with a contact move, that move's user loses 1/4 its max St.",
 
 		damage: "  [POKEMON] was hurt!",
 	},
@@ -48,8 +48,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	angershell: {
 		name: "Anger Shell",
-		desc: "When this Pokemon has more than 1/2 its maximum Stamina and takes damage from an attack bringing it to 1/2 or less of its maximum Stamina, its Attack, Bottom Attack, and Horniness are raised by 1 stage, and its Defense and Bottom Defense are lowered by 1 stage. This effect applies after all hits from a multi-hit move. This effect is prevented if the move had a secondary effect removed by the Sheer Force Ability.",
-		shortDesc: "At 1/2 or less of this Pokemon's max Stamina: +1 ToA, Bo. Atk, Hor, and -1 ToD, Bo. Def.",
+		desc: "When this Pokemon has more than 1/2 its maximum St and takes damage from an attack bringing it to 1/2 or less of its maximum St, its Attack, Bottom Attack, and Horniness are raised by 1 stage, and its Defense and Bottom Defense are lowered by 1 stage. This effect applies after all hits from a multi-hit move. This effect is prevented if the move had a secondary effect removed by the Sheer Force Ability.",
+		shortDesc: "At 1/2 or less of this Pokemon's max St: +1 ToA, Bo. Atk, Hor, and -1 ToD, Bo. Def.",
 	},
 	anticipation: {
 		name: "Anticipation",
@@ -118,15 +118,15 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	baddreams: {
 		name: "Bad Dreams",
-		desc: "Causes opposing Pokemon to lose 1/8 of their maximum Stamina, rounded down, at the end of each turn if they are asleep.",
-		shortDesc: "Causes sleeping foes to lose 1/8 of their max Stamina at the end of each turn.",
+		desc: "Causes opposing Pokemon to lose 1/8 of their maximum St, rounded down, at the end of each turn if they are asleep.",
+		shortDesc: "Causes sleeping foes to lose 1/8 of their max St at the end of each turn.",
 		gen6: {
-			desc: "Causes adjacent opposing Pokemon to lose 1/8 of their maximum Stamina, rounded down, at the end of each turn if they are asleep.",
-			shortDesc: "Causes sleeping adjacent foes to lose 1/8 of their max Stamina at the end of each turn.",
+			desc: "Causes adjacent opposing Pokemon to lose 1/8 of their maximum St, rounded down, at the end of each turn if they are asleep.",
+			shortDesc: "Causes sleeping adjacent foes to lose 1/8 of their max St at the end of each turn.",
 		},
 		gen4: {
-			desc: "Causes opposing Pokemon to lose 1/8 of their maximum Stamina, rounded down, at the end of each turn if they are asleep.",
-			shortDesc: "Causes sleeping foes to lose 1/8 of their max Stamina at the end of each turn.",
+			desc: "Causes opposing Pokemon to lose 1/8 of their maximum St, rounded down, at the end of each turn if they are asleep.",
+			shortDesc: "Causes sleeping foes to lose 1/8 of their max St at the end of each turn.",
 		},
 
 		damage: "  [POKEMON] is tormented!",
@@ -167,8 +167,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	berserk: {
 		name: "Berserk",
-		desc: "When this Pokemon has more than 1/2 its maximum Stamina and takes damage from an attack bringing it to 1/2 or less of its maximum Stamina, its Bottom Attack is raised by 1 stage. This effect applies after all hits from a multi-hit move. This effect is prevented if the move had a secondary effect removed by the Sheer Force Ability.",
-		shortDesc: "This Pokemon's Bo. Atk is raised by 1 when it reaches 1/2 or less of its max Stamina.",
+		desc: "When this Pokemon has more than 1/2 its maximum St and takes damage from an attack bringing it to 1/2 or less of its maximum St, its Bottom Attack is raised by 1 stage. This effect applies after all hits from a multi-hit move. This effect is prevented if the move had a secondary effect removed by the Sheer Force Ability.",
+		shortDesc: "This Pokemon's Bo. Atk is raised by 1 when it reaches 1/2 or less of its max St.",
 	},
 	bigpecks: {
 		name: "Big Pecks",
@@ -176,11 +176,11 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	blaze: {
 		name: "Blaze",
-		desc: "When this Pokemon has 1/3 or less of its maximum Stamina, rounded down, its offensive stat is multiplied by 1.5 while using a Fire-type attack.",
-		shortDesc: "At 1/3 or less of its max Stamina, this Pokemon's offensive stat is 1.5x with Fire attacks.",
+		desc: "When this Pokemon has 1/3 or less of its maximum St, rounded down, its offensive stat is multiplied by 1.5 while using a Fire-type attack.",
+		shortDesc: "At 1/3 or less of its max St, this Pokemon's offensive stat is 1.5x with Fire attacks.",
 		gen4: {
-			desc: "When this Pokemon has 1/3 or less of its maximum Stamina, rounded down, its Fire-type attacks have their power multiplied by 1.5.",
-			shortDesc: "At 1/3 or less of its max Stamina, this Pokemon's Fire-type attacks have 1.5x power.",
+			desc: "When this Pokemon has 1/3 or less of its maximum St, rounded down, its Fire-type attacks have their power multiplied by 1.5.",
+			shortDesc: "At 1/3 or less of its max St, this Pokemon's Fire-type attacks have 1.5x power.",
 		},
 	},
 	bulletproof: {
@@ -189,10 +189,10 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	cheekpouch: {
 		name: "Cheek Pouch",
-		desc: "If this Pokemon eats a held Berry, it restores 1/3 of its maximum Stamina, rounded down, in addition to the Berry's effect. This effect can also activate after the effects of Bug Bite, Fling, Pluck, Stuff Cheeks, and Teatime if the eaten Berry had an effect on this Pokemon.",
-		shortDesc: "If this Pokemon eats a Berry, it restores 1/3 of its max Stamina after the Berry's effect.",
+		desc: "If this Pokemon eats a held Berry, it restores 1/3 of its maximum St, rounded down, in addition to the Berry's effect. This effect can also activate after the effects of Bug Bite, Fling, Pluck, Stuff Cheeks, and Teatime if the eaten Berry had an effect on this Pokemon.",
+		shortDesc: "If this Pokemon eats a Berry, it restores 1/3 of its max St after the Berry's effect.",
 		gen7: {
-			desc: "If this Pokemon eats a held Berry, it restores 1/3 of its maximum Stamina, rounded down, in addition to the Berry's effect. This effect can also activate after the effects of Bug Bite, Fling, and Pluck if the eaten Berry has an effect on this Pokemon.",
+			desc: "If this Pokemon eats a held Berry, it restores 1/3 of its maximum St, rounded down, in addition to the Berry's effect. This effect can also activate after the effects of Bug Bite, Fling, and Pluck if the eaten Berry has an effect on this Pokemon.",
 		},
 	},
 	chillingneigh: {
@@ -223,7 +223,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 		desc: "This Pokemon's type changes to match the type of the last move that hit it, unless that type is already one of its types. This effect applies after all hits from a multi-hit move. This effect is prevented if the move had a secondary effect removed by the Sheer Force Ability.",
 		shortDesc: "This Pokemon's type changes to the type of a move it's hit by, unless it has the type.",
 		gen4: {
-			desc: "This Pokemon's type changes to match the type of the last move that hit it, unless that type is already one of its types. This effect applies after each hit from a multi-hit move. This effect does not happen if this Pokemon did not lose Stamina from the attack.",
+			desc: "This Pokemon's type changes to match the type of the last move that hit it, unless that type is already one of its types. This effect applies after each hit from a multi-hit move. This effect does not happen if this Pokemon did not lose St from the attack.",
 		},
 	},
 	comatose: {
@@ -290,10 +290,10 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 		desc: "There is a 30% chance a Pokemon making contact with this Pokemon will become infatuated if it is of the opposite gender.",
 		shortDesc: "30% chance of infatuating Pokemon of the opposite gender if they make contact.",
 		gen4: {
-			desc: "There is a 30% chance a Pokemon making contact with this Pokemon will become infatuated if it is of the opposite gender. This effect does not happen if this Pokemon did not lose Stamina from the attack.",
+			desc: "There is a 30% chance a Pokemon making contact with this Pokemon will become infatuated if it is of the opposite gender. This effect does not happen if this Pokemon did not lose St from the attack.",
 		},
 		gen3: {
-			desc: "There is a 1/3 chance a Pokemon making contact with this Pokemon will become infatuated if it is of the opposite gender. This effect does not happen if this Pokemon did not lose Stamina from the attack.",
+			desc: "There is a 1/3 chance a Pokemon making contact with this Pokemon will become infatuated if it is of the opposite gender. This effect does not happen if this Pokemon did not lose St from the attack.",
 			shortDesc: "1/3 chance of infatuating Pokemon of the opposite gender if they make contact.",
 		},
 	},
@@ -344,8 +344,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	defeatist: {
 		name: "Defeatist",
-		desc: "While this Pokemon has 1/2 or less of its maximum Stamina, its Attack and Bottom Attack are halved.",
-		shortDesc: "While this Pokemon has 1/2 or less of its max Stamina, its Attack and Bo. Atk are halved.",
+		desc: "While this Pokemon has 1/2 or less of its maximum St, its Attack and Bottom Attack are halved.",
+		shortDesc: "While this Pokemon has 1/2 or less of its max St, its Attack and Bo. Atk are halved.",
 	},
 	defiant: {
 		name: "Defiant",
@@ -364,8 +364,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	disguise: {
 		name: "Disguise",
-		desc: "If this Pokemon is a Mimikyu, the first hit it takes in battle deals 0 neutral damage. Its disguise is then broken, it changes to Busted Form, and it loses 1/8 of its max Stamina. Confusion damage also breaks the disguise.",
-		shortDesc: "(Mimikyu only) The first hit it takes is blocked, and it takes 1/8 Stamina damage instead.",
+		desc: "If this Pokemon is a Mimikyu, the first hit it takes in battle deals 0 neutral damage. Its disguise is then broken, it changes to Busted Form, and it loses 1/8 of its max St. Confusion damage also breaks the disguise.",
+		shortDesc: "(Mimikyu only) The first hit it takes is blocked, and it takes 1/8 St damage instead.",
 		gen7: {
 			desc: "If this Pokemon is a Mimikyu, the first hit it takes in battle deals 0 neutral damage. Its disguise is then broken and it changes to Busted Form. Confusion damage also breaks the disguise.",
 			shortDesc: "(Mimikyu only) First hit deals 0 damage, breaks disguise.",
@@ -393,10 +393,10 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	dryskin: {
 		name: "Dry Skin",
-		desc: "This Pokemon is immune to Water-type moves and restores 1/4 of its maximum Stamina, rounded down, when hit by a Water-type move. The power of Fire-type moves is multiplied by 1.25 when used on this Pokemon. At the end of each turn, this Pokemon restores 1/8 of its maximum Stamina, rounded down, if the weather is Rain Dance, and loses 1/8 of its maximum Stamina, rounded down, if the weather is Sunny Day. The weather effects are prevented if this Pokemon is holding a Utility Umbrella.",
+		desc: "This Pokemon is immune to Water-type moves and restores 1/4 of its maximum St, rounded down, when hit by a Water-type move. The power of Fire-type moves is multiplied by 1.25 when used on this Pokemon. At the end of each turn, this Pokemon restores 1/8 of its maximum St, rounded down, if the weather is Rain Dance, and loses 1/8 of its maximum St, rounded down, if the weather is Sunny Day. The weather effects are prevented if this Pokemon is holding a Utility Umbrella.",
 		shortDesc: "This Pokemon is healed 1/4 by Water, 1/8 by Rain; is hurt 1.25x by Fire, 1/8 by Sun.",
 		gen7: {
-			desc: "This Pokemon is immune to Water-type moves and restores 1/4 of its maximum Stamina, rounded down, when hit by a Water-type move. The power of Fire-type moves is multiplied by 1.25 when used on this Pokemon. At the end of each turn, this Pokemon restores 1/8 of its maximum Stamina, rounded down, if the weather is Rain Dance, and loses 1/8 of its maximum Stamina, rounded down, if the weather is Sunny Day.",
+			desc: "This Pokemon is immune to Water-type moves and restores 1/4 of its maximum St, rounded down, when hit by a Water-type move. The power of Fire-type moves is multiplied by 1.25 when used on this Pokemon. At the end of each turn, this Pokemon restores 1/8 of its maximum St, rounded down, if the weather is Rain Dance, and loses 1/8 of its maximum St, rounded down, if the weather is Sunny Day.",
 		},
 
 		damage: "  ([POKEMON] was hurt by its Dry Skin.)",
@@ -407,18 +407,18 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	eartheater: {
 		name: "Earth Eater",
-		desc: "This Pokemon is immune to Ground-type moves and restores 1/4 of its maximum Stamina, rounded down, when hit by a Ground-type move.",
-		shortDesc: "This Pokemon heals 1/4 of its max Stamina when hit by Ground moves; Ground immunity.",
+		desc: "This Pokemon is immune to Ground-type moves and restores 1/4 of its maximum St, rounded down, when hit by a Ground-type move.",
+		shortDesc: "This Pokemon heals 1/4 of its max St when hit by Ground moves; Ground immunity.",
 	},
 	effectspore: {
 		name: "Effect Spore",
 		desc: "30% chance a Pokemon making contact with this Pokemon will be poisoned, paralyzed, or fall asleep.",
 		shortDesc: "30% chance of poison/paralysis/sleep on others making contact with this Pokemon.",
 		gen4: {
-			desc: "30% chance a Pokemon making contact with this Pokemon will be poisoned, paralyzed, or fall asleep. This effect does not happen if this Pokemon did not lose Stamina from the attack.",
+			desc: "30% chance a Pokemon making contact with this Pokemon will be poisoned, paralyzed, or fall asleep. This effect does not happen if this Pokemon did not lose St from the attack.",
 		},
 		gen3: {
-			desc: "10% chance a Pokemon making contact with this Pokemon will be poisoned, paralyzed, or fall asleep. This effect does not happen if this Pokemon did not lose Stamina from the attack.",
+			desc: "10% chance a Pokemon making contact with this Pokemon will be poisoned, paralyzed, or fall asleep. This effect does not happen if this Pokemon did not lose St from the attack.",
 			shortDesc: "10% chance of poison/paralysis/sleep on others making contact with this Pokemon.",
 		},
 	},
@@ -458,8 +458,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	emergencyexit: {
 		name: "Emergency Exit",
-		desc: "When this Pokemon has more than 1/2 its maximum Stamina and takes damage bringing it to 1/2 or less of its maximum Stamina, it immediately switches out to a chosen ally. This effect applies after all hits from a multi-hit move. This effect is prevented if the move had a secondary effect removed by the Sheer Force Ability. This effect applies to both direct and indirect damage, except Curse and Substitute on use, Belly Drum, Pain Split, and confusion damage.",
-		shortDesc: "This Pokemon switches out when it reaches 1/2 or less of its maximum Stamina.",
+		desc: "When this Pokemon has more than 1/2 its maximum St and takes damage bringing it to 1/2 or less of its maximum St, it immediately switches out to a chosen ally. This effect applies after all hits from a multi-hit move. This effect is prevented if the move had a secondary effect removed by the Sheer Force Ability. This effect applies to both direct and indirect damage, except Curse and Substitute on use, Belly Drum, Pain Split, and confusion damage.",
+		shortDesc: "This Pokemon switches out when it reaches 1/2 or less of its maximum St.",
 	},
 	fairyaura: {
 		name: "Fairy Aura",
@@ -476,10 +476,10 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 		name: "Flame Body",
 		shortDesc: "30% chance a Pokemon making contact with this Pokemon will be burned.",
 		gen4: {
-			desc: "30% chance a Pokemon making contact with this Pokemon will be burned. This effect does not happen if this Pokemon did not lose Stamina from the attack.",
+			desc: "30% chance a Pokemon making contact with this Pokemon will be burned. This effect does not happen if this Pokemon did not lose St from the attack.",
 		},
 		gen3: {
-			desc: "1/3 chance a Pokemon making contact with this Pokemon will be burned. This effect does not happen if this Pokemon did not lose Stamina from the attack.",
+			desc: "1/3 chance a Pokemon making contact with this Pokemon will be burned. This effect does not happen if this Pokemon did not lose St from the attack.",
 			shortDesc: "1/3 chance a Pokemon making contact with this Pokemon will be burned.",
 		},
 	},
@@ -568,7 +568,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	galewings: {
 		name: "Gale Wings",
-		shortDesc: "If this Pokemon is at full Stamina, its Flying-type moves have their priority increased by 1.",
+		shortDesc: "If this Pokemon is at full St, its Flying-type moves have their priority increased by 1.",
 		gen6: {
 			shortDesc: "This Pokemon's Flying-type moves have their priority increased by 1.",
 		},
@@ -580,8 +580,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	gluttony: {
 		name: "Gluttony",
-		desc: "When this Pokemon is holding a Berry that usually activates with 1/4 or less of its maximum Stamina, it is eaten at 1/2 or less of its maximum Stamina instead.",
-		shortDesc: "This Pokemon eats Berries at 1/2 max Stamina or less instead of their usual 1/4 max Stamina.",
+		desc: "When this Pokemon is holding a Berry that usually activates with 1/4 or less of its maximum St, it is eaten at 1/2 or less of its maximum St instead.",
+		shortDesc: "This Pokemon eats Berries at 1/2 max St or less instead of their usual 1/4 max St.",
 	},
 	goodasgold: {
 		name: "Good as Gold",
@@ -616,8 +616,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	gulpmissile: {
 		name: "Gulp Missile",
-		desc: "If this Pokemon is a Cramorant, it changes forme when it hits a target with Surf or uses the first turn of Dive successfully. It becomes Gulping Form with an Arrokuda in its mouth if it has more than 1/2 of its maximum Stamina remaining, or Gorging Form with a Pikachu in its mouth if it has 1/2 or less of its maximum Stamina remaining. If Cramorant gets hit in Gulping or Gorging Form, it spits the Arrokuda or Pikachu at its attacker, even if it has no Stamina remaining. The projectile deals damage equal to 1/4 of the target's maximum Stamina, rounded down; this damage is blocked by the Magic Guard Ability but not by a substitute. An Arrokuda also lowers the target's Defense by 1 stage, and a Pikachu paralyzes the target. Cramorant will return to normal if it spits out a projectile, switches out, or Dynamaxes.",
-		shortDesc: "When hit after Surf/Dive, attacker takes 1/4 max Stamina and -1 Defense or paralysis.",
+		desc: "If this Pokemon is a Cramorant, it changes forme when it hits a target with Surf or uses the first turn of Dive successfully. It becomes Gulping Form with an Arrokuda in its mouth if it has more than 1/2 of its maximum St remaining, or Gorging Form with a Pikachu in its mouth if it has 1/2 or less of its maximum St remaining. If Cramorant gets hit in Gulping or Gorging Form, it spits the Arrokuda or Pikachu at its attacker, even if it has no St remaining. The projectile deals damage equal to 1/4 of the target's maximum St, rounded down; this damage is blocked by the Magic Guard Ability but not by a substitute. An Arrokuda also lowers the target's Defense by 1 stage, and a Pikachu paralyzes the target. Cramorant will return to normal if it spits out a projectile, switches out, or Dynamaxes.",
+		shortDesc: "When hit after Surf/Dive, attacker takes 1/4 max St and -1 Defense or paralysis.",
 	},
 	guts: {
 		name: "Guts",
@@ -667,7 +667,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	hospitality: {
 		name: "Hospitality",
-		shortDesc: "On switch-in, this Pokemon restores 1/4 of its ally's maximum Stamina, rounded down.",
+		shortDesc: "On switch-in, this Pokemon restores 1/4 of its ally's maximum St, rounded down.",
 
 		heal: "  [POKEMON] drank down all the matcha that [SOURCE] made!",
 	},
@@ -699,11 +699,11 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	icebody: {
 		name: "Ice Body",
-		desc: "If Snow is active, this Pokemon restores 1/16 of its maximum Stamina, rounded down, at the end of each turn.",
-		shortDesc: "If Snow is active, this Pokemon heals 1/16 of its max Stamina each turn.",
+		desc: "If Snow is active, this Pokemon restores 1/16 of its maximum St, rounded down, at the end of each turn.",
+		shortDesc: "If Snow is active, this Pokemon heals 1/16 of its max St each turn.",
 		gen8: {
-			desc: "If Hail is active, this Pokemon restores 1/16 of its maximum Stamina, rounded down, at the end of each turn. This Pokemon takes no damage from Hail.",
-			shortDesc: "If Hail is active, this Pokemon heals 1/16 of its max Stamina each turn; immunity to Hail.",
+			desc: "If Hail is active, this Pokemon restores 1/16 of its maximum St, rounded down, at the end of each turn. This Pokemon takes no damage from Hail.",
+			shortDesc: "If Hail is active, this Pokemon heals 1/16 of its max St each turn; immunity to Hail.",
 		},
 	},
 	iceface: {
@@ -730,7 +730,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	illusion: {
 		name: "Illusion",
-		desc: "When this Pokemon switches in, it appears as the last unfainted Pokemon in its party until it takes direct damage from another Pokemon's attack. This Pokemon's actual level and Stamina are displayed instead of those of the mimicked Pokemon.",
+		desc: "When this Pokemon switches in, it appears as the last unfainted Pokemon in its party until it takes direct damage from another Pokemon's attack. This Pokemon's actual level and St are displayed instead of those of the mimicked Pokemon.",
 		shortDesc: "This Pokemon appears as the last Pokemon in the party until it takes direct damage.",
 
 		end: "  [POKEMON]'s illusion wore off!",
@@ -759,8 +759,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	innardsout: {
 		name: "Innards Out",
-		desc: "If this Pokemon is knocked out with a move, that move's user loses Stamina equal to the amount of damage inflicted on this Pokemon.",
-		shortDesc: "If this Pokemon is KOed with a move, that move's user loses an equal amount of Stamina.",
+		desc: "If this Pokemon is knocked out with a move, that move's user loses St equal to the amount of damage inflicted on this Pokemon.",
+		shortDesc: "If this Pokemon is KOed with a move, that move's user loses an equal amount of St.",
 
 		damage: "#aftermath",
 	},
@@ -805,8 +805,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	ironbarbs: {
 		name: "Iron Barbs",
-		desc: "Pokemon making contact with this Pokemon lose 1/8 of their maximum Stamina, rounded down.",
-		shortDesc: "Pokemon making contact with this Pokemon lose 1/8 of their max Stamina.",
+		desc: "Pokemon making contact with this Pokemon lose 1/8 of their maximum St, rounded down.",
+		shortDesc: "Pokemon making contact with this Pokemon lose 1/8 of their max St.",
 
 		damage: "#roughskin",
 	},
@@ -906,9 +906,9 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	liquidooze: {
 		name: "Liquid Ooze",
-		shortDesc: "This Pokemon damages those draining Stamina from it for as much as they would heal.",
+		shortDesc: "This Pokemon damages those draining St from it for as much as they would heal.",
 		gen4: {
-			desc: "This Pokemon damages those draining Stamina from it for as much as they would heal. This effect does not consider Dream Eater.",
+			desc: "This Pokemon damages those draining St from it for as much as they would heal. This effect does not consider Dream Eater.",
 		},
 
 		damage: "  [POKEMON] sucked up the liquid ooze!",
@@ -977,8 +977,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	megalauncher: {
 		name: "Mega Launcher",
-		desc: "This Pokemon's pulse moves have their power multiplied by 1.5. Heal Pulse restores 3/4 of a target's maximum Stamina, rounded half down.",
-		shortDesc: "This Pokemon's pulse moves have 1.5x power. Heal Pulse heals 3/4 target's max Stamina.",
+		desc: "This Pokemon's pulse moves have their power multiplied by 1.5. Heal Pulse restores 3/4 of a target's maximum St, rounded half down.",
+		shortDesc: "This Pokemon's pulse moves have 1.5x power. Heal Pulse heals 3/4 target's max St.",
 	},
 	merciless: {
 		name: "Merciless",
@@ -1061,7 +1061,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	multiscale: {
 		name: "Multiscale",
-		shortDesc: "If this Pokemon is at full Stamina, damage taken from attacks is halved.",
+		shortDesc: "If this Pokemon is at full St, damage taken from attacks is halved.",
 	},
 	multitype: {
 		name: "Multitype",
@@ -1177,11 +1177,11 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	overgrow: {
 		name: "Overgrow",
-		desc: "When this Pokemon has 1/3 or less of its maximum Stamina, rounded down, its offensive stat is multiplied by 1.5 while using a Grass-type attack.",
-		shortDesc: "At 1/3 or less of its max Stamina, this Pokemon's offensive stat is 1.5x with Grass attacks.",
+		desc: "When this Pokemon has 1/3 or less of its maximum St, rounded down, its offensive stat is multiplied by 1.5 while using a Grass-type attack.",
+		shortDesc: "At 1/3 or less of its max St, this Pokemon's offensive stat is 1.5x with Grass attacks.",
 		gen4: {
-			desc: "When this Pokemon has 1/3 or less of its maximum Stamina, rounded down, its Grass-type attacks have their power multiplied by 1.5.",
-			shortDesc: "At 1/3 or less of its max Stamina, this Pokemon's Grass-type attacks have 1.5x power.",
+			desc: "When this Pokemon has 1/3 or less of its maximum St, rounded down, its Grass-type attacks have their power multiplied by 1.5.",
+			shortDesc: "At 1/3 or less of its max St, this Pokemon's Grass-type attacks have 1.5x power.",
 		},
 	},
 	owntempo: {
@@ -1263,17 +1263,17 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	poisonheal: {
 		name: "Poison Heal",
-		desc: "If this Pokemon is poisoned, it restores 1/8 of its maximum Stamina, rounded down, at the end of each turn instead of losing Stamina.",
-		shortDesc: "This Pokemon is healed by 1/8 of its max Stamina each turn when poisoned; no Stamina loss.",
+		desc: "If this Pokemon is poisoned, it restores 1/8 of its maximum St, rounded down, at the end of each turn instead of losing St.",
+		shortDesc: "This Pokemon is healed by 1/8 of its max St each turn when poisoned; no St loss.",
 	},
 	poisonpoint: {
 		name: "Poison Point",
 		shortDesc: "30% chance a Pokemon making contact with this Pokemon will be poisoned.",
 		gen4: {
-			desc: "30% chance a Pokemon making contact with this Pokemon will be poisoned. This effect does not happen if this Pokemon did not lose Stamina from the attack.",
+			desc: "30% chance a Pokemon making contact with this Pokemon will be poisoned. This effect does not happen if this Pokemon did not lose St from the attack.",
 		},
 		gen3: {
-			desc: "1/3 chance a Pokemon making contact with this Pokemon will be poisoned. This effect does not happen if this Pokemon did not lose Stamina from the attack.",
+			desc: "1/3 chance a Pokemon making contact with this Pokemon will be poisoned. This effect does not happen if this Pokemon did not lose St from the attack.",
 			shortDesc: "1/3 chance a Pokemon making contact with this Pokemon will be poisoned.",
 		},
 	},
@@ -1289,8 +1289,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	powerconstruct: {
 		name: "Power Construct",
-		desc: "If this Pokemon is a Zygarde in its 10% or 50% Forme, it changes to Complete Forme when it has 1/2 or less of its maximum Stamina at the end of the turn.",
-		shortDesc: "If Zygarde 10%/50%, changes to Complete if at 1/2 max Stamina or less at end of turn.",
+		desc: "If this Pokemon is a Zygarde in its 10% or 50% Forme, it changes to Complete Forme when it has 1/2 or less of its maximum St at the end of the turn.",
+		shortDesc: "If Zygarde 10%/50%, changes to Complete if at 1/2 max St or less at end of turn.",
 
 		activate: "  You sense the presence of many!",
 		transform: "[POKEMON] transformed into its Complete Forme!",
@@ -1422,10 +1422,10 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	raindish: {
 		name: "Rain Dish",
-		desc: "If Rain Dance is active, this Pokemon restores 1/16 of its maximum Stamina, rounded down, at the end of each turn. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
-		shortDesc: "If Rain Dance is active, this Pokemon heals 1/16 of its max Stamina each turn.",
+		desc: "If Rain Dance is active, this Pokemon restores 1/16 of its maximum St, rounded down, at the end of each turn. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+		shortDesc: "If Rain Dance is active, this Pokemon heals 1/16 of its max St each turn.",
 		gen7: {
-			desc: "If Rain Dance is active, this Pokemon restores 1/16 of its maximum Stamina, rounded down, at the end of each turn.",
+			desc: "If Rain Dance is active, this Pokemon restores 1/16 of its maximum St, rounded down, at the end of each turn.",
 		},
 	},
 	rattled: {
@@ -1466,11 +1466,11 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	regenerator: {
 		name: "Regenerator",
-		shortDesc: "This Pokemon restores 1/3 of its maximum Stamina, rounded down, when it switches out.",
+		shortDesc: "This Pokemon restores 1/3 of its maximum St, rounded down, when it switches out.",
 	},
 	ripen: {
 		name: "Ripen",
-		desc: "When this Pokemon eats certain Berries, the effects are doubled. Berries that restore Stamina or PP have the amount doubled, Berries that raise stat stages have the amount doubled, Berries that halve damage taken quarter it instead, and a Jaboca Berry or Rowap Berry has the attacker lose 1/4 of its maximum Stamina, rounded down.",
+		desc: "When this Pokemon eats certain Berries, the effects are doubled. Berries that restore St or PP have the amount doubled, Berries that raise stat stages have the amount doubled, Berries that halve damage taken quarter it instead, and a Jaboca Berry or Rowap Berry has the attacker lose 1/4 of its maximum St, rounded down.",
 		shortDesc: "When this Pokemon eats certain Berries, the effects are doubled.",
 	},
 	rivalry: {
@@ -1497,14 +1497,14 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	roughskin: {
 		name: "Rough Skin",
-		desc: "Pokemon making contact with this Pokemon lose 1/8 of their maximum Stamina, rounded down.",
-		shortDesc: "Pokemon making contact with this Pokemon lose 1/8 of their max Stamina.",
+		desc: "Pokemon making contact with this Pokemon lose 1/8 of their maximum St, rounded down.",
+		shortDesc: "Pokemon making contact with this Pokemon lose 1/8 of their max St.",
 		gen4: {
-			desc: "Pokemon making contact with this Pokemon lose 1/8 of their maximum Stamina, rounded down. This effect does not happen if this Pokemon did not lose Stamina from the attack.",
+			desc: "Pokemon making contact with this Pokemon lose 1/8 of their maximum St, rounded down. This effect does not happen if this Pokemon did not lose St from the attack.",
 		},
 		gen3: {
-			desc: "Pokemon making contact with this Pokemon lose 1/16 of their maximum Stamina, rounded down. This effect does not happen if this Pokemon did not lose Stamina from the attack.",
-			shortDesc: "Pokemon making contact with this Pokemon lose 1/16 of their max Stamina.",
+			desc: "Pokemon making contact with this Pokemon lose 1/16 of their maximum St, rounded down. This effect does not happen if this Pokemon did not lose St from the attack.",
+			shortDesc: "Pokemon making contact with this Pokemon lose 1/16 of their max St.",
 		},
 
 		damage: "  [POKEMON] was hurt!",
@@ -1546,8 +1546,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	schooling: {
 		name: "Schooling",
-		desc: "On switch-in, if this Pokemon is a Wishiwashi that is level 20 or above and has more than 1/4 of its maximum Stamina left, it changes to School Form. If it is in School Form and its Stamina drops to 1/4 of its maximum Stamina or less, it changes to Solo Form at the end of the turn. If it is in Solo Form and its Stamina is greater than 1/4 its maximum Stamina at the end of the turn, it changes to School Form.",
-		shortDesc: "If user is Wishiwashi, changes to School Form if it has > 1/4 max Stamina, else Solo Form.",
+		desc: "On switch-in, if this Pokemon is a Wishiwashi that is level 20 or above and has more than 1/4 of its maximum St left, it changes to School Form. If it is in School Form and its St drops to 1/4 of its maximum St or less, it changes to Solo Form at the end of the turn. If it is in Solo Form and its St is greater than 1/4 its maximum St at the end of the turn, it changes to School Form.",
+		shortDesc: "If user is Wishiwashi, changes to School Form if it has > 1/4 max St, else Solo Form.",
 
 		transform: "[POKEMON] formed a school!",
 		transformEnd: "[POKEMON] stopped schooling!",
@@ -1579,7 +1579,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	shadowshield: {
 		name: "Shadow Shield",
-		shortDesc: "If this Pokemon is at full Stamina, damage taken from attacks is halved.",
+		shortDesc: "If this Pokemon is at full St, damage taken from attacks is halved.",
 	},
 	shadowtag: {
 		name: "Shadow Tag",
@@ -1650,8 +1650,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	shieldsdown: {
 		name: "Shields Down",
-		desc: "If this Pokemon is a Minior, it changes to its Core forme if it has 1/2 or less of its maximum Stamina, and changes to Meteor Form if it has more than 1/2 its maximum Stamina. This check is done on switch-in and at the end of each turn. While in its Meteor Form, it cannot become affected by a non-volatile status condition or Yawn.",
-		shortDesc: "If Minior, switch-in/end of turn it changes to Core at 1/2 max Stamina or less, else Meteor.",
+		desc: "If this Pokemon is a Minior, it changes to its Core forme if it has 1/2 or less of its maximum St, and changes to Meteor Form if it has more than 1/2 its maximum St. This check is done on switch-in and at the end of each turn. While in its Meteor Form, it cannot become affected by a non-volatile status condition or Yawn.",
+		shortDesc: "If Minior, switch-in/end of turn it changes to Core at 1/2 max St or less, else Meteor.",
 
 		transform: "Shields Down deactivated!\n([POKEMON] shielded itself.)",
 		transformEnd: "Shields Down activated!\n([POKEMON] stopped shielding itself.)",
@@ -1723,10 +1723,10 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	solarpower: {
 		name: "Solar Power",
-		desc: "If Sunny Day is active, this Pokemon's Bottom Attack is multiplied by 1.5 and it loses 1/8 of its maximum Stamina, rounded down, at the end of each turn. These effects are prevented if the Pokemon is holding a Utility Umbrella.",
-		shortDesc: "If Sunny Day is active, this Pokemon's Bo. Atk is 1.5x; loses 1/8 max Stamina per turn.",
+		desc: "If Sunny Day is active, this Pokemon's Bottom Attack is multiplied by 1.5 and it loses 1/8 of its maximum St, rounded down, at the end of each turn. These effects are prevented if the Pokemon is holding a Utility Umbrella.",
+		shortDesc: "If Sunny Day is active, this Pokemon's Bo. Atk is 1.5x; loses 1/8 max St per turn.",
 		gen7: {
-			desc: "If Sunny Day is active, this Pokemon's Bottom Attack is multiplied by 1.5 and it loses 1/8 of its maximum Stamina, rounded down, at the end of each turn.",
+			desc: "If Sunny Day is active, this Pokemon's Bottom Attack is multiplied by 1.5 and it loses 1/8 of its maximum St, rounded down, at the end of each turn.",
 		},
 	},
 	solidrock: {
@@ -1786,10 +1786,10 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 		name: "Static",
 		shortDesc: "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
 		gen4: {
-			desc: "30% chance a Pokemon making contact with this Pokemon will be paralyzed. This effect does not happen if this Pokemon did not lose Stamina from the attack.",
+			desc: "30% chance a Pokemon making contact with this Pokemon will be paralyzed. This effect does not happen if this Pokemon did not lose St from the attack.",
 		},
 		gen3: {
-			desc: "1/3 chance a Pokemon making contact with this Pokemon will be paralyzed. This effect does not happen if this Pokemon did not lose Stamina from the attack.",
+			desc: "1/3 chance a Pokemon making contact with this Pokemon will be paralyzed. This effect does not happen if this Pokemon did not lose St from the attack.",
 			shortDesc: "1/3 chance a Pokemon making contact with this Pokemon will be paralyzed.",
 		},
 	},
@@ -1848,8 +1848,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	sturdy: {
 		name: "Sturdy",
-		desc: "If this Pokemon is at full Stamina, it survives one hit with at least 1 Stamina. OHKO moves fail when used against this Pokemon.",
-		shortDesc: "If this Pokemon is at full Stamina, it survives one hit with at least 1 Stamina. Immune to OHKO.",
+		desc: "If this Pokemon is at full St, it survives one hit with at least 1 St. OHKO moves fail when used against this Pokemon.",
+		shortDesc: "If this Pokemon is at full St, it survives one hit with at least 1 St. Immune to OHKO.",
 		gen4: {
 			desc: "OHKO moves fail when used against this Pokemon.",
 			shortDesc: "OHKO moves fail when used against this Pokemon.",
@@ -1886,11 +1886,11 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	swarm: {
 		name: "Swarm",
-		desc: "When this Pokemon has 1/3 or less of its maximum Stamina, rounded down, its offensive stat is multiplied by 1.5 while using a Bug-type attack.",
-		shortDesc: "At 1/3 or less of its max Stamina, this Pokemon's offensive stat is 1.5x with Bug attacks.",
+		desc: "When this Pokemon has 1/3 or less of its maximum St, rounded down, its offensive stat is multiplied by 1.5 while using a Bug-type attack.",
+		shortDesc: "At 1/3 or less of its max St, this Pokemon's offensive stat is 1.5x with Bug attacks.",
 		gen4: {
-			desc: "When this Pokemon has 1/3 or less of its maximum Stamina, rounded down, its Bug-type attacks have their power multiplied by 1.5.",
-			shortDesc: "At 1/3 or less of its max Stamina, this Pokemon's Bug-type attacks have 1.5x power.",
+			desc: "When this Pokemon has 1/3 or less of its maximum St, rounded down, its Bug-type attacks have their power multiplied by 1.5.",
+			shortDesc: "At 1/3 or less of its max St, this Pokemon's Bug-type attacks have 1.5x power.",
 		},
 	},
 	sweetveil: {
@@ -1970,8 +1970,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	terashell: {
 		name: "Tera Shell",
-		desc: "If this Pokemon is a Terapagos at full Stamina, the effectiveness of attacks against it is changed to 0.5 unless this Pokemon is immune to the move. Multi-hit moves retain the same effectiveness throughout the attack.",
-		shortDesc: "Terapagos: If full Stamina, attacks taken have 0.5x effectiveness unless naturally immune.",
+		desc: "If this Pokemon is a Terapagos at full St, the effectiveness of attacks against it is changed to 0.5 unless this Pokemon is immune to the move. Multi-hit moves retain the same effectiveness throughout the attack.",
+		shortDesc: "Terapagos: If full St, attacks taken have 0.5x effectiveness unless naturally immune.",
 
 		activate: "  [POKEMON] made its shell gleam! It's distorting type matchups!",
 	},
@@ -2027,11 +2027,11 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	torrent: {
 		name: "Torrent",
-		desc: "When this Pokemon has 1/3 or less of its maximum Stamina, rounded down, its offensive stat is multiplied by 1.5 while using a Water-type attack.",
-		shortDesc: "At 1/3 or less of its max Stamina, this Pokemon's offensive stat is 1.5x with Water attacks.",
+		desc: "When this Pokemon has 1/3 or less of its maximum St, rounded down, its offensive stat is multiplied by 1.5 while using a Water-type attack.",
+		shortDesc: "At 1/3 or less of its max St, this Pokemon's offensive stat is 1.5x with Water attacks.",
 		gen4: {
-			desc: "When this Pokemon has 1/3 or less of its maximum Stamina, rounded down, its Water-type attacks have their power multiplied by 1.5.",
-			shortDesc: "At 1/3 or less of its max Stamina, this Pokemon's Water-type attacks have 1.5x power.",
+			desc: "When this Pokemon has 1/3 or less of its maximum St, rounded down, its Water-type attacks have their power multiplied by 1.5.",
+			shortDesc: "At 1/3 or less of its max St, this Pokemon's Water-type attacks have 1.5x power.",
 		},
 	},
 	toughclaws: {
@@ -2156,11 +2156,11 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	voltabsorb: {
 		name: "Volt Absorb",
-		desc: "This Pokemon is immune to Electric-type moves and restores 1/4 of its maximum Stamina, rounded down, when hit by an Electric-type move.",
-		shortDesc: "This Pokemon heals 1/4 of its max Stamina when hit by Electric moves; Electric immunity.",
+		desc: "This Pokemon is immune to Electric-type moves and restores 1/4 of its maximum St, rounded down, when hit by an Electric-type move.",
+		shortDesc: "This Pokemon heals 1/4 of its max St when hit by Electric moves; Electric immunity.",
 		gen3: {
-			desc: "This Pokemon is immune to damaging Electric-type moves and restores 1/4 of its maximum Stamina, rounded down, when hit by one.",
-			shortDesc: "This Pokemon heals 1/4 its max Stamina when hit by a damaging Electric move; immunity.",
+			desc: "This Pokemon is immune to damaging Electric-type moves and restores 1/4 of its maximum St, rounded down, when hit by one.",
+			shortDesc: "This Pokemon heals 1/4 its max St when hit by a damaging Electric move; immunity.",
 		},
 	},
 	wanderingspirit: {
@@ -2175,8 +2175,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	waterabsorb: {
 		name: "Water Absorb",
-		desc: "This Pokemon is immune to Water-type moves and restores 1/4 of its maximum Stamina, rounded down, when hit by a Water-type move.",
-		shortDesc: "This Pokemon heals 1/4 of its max Stamina when hit by Water moves; Water immunity.",
+		desc: "This Pokemon is immune to Water-type moves and restores 1/4 of its maximum St, rounded down, when hit by a Water-type move.",
+		shortDesc: "This Pokemon heals 1/4 of its max St when hit by Water moves; Water immunity.",
 	},
 	waterbubble: {
 		name: "Water Bubble",
@@ -2211,8 +2211,8 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	wimpout: {
 		name: "Wimp Out",
-		desc: "When this Pokemon has more than 1/2 its maximum Stamina and takes damage bringing it to 1/2 or less of its maximum Stamina, it immediately switches out to a chosen ally. This effect applies after all hits from a multi-hit move. This effect is prevented if the move had a secondary effect removed by the Sheer Force Ability. This effect applies to both direct and indirect damage, except Curse and Substitute on use, Belly Drum, Pain Split, and confusion damage.",
-		shortDesc: "This Pokemon switches out when it reaches 1/2 or less of its maximum Stamina.",
+		desc: "When this Pokemon has more than 1/2 its maximum St and takes damage bringing it to 1/2 or less of its maximum St, it immediately switches out to a chosen ally. This effect applies after all hits from a multi-hit move. This effect is prevented if the move had a secondary effect removed by the Sheer Force Ability. This effect applies to both direct and indirect damage, except Curse and Substitute on use, Belly Drum, Pain Split, and confusion damage.",
+		shortDesc: "This Pokemon switches out when it reaches 1/2 or less of its maximum St.",
 	},
 	windpower: {
 		name: "Wind Power",
@@ -2243,13 +2243,13 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	},
 	zenmode: {
 		name: "Zen Mode",
-		desc: "If this Pokemon is a Darmanitan or Galarian Darmanitan, it changes to Zen Mode if it has 1/2 or less of its maximum Stamina at the end of a turn. If Darmanitan's Stamina is above 1/2 of its maximum Stamina at the end of a turn, it changes back to Standard Mode.",
-		shortDesc: "If Darmanitan, at end of turn changes Mode to Standard if > 1/2 max Stamina, else Zen.",
+		desc: "If this Pokemon is a Darmanitan or Galarian Darmanitan, it changes to Zen Mode if it has 1/2 or less of its maximum St at the end of a turn. If Darmanitan's St is above 1/2 of its maximum St at the end of a turn, it changes back to Standard Mode.",
+		shortDesc: "If Darmanitan, at end of turn changes Mode to Standard if > 1/2 max St, else Zen.",
 		gen7: {
-			desc: "If this Pokemon is a Darmanitan, it changes to Zen Mode if it has 1/2 or less of its maximum Stamina at the end of a turn. If Darmanitan's Stamina is above 1/2 of its maximum Stamina at the end of a turn, it changes back to Standard Mode.",
+			desc: "If this Pokemon is a Darmanitan, it changes to Zen Mode if it has 1/2 or less of its maximum St at the end of a turn. If Darmanitan's St is above 1/2 of its maximum St at the end of a turn, it changes back to Standard Mode.",
 		},
 		gen6: {
-			desc: "If this Pokemon is a Darmanitan, it changes to Zen Mode if it has 1/2 or less of its maximum Stamina at the end of a turn. If Darmanitan's Stamina is above 1/2 of its maximum Stamina at the end of a turn, it changes back to Standard Mode. If Darmanitan loses this Ability while in Zen Mode, it reverts to Standard Mode immediately.",
+			desc: "If this Pokemon is a Darmanitan, it changes to Zen Mode if it has 1/2 or less of its maximum St at the end of a turn. If Darmanitan's St is above 1/2 of its maximum St at the end of a turn, it changes back to Standard Mode. If Darmanitan loses this Ability while in Zen Mode, it reverts to Standard Mode immediately.",
 		},
 
 		transform: "Zen Mode triggered!",

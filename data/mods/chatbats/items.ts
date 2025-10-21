@@ -8,7 +8,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 				return this.chainModify([6144, 4096]);
 			}
 		},
-		shortDesc: "Holder gains 1.5x Stamina from draining, Aqua Ring, Ingrain, Leech Seed, Strength Sap.",
+		shortDesc: "Holder gains 1.5x St from draining, Aqua Ring, Ingrain, Leech Seed, Strength Sap.",
 	},
 	masquerainite: {
 		name: "Masquerainite",
@@ -100,7 +100,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		itemUser: ["Flapple"],
 		num: 1117,
 		gen: 8,
-		desc: "Grass- and Ground-type moves have 1.2x power. Restores 1/4 max Stamina when at 1/2 max Stamina or less.",
+		desc: "Grass- and Ground-type moves have 1.2x power. Restores 1/4 max St when at 1/2 max St or less.",
 	},
 	thickclub: {
 		name: "Thick Club",

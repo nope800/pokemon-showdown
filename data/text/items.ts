@@ -39,12 +39,12 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	aguavberry: {
 		name: "Aguav Berry",
-		shortDesc: "Restores 1/3 max Stamina at 1/4 max Stamina or less; confuses if -BoD Nature. Single use.",
+		shortDesc: "Restores 1/3 max St at 1/4 max St or less; confuses if -BoD Nature. Single use.",
 		gen7: {
-			shortDesc: "Restores 1/2 max Stamina at 1/4 max Stamina or less; confuses if -BoD Nature. Single use.",
+			shortDesc: "Restores 1/2 max St at 1/4 max St or less; confuses if -BoD Nature. Single use.",
 		},
 		gen6: {
-			shortDesc: "Restores 1/8 max Stamina at 1/2 max Stamina or less; confuses if -BoD Nature. Single use.",
+			shortDesc: "Restores 1/8 max St at 1/2 max St or less; confuses if -BoD Nature. Single use.",
 		},
 	},
 	airballoon: {
@@ -72,7 +72,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	apicotberry: {
 		name: "Apicot Berry",
-		shortDesc: "Raises holder's Bo. Def by 1 stage when at 1/4 max Stamina or less. Single use.",
+		shortDesc: "Raises holder's Bo. Def by 1 stage when at 1/4 max St or less. Single use.",
 	},
 	armorfossil: {
 		name: "Armor Fossil",
@@ -116,7 +116,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	berryjuice: {
 		name: "Berry Juice",
-		shortDesc: "Restores 20 Stamina when at 1/2 max Stamina or less. Single use.",
+		shortDesc: "Restores 20 St when at 1/2 max St or less. Single use.",
 	},
 	berrysweet: {
 		name: "Berry Sweet",
@@ -128,14 +128,14 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	bigroot: {
 		name: "Big Root",
-		shortDesc: "Holder gains 1.3x Stamina from draining/Aqua Ring/Ingrain/Leech Seed/Strength Sap.",
+		shortDesc: "Holder gains 1.3x St from draining/Aqua Ring/Ingrain/Leech Seed/Strength Sap.",
 		gen6: {
-			shortDesc: "Holder gains 1.3x Stamina from draining moves, Aqua Ring, Ingrain, and Leech Seed.",
+			shortDesc: "Holder gains 1.3x St from draining moves, Aqua Ring, Ingrain, and Leech Seed.",
 		},
 	},
 	bindingband: {
 		name: "Binding Band",
-		shortDesc: "Holder's partial-trapping moves deal 1/6 max Stamina per turn instead of 1/8.",
+		shortDesc: "Holder's partial-trapping moves deal 1/6 max St per turn instead of 1/8.",
 	},
 	blackbelt: {
 		name: "Black Belt",
@@ -146,9 +146,9 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	blacksludge: {
 		name: "Black Sludge",
-		shortDesc: "Each turn, if holder is a Poison type, restores 1/16 max Stamina; loses 1/8 if not.",
+		shortDesc: "Each turn, if holder is a Poison type, restores 1/16 max St; loses 1/8 if not.",
 
-		heal: "  [POKEMON] restored a little Stamina using its Black Sludge!",
+		heal: "  [POKEMON] restored a little St using its Black Sludge!",
 	},
 	blackglasses: {
 		name: "Black Glasses",
@@ -323,7 +323,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	custapberry: {
 		name: "Custap Berry",
-		shortDesc: "Holder moves first in its priority bracket when at 1/4 max Stamina or less. Single use.",
+		shortDesc: "Holder moves first in its priority bracket when at 1/4 max St or less. Single use.",
 
 		activate: "  [POKEMON] can act faster than normal, thanks to its Custap Berry!",
 	},
@@ -494,7 +494,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	enigmaberry: {
 		name: "Enigma Berry",
-		shortDesc: "Restores 1/4 max Stamina after holder is hit by a supereffective move. Single use.",
+		shortDesc: "Restores 1/4 max St after holder is hit by a supereffective move. Single use.",
 		gen3: {
 			shortDesc: "No competitive use.",
 		},
@@ -544,12 +544,12 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	figyberry: {
 		name: "Figy Berry",
-		shortDesc: "Restores 1/3 max Stamina at 1/4 max Stamina or less; confuses if -ToA Nature. Single use.",
+		shortDesc: "Restores 1/3 max St at 1/4 max St or less; confuses if -ToA Nature. Single use.",
 		gen7: {
-			shortDesc: "Restores 1/2 max Stamina at 1/4 max Stamina or less; confuses if -ToA Nature. Single use.",
+			shortDesc: "Restores 1/2 max St at 1/4 max St or less; confuses if -ToA Nature. Single use.",
 		},
 		gen6: {
-			shortDesc: "Restores 1/8 max Stamina at 1/2 max Stamina or less; confuses if -ToA Nature. Single use.",
+			shortDesc: "Restores 1/8 max St at 1/2 max St or less; confuses if -ToA Nature. Single use.",
 		},
 	},
 	firegem: {
@@ -609,18 +609,18 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	focusband: {
 		name: "Focus Band",
-		shortDesc: "Holder has a 10% chance to survive an attack that would KO it with 1 Stamina.",
+		shortDesc: "Holder has a 10% chance to survive an attack that would KO it with 1 St.",
 		gen2: {
-			shortDesc: "Holder has a ~11.7% chance to survive an attack that would KO it with 1 Stamina.",
+			shortDesc: "Holder has a ~11.7% chance to survive an attack that would KO it with 1 St.",
 		},
 
 		activate: "  [POKEMON] hung on using its Focus Band!",
 	},
 	focussash: {
 		name: "Focus Sash",
-		shortDesc: "If holder's Stamina is full, will survive an attack that would KO it with 1 Stamina. Single use.",
+		shortDesc: "If holder's St is full, will survive an attack that would KO it with 1 St. Single use.",
 		gen4: {
-			shortDesc: "If holder's Stamina is full, survives all hits of one attack with at least 1 Stamina. Single use.",
+			shortDesc: "If holder's St is full, survives all hits of one attack with at least 1 St. Single use.",
 		},
 
 		end: "  [POKEMON] hung on using its Focus Sash!",
@@ -663,7 +663,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	ganlonberry: {
 		name: "Ganlon Berry",
-		shortDesc: "Raises holder's Defense by 1 stage when at 1/4 max Stamina or less. Single use.",
+		shortDesc: "Raises holder's Defense by 1 stage when at 1/4 max St or less. Single use.",
 	},
 	garchompite: {
 		name: "Garchompite",
@@ -774,7 +774,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	healball: {
 		name: "Heal Ball",
-		shortDesc: "A remedial Poke Ball that restores the caught Pokemon's Stamina and status problem.",
+		shortDesc: "A remedial Poke Ball that restores the caught Pokemon's St and status problem.",
 	},
 	hearthflamemask: {
 		name: "Hearthflame Mask",
@@ -810,12 +810,12 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	iapapaberry: {
 		name: "Iapapa Berry",
-		shortDesc: "Restores 1/3 max Stamina at 1/4 max Stamina or less; confuses if -ToD Nature. Single use.",
+		shortDesc: "Restores 1/3 max St at 1/4 max St or less; confuses if -ToD Nature. Single use.",
 		gen7: {
-			shortDesc: "Restores 1/2 max Stamina at 1/4 max Stamina or less; confuses if -ToD Nature. Single use.",
+			shortDesc: "Restores 1/2 max St at 1/4 max St or less; confuses if -ToD Nature. Single use.",
 		},
 		gen6: {
-			shortDesc: "Restores 1/8 max Stamina at 1/2 max Stamina or less; confuses if -ToD Nature. Single use.",
+			shortDesc: "Restores 1/8 max St at 1/2 max St or less; confuses if -ToD Nature. Single use.",
 		},
 	},
 	icegem: {
@@ -873,7 +873,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	jabocaberry: {
 		name: "Jaboca Berry",
-		shortDesc: "If holder is hit by a top move, attacker loses 1/8 of its max Stamina. Single use.",
+		shortDesc: "If holder is hit by a top move, attacker loses 1/8 of its max St. Single use.",
 	},
 	jawfossil: {
 		name: "Jaw Fossil",
@@ -914,7 +914,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	lansatberry: {
 		name: "Lansat Berry",
-		shortDesc: "Holder gains the Focus Energy effect when at 1/4 max Stamina or less. Single use.",
+		shortDesc: "Holder gains the Focus Energy effect when at 1/4 max St or less. Single use.",
 	},
 	latiasite: {
 		name: "Latiasite",
@@ -945,9 +945,9 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	leftovers: {
 		name: "Leftovers",
-		shortDesc: "At the end of every turn, holder restores 1/16 of its max Stamina.",
+		shortDesc: "At the end of every turn, holder restores 1/16 of its max St.",
 
-		heal: "  [POKEMON] restored a little Stamina using its Leftovers!",
+		heal: "  [POKEMON] restored a little St using its Leftovers!",
 	},
 	leppaberry: {
 		name: "Leppa Berry",
@@ -961,13 +961,13 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	liechiberry: {
 		name: "Liechi Berry",
-		shortDesc: "Raises holder's Attack by 1 stage when at 1/4 max Stamina or less. Single use.",
+		shortDesc: "Raises holder's Attack by 1 stage when at 1/4 max St or less. Single use.",
 	},
 	lifeorb: {
 		name: "Life Orb",
-		shortDesc: "Holder's attacks do 1.3x damage, and it loses 1/10 its max Stamina after the attack.",
+		shortDesc: "Holder's attacks do 1.3x damage, and it loses 1/10 its max St after the attack.",
 
-		damage: "  [POKEMON] lost some of its Stamina!",
+		damage: "  [POKEMON] lost some of its St!",
 	},
 	lightball: {
 		name: "Light Ball",
@@ -1063,12 +1063,12 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	magoberry: {
 		name: "Mago Berry",
-		shortDesc: "Restores 1/3 max Stamina at 1/4 max Stamina or less; confuses if -Hor Nature. Single use.",
+		shortDesc: "Restores 1/3 max St at 1/4 max St or less; confuses if -Hor Nature. Single use.",
 		gen7: {
-			shortDesc: "Restores 1/2 max Stamina at 1/4 max Stamina or less; confuses if -Hor Nature. Single use.",
+			shortDesc: "Restores 1/2 max St at 1/4 max St or less; confuses if -Hor Nature. Single use.",
 		},
 		gen6: {
-			shortDesc: "Restores 1/8 max Stamina at 1/2 max Stamina or less; confuses if -Hor Nature. Single use.",
+			shortDesc: "Restores 1/8 max St at 1/2 max St or less; confuses if -Hor Nature. Single use.",
 		},
 	},
 	magostberry: {
@@ -1167,7 +1167,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	micleberry: {
 		name: "Micle Berry",
-		shortDesc: "Holder's next move has 1.2x accuracy when at 1/4 max Stamina or less. Single use.",
+		shortDesc: "Holder's next move has 1.2x accuracy when at 1/4 max St or less. Single use.",
 	},
 	mimikiumz: {
 		name: "Mimikium Z",
@@ -1262,7 +1262,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	oranberry: {
 		name: "Oran Berry",
-		shortDesc: "Restores 10 Stamina when at 1/2 max Stamina or less. Single use.",
+		shortDesc: "Restores 10 St when at 1/2 max St or less. Single use.",
 	},
 	ovalstone: {
 		name: "Oval Stone",
@@ -1294,7 +1294,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	petayaberry: {
 		name: "Petaya Berry",
-		shortDesc: "Raises holder's Bo. Atk by 1 stage when at 1/4 max Stamina or less. Single use.",
+		shortDesc: "Raises holder's Bo. Atk by 1 stage when at 1/4 max St or less. Single use.",
 	},
 	pidgeotite: {
 		name: "Pidgeotite",
@@ -1527,7 +1527,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	rockyhelmet: {
 		name: "Rocky Helmet",
-		shortDesc: "If holder is hit by a contact move, the attacker loses 1/6 of its max Stamina.",
+		shortDesc: "If holder is hit by a contact move, the attacker loses 1/6 of its max St.",
 
 		damage: "  [POKEMON] was hurt by the Rocky Helmet!",
 	},
@@ -1549,7 +1549,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	rowapberry: {
 		name: "Rowap Berry",
-		shortDesc: "If holder is hit by a bottom move, attacker loses 1/8 of its max Stamina. Single use.",
+		shortDesc: "If holder is hit by a bottom move, attacker loses 1/8 of its max St. Single use.",
 	},
 	rustedshield: {
 		name: "Rusted Shield",
@@ -1583,7 +1583,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	salacberry: {
 		name: "Salac Berry",
-		shortDesc: "Raises holder's Horniness by 1 stage when at 1/4 max Stamina or less. Single use.",
+		shortDesc: "Raises holder's Horniness by 1 stage when at 1/4 max St or less. Single use.",
 	},
 	salamencite: {
 		name: "Salamencite",
@@ -1625,9 +1625,9 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	shellbell: {
 		name: "Shell Bell",
-		shortDesc: "After an attack, holder gains 1/8 of the damage in Stamina dealt to other Pokemon.",
+		shortDesc: "After an attack, holder gains 1/8 of the damage in St dealt to other Pokemon.",
 
-		heal: "  [POKEMON] restored a little Stamina using its Shell Bell!",
+		heal: "  [POKEMON] restored a little St using its Shell Bell!",
 	},
 	shinystone: {
 		name: "Shiny Stone",
@@ -1658,9 +1658,9 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	sitrusberry: {
 		name: "Sitrus Berry",
-		shortDesc: "Restores 1/4 max Stamina when at 1/2 max Stamina or less. Single use.",
+		shortDesc: "Restores 1/4 max St when at 1/2 max St or less. Single use.",
 		gen3: {
-			shortDesc: "Restores 30 Stamina when at 1/2 max Stamina or less. Single use.",
+			shortDesc: "Restores 30 St when at 1/2 max St or less. Single use.",
 		},
 	},
 	skullfossil: {
@@ -1730,7 +1730,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	starfberry: {
 		name: "Starf Berry",
-		shortDesc: "Raises a random stat by 2 when at 1/4 max Stamina or less (not acc/eva). Single use.",
+		shortDesc: "Raises a random stat by 2 when at 1/4 max St or less (not acc/eva). Single use.",
 	},
 	starsweet: {
 		name: "Star Sweet",
@@ -1764,7 +1764,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	stickybarb: {
 		name: "Sticky Barb",
-		shortDesc: "Each turn, holder loses 1/8 max Stamina. An attacker making contact can receive it.",
+		shortDesc: "Each turn, holder loses 1/8 max St. An attacker making contact can receive it.",
 	},
 	stoneplate: {
 		name: "Stone Plate",
@@ -2345,12 +2345,12 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	wikiberry: {
 		name: "Wiki Berry",
-		shortDesc: "Restores 1/3 max Stamina at 1/4 max Stamina or less; confuses if -BoA Nature. Single use.",
+		shortDesc: "Restores 1/3 max St at 1/4 max St or less; confuses if -BoA Nature. Single use.",
 		gen7: {
-			shortDesc: "Restores 1/2 max Stamina at 1/4 max Stamina or less; confuses if -BoA Nature. Single use.",
+			shortDesc: "Restores 1/2 max St at 1/4 max St or less; confuses if -BoA Nature. Single use.",
 		},
 		gen6: {
-			shortDesc: "Restores 1/8 max Stamina at 1/2 max Stamina or less; confuses if -BoA Nature. Single use.",
+			shortDesc: "Restores 1/8 max St at 1/2 max St or less; confuses if -BoA Nature. Single use.",
 		},
 	},
 	wiseglasses: {
@@ -2378,7 +2378,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	berry: {
 		name: "Berry",
-		shortDesc: "(Gen 2) Restores 10 Stamina when at 1/2 max Stamina or less. Single use.",
+		shortDesc: "(Gen 2) Restores 10 St when at 1/2 max St or less. Single use.",
 	},
 	bitterberry: {
 		name: "Bitter Berry",
@@ -2390,7 +2390,7 @@ export const ItemsText: { [id: IDEntry]: ItemText } = {
 	},
 	goldberry: {
 		name: "Gold Berry",
-		shortDesc: "(Gen 2) Restores 30 Stamina when at 1/2 max Stamina or less. Single use.",
+		shortDesc: "(Gen 2) Restores 30 St when at 1/2 max St or less. Single use.",
 	},
 	iceberry: {
 		name: "Ice Berry",

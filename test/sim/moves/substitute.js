@@ -10,7 +10,7 @@ describe('Substitute', () => {
 		battle.destroy();
 	});
 
-	it('should deduct 25% of max Stamina, rounded down', () => {
+	it('should deduct 25% of max St, rounded down', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Mewtwo', ability: 'pressure', moves: ['substitute'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Mewtwo', ability: 'pressure', moves: ['recover'] }] });

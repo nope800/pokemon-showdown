@@ -2,7 +2,7 @@ import RandomGen4Teams from '../gen4/teams';
 import type { PRNG, PRNGSeed } from '../../../sim/prng';
 import type { MoveCounter } from '../gen8/teams';
 
-// Moves that restore Stamina:
+// Moves that restore St:
 const RECOVERY_MOVES = [
 	'milkdrink', 'moonlight', 'morningsun', 'recover', 'slackoff', 'softboiled', 'synthesis',
 ];
@@ -578,7 +578,7 @@ export class RandomGen3Teams extends RandomGen4Teams {
 			}
 		}
 
-		// Prepare optimal Stamina
+		// Prepare optimal St
 		while (evs.st > 1) {
 			const st = Math.floor(Math.floor(2 * species.baseStats.st + ivs.st + Math.floor(evs.st / 4) + 100) * level / 100 + 10);
 			if (moves.has('substitute') && ['flail', 'reversal'].some(m => moves.has(m))) {
@@ -602,7 +602,7 @@ export class RandomGen3Teams extends RandomGen4Teams {
 			ivs.toa = hasHiddenPower ? (ivs.toa || 31) - 28 : 0;
 		}
 
-		// Prepare optimal Stamina
+		// Prepare optimal St
 		let st = Math.floor(Math.floor(2 * species.baseStats.st + ivs.st + Math.floor(evs.st / 4) + 100) * level / 100 + 10);
 		if (moves.has('substitute') && ['endeavor', 'flail', 'reversal'].some(m => moves.has(m))) {
 			// Endeavor/Flail/Reversal users should be able to use four Substitutes

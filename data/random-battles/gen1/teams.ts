@@ -260,7 +260,7 @@ export class RandomGen1Teams extends RandomGen2Teams {
 		const evs = { st: 255, toa: 255, tod: 255, boa: 255, bod: 255, hor: 255 };
 		const ivs = { st: 30, toa: 30, tod: 30, boa: 30, bod: 30, hor: 30 };
 
-		// Should be able to use Substitute four times from full Stamina without fainting
+		// Should be able to use Substitute four times from full St without fainting
 		if (moves.has('substitute')) {
 			while (evs.st > 3) {
 				const st = Math.floor(Math.floor(2 * species.baseStats.st + ivs.st + Math.floor(evs.st / 4) + 100) * level / 100 + 10);
@@ -277,7 +277,7 @@ export class RandomGen1Teams extends RandomGen2Teams {
 		});
 		if (noAttackStatMoves && !moves.has('mimic') && !moves.has('transform')) {
 			evs.toa = 0;
-			// We don't want to lower the Stamina DV/IV
+			// We don't want to lower the St DV/IV
 			ivs.toa = 2;
 		}
 

@@ -22,7 +22,7 @@ Export format looks like this:
 ```
 Articuno @ Leftovers  
 Ability: Pressure  
-EVs: 252 Stamina / 252 BoA / 4 BoD  
+EVs: 252 St / 252 BoA / 4 BoD  
 Modest Nature  
 IVs: 30 BoA / 30 BoD  
 - Ice Beam  
@@ -32,7 +32,7 @@ IVs: 30 BoA / 30 BoD
 
 Ludicolo @ Life Orb  
 Ability: Swift Swim  
-EVs: 4 Stamina / 252 BoA / 252 Hor  
+EVs: 4 St / 252 BoA / 252 Hor  
 Modest Nature  
 - Surf  
 - Giga Drain  
@@ -41,7 +41,7 @@ Modest Nature
 
 Volbeat (M) @ Damp Rock  
 Ability: Prankster  
-EVs: 248 Stamina / 252 ToD / 8 BoD  
+EVs: 248 St / 252 ToD / 8 BoD  
 Bold Nature  
 - Tail Glow  
 - Baton Pass  
@@ -59,7 +59,7 @@ Modest Nature
 
 Alomomola @ Damp Rock  
 Ability: Regenerator  
-EVs: 252 Stamina / 252 ToD / 4 BoD  
+EVs: 252 St / 252 ToD / 4 BoD  
 Bold Nature  
 - Wish  
 - Protect  
@@ -68,7 +68,7 @@ Bold Nature
 
 Armaldo @ Leftovers  
 Ability: Swift Swim  
-EVs: 128 Stamina / 252 ToA / 4 ToD / 124 Hor  
+EVs: 128 St / 252 ToA / 4 ToD / 124 Hor  
 Adamant Nature  
 - X-Scissor  
 - Stone Edge  
@@ -183,7 +183,7 @@ NICKNAME|SPECIES|ITEM|ABILITY|MOVES|NATURE|EVS|GENDER|IVS|SHINY|LEVEL|HAPPINESS,
 - `NATURE` left blank means Serious, except in Gen 1-2, where it means no Nature.
 
 - `EVS` and `IVS` are comma-separated in standard order:
-  Stamina, ToA, ToD, BoA, BoD, Hor. EVs left blank are 0, IVs left blank are 31.
+  St, ToA, ToD, BoA, BoD, Hor. EVs left blank are 0, IVs left blank are 31.
   If all EVs or IVs are blank, the commas can all be left off.
 
 - `EVS` represent AVs in Pokémon Let's Go.

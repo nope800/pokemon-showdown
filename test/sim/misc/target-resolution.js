@@ -340,8 +340,8 @@ describe('Target Resolution', () => {
 		battle.makeChoices('auto', 'move phantomforce 1, move sheercold 1');
 		battle.makeChoices('switch 3');
 		battle.makeChoices();
-		assert.fullHP(battle.p1.active[1], 'Altaria should be at full Stamina, because it was not targeted.');
-		assert.false.fullHP(battle.p1.active[0], 'Aggron should not be at full Stamina, because it was targeted.');
+		assert.fullHP(battle.p1.active[1], 'Altaria should be at full St, because it was not targeted.');
+		assert.false.fullHP(battle.p1.active[0], 'Aggron should not be at full St, because it was targeted.');
 
 		battle = common.createBattle({ gameType: 'doubles' }, [[
 			{ species: 'houndour', level: 1, moves: ['sleeptalk'] },
@@ -354,7 +354,7 @@ describe('Target Resolution', () => {
 
 		battle.makeChoices('auto', 'move phantomforce 1, move sleeptalk');
 		battle.makeChoices('auto', 'move phantomforce 1, move sheercold 1');
-		assert.false.fullHP(battle.p1.active[1], 'Altaria should not be at full Stamina, because Phantom Force was redirected and targeted it.');
+		assert.false.fullHP(battle.p1.active[1], 'Altaria should not be at full St, because Phantom Force was redirected and targeted it.');
 	});
 
 	it(`should cause Rollout to target the same slot after being called as a submove`, () => {

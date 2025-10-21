@@ -56,7 +56,7 @@ describe('Grassy Terrain', () => {
 		assert.equal(basePower, move.basePower);
 	});
 
-	it(`should heal grounded Pokemon by 1/16 of their max Stamina`, () => {
+	it(`should heal grounded Pokemon by 1/16 of their max St`, () => {
 		battle = common.createBattle([[
 			{ species: 'Shaymin', moves: ['grassyterrain', 'seismictoss'] },
 		], [
@@ -140,7 +140,7 @@ describe('Grassy Terrain', () => {
 
 		battle.makeChoices('move rockthrow dynamax', 'auto');
 		const coalossal = battle.p1.active[0];
-		assert.equal(coalossal.st, coalossal.maxhp - 40 + Math.floor(coalossal.maxhp / 2 / 16), `Coalossal should have recovered Stamina from Grassy Terrain.`);
+		assert.equal(coalossal.st, coalossal.maxhp - 40 + Math.floor(coalossal.maxhp / 2 / 16), `Coalossal should have recovered St from Grassy Terrain.`);
 		battle.makeChoices();
 		// Kill turns with Wynaut and Coalossal
 		for (let i = 0; i < 4; i++) {

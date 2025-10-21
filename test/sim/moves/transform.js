@@ -18,7 +18,7 @@ describe('Transform', () => {
 		assert.equal(battle.p1.active[0].species, battle.p2.active[0].species);
 	});
 
-	it('should copy all stats except Stamina', () => {
+	it('should copy all stats except St', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: "Ditto", ability: 'limber', moves: ['transform'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Mewtwo", ability: 'pressure', moves: ['rest'] }] });
@@ -332,7 +332,7 @@ describe('Transform [Gen 1]', () => {
 		assert.fainted(battle.p2.active[0]);
 	});
 
-	it(`should copy the target's stats (except Stamina), even if different level`, () => {
+	it(`should copy the target's stats (except St), even if different level`, () => {
 		battle = common.gen(1).createBattle([[
 			{ species: 'Ditto', moves: ['transform'], level: 5 },
 		], [

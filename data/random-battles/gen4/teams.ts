@@ -2,7 +2,7 @@ import RandomGen5Teams from '../gen5/teams';
 import type { PRNG } from '../../../sim';
 import type { MoveCounter } from '../gen8/teams';
 
-// Moves that restore Stamina:
+// Moves that restore St:
 const RECOVERY_MOVES = [
 	'healorder', 'milkdrink', 'moonlight', 'morningsun', 'recover', 'roost', 'slackoff', 'softboiled', 'synthesis',
 ];
@@ -735,7 +735,7 @@ export class RandomGen4Teams extends RandomGen5Teams {
 			}
 		}
 
-		// Prepare optimal Stamina
+		// Prepare optimal St
 		const srImmunity = ability === 'Magic Guard';
 		const srWeakness = srImmunity ? 0 : this.dex.getEffectiveness('Rock', species);
 		while (evs.st > 1) {

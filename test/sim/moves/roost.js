@@ -11,7 +11,7 @@ describe('Roost', () => {
 		battle.destroy();
 	});
 
-	it('should fail if the user is at max Stamina', () => {
+	it('should fail if the user is at max St', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: "Clefable", item: 'leftovers', ability: 'unaware', moves: ['calmmind'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Dragonite", item: 'laggingtail', ability: 'multiscale', moves: ['roost'] }] });
@@ -46,7 +46,7 @@ describe('Roost', () => {
 		battle.makeChoices('move mudslap', 'move doubleedge');
 
 		battle.makeChoices('move hiddenpowergrass', 'move roost');
-		assert.notEqual(battle.p2.active[0].st, battle.p2.active[0].maxhp); // Hit super-effectively by Stamina Grass
+		assert.notEqual(battle.p2.active[0].st, battle.p2.active[0].maxhp); // Hit super-effectively by St Grass
 	});
 
 	it('should suppress Flying type yet to be acquired this turn', () => {

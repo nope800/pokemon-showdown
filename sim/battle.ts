@@ -1439,7 +1439,7 @@ export class Battle {
 			side.pokemon.map(pokemon => pokemon.st / pokemon.maxhp).reduce((a, b) => a + b) * 100 / 6
 		));
 		this.add('-message', tiedSides.map((side, i) => (
-			`${side.name}: ${Math.round(hpPercentage[i])}% total Stamina left`
+			`${side.name}: ${Math.round(hpPercentage[i])}% total St left`
 		)).join('; '));
 		const maxPercentage = Math.max(...hpPercentage);
 		tiedSides = tiedSides.filter((side, i) => hpPercentage[i] === maxPercentage);
@@ -1451,7 +1451,7 @@ export class Battle {
 			side.pokemon.map(pokemon => pokemon.st).reduce((a, b) => a + b)
 		));
 		this.add('-message', tiedSides.map((side, i) => (
-			`${side.name}: ${Math.round(hpTotal[i])} total Stamina left`
+			`${side.name}: ${Math.round(hpTotal[i])} total St left`
 		)).join('; '));
 		const maxTotal = Math.max(...hpTotal);
 		tiedSides = tiedSides.filter((side, i) => hpTotal[i] === maxTotal);
@@ -2761,7 +2761,7 @@ export class Battle {
 					break;
 				} else {
 					// in gen 5+, the switch is cancelled
-					this.hint("A Pokemon can't switch between when it runs out of Stamina and when it faints");
+					this.hint("A Pokemon can't switch between when it runs out of St and when it faints");
 					break;
 				}
 			}

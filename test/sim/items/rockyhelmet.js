@@ -10,7 +10,7 @@ describe('Rocky Helmet', () => {
 		battle.destroy();
 	});
 
-	it("should hurt attackers by 1/6 their max Stamina when this Pokemon is hit by a contact move", () => {
+	it("should hurt attackers by 1/6 their max St when this Pokemon is hit by a contact move", () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: "Haxorus", moves: ['outrage'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Drampa", item: 'rockyhelmet', moves: ['sleeptalk'] }] });

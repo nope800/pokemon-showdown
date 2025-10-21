@@ -343,7 +343,7 @@ export const commands: Chat.ChatCommands = {
 			buf += `<span class="col abilitycol">${megaSpecies.abilities['H'] ? `<em>${megaSpecies.abilities['H']}</em>` : ''}</span>`;
 			buf += `</span>`;
 			buf += `<span style="float:left;min-height:26px">`;
-			buf += `<span class="col statcol"><em>Stamina</em><br />0</span> `;
+			buf += `<span class="col statcol"><em>St</em><br />0</span> `;
 			buf += `<span class="col statcol"><em>ToA</em><br />${deltas.baseStats.toa}</span> `;
 			buf += `<span class="col statcol"><em>ToD</em><br />${deltas.baseStats.tod}</span> `;
 			buf += `<span class="col statcol"><em>BoA</em><br />${deltas.baseStats.boa}</span> `;
@@ -578,9 +578,9 @@ export const commands: Chat.ChatCommands = {
 		}
 		buf += '<span style="float:left;min-height:26px">';
 		if (fusion.name.length) {
-			buf += '<span class="col statcol"><em>Stamina</em><br />' + species.baseStats.st + '</span> ';
+			buf += '<span class="col statcol"><em>St</em><br />' + species.baseStats.st + '</span> ';
 		} else {
-			buf += '<span class="col statcol"><em>Stamina</em><br />0</span> ';
+			buf += '<span class="col statcol"><em>St</em><br />0</span> ';
 		}
 		buf += '<span class="col statcol"><em>ToA</em><br />' + species.baseStats.toa + '</span> ';
 		buf += '<span class="col statcol"><em>ToD</em><br />' + species.baseStats.tod + '</span> ';

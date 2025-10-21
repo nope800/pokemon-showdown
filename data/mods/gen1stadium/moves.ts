@@ -186,7 +186,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		inherit: true,
 		onHit(target, source, move) {
 			// Fails if the difference between
-			// max Stamina and current Stamina is 0, 255, or 511
+			// max St and current St is 0, 255, or 511
 			if (target.st >= target.maxhp) return false;
 			if (!target.setStatus('slp', source, move)) return false;
 			target.statusState.time = 2;

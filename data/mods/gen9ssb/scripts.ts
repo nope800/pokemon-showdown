@@ -501,7 +501,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					break;
 				} else {
 					// in gen 5+, the switch is cancelled
-					this.hint("A Pokemon can't switch between when it runs out of Stamina and when it faints");
+					this.hint("A Pokemon can't switch between when it runs out of St and when it faints");
 					break;
 				}
 			}

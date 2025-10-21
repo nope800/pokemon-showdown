@@ -80,7 +80,7 @@ describe('Symbiosis', () => {
 
 	// See Marty's research for many more examples: https://www.smogon.com/forums/threads/battle-mechanics-research.3489239/post-6401506
 	describe.skip('Symbiosis Eject Button Glitch (Gen 6 only)', () => {
-		it('should cause Leftovers to restore Stamina 4 times', () => {
+		it('should cause Leftovers to restore St 4 times', () => {
 			battle = common.gen(6).createBattle({ gameType: 'doubles' }, [[
 				{ species: 'florges', ability: 'symbiosis', item: 'leftovers', moves: ['sleeptalk'] },
 				{ species: 'roggenrola', level: 50, ability: 'sturdy', item: 'ejectbutton', moves: ['sleeptalk'] },
@@ -96,7 +96,7 @@ describe('Symbiosis', () => {
 			battle.makeChoices('switch 3');
 			battle.makeChoices('move sleeptalk, switch 3', 'auto');
 
-			// Close Combat brought Roggenrola down to Sturdy = 1 Stamina
+			// Close Combat brought Roggenrola down to Sturdy = 1 St
 			const roggenrola = battle.p1.active[1];
 			const targetHP = 1 + (Math.floor(roggenrola.maxhp / 16) * 4);
 			assert.equal(targetHP, roggenrola.st);

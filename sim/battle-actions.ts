@@ -1575,7 +1575,7 @@ export class BattleActions {
 	}
 
 	/**
-	 * 0 is a success dealing 0 damage, such as from False Swipe at 1 Stamina.
+	 * 0 is a success dealing 0 damage, such as from False Swipe at 1 St.
 	 *
 	 * Normal PS return value rules apply:
 	 * undefined = success, null = silent failure, false = loud failure

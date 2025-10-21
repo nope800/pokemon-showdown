@@ -39,7 +39,7 @@ describe('Assurance', () => {
 		assert.bounded(damage, [63, 75]); // 60 BP; if it was 120 BP, it would be 124-147 damage
 	});
 
-	it(`should not double its base power if the target lost Stamina due to Pain Split`, () => {
+	it(`should not double its base power if the target lost St due to Pain Split`, () => {
 		battle = common.createBattle([[
 			{ species: 'Greedent', moves: ['assurance'] },
 		], [

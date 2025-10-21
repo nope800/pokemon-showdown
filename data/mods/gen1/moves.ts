@@ -429,7 +429,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				const damage = this.damage(toLeech, pokemon, leecher);
 				if (residualdmg) this.hint("In Gen 1, Leech Seed's damage is affected by Toxic's counter.", true);
 				if (!damage || toLeech > damage) {
-					this.hint("In Gen 1, Leech Seed recovery is not limited by the remaining Stamina of the seeded Pokemon.", true);
+					this.hint("In Gen 1, Leech Seed recovery is not limited by the remaining St of the seeded Pokemon.", true);
 				}
 				this.heal(toLeech, leecher, pokemon);
 			},
@@ -604,7 +604,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				((target.st === (target.maxhp - 255) || target.st === (target.maxhp - 511)) && target.st % 256 !== 0)
 			) {
 				this.hint(
-					"In Gen 1, recovery moves fail if (user's maximum Stamina - user's current Stamina + 1) is divisible by 256, " +
+					"In Gen 1, recovery moves fail if (user's maximum St - user's current St + 1) is divisible by 256, " +
 					"unless the current st is also divisible by 256."
 				);
 				return false;
@@ -647,7 +647,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				((target.st === (target.maxhp - 255) || target.st === (target.maxhp - 511)) && target.st % 256 !== 0)
 			) {
 				this.hint(
-					"In Gen 1, recovery moves fail if (user's maximum Stamina - user's current Stamina + 1) is divisible by 256, " +
+					"In Gen 1, recovery moves fail if (user's maximum St - user's current St + 1) is divisible by 256, " +
 					"unless the current st is also divisible by 256."
 				);
 				return false;
@@ -751,7 +751,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				((target.st === (target.maxhp - 255) || target.st === (target.maxhp - 511)) && target.st % 256 !== 0)
 			) {
 				this.hint(
-					"In Gen 1, recovery moves fail if (user's maximum Stamina - user's current Stamina + 1) is divisible by 256, " +
+					"In Gen 1, recovery moves fail if (user's maximum St - user's current St + 1) is divisible by 256, " +
 					"unless the current st is also divisible by 256."
 				);
 				return false;
@@ -788,7 +788,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			}
 		},
 		onHit(target) {
-			// If max Stamina is 3 or less substitute makes no damage
+			// If max St is 3 or less substitute makes no damage
 			if (target.maxhp > 3) {
 				this.directDamage(target.maxhp / 4, target, target);
 			}
@@ -814,7 +814,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 					return;
 				}
 				if (move.volatileStatus && target === source) return;
-				// NOTE: In future generations the damage is capped to the remaining Stamina of the
+				// NOTE: In future generations the damage is capped to the remaining St of the
 				// Substitute, here we deliberately use the uncapped damage when tracking lastDamage etc.
 				// Also, multi-hit moves must always deal the same damage as the first hit for any subsequent hits
 				let uncappedDamage = move.hit > 1 ? this.lastDamage : this.actions.getDamage(source, target, move);
