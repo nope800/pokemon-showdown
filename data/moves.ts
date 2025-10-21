@@ -1756,51 +1756,6 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		type: "Normal",
 		contestType: "Tough",
 	},
-	bounce: {
-		num: 340,
-		accuracy: 85,
-		basePower: 85,
-		category: "Top",
-		name: "Bounce",
-		pp: 5,
-		priority: 0,
-		flags: {
-			contact: 1, charge: 1, protect: 1, mirror: 1, gravity: 1, distance: 1,
-			metronome: 1, nosleeptalk: 1, noassist: 1, failinstruct: 1,
-		},
-		onTryMove(attacker, defender, move) {
-			if (attacker.removeVolatile(move.id)) {
-				return;
-			}
-			this.add('-prepare', attacker, move.name);
-			if (!this.runEvent('ChargeMove', attacker, defender, move)) {
-				return;
-			}
-			attacker.addVolatile('twoturnmove', defender);
-			return null;
-		},
-		condition: {
-			duration: 2,
-			onInvulnerability(target, source, move) {
-				if (['gust', 'twister', 'skyuppercut', 'thunder', 'hurricane', 'smackdown', 'thousandarrows'].includes(move.id)) {
-					return;
-				}
-				return false;
-			},
-			onSourceBasePower(basePower, target, source, move) {
-				if (move.id === 'gust' || move.id === 'twister') {
-					return this.chainModify(2);
-				}
-			},
-		},
-		secondary: {
-			chance: 30,
-			status: 'par',
-		},
-		target: "any",
-		type: "Flying",
-		contestType: "Cute",
-	},
 	bouncybubble: {
 		num: 733,
 		accuracy: 100,
@@ -18606,32 +18561,6 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		type: "Steel",
 		contestType: "Cool",
 	},
-	stickyweb: {
-		num: 564,
-		accuracy: true,
-		basePower: 0,
-		category: "Status",
-		name: "Sticky Web",
-		pp: 20,
-		priority: 0,
-		flags: { reflectable: 1, metronome: 1 },
-		sideCondition: 'stickyweb',
-		condition: {
-			onSideStart(side) {
-				this.add('-sidestart', side, 'move: Sticky Web');
-			},
-			onSwitchIn(pokemon) {
-				if (!pokemon.isGrounded() || pokemon.hasItem('heavydutyboots')) return;
-				this.add('-activate', pokemon, 'move: Sticky Web');
-				this.boost({ hor: -1 }, pokemon, pokemon.side.foe.active[0], this.dex.getActiveMove('stickyweb'));
-			},
-		},
-		secondary: null,
-		target: "foeSide",
-		type: "Bug",
-		zMove: { boost: { hor: 1 } },
-		contestType: "Tough",
-	},
 	stockpile: {
 		num: 254,
 		accuracy: true,
@@ -22110,5 +22039,185 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		target: "allAdjacentFoes",
 		type: "Fire",
 		contestType: "Beautiful",
+	},
+	//AMOROS
+	lighttouchontheshoulder: {
+		num: 0,
+		accuracy: 100,
+		basePower: 0,
+		damage: 1,
+		category: "Top",
+		name: "Light Touch On The Shoulder",
+		pp: 20,
+		priority: 0,
+		flags: {},
+		secondary: null,
+		target: "normal",
+		type: "Vanilla",
+		contestType: "Cool",
+	},
+	top: {
+		num: 1,
+		accuracy: 100,
+		basePower: 30,
+		category: "Top",
+		name: "Top",
+		pp: 10,
+		priority: 0,
+		flags: {},
+		secondary: null,
+		target: "normal",
+		type: "Vanilla",
+		contestType: "Cool",
+	},
+	bottom: {
+		num: 2,
+		accuracy: 100,
+		basePower: 30,
+		category: "Bottom",
+		name: "Bottom",
+		pp: 10,
+		priority: 0,
+		flags: {},
+		secondary: null,
+		target: "normal",
+		type: "Vanilla",
+		contestType: "Cool",
+	},
+	rivalryboost: {
+		num: 3,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		name: "Rivalry Boost",
+		pp: 5,
+		priority: 1,
+		flags: {},
+		onHit(target) {
+			let stats: StatIDExceptHP [];
+			stats = ["tod", "boa", "bod", "hor"];
+			let higheststat: StatIDExceptHP [];
+			higheststat = ["toa"];
+			let stat: StatIDExceptHP;
+			for (let i = 0; i < stats.length; i++) { //there's almost certainly a better way to do this, but I don't know enough javascript to find it.
+				stat = stats[i]
+				if (target.getStat(stat, false, false) > target.getStat(higheststat[0], false, false)) {
+					higheststat = [stat]
+				} else if (target.getStat(stat, false, false) === target.getStat(higheststat[0], false, false)) {
+					higheststat.push(stat)
+				}
+			}
+			const boost: SparseBoostsTable = {};
+			boost[this.sample(higheststat)] = 2;
+			this.boost(boost);
+		},
+		secondary: null,
+		target: "normal",
+		type: "Instinct",
+		contestType: "Cool",
+	},
+	mount: {
+		num: 4,
+		accuracy: 100,
+		basePower: 15,
+		category: "Top",
+		name: "Mount",
+		pp: 10,
+		priority: 0,
+		flags: {},
+		onModifyMove(move, source) {
+			if (source.activeMoveActions < 2) {
+				move.willCrit = true
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Vanilla",
+		contestType: "Cool",
+	},
+	stickyweb: {
+		num: 5,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		name: "Sticky Web",
+		pp: 5,
+		priority: 2,
+		flags: {hold:1},
+		boosts: {
+			hor: -1,
+		},
+		status: 'held',
+		secondary: null,
+		target: "normal",
+		type: "Toy",
+		contestType: "Cool",
+	},
+	squirm: {
+		num: 6,
+		accuracy: 100,
+		basePower: 15,
+		category: "Bottom",
+		name: "Squirm",
+		pp: 10,
+		priority: 0,
+		flags: {},
+		onModifyMove(move, source) {
+			if (source.status === "held") {
+				move.willCrit = true
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Pathetic",
+		contestType: "Cool",
+	},
+	bounce: {
+		num: 7,
+		accuracy: 100,
+		basePower: 20,
+		category: "Bottom",
+		name: "Bounce",
+		pp: 10,
+		priority: 0,
+		flags: {},
+		secondary: null,
+		boosts: {
+			hor: 1,
+		},
+		target: "normal",
+		type: "Vanilla",
+		contestType: "Cool",
+	},
+	stroke: {
+		num: 8,
+		accuracy: 100,
+		basePower: 10,
+		category: "Top",
+		name: "Stroke",
+		pp: 10,
+		priority: 0,
+		multihit: 2,
+		flags: {},
+		secondary: null,
+		target: "normal",
+		type: "Vanilla",
+		contestType: "Cool",
+	},
+	cuddle: {
+		num: 9,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		name: "Cuddle",
+		pp: 5,
+		priority: 0,
+		flags: {},
+		heal: [1, 2],
+		status: 'held',
+		secondary: null,
+		target: "normal",
+		type: "Loving",
+		contestType: "Cool",
 	},
 };
