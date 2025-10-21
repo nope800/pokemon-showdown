@@ -5,7 +5,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		onResidualOrder: 10,
 		onResidualSubOrder: 4,
 		onResidual(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 2) {
+			if (pokemon.st <= pokemon.maxhp / 2) {
 				pokemon.eatItem();
 			}
 		},
@@ -16,7 +16,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		onResidualOrder: 10,
 		onResidualSubOrder: 4,
 		onResidual(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 4) {
+			if (pokemon.st <= pokemon.maxhp / 4) {
 				pokemon.eatItem();
 			}
 		},
@@ -27,7 +27,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		onResidualOrder: 10,
 		onResidualSubOrder: 4,
 		onResidual(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 2) {
+			if (pokemon.st <= pokemon.maxhp / 2) {
 				if (this.runEvent('TryHeal', pokemon, null, this.effect, 20) && pokemon.useItem()) {
 					this.heal(20);
 				}
@@ -93,7 +93,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		onResidualOrder: 10,
 		onResidualSubOrder: 4,
 		onResidual(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 2) {
+			if (pokemon.st <= pokemon.maxhp / 2) {
 				pokemon.eatItem();
 			}
 		},
@@ -104,7 +104,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		onResidualOrder: 10,
 		onResidualSubOrder: 4,
 		onResidual(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 4) {
+			if (pokemon.st <= pokemon.maxhp / 4) {
 				pokemon.eatItem();
 			}
 		},
@@ -129,7 +129,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		onResidualOrder: 10,
 		onResidualSubOrder: 4,
 		onResidual(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 2) {
+			if (pokemon.st <= pokemon.maxhp / 2) {
 				pokemon.eatItem();
 			}
 		},
@@ -155,7 +155,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		onResidualOrder: 10,
 		onResidualSubOrder: 4,
 		onResidual(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 4) {
+			if (pokemon.st <= pokemon.maxhp / 4) {
 				pokemon.eatItem();
 			}
 		},
@@ -178,7 +178,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		onResidualOrder: 10,
 		onResidualSubOrder: 4,
 		onResidual(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 4) {
+			if (pokemon.st <= pokemon.maxhp / 4) {
 				pokemon.eatItem();
 			}
 		},
@@ -216,7 +216,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		onResidualOrder: 10,
 		onResidualSubOrder: 4,
 		onResidual(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 2) {
+			if (pokemon.st <= pokemon.maxhp / 2) {
 				pokemon.eatItem();
 			}
 		},
@@ -271,7 +271,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		onResidualOrder: 10,
 		onResidualSubOrder: 4,
 		onResidual(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 2) {
+			if (pokemon.st <= pokemon.maxhp / 2) {
 				pokemon.eatItem();
 			}
 		},
@@ -282,7 +282,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		onResidualOrder: 10,
 		onResidualSubOrder: 4,
 		onResidual(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 4) {
+			if (pokemon.st <= pokemon.maxhp / 4) {
 				pokemon.eatItem();
 			}
 		},
@@ -308,7 +308,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		onResidualOrder: 10,
 		onResidualSubOrder: 4,
 		onResidual(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 4) {
+			if (pokemon.st <= pokemon.maxhp / 4) {
 				pokemon.eatItem();
 			}
 		},
@@ -359,7 +359,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		onResidualOrder: 10,
 		onResidualSubOrder: 4,
 		onResidual(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 2) {
+			if (pokemon.st <= pokemon.maxhp / 2) {
 				pokemon.eatItem();
 			}
 		},
@@ -397,7 +397,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		onResidualOrder: 10,
 		onResidualSubOrder: 4,
 		onResidual(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 4) {
+			if (pokemon.st <= pokemon.maxhp / 4) {
 				pokemon.eatItem();
 			}
 		},
@@ -418,7 +418,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		onResidualOrder: 10,
 		onResidualSubOrder: 4,
 		onResidual(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 2) {
+			if (pokemon.st <= pokemon.maxhp / 2) {
 				pokemon.eatItem();
 			}
 		},

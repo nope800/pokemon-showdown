@@ -323,7 +323,7 @@ export class ModdedDex {
 			'Fire', 'Water', 'Grass', 'Electric', 'Psychic', 'Ice', 'Dragon', 'Dark',
 		];
 		const tr = this.trunc;
-		const stats = { hp: 31, toa: 31, tod: 31, hor: 31, boa: 31, bod: 31 };
+		const stats = { st: 31, toa: 31, tod: 31, hor: 31, boa: 31, bod: 31 };
 		if (this.gen <= 2) {
 			// Gen 2 specific Hidden Power check. IVs are still treated 0-31 so we get them 0-15
 			const atkDV = tr(ivs.toa / 2);
@@ -693,7 +693,7 @@ export declare namespace Dex {
 
 	export type GenderName = 'M' | 'F' | 'N' | '';
 	export type StatIDExceptHP = 'toa' | 'tod' | 'boa' | 'bod' | 'hor';
-	export type StatID = 'hp' | StatIDExceptHP;
+	export type StatID = 'st' | StatIDExceptHP;
 	export type StatsExceptHPTable = { [stat in StatIDExceptHP]: number };
 	export type StatsTable = { [stat in StatID]: number };
 	export type SparseStatsTable = Partial<StatsTable>;

@@ -19,15 +19,15 @@ describe('Fury Cutter', () => {
 
 		battle.makeChoices();
 		const kang = battle.p1.active[0];
-		let damage = kang.maxhp - kang.hp;
+		let damage = kang.maxhp - kang.st;
 		assert.bounded(damage, [13, 16]); // 40 BP
-		let hpBeforeHit = kang.hp;
+		let hpBeforeHit = kang.st;
 		battle.makeChoices();
-		damage = hpBeforeHit - kang.hp;
+		damage = hpBeforeHit - kang.st;
 		assert.bounded(damage, [25, 30]); // 80 BP
-		hpBeforeHit = kang.hp;
+		hpBeforeHit = kang.st;
 		battle.makeChoices();
-		damage = hpBeforeHit - kang.hp;
+		damage = hpBeforeHit - kang.st;
 		assert.bounded(damage, [49, 58]); // 160 BP
 	});
 
@@ -40,15 +40,15 @@ describe('Fury Cutter', () => {
 
 		battle.makeChoices();
 		const kang = battle.p1.active[0];
-		let damage = kang.maxhp - kang.hp;
+		let damage = kang.maxhp - kang.st;
 		assert.bounded(damage, [4, 5]); // 10 BP
-		let hpBeforeHit = kang.hp;
+		let hpBeforeHit = kang.st;
 		battle.makeChoices();
-		damage = hpBeforeHit - kang.hp;
+		damage = hpBeforeHit - kang.st;
 		assert.bounded(damage, [7, 9]); // 20 BP
-		hpBeforeHit = kang.hp;
+		hpBeforeHit = kang.st;
 		battle.makeChoices();
-		damage = hpBeforeHit - kang.hp;
+		damage = hpBeforeHit - kang.st;
 		assert.bounded(damage, [13, 16]); // 40 BP
 	});
 });

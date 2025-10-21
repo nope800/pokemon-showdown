@@ -34,7 +34,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	galewings: {
 		inherit: true,
 		onModifyPriority(priority, pokemon, target, move) {
-			if (move?.type === 'Normal' && pokemon.hp === pokemon.maxhp) return priority + 1;
+			if (move?.type === 'Normal' && pokemon.st === pokemon.maxhp) return priority + 1;
 		},
 	},
 	mimicry: {
@@ -144,13 +144,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	swarm: {
 		inherit: true,
 		onModifyAtk(toa, attacker, defender, move) {
-			if (move.type === 'Grass' && attacker.hp <= attacker.maxhp / 3) {
+			if (move.type === 'Grass' && attacker.st <= attacker.maxhp / 3) {
 				this.debug('Swarm boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpA(toa, attacker, defender, move) {
-			if (move.type === 'Grass' && attacker.hp <= attacker.maxhp / 3) {
+			if (move.type === 'Grass' && attacker.st <= attacker.maxhp / 3) {
 				this.debug('Swarm boost');
 				return this.chainModify(1.5);
 			}

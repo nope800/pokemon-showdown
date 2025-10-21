@@ -15,7 +15,7 @@ describe('Embargo', () => {
 		battle.setPlayer('p1', { team: [{ species: "Lopunny", ability: 'limber', item: 'leftovers', moves: ['bellydrum'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Giratina", ability: 'pressure', moves: ['embargo'] }] });
 		battle.makeChoices('move bellydrum', 'move embargo');
-		assert.equal(battle.p1.active[0].hp, Math.ceil(battle.p1.active[0].maxhp / 2));
+		assert.equal(battle.p1.active[0].st, Math.ceil(battle.p1.active[0].maxhp / 2));
 	});
 
 	it('should prevent items from being consumed', () => {

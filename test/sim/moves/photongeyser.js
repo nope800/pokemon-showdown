@@ -78,10 +78,10 @@ describe(`Photon Geyser`, () => {
 		const bruxish = battle.p2.active[0];
 		battle.makeChoices('move assist', 'move photongeyser');
 		assert.fullHP(bruxish, `incorrectly ignores abilities through Assist`);
-		bruxish.hp = bruxish.maxhp;
+		bruxish.st = bruxish.maxhp;
 		battle.makeChoices('move copycat', 'move spore');
 		assert.fullHP(bruxish, `incorrectly ignores abilities through Copycat`);
-		bruxish.hp = bruxish.maxhp;
+		bruxish.st = bruxish.maxhp;
 		battle.makeChoices('move sleeptalk', 'move photongeyser');
 		assert.fullHP(bruxish, `incorrectly ignores abilities through Sleep Talk`);
 	});

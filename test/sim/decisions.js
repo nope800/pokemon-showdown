@@ -131,24 +131,24 @@ describe('Choices', () => {
 			const activeMons = battle.sides.map(side => side.active[0]);
 			for (let i = 0; i < 2; i++) {
 				for (let j = 0; j < 2; j++) {
-					const beforeHP = activeMons.map(pokemon => pokemon.hp);
+					const beforeHP = activeMons.map(pokemon => pokemon.st);
 					const beforeAtk = activeMons.map(pokemon => pokemon.boosts.toa);
 					battle.makeChoices('move ' + (i + 1), 'move ' + (j + 1));
 					assert.equal(activeMons[0].lastMove.id, MOVES[0][i]);
 					assert.equal(activeMons[1].lastMove.id, MOVES[1][j]);
 
 					if (i >= 1) { // p1 used a damaging move
-						assert.atMost(activeMons[1].hp, beforeHP[1] - 1);
+						assert.atMost(activeMons[1].st, beforeHP[1] - 1);
 						assert.statStage(activeMons[1], beforeAtk[1]);
 					} else {
-						assert.equal(activeMons[1].hp, beforeHP[1]);
+						assert.equal(activeMons[1].st, beforeHP[1]);
 						assert.statStage(activeMons[1], beforeAtk[1] - 1);
 					}
 					if (j >= 1) { // p2 used a damaging move
-						assert.atMost(activeMons[0].hp, beforeHP[0] - 1);
+						assert.atMost(activeMons[0].st, beforeHP[0] - 1);
 						assert.statStage(activeMons[0], beforeAtk[0]);
 					} else {
-						assert.equal(activeMons[0].hp, beforeHP[0]);
+						assert.equal(activeMons[0].st, beforeHP[0]);
 						assert.statStage(activeMons[0], beforeAtk[0] - 1);
 					}
 				}
@@ -295,10 +295,10 @@ describe('Choices', () => {
 			}
 			// Geodude's sucker punch should have processed first,
 			// while Aggron was still in slot 2.
-			assert.notEqual(battle.p2.active[0].hp, battle.p2.active[0].maxhp);
+			assert.notEqual(battle.p2.active[0].st, battle.p2.active[0].maxhp);
 			// Aggron's Earthquake should process after Skarmory shifted
 			// but before Golem shifted, so it didn't hit Golem.
-			assert.equal(battle.p2.active[1].hp, battle.p2.active[1].maxhp);
+			assert.equal(battle.p2.active[1].st, battle.p2.active[1].maxhp);
 		});
 
 		it('should force Struggle usage on move attempt for no valid moves', () => {

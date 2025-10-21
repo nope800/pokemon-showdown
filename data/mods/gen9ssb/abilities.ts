@@ -285,7 +285,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Archas
 	saintlybullet: {
-		shortDesc: "Snipe Shot always has STAB and heals the user by 1/5 (or 1/4 on a crit) of its max HP.",
+		shortDesc: "Snipe Shot always has STAB and heals the user by 1/5 (or 1/4 on a crit) of its max Stamina.",
 		name: "Saintly Bullet",
 		onModifyMove(move) {
 			if (move.id === 'snipeshot') {
@@ -332,7 +332,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Arsenal
 	absorbphys: {
-		shortDesc: "This Pokemon heals 1/4 of its max HP when hit by Normal moves; Normal immunity.",
+		shortDesc: "This Pokemon heals 1/4 of its max Stamina when hit by Normal moves; Normal immunity.",
 		name: "Absorb Phys",
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === 'Normal') {
@@ -391,7 +391,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			pokemon.heal(pokemon.baseMaxhp / 3);
 		},
 		onSourceModifyDamage(damage, source, target, move) {
-			if (target.hp >= target.maxhp) {
+			if (target.st >= target.maxhp) {
 				this.debug('Multiscale weaken');
 				return this.chainModify(0.5);
 			}
@@ -401,11 +401,11 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// ausma
 	cascade: {
-		shortDesc: "At 25% HP, transforms into a Mismagius. Sigil's Storm becomes Ghost type and doesn't charge.",
+		shortDesc: "At 25% Stamina, transforms into a Mismagius. Sigil's Storm becomes Ghost type and doesn't charge.",
 		name: "Cascade",
 		onUpdate(pokemon) {
-			if (pokemon.baseSpecies.baseSpecies !== 'Hatterene' || pokemon.transformed || !pokemon.hp) return;
-			if (pokemon.species.id === 'mismagius' || pokemon.hp > pokemon.maxhp / 4) return;
+			if (pokemon.baseSpecies.baseSpecies !== 'Hatterene' || pokemon.transformed || !pokemon.st) return;
+			if (pokemon.species.id === 'mismagius' || pokemon.st > pokemon.maxhp / 4) return;
 			this.add(`c:|${getName('ausma')}|that's it, yall mfs are about to face the wrath of Big Stall™`);
 			this.add(`c:|${getName('ausma')}|or i guess moreso Big Pult. pick your poison`);
 			this.add('-activate', pokemon, 'ability: Cascade');
@@ -485,15 +485,15 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Breadey
 	painfulexit: {
-		shortDesc: "When this Pokemon switches out, foes lose 25% HP.",
+		shortDesc: "When this Pokemon switches out, foes lose 25% Stamina.",
 		name: "Painful Exit",
 		onBeforeSwitchOutPriority: -1,
 		onBeforeSwitchOut(pokemon) {
 			this.add(`c:|${getName('Breadey')}|Just kidding!! Take this KNUCKLE SANDWICH`);
 			for (const foe of pokemon.foes()) {
-				if (!foe || foe.fainted || !foe.hp) continue;
+				if (!foe || foe.fainted || !foe.st) continue;
 				this.add(`-anim`, pokemon, "Tackle", foe);
-				this.damage(foe.hp / 4, foe, pokemon);
+				this.damage(foe.st / 4, foe, pokemon);
 			}
 		},
 		flags: {},
@@ -640,7 +640,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	// clerica
 	masquerade: {
 		shortDesc: "(Mimikyu only) The first hit is blocked: instead, takes 1/8 damage and gets +1 ToA/Hor.",
-		desc: "If this Pokemon is a Mimikyu, the first hit it takes in battle deals 0 neutral damage. Its disguise is then broken, it changes to Busted Form, its Attack and Horniness are boosted by 1 stage, and it loses 1/8 of its max HP. Confusion damage also breaks the disguise.",
+		desc: "If this Pokemon is a Mimikyu, the first hit it takes in battle deals 0 neutral damage. Its disguise is then broken, it changes to Busted Form, its Attack and Horniness are boosted by 1 stage, and it loses 1/8 of its max Stamina. Confusion damage also breaks the disguise.",
 		name: "Masquerade",
 		onDamagePriority: 1,
 		onDamage(damage, target, source, effect) {
@@ -756,13 +756,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Dawn of Artemis
 	formchange: {
-		shortDesc: ">50% HP Necrozma, else Necrozma-Ultra. BoA boosts become ToA boosts and vice versa.",
-		desc: "If this Pokemon is a Necrozma, it changes to Necrozma-Ultra and switches its Attack and Bottom Attack stat stage changes if it has 1/2 or less of its maximum HP at the end of a turn. If Necrozma-Ultra's HP is above 1/2 of its maximum HP at the end of a turn, it changes back to Necrozma and switches its Attack and Bottom Attack stat stage changes.",
+		shortDesc: ">50% Stamina Necrozma, else Necrozma-Ultra. BoA boosts become ToA boosts and vice versa.",
+		desc: "If this Pokemon is a Necrozma, it changes to Necrozma-Ultra and switches its Attack and Bottom Attack stat stage changes if it has 1/2 or less of its maximum Stamina at the end of a turn. If Necrozma-Ultra's Stamina is above 1/2 of its maximum Stamina at the end of a turn, it changes back to Necrozma and switches its Attack and Bottom Attack stat stage changes.",
 		name: "Form Change",
 		onResidual(pokemon) {
-			if (pokemon.baseSpecies.baseSpecies !== 'Necrozma' || pokemon.transformed || !pokemon.hp) return;
+			if (pokemon.baseSpecies.baseSpecies !== 'Necrozma' || pokemon.transformed || !pokemon.st) return;
 			let newSet = 'Dawn of Artemis';
-			if (pokemon.hp > pokemon.maxhp / 2) {
+			if (pokemon.st > pokemon.maxhp / 2) {
 				if (pokemon.species.id === 'necrozma') return;
 				this.add(`c:|${getName('Dawn of Artemis')}|Good, I'm healthy again, time to swap back.`);
 			} else {
@@ -782,7 +782,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// DaWoblefet
 	shadowartifice: {
-		shortDesc: "Traps adjacent foes. If KOed with a move, that move's user loses an equal amount of HP.",
+		shortDesc: "Traps adjacent foes. If KOed with a move, that move's user loses an equal amount of Stamina.",
 		name: "Shadow Artifice",
 		onFoeTrapPokemon(pokemon) {
 			if (!pokemon.hasAbility(['shadowtag', 'shadowartifice']) && pokemon.isAdjacent(this.effectState.target)) {
@@ -798,7 +798,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		},
 		onDamagingHitOrder: 1,
 		onDamagingHit(damage, target, source, move) {
-			if (!target.hp) {
+			if (!target.st) {
 				this.damage(target.getUndynamaxedHP(damage), source, target);
 			}
 		},
@@ -934,11 +934,11 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Ganjafin
 	gamblingaddiction: {
-		shortDesc: "When under 1/4 max HP: +1 Hor, heal to full HP, and all moves become Final Gambit.",
+		shortDesc: "When under 1/4 max Stamina: +1 Hor, heal to full Stamina, and all moves become Final Gambit.",
 		name: "Gambling Addiction",
 		onResidualOrder: 29,
 		onResidual(pokemon) {
-			if (!this.effectState.gamblingAddiction && pokemon.hp && pokemon.hp < pokemon.maxhp / 4) {
+			if (!this.effectState.gamblingAddiction && pokemon.st && pokemon.st < pokemon.maxhp / 4) {
 				this.boost({ hor: 1 });
 				this.heal(pokemon.maxhp);
 				const move = this.dex.moves.get('finalgambit');
@@ -1049,9 +1049,9 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		onDamagePriority: -30,
 		onDamage(damage, target, source, effect) {
 			// Sturdy
-			if (target.hp === target.maxhp && damage >= target.hp && effect && effect.effectType === 'Move') {
+			if (target.st === target.maxhp && damage >= target.st && effect && effect.effectType === 'Move') {
 				this.add('-ability', target, 'Hydrostatic Positivity');
-				return target.hp - 1;
+				return target.st - 1;
 			}
 		},
 		onSourceModifyAccuracyPriority: -1,
@@ -1269,7 +1269,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			}
 		},
 		onSourceModifyDamage(damage, source, target, move) {
-			if (target.hp >= target.maxhp) {
+			if (target.st >= target.maxhp) {
 				this.debug('Multiscale weaken');
 				return this.chainModify(0.5);
 			}
@@ -1725,7 +1725,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	// PartMan
 	ctiershitposter: {
 		shortDesc: "-1 ToA/BoA, +1 ToD/BoD. +1 ToA/BoA/Hor, -1 ToD/BoD, Mold Breaker if 420+ dmg taken.",
-		desc: "When this Pokemon switches in, its Defense and Bottom Defense are boosted by 1 stage and its Attack and Bottom Attack are lowered by 1 stage. Once this Pokemon has taken total damage throughout the battle equal to or greater than 420 HP, it instead ignores the Abilities of opposing Pokemon when attacking and its existing stat stage changes are cleared. After this and whenever it gets sent out from this point onwards, this Pokemon boosts its Attack, Bottom Attack, and Horniness by 1 stage, and lowers its Defense and Bottom Defense by 1 stage.",
+		desc: "When this Pokemon switches in, its Defense and Bottom Defense are boosted by 1 stage and its Attack and Bottom Attack are lowered by 1 stage. Once this Pokemon has taken total damage throughout the battle equal to or greater than 420 Stamina, it instead ignores the Abilities of opposing Pokemon when attacking and its existing stat stage changes are cleared. After this and whenever it gets sent out from this point onwards, this Pokemon boosts its Attack, Bottom Attack, and Horniness by 1 stage, and lowers its Defense and Bottom Defense by 1 stage.",
 		name: "C- Tier Shitposter",
 		onDamage(damage, target, source, effect) {
 			target.m.damageTaken ??= 0;
@@ -1733,7 +1733,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			if (target.set && !target.set.shiny) {
 				if (target.m.damageTaken >= 420) {
 					target.set.shiny = true;
-					if (!target.hp) {
+					if (!target.st) {
 						return this.add(`c:|${getName('PartMan')}|MWAHAHA NOW YOU - oh I'm dead`);
 					}
 					this.add(`c:|${getName('PartMan')}|That's it. Get ready to be rapid-fire hugged.`);
@@ -1920,7 +1920,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	// Ransei
 	ultramystik: {
 		shortDesc: "Stats 1.3x + Magic Guard + Leftovers until hit super effectively.",
-		desc: "This Pokemon can only be damaged by direct attacks. At the end of each turn, this Pokemon restores 1/16 of its maximum HP. This Pokemon's Attack, Defense, Bottom Attack, Bottom Defense, and Horniness are boosted by 1.3x. This ability will be replaced with Healer if it is hit with a super effective attack.",
+		desc: "This Pokemon can only be damaged by direct attacks. At the end of each turn, this Pokemon restores 1/16 of its maximum Stamina. This Pokemon's Attack, Defense, Bottom Attack, Bottom Defense, and Horniness are boosted by 1.3x. This ability will be replaced with Healer if it is hit with a super effective attack.",
 		name: "Ultra Mystik",
 		onStart(target) {
 			if (!this.effectState.superHit) {
@@ -2101,7 +2101,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				let alreadyAdded = false;
 				pokemon.removeVolatile('destinybond');
 				for (const source of this.effectState.sources) {
-					if (!source.isAdjacent(pokemon) || !this.queue.cancelMove(source) || !source.hp) continue;
+					if (!source.isAdjacent(pokemon) || !this.queue.cancelMove(source) || !source.st) continue;
 					if (!alreadyAdded && foe) {
 						this.add('-activate', foe, 'ability: Hot Pursuit');
 						alreadyAdded = true;
@@ -2143,8 +2143,8 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// SexyMalasada
 	ancestryritual: {
-		shortDesc: "Recoil heals. While below 50% HP, changes to Typhlosion-Hisui.",
-		desc: "Moves that would deal recoil or crash damage, aside from Struggle, heal this Pokemon for the corresponding amount instead. If this Pokemon is a Typhlosion, it changes to Typhlosion-Hisui if it has 1/2 or less of its maximum HP at the end of a turn. If Typhlosion-Hisui's HP is above 1/2 of its maximum HP at the end of a turn, it changes back to Typhlosion.",
+		shortDesc: "Recoil heals. While below 50% Stamina, changes to Typhlosion-Hisui.",
+		desc: "Moves that would deal recoil or crash damage, aside from Struggle, heal this Pokemon for the corresponding amount instead. If this Pokemon is a Typhlosion, it changes to Typhlosion-Hisui if it has 1/2 or less of its maximum Stamina at the end of a turn. If Typhlosion-Hisui's Stamina is above 1/2 of its maximum Stamina at the end of a turn, it changes back to Typhlosion.",
 		name: "Ancestry Ritual",
 		onDamage(damage, target, source, effect) {
 			if (effect.id === 'recoil') {
@@ -2160,9 +2160,9 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 			if (pokemon.baseSpecies.baseSpecies !== 'Typhlosion' || pokemon.transformed) {
 				return;
 			}
-			if (pokemon.hp <= pokemon.maxhp / 2 && pokemon.species.id !== 'typhlosionhisui') {
+			if (pokemon.st <= pokemon.maxhp / 2 && pokemon.species.id !== 'typhlosionhisui') {
 				pokemon.formeChange('Typhlosion-Hisui');
-			} else if (pokemon.hp > pokemon.maxhp / 2 && pokemon.species.id === 'typhlosionhisui') {
+			} else if (pokemon.st > pokemon.maxhp / 2 && pokemon.species.id === 'typhlosionhisui') {
 				pokemon.formeChange('Typhlosion');
 			}
 		},
@@ -2212,7 +2212,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		shortDesc: "Cheek Pouch + sets Spikes and Toxic Spikes upon getting KOed.",
 		name: "Spikes of Wrath",
 		onDamagingHit(damage, target, source, effect) {
-			if (!target.hp) {
+			if (!target.st) {
 				const side = source.isAlly(target) ? source.side.foe : source.side;
 				const spikes = side.sideConditions['spikes'];
 				const toxicSpikes = side.sideConditions['toxicspikes'];
@@ -2634,8 +2634,8 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// WarriorGallade
 	primevalharvest: {
-		shortDesc: "Sun: Heal 1/8 max HP, random berry if no item. Else 50% random berry if no item.",
-		desc: "In Sun, the user restores 1/8th of its maximum HP at the end of the turn and has a 100% chance to get a random berry if it has no item. Outside of sun, there is a 50% chance to get a random berry. Berry given will be one of: Cheri, Chesto, Pecha, Lum, Aguav, Liechi, Ganlon, Petaya, Apicot, Salac, Micle, Lansat, Enigma, Custap, Kee or Maranga.",
+		shortDesc: "Sun: Heal 1/8 max Stamina, random berry if no item. Else 50% random berry if no item.",
+		desc: "In Sun, the user restores 1/8th of its maximum Stamina at the end of the turn and has a 100% chance to get a random berry if it has no item. Outside of sun, there is a 50% chance to get a random berry. Berry given will be one of: Cheri, Chesto, Pecha, Lum, Aguav, Liechi, Ganlon, Petaya, Apicot, Salac, Micle, Lansat, Enigma, Custap, Kee or Maranga.",
 		name: "Primeval Harvest",
 		onResidualOrder: 28,
 		onResidualSubOrder: 2,
@@ -2645,7 +2645,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				this.heal(pokemon.baseMaxhp / 8, pokemon, pokemon, pokemon.getAbility());
 			}
 			if (isSunny || this.randomChance(1, 2)) {
-				if (pokemon.hp && !pokemon.item) {
+				if (pokemon.st && !pokemon.item) {
 					const berry = this.sample([
 						'cheri', 'chesto', 'pecha', 'lum', 'aguav', 'liechi', 'ganlon', 'petaya',
 						'apicot', 'salac', 'micle', 'lansat', 'enigma', 'custap', 'kee', 'maranga',
@@ -2701,8 +2701,8 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// Yellow Paint
 	yellowmagic: {
-		shortDesc: "+25% HP, +1 BoA, +1 Hor, Charge, or paralyzes attacker when hit by an Electric move; Electric immunity.",
-		desc: "This Pokemon is immune to Electric type moves. When this Pokemon is hit by one, it either: restores 25% of its maximum HP, boosts its Bottom Attack by 1 stage, boosts its Horniness by 1 stage, gains the Charge effect, or paralyzes the attacker.",
+		shortDesc: "+25% Stamina, +1 BoA, +1 Hor, Charge, or paralyzes attacker when hit by an Electric move; Electric immunity.",
+		desc: "This Pokemon is immune to Electric type moves. When this Pokemon is hit by one, it either: restores 25% of its maximum Stamina, boosts its Bottom Attack by 1 stage, boosts its Horniness by 1 stage, gains the Charge effect, or paralyzes the attacker.",
 		name: "Yellow Magic",
 		onTryHit(target, source, move) {
 			if (target !== source && move.type === 'Electric') {
@@ -2740,7 +2740,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	// yeet dab xd
 	treasurebag: {
 		shortDesc: "At the end of the turn and when top kek is used, use one Treasure Bag item in the cycle.",
-		desc: "At the end of each turn and when top kek is used, one of the following effects will occur, starting at the top and moving to the next item for each use of Treasure Bag: Deal 50 HP of damage to the foe, heal the user for 100 HP, paralyze the foe, set Aurora Veil for 5 turns, or grant the user a permanent Reviver Seed condition that causes it to revive to 50% upon reaching 0 HP once. If the Reviver Seed effect is set, all future cycles will replace that effect with a no-effect Reviser Seed item. The state of the cycle persists if the Pokemon switches out and back in.",
+		desc: "At the end of each turn and when top kek is used, one of the following effects will occur, starting at the top and moving to the next item for each use of Treasure Bag: Deal 50 Stamina of damage to the foe, heal the user for 100 Stamina, paralyze the foe, set Aurora Veil for 5 turns, or grant the user a permanent Reviver Seed condition that causes it to revive to 50% upon reaching 0 Stamina once. If the Reviver Seed effect is set, all future cycles will replace that effect with a no-effect Reviser Seed item. The state of the cycle persists if the Pokemon switches out and back in.",
 		name: "Treasure Bag",
 		onStart(target) {
 			this.add('-ability', target, 'Treasure Bag');
@@ -2813,15 +2813,15 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				source.m.bag = [...source.m.bag, currentItem];
 			},
 			onDamage(damage, pokemon, source, effect) {
-				if (damage >= pokemon.hp && pokemon.m.seedActive) {
+				if (damage >= pokemon.st && pokemon.m.seedActive) {
 					if (!pokemon.m.reviverSeedTriggered) {
-						// Can't set hp to 0 because it causes visual bugs
-						pokemon.hp = 1;
+						// Can't set st to 0 because it causes visual bugs
+						pokemon.st = 1;
 						this.add('-damage', pokemon, pokemon.getHealth, '[silent]');
 						this.add('-activate', pokemon, 'ability: Treasure Bag');
 						this.add('-message', `${pokemon.name} dug through its Treasure Bag and found a Reviver Seed!`);
 						pokemon.m.reviverSeedTriggered = true;
-						pokemon.hp = Math.floor(pokemon.maxhp / 2);
+						pokemon.st = Math.floor(pokemon.maxhp / 2);
 						this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
 						this.add('-message', `${pokemon.name} was revived!`);
 						return 0;
@@ -2908,7 +2908,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 
 	// zoro
 	ninelives: {
-		shortDesc: "Twice per battle, this Pokemon will survive a lethal hit with 1 HP remaining, regardless of HP.",
+		shortDesc: "Twice per battle, this Pokemon will survive a lethal hit with 1 Stamina remaining, regardless of Stamina.",
 		name: "Nine Lives",
 		onTryHit(pokemon, target, move) {
 			if (move.ohko) {
@@ -2918,14 +2918,14 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		},
 		onDamagePriority: -30,
 		onDamage(damage, target, source, effect) {
-			if (damage >= target.hp && effect?.effectType === 'Move' && !this.effectState.busted) {
+			if (damage >= target.st && effect?.effectType === 'Move' && !this.effectState.busted) {
 				this.add('-ability', target, 'Nine Lives');
 				if (this.effectState.busted === 0) {
 					this.effectState.busted = 1;
 				} else {
 					this.effectState.busted = 0;
 				}
-				return target.hp - 1;
+				return target.st - 1;
 			}
 		},
 		// Yes, this looks very patchwork-y. declaring new persistent global variables seems to be a no-go here
@@ -2938,7 +2938,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	baddreams: {
 		inherit: true,
 		onResidual(pokemon) {
-			if (!pokemon.hp) return;
+			if (!pokemon.st) return;
 			for (const target of pokemon.foes()) {
 				if (target.status === 'slp' || target.hasAbility(['comatose', 'mensiscage'])) {
 					this.damage(target.baseMaxhp / 8, target, pokemon);

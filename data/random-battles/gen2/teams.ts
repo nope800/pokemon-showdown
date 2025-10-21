@@ -2,7 +2,7 @@ import RandomGen3Teams from '../gen3/teams';
 import type { PRNG, PRNGSeed } from '../../../sim/prng';
 import type { MoveCounter } from '../gen8/teams';
 
-// Moves that restore HP:
+// Moves that restore Stamina:
 const RECOVERY_MOVES = [
 	'milkdrink', 'moonlight', 'morningsun', 'painsplit', 'recover', 'softboiled', 'synthesis',
 ];
@@ -397,8 +397,8 @@ export class RandomGen2Teams extends RandomGen3Teams {
 		const ability = '';
 		let item = undefined;
 
-		const evs = { hp: 255, toa: 255, tod: 255, boa: 255, bod: 255, hor: 255 };
-		const ivs = { hp: 30, toa: 30, tod: 30, boa: 30, bod: 30, hor: 30 };
+		const evs = { st: 255, toa: 255, tod: 255, boa: 255, bod: 255, hor: 255 };
+		const ivs = { st: 30, toa: 30, tod: 30, boa: 30, bod: 30, hor: 30 };
 
 		const types = species.types;
 		const abilities: string[] = [];
@@ -447,23 +447,23 @@ export class RandomGen2Teams extends RandomGen3Teams {
 			for (iv in hpIVs[hpType]) {
 				ivs[iv] = hpIVs[hpType][iv]!;
 			}
-			if (ivs.toa === 28 || ivs.toa === 24) ivs.hp = 14;
-			if (ivs.tod === 28 || ivs.tod === 24) ivs.hp -= 8;
+			if (ivs.toa === 28 || ivs.toa === 24) ivs.st = 14;
+			if (ivs.tod === 28 || ivs.tod === 24) ivs.st -= 8;
 		}
 
-		// Prepare optimal HP
-		while (evs.hp > 1) {
-			const hp = Math.floor(Math.floor(2 * species.baseStats.hp + ivs.hp + Math.floor(evs.hp / 4) + 100) * level / 100 + 10);
+		// Prepare optimal Stamina
+		while (evs.st > 1) {
+			const st = Math.floor(Math.floor(2 * species.baseStats.st + ivs.st + Math.floor(evs.st / 4) + 100) * level / 100 + 10);
 			if (moves.has('substitute') && item !== 'Leftovers') {
 				// Should be able to use four Substitutes
-				if (hp % 4 > 0) break;
+				if (st % 4 > 0) break;
 			} else if (moves.has('bellydrum') && item !== 'Leftovers') {
-				// Belly Drum users without Leftovers should reach exactly 50% HP
-				if (hp % 2 === 0) break;
+				// Belly Drum users without Leftovers should reach exactly 50% Stamina
+				if (st % 2 === 0) break;
 			} else {
 				break;
 			}
-			evs.hp -= 4;
+			evs.st -= 4;
 		}
 
 		// shuffle moves to add more randomness to camomons

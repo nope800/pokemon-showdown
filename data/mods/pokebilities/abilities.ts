@@ -96,7 +96,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		inherit: true,
 		onAllyFaint(ally) {
 			const pokemon = this.effectState.target;
-			if (!pokemon.hp) return;
+			if (!pokemon.st) return;
 			const isAbility = pokemon.ability === 'powerofalchemy';
 			let possibleAbilities = [ally.ability];
 			if (ally.m.innates) possibleAbilities.push(...ally.m.innates);
@@ -118,7 +118,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		inherit: true,
 		onAllyFaint(ally) {
 			const pokemon = this.effectState.target;
-			if (!pokemon.hp) return;
+			if (!pokemon.st) return;
 			const isAbility = pokemon.ability === 'receiver';
 			let possibleAbilities = [ally.ability];
 			if (ally.m.innates) possibleAbilities.push(...ally.m.innates);

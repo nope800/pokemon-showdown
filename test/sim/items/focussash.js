@@ -10,7 +10,7 @@ describe('Focus Sash', () => {
 		battle.destroy();
 	});
 
-	it('should be consumed and allow its user to survive an attack from full HP', () => {
+	it('should be consumed and allow its user to survive an attack from full Stamina', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Paras', ability: 'dryskin', item: 'focussash', moves: ['sleeptalk'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Delphox', ability: 'magician', moves: ['incinerate'] }] });
@@ -18,10 +18,10 @@ describe('Focus Sash', () => {
 		battle.makeChoices('move sleeptalk', 'move incinerate');
 		assert.false.holdsItem(holder);
 		assert.false.fainted(holder);
-		assert.equal(holder.hp, 1);
+		assert.equal(holder.st, 1);
 	});
 
-	it(`should be consumed and allow its user to survive a confusion damage hit from full HP`, () => {
+	it(`should be consumed and allow its user to survive a confusion damage hit from full Stamina`, () => {
 		battle = common.createBattle({ forceRandomChance: true }, [[
 			{ species: 'Shedinja', ability: 'wonderguard', item: 'focussash', moves: ['absorb'] },
 		], [

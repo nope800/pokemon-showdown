@@ -20,17 +20,17 @@ describe('Wonder Room', () => {
 
 		battle.makeChoices();
 		const blissey = battle.p2.active[0];
-		let damage = blissey.maxhp - blissey.hp;
+		let damage = blissey.maxhp - blissey.st;
 		assert.bounded(damage, [30, 36], `Wonder Room should cause Blissey to use its Bottom Defense for Brick Break's damage calculation`);
 
 		battle.makeChoices('auto', 'move defensecurl');
 		battle.makeChoices('auto', 'move roost');
-		damage = blissey.maxhp - blissey.hp;
+		damage = blissey.maxhp - blissey.st;
 		assert.bounded(damage, [22, 26], `Wonder Room should still use Defense Curl's +1 ToD boost for Brick Break's damage calculation`);
 
 		battle.makeChoices('auto', 'switch chansey');
 		const chansey = battle.p2.active[0];
-		damage = chansey.maxhp - chansey.hp;
+		damage = chansey.maxhp - chansey.st;
 		assert.bounded(damage, [38, 46], `Wonder Room should not use Assault Vest for Brick Break's damage calculation`);
 	});
 
@@ -44,7 +44,7 @@ describe('Wonder Room', () => {
 		battle.makeChoices();
 		battle.makeChoices('move bodypress', 'move sleeptalk');
 		const blissey = battle.p2.active[0];
-		const damage = blissey.maxhp - blissey.hp;
+		const damage = blissey.maxhp - blissey.st;
 		assert.bounded(damage, [100, 118]);
 	});
 

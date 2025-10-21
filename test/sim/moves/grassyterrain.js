@@ -56,7 +56,7 @@ describe('Grassy Terrain', () => {
 		assert.equal(basePower, move.basePower);
 	});
 
-	it(`should heal grounded Pokemon by 1/16 of their max HP`, () => {
+	it(`should heal grounded Pokemon by 1/16 of their max Stamina`, () => {
 		battle = common.createBattle([[
 			{ species: 'Shaymin', moves: ['grassyterrain', 'seismictoss'] },
 		], [
@@ -66,8 +66,8 @@ describe('Grassy Terrain', () => {
 		battle.makeChoices('move seismictoss', 'move seismictoss');
 		const shaymin = battle.p1.active[0];
 		const wynaut = battle.p2.active[0];
-		assert.equal(shaymin.hp, shaymin.maxhp - 100 + Math.floor(shaymin.maxhp / 16));
-		assert.equal(wynaut.hp, wynaut.maxhp - 100);
+		assert.equal(shaymin.st, shaymin.maxhp - 100 + Math.floor(shaymin.maxhp / 16));
+		assert.equal(wynaut.st, wynaut.maxhp - 100);
 	});
 
 	it(`should not affect Pokemon in a semi-invulnerable state`, () => {
@@ -80,8 +80,8 @@ describe('Grassy Terrain', () => {
 		battle.makeChoices('move grassyterrain', 'move skydrop');
 		const shaymin = battle.p1.active[0];
 		const wynaut = battle.p2.active[0];
-		assert.equal(shaymin.hp, shaymin.maxhp - 100);
-		assert.equal(wynaut.hp, wynaut.maxhp - 100);
+		assert.equal(shaymin.st, shaymin.maxhp - 100);
+		assert.equal(wynaut.st, wynaut.maxhp - 100);
 	});
 
 	it(`should cause Nature Power to become Energy Ball`, () => {
@@ -140,7 +140,7 @@ describe('Grassy Terrain', () => {
 
 		battle.makeChoices('move rockthrow dynamax', 'auto');
 		const coalossal = battle.p1.active[0];
-		assert.equal(coalossal.hp, coalossal.maxhp - 40 + Math.floor(coalossal.maxhp / 2 / 16), `Coalossal should have recovered HP from Grassy Terrain.`);
+		assert.equal(coalossal.st, coalossal.maxhp - 40 + Math.floor(coalossal.maxhp / 2 / 16), `Coalossal should have recovered Stamina from Grassy Terrain.`);
 		battle.makeChoices();
 		// Kill turns with Wynaut and Coalossal
 		for (let i = 0; i < 4; i++) {

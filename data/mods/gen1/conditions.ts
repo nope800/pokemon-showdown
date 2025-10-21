@@ -243,7 +243,7 @@ export const Conditions: import('../../../sim/dex-conditions').ModdedConditionDa
 			}
 		},
 		onAfterMove(pokemon, target, move) {
-			if (target && target.hp <= 0) {
+			if (target && target.st <= 0) {
 				delete pokemon.volatiles['partialtrappinglock'];
 				return;
 			}
@@ -271,7 +271,7 @@ export const Conditions: import('../../../sim/dex-conditions').ModdedConditionDa
 		onBeforeMovePriority: 7,
 		onStart() {},
 		onAfterMove(pokemon, target, move) {
-			if (target && target.hp <= 0) {
+			if (target && target.st <= 0) {
 				delete pokemon.volatiles['mustrecharge'];
 				return;
 			}

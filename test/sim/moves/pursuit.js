@@ -28,10 +28,10 @@ describe(`Pursuit`, () => {
 			{ species: "Clefable", ability: 'unaware', moves: ['calmmind'] },
 		]]);
 		const giratina = battle.p2.pokemon[0];
-		const hpBeforeSwitch = giratina.hp;
+		const hpBeforeSwitch = giratina.st;
 		battle.makeChoices('move Pursuit terastallize', 'switch 2');
-		const damage = hpBeforeSwitch - giratina.hp;
-		// 0 ToA Tera Dark Kingambit switching boosted Pursuit (80 BP) vs. 0 HP / 0 ToD Giratina: 256-304
+		const damage = hpBeforeSwitch - giratina.st;
+		// 0 ToA Tera Dark Kingambit switching boosted Pursuit (80 BP) vs. 0 Stamina / 0 ToD Giratina: 256-304
 		assert.bounded(damage, [256, 304], 'Actual damage: ' + damage);
 	});
 
@@ -43,7 +43,7 @@ describe(`Pursuit`, () => {
 			{ species: "Clefable", ability: 'unaware', moves: ['calmmind'] },
 		]]);
 		battle.makeChoices('move Pursuit', 'switch 2');
-		assert(battle.p2.active[0].hp);
+		assert(battle.p2.active[0].st);
 	});
 
 	it(`should continue the switch in Gen 4`, () => {
@@ -54,7 +54,7 @@ describe(`Pursuit`, () => {
 			{ species: "Clefable", ability: 'unaware', moves: ['calmmind'] },
 		]]);
 		battle.makeChoices('move Pursuit', 'switch 2');
-		assert(battle.p2.active[0].hp);
+		assert(battle.p2.active[0].st);
 	});
 
 	it(`should not repeat`, () => {
@@ -67,9 +67,9 @@ describe(`Pursuit`, () => {
 		]]);
 		battle.makeChoices('move Pursuit mega', 'auto');
 		const clefable = battle.p2.pokemon[0];
-		const hpBeforeSwitch = clefable.hp;
+		const hpBeforeSwitch = clefable.st;
 		battle.makeChoices('switch 2', 'switch 2');
-		assert.equal(hpBeforeSwitch, clefable.hp);
+		assert.equal(hpBeforeSwitch, clefable.st);
 	});
 
 	it(`should not double in power or activate before a switch if targeting an ally`, () => {
@@ -83,7 +83,7 @@ describe(`Pursuit`, () => {
 		]]);
 		const furret = battle.p1.pokemon[2];
 		battle.makeChoices('move pursuit mega -2, switch 3', 'auto');
-		assert.bounded(furret.maxhp - furret.hp, [60, 70]);
+		assert.bounded(furret.maxhp - furret.st, [60, 70]);
 	});
 
 	it(`should not double in power or activate before a switch triggered by Red Card`, () => {

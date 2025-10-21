@@ -75,9 +75,9 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 		damageFromPokemon: "  [POKEMON] was hurt by [SOURCE]'s [ITEM]!", // Jaboca/Rowap Berry
 		damageFromItem: "  [POKEMON] was hurt by its [ITEM]!", // Sticky Barb
 		damageFromPartialTrapping: "  [POKEMON] is hurt by [MOVE]!",
-		heal: "  [POKEMON] had its HP restored.",
-		healFromZEffect: "  [POKEMON] restored its HP using its Z-Power!",
-		healFromEffect: "  [POKEMON] restored HP using its [EFFECT]!",
+		heal: "  [POKEMON] had its Stamina restored.",
+		healFromZEffect: "  [POKEMON] restored its Stamina using its Z-Power!",
+		healFromEffect: "  [POKEMON] restored Stamina using its [EFFECT]!",
 
 		boost: "  [POKEMON]'s [STAT] rose!",
 		boost2: "  [POKEMON]'s [STAT] rose sharply!",
@@ -129,9 +129,9 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 	},
 
 	// stats
-	hp: {
-		statName: "HP",
-		statShortName: "HP",
+	st: {
+		statName: "Stamina",
+		statShortName: "Stamina",
 	},
 	toa: {
 		statName: "Attack",
@@ -283,10 +283,10 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 		cant: "[POKEMON] flinched and couldn't move!",
 	},
 	heal: {
-		fail: "  [POKEMON]'s HP is full!",
+		fail: "  [POKEMON]'s Stamina is full!",
 	},
 	healreplacement: {
-		activate: "  [POKEMON] will restore its replacement's HP using its Z-Power!",
+		activate: "  [POKEMON] will restore its replacement's Stamina using its Z-Power!",
 	},
 	nopp: {
 		cant: "[POKEMON] used [MOVE]!\n  But there was no PP left for the move!",
@@ -378,7 +378,7 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 	grassyterrain: {
 		start: "  Grass grew to cover the battlefield!",
 		end: "  The grass disappeared from the battlefield.",
-		heal: "  [POKEMON]'s HP was restored.",
+		heal: "  [POKEMON]'s Stamina was restored.",
 	},
 	mistyterrain: {
 		start: "  Mist swirled around the battlefield!",

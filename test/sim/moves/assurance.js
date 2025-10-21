@@ -22,7 +22,7 @@ describe('Assurance', () => {
 		battle.makeChoices();
 		const recoil = Math.floor((sneasel.maxhp - 1) / 4);
 		const assuRange = [214, 253];
-		assert.bounded(regi.hp, [regi.maxhp - recoil - assuRange[1], regi.maxhp - recoil - assuRange[0]]);
+		assert.bounded(regi.st, [regi.maxhp - recoil - assuRange[1], regi.maxhp - recoil - assuRange[0]]);
 	});
 
 	it(`should double the power against damaged Pokemon, not damaged slots`, () => {
@@ -35,11 +35,11 @@ describe('Assurance', () => {
 		]]);
 		battle.makeChoices('auto', 'move psychic 1, move assurance 1');
 		const landorus = battle.p1.active[1];
-		const damage = landorus.maxhp - landorus.hp;
+		const damage = landorus.maxhp - landorus.st;
 		assert.bounded(damage, [63, 75]); // 60 BP; if it was 120 BP, it would be 124-147 damage
 	});
 
-	it(`should not double its base power if the target lost HP due to Pain Split`, () => {
+	it(`should not double its base power if the target lost Stamina due to Pain Split`, () => {
 		battle = common.createBattle([[
 			{ species: 'Greedent', moves: ['assurance'] },
 		], [
@@ -49,7 +49,7 @@ describe('Assurance', () => {
 		const greedent = battle.p1.active[0];
 		const wailord = battle.p2.active[0];
 		const painSplitHP = (greedent.maxhp + wailord.maxhp) / 2;
-		const damage = painSplitHP - wailord.hp;
+		const damage = painSplitHP - wailord.st;
 		assert.bounded(damage, [78, 92]);
 	});
 });

@@ -57,9 +57,9 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 	focusband: {
 		inherit: true,
 		onDamage(damage, target, source, effect) {
-			if (this.randomChance(30, 256) && damage >= target.hp && effect && effect.effectType === 'Move') {
+			if (this.randomChance(30, 256) && damage >= target.st && effect && effect.effectType === 'Move') {
 				this.add('-activate', target, 'item: Focus Band');
-				return target.hp - 1;
+				return target.st - 1;
 			}
 		},
 	},

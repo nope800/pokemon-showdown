@@ -17,28 +17,28 @@ describe('Team Validator', () => {
 	});
 	it('should reject non-existent Pokemon', () => {
 		const team = [
-			{ species: 'nonexistentPokemon', moves: ['thunderbolt'], evs: { hp: 1 } },
+			{ species: 'nonexistentPokemon', moves: ['thunderbolt'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen7customgame');
 	});
 
 	it('should reject non-existent items', () => {
 		const team = [
-			{ species: 'pikachu', moves: ['thunderbolt'], ability: 'static', item: 'nonexistentItem', evs: { hp: 1 } },
+			{ species: 'pikachu', moves: ['thunderbolt'], ability: 'static', item: 'nonexistentItem', evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen7customgame');
 	});
 
 	it('should reject non-existent abilities', () => {
 		const team = [
-			{ species: 'pikachu', moves: ['thunderbolt'], ability: 'nonexistentAbility', evs: { hp: 1 } },
+			{ species: 'pikachu', moves: ['thunderbolt'], ability: 'nonexistentAbility', evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen7customgame');
 	});
 
 	it('should reject non-existent moves', () => {
 		const team = [
-			{ species: 'pikachu', ability: 'static', moves: ['nonexistentMove'], evs: { hp: 1 } },
+			{ species: 'pikachu', ability: 'static', moves: ['nonexistentMove'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen7customgame');
 	});
@@ -67,19 +67,19 @@ describe('Team Validator', () => {
 
 	it('should validate Gen 7 IVs', () => {
 		let team = [
-			{ species: 'yveltal', ability: 'darkaura', moves: ['hiddenpowerfighting'], evs: { hp: 1 } },
+			{ species: 'yveltal', ability: 'darkaura', moves: ['hiddenpowerfighting'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen7ubers');
 
 		team = [
-			{ species: 'latiasmega', ability: 'levitate', item: 'latiasite', moves: ['hiddenpowerfighting'], evs: { hp: 1 } },
+			{ species: 'latiasmega', ability: 'levitate', item: 'latiasite', moves: ['hiddenpowerfighting'], evs: { st: 1 } },
 		];
 		assert.legalTeam(team, 'gen7ubers');
 	});
 
 	it(`should enforce the 3 perfect IV minimum on legendaries with Gen 6+ origin`, () => {
 		const team = [
-			{ species: 'xerneas', ability: 'fairyaura', moves: ['snore'], ivs: { hp: 0, toa: 0, tod: 0, boa: 0 }, evs: { hp: 1 } },
+			{ species: 'xerneas', ability: 'fairyaura', moves: ['snore'], ivs: { st: 0, toa: 0, tod: 0, boa: 0 }, evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen9anythinggoes');
 
@@ -88,63 +88,63 @@ describe('Team Validator', () => {
 
 	it('should reject non-existent natures', () => {
 		const team = [
-			{ species: 'pikachu', ability: 'static', moves: ['thunderbolt'], nature: 'nonexistentNature', evs: { hp: 1 } },
+			{ species: 'pikachu', ability: 'static', moves: ['thunderbolt'], nature: 'nonexistentNature', evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen7customgame');
 	});
 
 	it('should reject invalid happiness values', () => {
 		const team = [
-			{ species: 'pikachu', ability: 'static', moves: ['thunderbolt'], happiness: 'invalidHappinessValue', evs: { hp: 1 } },
+			{ species: 'pikachu', ability: 'static', moves: ['thunderbolt'], happiness: 'invalidHappinessValue', evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen7customgame');
 	});
 
 	it('should validate EVs', () => {
 		const team = [
-			{ species: 'pikachu', ability: 'static', moves: ['thunderbolt'], evs: { hp: 252, toa: 252, tod: 252 } },
+			{ species: 'pikachu', ability: 'static', moves: ['thunderbolt'], evs: { st: 252, toa: 252, tod: 252 } },
 		];
 		assert.false.legalTeam(team, 'gen8ou');
 	});
 
 	it('should accept legal movesets', () => {
 		let team = [
-			{ species: 'pikachu', ability: 'static', moves: ['agility', 'protect', 'thunder', 'thunderbolt'], evs: { hp: 1 } },
+			{ species: 'pikachu', ability: 'static', moves: ['agility', 'protect', 'thunder', 'thunderbolt'], evs: { st: 1 } },
 		];
 		assert.legalTeam(team, 'gen7anythinggoes');
 
 		team = [
-			{ species: 'meowstic', ability: 'prankster', moves: ['trick', 'magiccoat'], evs: { hp: 1 } },
+			{ species: 'meowstic', ability: 'prankster', moves: ['trick', 'magiccoat'], evs: { st: 1 } },
 		];
 		assert.legalTeam(team, 'gen7anythinggoes');
 	});
 
 	it('should reject illegal movesets', () => {
 		const team = [
-			{ species: 'pikachu', ability: 'static', moves: ['blastburn', 'frenzyplant', 'hydrocannon', 'dragonascent'], evs: { hp: 1 } },
+			{ species: 'pikachu', ability: 'static', moves: ['blastburn', 'frenzyplant', 'hydrocannon', 'dragonascent'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen7anythinggoes');
 	});
 
 	it('should reject banned Pokemon', () => {
 		let team = [
-			{ species: 'arceus', ability: 'multitype', item: 'dragoniumz', moves: ['judgment'], evs: { hp: 1 } },
+			{ species: 'arceus', ability: 'multitype', item: 'dragoniumz', moves: ['judgment'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen71v1');
 
 		team = [
-			{ species: 'rayquazamega', ability: 'deltastream', moves: ['dragonascent'], evs: { hp: 1 } },
+			{ species: 'rayquazamega', ability: 'deltastream', moves: ['dragonascent'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen7ou');
 
 		team = [
-			{ species: 'mimikyutotem', ability: 'disguise', moves: ['shadowsneak'], evs: { hp: 1 } },
+			{ species: 'mimikyutotem', ability: 'disguise', moves: ['shadowsneak'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen7ou@@@-mimikyu');
 
 		// bans should override past unbans
 		team = [
-			{ species: 'torkoal', ability: 'drought', moves: ['bodyslam'], evs: { hp: 1 } },
+			{ species: 'torkoal', ability: 'drought', moves: ['bodyslam'], evs: { st: 1 } },
 		];
 		assert.legalTeam(team, 'gen7ou@@@-drought,+drought');
 		assert.false.legalTeam(team, 'gen7ou@@@-drought,+drought,-drought');
@@ -154,7 +154,7 @@ describe('Team Validator', () => {
 		// Spore is a Gen 5 event move
 		// Sketch itself should still be valid
 		const team = [
-			{ species: 'smeargle', ability: 'owntempo', moves: ['bellydrum', 'spore', 'sketch'], evs: { hp: 1 } },
+			{ species: 'smeargle', ability: 'owntempo', moves: ['bellydrum', 'spore', 'sketch'], evs: { st: 1 } },
 		];
 		assert.legalTeam(team, 'gen4ou');
 	});
@@ -162,17 +162,17 @@ describe('Team Validator', () => {
 	it('should accept both ability types for Mega Evolutions', () => {
 		// base forme ability
 		let team = [
-			{ species: 'gyaradosmega', item: 'gyaradosite', ability: 'intimidate', moves: ['dragondance', 'crunch', 'waterfall', 'icefang'], evs: { hp: 1 } },
-			{ species: 'kyogreprimal', item: 'blueorb', ability: 'drizzle', moves: ['originpulse'], evs: { hp: 1 } },
-			{ species: 'rayquazamega', item: 'leftovers', ability: 'airlock', moves: ['dragonascent'], evs: { hp: 1 } },
+			{ species: 'gyaradosmega', item: 'gyaradosite', ability: 'intimidate', moves: ['dragondance', 'crunch', 'waterfall', 'icefang'], evs: { st: 1 } },
+			{ species: 'kyogreprimal', item: 'blueorb', ability: 'drizzle', moves: ['originpulse'], evs: { st: 1 } },
+			{ species: 'rayquazamega', item: 'leftovers', ability: 'airlock', moves: ['dragonascent'], evs: { st: 1 } },
 		];
 		assert.legalTeam(team, 'gen7anythinggoes');
 
 		// mega forme ability
 		team = [
-			{ species: 'gyaradosmega', item: 'gyaradosite', ability: 'moldbreaker', moves: ['dragondance', 'crunch', 'waterfall', 'icefang'], evs: { hp: 1 } },
-			{ species: 'kyogreprimal', item: 'blueorb', ability: 'primordialsea', moves: ['originpulse'], evs: { hp: 1 } },
-			{ species: 'rayquazamega', item: 'leftovers', ability: 'deltastream', moves: ['dragonascent'], evs: { hp: 1 } },
+			{ species: 'gyaradosmega', item: 'gyaradosite', ability: 'moldbreaker', moves: ['dragondance', 'crunch', 'waterfall', 'icefang'], evs: { st: 1 } },
+			{ species: 'kyogreprimal', item: 'blueorb', ability: 'primordialsea', moves: ['originpulse'], evs: { st: 1 } },
+			{ species: 'rayquazamega', item: 'leftovers', ability: 'deltastream', moves: ['dragonascent'], evs: { st: 1 } },
 		];
 		assert.legalTeam(team, 'gen7anythinggoes');
 	});
@@ -186,7 +186,7 @@ describe('Team Validator', () => {
 
 	it('should reject exclusive G-Max moves added directly to a Pokemon\'s moveset', () => {
 		const team = [
-			{ species: 'charizard', ability: 'blaze', moves: ['gmaxwildfire'], evs: { hp: 1 }, gigantamax: true },
+			{ species: 'charizard', ability: 'blaze', moves: ['gmaxwildfire'], evs: { st: 1 }, gigantamax: true },
 		];
 		assert.false.legalTeam(team, 'gen8anythinggoes');
 		assert.false.legalTeam(team, 'gen8customgame@@@-nonexistent');
@@ -194,15 +194,15 @@ describe('Team Validator', () => {
 
 	it('should reject Gmax Pokemon from formats with Dynamax Clause', () => {
 		const team = [
-			{ species: 'gengar-gmax', ability: 'cursedbody', moves: ['shadowball'], evs: { hp: 1 } },
-			{ species: 'gengar', ability: 'cursedbody', moves: ['shadowball'], evs: { hp: 1 }, gigantamax: true },
+			{ species: 'gengar-gmax', ability: 'cursedbody', moves: ['shadowball'], evs: { st: 1 } },
+			{ species: 'gengar', ability: 'cursedbody', moves: ['shadowball'], evs: { st: 1 }, gigantamax: true },
 		];
 		assert.false.legalTeam(team, 'gen8customgame@@@dynamaxclause');
 	});
 
 	it(`should not allow duplicate moves on the same set, except in hackmons`, () => {
 		const team = [
-			{ species: 'corsola', ability: 'hustle', moves: ['snore', 'snore'], evs: { hp: 1 } },
+			{ species: 'corsola', ability: 'hustle', moves: ['snore', 'snore'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen9anythinggoes');
 
@@ -211,42 +211,42 @@ describe('Team Validator', () => {
 
 	it('should accept VC moves only with Hidden ability and correct IVs', () => {
 		let team = [
-			{ species: 'machamp', ability: 'steadfast', moves: ['fissure'], evs: { hp: 1 } },
+			{ species: 'machamp', ability: 'steadfast', moves: ['fissure'], evs: { st: 1 } },
 		];
 		assert.legalTeam(team, 'gen7anythinggoes');
 		team = [
-			{ species: 'tauros', ability: 'sheerforce', moves: ['bodyslam'], evs: { hp: 1 } },
+			{ species: 'tauros', ability: 'sheerforce', moves: ['bodyslam'], evs: { st: 1 } },
 		];
 		assert.legalTeam(team, 'gen7anythinggoes');
 		team = [
-			{ species: 'tauros', ability: 'intimidate', ivs: { hp: 31, toa: 31, tod: 30, boa: 30, bod: 30, hor: 30 }, moves: ['bodyslam'], evs: { hp: 1 } },
-			{ species: 'suicune', ability: 'innerfocus', moves: ['scald'], evs: { hp: 1 } },
+			{ species: 'tauros', ability: 'intimidate', ivs: { st: 31, toa: 31, tod: 30, boa: 30, bod: 30, hor: 30 }, moves: ['bodyslam'], evs: { st: 1 } },
+			{ species: 'suicune', ability: 'innerfocus', moves: ['scald'], evs: { st: 1 } },
 		];
 		assert.legalTeam(team, 'gen7anythinggoes');
 
 		team = [
-			{ species: 'machamp', ability: 'noguard', moves: ['fissure'], evs: { hp: 1 } },
+			{ species: 'machamp', ability: 'noguard', moves: ['fissure'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen7anythinggoes');
 		team = [
-			{ species: 'tauros', ability: 'sheerforce', ivs: { hp: 31, toa: 31, tod: 30, boa: 30, bod: 30, hor: 30 }, moves: ['bodyslam'], evs: { hp: 1 } },
+			{ species: 'tauros', ability: 'sheerforce', ivs: { st: 31, toa: 31, tod: 30, boa: 30, bod: 30, hor: 30 }, moves: ['bodyslam'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen7anythinggoes');
 
 		team = [
-			{ species: 'koffing', ability: 'levitate', moves: ['zapcannon'], evs: { hp: 1 } },
+			{ species: 'koffing', ability: 'levitate', moves: ['zapcannon'], evs: { st: 1 } },
 		];
 		assert.legalTeam(team, 'gen8ou');
 
 		team = [
-			{ species: 'weezing-galar', ability: 'levitate', moves: ['zapcannon'], evs: { hp: 1 } },
+			{ species: 'weezing-galar', ability: 'levitate', moves: ['zapcannon'], evs: { st: 1 } },
 		];
 		assert.legalTeam(team, 'gen8ou');
 	});
 
 	it(`should disallow past gen only moves in Gen 9`, () => {
 		const team = [
-			{ species: 'oricorio', ability: 'dancer', moves: ['roleplay'], evs: { hp: 1 } },
+			{ species: 'oricorio', ability: 'dancer', moves: ['roleplay'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen9ou');
 	});

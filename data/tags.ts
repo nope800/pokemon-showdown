@@ -312,10 +312,10 @@ export const Tags: { [id: IDEntry]: TagData } = {
 		name: "Weight",
 		speciesNumCol: species => species.weightkg,
 	},
-	hp: {
-		name: "HP",
+	st: {
+		name: "Stamina",
 		desc: "Hit Points",
-		speciesNumCol: species => species.baseStats.hp,
+		speciesNumCol: species => species.baseStats.st,
 	},
 	toa: {
 		name: "ToA",

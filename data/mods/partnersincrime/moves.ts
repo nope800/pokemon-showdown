@@ -55,7 +55,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			onSwap(target) {
 				if (
 					!target.fainted && (
-						target.hp < target.maxhp ||
+						target.st < target.maxhp ||
 						target.status ||
 						target.moveSlots.some(moveSlot => moveSlot.pp < moveSlot.maxpp)
 					)

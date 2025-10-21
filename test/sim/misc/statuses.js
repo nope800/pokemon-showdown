@@ -10,7 +10,7 @@ describe('Burn', () => {
 		battle.destroy();
 	});
 
-	it('should inflict 1/16 of max HP at the end of the turn, rounded down', () => {
+	it('should inflict 1/16 of max Stamina at the end of the turn, rounded down', () => {
 		battle = common.createBattle([
 			[{ species: 'Machamp', ability: 'noguard', moves: ['bulkup'] }],
 			[{ species: 'Sableye', ability: 'prankster', moves: ['willowisp'] }],
@@ -27,7 +27,7 @@ describe('Burn', () => {
 		]]);
 		battle.makeChoices();
 		const sableye = battle.p2.active[0];
-		const damage = sableye.maxhp - sableye.hp;
+		const damage = sableye.maxhp - sableye.st;
 		assert.bounded(damage, [37, 44]);
 	});
 
@@ -39,7 +39,7 @@ describe('Burn', () => {
 		]]);
 		battle.makeChoices();
 		const wailord = battle.p2.active[0];
-		assert.bounded(wailord.hp, [200, 300]);
+		assert.bounded(wailord.st, [200, 300]);
 	});
 
 	it('should reduce toa to 50% of its original value in Stadium', () => {
@@ -160,7 +160,7 @@ describe('Toxic Poison', () => {
 		battle.destroy();
 	});
 
-	it('should inflict 1/16 of max HP rounded down, times the number of active turns with the status, at the end of the turn', () => {
+	it('should inflict 1/16 of max Stamina rounded down, times the number of active turns with the status, at the end of the turn', () => {
 		battle = common.createBattle([
 			[{ species: 'Chansey', ability: 'naturalcure', moves: ['softboiled'] }],
 			[{ species: 'Gengar', ability: 'levitate', moves: ['toxic'] }],
@@ -168,7 +168,7 @@ describe('Toxic Poison', () => {
 		const target = battle.p1.active[0];
 		for (let i = 1; i <= 8; i++) {
 			battle.makeChoices('move softboiled', 'move toxic');
-			assert.equal(target.maxhp - target.hp, Math.floor(target.maxhp / 16) * i);
+			assert.equal(target.maxhp - target.st, Math.floor(target.maxhp / 16) * i);
 		}
 	});
 
@@ -181,9 +181,9 @@ describe('Toxic Poison', () => {
 			battle.makeChoices('move counter', 'move toxic');
 		}
 		const pokemon = battle.p1.active[0];
-		pokemon.hp = pokemon.maxhp;
+		pokemon.st = pokemon.maxhp;
 		battle.makeChoices('switch 2', 'move whirlwind');
-		assert.equal(pokemon.maxhp - pokemon.hp, Math.floor(pokemon.maxhp / 16));
+		assert.equal(pokemon.maxhp - pokemon.st, Math.floor(pokemon.maxhp / 16));
 	});
 });
 
@@ -252,7 +252,7 @@ describe('Burn [Gen 6]', () => {
 		battle.destroy();
 	});
 
-	it('should inflict 1/8 of max HP at the end of the turn, rounded down', () => {
+	it('should inflict 1/8 of max Stamina at the end of the turn, rounded down', () => {
 		battle = common.gen(6).createBattle([
 			[{ species: 'Machamp', ability: 'noguard', moves: ['bulkup'] }],
 			[{ species: 'Sableye', ability: 'prankster', moves: ['willowisp'] }],
@@ -279,10 +279,10 @@ describe('Toxic Poison [Gen 1]', () => {
 
 		battle.makeChoices('move toxic', 'move splash');
 		const chansey = battle.p2.active[0];
-		assert.equal(chansey.maxhp - chansey.hp, Math.floor(chansey.maxhp / 16));
+		assert.equal(chansey.maxhp - chansey.st, Math.floor(chansey.maxhp / 16));
 		battle.makeChoices('move leechseed', 'move splash');
 		// (1/16) + (2/16) + (3/16) = (6/16)
-		assert.equal(chansey.maxhp - chansey.hp, Math.floor(chansey.maxhp / 16) * 6);
+		assert.equal(chansey.maxhp - chansey.st, Math.floor(chansey.maxhp / 16) * 6);
 	});
 });
 
@@ -299,10 +299,10 @@ describe('Toxic Poison [Gen 2]', () => {
 		]]);
 		battle.makeChoices('move toxic', 'move splash');
 		const pokemon = battle.p2.active[0];
-		assert.equal(pokemon.maxhp - pokemon.hp, Math.floor(pokemon.maxhp / 16));
+		assert.equal(pokemon.maxhp - pokemon.st, Math.floor(pokemon.maxhp / 16));
 		battle.makeChoices('move leechseed', 'move splash');
 		// (1/16) + (2/16) + (1/8) = (5/16)
-		assert.equal(pokemon.maxhp - pokemon.hp, Math.floor(pokemon.maxhp / 16) * 5);
+		assert.equal(pokemon.maxhp - pokemon.st, Math.floor(pokemon.maxhp / 16) * 5);
 	});
 
 	it(`should pass the damage counter to Pokemon with Baton Pass`, () => {
@@ -323,18 +323,18 @@ describe('Toxic Poison [Gen 2]', () => {
 		battle.makeChoices('move splash', 'move splash');
 		battle.makeChoices('move splash', 'move batonpass');
 		battle.makeChoices('', 'switch 2');
-		let hp = chansey.hp;
+		let st = chansey.st;
 		battle.makeChoices('move splash', 'move splash');
-		assert.equal(hp - chansey.hp, Math.floor(chansey.maxhp / 16) * 4, `Chansey should have taken a lot more damage from burn`);
+		assert.equal(st - chansey.st, Math.floor(chansey.maxhp / 16) * 4, `Chansey should have taken a lot more damage from burn`);
 
 		// Only hint about this once per battle, not every turn.
 		assert.equal(battle.log.filter(m => m.startsWith('|-hint')).length, 1);
 
 		// Damage counter should be removed on regular switch out
 		battle.makeChoices('move splash', 'switch 2');
-		hp = chansey.hp;
+		st = chansey.st;
 		battle.makeChoices('move splash', 'switch 2');
-		assert.equal(hp - chansey.hp, Math.floor(chansey.maxhp / 8), `Chansey should have taken normal damage from burn`);
+		assert.equal(st - chansey.st, Math.floor(chansey.maxhp / 8), `Chansey should have taken normal damage from burn`);
 	});
 
 	it('should revert to regular poison on switch in, even for Poison types', () => {
@@ -368,14 +368,14 @@ describe('Toxic Poison [Gen 2]', () => {
 		const chansey = battle.p2.active[0];
 		battle.makeChoices('move splash', 'move healbell');
 		battle.makeChoices('move willowisp', 'move splash');
-		let hp = chansey.hp;
+		let st = chansey.st;
 		battle.makeChoices('move splash', 'move splash');
-		assert.equal(hp - chansey.hp, Math.floor(chansey.maxhp / 16) * 3);
-		hp = chansey.hp;
+		assert.equal(st - chansey.st, Math.floor(chansey.maxhp / 16) * 3);
+		st = chansey.st;
 
 		battle.makeChoices('move splash', 'move healbell');
 		battle.makeChoices('move toxic', 'move splash');
 		// Toxic counter should be reset by a successful Toxic
-		assert.equal(hp - chansey.hp, Math.floor(chansey.maxhp / 16));
+		assert.equal(st - chansey.st, Math.floor(chansey.maxhp / 16));
 	});
 });

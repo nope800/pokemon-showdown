@@ -117,7 +117,7 @@ describe('Partial Trapping Moves', () => {
 	});
 
 	for (const move of partialtrappers) {
-		it('should deal 1/8 HP per turn', () => {
+		it('should deal 1/8 Stamina per turn', () => {
 			battle = common.createBattle();
 			battle.setPlayer('p1', { team: [{ species: "Smeargle", ability: 'noguard', moves: [toID(move), 'rest'] }] });
 			battle.setPlayer('p2', { team: [{ species: "Blissey", ability: 'naturalcure', moves: ['healbell'] }] });
@@ -125,7 +125,7 @@ describe('Partial Trapping Moves', () => {
 			const pokemon = battle.p2.active[0];
 			pokemon.heal(pokemon.maxhp);
 			battle.makeChoices('move rest', 'move healbell');
-			assert.equal(pokemon.maxhp - pokemon.hp, battle.modify(pokemon.maxhp, 1 / 8));
+			assert.equal(pokemon.maxhp - pokemon.st, battle.modify(pokemon.maxhp, 1 / 8));
 		});
 
 		it('should prevent Pokemon from switching out normally', () => {
@@ -214,8 +214,8 @@ describe('Partial Trapping Moves [Gen 1]', () => {
 
 	it('Wrap ends when wrapped Pokemon switches to a Pokemon that dies of residual damage', () => {
 		battle = common.gen(1).createBattle();
-		battle.setPlayer('p1', { team: [{ species: "Dragonite", moves: ['wrap', 'seismictoss', 'toxic'], evs: { hp: 255 } }] });
-		battle.setPlayer('p2', { team: [{ species: "Mewtwo", moves: ['splash'], evs: { hp: 255 } }, { species: "Exeggutor", moves: ['splash'] }] });
+		battle.setPlayer('p1', { team: [{ species: "Dragonite", moves: ['wrap', 'seismictoss', 'toxic'], evs: { st: 255 } }] });
+		battle.setPlayer('p2', { team: [{ species: "Mewtwo", moves: ['splash'], evs: { st: 255 } }, { species: "Exeggutor", moves: ['splash'] }] });
 		for (let i = 0; i < 4; i++) {
 			battle.makeChoices('move seismictoss', 'auto');
 		}
@@ -239,7 +239,7 @@ describe('Partial Trapping Moves [Gen 1]', () => {
 
 	it('Wrap ends when wrapper switches to a Pokemon that dies of residual damage', () => {
 		battle = common.gen(1).createBattle();
-		battle.setPlayer('p1', { team: [{ species: "Rhydon", moves: ['splash'], evs: { hp: 255 } }, { species: "Dragonite", moves: ['wrap'] }] });
+		battle.setPlayer('p1', { team: [{ species: "Rhydon", moves: ['splash'], evs: { st: 255 } }, { species: "Dragonite", moves: ['wrap'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Slowbro", moves: ['seismictoss', 'toxic'] }] });
 		for (let i = 0; i < 4; i++) {
 			battle.makeChoices();
@@ -265,7 +265,7 @@ describe('Partial Trapping Moves [Gen 1]', () => {
 				break;
 			}
 		}
-		assert.equal(alakazam.hp, 188);
+		assert.equal(alakazam.st, 188);
 		assert.false(alakazam.volatiles['substitute']);
 	});
 

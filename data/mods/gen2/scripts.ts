@@ -8,8 +8,8 @@ export const Scripts: ModdedBattleScriptsData = {
 	pokemon: {
 		inherit: true,
 		getStat(statName, unboosted, unmodified, fastReturn) {
-			// @ts-expect-error type checking prevents 'hp' from being passed, but we're paranoid
-			if (statName === 'hp') throw new Error("Please read `maxhp` directly");
+			// @ts-expect-error type checking prevents 'st' from being passed, but we're paranoid
+			if (statName === 'st') throw new Error("Please read `maxhp` directly");
 
 			// base stat
 			let stat = this.storedStats[statName];
@@ -137,7 +137,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			pokemon.moveUsed(move);
 			this.battle.actions.useMove(move, pokemon, { target, sourceEffect: options?.sourceEffect });
 			this.battle.singleEvent('AfterMove', move, null, pokemon, target, move);
-			if (!move.selfSwitch && pokemon.side.foe.active[0].hp) this.battle.runEvent('AfterMoveSelf', pokemon, target, move);
+			if (!move.selfSwitch && pokemon.side.foe.active[0].st) this.battle.runEvent('AfterMoveSelf', pokemon, target, move);
 		},
 		tryMoveHit(target, pokemon, move) {
 			const positiveBoostTable = [1, 1.33, 1.66, 2, 2.33, 2.66, 3];
@@ -270,7 +270,7 @@ export const Scripts: ModdedBattleScriptsData = {
 
 				const isSleepUsable = move.sleepUsable || this.dex.moves.get(move.sourceEffect).sleepUsable;
 				let i: number;
-				for (i = 0; i < hits && target.hp && pokemon.hp; i++) {
+				for (i = 0; i < hits && target.st && pokemon.st; i++) {
 					if (pokemon.status === 'slp' && !isSleepUsable) break;
 					move.hit = i + 1;
 					if (move.hit === hits) move.lastHit = true;
@@ -437,7 +437,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				this.moveHit(pokemon, pokemon, move, moveData.self, isSecondary, true);
 			}
 			// Secondary effects don't happen if the target faints from the attack
-			if (target?.hp && moveData.secondaries && this.battle.runEvent('TrySecondaryHit', target, pokemon, moveData)) {
+			if (target?.st && moveData.secondaries && this.battle.runEvent('TrySecondaryHit', target, pokemon, moveData)) {
 				for (const secondary of moveData.secondaries) {
 					// We check here whether to negate the probable secondary status if it's burn or freeze.
 					// In the game, this is checked and if true, the random number generator is not called.
@@ -464,7 +464,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					}
 				}
 			}
-			if (target && target.hp > 0 && pokemon.hp > 0 && moveData.forceSwitch && this.battle.canSwitch(target.side)) {
+			if (target && target.st > 0 && pokemon.st > 0 && moveData.forceSwitch && this.battle.canSwitch(target.side)) {
 				hitResult = this.battle.runEvent('DragOut', target, pokemon, move);
 				if (hitResult) {
 					this.dragIn(target.side, target.position);
@@ -472,7 +472,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					this.battle.add('-fail', target);
 				}
 			}
-			if (move.selfSwitch && pokemon.hp) {
+			if (move.selfSwitch && pokemon.st) {
 				pokemon.switchFlag = move.id;
 			}
 			return damage;

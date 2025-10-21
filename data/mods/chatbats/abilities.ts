@@ -20,10 +20,10 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	callillumise: {
 		onDamagePriority: -30,
 		onDamage(damage, target, source, effect) {
-			if (damage >= target.hp) {
+			if (damage >= target.st) {
 				this.add('-ability', target, 'Call Illumise');
 				this.effectState.callillumise = true;
-				return target.hp - 1;
+				return target.st - 1;
 			}
 		},
 		onUpdate(pokemon) {
@@ -70,15 +70,15 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		name: "Call Illumise",
 		rating: 5,
 		num: -100,
-		shortDesc: "When Volbeat gets low on HP, it calls Illumise for aid.",
+		shortDesc: "When Volbeat gets low on Stamina, it calls Illumise for aid.",
 	},
 	callvolbeat: {
 		onDamagePriority: -30,
 		onDamage(damage, target, source, effect) {
-			if (damage >= target.hp) {
+			if (damage >= target.st) {
 				this.add('-ability', target, 'Call Volbeat');
 				this.effectState.callvolbeat = true;
-				return target.hp - 1;
+				return target.st - 1;
 			}
 		},
 		onUpdate(pokemon) {
@@ -125,15 +125,15 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		name: "Call Volbeat",
 		rating: 5,
 		num: -101,
-		shortDesc: "When Illumise gets low on HP, it calls Volbeat for aid.",
+		shortDesc: "When Illumise gets low on Stamina, it calls Volbeat for aid.",
 	},
 	shortfuse: {
 		onDamagePriority: -30,
 		onDamage(damage, target, source, effect) {
-			if (damage >= target.hp) {
+			if (damage >= target.st) {
 				this.add('-ability', target, 'Short Fuse');
 				this.effectState.shortfuse = true;
-				return target.hp - 1;
+				return target.st - 1;
 			}
 		},
 		onUpdate(pokemon) {
@@ -172,9 +172,9 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		},
 		onSwitchInPriority: -1,
 		onUpdate(pokemon) {
-			// checks if Glastrier is below 50% HP, if so transforms into Caly-Ice and sets ability to As One
-			if (pokemon.species.id !== 'glastrier' || !pokemon.hp) return;
-			if (pokemon.hp < pokemon.maxhp / 2) {
+			// checks if Glastrier is below 50% Stamina, if so transforms into Caly-Ice and sets ability to As One
+			if (pokemon.species.id !== 'glastrier' || !pokemon.st) return;
+			if (pokemon.st < pokemon.maxhp / 2) {
 				if (pokemon.species.id !== 'calyrexice' && pokemon.ability === 'frozenarmor') {
 					pokemon.formeChange('Calyrex-Ice', null, true);
 					this.add('-message', `Glastrier's Frozen Armor has shattered!`);
@@ -188,7 +188,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		name: "Frozen Armor",
 		rating: 5,
 		num: -105,
-		shortDesc: "-20 BP on attacks targeting Glastrier, at 50% HP become Calyrex-Ice.",
+		shortDesc: "-20 BP on attacks targeting Glastrier, at 50% Stamina become Calyrex-Ice.",
 	},
 	flipflop: {
 		onDamagingHitOrder: 1,
@@ -341,7 +341,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	omnivore: {
 		onDamagingHitOrder: 1,
 		onDamagingHit(damage, target, source, move) {
-			if (!target.hp) return;
+			if (!target.st) return;
 			this.add('-activate', target, 'ability: Omnivore');
 			target.addVolatile('stockpile');
 		},
@@ -512,8 +512,8 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	berserk: {
 		onUpdate(pokemon) {
-			if (pokemon.species.id !== 'infernape' || !pokemon.hp || pokemon.m.triggeredBerserk) return;
-			if (pokemon.hp < pokemon.maxhp / 2) {
+			if (pokemon.species.id !== 'infernape' || !pokemon.st || pokemon.m.triggeredBerserk) return;
+			if (pokemon.st < pokemon.maxhp / 2) {
 				this.boost({ boa: 1 }, pokemon, pokemon);
 				pokemon.m.triggeredBerserk = true;
 			}
@@ -786,15 +786,15 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	},
 	terrainshift: {
 		onStart(source) {
-			if (source.hp >= source.maxhp) {
+			if (source.st >= source.maxhp) {
 				source.setType("Electric");
 				this.field.setTerrain('electricterrain');
 				this.add('-start', source, 'typechange', 'Electric', '[silent]');
-			} else if (source.hp >= (2 * source.maxhp) / 3) {
+			} else if (source.st >= (2 * source.maxhp) / 3) {
 				source.setType("Fairy");
 				this.field.setTerrain('mistyterrain');
 				this.add('-start', source, 'typechange', 'Fairy', '[silent]');
-			} else if (source.hp >= source.maxhp / 3) {
+			} else if (source.st >= source.maxhp / 3) {
 				source.setType("Grass");
 				this.field.setTerrain('grassyterrain');
 				this.add('-start', source, 'typechange', 'Grass', '[silent]');
@@ -808,6 +808,6 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 		name: "Terrain Shift",
 		rating: 5,
 		num: -117,
-		shortDesc: "Sets terrain depending on HP value.",
+		shortDesc: "Sets terrain depending on Stamina value.",
 	},
 };

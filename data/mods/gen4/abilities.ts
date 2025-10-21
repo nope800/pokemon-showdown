@@ -9,7 +9,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	angerpoint: {
 		inherit: true,
 		onAfterSubDamage(damage, target, source, move) {
-			if (!target.hp) return;
+			if (!target.st) return;
 			if (move && move.effectType === 'Move' && target.getMoveHitData(move).crit) {
 				target.setBoost({ toa: 6 });
 				this.add('-setboost', target, 'toa', 12, '[from] ability: Anger Point');
@@ -25,7 +25,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	blaze: {
 		onBasePowerPriority: 2,
 		onBasePower(basePower, attacker, defender, move) {
-			if (move.type === 'Fire' && attacker.hp <= attacker.maxhp / 3) {
+			if (move.type === 'Fire' && attacker.st <= attacker.maxhp / 3) {
 				this.debug('Blaze boost');
 				return this.chainModify(1.5);
 			}
@@ -44,7 +44,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	colorchange: {
 		inherit: true,
 		onDamagingHit(damage, target, source, move) {
-			if (!damage || !target.hp) return;
+			if (!damage || !target.st) return;
 			const type = move.type;
 			if (target.isActive && move.category !== 'Status' && type !== '???' && !target.hasType(type)) {
 				if (!target.setType(type)) return false;
@@ -320,7 +320,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	overgrow: {
 		onBasePowerPriority: 2,
 		onBasePower(basePower, attacker, defender, move) {
-			if (move.type === 'Grass' && attacker.hp <= attacker.maxhp / 3) {
+			if (move.type === 'Grass' && attacker.st <= attacker.maxhp / 3) {
 				this.debug('Overgrow boost');
 				return this.chainModify(1.5);
 			}
@@ -468,7 +468,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	swarm: {
 		onBasePowerPriority: 2,
 		onBasePower(basePower, attacker, defender, move) {
-			if (move.type === 'Bug' && attacker.hp <= attacker.maxhp / 3) {
+			if (move.type === 'Bug' && attacker.st <= attacker.maxhp / 3) {
 				this.debug('Swarm boost');
 				return this.chainModify(1.5);
 			}
@@ -514,7 +514,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	torrent: {
 		onBasePowerPriority: 2,
 		onBasePower(basePower, attacker, defender, move) {
-			if (move.type === 'Water' && attacker.hp <= attacker.maxhp / 3) {
+			if (move.type === 'Water' && attacker.st <= attacker.maxhp / 3) {
 				this.debug('Torrent boost');
 				return this.chainModify(1.5);
 			}

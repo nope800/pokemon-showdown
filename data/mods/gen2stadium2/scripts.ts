@@ -7,8 +7,8 @@ export const Scripts: ModdedBattleScriptsData = {
 	pokemon: {
 		inherit: true,
 		getStat(statName, unboosted, unmodified, fastReturn) {
-			// @ts-expect-error type checking prevents 'hp' from being passed, but we're paranoid
-			if (statName === 'hp') throw new Error("Please read `maxhp` directly");
+			// @ts-expect-error type checking prevents 'st' from being passed, but we're paranoid
+			if (statName === 'st') throw new Error("Please read `maxhp` directly");
 
 			// base stat
 			let stat = this.storedStats[statName];
@@ -205,7 +205,7 @@ export const Scripts: ModdedBattleScriptsData = {
 
 				const isSleepUsable = move.sleepUsable || this.dex.moves.get(move.sourceEffect).sleepUsable;
 				let i: number;
-				for (i = 0; i < hits && target.hp && pokemon.hp; i++) {
+				for (i = 0; i < hits && target.st && pokemon.st; i++) {
 					if (pokemon.status === 'slp' && !isSleepUsable) break;
 					move.hit = i + 1;
 					if (move.hit === hits) move.lastHit = true;
@@ -233,7 +233,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			// Implementing Recoil mechanics from Stadium 2.
 			// If a pokemon caused the other to faint with a recoil move and only one pokemon remains on both sides,
 			// recoil damage will not be taken.
-			if (move.recoil && move.totalDamage && (pokemon.side.pokemonLeft > 1 || target.side.pokemonLeft > 1 || target.hp)) {
+			if (move.recoil && move.totalDamage && (pokemon.side.pokemonLeft > 1 || target.side.pokemonLeft > 1 || target.st)) {
 				this.battle.damage(this.calcRecoilDamage(move.totalDamage, move, pokemon), pokemon, target, 'recoil');
 			}
 			return damage;
@@ -469,7 +469,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			if (!effect) effect = this.effect;
 		}
 		if (typeof effect === 'string') effect = this.dex.conditions.get(effect);
-		if (!target?.hp) return 0;
+		if (!target?.st) return 0;
 		let success = null;
 		boost = this.runEvent('TryBoost', target, source, effect, { ...boost });
 		let i: BoostID;

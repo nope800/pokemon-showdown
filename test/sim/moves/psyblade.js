@@ -18,7 +18,7 @@ describe('Psyblade', () => {
 		]]);
 		const miraidon = battle.p2.active[0];
 		battle.makeChoices();
-		assert.bounded(miraidon.maxhp - miraidon.hp, [157, 186]);
+		assert.bounded(miraidon.maxhp - miraidon.st, [157, 186]);
 	});
 
 	it(`should have its base power multiplied by 1.5 in Electric Terrain even if the user or the target isn't grounded`, () => {
@@ -29,6 +29,6 @@ describe('Psyblade', () => {
 		]]);
 		const miraidon = battle.p2.active[0];
 		battle.makeChoices();
-		assert.bounded(miraidon.maxhp - miraidon.hp, [157, 186]);
+		assert.bounded(miraidon.maxhp - miraidon.st, [157, 186]);
 	});
 });

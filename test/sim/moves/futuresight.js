@@ -69,7 +69,7 @@ describe('Future Sight', () => {
 		battle.makeChoices();
 		battle.makeChoices('move stompingtantrum', 'move sleeptalk');
 		const scizor = battle.p2.active[0];
-		const damage = scizor.maxhp - scizor.hp;
+		const damage = scizor.maxhp - scizor.st;
 		assert.bounded(damage, [19, 23]); // If it were doubled, would be 38-45
 	});
 
@@ -131,8 +131,8 @@ describe('Future Sight', () => {
 		assert.fullHP(wynaut, `Wynaut should not take Life Orb recoil on Future Sight's starting turn`);
 		battle.makeChoices();
 		battle.makeChoices();
-		assert.equal(wynaut.hp, wynaut.maxhp - Math.floor(wynaut.maxhp / 10), `Wynaut should take Life Orb recoil on Future Sight's damaging turn`);
-		const damage = mew.maxhp - mew.hp;
+		assert.equal(wynaut.st, wynaut.maxhp - Math.floor(wynaut.maxhp / 10), `Wynaut should take Life Orb recoil on Future Sight's damaging turn`);
+		const damage = mew.maxhp - mew.st;
 		assert.bounded(damage, [30, 35]); // 22-27 if Life Orb was not applied
 	});
 
@@ -149,7 +149,7 @@ describe('Future Sight', () => {
 		battle.makeChoices();
 		battle.makeChoices();
 		assert.fullHP(wynaut, `Wynaut should not have taken any damage`);
-		const damage = mew.maxhp - mew.hp;
+		const damage = mew.maxhp - mew.st;
 		assert.bounded(damage, [21, 25]); // [27-32] if Life Orb was applied
 	});
 
@@ -167,7 +167,7 @@ describe('Future Sight', () => {
 		battle.makeChoices();
 		battle.makeChoices('switch 2', 'move sleeptalk');
 		assert.fullHP(liepard, `liepard should not have taken any damage`);
-		const damage = mew.maxhp - mew.hp;
+		const damage = mew.maxhp - mew.st;
 		assert.bounded(damage, [22, 27]); // 30, 35 if Life Orb was applied
 	});
 
@@ -197,13 +197,13 @@ describe('Future Sight', () => {
 		battle.makeChoices();
 		battle.makeChoices();
 		const blissey = battle.p1.active[0];
-		let damage = blissey.maxhp - blissey.hp;
+		let damage = blissey.maxhp - blissey.st;
 		assert.bounded(damage, [46, 55]);
 
 		battle.makeChoices('auto', 'move futuresight');
 		battle.makeChoices();
 		battle.makeChoices();
-		damage = blissey.maxhp - blissey.hp;
+		damage = blissey.maxhp - blissey.st;
 		assert.bounded(damage, [36, 43]);
 	});
 
@@ -221,7 +221,7 @@ describe('Future Sight', () => {
 		battle.makeChoices();
 		battle.makeChoices('auto', 'switch deino');
 		const blissey = battle.p1.active[0];
-		let damage = blissey.maxhp - blissey.hp;
+		let damage = blissey.maxhp - blissey.st;
 		assert.bounded(damage, [102, 121]);
 
 		// Xatu won't be Terrain-boosted because its Flying-type is checked while not active
@@ -229,7 +229,7 @@ describe('Future Sight', () => {
 		battle.makeChoices('auto', 'move futuresight');
 		battle.makeChoices();
 		battle.makeChoices('auto', 'switch deino');
-		damage = blissey.maxhp - blissey.hp;
+		damage = blissey.maxhp - blissey.st;
 		assert.bounded(damage, [96, 114]);
 	});
 
@@ -245,13 +245,13 @@ describe('Future Sight', () => {
 		battle.makeChoices();
 		battle.makeChoices();
 		const blissey = battle.p1.active[0];
-		let damage = blissey.maxhp - blissey.hp;
+		let damage = blissey.maxhp - blissey.st;
 		assert.bounded(damage, [18, 21]);
 
 		battle.makeChoices('auto', 'move futuresight');
 		battle.makeChoices();
 		battle.makeChoices('auto', 'switch 2');
-		damage = blissey.maxhp - blissey.hp;
+		damage = blissey.maxhp - blissey.st;
 		assert.bounded(damage, [18, 21]);
 	});
 
@@ -265,13 +265,13 @@ describe('Future Sight', () => {
 
 		for (let i = 0; i < 3; i++) battle.makeChoices();
 		const blissey = battle.p1.active[0];
-		let damage = blissey.maxhp - blissey.hp;
+		let damage = blissey.maxhp - blissey.st;
 		assert.bounded(damage, [70, 84]); // boosted by Adaptability and Choice Specs
 
 		battle.makeChoices();
 		battle.makeChoices();
 		battle.makeChoices('auto', 'switch 2');
-		damage = blissey.maxhp - blissey.hp;
+		damage = blissey.maxhp - blissey.st;
 		assert.bounded(damage, [46, 55]); // only boosted by Power Spot
 	});
 
@@ -287,7 +287,7 @@ describe('Future Sight', () => {
 		battle.makeChoices();
 		battle.makeChoices();
 		const hooh = battle.p2.active[0];
-		const damage = hooh.maxhp - hooh.hp;
+		const damage = hooh.maxhp - hooh.st;
 		assert.bounded(damage, [60, 71]); // Damage would be 236-278 if Unaware was being ignored
 	});
 
@@ -300,13 +300,13 @@ describe('Future Sight', () => {
 
 		for (let i = 0; i < 3; i++) battle.makeChoices();
 		const hooh = battle.p2.active[0];
-		let damage = hooh.maxhp - hooh.hp;
+		let damage = hooh.maxhp - hooh.st;
 		assert.bounded(damage, [79, 94]); // Blade Forme damage
 
 		battle.makeChoices();
 		battle.makeChoices('move kingsshield', 'auto');
 		battle.makeChoices('move kingsshield', 'auto');
-		damage = hooh.maxhp - hooh.hp;
+		damage = hooh.maxhp - hooh.st;
 		assert.bounded(damage, [34, 41]); // Shield Forme damage
 	});
 
@@ -322,7 +322,7 @@ describe('Future Sight', () => {
 		battle.makeChoices('switch wynaut', 'auto');
 		battle.makeChoices();
 		const hooh = battle.p2.active[0];
-		let damage = hooh.maxhp - hooh.hp;
+		let damage = hooh.maxhp - hooh.st;
 		assert.bounded(damage, [79, 94], `Future Sight should deal Blade Forme damage, even though Aegislash switched out in Blade Forme`);
 
 		battle.makeChoices('switch aegislash', 'auto');
@@ -330,7 +330,7 @@ describe('Future Sight', () => {
 		battle.makeChoices('auto', 'move flareblitz');
 		battle.makeChoices(); // switch in Wynaut
 		battle.makeChoices();
-		damage = hooh.maxhp - hooh.hp;
+		damage = hooh.maxhp - hooh.st;
 		assert.bounded(damage, [79, 94], `Future Sight should deal Blade Forme damage, even though Aegislash was KOed in Blade Forme.`);
 	});
 
@@ -346,13 +346,13 @@ describe('Future Sight', () => {
 		battle.makeChoices('move nastyplot', 'auto');
 		battle.makeChoices();
 		const hooh = battle.p2.active[0];
-		let damage = hooh.maxhp - hooh.hp;
+		let damage = hooh.maxhp - hooh.st;
 		assert.bounded(damage, [113, 134], `Future Sight should deal damage with +2 Bo. Atk`);
 
 		battle.makeChoices();
 		battle.makeChoices('switch wynaut', 'auto');
 		battle.makeChoices();
-		damage = hooh.maxhp - hooh.hp;
+		damage = hooh.maxhp - hooh.st;
 		assert.bounded(damage, [57, 68], `Future Sight should deal damage with +0 Bo. Atk`);
 	});
 

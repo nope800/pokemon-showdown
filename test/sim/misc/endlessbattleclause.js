@@ -20,7 +20,7 @@ describe('Endless Battle Clause (slow)', () => {
 				return;
 			}
 			let move;
-			if (victim.hp < 150) {
+			if (victim.st < 150) {
 				move = 'healpulse';
 			} else if (memeSlowbro.item === '') {
 				move = 'recycle';

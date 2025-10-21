@@ -37,7 +37,7 @@ describe('Lansat Berry', () => {
 		battle.makeChoices('move triplekick', 'move acidarmor');
 
 		assert.false.holdsItem(holder);
-		assert.equal(holder.hp, 3);
+		assert.equal(holder.st, 3);
 		assert.equal(i, 6);
 	});
 });

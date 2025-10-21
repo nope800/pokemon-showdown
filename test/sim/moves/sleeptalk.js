@@ -37,10 +37,10 @@ describe('Sleep Talk', () => {
 
 		// Ensure Chansey will not wake up
 		chansey.statusState.time = 6;
-		const hp = breloom.hp;
+		const st = breloom.st;
 		battle.makeChoices('move snore', 'move sleeptalk');
 		assert.equal(chansey.status, 'slp');
-		assert.equal(breloom.hp, hp);
+		assert.equal(breloom.st, st);
 		assert.equal(move.pp, move.maxpp - 2);
 	});
 });

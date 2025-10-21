@@ -116,7 +116,7 @@ describe(`Fainted forme regression`, () => {
 
 		const pokemon = battle.p1.active[0];
 		assert.species(pokemon, 'Mimikyu-Busted');
-		assert.equal(pokemon.hp, Math.floor(pokemon.maxhp / 2));
+		assert.equal(pokemon.st, Math.floor(pokemon.maxhp / 2));
 	});
 
 	it(`Mimikyu should keep its disguise if it was not busted`, () => {
@@ -134,7 +134,7 @@ describe(`Fainted forme regression`, () => {
 
 		const pokemon = battle.p1.active[0];
 		assert.species(pokemon, 'Mimikyu');
-		assert.equal(pokemon.hp, Math.floor(pokemon.maxhp / 2));
+		assert.equal(pokemon.st, Math.floor(pokemon.maxhp / 2));
 	});
 
 	it(`[Gen 8] should revert Mimikyu-Busted to base Mimikyu`, () => {
@@ -152,7 +152,7 @@ describe(`Fainted forme regression`, () => {
 
 		const pokemon = battle.p1.active[0];
 		assert.species(pokemon, 'Mimikyu');
-		assert.equal(pokemon.hp, Math.floor(pokemon.maxhp / 2));
+		assert.equal(pokemon.st, Math.floor(pokemon.maxhp / 2));
 	});
 
 	it("should not revert Eiscue-Noice to base Eiscue", () => {

@@ -54,7 +54,7 @@ type MoveEnforcementChecker = (
 	counter: MoveCounter, species: Species, teamDetails: RandomTeamsTypes.TeamDetails
 ) => boolean;
 
-// Moves that restore HP:
+// Moves that restore Stamina:
 const RECOVERY_MOVES = [
 	'healorder', 'milkdrink', 'moonlight', 'morningsun', 'recover', 'roost', 'shoreup', 'slackoff', 'softboiled', 'strengthsap', 'synthesis',
 ];
@@ -446,8 +446,8 @@ export class RandomGen8Teams {
 			const moves = this.multipleSamplesNoReplace(pool, this.maxMoveCount);
 
 			// Random EVs
-			const evs: StatsTable = { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
-			const s: StatID[] = ["hp", "toa", "tod", "boa", "bod", "hor"];
+			const evs: StatsTable = { st: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
+			const s: StatID[] = ["st", "toa", "tod", "boa", "bod", "hor"];
 			let evpool = 510;
 			do {
 				const x = this.sample(s);
@@ -458,7 +458,7 @@ export class RandomGen8Teams {
 
 			// Random IVs
 			const ivs = {
-				hp: this.random(32),
+				st: this.random(32),
 				toa: this.random(32),
 				tod: this.random(32),
 				boa: this.random(32),
@@ -477,7 +477,7 @@ export class RandomGen8Teams {
 			if (species.baseSpecies === 'Wishiwashi') stats = Dex.species.get('wishiwashischool').baseStats;
 
 			// Modified base stat total assumes 31 IVs, 85 EVs in every stat
-			let mbst = (stats["hp"] * 2 + 31 + 21 + 100) + 10;
+			let mbst = (stats["st"] * 2 + 31 + 21 + 100) + 10;
 			mbst += (stats["toa"] * 2 + 31 + 21 + 100) + 5;
 			mbst += (stats["tod"] * 2 + 31 + 21 + 100) + 5;
 			mbst += (stats["boa"] * 2 + 31 + 21 + 100) + 5;
@@ -491,7 +491,7 @@ export class RandomGen8Teams {
 				level = Math.floor(100 * mbstmin / mbst); // Initial level guess will underestimate
 
 				while (level < 100) {
-					mbst = Math.floor((stats["hp"] * 2 + 31 + 21 + 100) * level / 100 + 10);
+					mbst = Math.floor((stats["st"] * 2 + 31 + 21 + 100) * level / 100 + 10);
 					// Since damage is roughly proportional to level
 					mbst += Math.floor(((stats["toa"] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
 					mbst += Math.floor((stats["tod"] * 2 + 31 + 21 + 100) * level / 100 + 5);
@@ -733,7 +733,7 @@ export class RandomGen8Teams {
 		} else {
 			const hasAllMovesBan = ruleTable.check('pokemontag:allmoves');
 			for (const move of this.dex.moves.all()) {
-				// Legality of specific HP types can't be altered in built formats anyway
+				// Legality of specific Stamina types can't be altered in built formats anyway
 				if (move.name.startsWith('Hidden Power ')) continue;
 				let banReason = ruleTable.check('move:' + move.id);
 				if (banReason) continue;
@@ -813,7 +813,7 @@ export class RandomGen8Teams {
 			} while (m.length < setMoveCount);
 
 			// Random EVs
-			const evs = { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
+			const evs = { st: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
 			if (this.gen === 6) {
 				let evpool = 510;
 				do {
@@ -830,7 +830,7 @@ export class RandomGen8Teams {
 
 			// Random IVs
 			const ivs: StatsTable = {
-				hp: this.random(32),
+				st: this.random(32),
 				toa: this.random(32),
 				tod: this.random(32),
 				boa: this.random(32),
@@ -847,7 +847,7 @@ export class RandomGen8Teams {
 			// Level balance
 			const mbstmin = 1307;
 			const stats = species.baseStats;
-			let mbst = (stats['hp'] * 2 + 31 + 21 + 100) + 10;
+			let mbst = (stats['st'] * 2 + 31 + 21 + 100) + 10;
 			mbst += (stats['toa'] * 2 + 31 + 21 + 100) + 5;
 			mbst += (stats['tod'] * 2 + 31 + 21 + 100) + 5;
 			mbst += (stats['boa'] * 2 + 31 + 21 + 100) + 5;
@@ -860,7 +860,7 @@ export class RandomGen8Teams {
 			} else {
 				level = Math.floor(100 * mbstmin / mbst);
 				while (level < 100) {
-					mbst = Math.floor((stats['hp'] * 2 + 31 + 21 + 100) * level / 100 + 10);
+					mbst = Math.floor((stats['st'] * 2 + 31 + 21 + 100) * level / 100 + 10);
 					mbst += Math.floor(((stats['toa'] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
 					mbst += Math.floor((stats['tod'] * 2 + 31 + 21 + 100) * level / 100 + 5);
 					mbst += Math.floor(((stats['boa'] * 2 + 31 + 21 + 100) * level / 100 + 5) * level / 100);
@@ -1890,7 +1890,7 @@ export class RandomGen8Teams {
 		teamDetails: RandomTeamsTypes.TeamDetails,
 		species: Species,
 	): string | undefined {
-		const defensiveStatTotal = species.baseStats.hp + species.baseStats.tod + species.baseStats.bod;
+		const defensiveStatTotal = species.baseStats.st + species.baseStats.tod + species.baseStats.bod;
 
 		if (
 			(['dragonenergy', 'eruption', 'waterspout'].some(m => moves.has(m))) &&
@@ -1944,7 +1944,7 @@ export class RandomGen8Teams {
 		isDoubles: boolean,
 		isNoDynamax: boolean
 	): string | undefined {
-		const defensiveStatTotal = species.baseStats.hp + species.baseStats.tod + species.baseStats.bod;
+		const defensiveStatTotal = species.baseStats.st + species.baseStats.tod + species.baseStats.bod;
 
 		// Choice items
 		if (
@@ -2023,7 +2023,7 @@ export class RandomGen8Teams {
 		isDoubles: boolean,
 		isNoDynamax: boolean
 	): string | undefined {
-		const defensiveStatTotal = species.baseStats.hp + species.baseStats.tod + species.baseStats.bod;
+		const defensiveStatTotal = species.baseStats.st + species.baseStats.tod + species.baseStats.bod;
 
 		if (
 			isLead && !isDoubles &&
@@ -2203,8 +2203,8 @@ export class RandomGen8Teams {
 		let ability = '';
 		let item = undefined;
 
-		const evs = { hp: 85, toa: 85, tod: 85, boa: 85, bod: 85, hor: 85 };
-		const ivs = { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
+		const evs = { st: 85, toa: 85, tod: 85, boa: 85, bod: 85, hor: 85 };
+		const ivs = { st: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
 
 		const types = new Set(species.types);
 		const abilitiesSet = new Set(Object.values(species.abilities));
@@ -2378,11 +2378,11 @@ export class RandomGen8Teams {
 
 		const level: number = this.getLevel(species, isDoubles, isNoDynamax);
 
-		// Prepare optimal HP
+		// Prepare optimal Stamina
 		const srImmunity = ability === 'Magic Guard' || item === 'Heavy-Duty Boots';
 		const srWeakness = srImmunity ? 0 : this.dex.getEffectiveness('Rock', species);
-		while (evs.hp > 1) {
-			const hp = Math.floor(Math.floor(2 * species.baseStats.hp + ivs.hp + Math.floor(evs.hp / 4) + 100) * level / 100 + 10);
+		while (evs.st > 1) {
+			const st = Math.floor(Math.floor(2 * species.baseStats.st + ivs.st + Math.floor(evs.st / 4) + 100) * level / 100 + 10);
 			const multipleOfFourNecessary = (moves.has('substitute') && !['Leftovers', 'Black Sludge'].includes(item) && (
 				item === 'Sitrus Berry' ||
 				item === 'Salac Berry' ||
@@ -2390,18 +2390,18 @@ export class RandomGen8Teams {
 			));
 			if (multipleOfFourNecessary) {
 				// Two Substitutes should activate Sitrus Berry
-				if (hp % 4 === 0) break;
+				if (st % 4 === 0) break;
 			} else if (moves.has('bellydrum') && (item === 'Sitrus Berry' || ability === 'Gluttony')) {
 				// Belly Drum should activate Sitrus Berry
-				if (hp % 2 === 0) break;
+				if (st % 2 === 0) break;
 			} else if (moves.has('substitute') && moves.has('reversal')) {
 				// Reversal users should be able to use four Substitutes
-				if (hp % 4 > 0) break;
+				if (st % 4 > 0) break;
 			} else {
 				// Maximize number of Stealth Rock switch-ins
-				if (srWeakness <= 0 || hp % (4 / srWeakness) > 0) break;
+				if (srWeakness <= 0 || st % (4 / srWeakness) > 0) break;
 			}
-			evs.hp -= 4;
+			evs.st -= 4;
 		}
 
 		if (moves.has('shellsidearm') && item === 'Choice Specs') evs.toa -= 8;
@@ -2685,9 +2685,9 @@ export class RandomGen8Teams {
 				ability: (this.sampleIfArray(setData.ability)),
 				shiny: this.randomChance(1, 1024),
 				level: this.adjustLevel || 100,
-				evs: { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0, ...setData.evs },
+				evs: { st: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0, ...setData.evs },
 				nature: setData.nature,
-				ivs: { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31, ...setData.ivs },
+				ivs: { st: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31, ...setData.ivs },
 				moves: setData.moves.map((move: any) => this.sampleIfArray(move)),
 			};
 			if (this.adjustLevel) set.level = this.adjustLevel;
@@ -2801,8 +2801,8 @@ export class RandomGen8Teams {
 			shiny: typeof setData.set.shiny === 'undefined' ? this.randomChance(1, 1024) : setData.set.shiny,
 			level,
 			happiness: typeof setData.set.happiness === 'undefined' ? 255 : setData.set.happiness,
-			evs: { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0, ...setData.set.evs },
-			ivs: { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31, ...setData.set.ivs },
+			evs: { st: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0, ...setData.set.evs },
+			ivs: { st: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31, ...setData.set.ivs },
 			nature: nature || 'Serious',
 			moves,
 		};
@@ -3066,8 +3066,8 @@ export class RandomGen8Teams {
 			shiny: typeof setData.set.shiny === 'undefined' ? this.randomChance(1, 1024) : setData.set.shiny,
 			level: setData.set.level || 50,
 			happiness: typeof setData.set.happiness === 'undefined' ? 255 : setData.set.happiness,
-			evs: { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0, ...setData.set.evs },
-			ivs: { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31, ...setData.set.ivs },
+			evs: { st: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0, ...setData.set.evs },
+			ivs: { st: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31, ...setData.set.ivs },
 			nature: setData.set.nature || 'Serious',
 			moves,
 		};

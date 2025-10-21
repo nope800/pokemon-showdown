@@ -19,9 +19,9 @@ describe('Thick Fat', () => {
 		const miltank = battle.p1.active[0];
 		const damageRange = [16, 19];
 		battle.makeChoices('move luckychant', 'move icebeam');
-		assert.bounded(miltank.maxhp - miltank.hp, damageRange);
+		assert.bounded(miltank.maxhp - miltank.st, damageRange);
 		battle.makeChoices('move recover', 'move flamethrower');
-		assert.bounded(miltank.maxhp - miltank.hp, damageRange);
+		assert.bounded(miltank.maxhp - miltank.st, damageRange);
 	});
 
 	it(`should halve damage from Fire- or Ice-type attacks in past generations, even when holding a type-boosting item`, () => {
@@ -32,7 +32,7 @@ describe('Thick Fat', () => {
 		]]);
 		const miltank = battle.p1.active[0];
 		battle.makeChoices();
-		assert.bounded(miltank.maxhp - miltank.hp, [18, 22]);
+		assert.bounded(miltank.maxhp - miltank.st, [18, 22]);
 	});
 
 	it(`should be suppressed by Mold Breaker`, () => {
@@ -44,8 +44,8 @@ describe('Thick Fat', () => {
 		const miltank = battle.p1.active[0];
 		const damageRange = [31, 37];
 		battle.makeChoices('move luckychant', 'move icebeam');
-		assert.bounded(miltank.maxhp - miltank.hp, damageRange);
+		assert.bounded(miltank.maxhp - miltank.st, damageRange);
 		battle.makeChoices('move recover', 'move flamethrower');
-		assert.bounded(miltank.maxhp - miltank.hp, damageRange);
+		assert.bounded(miltank.maxhp - miltank.st, damageRange);
 	});
 });

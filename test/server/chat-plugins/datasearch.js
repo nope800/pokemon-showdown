@@ -107,7 +107,7 @@ describe("Datasearch Plugin", () => {
 		let search = datasearch.testables.runDexsearch(target, cmd, `/${cmd} ${target}`);
 		assert(search.reply.includes('Eiscue-Noice'));
 
-		target = 'ice, monotype, hp desc';
+		target = 'ice, monotype, st desc';
 		search = datasearch.testables.runDexsearch(target, cmd, `/${cmd} ${target}`);
 		assert.false(search.reply.includes('Eiscue-Noice'));
 	});

@@ -235,7 +235,7 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 			const source = this.effectState.source;
 			// G-Max Centiferno and G-Max Sandblast continue even after the user leaves the field
 			const gmaxEffect = ['gmaxcentiferno', 'gmaxsandblast'].includes(this.effectState.sourceEffect.id);
-			if (source && (!source.isActive || source.hp <= 0 || !source.activeTurns) && !gmaxEffect) {
+			if (source && (!source.isActive || source.st <= 0 || !source.activeTurns) && !gmaxEffect) {
 				delete pokemon.volatiles['partiallytrapped'];
 				this.add('-end', pokemon, this.effectState.sourceEffect, '[partiallytrapped]', '[silent]');
 				return;
@@ -771,7 +771,7 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 			const ratio = 1.5 + (pokemon.dynamaxLevel * 0.05);
 
 			pokemon.maxhp = Math.floor(pokemon.maxhp * ratio);
-			pokemon.hp = Math.floor(pokemon.hp * ratio);
+			pokemon.st = Math.floor(pokemon.st * ratio);
 			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
 		},
 		onTryAddVolatile(status, pokemon) {
@@ -798,7 +798,7 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 		onEnd(pokemon) {
 			this.add('-end', pokemon, 'Dynamax');
 			if (pokemon.baseSpecies.name === 'Shedinja') return;
-			pokemon.hp = pokemon.getUndynamaxedHP();
+			pokemon.st = pokemon.getUndynamaxedHP();
 			pokemon.maxhp = pokemon.baseMaxhp;
 			this.add('-heal', pokemon, pokemon.getHealth, '[silent]');
 		},
@@ -992,7 +992,7 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 		onResidualOrder: 13,
 		onResidual(pokemon) {
 			const source = this.effectState.source;
-			if (source && (!source.isActive || source.hp <= 0 || !source.activeTurns)) {
+			if (source && (!source.isActive || source.st <= 0 || !source.activeTurns)) {
 				pokemon.cureStatus(true);
 				this.add('-end', pokemon, 'held');
 				return;

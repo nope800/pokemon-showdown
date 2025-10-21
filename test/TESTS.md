@@ -32,7 +32,7 @@ To create the battle, use common.createBattle and pass in two arrays of teams. Y
 
 Here are two examples of tests in the preferred style. Don't hesitate to copy tests similar to what you're trying to do!
 ```
-it(`should restore 1/3 HP to the user after eating a Berry`, function () {
+it(`should restore 1/3 Stamina to the user after eating a Berry`, function () {
 	battle = common.createBattle([[
 		{species: 'wynaut', item: 'lumberry', ability: 'cheekpouch', moves: ['sleeptalk']},
 	], [
@@ -54,7 +54,7 @@ it(`should boost Dondozo's stat even if Sheer Force-boosted`, function () {
 	]]);
 	battle.makeChoices('auto', 'move orderup 2');
 	const mew = battle.p1.active[1];
-	const damage = mew.maxhp - mew.hp;
+	const damage = mew.maxhp - mew.st;
 	assert.bounded(damage, [149, 176], `Order Up's base power should be increased by Sheer Force`);
 	assert.statStage(battle.p2.active[1], 'hor', 3);
 });
@@ -71,7 +71,7 @@ You may see tests not in the preferred style, or that aren't ideal in other ways
 
 Common functions:
 - `assert.equal(oneThing, anotherThing)`: use this instead of `assert.equals()` or `assert(oneThing === anotherThing)`
-- `assert.fullHP(pokemon)`: check that the Pokemon is at full HP
+- `assert.fullHP(pokemon)`: check that the Pokemon is at full Stamina
 - `assert.bounded(damage, [lowerBound, upperBound])`: check if the damage dealt by a move falls within the possible range of damage
 - `assert.statStage(pokemon, 'stat', value)`: check the stat stage of the current Pokemon
 

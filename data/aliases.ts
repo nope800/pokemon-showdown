@@ -1281,7 +1281,7 @@ export const Aliases: import('../sim/dex').AliasesTable = {
 	gunk: "Gunk Shot",
 	hh: "Helping Hand",
 	hhp: "High Horsepower",
-	hp: "Hidden Power",
+	st: "Hidden Power",
 	hpbug: "Hidden Power Bug",
 	hpdark: "Hidden Power Dark",
 	hpdragon: "Hidden Power Dragon",

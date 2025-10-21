@@ -28,11 +28,11 @@ describe('Iron Ball', () => {
 		battle.makeChoices('move earthquake', 'move stealthrock');
 		// Earthquake neutral on Aerodactyl
 		assert(!battle.log[battle.lastMoveLine + 1].startsWith('|-supereffective|'));
-		assert.notEqual(battle.p2.active[0].hp, battle.p2.active[0].maxhp);
+		assert.notEqual(battle.p2.active[0].st, battle.p2.active[0].maxhp);
 		battle.makeChoices('move earthquake', 'switch 2');
 		// Earthquake neutral on Tropius
 		assert(!battle.log[battle.lastMoveLine + 1].startsWith('|-resisted|'));
-		assert.notEqual(battle.p2.active[0].hp, battle.p2.active[0].maxhp);
+		assert.notEqual(battle.p2.active[0].st, battle.p2.active[0].maxhp);
 	});
 
 	it('should not deal neutral type effectiveness to Flying-type Pokemon in Gravity', () => {
@@ -48,11 +48,11 @@ describe('Iron Ball', () => {
 		battle.makeChoices('move earthquake', 'move stealthrock');
 		// Earthquake supereffective on Aerodactyl
 		assert(battle.log[battle.lastMoveLine + 1].startsWith('|-supereffective|'));
-		assert.notEqual(battle.p2.active[0].hp, battle.p2.active[0].maxhp);
+		assert.notEqual(battle.p2.active[0].st, battle.p2.active[0].maxhp);
 		battle.makeChoices('move earthquake', 'switch 2');
 		// Earthquake not very effective on Tropius
 		assert(battle.log[battle.lastMoveLine + 1].startsWith('|-resisted|'));
-		assert.notEqual(battle.p2.active[0].hp, battle.p2.active[0].maxhp);
+		assert.notEqual(battle.p2.active[0].st, battle.p2.active[0].maxhp);
 	});
 
 	it('should negate artificial Ground immunities and deal normal type effectiveness', () => {
@@ -64,10 +64,10 @@ describe('Iron Ball', () => {
 		] });
 		battle.makeChoices('move earthquake', 'move rest');
 		assert(battle.log[battle.lastMoveLine + 1].startsWith('|-supereffective|'));
-		assert.notEqual(battle.p2.active[0].hp, battle.p2.active[0].maxhp);
+		assert.notEqual(battle.p2.active[0].st, battle.p2.active[0].maxhp);
 		battle.makeChoices('move earthquake', 'switch 2');
 		assert(battle.log[battle.lastMoveLine + 1].startsWith('|-resisted|'));
-		assert.notEqual(battle.p2.active[0].hp, battle.p2.active[0].maxhp);
+		assert.notEqual(battle.p2.active[0].st, battle.p2.active[0].maxhp);
 	});
 
 	it('should ground Pokemon that are airborne', () => {

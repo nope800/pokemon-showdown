@@ -2,7 +2,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	aftermath: {
 		inherit: true,
 		onDamagingHit(damage, target, source, move) {
-			if (!target.hp && this.checkMoveMakesContact(move, source, target, true)) {
+			if (!target.st && this.checkMoveMakesContact(move, source, target, true)) {
 				const calc = calculate(this, target, source);
 				this.damage(calc * source.baseMaxhp / 4, source, target);
 			}
@@ -11,7 +11,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	baddreams: {
 		inherit: true,
 		onResidual(pokemon) {
-			if (!pokemon.hp) return;
+			if (!pokemon.st) return;
 			for (const target of pokemon.foes()) {
 				if (target.status === 'slp' || target.hasAbility('comatose')) {
 					const calc = calculate(this, pokemon, target);
@@ -23,7 +23,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	gulpmissile: {
 		inherit: true,
 		onDamagingHit(damage, target, source, move) {
-			if (!source.hp || !source.isActive || target.isSemiInvulnerable()) return;
+			if (!source.st || !source.isActive || target.isSemiInvulnerable()) return;
 			if (['cramorantgulping', 'cramorantgorging'].includes(target.species.id)) {
 				const calc = calculate(this, target, source);
 				if (calc) this.damage(calc * source.baseMaxhp / 4, source, target);

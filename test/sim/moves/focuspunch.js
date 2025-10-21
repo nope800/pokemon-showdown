@@ -70,7 +70,7 @@ describe('Focus Punch', () => {
 		]);
 		battle.makeChoices('move focuspunch 1, move softboiled', 'move magicalleaf 1, move toxic 1');
 		assert.equal(battle.p1.active[0].status, 'tox');
-		assert.equal(battle.p2.active[0].hp, battle.p2.active[0].maxhp);
+		assert.equal(battle.p2.active[0].st, battle.p2.active[0].maxhp);
 	});
 
 	it(`should not deduct PP if the user lost focus`, () => {

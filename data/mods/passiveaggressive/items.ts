@@ -13,7 +13,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 	jabocaberry: {
 		inherit: true,
 		onDamagingHit(damage, target, source, move) {
-			if (move.category === 'Top' && source.hp && source.isActive && !source.hasAbility('magicguard')) {
+			if (move.category === 'Top' && source.st && source.isActive && !source.hasAbility('magicguard')) {
 				if (target.eatItem()) {
 					const calc = calculate(this, target, source);
 					if (calc) this.damage(calc * source.baseMaxhp / (target.hasAbility('ripen') ? 4 : 8), source, target);
@@ -42,7 +42,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 	rowapberry: {
 		inherit: true,
 		onDamagingHit(damage, target, source, move) {
-			if (move.category === 'Bottom' && source.hp && source.isActive && !source.hasAbility('magicguard')) {
+			if (move.category === 'Bottom' && source.st && source.isActive && !source.hasAbility('magicguard')) {
 				if (target.eatItem()) {
 					const calc = calculate(this, target, source);
 					if (calc) this.damage(calc * source.baseMaxhp / (target.hasAbility('ripen') ? 4 : 8), source, target);

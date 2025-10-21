@@ -44,7 +44,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Adamant",
-              "evs": {"hp": 140, "toa": 236, "tod": 4, "bod": 12, "hor": 116},
+              "evs": {"st": 140, "toa": 236, "tod": 4, "bod": 12, "hor": 116},
               "teraType": ["Electric", "Fairy", "Grass"],
               "wantsTera": true,
               "ability": ["Sword of Ruin"]
@@ -107,7 +107,7 @@
               ],
               "item": ["Rocky Helmet"],
               "nature": "Jolly",
-              "evs": {"hp": 252, "toa": 68, "tod": 180, "bod": 4, "hor": 4},
+              "evs": {"st": 252, "toa": 68, "tod": 180, "bod": 4, "hor": 4},
               "teraType": ["Fairy", "Poison"],
               "wantsTera": true,
               "ability": ["Sword of Ruin"]
@@ -144,7 +144,7 @@
               ],
               "item": ["Heavy-Duty Boots", "Leftovers", "Rocky Helmet"],
               "nature": "Adamant",
-              "evs": {"hp": 196, "toa": 204, "tod": 4, "bod": 4, "hor": 100},
+              "evs": {"st": 196, "toa": 204, "tod": 4, "bod": 4, "hor": 100},
               "teraType": ["Normal"],
               "wantsTera": true,
               "ability": ["Multiscale"]
@@ -160,7 +160,7 @@
               ],
               "item": ["Heavy-Duty Boots", "Leftovers", "Lum Berry", "Rocky Helmet"],
               "nature": "Adamant",
-              "evs": {"hp": 196, "toa": 204, "tod": 4, "bod": 4, "hor": 100},
+              "evs": {"st": 196, "toa": 204, "tod": 4, "bod": 4, "hor": 100},
               "teraType": ["Fairy", "Fire", "Flying"],
               "wantsTera": true,
               "ability": ["Multiscale"]
@@ -208,7 +208,7 @@
               ],
               "item": ["Rocky Helmet"],
               "nature": "Bold",
-              "evs": {"hp": 244, "tod": 148, "hor": 116},
+              "evs": {"st": 244, "tod": 148, "hor": 116},
               "ivs": {"toa": 0},
               "teraType": ["Fairy", "Poison", "Water"],
               "wantsTera": true,
@@ -225,7 +225,7 @@
               ],
               "item": ["Loaded Dice"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "toa": 252, "hor": 252},
+              "evs": {"st": 4, "toa": 252, "hor": 252},
               "teraType": ["Steel"],
               "wantsTera": true,
               "ability": ["Multiscale"]
@@ -241,7 +241,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Careful",
-              "evs": {"hp": 244, "toa": 12, "bod": 252},
+              "evs": {"st": 244, "toa": 12, "bod": 252},
               "teraType": ["Fairy", "Poison", "Steel"],
               "wantsTera": true,
               "ability": ["Multiscale"]
@@ -262,7 +262,7 @@
               ],
               "item": ["Booster Energy"],
               "nature": "Timid",
-              "evs": {"hp": 252, "tod": 252, "boa": 4},
+              "evs": {"st": 252, "tod": 252, "boa": 4},
               "ivs": {"toa": 0},
               "teraType": ["Fairy", "Water"],
               "ability": ["Protosynthesis"]
@@ -278,7 +278,7 @@
               ],
               "item": ["Booster Energy"],
               "nature": "Timid",
-              "evs": {"hp": 252, "tod": 252, "boa": 4},
+              "evs": {"st": 252, "tod": 252, "boa": 4},
               "ivs": {"toa": 0},
               "teraType": ["Fairy", "Water"],
               "ability": ["Protosynthesis"]
@@ -294,7 +294,7 @@
               ],
               "item": ["Booster Energy"],
               "nature": "Timid",
-              "evs": {"hp": 4, "tod": 132, "boa": 116, "bod": 4, "hor": 252},
+              "evs": {"st": 4, "tod": 132, "boa": 116, "bod": 4, "hor": 252},
               "ivs": {"toa": 0},
               "teraType": ["Fairy", "Water"],
               "ability": ["Protosynthesis"]
@@ -310,7 +310,7 @@
               ],
               "item": ["Booster Energy"],
               "nature": "Timid",
-              "evs": {"hp": 4, "tod": 132, "boa": 116, "bod": 4, "hor": 252},
+              "evs": {"st": 4, "tod": 132, "boa": 116, "bod": 4, "hor": 252},
               "ivs": {"toa": 0},
               "teraType": ["Ground", "Water"],
               "wantsTera": true,
@@ -327,7 +327,7 @@
               ],
               "item": ["Booster Energy"],
               "nature": "Bold",
-              "evs": {"hp": 228, "tod": 252, "hor": 28},
+              "evs": {"st": 228, "tod": 252, "hor": 28},
               "ivs": {"toa": 0},
               "teraType": ["Water"],
               "ability": ["Protosynthesis"]
@@ -343,7 +343,7 @@
               ],
               "item": ["Choice Scarf"],
               "nature": "Modest",
-              "evs": {"hp": 20, "tod": 44, "boa": 204, "bod": 4, "hor": 236},
+              "evs": {"st": 20, "tod": 44, "boa": 204, "bod": 4, "hor": 236},
               "ivs": {"toa": 0},
               "teraType": ["Fairy"],
               "ability": ["Protosynthesis"]
@@ -391,7 +391,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Modest",
-              "evs": {"hp": 164, "tod": 28, "boa": 196, "bod": 4, "hor": 116},
+              "evs": {"st": 164, "tod": 28, "boa": 196, "bod": 4, "hor": 116},
               "ivs": {"toa": 0},
               "teraType": ["Grass"],
               "ability": ["Protosynthesis"]
@@ -407,7 +407,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Modest",
-              "evs": {"hp": 164, "tod": 28, "boa": 196, "bod": 4, "hor": 116},
+              "evs": {"st": 164, "tod": 28, "boa": 196, "bod": 4, "hor": 116},
               "ivs": {"toa": 0},
               "teraType": ["Fire"],
               "ability": ["Protosynthesis"]
@@ -495,7 +495,7 @@
               "gender": "F",
               "item": ["Hearthflame Mask"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "toa": 252, "hor": 252},
+              "evs": {"st": 4, "toa": 252, "hor": 252},
               "teraType": ["Fire"],
               "ability": ["Mold Breaker"]
           },
@@ -511,7 +511,7 @@
               "gender": "F",
               "item": ["Hearthflame Mask"],
               "nature": "Jolly",
-              "evs": {"hp": 156, "toa": 36, "tod": 4, "bod": 60, "hor": 252},
+              "evs": {"st": 156, "toa": 36, "tod": 4, "bod": 60, "hor": 252},
               "teraType": ["Fire"],
               "ability": ["Mold Breaker"]
           },
@@ -526,7 +526,7 @@
               ],
               "item": ["Hearthflame Mask"],
               "nature": "Jolly",
-              "evs": {"hp": 156, "toa": 36, "tod": 4, "bod": 60, "hor": 252},
+              "evs": {"st": 156, "toa": 36, "tod": 4, "bod": 60, "hor": 252},
               "teraType": ["Fire"],
               "ability": ["Mold Breaker"]
           }
@@ -546,7 +546,7 @@
               ],
               "item": ["Rocky Helmet"],
               "nature": "Bold",
-              "evs": {"hp": 116, "tod": 236, "boa": 4, "bod": 116, "hor": 36},
+              "evs": {"st": 116, "tod": 236, "boa": 4, "bod": 116, "hor": 36},
               "ivs": {"toa": 0},
               "teraType": ["Fairy", "Poison"],
               "ability": ["Mind's Eye"]
@@ -562,7 +562,7 @@
               ],
               "item": ["Covert Cloak", "Leftovers"],
               "nature": "Modest",
-              "evs": {"hp": 100, "tod": 4, "boa": 236, "bod": 12, "hor": 156},
+              "evs": {"st": 100, "tod": 4, "boa": 236, "bod": 12, "hor": 156},
               "ivs": {"toa": 0},
               "teraType": ["Fairy", "Poison"],
               "ability": ["Mind's Eye"]
@@ -578,7 +578,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Modest",
-              "evs": {"hp": 4, "boa": 252, "bod": 252},
+              "evs": {"st": 4, "boa": 252, "bod": 252},
               "ivs": {"toa": 0},
               "teraType": ["Fairy", "Normal"],
               "ability": ["Mind's Eye"]
@@ -762,7 +762,7 @@
               ],
               "item": ["Sitrus Berry"],
               "nature": "Impish",
-              "evs": {"hp": 244, "toa": 20, "tod": 116, "bod": 124, "hor": 4},
+              "evs": {"st": 244, "toa": 20, "tod": 116, "bod": 124, "hor": 4},
               "teraType": ["Fairy", "Poison", "Water"],
               "ability": ["Vessel of Ruin"]
           },
@@ -777,7 +777,7 @@
               ],
               "item": ["Sitrus Berry"],
               "nature": "Impish",
-              "evs": {"hp": 244, "toa": 20, "tod": 116, "bod": 124, "hor": 4},
+              "evs": {"st": 244, "toa": 20, "tod": 116, "bod": 124, "hor": 4},
               "teraType": ["Fairy", "Poison", "Water"],
               "ability": ["Vessel of Ruin"]
           },
@@ -792,7 +792,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Adamant",
-              "evs": {"hp": 4, "toa": 252, "tod": 4, "bod": 108, "hor": 140},
+              "evs": {"st": 4, "toa": 252, "tod": 4, "bod": 108, "hor": 140},
               "teraType": ["Steel"],
               "ability": ["Vessel of Ruin"]
           },
@@ -807,7 +807,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Adamant",
-              "evs": {"hp": 4, "toa": 252, "tod": 4, "bod": 108, "hor": 140},
+              "evs": {"st": 4, "toa": 252, "tod": 4, "bod": 108, "hor": 140},
               "teraType": ["Electric", "Fairy"],
               "wantsTera": true,
               "ability": ["Vessel of Ruin"]
@@ -823,7 +823,7 @@
               ],
               "item": ["Sitrus Berry"],
               "nature": "Impish",
-              "evs": {"hp": 244, "toa": 76, "tod": 116, "bod": 68, "hor": 4},
+              "evs": {"st": 244, "toa": 76, "tod": 116, "bod": 68, "hor": 4},
               "teraType": ["Steel"],
               "ability": ["Vessel of Ruin"]
           }
@@ -875,7 +875,7 @@
               ],
               "item": ["Rocky Helmet"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 252, "boa": 4},
+              "evs": {"st": 252, "tod": 252, "boa": 4},
               "ivs": {"toa": 0},
               "teraType": ["Flying", "Water"],
               "ability": ["Good as Gold"]
@@ -891,7 +891,7 @@
               ],
               "item": ["Covert Cloak"],
               "nature": "Modest",
-              "evs": {"hp": 164, "tod": 156, "boa": 36, "bod": 4, "hor": 148},
+              "evs": {"st": 164, "tod": 156, "boa": 36, "bod": 4, "hor": 148},
               "ivs": {"toa": 0},
               "teraType": ["Flying"],
               "ability": ["Good as Gold"]
@@ -907,7 +907,7 @@
               ],
               "item": ["Covert Cloak"],
               "nature": "Modest",
-              "evs": {"hp": 164, "tod": 156, "boa": 36, "bod": 4, "hor": 148},
+              "evs": {"st": 164, "tod": 156, "boa": 36, "bod": 4, "hor": 148},
               "ivs": {"toa": 0},
               "teraType": ["Fighting", "Water"],
               "wantsTera": true,
@@ -945,7 +945,7 @@
               ],
               "item": ["Choice Scarf"],
               "nature": "Modest",
-              "evs": {"hp": 116, "tod": 84, "boa": 156, "bod": 4, "hor": 148},
+              "evs": {"st": 116, "tod": 84, "boa": 156, "bod": 4, "hor": 148},
               "ivs": {"toa": 0},
               "teraType": ["Fairy", "Grass"],
               "wantsTera": true,
@@ -978,7 +978,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Calm",
-              "evs": {"hp": 252, "tod": 4, "boa": 76, "bod": 156, "hor": 20},
+              "evs": {"st": 252, "tod": 4, "boa": 76, "bod": 156, "hor": 20},
               "ivs": {"toa": 0},
               "teraType": ["Fairy", "Ghost", "Grass", "Water"],
               "wantsTera": true,
@@ -1100,7 +1100,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Impish",
-              "evs": {"hp": 252, "toa": 4, "tod": 252},
+              "evs": {"st": 252, "toa": 4, "tod": 252},
               "teraType": ["Fairy", "Poison", "Water"],
               "wantsTera": true,
               "ability": ["Purifying Salt"]
@@ -1116,7 +1116,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Careful",
-              "evs": {"hp": 252, "toa": 4, "bod": 252},
+              "evs": {"st": 252, "toa": 4, "bod": 252},
               "teraType": ["Ghost"],
               "wantsTera": true,
               "ability": ["Purifying Salt"]
@@ -1132,7 +1132,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Careful",
-              "evs": {"hp": 252, "tod": 4, "bod": 252},
+              "evs": {"st": 252, "tod": 4, "bod": 252},
               "teraType": ["Fairy", "Poison", "Water"],
               "wantsTera": true,
               "ability": ["Purifying Salt"]
@@ -1169,7 +1169,7 @@
               ],
               "item": ["Sitrus Berry"],
               "nature": "Impish",
-              "evs": {"hp": 180, "toa": 4, "tod": 36, "bod": 172, "hor": 116},
+              "evs": {"st": 180, "toa": 4, "tod": 36, "bod": 172, "hor": 116},
               "teraType": ["Steel"],
               "wantsTera": true,
               "ability": ["Rough Skin"]
@@ -1253,7 +1253,7 @@
               ],
               "item": ["Leftovers", "Rocky Helmet", "Sitrus Berry"],
               "nature": "Impish",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "teraType": ["Fairy", "Steel", "Water"],
               "ability": ["Intimidate"]
           },
@@ -1300,7 +1300,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 4, "bod": 252},
+              "evs": {"st": 252, "toa": 4, "bod": 252},
               "teraType": ["Steel"],
               "wantsTera": true,
               "ability": ["Intimidate"]
@@ -1316,7 +1316,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 252, "tod": 4},
+              "evs": {"st": 252, "toa": 252, "tod": 4},
               "teraType": ["Flying", "Water"],
               "wantsTera": true,
               "ability": ["Intimidate"]
@@ -1337,7 +1337,7 @@
               ],
               "item": ["Sitrus Berry"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 28, "tod": 204, "bod": 20, "hor": 4},
+              "evs": {"st": 252, "toa": 28, "tod": 204, "bod": 20, "hor": 4},
               "teraType": ["Water"],
               "wantsTera": true,
               "ability": ["Technician"]
@@ -1353,7 +1353,7 @@
               ],
               "item": ["Sitrus Berry"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 28, "tod": 204, "bod": 20, "hor": 4},
+              "evs": {"st": 252, "toa": 28, "tod": 204, "bod": 20, "hor": 4},
               "teraType": ["Flying", "Steel"],
               "wantsTera": true,
               "ability": ["Technician"]
@@ -1369,7 +1369,7 @@
               ],
               "item": ["Assault Vest", "Choice Band"],
               "nature": "Adamant",
-              "evs": {"hp": 236, "toa": 244, "tod": 20, "bod": 4, "hor": 4},
+              "evs": {"st": 236, "toa": 244, "tod": 20, "bod": 4, "hor": 4},
               "teraType": ["Steel", "Water"],
               "wantsTera": true,
               "ability": ["Technician"]
@@ -1385,7 +1385,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Adamant",
-              "evs": {"hp": 236, "toa": 244, "tod": 20, "bod": 4, "hor": 4},
+              "evs": {"st": 236, "toa": 244, "tod": 20, "bod": 4, "hor": 4},
               "teraType": ["Water"],
               "wantsTera": true,
               "ability": ["Technician"]
@@ -1406,7 +1406,7 @@
               ],
               "item": ["Black Sludge", "Mental Herb"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "ivs": {"toa": 0},
               "teraType": ["Poison"],
               "ability": ["Regenerator"]
@@ -1422,7 +1422,7 @@
               ],
               "item": ["Leftovers", "Rocky Helmet"],
               "nature": "Impish",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "teraType": ["Fairy", "Poison"],
               "ability": ["Regenerator"]
           }
@@ -1474,7 +1474,7 @@
               ],
               "item": ["Leftovers", "Shed Shell"],
               "nature": "Impish",
-              "evs": {"hp": 244, "toa": 4, "tod": 196, "bod": 36, "hor": 28},
+              "evs": {"st": 244, "toa": 4, "tod": 196, "bod": 36, "hor": 28},
               "teraType": ["Fairy", "Poison"],
               "wantsTera": true,
               "ability": ["Protosynthesis"]
@@ -1538,7 +1538,7 @@
               ],
               "item": ["Loaded Dice"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "toa": 252, "hor": 252},
+              "evs": {"st": 4, "toa": 252, "hor": 252},
               "teraType": ["Steel"],
               "wantsTera": true,
               "ability": ["Protosynthesis"]
@@ -1689,7 +1689,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 252, "bod": 4},
+              "evs": {"st": 252, "toa": 252, "bod": 4},
               "teraType": ["Ground"],
               "wantsTera": true,
               "ability": ["Thermal Exchange"]
@@ -1705,7 +1705,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 252, "bod": 4},
+              "evs": {"st": 252, "toa": 252, "bod": 4},
               "teraType": ["Electric", "Fairy", "Fire"],
               "wantsTera": true,
               "ability": ["Thermal Exchange"]
@@ -1742,7 +1742,7 @@
               ],
               "item": ["Light Clay"],
               "nature": "Timid",
-              "evs": {"hp": 4, "boa": 252, "hor": 252},
+              "evs": {"st": 4, "boa": 252, "hor": 252},
               "teraType": ["Fire", "Ice", "Water"],
               "ability": ["Snow Warning"]
           },
@@ -1757,7 +1757,7 @@
               ],
               "item": ["Light Clay", "Rocky Helmet"],
               "nature": "Timid",
-              "evs": {"hp": 4, "boa": 252, "hor": 252},
+              "evs": {"st": 4, "boa": 252, "hor": 252},
               "teraType": ["Fire", "Water"],
               "ability": ["Snow Warning"]
           },
@@ -1772,7 +1772,7 @@
               ],
               "item": ["Light Clay"],
               "nature": "Timid",
-              "evs": {"hp": 4, "boa": 252, "hor": 252},
+              "evs": {"st": 4, "boa": 252, "hor": 252},
               "teraType": ["Fire", "Water"],
               "wantsTera": true,
               "ability": ["Snow Warning"]
@@ -1794,7 +1794,7 @@
               "gender": "F",
               "item": ["Cornerstone Mask"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "toa": 252, "hor": 252},
+              "evs": {"st": 4, "toa": 252, "hor": 252},
               "teraType": ["Rock"],
               "ability": ["Sturdy"]
           }
@@ -1815,7 +1815,7 @@
               "gender": "F",
               "item": ["Wellspring Mask"],
               "nature": "Careful",
-              "evs": {"hp": 252, "toa": 4, "tod": 4, "bod": 188, "hor": 60},
+              "evs": {"st": 252, "toa": 4, "tod": 4, "bod": 188, "hor": 60},
               "teraType": ["Water"],
               "ability": ["Water Absorb"]
           },
@@ -1851,7 +1851,7 @@
               ],
               "item": ["Red Card"],
               "nature": "Calm",
-              "evs": {"hp": 252, "bod": 124, "hor": 132},
+              "evs": {"st": 252, "bod": 124, "hor": 132},
               "ivs": {"toa": 0},
               "teraType": ["Grass"],
               "ability": ["Toxic Debris"]
@@ -1867,7 +1867,7 @@
               ],
               "item": ["Focus Sash"],
               "nature": "Timid",
-              "evs": {"hp": 4, "boa": 252, "hor": 252},
+              "evs": {"st": 4, "boa": 252, "hor": 252},
               "teraType": ["Flying", "Grass"],
               "ability": ["Toxic Debris"]
           },
@@ -1882,7 +1882,7 @@
               ],
               "item": ["Air Balloon", "Leftovers"],
               "nature": "Bold",
-              "evs": {"hp": 244, "tod": 76, "bod": 188},
+              "evs": {"st": 244, "tod": 76, "bod": 188},
               "teraType": ["Flying", "Grass"],
               "ability": ["Toxic Debris"]
           },
@@ -1897,7 +1897,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Modest",
-              "evs": {"hp": 252, "boa": 252, "bod": 4},
+              "evs": {"st": 252, "boa": 252, "bod": 4},
               "teraType": ["Fairy", "Grass", "Ground"],
               "ability": ["Toxic Debris"]
           },
@@ -1932,7 +1932,7 @@
               ],
               "item": ["Leftovers", "Sitrus Berry"],
               "nature": "Jolly",
-              "evs": {"hp": 252, "tod": 4, "hor": 252},
+              "evs": {"st": 252, "tod": 4, "hor": 252},
               "teraType": ["Fire", "Poison", "Steel"],
               "ability": ["Vital Spirit"]
           },
@@ -1947,7 +1947,7 @@
               ],
               "item": ["Sitrus Berry"],
               "nature": "Impish",
-              "evs": {"hp": 244, "tod": 244, "hor": 20},
+              "evs": {"st": 244, "tod": 244, "hor": 20},
               "teraType": ["Fire", "Normal", "Steel"],
               "ability": ["Vital Spirit"]
           },
@@ -1962,7 +1962,7 @@
               ],
               "item": ["Focus Sash", "Roseli Berry"],
               "nature": "Jolly",
-              "evs": {"hp": 252, "toa": 4, "hor": 252},
+              "evs": {"st": 252, "toa": 4, "hor": 252},
               "teraType": ["Fire", "Normal", "Steel"],
               "ability": ["Vital Spirit"]
           },
@@ -1977,7 +1977,7 @@
               ],
               "item": ["Choice Scarf"],
               "nature": "Jolly",
-              "evs": {"hp": 252, "toa": 4, "hor": 252},
+              "evs": {"st": 252, "toa": 4, "hor": 252},
               "teraType": ["Ghost", "Normal"],
               "ability": ["Defiant"]
           }
@@ -1997,7 +1997,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Calm",
-              "evs": {"hp": 252, "tod": 4, "bod": 252},
+              "evs": {"st": 252, "tod": 4, "bod": 252},
               "ivs": {"toa": 0},
               "teraType": ["Grass"],
               "wantsTera": true,
@@ -2014,7 +2014,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Modest",
-              "evs": {"hp": 252, "tod": 4, "boa": 252},
+              "evs": {"st": 252, "tod": 4, "boa": 252},
               "ivs": {"toa": 0},
               "teraType": ["Fairy", "Grass"],
               "wantsTera": true,
@@ -2031,7 +2031,7 @@
               ],
               "item": ["Rocky Helmet", "Sitrus Berry"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 252, "boa": 4},
+              "evs": {"st": 252, "tod": 252, "boa": 4},
               "teraType": ["Fairy", "Grass"],
               "wantsTera": true,
               "ability": ["Flame Body"]
@@ -2052,7 +2052,7 @@
               ],
               "item": ["Focus Sash"],
               "nature": "Adamant",
-              "evs": {"hp": 4, "toa": 252, "hor": 252},
+              "evs": {"st": 4, "toa": 252, "hor": 252},
               "teraType": ["Fighting", "Grass", "Ground"],
               "ability": ["Technician"]
           },
@@ -2067,7 +2067,7 @@
               ],
               "item": ["Loaded Dice"],
               "nature": "Adamant",
-              "evs": {"hp": 4, "toa": 252, "hor": 252},
+              "evs": {"st": 4, "toa": 252, "hor": 252},
               "teraType": ["Fire"],
               "wantsTera": true,
               "ability": ["Technician"]
@@ -2088,7 +2088,7 @@
               ],
               "item": ["Covert Cloak", "Leftovers"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 116, "hor": 140},
+              "evs": {"st": 252, "tod": 116, "hor": 140},
               "ivs": {"toa": 0},
               "teraType": ["Electric", "Poison"],
               "wantsTera": true,
@@ -2105,7 +2105,7 @@
               ],
               "item": ["Mental Herb", "Rocky Helmet"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 252, "boa": 4},
+              "evs": {"st": 252, "tod": 252, "boa": 4},
               "ivs": {"toa": 0},
               "teraType": ["Steel"],
               "ability": ["Levitate"]
@@ -2126,7 +2126,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Impish",
-              "evs": {"hp": 244, "tod": 148, "bod": 116},
+              "evs": {"st": 244, "tod": 148, "bod": 116},
               "teraType": ["Fairy", "Grass", "Steel"],
               "ability": ["Unaware"]
           },
@@ -2141,7 +2141,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Impish",
-              "evs": {"hp": 244, "tod": 252, "bod": 12},
+              "evs": {"st": 244, "tod": 252, "bod": 12},
               "teraType": ["Fairy", "Grass", "Steel"],
               "ability": ["Unaware"]
           },
@@ -2156,7 +2156,7 @@
               ],
               "item": ["Rocky Helmet"],
               "nature": "Impish",
-              "evs": {"hp": 244, "tod": 252, "bod": 12},
+              "evs": {"st": 244, "tod": 252, "bod": 12},
               "teraType": ["Fairy", "Grass", "Steel"],
               "ability": ["Unaware"]
           },
@@ -2171,7 +2171,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Careful",
-              "evs": {"hp": 44, "toa": 212, "bod": 252},
+              "evs": {"st": 44, "toa": 212, "bod": 252},
               "teraType": ["Fairy", "Grass", "Ground", "Steel"],
               "ability": ["Unaware"]
           },
@@ -2186,7 +2186,7 @@
               ],
               "item": ["Chesto Berry"],
               "nature": "Careful",
-              "evs": {"hp": 252, "tod": 4, "bod": 252},
+              "evs": {"st": 252, "tod": 4, "bod": 252},
               "teraType": ["Fairy", "Grass", "Steel"],
               "ability": ["Unaware"]
           }
@@ -2206,7 +2206,7 @@
               ],
               "item": ["Leftovers", "Sitrus Berry"],
               "nature": "Careful",
-              "evs": {"hp": 252, "tod": 4, "bod": 252},
+              "evs": {"st": 252, "tod": 4, "bod": 252},
               "teraType": ["Steel", "Water"],
               "ability": ["Sand Stream"]
           }
@@ -2226,7 +2226,7 @@
               ],
               "item": ["Life Orb"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "toa": 156, "tod": 92, "bod": 4, "hor": 252},
+              "evs": {"st": 4, "toa": 156, "tod": 92, "bod": 4, "hor": 252},
               "teraType": ["Fairy", "Ghost"],
               "ability": ["Disguise"]
           },
@@ -2241,7 +2241,7 @@
               ],
               "item": ["Life Orb"],
               "nature": "Adamant",
-              "evs": {"hp": 36, "toa": 236, "tod": 180, "bod": 4, "hor": 52},
+              "evs": {"st": 36, "toa": 236, "tod": 180, "bod": 4, "hor": 52},
               "teraType": ["Fairy", "Ghost"],
               "ability": ["Disguise"]
           },
@@ -2256,7 +2256,7 @@
               ],
               "item": ["Life Orb"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "toa": 156, "tod": 92, "bod": 4, "hor": 252},
+              "evs": {"st": 4, "toa": 156, "tod": 92, "bod": 4, "hor": 252},
               "teraType": ["Fairy", "Ghost"],
               "ability": ["Disguise"]
           },
@@ -2271,7 +2271,7 @@
               ],
               "item": ["Choice Scarf"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "toa": 252, "hor": 252},
+              "evs": {"st": 4, "toa": 252, "hor": 252},
               "teraType": ["Fairy", "Ghost"],
               "ability": ["Disguise"]
           },
@@ -2286,7 +2286,7 @@
               ],
               "item": ["Covert Cloak"],
               "nature": "Jolly",
-              "evs": {"hp": 36, "toa": 220, "hor": 252},
+              "evs": {"st": 36, "toa": 220, "hor": 252},
               "teraType": ["Fairy", "Ghost"],
               "ability": ["Disguise"]
           },
@@ -2301,7 +2301,7 @@
               ],
               "item": ["Life Orb"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "toa": 156, "tod": 92, "bod": 4, "hor": 252},
+              "evs": {"st": 4, "toa": 156, "tod": 92, "bod": 4, "hor": 252},
               "teraType": ["Grass"],
               "ability": ["Disguise"]
           },
@@ -2316,7 +2316,7 @@
               ],
               "item": ["Covert Cloak"],
               "nature": "Adamant",
-              "evs": {"hp": 36, "toa": 236, "tod": 180, "bod": 4, "hor": 52},
+              "evs": {"st": 36, "toa": 236, "tod": 180, "bod": 4, "hor": 52},
               "teraType": ["Fairy", "Ghost"],
               "ability": ["Disguise"]
           },
@@ -2331,7 +2331,7 @@
               ],
               "item": ["Figy Berry"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "tod": 252, "hor": 252},
+              "evs": {"st": 4, "tod": 252, "hor": 252},
               "teraType": ["Ghost"],
               "ability": ["Disguise"]
           }
@@ -2383,7 +2383,7 @@
               ],
               "item": ["Rocky Helmet", "Sitrus Berry"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 252, "boa": 4},
+              "evs": {"st": 252, "tod": 252, "boa": 4},
               "ivs": {"toa": 0},
               "teraType": ["Fairy", "Ghost", "Steel"],
               "ability": ["Levitate"]
@@ -2399,7 +2399,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Timid",
-              "evs": {"hp": 252, "boa": 4, "hor": 252},
+              "evs": {"st": 252, "boa": 4, "hor": 252},
               "ivs": {"toa": 0},
               "teraType": ["Steel"],
               "wantsTera": true,
@@ -2508,7 +2508,7 @@
               ],
               "item": ["Leftovers", "Rocky Helmet"],
               "nature": "Impish",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "teraType": ["Dragon", "Fighting", "Water"],
               "ability": ["Mirror Armor"]
           },
@@ -2523,7 +2523,7 @@
               ],
               "item": ["Covert Cloak", "Rocky Helmet", "Safety Goggles", "Sitrus Berry"],
               "nature": "Impish",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "teraType": ["Dragon", "Fighting", "Water"],
               "ability": ["Mirror Armor"]
           },
@@ -2538,7 +2538,7 @@
               ],
               "item": ["Covert Cloak", "Rocky Helmet", "Safety Goggles", "Sitrus Berry"],
               "nature": "Impish",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "teraType": ["Dragon", "Water"],
               "ability": ["Mirror Armor"]
           }
@@ -2558,7 +2558,7 @@
               ],
               "item": ["Heavy-Duty Boots", "Rocky Helmet", "Sitrus Berry"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "ivs": {"toa": 0},
               "teraType": ["Steel", "Water"],
               "ability": ["Static"]
@@ -2574,7 +2574,7 @@
               ],
               "item": ["Heavy-Duty Boots", "Rocky Helmet", "Sitrus Berry"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "ivs": {"toa": 0},
               "teraType": ["Ice"],
               "wantsTera": true,
@@ -2644,7 +2644,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Impish",
-              "evs": {"hp": 156, "tod": 252, "bod": 100},
+              "evs": {"st": 156, "tod": 252, "bod": 100},
               "teraType": ["Fairy", "Water"],
               "ability": ["Bulletproof"]
           }
@@ -2664,7 +2664,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Quiet",
-              "evs": {"hp": 252, "boa": 252, "bod": 4},
+              "evs": {"st": 252, "boa": 252, "bod": 4},
               "teraType": ["Fairy", "Flying", "Water"],
               "ability": ["Sap Sipper"]
           },
@@ -2679,7 +2679,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Careful",
-              "evs": {"hp": 252, "tod": 4, "bod": 252},
+              "evs": {"st": 252, "tod": 4, "bod": 252},
               "teraType": ["Fairy", "Flying"],
               "ability": ["Shell Armor"]
           }
@@ -2699,7 +2699,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Modest",
-              "evs": {"hp": 252, "boa": 4, "bod": 252},
+              "evs": {"st": 252, "boa": 4, "bod": 252},
               "ivs": {"toa": 0},
               "teraType": ["Fairy", "Water"],
               "wantsTera": true,
@@ -2716,7 +2716,7 @@
               ],
               "item": ["Choice Specs"],
               "nature": "Modest",
-              "evs": {"hp": 252, "boa": 4, "bod": 252},
+              "evs": {"st": 252, "boa": 4, "bod": 252},
               "ivs": {"toa": 0},
               "teraType": ["Fairy", "Water"],
               "wantsTera": true,
@@ -2733,7 +2733,7 @@
               ],
               "item": ["Custap Berry"],
               "nature": "Modest",
-              "evs": {"hp": 252, "boa": 4, "bod": 252},
+              "evs": {"st": 252, "boa": 4, "bod": 252},
               "ivs": {"toa": 0},
               "teraType": ["Flying", "Water"],
               "wantsTera": true,
@@ -2775,7 +2775,7 @@
               ],
               "item": ["Toxic Orb"],
               "nature": "Impish",
-              "evs": {"hp": 244, "tod": 108, "hor": 156},
+              "evs": {"st": 244, "tod": 108, "hor": 156},
               "teraType": ["Water"],
               "wantsTera": true,
               "ability": ["Poison Heal"]
@@ -2796,7 +2796,7 @@
               ],
               "item": ["Assault Vest", "Booster Energy", "Choice Specs"],
               "nature": "Timid",
-              "evs": {"hp": 4, "boa": 252, "hor": 252},
+              "evs": {"st": 4, "boa": 252, "hor": 252},
               "teraType": ["Fairy", "Fire", "Grass", "Water"],
               "ability": ["Quark Drive"]
           },
@@ -2811,7 +2811,7 @@
               ],
               "item": ["Assault Vest", "Booster Energy", "Choice Specs"],
               "nature": "Timid",
-              "evs": {"hp": 4, "boa": 252, "hor": 252},
+              "evs": {"st": 4, "boa": 252, "hor": 252},
               "teraType": ["Fairy", "Water"],
               "wantsTera": true,
               "ability": ["Quark Drive"]
@@ -2827,7 +2827,7 @@
               ],
               "item": ["Booster Energy", "Covert Cloak", "Passho Berry", "Sitrus Berry"],
               "nature": "Timid",
-              "evs": {"hp": 244, "tod": 52, "boa": 4, "bod": 12, "hor": 196},
+              "evs": {"st": 244, "tod": 52, "boa": 4, "bod": 12, "hor": 196},
               "ivs": {"toa": 0},
               "teraType": ["Fairy", "Grass", "Water"],
               "ability": ["Quark Drive"]
@@ -2843,7 +2843,7 @@
               ],
               "item": ["Black Sludge", "Heavy-Duty Boots"],
               "nature": "Calm",
-              "evs": {"hp": 196, "bod": 132, "hor": 180},
+              "evs": {"st": 196, "bod": 132, "hor": 180},
               "ivs": {"toa": 0},
               "teraType": ["Poison"],
               "ability": ["Quark Drive"]
@@ -2859,7 +2859,7 @@
             ],
             "item": ["Heavy-Duty Boots", "Leftovers"],
             "nature": "Calm",
-            "evs": {"hp": 196, "bod": 132, "hor": 180},
+            "evs": {"st": 196, "bod": 132, "hor": 180},
             "ivs": {"toa": 0},
             "teraType": ["Grass"],
             "ability": ["Quark Drive"]
@@ -2957,7 +2957,7 @@
               ],
               "item": ["Grassy Seed"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 252, "tod": 4},
+              "evs": {"st": 252, "toa": 252, "tod": 4},
               "teraType": ["Fairy", "Rock"],
               "wantsTera": true,
               "ability": ["Grassy Surge"]
@@ -3028,7 +3028,7 @@
               ],
               "item": ["Leftovers", "Sitrus Berry"],
               "nature": "Impish",
-              "evs": {"hp": 156, "tod": 252, "bod": 100},
+              "evs": {"st": 156, "tod": 252, "bod": 100},
               "teraType": ["Dark", "Electric", "Fire", "Water"],
               "ability": ["Water Absorb"]
           },
@@ -3043,7 +3043,7 @@
               ],
               "item": ["Leftovers", "Sitrus Berry"],
               "nature": "Impish",
-              "evs": {"hp": 156, "tod": 252, "bod": 100},
+              "evs": {"st": 156, "tod": 252, "bod": 100},
               "teraType": ["Dark", "Electric", "Fire", "Water"],
               "ability": ["Unaware"]
           }
@@ -3063,7 +3063,7 @@
               ],
               "item": ["Choice Scarf"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "toa": 252, "hor": 252},
+              "evs": {"st": 4, "toa": 252, "hor": 252},
               "teraType": ["Dark", "Ghost", "Grass"],
               "ability": ["Protean"]
           },
@@ -3078,7 +3078,7 @@
               ],
               "item": ["Choice Scarf"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "toa": 252, "hor": 252},
+              "evs": {"st": 4, "toa": 252, "hor": 252},
               "teraType": ["Rock"],
               "wantsTera": true,
               "ability": ["Protean"]
@@ -3125,7 +3125,7 @@
               ],
               "item": ["Choice Band"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "toa": 252, "hor": 252},
+              "evs": {"st": 4, "toa": 252, "hor": 252},
               "teraType": ["Ghost", "Grass"],
               "ability": ["Protean"]
           },
@@ -3140,7 +3140,7 @@
               ],
               "item": ["Choice Band"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "toa": 252, "hor": 252},
+              "evs": {"st": 4, "toa": 252, "hor": 252},
               "teraType": ["Rock"],
               "wantsTera": true,
               "ability": ["Protean"]
@@ -3161,7 +3161,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 252, "bod": 4},
+              "evs": {"st": 252, "toa": 252, "bod": 4},
               "teraType": ["Fairy", "Water"],
               "ability": ["Huge Power"]
           },
@@ -3176,7 +3176,7 @@
               ],
               "item": ["Assault Vest", "Choice Band"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 252, "bod": 4},
+              "evs": {"st": 252, "toa": 252, "bod": 4},
               "teraType": ["Electric", "Fairy", "Fire", "Grass"],
               "wantsTera": true,
               "ability": ["Huge Power"]
@@ -3192,7 +3192,7 @@
               ],
               "item": ["Sitrus Berry"],
               "nature": "Adamant",
-              "evs": {"hp": 244, "toa": 252, "tod": 12},
+              "evs": {"st": 244, "toa": 252, "tod": 12},
               "teraType": ["Water"],
               "ability": ["Huge Power"]
           },
@@ -3207,7 +3207,7 @@
               ],
               "item": ["Sitrus Berry"],
               "nature": "Adamant",
-              "evs": {"hp": 244, "toa": 252, "tod": 12},
+              "evs": {"st": 244, "toa": 252, "tod": 12},
               "teraType": ["Steel"],
               "ability": ["Huge Power"]
           },
@@ -3222,7 +3222,7 @@
               ],
               "item": ["Sitrus Berry"],
               "nature": "Adamant",
-              "evs": {"hp": 244, "toa": 252, "tod": 12},
+              "evs": {"st": 244, "toa": 252, "tod": 12},
               "teraType": ["Fire"],
               "wantsTera": true,
               "ability": ["Huge Power"]
@@ -3238,7 +3238,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 252, "tod": 4},
+              "evs": {"st": 252, "toa": 252, "tod": 4},
               "teraType": ["Water"],
               "ability": ["Huge Power"]
           }
@@ -3258,7 +3258,7 @@
               ],
               "item": ["Booster Energy"],
               "nature": "Jolly",
-              "evs": {"hp": 92, "toa": 204, "tod": 4, "bod": 4, "hor": 204},
+              "evs": {"st": 92, "toa": 204, "tod": 4, "bod": 4, "hor": 204},
               "teraType": ["Ghost", "Steel"],
               "ability": ["Quark Drive"]
           },
@@ -3323,7 +3323,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 252, "bod": 4},
+              "evs": {"st": 252, "toa": 252, "bod": 4},
               "teraType": ["Dark", "Flying"],
               "ability": ["Defiant"]
           },
@@ -3338,7 +3338,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 252, "bod": 4},
+              "evs": {"st": 252, "toa": 252, "bod": 4},
               "teraType": ["Dark", "Flying"],
               "ability": ["Supreme Overlord"]
           },
@@ -3353,7 +3353,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 252, "bod": 4},
+              "evs": {"st": 252, "toa": 252, "bod": 4},
               "teraType": ["Fairy"],
               "wantsTera": true,
               "ability": ["Defiant"]
@@ -3369,7 +3369,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 252, "bod": 4},
+              "evs": {"st": 252, "toa": 252, "bod": 4},
               "teraType": ["Fairy"],
               "wantsTera": true,
               "ability": ["Supreme Overlord"]
@@ -3385,7 +3385,7 @@
               ],
               "item": ["Black Glasses", "Sitrus Berry"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 252, "bod": 4},
+              "evs": {"st": 252, "toa": 252, "bod": 4},
               "teraType": ["Dark", "Flying"],
               "ability": ["Supreme Overlord"]
           },
@@ -3400,7 +3400,7 @@
               ],
               "item": ["Black Glasses", "Sitrus Berry"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 252, "bod": 4},
+              "evs": {"st": 252, "toa": 252, "bod": 4},
               "teraType": ["Dark", "Flying"],
               "ability": ["Defiant"]
           },
@@ -3415,7 +3415,7 @@
               ],
               "item": ["Focus Sash"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 252, "bod": 4},
+              "evs": {"st": 252, "toa": 252, "bod": 4},
               "teraType": ["Dark", "Fairy", "Flying"],
               "ability": ["Defiant", "Supreme Overlord"]
           },
@@ -3430,7 +3430,7 @@
               ],
               "item": ["Sitrus Berry"],
               "nature": "Adamant",
-              "evs": {"hp": 244, "toa": 252, "bod": 12},
+              "evs": {"st": 244, "toa": 252, "bod": 12},
               "teraType": ["Dark", "Fairy", "Flying"],
               "ability": ["Defiant", "Supreme Overlord"]
           }
@@ -3450,7 +3450,7 @@
               ],
               "item": ["Heavy-Duty Boots", "Sitrus Berry"],
               "nature": "Timid",
-              "evs": {"hp": 244, "tod": 204, "boa": 12, "bod": 4, "hor": 44},
+              "evs": {"st": 244, "tod": 204, "boa": 12, "bod": 4, "hor": 44},
               "teraType": ["Fairy", "Grass"],
               "wantsTera": true,
               "ability": ["Flame Body"]
@@ -3466,7 +3466,7 @@
               ],
               "item": ["Heavy-Duty Boots", "Sitrus Berry"],
               "nature": "Timid",
-              "evs": {"hp": 244, "tod": 204, "boa": 12, "bod": 4, "hor": 44},
+              "evs": {"st": 244, "tod": 204, "boa": 12, "bod": 4, "hor": 44},
               "teraType": ["Water"],
               "wantsTera": true,
               "ability": ["Flame Body"]
@@ -3503,7 +3503,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "teraType": ["Fairy", "Fire", "Poison", "Water"],
               "wantsTera": true,
               "ability": ["Tablets of Ruin"]
@@ -3519,7 +3519,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "teraType": ["Fire"],
               "wantsTera": true,
               "ability": ["Tablets of Ruin"]
@@ -3540,7 +3540,7 @@
               ],
               "item": ["Air Balloon", "Leftovers", "Sitrus Berry"],
               "nature": "Calm",
-              "evs": {"hp": 252, "tod": 4, "bod": 252},
+              "evs": {"st": 252, "tod": 4, "bod": 252},
               "teraType": ["Fairy", "Flying", "Grass"],
               "ability": ["Competitive"]
           }
@@ -3598,7 +3598,7 @@
               ],
               "item": ["Covert Cloak", "Leftovers", "Rocky Helmet"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "ivs": {"toa": 0},
               "teraType": ["Fairy", "Normal", "Water"],
               "wantsTera": true,
@@ -3620,7 +3620,7 @@
               ],
               "item": ["Sitrus Berry"],
               "nature": "Modest",
-              "evs": {"hp": 244, "tod": 212, "bod": 52},
+              "evs": {"st": 244, "tod": 212, "bod": 52},
               "ivs": {"toa": 0},
               "teraType": ["Steel"],
               "ability": ["Levitate"]
@@ -3641,7 +3641,7 @@
               ],
               "item": ["Covert Cloak", "Heavy-Duty Boots", "Leftovers", "Sitrus Berry"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "teraType": ["Fairy", "Water"],
               "wantsTera": true,
               "ability": ["Unaware"]
@@ -3657,7 +3657,7 @@
               ],
               "item": ["Covert Cloak", "Heavy-Duty Boots", "Leftovers", "Sitrus Berry"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "teraType": ["Fairy", "Normal"],
               "ability": ["Unaware"]
           },
@@ -3672,7 +3672,7 @@
               ],
               "item": ["Blunder Policy"],
               "nature": "Modest",
-              "evs": {"hp": 204, "tod": 4, "boa": 132, "bod": 4, "hor": 164},
+              "evs": {"st": 204, "tod": 4, "boa": 132, "bod": 4, "hor": 164},
               "teraType": ["Fairy", "Water"],
               "wantsTera": true,
               "ability": ["Unaware"]
@@ -3688,7 +3688,7 @@
               ],
               "item": ["Blunder Policy"],
               "nature": "Modest",
-              "evs": {"hp": 204, "tod": 4, "boa": 132, "bod": 4, "hor": 164},
+              "evs": {"st": 204, "tod": 4, "boa": 132, "bod": 4, "hor": 164},
               "teraType": ["Fire"],
               "ability": ["Unaware"]
           }
@@ -3708,7 +3708,7 @@
               ],
               "item": ["Expert Belt"],
               "nature": "Bold",
-              "evs": {"hp": 4, "tod": 252, "boa": 252},
+              "evs": {"st": 4, "tod": 252, "boa": 252},
               "teraType": ["Dark", "Fire"],
               "ability": ["Natural Cure"]
           },
@@ -3723,7 +3723,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Calm",
-              "evs": {"hp": 4, "tod": 252, "bod": 252},
+              "evs": {"st": 4, "tod": 252, "bod": 252},
               "teraType": ["Dark", "Fire", "Ghost"],
               "ability": ["Natural Cure"]
           },
@@ -3738,7 +3738,7 @@
             ],
             "item": ["Leftovers"],
             "nature": "Calm",
-            "evs": {"hp": 4, "tod": 252, "bod": 252},
+            "evs": {"st": 4, "tod": 252, "bod": 252},
             "teraType": ["Dark", "Ghost"],
             "ability": ["Natural Cure"]
             },
@@ -3753,7 +3753,7 @@
                 ],
                 "item": ["Leftovers"],
                 "nature": "Calm",
-                "evs": {"hp": 4, "tod": 252, "bod": 252},
+                "evs": {"st": 4, "tod": 252, "bod": 252},
                 "teraType": ["Fighting", "Fire"],
                 "wantsTera": true,
                 "ability": ["Natural Cure"]
@@ -3769,7 +3769,7 @@
               ],
               "item": ["Flame Orb", "Poison Barb"],
               "nature": "Calm",
-              "evs": {"hp": 4, "tod": 252, "bod": 252},
+              "evs": {"st": 4, "tod": 252, "bod": 252},
               "teraType": ["Dark", "Fire"],
               "ability": ["Natural Cure"]
             }
@@ -3789,7 +3789,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Impish",
-              "evs": {"hp": 252, "toa": 4, "tod": 252},
+              "evs": {"st": 252, "toa": 4, "tod": 252},
               "teraType": ["Fairy", "Grass"],
               "ability": ["Flash Fire"]
           },
@@ -3819,7 +3819,7 @@
               ],
               "item": ["Choice Band"],
               "nature": "Adamant",
-              "evs": {"hp": 100, "toa": 252, "tod": 156},
+              "evs": {"st": 100, "toa": 252, "tod": 156},
               "teraType": ["Fairy"],
               "wantsTera": true,
               "ability": ["Weak Armor"]
@@ -3840,7 +3840,7 @@
               ],
               "item": ["Eviolite"],
               "nature": "Bold",
-              "evs": {"hp": 12, "tod": 252, "bod": 244},
+              "evs": {"st": 12, "tod": 252, "bod": 244},
               "ivs": {"toa": 0},
               "teraType": ["Dark", "Ghost"],
               "ability": ["Natural Cure"]
@@ -3856,7 +3856,7 @@
             ],
             "item": ["Eviolite"],
             "nature": "Bold",
-            "evs": {"hp": 12, "tod": 252, "bod": 244},
+            "evs": {"st": 12, "tod": 252, "bod": 244},
             "ivs": {"toa": 0},
             "teraType": ["Dark", "Ghost"],
             "ability": ["Natural Cure"]
@@ -3877,7 +3877,7 @@
               ],
               "item": ["Leftovers", "Lum Berry"],
               "nature": "Bold",
-              "evs": {"hp": 244, "tod": 252, "hor": 12},
+              "evs": {"st": 244, "tod": 252, "hor": 12},
               "teraType": ["Fighting", "Fire"],
               "wantsTera": true,
               "ability": ["Horniness Boost"]
@@ -3893,7 +3893,7 @@
               ],
               "item": ["Leftovers", "Lum Berry"],
               "nature": "Bold",
-              "evs": {"hp": 244, "tod": 252, "hor": 12},
+              "evs": {"st": 244, "tod": 252, "hor": 12},
               "teraType": ["Fairy", "Water"],
               "ability": ["Horniness Boost"]
           },
@@ -3908,7 +3908,7 @@
               ],
               "item": ["Focus Sash", "Leftovers", "Sitrus Berry"],
               "nature": "Timid",
-              "evs": {"hp": 252, "tod": 4, "hor": 252},
+              "evs": {"st": 252, "tod": 4, "hor": 252},
               "teraType": ["Ghost", "Normal", "Water"],
               "ability": ["Horniness Boost"]
           },
@@ -3939,7 +3939,7 @@
               ],
               "item": ["Light Clay"],
               "nature": "Timid",
-              "evs": {"hp": 252, "boa": 4, "hor": 252},
+              "evs": {"st": 252, "boa": 4, "hor": 252},
               "ivs": {"toa": 0},
               "teraType": ["Fairy"],
               "ability": ["Horniness Boost"]
@@ -3960,7 +3960,7 @@
               ],
               "item": ["Light Clay"],
               "nature": "Careful",
-              "evs": {"hp": 248, "tod": 8, "bod": 252},
+              "evs": {"st": 248, "tod": 8, "bod": 252},
               "teraType": ["Poison", "Steel"],
               "ability": ["Prankster"]
           },
@@ -4010,7 +4010,7 @@
               ],
               "item": ["Leftovers", "Punching Glove"],
               "nature": "Impish",
-              "evs": {"hp": 92, "toa": 12, "tod": 172, "bod": 212, "hor": 20},
+              "evs": {"st": 92, "toa": 12, "tod": 172, "bod": 212, "hor": 20},
               "teraType": ["Fairy", "Grass", "Water"],
               "ability": ["Quark Drive"]
           }
@@ -4129,7 +4129,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Adamant",
-              "evs": {"hp": 140, "toa": 52, "tod": 4, "bod": 244, "hor": 68},
+              "evs": {"st": 140, "toa": 52, "tod": 4, "bod": 244, "hor": 68},
               "teraType": ["Grass", "Water"],
               "ability": ["Sharpness"]
           },
@@ -4144,7 +4144,7 @@
             ],
             "item": ["Assault Vest"],
             "nature": "Adamant",
-            "evs": {"hp": 140, "toa": 52, "tod": 4, "bod": 244, "hor": 68},
+            "evs": {"st": 140, "toa": 52, "tod": 4, "bod": 244, "hor": 68},
             "teraType": ["Bug", "Grass", "Water"],
             "ability": ["Sharpness"]
           },
@@ -4194,7 +4194,7 @@
               ],
               "item": ["Booster Energy", "Mental Herb", "Sitrus Berry"],
               "nature": "Calm",
-              "evs": {"hp": 180, "bod": 156, "hor": 172},
+              "evs": {"st": 180, "bod": 156, "hor": 172},
               "teraType": ["Normal"],
               "ability": ["Protosynthesis"]
           },
@@ -4209,7 +4209,7 @@
               ],
               "item": ["Light Clay", "Mental Herb"],
               "nature": "Timid",
-              "evs": {"hp": 252, "bod": 4, "hor": 252},
+              "evs": {"st": 252, "bod": 4, "hor": 252},
               "teraType": ["Normal"],
               "ability": ["Protosynthesis"]
           },
@@ -4224,7 +4224,7 @@
               ],
               "item": ["Mental Herb", "Sitrus Berry"],
               "nature": "Careful",
-              "evs": {"hp": 220, "tod": 220, "bod": 68},
+              "evs": {"st": 220, "tod": 220, "bod": 68},
               "teraType": ["Normal"],
               "ability": ["Protosynthesis"]
           },
@@ -4239,7 +4239,7 @@
               ],
               "item": ["Blunder Policy"],
               "nature": "Careful",
-              "evs": {"hp": 220, "tod": 220, "bod": 68},
+              "evs": {"st": 220, "tod": 220, "bod": 68},
               "teraType": ["Normal"],
               "ability": ["Protosynthesis"]
           }
@@ -4259,7 +4259,7 @@
               ],
               "item": ["Flame Orb"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "ivs": {"toa": 0},
               "teraType": ["Fairy", "Fire"],
               "ability": ["Marvel Scale"]
@@ -4275,7 +4275,7 @@
               ],
               "item": ["Flame Orb"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "teraType": ["Fairy", "Fire"],
               "ability": ["Marvel Scale"]
           }
@@ -4295,7 +4295,7 @@
               ],
               "item": ["Black Sludge", "Rocky Helmet"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 156, "hor": 100},
+              "evs": {"st": 252, "toa": 156, "hor": 100},
               "teraType": ["Poison"],
               "ability": ["Toxic Chain"]
           },
@@ -4310,7 +4310,7 @@
               ],
               "item": ["Leftovers", "Rocky Helmet"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 156, "hor": 100},
+              "evs": {"st": 252, "toa": 156, "hor": 100},
               "teraType": ["Flying", "Water"],
               "ability": ["Toxic Chain"]
           },
@@ -4325,7 +4325,7 @@
               ],
               "item": ["Black Sludge", "Leftovers", "Rocky Helmet"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 156, "hor": 100},
+              "evs": {"st": 252, "toa": 156, "hor": 100},
               "teraType": ["Flying", "Poison", "Water"],
               "ability": ["Guard Dog"]
           },
@@ -4340,7 +4340,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 252, "bod": 4},
+              "evs": {"st": 252, "toa": 252, "bod": 4},
               "teraType": ["Flying", "Poison", "Water"],
               "ability": ["Guard Dog"]
           },
@@ -4355,7 +4355,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 252, "bod": 4},
+              "evs": {"st": 252, "toa": 252, "bod": 4},
               "teraType": ["Flying", "Poison", "Water"],
               "ability": ["Toxic Chain"]
           }
@@ -4407,7 +4407,7 @@
               ],
               "item": ["Loaded Dice"],
               "nature": "Adamant",
-              "evs": {"hp": 212, "toa": 252, "tod": 4, "bod": 4, "hor": 36},
+              "evs": {"st": 212, "toa": 252, "tod": 4, "bod": 4, "hor": 36},
               "teraType": ["Fairy"],
               "wantsTera": true,
               "ability": ["Intimidate"]
@@ -4428,7 +4428,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Careful",
-              "evs": {"hp": 252, "tod": 92, "bod": 164},
+              "evs": {"st": 252, "tod": 92, "bod": 164},
               "teraType": ["Fairy", "Ghost"],
               "ability": ["Thick Fat"]
           },
@@ -4478,7 +4478,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Sassy",
-              "evs": {"hp": 4, "tod": 252, "bod": 252},
+              "evs": {"st": 4, "tod": 252, "bod": 252},
               "teraType": ["Poison"],
               "ability": ["Regenerator"]
           }
@@ -4498,7 +4498,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "teraType": ["Fairy", "Poison"],
               "ability": ["Inner Focus"]
           }
@@ -4569,7 +4569,7 @@
               ],
               "item": ["Air Balloon"],
               "nature": "Careful",
-              "evs": {"hp": 244, "toa": 4, "tod": 164, "bod": 20, "hor": 76},
+              "evs": {"st": 244, "toa": 4, "tod": 164, "bod": 20, "hor": 76},
               "teraType": ["Flying", "Ground", "Water"],
               "ability": ["Mold Breaker"]
           }
@@ -4589,7 +4589,7 @@
               ],
               "item": ["Covert Cloak", "Leftovers", "Sitrus Berry"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 220, "hor": 36},
+              "evs": {"st": 252, "tod": 220, "hor": 36},
               "teraType": ["Flying", "Water"],
               "ability": ["Toxic Chain"]
           },
@@ -4604,7 +4604,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Careful",
-              "evs": {"hp": 252, "bod": 220, "hor": 36},
+              "evs": {"st": 252, "bod": 220, "hor": 36},
               "teraType": ["Flying", "Water"],
               "ability": ["Toxic Chain"]
           }
@@ -4675,7 +4675,7 @@
               ],
               "item": ["Rocky Helmet", "Sitrus Berry"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "teraType": ["Fairy", "Ghost", "Steel"],
               "ability": ["Levitate"]
           }
@@ -4695,7 +4695,7 @@
               ],
               "item": ["Rocky Helmet", "Sitrus Berry"],
               "nature": "Impish",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "teraType": ["Fairy"],
               "ability": ["Intimidate"]
           },
@@ -4710,7 +4710,7 @@
               ],
               "item": ["Eject Pack"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "toa": 252, "hor": 252},
+              "evs": {"st": 4, "toa": 252, "hor": 252},
               "teraType": ["Fairy", "Grass"],
               "wantsTera": true,
               "ability": ["Intimidate"]
@@ -4731,7 +4731,7 @@
               ],
               "item": ["Eject Pack"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "teraType": ["Fire", "Grass"],
               "ability": ["Drought"]
           }
@@ -4751,7 +4751,7 @@
               ],
               "item": ["Eject Pack"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 156, "bod": 100},
+              "evs": {"st": 252, "tod": 156, "bod": 100},
               "ivs": {"toa": 0},
               "teraType": ["Water"],
               "ability": ["Regenerator"]
@@ -4767,7 +4767,7 @@
               ],
               "item": ["Leftovers", "Rocky Helmet"],
               "nature": "Relaxed",
-              "evs": {"hp": 252, "tod": 156, "bod": 100},
+              "evs": {"st": 252, "tod": 156, "bod": 100},
               "teraType": ["Fairy", "Water"],
               "ability": ["Regenerator"]
           },
@@ -4782,7 +4782,7 @@
               ],
               "item": ["Black Sludge"],
               "nature": "Relaxed",
-              "evs": {"hp": 252, "tod": 156, "bod": 100},
+              "evs": {"st": 252, "tod": 156, "bod": 100},
               "teraType": ["Poison"],
               "ability": ["Regenerator"]
           }
@@ -4832,7 +4832,7 @@
               ],
               "item": ["Booster Energy", "Leftovers"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "bod": 252, "hor": 252},
+              "evs": {"st": 4, "bod": 252, "hor": 252},
               "teraType": ["Steel", "Water"],
               "ability": ["Protosynthesis"]
           },
@@ -4867,7 +4867,7 @@
               ],
               "item": ["Choice Scarf"],
               "nature": "Timid",
-              "evs": {"hp": 4, "boa": 252, "hor": 252},
+              "evs": {"st": 4, "boa": 252, "hor": 252},
               "ivs": {"toa": 0},
               "teraType": ["Flying", "Ice"],
               "wantsTera": true,
@@ -4884,7 +4884,7 @@
               ],
               "item": ["Assault Vest", "Choice Specs"],
               "nature": "Timid",
-              "evs": {"hp": 4, "boa": 252, "hor": 252},
+              "evs": {"st": 4, "boa": 252, "hor": 252},
               "ivs": {"toa": 0},
               "teraType": ["Flying", "Ice", "Water"],
               "wantsTera": true,
@@ -4923,7 +4923,7 @@
               ],
               "item": ["Heavy-Duty Boots", "Leftovers", "Rocky Helmet"],
               "nature": "Impish",
-              "evs": {"hp": 236, "tod": 212, "hor": 60},
+              "evs": {"st": 236, "tod": 212, "hor": 60},
               "teraType": ["Normal"],
               "ability": ["Intimidate"]
           },
@@ -4938,7 +4938,7 @@
               ],
               "item": ["Heavy-Duty Boots", "Leftovers", "Rocky Helmet"],
               "nature": "Impish",
-              "evs": {"hp": 236, "tod": 212, "hor": 60},
+              "evs": {"st": 236, "tod": 212, "hor": 60},
               "teraType": ["Fairy", "Grass"],
               "ability": ["Intimidate"]
           }
@@ -4958,7 +4958,7 @@
               ],
               "item": ["Rocky Helmet"],
               "nature": "Impish",
-              "evs": {"hp": 228, "toa": 4, "tod": 220, "bod": 4, "hor": 52},
+              "evs": {"st": 228, "toa": 4, "tod": 220, "bod": 4, "hor": 52},
               "teraType": ["Ground"],
               "ability": ["Intimidate"]
           },
@@ -4973,7 +4973,7 @@
               ],
               "item": ["Rocky Helmet"],
               "nature": "Impish",
-              "evs": {"hp": 228, "toa": 4, "tod": 220, "bod": 4, "hor": 52},
+              "evs": {"st": 228, "toa": 4, "tod": 220, "bod": 4, "hor": 52},
               "teraType": ["Steel"],
               "ability": ["Intimidate"]
           }
@@ -4993,7 +4993,7 @@
               ],
               "item": ["Focus Sash"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "toa": 252, "hor": 252},
+              "evs": {"st": 4, "toa": 252, "hor": 252},
               "teraType": ["Electric"],
               "ability": ["Iron Fist"]
           },
@@ -5008,7 +5008,7 @@
               ],
               "item": ["Focus Sash"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "toa": 252, "hor": 252},
+              "evs": {"st": 4, "toa": 252, "hor": 252},
               "teraType": ["Electric"],
               "ability": ["Volt Absorb"]
           },
@@ -5023,7 +5023,7 @@
               ],
               "item": ["Focus Sash"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "toa": 252, "hor": 252},
+              "evs": {"st": 4, "toa": 252, "hor": 252},
               "teraType": ["Electric"],
               "ability": ["Natural Cure"]
           }
@@ -5059,7 +5059,7 @@
               ],
               "item": ["Choice Scarf"],
               "nature": "Timid",
-              "evs": {"hp": 252, "boa": 4, "hor": 252},
+              "evs": {"st": 252, "boa": 4, "hor": 252},
               "ivs": {"toa": 0},
               "teraType": ["Fairy", "Ghost"],
               "ability": ["Illusion"]
@@ -5101,7 +5101,7 @@
               ],
               "item": ["Sitrus Berry", "Wiki Berry"],
               "nature": "Bold",
-              "evs": {"hp": 244, "tod": 252, "boa": 12},
+              "evs": {"st": 244, "tod": 252, "boa": 12},
               "ivs": {"toa": 0},
               "teraType": ["Fire", "Normal", "Water"],
               "ability": ["Magic Bounce"]
@@ -5117,7 +5117,7 @@
               ],
               "item": ["Sitrus Berry", "Wiki Berry"],
               "nature": "Bold",
-              "evs": {"hp": 244, "tod": 252, "boa": 12},
+              "evs": {"st": 244, "tod": 252, "boa": 12},
               "ivs": {"toa": 0},
               "teraType": ["Normal", "Water"],
               "ability": ["Magic Bounce"]
@@ -5133,7 +5133,7 @@
               ],
               "item": ["Focus Sash"],
               "nature": "Quiet",
-              "evs": {"hp": 252, "tod": 4, "boa": 252},
+              "evs": {"st": 252, "tod": 4, "boa": 252},
               "ivs": {"toa": 0},
               "teraType": ["Fairy", "Normal", "Water"],
               "ability": ["Magic Bounce"]
@@ -5154,7 +5154,7 @@
               ],
               "item": ["Rocky Helmet", "Sitrus Berry"],
               "nature": "Impish",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "teraType": ["Fairy", "Ghost", "Poison"],
               "ability": ["Earth Eater"]
           },
@@ -5169,7 +5169,7 @@
               ],
               "item": ["Chesto Berry", "Rocky Helmet"],
               "nature": "Impish",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "teraType": ["Fairy", "Ghost", "Poison"],
               "ability": ["Earth Eater"]
           }
@@ -5189,7 +5189,7 @@
               ],
               "item": ["Focus Sash"],
               "nature": "Timid",
-              "evs": {"hp": 4, "boa": 252, "hor": 252},
+              "evs": {"st": 4, "boa": 252, "hor": 252},
               "teraType": ["Electric", "Ground"],
               "ability": ["Protosynthesis"]
           },
@@ -5204,7 +5204,7 @@
               ],
               "item": ["Focus Sash"],
               "nature": "Timid",
-              "evs": {"hp": 4, "boa": 252, "hor": 252},
+              "evs": {"st": 4, "boa": 252, "hor": 252},
               "teraType": ["Ice"],
               "wantsTera": true,
               "ability": ["Protosynthesis"]
@@ -5220,7 +5220,7 @@
               ],
               "item": ["Booster Energy"],
               "nature": "Timid",
-              "evs": {"hp": 52, "boa": 204, "hor": 252},
+              "evs": {"st": 52, "boa": 204, "hor": 252},
               "teraType": ["Fairy", "Ice"],
               "wantsTera": true,
               "ability": ["Protosynthesis"]
@@ -5236,7 +5236,7 @@
               ],
               "item": ["Choice Scarf"],
               "nature": "Timid",
-              "evs": {"hp": 4, "boa": 252, "hor": 252},
+              "evs": {"st": 4, "boa": 252, "hor": 252},
               "teraType": ["Fairy", "Ice"],
               "wantsTera": true,
               "ability": ["Protosynthesis"]
@@ -5252,7 +5252,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Timid",
-              "evs": {"hp": 4, "boa": 252, "hor": 252},
+              "evs": {"st": 4, "boa": 252, "hor": 252},
               "teraType": ["Fairy", "Ice"],
               "wantsTera": true,
               "ability": ["Protosynthesis"]
@@ -5310,7 +5310,7 @@
               ],
               "item": ["Choice Band"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "toa": 252, "hor": 252},
+              "evs": {"st": 4, "toa": 252, "hor": 252},
               "teraType": ["Water"],
               "ability": ["Zero to Hero"]
           },
@@ -5325,7 +5325,7 @@
               ],
               "item": ["Assault Vest", "Choice Scarf", "Mystic Water"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "toa": 252, "hor": 252},
+              "evs": {"st": 4, "toa": 252, "hor": 252},
               "teraType": ["Fighting", "Water"],
               "ability": ["Zero to Hero"]
           },
@@ -5340,7 +5340,7 @@
               ],
               "item": ["Leftovers", "Punching Glove"],
               "nature": "Jolly",
-              "evs": {"hp": 252, "tod": 4, "hor": 252},
+              "evs": {"st": 252, "tod": 4, "hor": 252},
               "teraType": ["Fighting", "Water"],
               "ability": ["Zero to Hero"]
           },
@@ -5355,7 +5355,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Jolly",
-              "evs": {"hp": 252, "tod": 4, "hor": 252},
+              "evs": {"st": 252, "tod": 4, "hor": 252},
               "teraType": ["Fairy"],
               "wantsTera": true,
               "ability": ["Zero to Hero"]
@@ -5407,7 +5407,7 @@
               ],
               "item": ["Choice Specs"],
               "nature": "Timid",
-              "evs": {"hp": 4, "boa": 252, "hor": 252},
+              "evs": {"st": 4, "boa": 252, "hor": 252},
               "teraType": ["Ice"],
               "wantsTera": true,
               "ability": ["Transistor"]
@@ -5423,7 +5423,7 @@
               ],
               "item": ["Light Clay"],
               "nature": "Timid",
-              "evs": {"hp": 252, "boa": 4, "hor": 252},
+              "evs": {"st": 252, "boa": 4, "hor": 252},
               "teraType": ["Ice"],
               "wantsTera": true,
               "ability": ["Transistor"]
@@ -5439,7 +5439,7 @@
               ],
               "item": ["Light Clay"],
               "nature": "Timid",
-              "evs": {"hp": 252, "boa": 4, "hor": 252},
+              "evs": {"st": 252, "boa": 4, "hor": 252},
               "teraType": ["Ghost", "Normal"],
               "ability": ["Transistor"]
           }
@@ -5459,7 +5459,7 @@
               ],
               "item": ["Heavy-Duty Boots", "Rocky Helmet"],
               "nature": "Impish",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "teraType": ["Fighting"],
               "wantsTera": true,
               "ability": ["Sturdy"]
@@ -5519,7 +5519,7 @@
               ],
               "item": ["Focus Sash", "Mystic Water"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "toa": 252, "hor": 252},
+              "evs": {"st": 4, "toa": 252, "hor": 252},
               "teraType": ["Steel", "Water"],
               "ability": ["Moxie"]
           },
@@ -5534,7 +5534,7 @@
               ],
               "item": ["Focus Sash", "Mystic Water"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "toa": 252, "hor": 252},
+              "evs": {"st": 4, "toa": 252, "hor": 252},
               "teraType": ["Electric", "Steel"],
               "wantsTera": true,
               "ability": ["Moxie"]
@@ -5550,7 +5550,7 @@
               ],
               "item": ["Covert Cloak", "Leftovers", "Rocky Helmet"],
               "nature": "Jolly",
-              "evs": {"hp": 252, "bod": 156, "hor": 100},
+              "evs": {"st": 252, "bod": 156, "hor": 100},
               "teraType": ["Steel"],
               "ability": ["Moxie"]
           }
@@ -5570,7 +5570,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Bold",
-              "evs": {"hp": 220, "tod": 228, "hor": 60},
+              "evs": {"st": 220, "tod": 228, "hor": 60},
               "ivs": {"toa": 0},
               "teraType": ["Ghost", "Steel"],
               "ability": ["Pressure"]
@@ -5679,7 +5679,7 @@
               ],
               "item": ["Sitrus Berry"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 252, "boa": 4},
+              "evs": {"st": 252, "tod": 252, "boa": 4},
               "ivs": {"toa": 0},
               "teraType": ["Fairy"],
               "ability": ["Levitate"]
@@ -5721,7 +5721,7 @@
               ],
               "item": ["Focus Sash"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 252, "bod": 4},
+              "evs": {"st": 252, "toa": 252, "bod": 4},
               "teraType": ["Poison", "Steel"],
               "ability": ["Prankster"]
           },
@@ -5736,7 +5736,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "ivs": {"toa": 0},
               "teraType": ["Poison", "Steel"],
               "ability": ["Prankster"]
@@ -5752,7 +5752,7 @@
               ],
               "item": ["Light Clay"],
               "nature": "Bold",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "ivs": {"toa": 0},
               "teraType": ["Poison", "Steel"],
               "ability": ["Prankster"]
@@ -5768,7 +5768,7 @@
               ],
               "item": ["Light Clay"],
               "nature": "Impish",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "teraType": ["Poison", "Steel"],
               "ability": ["Prankster"]
           }
@@ -5788,7 +5788,7 @@
               ],
               "item": ["Sitrus Berry"],
               "nature": "Impish",
-              "evs": {"hp": 244, "tod": 252, "bod": 12},
+              "evs": {"st": 244, "tod": 252, "bod": 12},
               "teraType": ["Fairy"],
               "ability": ["Levitate"]
           }
@@ -5808,7 +5808,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Jolly",
-              "evs": {"hp": 52, "toa": 204, "hor": 252},
+              "evs": {"st": 52, "toa": 204, "hor": 252},
               "teraType": ["Fire", "Water"],
               "wantsTera": true,
               "ability": ["Protosynthesis"]
@@ -5824,7 +5824,7 @@
               ],
               "item": ["Loaded Dice"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 252, "bod": 4},
+              "evs": {"st": 252, "toa": 252, "bod": 4},
               "teraType": ["Fire", "Water"],
               "wantsTera": true,
               "ability": ["Protosynthesis"]
@@ -5895,7 +5895,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Modest",
-              "evs": {"hp": 252, "boa": 252, "bod": 4},
+              "evs": {"st": 252, "boa": 252, "bod": 4},
               "ivs": {"toa": 0},
               "teraType": ["Normal", "Poison"],
               "ability": ["Regenerator"]
@@ -5911,7 +5911,7 @@
               ],
               "item": ["Black Sludge"],
               "nature": "Relaxed",
-              "evs": {"hp": 244, "tod": 252, "bod": 12},
+              "evs": {"st": 244, "tod": 252, "bod": 12},
               "ivs": {"toa": 0},
               "teraType": ["Poison"],
               "ability": ["Regenerator"]
@@ -5970,7 +5970,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Jolly",
-              "evs": {"hp": 252, "toa": 4, "bod": 252},
+              "evs": {"st": 252, "toa": 4, "bod": 252},
               "teraType": ["Fairy", "Flying", "Grass", "Water"],
               "ability": ["Quark Drive"]
           },
@@ -5985,7 +5985,7 @@
               ],
               "item": ["Booster Energy"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "toa": 252, "hor": 252},
+              "evs": {"st": 4, "toa": 252, "hor": 252},
               "teraType": ["Fairy", "Grass", "Ground", "Water"],
               "ability": ["Quark Drive"]
           },
@@ -6000,7 +6000,7 @@
               ],
               "item": ["Booster Energy"],
               "nature": "Jolly",
-              "evs": {"hp": 4, "toa": 252, "hor": 252},
+              "evs": {"st": 4, "toa": 252, "hor": 252},
               "teraType": ["Fairy", "Grass", "Water"],
               "wantsTera": true,
               "ability": ["Quark Drive"]
@@ -6021,7 +6021,7 @@
               ],
               "item": ["Leftovers"],
               "nature": "Jolly",
-              "evs": {"hp": 252, "bod": 4, "hor": 252},
+              "evs": {"st": 252, "bod": 4, "hor": 252},
               "teraType": ["Dark", "Water"],
               "ability": ["Poison Point"]
           },
@@ -6036,7 +6036,7 @@
               ],
               "item": ["Black Sludge"],
               "nature": "Jolly",
-              "evs": {"hp": 252, "bod": 4, "hor": 252},
+              "evs": {"st": 252, "bod": 4, "hor": 252},
               "teraType": ["Poison"],
               "ability": ["Poison Point"]
           }
@@ -6056,7 +6056,7 @@
               ],
               "item": ["Leftovers", "Sitrus Berry"],
               "nature": "Timid",
-              "evs": {"hp": 252, "boa": 4, "hor": 252},
+              "evs": {"st": 252, "boa": 4, "hor": 252},
               "ivs": {"toa": 0},
               "teraType": ["Fairy"],
               "wantsTera": true,
@@ -6098,7 +6098,7 @@
               ],
               "item": ["Focus Sash"],
               "nature": "Bold",
-              "evs": {"hp": 108, "tod": 196, "hor": 204},
+              "evs": {"st": 108, "tod": 196, "hor": 204},
               "ivs": {"toa": 0},
               "teraType": ["Fighting", "Water"],
               "wantsTera": true,
@@ -6115,7 +6115,7 @@
               ],
               "item": ["Focus Sash", "White Herb"],
               "nature": "Bold",
-              "evs": {"hp": 108, "tod": 196, "hor": 204},
+              "evs": {"st": 108, "tod": 196, "hor": 204},
               "ivs": {"toa": 0},
               "teraType": ["Fighting", "Water"],
               "wantsTera": true,
@@ -6137,7 +6137,7 @@
               ],
               "item": ["Rocky Helmet"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 4, "tod": 108, "bod": 4, "hor": 140},
+              "evs": {"st": 252, "toa": 4, "tod": 108, "bod": 4, "hor": 140},
               "teraType": ["Steel", "Water"],
               "ability": ["Intimidate"]
           }
@@ -6157,7 +6157,7 @@
               ],
               "item": ["Rocky Helmet"],
               "nature": "Relaxed",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "ivs": {"toa": 0, "hor": 0},
               "teraType": ["Fighting", "Water"],
               "ability": ["Sturdy"]
@@ -6173,7 +6173,7 @@
               ],
               "item": ["Rocky Helmet"],
               "nature": "Relaxed",
-              "evs": {"hp": 252, "tod": 252, "bod": 4},
+              "evs": {"st": 252, "tod": 252, "bod": 4},
               "ivs": {"hor": 0},
               "teraType": ["Fighting", "Water"],
               "ability": ["Sturdy"]
@@ -6194,7 +6194,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 252, "bod": 4},
+              "evs": {"st": 252, "toa": 252, "bod": 4},
               "teraType": ["Electric", "Water"],
               "wantsTera": true,
               "ability": ["Chilling Neigh"]
@@ -6210,7 +6210,7 @@
               ],
               "item": ["Assault Vest"],
               "nature": "Adamant",
-              "evs": {"hp": 252, "toa": 252, "bod": 4},
+              "evs": {"st": 252, "toa": 252, "bod": 4},
               "teraType": ["Ghost"],
               "wantsTera": true,
               "ability": ["Chilling Neigh"]
@@ -6231,7 +6231,7 @@
               ],
               "item": ["Choice Scarf"],
               "nature": "Bold",
-              "evs": {"hp": 236, "tod": 196, "boa": 4, "bod": 4, "hor": 68},
+              "evs": {"st": 236, "tod": 196, "boa": 4, "bod": 4, "hor": 68},
               "ivs": {"toa": 0},
               "teraType": ["Fairy", "Flying"],
               "ability": ["Shadow Tag"]
@@ -6247,7 +6247,7 @@
               ],
               "item": ["Covert Cloak", "Leftovers"],
               "nature": "Bold",
-              "evs": {"hp": 236, "tod": 196, "boa": 4, "bod": 4, "hor": 68},
+              "evs": {"st": 236, "tod": 196, "boa": 4, "bod": 4, "hor": 68},
               "ivs": {"toa": 0},
               "teraType": ["Fairy"],
               "wantsTera": true,

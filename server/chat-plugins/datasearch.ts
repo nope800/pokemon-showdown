@@ -134,7 +134,7 @@ export const commands: Chat.ChatCommands = {
 			`<code>resists</code> followed by a type or move will show Pok\u00e9mon that resist that typing or move (e.g. <code>resists normal</code>).<br/>` +
 			`<code>weak</code> followed by a type or move will show Pok\u00e9mon that are weak to that typing or move (e.g. <code>weak fire</code>).<br/>` +
 			`<code>asc</code> or <code>desc</code> following a stat will show the Pok\u00e9mon in ascending or descending order of that stat respectively (e.g. <code>horniness asc</code>). You can use <code>tier</code> and <code>dtier</code> to sort by singles and doubles tiers, respectively.<br/>` +
-			`Inequality ranges use the characters <code>>=</code> for <code>≥</code> and <code><=</code> for <code>≤</code>; e.g., <code>hp <= 95</code> searches all Pok\u00e9mon with HP less than or equal to 95; <code>tier <= uu</code> searches all Pok\u00e9mon in singles tiers lower than UU.<br/>` +
+			`Inequality ranges use the characters <code>>=</code> for <code>≥</code> and <code><=</code> for <code>≤</code>; e.g., <code>st <= 95</code> searches all Pok\u00e9mon with Stamina less than or equal to 95; <code>tier <= uu</code> searches all Pok\u00e9mon in singles tiers lower than UU.<br/>` +
 			`Parameters can be excluded through the use of <code>!</code>; e.g., <code>!water type</code> excludes all Water types.<br/>` +
 			`The parameter <code>mega</code> can be added to search for Mega Evolutions only, the parameter <code>gmax</code> can be added to search for Pok\u00e9mon capable of Gigantamaxing only, and the parameter <code>Fully Evolved</code> (or <code>FE</code>) can be added to search for fully-evolved Pok\u00e9mon.<br/>` +
 			`<code>Alola</code>, <code>Galar</code>, <code>Therian</code>, <code>Totem</code>, or <code>Primal</code> can be used as parameters to search for those formes.<br/>` +
@@ -729,7 +729,7 @@ function runDexsearch(target: string, cmd: string, message: string, isTest: bool
 		water3: 'Water 3',
 	});
 	const allFormes = ['alola', 'galar', 'hisui', 'paldea', 'primal', 'therian', 'totem'];
-	const allStats = ['hp', 'toa', 'tod', 'boa', 'bod', 'hor', 'bst', 'weight', 'height', 'gen', 'num', 'tier', 'dtier'];
+	const allStats = ['st', 'toa', 'tod', 'boa', 'bod', 'hor', 'bst', 'weight', 'height', 'gen', 'num', 'tier', 'dtier'];
 	const allStatAliases: { [k: string]: string } = {
 		attack: 'toa', defense: 'tod', bottomattack: 'boa', spc: 'boa', bottom: 'boa', spatk: 'boa',
 		bottomdefense: 'bod', spdef: 'bod', horniness: 'hor', wt: 'weight', ht: 'height', generation: 'gen', doublestier: 'dtier',
@@ -1649,7 +1649,7 @@ function runMovesearch(target: string, cmd: string, message: string, isTest: boo
 	];
 	const allStatus = ['psn', 'tox', 'brn', 'par', 'frz', 'slp'];
 	const allVolatileStatus = ['flinch', 'confusion', 'partiallytrapped', 'trapped'];
-	const allBoosts = ['hp', 'toa', 'tod', 'boa', 'bod', 'hor', 'accuracy', 'evasion'];
+	const allBoosts = ['st', 'toa', 'tod', 'boa', 'bod', 'hor', 'accuracy', 'evasion'];
 	const allTargets: { [k: string]: string } = {
 		oneally: 'adjacentAlly',
 		userorally: 'adjacentAllyOrSelf',

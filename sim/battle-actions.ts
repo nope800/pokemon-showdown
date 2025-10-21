@@ -70,7 +70,7 @@ export class BattleActions {
 			throw new Error(`Invalid switch position ${pos} / ${side.active.length}`);
 		}
 		const oldActive = side.active[pos];
-		const unfaintedActive = oldActive?.hp ? oldActive : null;
+		const unfaintedActive = oldActive?.st ? oldActive : null;
 		if (unfaintedActive) {
 			oldActive.beingCalledBack = true;
 			let switchCopyFlag: 'copyvolatile' | 'shedtail' | boolean = false;
@@ -93,7 +93,7 @@ export class BattleActions {
 				// which is handled elsewhere); this is just for custom formats.
 				return false;
 			}
-			if (!oldActive.hp) {
+			if (!oldActive.st) {
 				// a pokemon fainted from Pursuit before it could switch
 				return 'pursuitfaint';
 			}
@@ -165,7 +165,7 @@ export class BattleActions {
 		if (!pokemon || pokemon.isActive) return false;
 		const oldActive = side.active[pos];
 		if (!oldActive) throw new Error(`nothing to drag out`);
-		if (!oldActive.hp) return false;
+		if (!oldActive.st) return false;
 
 		if (!this.battle.runEvent('DragOut', oldActive)) {
 			return false;
@@ -185,7 +185,7 @@ export class BattleActions {
 		this.battle.fieldEvent('SwitchIn', switchersIn);
 
 		for (const poke of switchersIn) {
-			if (!poke.hp) continue;
+			if (!poke.st) continue;
 			poke.isStarted = true;
 			poke.draggedIn = null;
 		}
@@ -519,7 +519,7 @@ export class BattleActions {
 			moveResult = this.trySpreadMoveHit(targets, pokemon, move);
 		}
 		if (move.selfBoost && moveResult) this.moveHit(pokemon, pokemon, move, move.selfBoost, false, true);
-		if (!pokemon.hp) {
+		if (!pokemon.st) {
 			this.battle.faint(pokemon, pokemon, move);
 		}
 
@@ -529,11 +529,11 @@ export class BattleActions {
 		}
 
 		if (!(move.hasSheerForce && pokemon.hasAbility('sheerforce')) && !move.flags['futuremove']) {
-			const originalHp = pokemon.hp;
+			const originalHp = pokemon.st;
 			this.battle.singleEvent('AfterMoveSecondarySelf', move, null, pokemon, target, move);
 			this.battle.runEvent('AfterMoveSecondarySelf', pokemon, target, move);
 			if (pokemon && pokemon !== target && move.category !== 'Status') {
-				if (pokemon.hp <= pokemon.maxhp / 2 && originalHp > pokemon.maxhp / 2) {
+				if (pokemon.st <= pokemon.maxhp / 2 && originalHp > pokemon.maxhp / 2) {
 					this.battle.runEvent('EmergencyExit', pokemon, pokemon);
 				}
 			}
@@ -885,7 +885,7 @@ export class BattleActions {
 		for (hit = 1; hit <= targetHits; hit++) {
 			if (damage.includes(false)) break;
 			if (hit > 1 && pokemon.status === 'slp' && (!isSleepUsable || this.battle.gen === 4)) break;
-			if (targets.every(target => !target?.hp)) break;
+			if (targets.every(target => !target?.st)) break;
 			move.hit = hit;
 			if (move.smartTarget && targets.length > 1) {
 				targetsCopy = [targets[hit - 1]];
@@ -959,15 +959,15 @@ export class BattleActions {
 				move.totalDamage += damage[i];
 			}
 			if (move.mindBlownRecoil) {
-				const hpBeforeRecoil = pokemon.hp;
+				const hpBeforeRecoil = pokemon.st;
 				this.battle.damage(Math.round(pokemon.maxhp / 2), pokemon, pokemon, this.dex.conditions.get(move.id), true);
 				move.mindBlownRecoil = false;
-				if (pokemon.hp <= pokemon.maxhp / 2 && hpBeforeRecoil > pokemon.maxhp / 2) {
+				if (pokemon.st <= pokemon.maxhp / 2 && hpBeforeRecoil > pokemon.maxhp / 2) {
 					this.battle.runEvent('EmergencyExit', pokemon, pokemon);
 				}
 			}
 			this.battle.eachEvent('Update');
-			if (!pokemon.hp && targets.length === 1) {
+			if (!pokemon.st && targets.length === 1) {
 				hit++; // report the correct number of hits for multihit moves
 				break;
 			}
@@ -975,21 +975,21 @@ export class BattleActions {
 		// hit is 1 higher than the actual hit count
 		if (hit === 1) return damage.fill(false);
 		if (nullDamage) damage.fill(false);
-		this.battle.faintMessages(false, false, !pokemon.hp);
+		this.battle.faintMessages(false, false, !pokemon.st);
 		if (move.multihit && typeof move.smartTarget !== 'boolean') {
 			this.battle.add('-hitcount', targets[0], hit - 1);
 		}
 
 		if ((move.recoil || move.id === 'chloroblast') && move.totalDamage) {
-			const hpBeforeRecoil = pokemon.hp;
+			const hpBeforeRecoil = pokemon.st;
 			this.battle.damage(this.calcRecoilDamage(move.totalDamage, move, pokemon), pokemon, pokemon, 'recoil');
-			if (pokemon.hp <= pokemon.maxhp / 2 && hpBeforeRecoil > pokemon.maxhp / 2) {
+			if (pokemon.st <= pokemon.maxhp / 2 && hpBeforeRecoil > pokemon.maxhp / 2) {
 				this.battle.runEvent('EmergencyExit', pokemon, pokemon);
 			}
 		}
 
 		if (move.struggleRecoil) {
-			const hpBeforeRecoil = pokemon.hp;
+			const hpBeforeRecoil = pokemon.st;
 			let recoilDamage;
 			if (this.dex.gen >= 5) {
 				recoilDamage = this.battle.clampIntRange(Math.round(pokemon.baseMaxhp / 4), 1);
@@ -997,7 +997,7 @@ export class BattleActions {
 				recoilDamage = this.battle.clampIntRange(this.battle.trunc(pokemon.maxhp / 4), 1);
 			}
 			this.battle.directDamage(recoilDamage, pokemon, pokemon, { id: 'strugglerecoil' } as Condition);
-			if (pokemon.hp <= pokemon.maxhp / 2 && hpBeforeRecoil > pokemon.maxhp / 2) {
+			if (pokemon.st <= pokemon.maxhp / 2 && hpBeforeRecoil > pokemon.maxhp / 2) {
 				this.battle.runEvent('EmergencyExit', pokemon, pokemon);
 			}
 		}
@@ -1016,7 +1016,7 @@ export class BattleActions {
 			}
 		}
 
-		if (move.ohko && !targets[0].hp) this.battle.add('-ohko');
+		if (move.ohko && !targets[0].st) this.battle.add('-ohko');
 
 		if (!damage.some(val => !!val || val === 0)) return damage;
 
@@ -1029,9 +1029,9 @@ export class BattleActions {
 				// There are no multihit spread moves, so it's safe to use move.totalDamage for multihit moves
 				// The previous check was for `move.multihit`, but that fails for Dragon Darts
 				const curDamage = targets.length === 1 ? move.totalDamage : d;
-				if (typeof curDamage === 'number' && targets[i].hp) {
+				if (typeof curDamage === 'number' && targets[i].st) {
 					const targetHPBeforeDamage = (targets[i].hurtThisTurn || 0) + curDamage;
-					if (targets[i].hp <= targets[i].maxhp / 2 && targetHPBeforeDamage > targets[i].maxhp / 2) {
+					if (targets[i].st <= targets[i].maxhp / 2 && targetHPBeforeDamage > targets[i].maxhp / 2) {
 						this.battle.runEvent('EmergencyExit', targets[i], pokemon);
 					}
 				}
@@ -1135,7 +1135,7 @@ export class BattleActions {
 				damagedDamage.push(damage[i]);
 			}
 		}
-		const pokemonOriginalHP = pokemon.hp;
+		const pokemonOriginalHP = pokemon.st;
 		if (damagedDamage.length && !isSecondary && !isSelf) {
 			this.battle.runEvent('DamagingHit', damagedTargets, pokemon, move, damagedDamage);
 			if (moveData.onAfterHit) {
@@ -1143,7 +1143,7 @@ export class BattleActions {
 					this.battle.singleEvent('AfterHit', moveData, {}, t, pokemon, move);
 				}
 			}
-			if (pokemon.hp && pokemon.hp <= pokemon.maxhp / 2 && pokemonOriginalHP > pokemon.maxhp / 2) {
+			if (pokemon.st && pokemon.st <= pokemon.maxhp / 2 && pokemonOriginalHP > pokemon.maxhp / 2) {
 				this.battle.runEvent('EmergencyExit', pokemon);
 			}
 		}
@@ -1214,7 +1214,7 @@ export class BattleActions {
 					didSomething = this.combineResults(didSomething, hitResult);
 				}
 				if (moveData.heal && !target.fainted) {
-					if (target.hp >= target.maxhp) {
+					if (target.st >= target.maxhp) {
 						this.battle.add('-fail', target, 'heal');
 						this.battle.attrLastMove('[still]');
 						damage[i] = this.combineResults(damage[i], false);
@@ -1323,7 +1323,7 @@ export class BattleActions {
 				}
 			}
 			this.battle.debug('move failed because it did nothing');
-		} else if (move.selfSwitch && source.hp && !source.volatiles['commanded']) {
+		} else if (move.selfSwitch && source.st && !source.volatiles['commanded']) {
 			source.switchFlag = move.id;
 		}
 
@@ -1369,7 +1369,7 @@ export class BattleActions {
 		damage: SpreadMoveDamage, targets: SpreadMoveTargets, source: Pokemon, move: ActiveMove
 	) {
 		for (const [i, target] of targets.entries()) {
-			if (target && target.hp > 0 && source.hp > 0 && this.battle.canSwitch(target.side)) {
+			if (target && target.st > 0 && source.st > 0 && this.battle.canSwitch(target.side)) {
 				const hitResult = this.battle.runEvent('DragOut', target, source, move);
 				if (hitResult) {
 					target.forceSwitchFlag = true;
@@ -1575,7 +1575,7 @@ export class BattleActions {
 	}
 
 	/**
-	 * 0 is a success dealing 0 damage, such as from False Swipe at 1 HP.
+	 * 0 is a success dealing 0 damage, such as from False Swipe at 1 Stamina.
 	 *
 	 * Normal PS return value rules apply:
 	 * undefined = success, null = silent failure, false = loud failure
@@ -1601,7 +1601,7 @@ export class BattleActions {
 			return false;
 		}
 
-		if (move.ohko) return this.battle.gen === 3 ? target.hp : target.maxhp;
+		if (move.ohko) return this.battle.gen === 3 ? target.st : target.maxhp;
 		if (move.damageCallback) return move.damageCallback.call(this.battle, source, target);
 		if (move.damage === 'level') {
 			return source.level;

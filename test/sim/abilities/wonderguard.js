@@ -16,7 +16,7 @@ describe('Wonder Guard', () => {
 		battle.setPlayer('p2', { team: [{ species: "Smeargle", ability: 'owntempo', moves: ['knockoff', 'flamethrower', 'thousandarrows', 'moonblast'] }] });
 		for (let i = 1; i <= 4; i++) {
 			battle.makeChoices('move sleeptalk', 'move ' + i);
-			assert.equal(battle.p1.active[0].hp, battle.p1.active[0].maxhp);
+			assert.equal(battle.p1.active[0].st, battle.p1.active[0].maxhp);
 		}
 		// Thousand Arrows shouldn't add the Smack Down volatile if blocked by Wonder Guard
 		assert.false.hurts(battle.p1.active[0], () => battle.makeChoices('move sleeptalk', 'move thousandarrows'));

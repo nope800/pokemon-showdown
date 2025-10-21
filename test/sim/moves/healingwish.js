@@ -28,7 +28,7 @@ describe('Healing Wish', () => {
 		assert.equal(battle.requestState, 'switch');
 		// sand happens after Jirachi faints and before any switch-in
 		battle.makeChoices('switch Caterpie', ''); // Caterpie heals before taking SR damage
-		assert.equal(battle.p1.active[0].hp, 174);
+		assert.equal(battle.p1.active[0].st, 174);
 		assert.equal(battle.p1.active[0].moveSlots[0].pp, 63);
 	});
 
@@ -60,7 +60,7 @@ describe('Healing Wish', () => {
 			{ species: 'Garchomp', ability: 'sandveil', moves: ['sleeptalk'] },
 			{ species: 'Shedinja', ability: 'wonderguard', moves: ['endeavor', 'protect'] },
 		] });
-		// set up Healing Wish, Caterpie is at 1 HP
+		// set up Healing Wish, Caterpie is at 1 Stamina
 		battle.makeChoices('move healingwish, move stringshot', 'move sleeptalk, move endeavor 2');
 		assert.equal(battle.requestState, 'switch');
 		// Rotom does not consume Healing Wish
@@ -68,7 +68,7 @@ describe('Healing Wish', () => {
 		assert(battle.p1.slotConditions[0]['healingwish']);
 		// Caterpie gets healed by Healing Wish triggered by Ally Switch
 		battle.makeChoices('move allyswitch, move stringshot', 'move sleeptalk, move protect');
-		assert.equal(battle.p1.active[0].hp, 231); // Caterpie start in slot 1 -> Ally Switch-ed to slot 0
+		assert.equal(battle.p1.active[0].st, 231); // Caterpie start in slot 1 -> Ally Switch-ed to slot 0
 		assert.false(battle.p1.slotConditions[0]['healingwish']);
 	});
 
@@ -132,11 +132,11 @@ describe('Healing Wish', () => {
 		battle.makeChoices('move Healing Wish', 'move Seismic Toss');
 
 		battle.makeChoices('switch Caterpie', ''); // Caterpie faints from hazards
-		assert.equal(battle.p1.active[0].hp, 0);
+		assert.equal(battle.p1.active[0].st, 0);
 
 		battle.makeChoices('switch Raichu', ''); // Raichu fully heals and takes stoss + Sandstorm damage
 		assert.equal(battle.turn, 6);
-		assert.equal(battle.p1.active[0].hp, 145); // after stoss + Sandstorm
+		assert.equal(battle.p1.active[0].st, 145); // after stoss + Sandstorm
 		assert.equal(battle.p1.active[0].moveSlots[0].pp, 63);
 	});
 });

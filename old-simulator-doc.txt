@@ -44,7 +44,7 @@ beforeTurn(user) [on move]
 
 damage(user, target) [on move]
 	Fired while calculating a move's damage. Return a damage value in
-	directly in HP. Bypasses weaknesses and resistances, but not immunities.
+	directly in Stamina. Bypasses weaknesses and resistances, but not immunities.
 
 	examples: [move] Night Shade, [move] Endeavor
 

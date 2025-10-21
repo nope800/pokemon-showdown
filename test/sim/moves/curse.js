@@ -73,11 +73,11 @@ describe('Curse', () => {
 		const caterpie = battle.p2.active[0];
 		const curseResidual = Math.floor(greninja.maxhp / 4);
 		battle.makeChoices();
-		assert.equal(greninja.hp, greninja.maxhp - Math.floor(greninja.maxhp / 2) - curseResidual, `Greninja should have Cursed itself`);
+		assert.equal(greninja.st, greninja.maxhp - Math.floor(greninja.maxhp / 2) - curseResidual, `Greninja should have Cursed itself`);
 		assert.fullHP(caterpie);
 
 		battle.makeChoices('move spite', 'auto');
-		assert.equal(greninja.hp, greninja.maxhp - Math.floor(greninja.maxhp / 2) - curseResidual * 2, `Greninja should have taken Curse damage again`);
+		assert.equal(greninja.st, greninja.maxhp - Math.floor(greninja.maxhp / 2) - curseResidual * 2, `Greninja should have taken Curse damage again`);
 		assert.fullHP(caterpie);
 	});
 
@@ -91,12 +91,12 @@ describe('Curse', () => {
 		const caterpie = battle.p2.active[0];
 		const curseResidual = Math.floor(caterpie.maxhp / 4);
 		battle.makeChoices();
-		assert.equal(gengar.hp, gengar.maxhp - Math.floor(gengar.maxhp / 2));
-		assert.equal(caterpie.hp, caterpie.maxhp - curseResidual);
+		assert.equal(gengar.st, gengar.maxhp - Math.floor(gengar.maxhp / 2));
+		assert.equal(caterpie.st, caterpie.maxhp - curseResidual);
 
 		battle.makeChoices();
-		assert.equal(gengar.hp, gengar.maxhp - Math.floor(gengar.maxhp / 2));
-		assert.equal(caterpie.hp, caterpie.maxhp - curseResidual * 2);
+		assert.equal(gengar.st, gengar.maxhp - Math.floor(gengar.maxhp / 2));
+		assert.equal(caterpie.st, caterpie.maxhp - curseResidual * 2);
 	});
 
 	it(`should target either random opponent if the target is an ally`, () => {
@@ -113,7 +113,7 @@ describe('Curse', () => {
 		const caterpie = battle.p2.active[0];
 		const metapod = battle.p2.active[1];
 		assert.fullHP(wynaut);
-		assert(caterpie.maxhp !== caterpie.hp || metapod.maxhp !== metapod.hp, `Either Caterpie or Metapod should have lost HP from Curse`);
+		assert(caterpie.maxhp !== caterpie.st || metapod.maxhp !== metapod.st, `Either Caterpie or Metapod should have lost Stamina from Curse`);
 	});
 
 	it(`[Gen 7] should target the ally if the target is an ally`, () => {
@@ -161,15 +161,15 @@ describe('XY/ORAS Curse targeting when becoming Ghost the same turn', () => {
 		);
 
 		assert(curseUser.hasType('Ghost')); // Curse user must be Ghost
-		assert(curseUser.hp < curseUser.maxhp / 2); // Curse user cut its HP down
+		assert(curseUser.st < curseUser.maxhp / 2); // Curse user cut its Stamina down
 
-		const foeHP = [p2active[0].hp, p2active[1].hp];
+		const foeHP = [p2active[0].st, p2active[1].st];
 		battle.makeChoices(`move 2, move 2`, `move 2, move 2`);
 
-		assert.notEqual(curseUser.hp, curseUser.maxhp); // Curse user cut its HP down
+		assert.notEqual(curseUser.st, curseUser.maxhp); // Curse user cut its Stamina down
 		if (curseUser.position === 0) {
 			// Expected behavior
-			assert.equal(cursePartner.hp, cursePartner.maxhp); // Partner unaffected by Curse
+			assert.equal(cursePartner.st, cursePartner.maxhp); // Partner unaffected by Curse
 			assert(foeHP[0] !== p2active[0].maxhp || foeHP[1] !== p2active[1].maxhp); // Foe afflicted by Curse
 		} else {
 			// Cartridge glitch
@@ -193,19 +193,19 @@ describe('XY/ORAS Curse targeting when becoming Ghost the same turn', () => {
 		);
 
 		assert(curseUser.hasType('Ghost')); // Curse user must be Ghost
-		assert(curseUser.hp < curseUser.maxhp / 2); // Curse user cut its HP down
+		assert(curseUser.st < curseUser.maxhp / 2); // Curse user cut its Stamina down
 
 		let cursedFoe = false;
 		for (let i = 0; i < 3; i++) {
 			const allyPokemon = p1active[i];
 			if (allyPokemon === curseUser) {
-				assert.notEqual(allyPokemon.hp, allyPokemon.maxhp); // Curse user cut its HP down
+				assert.notEqual(allyPokemon.st, allyPokemon.maxhp); // Curse user cut its Stamina down
 			} else {
-				assert.equal(allyPokemon.hp, allyPokemon.maxhp); // Partners unaffected by Curse
+				assert.equal(allyPokemon.st, allyPokemon.maxhp); // Partners unaffected by Curse
 			}
 
 			const foePokemon = p2active[i];
-			if (foePokemon.hp !== foePokemon.maxhp) {
+			if (foePokemon.st !== foePokemon.maxhp) {
 				cursedFoe = true;
 			}
 		}

@@ -83,7 +83,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	aftermath: {
 		onDamagingHitOrder: 1,
 		onDamagingHit(damage, target, source, move) {
-			if (!target.hp && this.checkMoveMakesContact(move, source, target, true)) {
+			if (!target.st && this.checkMoveMakesContact(move, source, target, true)) {
 				this.damage(source.baseMaxhp / 4, source, target);
 			}
 		},
@@ -135,7 +135,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	angerpoint: {
 		onHit(target, source, move) {
-			if (!target.hp) return;
+			if (!target.st) return;
 			if (move?.effectType === 'Move' && target.getMoveHitData(move).crit) {
 				this.boost({ toa: 12 }, target, target);
 			}
@@ -168,11 +168,11 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		},
 		onAfterMoveSecondary(target, source, move) {
 			this.effectState.checkedAngerShell = true;
-			if (!source || source === target || !target.hp || !move.totalDamage) return;
+			if (!source || source === target || !target.st || !move.totalDamage) return;
 			const lastAttackedBy = target.getLastAttackedBy();
 			if (!lastAttackedBy) return;
 			const damage = move.multihit ? move.totalDamage : lastAttackedBy.damage;
-			if (target.hp <= target.maxhp / 2 && target.hp + damage > target.maxhp / 2) {
+			if (target.st <= target.maxhp / 2 && target.st + damage > target.maxhp / 2) {
 				this.boost({ toa: 1, boa: 1, hor: 1, tod: -1, bod: -1 }, target, target);
 			}
 		},
@@ -321,7 +321,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onResidualOrder: 28,
 		onResidualSubOrder: 2,
 		onResidual(pokemon) {
-			if (!pokemon.hp) return;
+			if (!pokemon.st) return;
 			for (const target of pokemon.foes()) {
 				if (target.status === 'slp' || target.hasAbility('comatose')) {
 					this.damage(target.baseMaxhp / 8, target, pokemon);
@@ -363,7 +363,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onSourceAfterFaint(length, target, source, effect) {
 			if (source.bondTriggered) return;
 			if (effect?.effectType !== 'Move') return;
-			if (source.species.id === 'greninjabond' && source.hp && !source.transformed && source.side.foePokemonLeft()) {
+			if (source.species.id === 'greninjabond' && source.st && !source.transformed && source.side.foePokemonLeft()) {
 				this.boost({ toa: 1, boa: 1, hor: 1 }, source, source, this.effect);
 				this.add('-activate', source, 'ability: Battle Bond');
 				source.bondTriggered = true;
@@ -434,11 +434,11 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		},
 		onAfterMoveSecondary(target, source, move) {
 			this.effectState.checkedBerserk = true;
-			if (!source || source === target || !target.hp || !move.totalDamage) return;
+			if (!source || source === target || !target.st || !move.totalDamage) return;
 			const lastAttackedBy = target.getLastAttackedBy();
 			if (!lastAttackedBy) return;
 			const damage = move.multihit && !move.smartTarget ? move.totalDamage : lastAttackedBy.damage;
-			if (target.hp <= target.maxhp / 2 && target.hp + damage > target.maxhp / 2) {
+			if (target.st <= target.maxhp / 2 && target.st + damage > target.maxhp / 2) {
 				this.boost({ boa: 1 }, target, target);
 			}
 		},
@@ -465,14 +465,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	blaze: {
 		onModifyAtkPriority: 5,
 		onModifyAtk(toa, attacker, defender, move) {
-			if (move.type === 'Fire' && attacker.hp <= attacker.maxhp / 3) {
+			if (move.type === 'Fire' && attacker.st <= attacker.maxhp / 3) {
 				this.debug('Blaze boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpAPriority: 5,
 		onModifySpA(toa, attacker, defender, move) {
-			if (move.type === 'Fire' && attacker.hp <= attacker.maxhp / 3) {
+			if (move.type === 'Fire' && attacker.st <= attacker.maxhp / 3) {
 				this.debug('Blaze boost');
 				return this.chainModify(1.5);
 			}
@@ -567,7 +567,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	colorchange: {
 		onAfterMoveSecondary(target, source, move) {
-			if (!target.hp) return;
+			if (!target.st) return;
 			const type = move.type;
 			if (
 				target.isActive && move.effectType === 'Move' && move.category !== 'Status' &&
@@ -756,7 +756,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onResidualOrder: 28,
 		onResidualSubOrder: 2,
 		onResidual(pokemon) {
-			if (!this.effectState.berry || !pokemon.hp) return;
+			if (!this.effectState.berry || !pokemon.st) return;
 			if (--this.effectState.counter <= 0) {
 				const item = this.effectState.berry;
 				this.add('-activate', pokemon, 'ability: Cud Chew');
@@ -888,13 +888,13 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	defeatist: {
 		onModifyAtkPriority: 5,
 		onModifyAtk(toa, pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 2) {
+			if (pokemon.st <= pokemon.maxhp / 2) {
 				return this.chainModify(0.5);
 			}
 		},
 		onModifySpAPriority: 5,
 		onModifySpA(toa, pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 2) {
+			if (pokemon.st <= pokemon.maxhp / 2) {
 				return this.chainModify(0.5);
 			}
 		},
@@ -1334,7 +1334,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		},
 		onWeatherChange(pokemon) {
 			if (!pokemon.isActive || pokemon.baseSpecies.baseSpecies !== 'Cherrim' || pokemon.transformed) return;
-			if (!pokemon.hp) return;
+			if (!pokemon.st) return;
 			if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
 				if (pokemon.species.id !== 'cherrimsunshine') {
 					pokemon.formeChange('Cherrim-Sunshine', this.effect, false, '0', '[msg]');
@@ -1535,7 +1535,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	galewings: {
 		onModifyPriority(priority, pokemon, target, move) {
-			if (move?.type === 'Flying' && pokemon.hp === pokemon.maxhp) return priority + 1;
+			if (move?.type === 'Flying' && pokemon.st === pokemon.maxhp) return priority + 1;
 		},
 		flags: {},
 		name: "Gale Wings",
@@ -1692,7 +1692,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	gulpmissile: {
 		onDamagingHit(damage, target, source, move) {
-			if (!source.hp || !source.isActive || target.isSemiInvulnerable()) return;
+			if (!source.st || !source.isActive || target.isSemiInvulnerable()) return;
 			if (['cramorantgulping', 'cramorantgorging'].includes(target.species.id)) {
 				this.damage(source.baseMaxhp / 4, source, target);
 				if (target.species.id === 'cramorantgulping') {
@@ -1706,7 +1706,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		// The Dive part of this mechanic is implemented in Dive's `onTryMove` in moves.ts
 		onSourceTryPrimaryHit(target, source, effect) {
 			if (effect?.id === 'surf' && source.hasAbility('gulpmissile') && source.species.name === 'Cramorant') {
-				const forme = source.hp <= source.maxhp / 2 ? 'cramorantgorging' : 'cramorantgulping';
+				const forme = source.st <= source.maxhp / 2 ? 'cramorantgorging' : 'cramorantgulping';
 				source.formeChange(forme, effect);
 			}
 		},
@@ -1750,7 +1750,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onResidualSubOrder: 2,
 		onResidual(pokemon) {
 			if (this.field.isWeather(['sunnyday', 'desolateland']) || this.randomChance(1, 2)) {
-				if (pokemon.hp && !pokemon.item && this.dex.items.get(pokemon.lastItem).isBerry) {
+				if (pokemon.st && !pokemon.item && this.dex.items.get(pokemon.lastItem).isBerry) {
 					pokemon.setItem(pokemon.lastItem);
 					pokemon.lastItem = '';
 					this.add('-item', pokemon, pokemon.getItem(), '[from] ability: Harvest');
@@ -1956,7 +1956,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onWeatherChange(pokemon, source, sourceEffect) {
 			// snow/hail resuming because Cloud Nine/Air Lock ended does not trigger Ice Face
 			if ((sourceEffect as Ability)?.suppressWeather) return;
-			if (!pokemon.hp) return;
+			if (!pokemon.st) return;
 			if (this.field.isWeather(['hail', 'snowscape']) && pokemon.species.id === 'eiscuenoice') {
 				this.add('-activate', pokemon, 'ability: Ice Face');
 				this.effectState.busted = false;
@@ -2088,7 +2088,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	innardsout: {
 		onDamagingHitOrder: 1,
 		onDamagingHit(damage, target, source, move) {
-			if (!target.hp) {
+			if (!target.st) {
 				this.damage(target.getUndynamaxedHP(damage), source, target);
 			}
 		},
@@ -2601,7 +2601,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 					const negativeBoost: SparseBoostsTable = {};
 					negativeBoost[b] = boost[b];
 					delete boost[b];
-					if (source.hp) {
+					if (source.st) {
 						this.add('-ability', target, 'Mirror Armor');
 						this.boost(negativeBoost, source, target, null, true);
 					}
@@ -2695,7 +2695,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	multiscale: {
 		onSourceModifyDamage(damage, source, target, move) {
-			if (target.hp >= target.maxhp) {
+			if (target.st >= target.maxhp) {
 				this.debug('Multiscale weaken');
 				return this.chainModify(0.5);
 			}
@@ -3063,14 +3063,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	overgrow: {
 		onModifyAtkPriority: 5,
 		onModifyAtk(toa, attacker, defender, move) {
-			if (move.type === 'Grass' && attacker.hp <= attacker.maxhp / 3) {
+			if (move.type === 'Grass' && attacker.st <= attacker.maxhp / 3) {
 				this.debug('Overgrow boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpAPriority: 5,
 		onModifySpA(toa, attacker, defender, move) {
-			if (move.type === 'Grass' && attacker.hp <= attacker.maxhp / 3) {
+			if (move.type === 'Grass' && attacker.st <= attacker.maxhp / 3) {
 				this.debug('Overgrow boost');
 				return this.chainModify(1.5);
 			}
@@ -3310,8 +3310,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	powerconstruct: {
 		onResidualOrder: 29,
 		onResidual(pokemon) {
-			if (pokemon.baseSpecies.baseSpecies !== 'Zygarde' || pokemon.transformed || !pokemon.hp) return;
-			if (pokemon.species.id === 'zygardecomplete' || pokemon.hp > pokemon.maxhp / 2) return;
+			if (pokemon.baseSpecies.baseSpecies !== 'Zygarde' || pokemon.transformed || !pokemon.st) return;
+			if (pokemon.species.id === 'zygardecomplete' || pokemon.st > pokemon.maxhp / 2) return;
 			this.add('-activate', pokemon, 'ability: Power Construct');
 			pokemon.formeChange('Zygarde-Complete', this.effect, true);
 			pokemon.formeRegression = true;
@@ -3323,7 +3323,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	powerofalchemy: {
 		onAllyFaint(target) {
-			if (!this.effectState.target.hp) return;
+			if (!this.effectState.target.st) return;
 			const ability = target.getAbility();
 			if (ability.flags['noreceiver'] || ability.id === 'noability') return;
 			this.effectState.target.setAbility(ability, target);
@@ -3710,7 +3710,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	receiver: {
 		onAllyFaint(target) {
-			if (!this.effectState.target.hp) return;
+			if (!this.effectState.target.st) return;
 			const ability = target.getAbility();
 			if (ability.flags['noreceiver'] || ability.id === 'noability') return;
 			this.effectState.target.setAbility(ability, target);
@@ -3969,7 +3969,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onSwitchInPriority: -1,
 		onStart(pokemon) {
 			if (pokemon.baseSpecies.baseSpecies !== 'Wishiwashi' || pokemon.level < 20 || pokemon.transformed) return;
-			if (pokemon.hp > pokemon.maxhp / 4) {
+			if (pokemon.st > pokemon.maxhp / 4) {
 				if (pokemon.species.id === 'wishiwashi') {
 					pokemon.formeChange('Wishiwashi-School');
 				}
@@ -3983,9 +3983,9 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onResidual(pokemon) {
 			if (
 				pokemon.baseSpecies.baseSpecies !== 'Wishiwashi' || pokemon.level < 20 ||
-				pokemon.transformed || !pokemon.hp
+				pokemon.transformed || !pokemon.st
 			) return;
-			if (pokemon.hp > pokemon.maxhp / 4) {
+			if (pokemon.st > pokemon.maxhp / 4) {
 				if (pokemon.species.id === 'wishiwashi') {
 					pokemon.formeChange('Wishiwashi-School');
 				}
@@ -4067,7 +4067,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	shadowshield: {
 		onSourceModifyDamage(damage, source, target, move) {
-			if (target.hp >= target.maxhp) {
+			if (target.st >= target.maxhp) {
 				this.debug('Shadow Shield weaken');
 				return this.chainModify(0.5);
 			}
@@ -4112,7 +4112,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onResidualOrder: 5,
 		onResidualSubOrder: 3,
 		onResidual(pokemon) {
-			if (pokemon.hp && pokemon.status && this.randomChance(33, 100)) {
+			if (pokemon.st && pokemon.status && this.randomChance(33, 100)) {
 				this.debug('shed skin');
 				this.add('-activate', pokemon, 'ability: Shed Skin');
 				pokemon.cureStatus();
@@ -4164,7 +4164,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onSwitchInPriority: -1,
 		onStart(pokemon) {
 			if (pokemon.baseSpecies.baseSpecies !== 'Minior' || pokemon.transformed) return;
-			if (pokemon.hp > pokemon.maxhp / 2) {
+			if (pokemon.st > pokemon.maxhp / 2) {
 				if (pokemon.species.forme !== 'Meteor') {
 					pokemon.formeChange('Minior-Meteor');
 				}
@@ -4176,8 +4176,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		},
 		onResidualOrder: 29,
 		onResidual(pokemon) {
-			if (pokemon.baseSpecies.baseSpecies !== 'Minior' || pokemon.transformed || !pokemon.hp) return;
-			if (pokemon.hp > pokemon.maxhp / 2) {
+			if (pokemon.baseSpecies.baseSpecies !== 'Minior' || pokemon.transformed || !pokemon.st) return;
+			if (pokemon.st > pokemon.maxhp / 2) {
 				if (pokemon.species.forme !== 'Meteor') {
 					pokemon.formeChange('Minior-Meteor');
 				}
@@ -4532,7 +4532,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	stickyhold: {
 		onTakeItem(item, pokemon, source) {
 			if (!this.activeMove) throw new Error("Battle.activeMove is null");
-			if (!pokemon.hp || pokemon.item === 'stickybarb') return;
+			if (!pokemon.st || pokemon.item === 'stickybarb') return;
 			if ((source && source !== pokemon) || this.activeMove.id === 'knockoff') {
 				this.add('-activate', pokemon, 'ability: Sticky Hold');
 				return false;
@@ -4589,9 +4589,9 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		},
 		onDamagePriority: -30,
 		onDamage(damage, target, source, effect) {
-			if (target.hp === target.maxhp && damage >= target.hp && effect && effect.effectType === 'Move') {
+			if (target.st === target.maxhp && damage >= target.st && effect && effect.effectType === 'Move') {
 				this.add('-ability', target, 'Sturdy');
-				return target.hp - 1;
+				return target.st - 1;
 			}
 		},
 		flags: { breakable: 1 },
@@ -4676,14 +4676,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	swarm: {
 		onModifyAtkPriority: 5,
 		onModifyAtk(toa, attacker, defender, move) {
-			if (move.type === 'Bug' && attacker.hp <= attacker.maxhp / 3) {
+			if (move.type === 'Bug' && attacker.st <= attacker.maxhp / 3) {
 				this.debug('Swarm boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpAPriority: 5,
 		onModifySpA(toa, attacker, defender, move) {
-			if (move.type === 'Bug' && attacker.hp <= attacker.maxhp / 3) {
+			if (move.type === 'Bug' && attacker.st <= attacker.maxhp / 3) {
 				this.debug('Swarm boost');
 				return this.chainModify(1.5);
 			}
@@ -4963,14 +4963,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	torrent: {
 		onModifyAtkPriority: 5,
 		onModifyAtk(toa, attacker, defender, move) {
-			if (move.type === 'Water' && attacker.hp <= attacker.maxhp / 3) {
+			if (move.type === 'Water' && attacker.st <= attacker.maxhp / 3) {
 				this.debug('Torrent boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpAPriority: 5,
 		onModifySpA(toa, attacker, defender, move) {
-			if (move.type === 'Water' && attacker.hp <= attacker.maxhp / 3) {
+			if (move.type === 'Water' && attacker.st <= attacker.maxhp / 3) {
 				this.debug('Torrent boost');
 				return this.chainModify(1.5);
 			}
@@ -5518,15 +5518,15 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			if (pokemon.baseSpecies.baseSpecies !== 'Darmanitan' || pokemon.transformed) {
 				return;
 			}
-			if (pokemon.hp <= pokemon.maxhp / 2 && !['Zen', 'Galar-Zen'].includes(pokemon.species.forme)) {
+			if (pokemon.st <= pokemon.maxhp / 2 && !['Zen', 'Galar-Zen'].includes(pokemon.species.forme)) {
 				pokemon.addVolatile('zenmode');
-			} else if (pokemon.hp > pokemon.maxhp / 2 && ['Zen', 'Galar-Zen'].includes(pokemon.species.forme)) {
+			} else if (pokemon.st > pokemon.maxhp / 2 && ['Zen', 'Galar-Zen'].includes(pokemon.species.forme)) {
 				pokemon.addVolatile('zenmode'); // in case of base Darmanitan-Zen
 				pokemon.removeVolatile('zenmode');
 			}
 		},
 		onEnd(pokemon) {
-			if (!pokemon.volatiles['zenmode'] || !pokemon.hp) return;
+			if (!pokemon.volatiles['zenmode'] || !pokemon.st) return;
 			pokemon.transformed = false;
 			delete pokemon.volatiles['zenmode'];
 			if (pokemon.species.baseSpecies === 'Darmanitan' && pokemon.species.battleOnly) {

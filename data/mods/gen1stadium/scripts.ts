@@ -141,7 +141,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					this.battle.singleEvent('AfterMove', move, null, pokemon, target, move);
 
 					// If target fainted
-					if (target && target.hp <= 0) {
+					if (target && target.st <= 0) {
 						delete pokemon.volatiles['partialtrappinglock'];
 					} else {
 						this.battle.runEvent('AfterMoveSelf', pokemon, target, move);
@@ -149,7 +149,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					if (pokemon.volatiles['mustrecharge']) this.battle.add('-mustrecharge', pokemon);
 
 					// For partial trapping moves, we are saving the target.
-					if (move.volatileStatus === 'partiallytrapped' && target && target.hp > 0) {
+					if (move.volatileStatus === 'partiallytrapped' && target && target.st > 0) {
 						// It hit, so let's remove must recharge volatile. Yup, this happens on Stadium.
 						target.removeVolatile('mustrecharge');
 						// Let's check if the lock exists
@@ -330,7 +330,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					// In gen 1, all the hits have the same damage for multihits move
 					let moveDamage: number | false | undefined = 0;
 					let i: number;
-					for (i = 0; i < hits && target.hp && pokemon.hp; i++) {
+					for (i = 0; i < hits && target.st && pokemon.st; i++) {
 						move.hit = i + 1;
 						if (move.hit === hits) move.lastHit = true;
 						moveDamage = this.moveHit(target, pokemon, move);
@@ -429,8 +429,8 @@ export const Scripts: ModdedBattleScriptsData = {
 				let didSomething = false;
 
 				damage = this.getDamage(pokemon, target, moveData);
-				if (damage && damage > target.hp) {
-					damage = target.hp;
+				if (damage && damage > target.st) {
+					damage = target.st;
 				}
 				if ((damage || damage === 0) && !target.fainted) {
 					damage = this.battle.damage(damage, target, pokemon, move);
@@ -510,7 +510,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			}
 
 			// Apply move secondaries.
-			if (moveData.secondaries && target && target.hp > 0) {
+			if (moveData.secondaries && target && target.st > 0) {
 				for (const secondary of moveData.secondaries) {
 					// Multi-hit moves only roll for status once
 					if (!move.multihit || move.lastHit) {
@@ -527,7 +527,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					}
 				}
 			}
-			if (move.selfSwitch && pokemon.hp) {
+			if (move.selfSwitch && pokemon.st) {
 				pokemon.switchFlag = move.selfSwitch === true ? true : this.dex.toID(move.selfSwitch);
 			}
 

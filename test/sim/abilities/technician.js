@@ -22,7 +22,7 @@ describe('Technician', () => {
 		] });
 		battle.makeChoices('move shockwave 2, move sleeptalk', 'move sleeptalk, move sleeptalk');
 		const mew = battle.p2.active[1];
-		const damage = mew.maxhp - mew.hp;
+		const damage = mew.maxhp - mew.st;
 		assert.bounded(damage, [94, 112]);
 	});
 
@@ -36,7 +36,7 @@ describe('Technician', () => {
 		]]);
 		battle.makeChoices('move metalclaw 2, auto', 'auto');
 		const mew = battle.p2.active[1];
-		const damage = mew.maxhp - mew.hp;
+		const damage = mew.maxhp - mew.st;
 		assert.bounded(damage, [151, 178]);
 	});
 
@@ -54,14 +54,14 @@ describe('Technician', () => {
 		battle.makeChoices('move drainingkiss 2, move thief 1', 'auto');
 		const yveltal = battle.p2.active[1];
 		const xerneas = battle.p2.active[0];
-		const damage_xern = xerneas.maxhp - xerneas.hp;
+		const damage_xern = xerneas.maxhp - xerneas.st;
 		assert.bounded(damage_xern, [56, 67]);
-		const damage_yvel = yveltal.maxhp - yveltal.hp;
+		const damage_yvel = yveltal.maxhp - yveltal.st;
 		assert.bounded(damage_yvel, [48, 58]);
 		// Smeargle attacks Zygarde on the switch with Knock Off
 		battle.makeChoices('move knockoff 1, move sleeptalk', 'switch 3, move sleeptalk');
 		const zygarde = battle.p2.active[0];
-		const damage_zyg = zygarde.maxhp - zygarde.hp;
+		const damage_zyg = zygarde.maxhp - zygarde.st;
 		assert.bounded(damage_zyg, [11, 13]);
 	});
 });

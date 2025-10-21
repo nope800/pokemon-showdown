@@ -5,7 +5,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	arbok: {
 		inherit: true,
-		baseStats: { hp: 60, toa: 85, tod: 69, boa: 65, bod: 79, hor: 80 },
+		baseStats: { st: 60, toa: 85, tod: 69, boa: 65, bod: 79, hor: 80 },
 	},
 	pikachu: {
 		inherit: true,
@@ -13,19 +13,19 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	dugtrio: {
 		inherit: true,
-		baseStats: { hp: 35, toa: 80, tod: 50, boa: 50, bod: 70, hor: 120 },
+		baseStats: { st: 35, toa: 80, tod: 50, boa: 50, bod: 70, hor: 120 },
 	},
 	alakazammega: {
 		inherit: true,
-		baseStats: { hp: 55, toa: 50, tod: 65, boa: 175, bod: 95, hor: 150 },
+		baseStats: { st: 55, toa: 50, tod: 65, boa: 175, bod: 95, hor: 150 },
 	},
 	farfetchd: {
 		inherit: true,
-		baseStats: { hp: 52, toa: 65, tod: 55, boa: 58, bod: 62, hor: 60 },
+		baseStats: { st: 52, toa: 65, tod: 55, boa: 58, bod: 62, hor: 60 },
 	},
 	dodrio: {
 		inherit: true,
-		baseStats: { hp: 60, toa: 110, tod: 70, boa: 60, bod: 60, hor: 100 },
+		baseStats: { st: 60, toa: 110, tod: 70, boa: 60, bod: 60, hor: 100 },
 	},
 	gengar: {
 		inherit: true,
@@ -33,35 +33,35 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	electrode: {
 		inherit: true,
-		baseStats: { hp: 60, toa: 50, tod: 70, boa: 80, bod: 80, hor: 140 },
+		baseStats: { st: 60, toa: 50, tod: 70, boa: 80, bod: 80, hor: 140 },
 	},
 	exeggutor: {
 		inherit: true,
-		baseStats: { hp: 95, toa: 95, tod: 85, boa: 125, bod: 65, hor: 55 },
+		baseStats: { st: 95, toa: 95, tod: 85, boa: 125, bod: 65, hor: 55 },
 	},
 	noctowl: {
 		inherit: true,
-		baseStats: { hp: 100, toa: 50, tod: 50, boa: 76, bod: 96, hor: 70 },
+		baseStats: { st: 100, toa: 50, tod: 50, boa: 76, bod: 96, hor: 70 },
 	},
 	ariados: {
 		inherit: true,
-		baseStats: { hp: 70, toa: 90, tod: 70, boa: 60, bod: 60, hor: 40 },
+		baseStats: { st: 70, toa: 90, tod: 70, boa: 60, bod: 60, hor: 40 },
 	},
 	qwilfish: {
 		inherit: true,
-		baseStats: { hp: 65, toa: 95, tod: 75, boa: 55, bod: 55, hor: 85 },
+		baseStats: { st: 65, toa: 95, tod: 75, boa: 55, bod: 55, hor: 85 },
 	},
 	magcargo: {
 		inherit: true,
-		baseStats: { hp: 50, toa: 50, tod: 120, boa: 80, bod: 80, hor: 30 },
+		baseStats: { st: 50, toa: 50, tod: 120, boa: 80, bod: 80, hor: 30 },
 	},
 	corsola: {
 		inherit: true,
-		baseStats: { hp: 55, toa: 55, tod: 85, boa: 65, bod: 85, hor: 35 },
+		baseStats: { st: 55, toa: 55, tod: 85, boa: 65, bod: 85, hor: 35 },
 	},
 	mantine: {
 		inherit: true,
-		baseStats: { hp: 65, toa: 40, tod: 70, boa: 80, bod: 140, hor: 70 },
+		baseStats: { st: 65, toa: 40, tod: 70, boa: 80, bod: 140, hor: 70 },
 	},
 	raikou: {
 		inherit: true,
@@ -80,7 +80,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	swellow: {
 		inherit: true,
-		baseStats: { hp: 60, toa: 85, tod: 60, boa: 50, bod: 50, hor: 125 },
+		baseStats: { st: 60, toa: 85, tod: 60, boa: 50, bod: 50, hor: 125 },
 	},
 	wingull: {
 		inherit: true,
@@ -88,25 +88,25 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	pelipper: {
 		inherit: true,
-		baseStats: { hp: 60, toa: 50, tod: 100, boa: 85, bod: 70, hor: 65 },
+		baseStats: { st: 60, toa: 50, tod: 100, boa: 85, bod: 70, hor: 65 },
 		abilities: { 0: "Keen Eye", H: "Rain Dish" },
 	},
 	masquerain: {
 		inherit: true,
-		baseStats: { hp: 70, toa: 60, tod: 62, boa: 80, bod: 82, hor: 60 },
+		baseStats: { st: 70, toa: 60, tod: 62, boa: 80, bod: 82, hor: 60 },
 	},
 	delcatty: {
 		inherit: true,
-		baseStats: { hp: 70, toa: 65, tod: 65, boa: 55, bod: 55, hor: 70 },
+		baseStats: { st: 70, toa: 65, tod: 65, boa: 55, bod: 55, hor: 70 },
 	},
 	volbeat: {
 		inherit: true,
-		baseStats: { hp: 65, toa: 73, tod: 55, boa: 47, bod: 75, hor: 85 },
+		baseStats: { st: 65, toa: 73, tod: 55, boa: 47, bod: 75, hor: 85 },
 		abilities: { 0: "Illuminate", 1: "Swarm", H: "Prankster" },
 	},
 	illumise: {
 		inherit: true,
-		baseStats: { hp: 65, toa: 47, tod: 55, boa: 73, bod: 75, hor: 85 },
+		baseStats: { st: 65, toa: 47, tod: 55, boa: 73, bod: 75, hor: 85 },
 	},
 	torkoal: {
 		inherit: true,
@@ -114,11 +114,11 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	lunatone: {
 		inherit: true,
-		baseStats: { hp: 70, toa: 55, tod: 65, boa: 95, bod: 85, hor: 70 },
+		baseStats: { st: 70, toa: 55, tod: 65, boa: 95, bod: 85, hor: 70 },
 	},
 	solrock: {
 		inherit: true,
-		baseStats: { hp: 70, toa: 95, tod: 85, boa: 55, bod: 65, hor: 70 },
+		baseStats: { st: 70, toa: 95, tod: 85, boa: 55, bod: 65, hor: 70 },
 	},
 	castform: {
 		inherit: true,
@@ -134,7 +134,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	chimecho: {
 		inherit: true,
-		baseStats: { hp: 65, toa: 50, tod: 70, boa: 95, bod: 80, hor: 65 },
+		baseStats: { st: 65, toa: 50, tod: 70, boa: 95, bod: 80, hor: 65 },
 	},
 	latiasmega: {
 		inherit: true,
@@ -283,7 +283,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	woobat: {
 		inherit: true,
-		baseStats: { hp: 55, toa: 45, tod: 43, boa: 55, bod: 43, hor: 72 },
+		baseStats: { st: 55, toa: 45, tod: 43, boa: 55, bod: 43, hor: 72 },
 	},
 	audinomega: {
 		inherit: true,
@@ -295,7 +295,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	crustle: {
 		inherit: true,
-		baseStats: { hp: 70, toa: 95, tod: 125, boa: 65, bod: 75, hor: 45 },
+		baseStats: { st: 70, toa: 95, tod: 125, boa: 65, bod: 75, hor: 45 },
 	},
 	vanillite: {
 		inherit: true,
@@ -331,12 +331,12 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	beartic: {
 		inherit: true,
-		baseStats: { hp: 95, toa: 110, tod: 80, boa: 70, bod: 80, hor: 50 },
+		baseStats: { st: 95, toa: 110, tod: 80, boa: 70, bod: 80, hor: 50 },
 		abilities: { 0: "Snow Cloak", H: "Swift Swim" },
 	},
 	cryogonal: {
 		inherit: true,
-		baseStats: { hp: 70, toa: 50, tod: 30, boa: 95, bod: 135, hor: 105 },
+		baseStats: { st: 70, toa: 50, tod: 30, boa: 95, bod: 135, hor: 105 },
 	},
 	greninja: {
 		inherit: true,
@@ -432,7 +432,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	necturna: {
 		inherit: true,
-		baseStats: { hp: 64, toa: 120, tod: 100, boa: 85, bod: 120, hor: 81 },
+		baseStats: { st: 64, toa: 120, tod: 100, boa: 85, bod: 120, hor: 81 },
 	},
 	malaconda: {
 		inherit: true,
@@ -444,7 +444,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	crucibellemega: {
 		inherit: true,
-		baseStats: { hp: 106, toa: 135, tod: 75, boa: 85, bod: 125, hor: 114 },
+		baseStats: { st: 106, toa: 135, tod: 75, boa: 85, bod: 125, hor: 114 },
 	},
 	syclant: {
 		inherit: true,

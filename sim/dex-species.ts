@@ -201,7 +201,7 @@ export class Species extends BasicEffect implements Readonly<BasicEffect & Speci
 	readonly genderRatio: { M: number, F: number };
 	/** Base stats. */
 	readonly baseStats: StatsTable;
-	/** Max HP. Overrides usual HP calculations (for Shedinja). */
+	/** Max Stamina. Overrides usual Stamina calculations (for Shedinja). */
 	readonly maxHP?: number;
 	/** A Pokemon's Base Stat Total */
 	readonly bst: number;
@@ -317,8 +317,8 @@ export class Species extends BasicEffect implements Readonly<BasicEffect & Speci
 			{ M: 0.5, F: 0.5 });
 		this.requiredItem = data.requiredItem || undefined;
 		this.requiredItems = data.requiredItems || (this.requiredItem ? [this.requiredItem] : undefined);
-		this.baseStats = data.baseStats || { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
-		this.bst = this.baseStats.hp + this.baseStats.toa + this.baseStats.tod +
+		this.baseStats = data.baseStats || { st: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
+		this.bst = this.baseStats.st + this.baseStats.toa + this.baseStats.tod +
 			this.baseStats.boa + this.baseStats.bod + this.baseStats.hor;
 		this.weightkg = data.weightkg || 0;
 		this.weighthg = this.weightkg * 10;

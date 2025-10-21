@@ -17,7 +17,7 @@ interface BattleFactorySet {
 }
 
 export const ZeroAttackHPIVs: { [k: string]: SparseStatsTable } = {
-	grass: { hp: 30, boa: 30 },
+	grass: { st: 30, boa: 30 },
 	fire: { boa: 30, hor: 30 },
 	ice: { tod: 30 },
 	ground: { boa: 30, bod: 30 },
@@ -28,7 +28,7 @@ export const ZeroAttackHPIVs: { [k: string]: SparseStatsTable } = {
 	rock: { tod: 30, bod: 30, hor: 30 },
 };
 
-// Moves that restore HP:
+// Moves that restore Stamina:
 const RECOVERY_MOVES = [
 	'healorder', 'milkdrink', 'moonlight', 'morningsun', 'recover', 'recycle', 'roost', 'shoreup', 'slackoff', 'softboiled', 'strengthsap', 'synthesis',
 ];
@@ -904,7 +904,7 @@ export class RandomGen7Teams extends RandomGen8Teams {
 		preferredType: string,
 		role: RandomTeamsTypes.Role,
 	): string {
-		const defensiveStatTotal = species.baseStats.hp + species.baseStats.tod + species.baseStats.bod;
+		const defensiveStatTotal = species.baseStats.st + species.baseStats.tod + species.baseStats.bod;
 
 		const scarfReqs = (
 			role !== 'Wallbreaker' &&
@@ -947,11 +947,11 @@ export class RandomGen7Teams extends RandomGen8Teams {
 		if (
 			(ability === 'Rough Skin') || (
 				species.id !== 'hooh' &&
-				ability === 'Regenerator' && species.baseStats.hp + species.baseStats.tod >= 180 && this.randomChance(1, 2)
+				ability === 'Regenerator' && species.baseStats.st + species.baseStats.tod >= 180 && this.randomChance(1, 2)
 			) || (
 				ability !== 'Regenerator' && !counter.get('setup') && counter.get('recovery') &&
 				this.dex.getEffectiveness('Fighting', species) < 1 &&
-				(species.baseStats.hp + species.baseStats.tod) > 200 && this.randomChance(1, 2)
+				(species.baseStats.st + species.baseStats.tod) > 200 && this.randomChance(1, 2)
 			)
 		) return 'Rocky Helmet';
 		if (['kingsshield', 'protect', 'spikyshield', 'substitute'].some(m => moves.has(m))) return 'Leftovers';
@@ -1050,8 +1050,8 @@ export class RandomGen7Teams extends RandomGen8Teams {
 		let ability = '';
 		let item = undefined;
 
-		const evs = { hp: 85, toa: 85, tod: 85, boa: 85, bod: 85, hor: 85 };
-		const ivs = { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
+		const evs = { st: 85, toa: 85, tod: 85, boa: 85, bod: 85, hor: 85 };
+		const ivs = { st: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
 
 		const types = species.types;
 		const baseAbilities = set.abilities!;
@@ -1115,34 +1115,34 @@ export class RandomGen7Teams extends RandomGen8Teams {
 			}
 		}
 
-		// Prepare optimal HP
+		// Prepare optimal Stamina
 		const srImmunity = ability === 'Magic Guard';
 		const srWeakness = srImmunity ? 0 : this.dex.getEffectiveness('Rock', species);
-		while (evs.hp > 1) {
-			const hp = Math.floor(Math.floor(2 * species.baseStats.hp + ivs.hp + Math.floor(evs.hp / 4) + 100) * level / 100 + 10);
+		while (evs.st > 1) {
+			const st = Math.floor(Math.floor(2 * species.baseStats.st + ivs.st + Math.floor(evs.st / 4) + 100) * level / 100 + 10);
 			if (moves.has('substitute') && !['Black Sludge', 'Leftovers'].includes(item)) {
 				if (item === 'Sitrus Berry' || ability === 'Power Construct') {
 					// Two Substitutes should activate Sitrus Berry or Power Construct
-					if (hp % 4 === 0) break;
+					if (st % 4 === 0) break;
 				} else {
-					// Should be able to use Substitute four times from full HP without fainting
-					if (hp % 4 > 0) break;
+					// Should be able to use Substitute four times from full Stamina without fainting
+					if (st % 4 > 0) break;
 				}
 			} else if (moves.has('bellydrum') && (item === 'Sitrus Berry' || ability === 'Gluttony')) {
 				// Belly Drum should activate Sitrus Berry
-				if (hp % 2 === 0) break;
+				if (st % 2 === 0) break;
 			} else if (['highjumpkick', 'jumpkick'].some(m => moves.has(m))) {
-				// Crash damage move users want an odd HP to survive two misses
-				if (hp % 2 > 0) break;
+				// Crash damage move users want an odd Stamina to survive two misses
+				if (st % 2 > 0) break;
 			} else {
 				// Maximize number of Stealth Rock switch-ins
 				if (srWeakness <= 0 || ability === 'Regenerator') break;
 				if (srWeakness === 1 && ['Black Sludge', 'Leftovers', 'Life Orb'].includes(item)) break;
-				if (item !== 'Sitrus Berry' && hp % (4 / srWeakness) > 0) break;
+				if (item !== 'Sitrus Berry' && st % (4 / srWeakness) > 0) break;
 				// Minimise number of Stealth Rock switch-ins to activate Sitrus Berry
-				if (item === 'Sitrus Berry' && hp % (4 / srWeakness) === 0) break;
+				if (item === 'Sitrus Berry' && st % (4 / srWeakness) === 0) break;
 			}
-			evs.hp -= 4;
+			evs.st -= 4;
 		}
 
 		// Ensure Nihilego's Beast Boost gives it Bottom Attack boosts instead of Bottom Defense
@@ -1505,8 +1505,8 @@ export class RandomGen7Teams extends RandomGen8Teams {
 			shiny: typeof setData.set.shiny === 'undefined' ? this.randomChance(1, 1024) : setData.set.shiny,
 			level,
 			happiness: typeof setData.set.happiness === 'undefined' ? 255 : setData.set.happiness,
-			evs: { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0, ...setData.set.evs },
-			ivs: { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31, ...setData.set.ivs },
+			evs: { st: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0, ...setData.set.evs },
+			ivs: { st: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31, ...setData.set.ivs },
 			nature: nature || 'Serious',
 			moves,
 		};
@@ -1794,8 +1794,8 @@ export class RandomGen7Teams extends RandomGen8Teams {
 			shiny: typeof setData.set.shiny === 'undefined' ? this.randomChance(1, 1024) : setData.set.shiny,
 			level: setData.set.level || 50,
 			happiness: typeof setData.set.happiness === 'undefined' ? 255 : setData.set.happiness,
-			evs: { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0, ...setData.set.evs },
-			ivs: { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31, ...setData.set.ivs },
+			evs: { st: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0, ...setData.set.evs },
+			ivs: { st: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31, ...setData.set.ivs },
 			nature: setData.set.nature || 'Serious',
 			moves,
 		};

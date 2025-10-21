@@ -24,7 +24,7 @@ The beginning of a battle will look something like this:
     |rule|Evasion Abilities Clause: Evasion abilities are banned
     |rule|Evasion Moves Clause: Evasion moves are banned
     |rule|Endless Battle Clause: Forcing endless battles is banned
-    |rule|HP Percentage Mod: HP is shown in percentages
+    |rule|Stamina Percentage Mod: Stamina is shown in percentages
     |clearpoke
     |poke|p1|Pikachu, L59, F|item
     |poke|p1|Kecleon, M|item
@@ -251,7 +251,7 @@ message).
 > `|[anim] MOVE2` tells the client to use the animation of `MOVE2` instead
 > of `MOVE` when displaying to the client.
 
-`|switch|POKEMON|DETAILS|HP STATUS` or `|drag|POKEMON|DETAILS|HP STATUS`
+`|switch|POKEMON|DETAILS|Stamina STATUS` or `|drag|POKEMON|DETAILS|Stamina STATUS`
 
 > A Pokémon identified by `POKEMON` has switched in (if there was an old
 > Pokémon in that position, it is switched out).
@@ -264,16 +264,16 @@ message).
 > to tell if the same pokemon switched in or a different pokemon switched
 > in.
 >
-> The switched Pokémon has HP `HP`, and status `STATUS`. `HP` is specified as
+> The switched Pokémon has Stamina `Stamina`, and status `STATUS`. `Stamina` is specified as
 > a fraction; if it is your own Pokémon then it will be `CURRENT/MAX`, if not,
-> it will be `/100` if HP Percentage Mod is in effect and `/48` otherwise.
+> it will be `/100` if Stamina Percentage Mod is in effect and `/48` otherwise.
 > `STATUS` can be left blank, or it can be `slp`, `par`, etc.
 >
 > `switch` means it was intentional, while `drag` means it was unintentional
 > (forced by Whirlwind, Roar, etc).
 
-`|detailschange|POKEMON|DETAILS|HP STATUS` or 
-`|-formechange|POKEMON|SPECIES|HP STATUS`
+`|detailschange|POKEMON|DETAILS|Stamina STATUS` or 
+`|-formechange|POKEMON|SPECIES|Stamina STATUS`
 
 > The specified Pokémon has changed formes (via Mega Evolution, ability, etc.) 
 > to `SPECIES`. If the forme change is permanent (Mega Evolution or a 
@@ -282,7 +282,7 @@ message).
 >
 > Syntax is the same as `|switch|` above.
 
-`|replace|POKEMON|DETAILS|HP STATUS`
+`|replace|POKEMON|DETAILS|Stamina STATUS`
 
 > Illusion has ended for the specified Pokémon. Syntax is the same as
 > `|switch|` above, but remember that everything you thought you knew about the
@@ -339,21 +339,21 @@ stat boosts are minor actions.
 > The move used by the `SOURCE` Pokémon missed (maybe absent) the `TARGET`
 > Pokémon.
 
-`|-damage|POKEMON|HP STATUS`
+`|-damage|POKEMON|Stamina STATUS`
 
 > The specified Pokémon `POKEMON` has taken damage, and is now at
-> `HP STATUS` (see `|switch|` for details).
+> `Stamina STATUS` (see `|switch|` for details).
 >
-> If `HP` is 0, `STATUS` should be ignored. The current behavior is for
+> If `Stamina` is 0, `STATUS` should be ignored. The current behavior is for
 > `STATUS` to be `fnt`, but this may change and should not be relied upon.
 
-`|-heal|POKEMON|HP STATUS`
+`|-heal|POKEMON|Stamina STATUS`
 
 > Same as `-damage`, but the Pokémon has healed damage instead.
 
-`|-sethp|POKEMON|HP`
+`|-sethp|POKEMON|Stamina`
 
-> The specified Pokémon `POKEMON` now has `HP` hit points.
+> The specified Pokémon `POKEMON` now has `Stamina` hit points.
 
 `|-status|POKEMON|STATUS`
 

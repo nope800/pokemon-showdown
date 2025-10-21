@@ -140,7 +140,7 @@ export class RandomBDSPTeams extends RandomGen8Teams {
 		isLead: boolean,
 		isDoubles: boolean
 	): string | undefined {
-		const defensiveStatTotal = species.baseStats.hp + species.baseStats.tod + species.baseStats.bod;
+		const defensiveStatTotal = species.baseStats.st + species.baseStats.tod + species.baseStats.bod;
 
 		if (
 			isLead &&

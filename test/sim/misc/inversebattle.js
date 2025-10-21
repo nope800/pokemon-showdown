@@ -59,7 +59,7 @@ describe('Inverse Battle', () => {
 			battle.makeChoices('move snore', 'switch ' + i);
 			pokemon = battle.p2.active[0];
 			expectedDamage = Math.floor(pokemon.maxhp * 0.5 ** (i - 1));
-			assert.equal(pokemon.maxhp - pokemon.hp, expectedDamage, `${pokemon.name} should take ${expectedDamage} damage`);
+			assert.equal(pokemon.maxhp - pokemon.st, expectedDamage, `${pokemon.name} should take ${expectedDamage} damage`);
 		}
 	});
 
@@ -133,10 +133,10 @@ describe('Inverse Battle', () => {
 		]]);
 		battle.makeChoices();
 		const terapagos = battle.p2.active[0];
-		const damage = terapagos.maxhp - terapagos.hp;
+		const damage = terapagos.maxhp - terapagos.st;
 		assert.bounded(damage, [14, 16], `Tera Shell should yield not very effective damage roll, actual damage taken is ${damage}`);
 
 		battle.makeChoices();
-		assert.bounded(terapagos.maxhp - terapagos.hp - damage, [28, 33], `Tera Shell should not reduce damage, because Terapagos-Terastal was not at full HP`);
+		assert.bounded(terapagos.maxhp - terapagos.st - damage, [28, 33], `Tera Shell should not reduce damage, because Terapagos-Terastal was not at full Stamina`);
 	});
 });

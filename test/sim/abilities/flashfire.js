@@ -19,7 +19,7 @@ describe('Flash Fire', () => {
 		const [flashMon, foePokemon] = [battle.p1.active[0], battle.p2.active[0]];
 		battle.makeChoices('move incinerate', 'move flareblitz');
 		assert.fullHP(flashMon);
-		const damage = foePokemon.maxhp - foePokemon.hp;
+		const damage = foePokemon.maxhp - foePokemon.st;
 		assert.bounded(damage, [82, 97]);
 	});
 
@@ -52,7 +52,7 @@ describe('Flash Fire', () => {
 		battle.makeChoices('move sleeptalk', 'move flamethrower');
 		battle.makeChoices('move incinerate', 'move worryseed');
 		const talonflame = battle.p2.active[0];
-		const damage = talonflame.maxhp - talonflame.hp;
+		const damage = talonflame.maxhp - talonflame.st;
 		assert.bounded(damage, [54, 65]);
 	});
 });
@@ -71,7 +71,7 @@ describe('Flash Fire [Gen 3-4]', () => {
 		const flashFireMon = battle.p1.active[0];
 		flashFireMon.setStatus('frz');
 		battle.makeChoices();
-		assert.notEqual(flashFireMon.hp, flashFireMon.maxhp);
+		assert.notEqual(flashFireMon.st, flashFireMon.maxhp);
 	});
 
 	it('should activate and grant Fire-type immunity even if the user is frozen in Gen 4', () => {

@@ -31,6 +31,6 @@ describe('Thief', () => {
 		battle.setPlayer('p1', { team: [{ species: "Mew", ability: 'synchronize', moves: ['thief'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Blissey", ability: 'naturalcure', item: 'lifeorb', moves: ['softboiled'] }] });
 		battle.makeChoices('move thief', 'move softboiled');
-		assert.equal(battle.p1.active[0].hp, Math.ceil(9 / 10 * battle.p1.active[0].maxhp));
+		assert.equal(battle.p1.active[0].st, Math.ceil(9 / 10 * battle.p1.active[0].maxhp));
 	});
 });

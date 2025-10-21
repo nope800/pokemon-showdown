@@ -26,8 +26,8 @@ export const Scripts: ModdedBattleScriptsData = {
 	pokemon: {
 		inherit: true,
 		getStat(statName, unmodified) {
-			// @ts-expect-error type checking prevents 'hp' from being passed, but we're paranoid
-			if (statName === 'hp') throw new Error("Please read `maxhp` directly");
+			// @ts-expect-error type checking prevents 'st' from being passed, but we're paranoid
+			if (statName === 'st') throw new Error("Please read `maxhp` directly");
 			if (unmodified) return this.baseStoredStats[statName];
 			return this.modifiedStats![statName];
 		},
@@ -217,7 +217,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					pokemon.side.lastMove = move;
 
 					this.battle.runEvent('AfterMove', pokemon, target, move);
-					if (!target || target.hp > 0) {
+					if (!target || target.st > 0) {
 						this.battle.runEvent('AfterMoveSelf', pokemon, target, move);
 					}
 				}
@@ -412,7 +412,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					// In gen 1, all the hits have the same damage for multihits move
 					let moveDamage: number | undefined | false = 0;
 					let i: number;
-					for (i = 0; i < hits && target.hp && pokemon.hp; i++) {
+					for (i = 0; i < hits && target.st && pokemon.st; i++) {
 						move.hit = i + 1;
 						if (move.hit === hits) move.lastHit = true;
 						moveDamage = this.moveHit(target, pokemon, move);
@@ -532,8 +532,8 @@ export const Scripts: ModdedBattleScriptsData = {
 				// basically, these values have the same meanings as they do for event
 				// handlers.
 
-				if (damage && damage > target.hp) {
-					damage = target.hp;
+				if (damage && damage > target.st) {
+					damage = target.st;
 				}
 				if ((damage || damage === 0) && !target.fainted) {
 					damage = this.battle.damage(damage, target, pokemon, move);
@@ -545,7 +545,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				if (damage === false || damage === null) {
 					return false;
 				}
-				if (moveData.boosts && target.hp) {
+				if (moveData.boosts && target.st) {
 					const willBoost = this.battle.boost(moveData.boosts, target, pokemon, move);
 					if (!willBoost) {
 						this.battle.add('-fail', target);
@@ -646,7 +646,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			}
 
 			// Apply move secondaries.
-			if (moveData.secondaries && target && target.hp > 0) {
+			if (moveData.secondaries && target && target.st > 0) {
 				for (const secondary of moveData.secondaries) {
 					// Multi-hit moves only roll for status once
 					if (!move.multihit || move.lastHit) {
@@ -669,7 +669,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					}
 				}
 			}
-			if (move.selfSwitch && pokemon.hp) {
+			if (move.selfSwitch && pokemon.st) {
 				pokemon.switchFlag = move.selfSwitch === true ? true : this.dex.toID(move.selfSwitch);
 			}
 
@@ -907,7 +907,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			if (!effect) effect = this.effect;
 		}
 		if (typeof effect === 'string') effect = this.dex.conditions.get(effect);
-		if (!target?.hp) return 0;
+		if (!target?.st) return 0;
 		let success = null;
 		boost = this.runEvent('TryBoost', target, source, effect, { ...boost });
 		let i: BoostID;

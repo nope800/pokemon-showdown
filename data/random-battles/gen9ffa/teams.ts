@@ -38,7 +38,7 @@ const SPECIAL_SETUP = [
 	'calmmind', 'chargebeam', 'geomancy', 'nastyplot', 'quiverdance', 'tailglow', 'takeheart', 'torchsong',
 ];
 
-// Moves that restore HP:
+// Moves that restore Stamina:
 const RECOVERY_MOVES = [
 	'healorder', 'milkdrink', 'moonlight', 'morningsun', 'recover', 'roost', 'shoreup', 'slackoff', 'softboiled', 'strengthsap', 'synthesis',
 ];
@@ -803,8 +803,8 @@ export class RandomFFATeams extends RandomTeams {
 		let ability = '';
 		let item = undefined;
 
-		const evs = { hp: 85, toa: 85, tod: 85, boa: 85, bod: 85, hor: 85 };
-		const ivs = { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
+		const evs = { st: 85, toa: 85, tod: 85, boa: 85, bod: 85, hor: 85 };
+		const ivs = { st: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
 
 		const types = species.types;
 		const abilities = set.abilities!;
@@ -826,29 +826,29 @@ export class RandomFFATeams extends RandomTeams {
 		// Get level
 		const level = this.getLevel(species);
 
-		// Prepare optimal HP for Belly Drum and Life Orb
-		let hp = Math.floor(Math.floor(2 * species.baseStats.hp + ivs.hp + Math.floor(evs.hp / 4) + 100) * level / 100 + 10);
-		let targetHP = hp;
-		const minimumHP = Math.floor(Math.floor(2 * species.baseStats.hp + 100) * level / 100 + 10);
+		// Prepare optimal Stamina for Belly Drum and Life Orb
+		let st = Math.floor(Math.floor(2 * species.baseStats.st + ivs.st + Math.floor(evs.st / 4) + 100) * level / 100 + 10);
+		let targetHP = st;
+		const minimumHP = Math.floor(Math.floor(2 * species.baseStats.st + 100) * level / 100 + 10);
 		if (item === "Life Orb") {
-			targetHP = Math.floor(hp / 10) * 10 - 1;
+			targetHP = Math.floor(st / 10) * 10 - 1;
 		} else if (moves.has("bellydrum")) {
-			targetHP = Math.floor(hp / 2) * 2;
+			targetHP = Math.floor(st / 2) * 2;
 		}
-		// If the difference is too extreme, don't adjust HP
-		if (hp > targetHP && hp - targetHP <= 3 && targetHP >= minimumHP) {
+		// If the difference is too extreme, don't adjust Stamina
+		if (st > targetHP && st - targetHP <= 3 && targetHP >= minimumHP) {
 			// If setting evs to 0 is sufficient, decrement evs, otherwise decrement ivs with evs set to 0
-			if (Math.floor(Math.floor(2 * species.baseStats.hp + ivs.hp + 100) * level / 100 + 10) >= targetHP) {
-				evs.hp = 0;
-				hp = Math.floor(Math.floor(2 * species.baseStats.hp + ivs.hp + Math.floor(evs.hp / 4) + 100) * level / 100 + 10);
-				while (hp > targetHP) {
-					ivs.hp -= 1;
-					hp = Math.floor(Math.floor(2 * species.baseStats.hp + ivs.hp + Math.floor(evs.hp / 4) + 100) * level / 100 + 10);
+			if (Math.floor(Math.floor(2 * species.baseStats.st + ivs.st + 100) * level / 100 + 10) >= targetHP) {
+				evs.st = 0;
+				st = Math.floor(Math.floor(2 * species.baseStats.st + ivs.st + Math.floor(evs.st / 4) + 100) * level / 100 + 10);
+				while (st > targetHP) {
+					ivs.st -= 1;
+					st = Math.floor(Math.floor(2 * species.baseStats.st + ivs.st + Math.floor(evs.st / 4) + 100) * level / 100 + 10);
 				}
 			} else {
-				while (hp > targetHP) {
-					evs.hp -= 4;
-					hp = Math.floor(Math.floor(2 * species.baseStats.hp + ivs.hp + Math.floor(evs.hp / 4) + 100) * level / 100 + 10);
+				while (st > targetHP) {
+					evs.st -= 4;
+					st = Math.floor(Math.floor(2 * species.baseStats.st + ivs.st + Math.floor(evs.st / 4) + 100) * level / 100 + 10);
 				}
 			}
 		}

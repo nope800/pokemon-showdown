@@ -127,10 +127,10 @@ describe('Cloud Nine', () => {
 		battle.makeChoices();
 		battle.makeChoices('move raindance', 'auto');
 		assert.equal(manaphy.status, 'tox');
-		const hp = manaphy.hp;
+		const st = manaphy.st;
 
 		battle.makeChoices('move finalgambit', 'auto');
 		assert.equal(manaphy.status, '');
-		assert.equal(manaphy.hp, hp - battle.p1.active[0].maxhp);
+		assert.equal(manaphy.st, st - battle.p1.active[0].maxhp);
 	});
 });

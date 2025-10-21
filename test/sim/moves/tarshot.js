@@ -19,7 +19,7 @@ describe('Tar Shot', () => {
 		battle.makeChoices();
 		battle.makeChoices('move fusionflare', 'auto');
 		const cleffa = battle.p2.active[0];
-		const damage = cleffa.maxhp - cleffa.hp;
+		const damage = cleffa.maxhp - cleffa.st;
 		assert.bounded(damage, [82, 98]);
 	});
 
@@ -46,7 +46,7 @@ describe('Tar Shot', () => {
 		]]);
 		battle.makeChoices('move tarshot 1, move fusionflare 1', 'auto');
 		const torn = battle.p2.active[0];
-		const damage = torn.maxhp - torn.hp;
+		const damage = torn.maxhp - torn.st;
 		assert.bounded(damage, [62, 74]);
 	});
 
@@ -59,7 +59,7 @@ describe('Tar Shot', () => {
 		battle.makeChoices('move tarshot', 'auto');
 		battle.makeChoices('move flamecharge', 'auto');
 		const ferro = battle.p2.active[0];
-		const damage = ferro.maxhp - ferro.hp;
+		const damage = ferro.maxhp - ferro.st;
 		assert.bounded(damage, [88, 104]);
 	});
 

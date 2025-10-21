@@ -10,7 +10,7 @@ describe(`Cheek Pouch`, () => {
 		battle.destroy();
 	});
 
-	it(`should restore 1/3 HP to the user after eating a Berry`, () => {
+	it(`should restore 1/3 Stamina to the user after eating a Berry`, () => {
 		battle = common.createBattle([[
 			{ species: 'wynaut', item: 'lumberry', ability: 'cheekpouch', moves: ['sleeptalk'] },
 		], [
@@ -21,7 +21,7 @@ describe(`Cheek Pouch`, () => {
 		assert.fullHP(wynaut);
 	});
 
-	it(`should not activate if the user was at full HP`, () => {
+	it(`should not activate if the user was at full Stamina`, () => {
 		battle = common.createBattle([[
 			{ species: 'wynaut', item: 'lumberry', ability: 'cheekpouch', moves: ['sleeptalk'] },
 		], [

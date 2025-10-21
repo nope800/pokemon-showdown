@@ -7,29 +7,29 @@ let team;
 describe('Team Validator', () => {
 	it("should validate Necrozma formes correctly", () => {
 		team = [
-			{ species: 'necrozmadawnwings', ability: 'prismarmor', shiny: true, moves: ['moongeistbeam', 'metalclaw'], evs: { hp: 1 } },
+			{ species: 'necrozmadawnwings', ability: 'prismarmor', shiny: true, moves: ['moongeistbeam', 'metalclaw'], evs: { st: 1 } },
 		];
 		assert.legalTeam(team, 'gen7anythinggoes');
 	});
 
 	it('should reject Ultra Necrozma where ambiguous', () => {
 		team = [
-			{ species: 'necrozmaultra', ability: 'neuroforce', moves: ['confusion'], evs: { hp: 1 } },
+			{ species: 'necrozmaultra', ability: 'neuroforce', moves: ['confusion'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen7ubers');
 	});
 
 	it('should handle Deoxys formes in Gen 3', () => {
 		team = [
-			{ species: 'deoxys', ability: 'pressure', moves: ['wrap'], evs: { hp: 1 } },
-			{ species: 'deoxys', ability: 'pressure', moves: ['wrap'], evs: { hp: 1 } },
+			{ species: 'deoxys', ability: 'pressure', moves: ['wrap'], evs: { st: 1 } },
+			{ species: 'deoxys', ability: 'pressure', moves: ['wrap'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen3ubers');
 		assert.legalTeam(team, 'gen3ubers@@@!speciesclause');
 
 		team = [
-			{ species: 'deoxysattack', ability: 'pressure', moves: ['wrap'], evs: { hp: 1 } },
-			{ species: 'deoxysdefense', ability: 'pressure', moves: ['wrap'], evs: { hp: 1 } },
+			{ species: 'deoxysattack', ability: 'pressure', moves: ['wrap'], evs: { st: 1 } },
+			{ species: 'deoxysdefense', ability: 'pressure', moves: ['wrap'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen3ubers@@@!speciesclause');
 		assert.legalTeam(team, 'gen3ubers@@@!speciesclause,+nonexistent');
@@ -37,65 +37,65 @@ describe('Team Validator', () => {
 
 	it('should correctly validate USUM Rockruff', () => {
 		team = [
-			{ species: 'rockruff', ability: 'owntempo', moves: ['happyhour'], evs: { hp: 1 } },
+			{ species: 'rockruff', ability: 'owntempo', moves: ['happyhour'], evs: { st: 1 } },
 		];
 		assert.legalTeam(team, 'gen7anythinggoes');
 		team = [
-			{ species: 'rockruff', level: 9, ability: 'owntempo', moves: ['happyhour'], evs: { hp: 1 } },
+			{ species: 'rockruff', level: 9, ability: 'owntempo', moves: ['happyhour'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen7anythinggoes');
 		team = [
-			{ species: 'rockruff', level: 9, ability: 'owntempo', moves: ['tackle'], evs: { hp: 1 } },
+			{ species: 'rockruff', level: 9, ability: 'owntempo', moves: ['tackle'], evs: { st: 1 } },
 		];
 		assert.legalTeam(team, 'gen7anythinggoes');
 		team = [
-			{ species: 'rockruff', level: 9, ability: 'steadfast', moves: ['happyhour'], evs: { hp: 1 } },
+			{ species: 'rockruff', level: 9, ability: 'steadfast', moves: ['happyhour'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen7anythinggoes');
 
 		team = [
-			{ species: 'lycanrocdusk', ability: 'toughclaws', moves: ['happyhour'], evs: { hp: 1 } },
+			{ species: 'lycanrocdusk', ability: 'toughclaws', moves: ['happyhour'], evs: { st: 1 } },
 		];
 		assert.legalTeam(team, 'gen7anythinggoes');
 		team = [
-			{ species: 'lycanroc', ability: 'steadfast', moves: ['happyhour'], evs: { hp: 1 } },
+			{ species: 'lycanroc', ability: 'steadfast', moves: ['happyhour'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen7anythinggoes');
 	});
 
 	it('should reject Pokemon that cannot obtain moves in a particular forme', () => {
 		team = [
-			{ species: 'toxtricity', ability: 'punkrock', moves: ['venomdrench, magneticflux'], evs: { hp: 1 } },
-			{ species: 'toxtricity-low-key', ability: 'punkrock', moves: ['venoshock, shiftgear'], evs: { hp: 1 } },
+			{ species: 'toxtricity', ability: 'punkrock', moves: ['venomdrench, magneticflux'], evs: { st: 1 } },
+			{ species: 'toxtricity-low-key', ability: 'punkrock', moves: ['venoshock, shiftgear'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen8anythinggoes');
 
 		team = [
-			{ species: 'rotom-wash', ability: 'levitate', moves: ['overheat'], evs: { hp: 1 } },
+			{ species: 'rotom-wash', ability: 'levitate', moves: ['overheat'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen8anythinggoes');
 
 		team = [
-			{ species: 'kyurem-black', ability: 'teravolt', moves: ['glaciate'], evs: { hp: 1 } },
+			{ species: 'kyurem-black', ability: 'teravolt', moves: ['glaciate'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen8anythinggoes');
 
 		// Scary Face is a TM in Gen 8, so use Gen 7 to test
 		team = [
-			{ species: 'kyurem-white', ability: 'turboblaze', moves: ['scaryface'], evs: { hp: 1 } },
+			{ species: 'kyurem-white', ability: 'turboblaze', moves: ['scaryface'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen7anythinggoes');
 
 		// Hoopa's Hyperspace moves are form-specific in Generation 9
 		team = [
-			{ species: 'hoopa-confined', ability: 'magician', moves: ['hyperspacefury'], evs: { hp: 1 } },
-			{ species: 'hoopa-unbound', ability: 'magician', moves: ['hyperspacehole'], evs: { hp: 1 } },
+			{ species: 'hoopa-confined', ability: 'magician', moves: ['hyperspacefury'], evs: { st: 1 } },
+			{ species: 'hoopa-unbound', ability: 'magician', moves: ['hyperspacehole'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen9anythinggoes');
 
 		team = [
-			{ species: 'hoopa-confined', ability: 'magician', moves: ['hyperspacefury'], evs: { hp: 1 } },
-			{ species: 'hoopa-unbound', ability: 'magician', moves: ['hyperspacehole'], evs: { hp: 1 } },
+			{ species: 'hoopa-confined', ability: 'magician', moves: ['hyperspacefury'], evs: { st: 1 } },
+			{ species: 'hoopa-unbound', ability: 'magician', moves: ['hyperspacehole'], evs: { st: 1 } },
 		];
 		assert.legalTeam(team, 'gen7anythinggoes');
 	});
@@ -103,24 +103,24 @@ describe('Team Validator', () => {
 	// Zamazenta is unreleased currently
 	it.skip('should tier Zacian and Zamazenta formes separately', () => {
 		team = [
-			{ species: 'zamazenta-crowned', ability: 'dauntlessshield', item: 'rustedshield', moves: ['howl'], evs: { hp: 1 } },
+			{ species: 'zamazenta-crowned', ability: 'dauntlessshield', item: 'rustedshield', moves: ['howl'], evs: { st: 1 } },
 		];
 		assert.legalTeam(team, 'gen9almostanyability');
 
 		team = [
-			{ species: 'zamazenta', ability: 'dauntlessshield', item: 'lifeorb', moves: ['howl'], evs: { hp: 1 } },
+			{ species: 'zamazenta', ability: 'dauntlessshield', item: 'lifeorb', moves: ['howl'], evs: { st: 1 } },
 		];
 		assert.false.legalTeam(team, 'gen9almostanyability');
 	});
 
 	it('should validate Unown formes in Gen 2 based on DVs', () => {
 		team = [
-			{ species: 'unowng', moves: ['hiddenpower'], ivs: { hp: 12, toa: 20, tod: 18, boa: 28, bod: 28, hor: 2 } },
+			{ species: 'unowng', moves: ['hiddenpower'], ivs: { st: 12, toa: 20, tod: 18, boa: 28, bod: 28, hor: 2 } },
 		];
 		assert.legalTeam(team, 'gen2ou');
 
 		team = [
-			{ species: 'unown', moves: ['hiddenpower'], ivs: { hp: 0, toa: 4, tod: 4, boa: 4, bod: 4, hor: 4 } },
+			{ species: 'unown', moves: ['hiddenpower'], ivs: { st: 0, toa: 4, tod: 4, boa: 4, bod: 4, hor: 4 } },
 		];
 		assert.false.legalTeam(team, 'gen2ou');
 	});

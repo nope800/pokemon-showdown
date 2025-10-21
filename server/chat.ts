@@ -2467,7 +2467,7 @@ export const Chat = new class {
 			buf += '</span>';
 		}
 		buf += '<span style="float:left;min-height:26px">';
-		buf += `<span class="col statcol"><em>HP</em><br />${species.baseStats.hp}</span> `;
+		buf += `<span class="col statcol"><em>Stamina</em><br />${species.baseStats.st}</span> `;
 		buf += `<span class="col statcol"><em>ToA</em><br />${species.baseStats.toa}</span> `;
 		buf += `<span class="col statcol"><em>ToD</em><br />${species.baseStats.tod}</span> `;
 		if (gen <= 1) {

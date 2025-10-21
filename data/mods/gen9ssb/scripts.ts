@@ -56,7 +56,7 @@ export function enemyStaff(pokemon: Pokemon): string {
 export function changeSet(context: Battle, pokemon: Pokemon, newSet: SSBSet, changeAbility = false) {
 	if (pokemon.transformed) return;
 	const evs: StatsTable = {
-		hp: newSet.evs?.hp || 0,
+		st: newSet.evs?.st || 0,
 		toa: newSet.evs?.toa || 0,
 		tod: newSet.evs?.tod || 0,
 		boa: newSet.evs?.boa || 0,
@@ -64,7 +64,7 @@ export function changeSet(context: Battle, pokemon: Pokemon, newSet: SSBSet, cha
 		hor: newSet.evs?.hor || 0,
 	};
 	const ivs: StatsTable = {
-		hp: newSet.ivs?.hp || 31,
+		st: newSet.ivs?.st || 31,
 		toa: newSet.ivs?.toa || 31,
 		tod: newSet.ivs?.tod || 31,
 		boa: newSet.ivs?.boa || 31,
@@ -82,7 +82,7 @@ export function changeSet(context: Battle, pokemon: Pokemon, newSet: SSBSet, cha
 	}
 	const oldShiny = pokemon.set.shiny;
 	pokemon.set.shiny = (typeof newSet.shiny === 'number') ? context.randomChance(1, newSet.shiny) : !!newSet.shiny;
-	let percent = (pokemon.hp / pokemon.baseMaxhp);
+	let percent = (pokemon.st / pokemon.baseMaxhp);
 	if (newSet.species === 'Shedinja') percent = 1;
 	pokemon.formeChange(newSet.species, context.effect, true);
 	if (!pokemon.terastallized && newSet.teraType) {
@@ -95,10 +95,10 @@ export function changeSet(context: Battle, pokemon: Pokemon, newSet: SSBSet, cha
 	if (changeAbility) pokemon.setAbility(newSet.ability as string, undefined, undefined, true);
 
 	pokemon.baseMaxhp = pokemon.species.name === 'Shedinja' ? 1 : Math.floor(Math.floor(
-		2 * pokemon.species.baseStats.hp + pokemon.set.ivs.hp + Math.floor(pokemon.set.evs.hp / 4) + 100
+		2 * pokemon.species.baseStats.st + pokemon.set.ivs.st + Math.floor(pokemon.set.evs.st / 4) + 100
 	) * pokemon.level / 100 + 10);
 	const newMaxHP = pokemon.baseMaxhp;
-	pokemon.hp = Math.round(newMaxHP * percent);
+	pokemon.st = Math.round(newMaxHP * percent);
 	pokemon.maxhp = newMaxHP;
 	context.add('-heal', pokemon, pokemon.getHealth, '[silent]');
 	if (pokemon.item) {
@@ -167,7 +167,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			if (!source) source = this.event.source;
 			if (!effect) effect = this.effect;
 		}
-		if (!target?.hp) return 0;
+		if (!target?.st) return 0;
 		if (!target.isActive) return false;
 		if (this.gen > 5 && !target.side.foePokemonLeft()) return false;
 		boost = this.runEvent('ChangeBoost', target, source, effect, { ...boost });
@@ -362,7 +362,7 @@ export const Scripts: ModdedBattleScriptsData = {
 	},
 	// Fake switch needed for HiZo's Scapegoat
 	runAction(action) {
-		const pokemonOriginalHP = action.pokemon?.hp;
+		const pokemonOriginalHP = action.pokemon?.st;
 		let residualPokemon: (readonly [Pokemon, number])[] = [];
 		// returns whether or not we ended in a callback
 		switch (action.choice) {
@@ -423,7 +423,7 @@ export const Scripts: ModdedBattleScriptsData = {
 						// forfeited before starting
 						side.active[i] = side.pokemon[i];
 						side.active[i].fainted = true;
-						side.active[i].hp = 0;
+						side.active[i].st = 0;
 					} else {
 						this.actions.switchIn(side.pokemon[i], i);
 					}
@@ -501,7 +501,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					break;
 				} else {
 					// in gen 5+, the switch is cancelled
-					this.hint("A Pokemon can't switch between when it runs out of HP and when it faints");
+					this.hint("A Pokemon can't switch between when it runs out of Stamina and when it faints");
 					break;
 				}
 			}
@@ -519,7 +519,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			action.target.faintQueued = false;
 			action.target.subFainted = false;
 			action.target.status = '';
-			action.target.hp = 1; // Needed so hp functions works
+			action.target.st = 1; // Needed so st functions works
 			action.target.sethp(action.target.maxhp / 2);
 			this.add('-heal', action.target, action.target.getHealth, '[from] move: Revival Blessing');
 			action.pokemon.side.removeSlotCondition(action.pokemon, 'revivalblessing');
@@ -527,7 +527,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		// @ts-expect-error I'm sorry but it takes a lot
 		case 'scapegoat':
 			action = action as SwitchAction;
-			const percent = (action.target.hp / action.target.baseMaxhp) * 100;
+			const percent = (action.target.st / action.target.baseMaxhp) * 100;
 			// TODO: Client support for custom faint
 			action.target.faint();
 			if (percent > 66) {
@@ -569,7 +569,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		for (const side of this.sides) {
 			for (const pokemon of side.active) {
 				if (pokemon.forceSwitchFlag) {
-					if (pokemon.hp) this.actions.dragIn(pokemon.side, pokemon.position);
+					if (pokemon.st) this.actions.dragIn(pokemon.side, pokemon.position);
 					pokemon.forceSwitchFlag = false;
 				}
 			}
@@ -608,7 +608,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			this.eachEvent('Update');
 			for (const [pokemon, originalHP] of residualPokemon) {
 				const maxhp = pokemon.getUndynamaxedHP(pokemon.maxhp);
-				if (pokemon.hp && pokemon.getUndynamaxedHP() <= maxhp / 2 && originalHP > maxhp / 2) {
+				if (pokemon.st && pokemon.getUndynamaxedHP() <= maxhp / 2 && originalHP > maxhp / 2) {
 					this.runEvent('EmergencyExit', pokemon);
 				}
 			}
@@ -616,7 +616,7 @@ export const Scripts: ModdedBattleScriptsData = {
 
 		if (action.choice === 'runSwitch') {
 			const pokemon = action.pokemon;
-			if (pokemon.hp && pokemon.hp <= pokemon.maxhp / 2 && pokemonOriginalHP! > pokemon.maxhp / 2) {
+			if (pokemon.st && pokemon.st <= pokemon.maxhp / 2 && pokemonOriginalHP! > pokemon.maxhp / 2) {
 				this.runEvent('EmergencyExit', pokemon);
 			}
 		}
@@ -641,7 +641,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				if (!reviveSwitch) switches[i] = false;
 			} else if (switches[i]) {
 				for (const pokemon of this.sides[i].active) {
-					if (pokemon.hp && pokemon.switchFlag && pokemon.switchFlag !== 'revivalblessing' &&
+					if (pokemon.st && pokemon.switchFlag && pokemon.switchFlag !== 'revivalblessing' &&
 						pokemon.switchFlag !== 'scapegoat' && !pokemon.skipBeforeSwitchOutEventFlag) {
 						this.runEvent('BeforeSwitchOut', pokemon);
 						pokemon.skipBeforeSwitchOutEventFlag = true;
@@ -828,7 +828,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				throw new Error(`Invalid switch position ${pos} / ${side.active.length}`);
 			}
 			const oldActive = side.active[pos];
-			const unfaintedActive = oldActive?.hp ? oldActive : null;
+			const unfaintedActive = oldActive?.st ? oldActive : null;
 			if (unfaintedActive) {
 				oldActive.beingCalledBack = true;
 				let switchCopyFlag: 'copyvolatile' | 'shedtail' | boolean = false;
@@ -851,7 +851,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					// which is handled elsewhere); this is just for custom formats.
 					return false;
 				}
-				if (!oldActive.hp) {
+				if (!oldActive.st) {
 					// a pokemon fainted from Pursuit before it could switch
 					return 'pursuitfaint';
 				}
@@ -1375,7 +1375,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				moveResult = this.trySpreadMoveHit(targets, pokemon, move);
 			}
 			if (move.selfBoost && moveResult) this.moveHit(pokemon, pokemon, move, move.selfBoost, false, true);
-			if (!pokemon.hp) {
+			if (!pokemon.st) {
 				this.battle.faint(pokemon, pokemon, move);
 			}
 
@@ -1385,11 +1385,11 @@ export const Scripts: ModdedBattleScriptsData = {
 			}
 
 			if (!(move.hasSheerForce && pokemon.hasAbility('sheerforce')) && !move.flags['futuremove']) {
-				const originalHp = pokemon.hp;
+				const originalHp = pokemon.st;
 				this.battle.singleEvent('AfterMoveSecondarySelf', move, null, pokemon, target, move);
 				this.battle.runEvent('AfterMoveSecondarySelf', pokemon, target, move);
 				if (pokemon && pokemon !== target && move.category !== 'Status') {
-					if (pokemon.hp <= pokemon.maxhp / 2 && originalHp > pokemon.maxhp / 2) {
+					if (pokemon.st <= pokemon.maxhp / 2 && originalHp > pokemon.maxhp / 2) {
 						this.battle.runEvent('EmergencyExit', pokemon, pokemon);
 					}
 				}
@@ -1433,7 +1433,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			for (hit = 1; hit <= targetHits; hit++) {
 				if (damage.includes(false)) break;
 				if (hit > 1 && pokemon.status === 'slp' && (!isSleepUsable || this.battle.gen === 4)) break;
-				if (targets.every(target => !target?.hp)) break;
+				if (targets.every(target => !target?.st)) break;
 				move.hit = hit;
 				if (move.smartTarget && targets.length > 1) {
 					targetsCopy = [targets[hit - 1]];
@@ -1507,15 +1507,15 @@ export const Scripts: ModdedBattleScriptsData = {
 					move.totalDamage += damage[i];
 				}
 				if (move.mindBlownRecoil) {
-					const hpBeforeRecoil = pokemon.hp;
+					const hpBeforeRecoil = pokemon.st;
 					this.battle.damage(Math.round(pokemon.maxhp / 2), pokemon, pokemon, this.dex.conditions.get(move.id), true);
 					move.mindBlownRecoil = false;
-					if (pokemon.hp <= pokemon.maxhp / 2 && hpBeforeRecoil > pokemon.maxhp / 2) {
+					if (pokemon.st <= pokemon.maxhp / 2 && hpBeforeRecoil > pokemon.maxhp / 2) {
 						this.battle.runEvent('EmergencyExit', pokemon, pokemon);
 					}
 				}
 				this.battle.eachEvent('Update');
-				if (!pokemon.hp && targets.length === 1) {
+				if (!pokemon.st && targets.length === 1) {
 					hit++; // report the correct number of hits for multihit moves
 					break;
 				}
@@ -1523,21 +1523,21 @@ export const Scripts: ModdedBattleScriptsData = {
 			// hit is 1 higher than the actual hit count
 			if (hit === 1) return damage.fill(false);
 			if (nullDamage) damage.fill(false);
-			this.battle.faintMessages(false, false, !pokemon.hp);
+			this.battle.faintMessages(false, false, !pokemon.st);
 			if (move.multihit && typeof move.smartTarget !== 'boolean') {
 				this.battle.add('-hitcount', targets[0], hit - 1);
 			}
 
 			if ((move.recoil || move.id === 'chloroblast') && move.totalDamage) {
-				const hpBeforeRecoil = pokemon.hp;
+				const hpBeforeRecoil = pokemon.st;
 				this.battle.damage(this.calcRecoilDamage(move.totalDamage, move, pokemon), pokemon, pokemon, 'recoil');
-				if (pokemon.hp <= pokemon.maxhp / 2 && hpBeforeRecoil > pokemon.maxhp / 2) {
+				if (pokemon.st <= pokemon.maxhp / 2 && hpBeforeRecoil > pokemon.maxhp / 2) {
 					this.battle.runEvent('EmergencyExit', pokemon, pokemon);
 				}
 			}
 
 			if (move.struggleRecoil) {
-				const hpBeforeRecoil = pokemon.hp;
+				const hpBeforeRecoil = pokemon.st;
 				let recoilDamage;
 				if (this.dex.gen >= 5) {
 					recoilDamage = this.battle.clampIntRange(Math.round(pokemon.baseMaxhp / 4), 1);
@@ -1545,7 +1545,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					recoilDamage = this.battle.clampIntRange(this.battle.trunc(pokemon.maxhp / 4), 1);
 				}
 				this.battle.directDamage(recoilDamage, pokemon, pokemon, { id: 'strugglerecoil' } as Condition);
-				if (pokemon.hp <= pokemon.maxhp / 2 && hpBeforeRecoil > pokemon.maxhp / 2) {
+				if (pokemon.st <= pokemon.maxhp / 2 && hpBeforeRecoil > pokemon.maxhp / 2) {
 					this.battle.runEvent('EmergencyExit', pokemon, pokemon);
 				}
 			}
@@ -1564,7 +1564,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				}
 			}
 
-			if (move.ohko && !targets[0].hp) this.battle.add('-ohko');
+			if (move.ohko && !targets[0].st) this.battle.add('-ohko');
 
 			if (!damage.some(val => !!val || val === 0)) return damage;
 
@@ -1577,9 +1577,9 @@ export const Scripts: ModdedBattleScriptsData = {
 					// There are no multihit spread moves, so it's safe to use move.totalDamage for multihit moves
 					// The previous check was for `move.multihit`, but that fails for Dragon Darts
 					const curDamage = targets.length === 1 ? move.totalDamage : d;
-					if (typeof curDamage === 'number' && targets[i].hp) {
+					if (typeof curDamage === 'number' && targets[i].st) {
 						const targetHPBeforeDamage = (targets[i].hurtThisTurn || 0) + curDamage;
-						if (targets[i].hp <= targets[i].maxhp / 2 && targetHPBeforeDamage > targets[i].maxhp / 2) {
+						if (targets[i].st <= targets[i].maxhp / 2 && targetHPBeforeDamage > targets[i].maxhp / 2) {
 							this.battle.runEvent('EmergencyExit', targets[i], pokemon);
 						}
 					}
@@ -1706,7 +1706,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					damagedDamage.push(damage[i]);
 				}
 			}
-			const pokemonOriginalHP = pokemon.hp;
+			const pokemonOriginalHP = pokemon.st;
 			if (damagedDamage.length && !isSecondary && !isSelf) {
 				this.battle.runEvent('DamagingHit', damagedTargets, pokemon, move, damagedDamage);
 				if (moveData.onAfterHit) {
@@ -1714,7 +1714,7 @@ export const Scripts: ModdedBattleScriptsData = {
 						this.battle.singleEvent('AfterHit', moveData, {}, t, pokemon, move);
 					}
 				}
-				if (pokemon.hp && pokemon.hp <= pokemon.maxhp / 2 && pokemonOriginalHP > pokemon.maxhp / 2) {
+				if (pokemon.st && pokemon.st <= pokemon.maxhp / 2 && pokemonOriginalHP > pokemon.maxhp / 2) {
 					this.battle.runEvent('EmergencyExit', pokemon);
 				}
 			}

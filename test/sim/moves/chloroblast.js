@@ -10,7 +10,7 @@ describe('Chloroblast', () => {
 		battle.destroy();
 	});
 
-	it('should deal recoil damage to the user equal to half its max HP, rounded up', () => {
+	it('should deal recoil damage to the user equal to half its max Stamina, rounded up', () => {
 		battle = common.createBattle([[
 			{ species: "Electrode-Hisui", item: 'widelens', moves: ['chloroblast'] },
 		], [
@@ -48,7 +48,7 @@ describe('Chloroblast', () => {
 			{ species: "Blissey", ability: 'shellarmor', moves: ['sleeptalk'] },
 		]]);
 		battle.makeChoices();
-		const damage = battle.p2.active[0].maxhp - battle.p2.active[0].hp;
+		const damage = battle.p2.active[0].maxhp - battle.p2.active[0].st;
 		assert.bounded(damage, [103, 123]);
 	});
 });

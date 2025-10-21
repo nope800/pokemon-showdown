@@ -1640,7 +1640,7 @@ export const commands: Chat.ChatCommands = {
 		if (targets.length === 1 && targets[0] === '') targets.pop();
 		let player, pokemon, move, stat, value;
 		switch (cmd) {
-		case 'hp':
+		case 'st':
 		case 'h':
 			if (targets.length !== 3) {
 				this.errorReply("Incorrect command use");
@@ -1755,7 +1755,7 @@ export const commands: Chat.ChatCommands = {
 		}
 	},
 	editbattlehelp: [
-		`/editbattle hp [player], [pokemon], [hp]`,
+		`/editbattle st [player], [pokemon], [st]`,
 		`/editbattle status [player], [pokemon], [status]`,
 		`/editbattle pp [player], [pokemon], [move], [pp]`,
 		`/editbattle boost [player], [pokemon], [stat], [amount]`,

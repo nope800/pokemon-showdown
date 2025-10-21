@@ -36,7 +36,7 @@ describe('G-Max Volcalith', () => {
 		for (let i = 0; i < 3; i++) { battle.makeChoices(); }
 
 		const blastoise = battle.p2.active[0];
-		assert.equal(blastoise.hp, blastoise.maxhp - (Math.floor(blastoise.maxhp / 6) * 4));
+		assert.equal(blastoise.st, blastoise.maxhp - (Math.floor(blastoise.maxhp / 6) * 4));
 	});
 
 	it.skip(`should deal damage alongside Sea of Fire or G-Max Wildfire in the order those field effects were set`, () => {
@@ -93,7 +93,7 @@ describe('G-Max Volcalith', () => {
 
 		battle.makeChoices('move rockthrow 2 dynamax, move sleeptalk', 'move sleeptalk, move sleeptalk');
 		const toxicroak = battle.p2.active[0];
-		assert.equal(toxicroak.hp, toxicroak.maxhp - Math.floor(toxicroak.maxhp / 6) + Math.floor(toxicroak.maxhp / 16));
+		assert.equal(toxicroak.st, toxicroak.maxhp - Math.floor(toxicroak.maxhp / 6) + Math.floor(toxicroak.maxhp / 16));
 	});
 
 	it(`should deal damage before Grassy Terrain recovery`, () => {
@@ -107,6 +107,6 @@ describe('G-Max Volcalith', () => {
 
 		battle.makeChoices('move rockthrow 2 dynamax, move sleeptalk', 'move sleeptalk, move sleeptalk');
 		const rillaboom = battle.p2.active[0];
-		assert.equal(rillaboom.hp, rillaboom.maxhp - Math.floor(rillaboom.maxhp / 6) + Math.floor(rillaboom.maxhp / 16));
+		assert.equal(rillaboom.st, rillaboom.maxhp - Math.floor(rillaboom.maxhp / 6) + Math.floor(rillaboom.maxhp / 16));
 	});
 });

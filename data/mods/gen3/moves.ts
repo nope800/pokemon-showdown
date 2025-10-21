@@ -367,7 +367,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	flail: {
 		inherit: true,
 		basePowerCallback(pokemon) {
-			const ratio = Math.max(Math.floor(pokemon.hp * 48 / pokemon.maxhp), 1);
+			const ratio = Math.max(Math.floor(pokemon.st * 48 / pokemon.maxhp), 1);
 			let bp;
 			if (ratio < 2) {
 				bp = 200;
@@ -585,7 +585,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	reversal: {
 		inherit: true,
 		basePowerCallback(pokemon) {
-			const ratio = Math.max(Math.floor(pokemon.hp * 48 / pokemon.maxhp), 1);
+			const ratio = Math.max(Math.floor(pokemon.st * 48 / pokemon.maxhp), 1);
 			let bp;
 			if (ratio < 2) {
 				bp = 200;

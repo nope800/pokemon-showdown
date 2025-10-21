@@ -10,7 +10,7 @@ describe('Wish', () => {
 		battle.destroy();
 	});
 
-	it(`should heal the Pokemon in the user's slot by 1/2 of the user's max HP 1 turn after use`, () => {
+	it(`should heal the Pokemon in the user's slot by 1/2 of the user's max Stamina 1 turn after use`, () => {
 		battle = common.createBattle({ gameType: 'doubles' });
 		battle.setPlayer('p1', { team: [
 			{ species: "Chansey", moves: ['wish'] },
@@ -25,7 +25,7 @@ describe('Wish', () => {
 		battle.makeChoices('move wish, move wish', 'move dragonpulse 1, move moonblast 2');
 		battle.makeChoices('switch 3, switch 4', 'move dragonpulse 1, move moonblast 2');
 		assert.fullHP(battle.p1.active[0]);
-		assert.equal(battle.p1.active[1].hp, 321);
+		assert.equal(battle.p1.active[1].st, 321);
 	});
 
 	it('should progress its duration whether or not the Pokemon in its slot is fainted', () => {

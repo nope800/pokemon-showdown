@@ -20,7 +20,7 @@ describe('Order Up', () => {
 		]]);
 		battle.makeChoices('auto', 'move orderup 2');
 		const mew = battle.p1.active[1];
-		const damage = mew.maxhp - mew.hp;
+		const damage = mew.maxhp - mew.st;
 		assert.bounded(damage, [149, 176], `Order Up's base power should be increased by Sheer Force`);
 		assert.statStage(battle.p2.active[1], 'hor', 3);
 	});

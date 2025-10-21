@@ -6,19 +6,19 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	absorb: {
 		name: "Absorb",
-		desc: "The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
+		desc: "The user recovers 1/2 the Stamina lost by the target, rounded half up. If Big Root is held by the user, the Stamina recovered is 1.3x normal, rounded half down.",
 		shortDesc: "User recovers 50% of the damage dealt.",
 		gen4: {
-			desc: "The user recovers 1/2 the HP lost by the target, rounded down. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded down.",
+			desc: "The user recovers 1/2 the Stamina lost by the target, rounded down. If Big Root is held by the user, the Stamina recovered is 1.3x normal, rounded down.",
 		},
 		gen3: {
-			desc: "The user recovers 1/2 the HP lost by the target, rounded down.",
+			desc: "The user recovers 1/2 the Stamina lost by the target, rounded down.",
 		},
 		gen2: {
-			desc: "The user recovers 1/2 the HP lost by the target, rounded down. If the target has a substitute, this move misses.",
+			desc: "The user recovers 1/2 the Stamina lost by the target, rounded down. If the target has a substitute, this move misses.",
 		},
 		gen1: {
-			desc: "The user recovers 1/2 the HP lost by the target, rounded down. If this move breaks the target's substitute, the user does not recover any HP.",
+			desc: "The user recovers 1/2 the Stamina lost by the target, rounded down. If this move breaks the target's substitute, the user does not recover any Stamina.",
 		},
 	},
 	accelerock: {
@@ -160,11 +160,11 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	aquaring: {
 		name: "Aqua Ring",
-		desc: "The user has 1/16 of its maximum HP, rounded down, restored at the end of each turn while it remains active. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down. If the user uses Baton Pass, the replacement will receive the healing effect.",
-		shortDesc: "User recovers 1/16 max HP per turn.",
+		desc: "The user has 1/16 of its maximum Stamina, rounded down, restored at the end of each turn while it remains active. If Big Root is held by the user, the Stamina recovered is 1.3x normal, rounded half down. If the user uses Baton Pass, the replacement will receive the healing effect.",
+		shortDesc: "User recovers 1/16 max Stamina per turn.",
 
 		start: "  [POKEMON] surrounded itself with a veil of water!",
-		heal: "  A veil of water restored [POKEMON]'s HP!",
+		heal: "  A veil of water restored [POKEMON]'s Stamina!",
 	},
 	aquastep: {
 		name: "Aqua Step",
@@ -188,7 +188,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 			desc: "Hits two to five times. Has a 35% chance to hit two or three times and a 15% chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
 		},
 		gen4: {
-			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full HP when this move started, it will not be knocked out regardless of the number of hits.",
+			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full Stamina when this move started, it will not be knocked out regardless of the number of hits.",
 		},
 		gen3: {
 			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
@@ -323,8 +323,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	axekick: {
 		name: "Axe Kick",
-		desc: "Has a 30% chance to confuse the target. If this attack is not successful, the user loses half of its maximum HP, rounded down, as crash damage. Pokemon with the Magic Guard Ability are unaffected by crash damage.",
-		shortDesc: "30% confusion. User loses 50% max HP if miss.",
+		desc: "Has a 30% chance to confuse the target. If this attack is not successful, the user loses half of its maximum Stamina, rounded down, as crash damage. Pokemon with the Magic Guard Ability are unaffected by crash damage.",
+		shortDesc: "30% confusion. User loses 50% max Stamina if miss.",
 
 		damage: "#crash",
 	},
@@ -359,7 +359,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		desc: "Hits two to five times. Has a 35% chance to hit two or three times and a 15% chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
 		shortDesc: "Hits 2-5 times in one turn.",
 		gen4: {
-			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full HP when this move started, it will not be knocked out regardless of the number of hits.",
+			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full Stamina when this move started, it will not be knocked out regardless of the number of hits.",
 		},
 		gen3: {
 			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
@@ -375,25 +375,25 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	batonpass: {
 		name: "Baton Pass",
-		desc: "The user is replaced with another Pokemon in its party. The selected Pokemon has the user's stat stage changes transferred to it, as well as the effects of confusion, Aqua Ring, Curse, Dragon Cheer, Embargo, Focus Energy, Gastro Acid, Heal Block, Ingrain, Leech Seed, Lock-On (Mind Reader), Magnet Rise, Perish Song, Power Trick, Telekinesis, and a substitute with its remaining HP. The effect of Gastro Acid is not transferred if the recipient has an Ability that cannot be affected.",
+		desc: "The user is replaced with another Pokemon in its party. The selected Pokemon has the user's stat stage changes transferred to it, as well as the effects of confusion, Aqua Ring, Curse, Dragon Cheer, Embargo, Focus Energy, Gastro Acid, Heal Block, Ingrain, Leech Seed, Lock-On (Mind Reader), Magnet Rise, Perish Song, Power Trick, Telekinesis, and a substitute with its remaining Stamina. The effect of Gastro Acid is not transferred if the recipient has an Ability that cannot be affected.",
 		shortDesc: "User switches, passing stat changes and more.",
 		gen8: {
-			desc: "The user is replaced with another Pokemon in its party. The selected Pokemon has the user's stat stage changes transferred to it, as well as the effects of confusion, Aqua Ring, Curse, Embargo, Focus Energy, Gastro Acid, Heal Block, Ingrain, Leech Seed, Lock-On (Mind Reader), Magnet Rise, Perish Song, Power Trick, Telekinesis, and a substitute with its remaining HP. The effect of Gastro Acid is not transferred if the recipient has an Ability that cannot be affected.",
+			desc: "The user is replaced with another Pokemon in its party. The selected Pokemon has the user's stat stage changes transferred to it, as well as the effects of confusion, Aqua Ring, Curse, Embargo, Focus Energy, Gastro Acid, Heal Block, Ingrain, Leech Seed, Lock-On (Mind Reader), Magnet Rise, Perish Song, Power Trick, Telekinesis, and a substitute with its remaining Stamina. The effect of Gastro Acid is not transferred if the recipient has an Ability that cannot be affected.",
 		},
 		gen7: {
-			desc: "The user is replaced with another Pokemon in its party. The selected Pokemon has the user's stat stage changes transferred to it, as well as the effects of confusion, Aqua Ring, Curse, Embargo, Focus Energy, Gastro Acid, Heal Block, Ingrain, Leech Seed, Lock-On (Mind Reader), Magnet Rise, Perish Song, Power Trick, Telekinesis, the trapped effect of Mean Look (Block, Spider Web), and a substitute with its remaining HP. The effect of Gastro Acid is not transferred if the recipient has an Ability that cannot be affected. The effect of Telekinesis is not transferred if the recipient is Mega Gengar.",
+			desc: "The user is replaced with another Pokemon in its party. The selected Pokemon has the user's stat stage changes transferred to it, as well as the effects of confusion, Aqua Ring, Curse, Embargo, Focus Energy, Gastro Acid, Heal Block, Ingrain, Leech Seed, Lock-On (Mind Reader), Magnet Rise, Perish Song, Power Trick, Telekinesis, the trapped effect of Mean Look (Block, Spider Web), and a substitute with its remaining Stamina. The effect of Gastro Acid is not transferred if the recipient has an Ability that cannot be affected. The effect of Telekinesis is not transferred if the recipient is Mega Gengar.",
 		},
 		gen5: {
-			desc: "The user is replaced with another Pokemon in its party. The selected Pokemon has the user's stat stage changes transferred to it, as well as the effects of confusion, Aqua Ring, Curse, Embargo, Focus Energy, Gastro Acid, Heal Block, Ingrain, Leech Seed, Lock-On (Mind Reader), Magnet Rise, Perish Song, Power Trick, Telekinesis, the trapped effect of Mean Look (Block, Spider Web), and a substitute with its remaining HP.",
+			desc: "The user is replaced with another Pokemon in its party. The selected Pokemon has the user's stat stage changes transferred to it, as well as the effects of confusion, Aqua Ring, Curse, Embargo, Focus Energy, Gastro Acid, Heal Block, Ingrain, Leech Seed, Lock-On (Mind Reader), Magnet Rise, Perish Song, Power Trick, Telekinesis, the trapped effect of Mean Look (Block, Spider Web), and a substitute with its remaining Stamina.",
 		},
 		gen4: {
-			desc: "The user is replaced with another Pokemon in its party. The selected Pokemon has the user's stat stage changes transferred to it, as well as the effects of confusion, Aqua Ring, Curse, Embargo, Focus Energy, Gastro Acid, Heal Block, Ingrain, Leech Seed, Lock-On (Mind Reader), Magnet Rise, Mud Sport, Perish Song, Power Trick, Water Sport, the trapper or trapped effects of Mean Look (Block, Spider Web), and a substitute with its remaining HP.",
+			desc: "The user is replaced with another Pokemon in its party. The selected Pokemon has the user's stat stage changes transferred to it, as well as the effects of confusion, Aqua Ring, Curse, Embargo, Focus Energy, Gastro Acid, Heal Block, Ingrain, Leech Seed, Lock-On (Mind Reader), Magnet Rise, Mud Sport, Perish Song, Power Trick, Water Sport, the trapper or trapped effects of Mean Look (Block, Spider Web), and a substitute with its remaining Stamina.",
 		},
 		gen3: {
-			desc: "The user is replaced with another Pokemon in its party. The selected Pokemon has the user's stat stage changes transferred to it, as well as the effects of confusion, Curse, Focus Energy, Ingrain, Leech Seed, Lock-On (Mind Reader), Mud Sport, Perish Song, Water Sport, the trapper or trapped effects of Mean Look (Block, Spider Web), and a substitute with its remaining HP.",
+			desc: "The user is replaced with another Pokemon in its party. The selected Pokemon has the user's stat stage changes transferred to it, as well as the effects of confusion, Curse, Focus Energy, Ingrain, Leech Seed, Lock-On (Mind Reader), Mud Sport, Perish Song, Water Sport, the trapper or trapped effects of Mean Look (Block, Spider Web), and a substitute with its remaining Stamina.",
 		},
 		gen2: {
-			desc: "The user is replaced with another Pokemon in its party. The selected Pokemon has the user's stat stage changes transferred to it, as well as the effects of confusion, Curse, Defense Curl, Focus Energy, Foresight, Leech Seed, Lock-On (Mind Reader), Minimize, Mist, Perish Song, the trapper or trapped effects of Mean Look (Spider Web), and a substitute with its remaining HP.",
+			desc: "The user is replaced with another Pokemon in its party. The selected Pokemon has the user's stat stage changes transferred to it, as well as the effects of confusion, Curse, Defense Curl, Focus Energy, Foresight, Leech Seed, Lock-On (Mind Reader), Minimize, Mist, Perish Song, the trapper or trapped effects of Mean Look (Spider Web), and a substitute with its remaining Stamina.",
 		},
 	},
 	beakblast: {
@@ -440,13 +440,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	bellydrum: {
 		name: "Belly Drum",
-		desc: "Raises the user's Attack by 12 stages in exchange for the user losing 1/2 of its maximum HP, rounded down. Fails if the user would faint or if its Attack stat stage is 6.",
-		shortDesc: "User loses 50% max HP. Maximizes Attack.",
+		desc: "Raises the user's Attack by 12 stages in exchange for the user losing 1/2 of its maximum Stamina, rounded down. Fails if the user would faint or if its Attack stat stage is 6.",
+		shortDesc: "User loses 50% max Stamina. Maximizes Attack.",
 		gen2: {
-			desc: "The user loses 1/2 of its maximum HP, rounded down, unless the user would faint or its Attack stat stage is 6. If the user did not have enough HP, its Attack is raised by 2 stages. Otherwise, while the user's Attack stat stage is less than 6 it is raised by 2, and if its Attack stat before this step was 999 then the stat stage is lowered by 1 and the loop ends.",
+			desc: "The user loses 1/2 of its maximum Stamina, rounded down, unless the user would faint or its Attack stat stage is 6. If the user did not have enough Stamina, its Attack is raised by 2 stages. Otherwise, while the user's Attack stat stage is less than 6 it is raised by 2, and if its Attack stat before this step was 999 then the stat stage is lowered by 1 and the loop ends.",
 		},
 
-		boost: "  [POKEMON] cut its own HP and maximized its Attack!",
+		boost: "  [POKEMON] cut its own Stamina and maximized its Attack!",
 	},
 	bestow: {
 		name: "Bestow",
@@ -463,20 +463,20 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	bide: {
 		name: "Bide",
-		desc: "The user spends two turns locked into this move and then, on the second turn after using this move, the user attacks the last Pokemon that hit it, inflicting double the damage in HP it lost to attacks during the two turns. If the last Pokemon that hit it is no longer active, the user attacks a random opposing Pokemon instead. If the user is prevented from moving during this move's use, the effect ends. This move does not check accuracy and does not ignore type immunity.",
+		desc: "The user spends two turns locked into this move and then, on the second turn after using this move, the user attacks the last Pokemon that hit it, inflicting double the damage in Stamina it lost to attacks during the two turns. If the last Pokemon that hit it is no longer active, the user attacks a random opposing Pokemon instead. If the user is prevented from moving during this move's use, the effect ends. This move does not check accuracy and does not ignore type immunity.",
 		shortDesc: "Waits 2 turns; deals double the damage taken.",
 		gen4: {
-			desc: "The user spends two turns locked into this move and then, on the second turn after using this move, the user attacks the last Pokemon that hit it, inflicting double the damage in HP it lost to attacks during the two turns. If the last Pokemon that hit it is no longer active, the user attacks a random opposing Pokemon instead. If the user is prevented from moving during this move's use, the effect ends. This move does not check accuracy and ignores type immunity.",
+			desc: "The user spends two turns locked into this move and then, on the second turn after using this move, the user attacks the last Pokemon that hit it, inflicting double the damage in Stamina it lost to attacks during the two turns. If the last Pokemon that hit it is no longer active, the user attacks a random opposing Pokemon instead. If the user is prevented from moving during this move's use, the effect ends. This move does not check accuracy and ignores type immunity.",
 		},
 		gen3: {
-			desc: "The user spends two turns locked into this move and then, on the second turn after using this move, the user attacks the last Pokemon that hit it, inflicting double the damage in HP it lost during the two turns. If the last Pokemon that hit it is no longer active, the user attacks a random opposing Pokemon instead. If the user is prevented from moving during this move's use, the effect ends. This move does not ignore type immunity.",
+			desc: "The user spends two turns locked into this move and then, on the second turn after using this move, the user attacks the last Pokemon that hit it, inflicting double the damage in Stamina it lost during the two turns. If the last Pokemon that hit it is no longer active, the user attacks a random opposing Pokemon instead. If the user is prevented from moving during this move's use, the effect ends. This move does not ignore type immunity.",
 		},
 		gen2: {
-			desc: "The user spends two or three turns locked into this move and then, on the second or third turn after using this move, the user attacks the opponent, inflicting double the damage in HP it lost during those turns. If the user is prevented from moving during this move's use, the effect ends. This move does not ignore type immunity.",
+			desc: "The user spends two or three turns locked into this move and then, on the second or third turn after using this move, the user attacks the opponent, inflicting double the damage in Stamina it lost during those turns. If the user is prevented from moving during this move's use, the effect ends. This move does not ignore type immunity.",
 			shortDesc: "Waits 2-3 turns; deals double the damage taken.",
 		},
 		gen1: {
-			desc: "The user spends two or three turns locked into this move and then, on the second or third turn after using this move, the user attacks the opponent, inflicting double the damage in HP it lost during those turns. This move ignores type immunity and cannot be avoided even if the target is using Dig or Fly. The user can choose to switch out during the effect. If the user switches out or is prevented from moving during this move's use, the effect ends. During the effect, if the opposing Pokemon switches out or uses Confuse Ray, Conversion, Focus Energy, Glare, Haze, Leech Seed, Light Screen, Mimic, Mist, Poison Gas, Poison Powder, Recover, Reflect, Rest, Soft-Boiled, Splash, Stun Spore, Substitute, Supersonic, Teleport, Thunder Wave, Toxic, or Transform, the previous damage dealt to the user will be added to the total.",
+			desc: "The user spends two or three turns locked into this move and then, on the second or third turn after using this move, the user attacks the opponent, inflicting double the damage in Stamina it lost during those turns. This move ignores type immunity and cannot be avoided even if the target is using Dig or Fly. The user can choose to switch out during the effect. If the user switches out or is prevented from moving during this move's use, the effect ends. During the effect, if the opposing Pokemon switches out or uses Confuse Ray, Conversion, Focus Energy, Glare, Haze, Leech Seed, Light Screen, Mimic, Mist, Poison Gas, Poison Powder, Recover, Reflect, Rest, Soft-Boiled, Splash, Stun Spore, Substitute, Supersonic, Teleport, Thunder Wave, Toxic, or Transform, the previous damage dealt to the user will be added to the total.",
 		},
 
 		start: "  [POKEMON] is storing energy!",
@@ -485,23 +485,23 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	bind: {
 		name: "Bind",
-		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		shortDesc: "Traps and damages the target for 4-5 turns.",
 		gen8: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen7: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen5: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum HP (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum Stamina (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen4: {
-			desc: "Prevents the target from switching for two to five turns (always five turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum HP, rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass or U-turn. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for two to five turns (always five turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum Stamina, rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass or U-turn. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 			shortDesc: "Traps and damages the target for 2-5 turns.",
 		},
 		gen3: {
-			desc: "Prevents the target from switching for two to five turns. Causes damage to the target equal to 1/16 of its maximum HP, rounded down, at the end of each turn during effect. The target can still switch out if it uses Baton Pass. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for two to five turns. Causes damage to the target equal to 1/16 of its maximum Stamina, rounded down, at the end of each turn during effect. The target can still switch out if it uses Baton Pass. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen1: {
 			desc: "The user spends two to five turns using this move. Has a 3/8 chance to last two or three turns, and a 1/8 chance to last four or five turns. The damage calculated for the first turn is used for every other turn. The user cannot select a move and the target cannot execute a move during the effect, but both may switch out. If the user switches out, the target remains unable to execute a move during that turn. If the target switches out, the user uses this move again automatically, and if it had 0 PP at the time, it becomes 63. If the user or the target switch out, or the user is prevented from moving, the effect ends. This move can prevent the target from moving even if it has type immunity, but will not deal damage.",
@@ -522,7 +522,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	bitterblade: {
 		name: "Bitter Blade",
-		desc: "The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
+		desc: "The user recovers 1/2 the Stamina lost by the target, rounded half up. If Big Root is held by the user, the Stamina recovered is 1.3x normal, rounded half down.",
 		shortDesc: "User recovers 50% of the damage dealt.",
 	},
 	bittermalice: {
@@ -633,7 +633,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		desc: "Hits twice. If the first hit breaks the target's substitute, it will take damage for the second hit.",
 		shortDesc: "Hits 2 times in one turn.",
 		gen4: {
-			desc: "Hits twice. If the first hit breaks the target's substitute, it will take damage for the second hit. If the target has a Focus Sash and had full HP when this move started, it will not be knocked out regardless of the number of hits.",
+			desc: "Hits twice. If the first hit breaks the target's substitute, it will take damage for the second hit. If the target has a Focus Sash and had full Stamina when this move started, it will not be knocked out regardless of the number of hits.",
 		},
 		gen3: {
 			desc: "Hits twice. If the first hit breaks the target's substitute, it will take damage for the second hit.",
@@ -650,7 +650,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 			desc: "Hits two to five times. Has a 35% chance to hit two or three times and a 15% chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
 		},
 		gen4: {
-			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full HP when this move started, it will not be knocked out regardless of the number of hits.",
+			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full Stamina when this move started, it will not be knocked out regardless of the number of hits.",
 		},
 		gen3: {
 			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
@@ -679,7 +679,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	bouncybubble: {
 		name: "Bouncy Bubble",
-		desc: "The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
+		desc: "The user recovers 1/2 the Stamina lost by the target, rounded half up. If Big Root is held by the user, the Stamina recovered is 1.3x normal, rounded half down.",
 		shortDesc: "User recovers 50% of the damage dealt.",
 	},
 	branchpoke: {
@@ -689,10 +689,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	bravebird: {
 		name: "Brave Bird",
-		desc: "If the target lost HP, the user takes recoil damage equal to 33% the HP lost by the target, rounded half up, but not less than 1 HP.",
+		desc: "If the target lost Stamina, the user takes recoil damage equal to 33% the Stamina lost by the target, rounded half up, but not less than 1 Stamina.",
 		shortDesc: "Has 33% recoil.",
 		gen4: {
-			desc: "If the target lost HP, the user takes recoil damage equal to 1/3 the HP lost by the target, rounded down, but not less than 1 HP.",
+			desc: "If the target lost Stamina, the user takes recoil damage equal to 1/3 the Stamina lost by the target, rounded down, but not less than 1 Stamina.",
 			shortDesc: "Has 1/3 recoil.",
 		},
 	},
@@ -724,8 +724,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	brine: {
 		name: "Brine",
-		desc: "Power doubles if the target has less than or equal to half of its maximum HP remaining.",
-		shortDesc: "Power doubles if the target's HP is 50% or less.",
+		desc: "Power doubles if the target has less than or equal to half of its maximum Stamina remaining.",
+		shortDesc: "Power doubles if the target's Stamina is 50% or less.",
 	},
 	brutalswing: {
 		name: "Brutal Swing",
@@ -791,7 +791,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 			desc: "Hits two to five times. Has a 35% chance to hit two or three times and a 15% chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
 		},
 		gen4: {
-			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full HP when this move started, it will not be knocked out regardless of the number of hits.",
+			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full Stamina when this move started, it will not be knocked out regardless of the number of hits.",
 		},
 		gen3: {
 			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
@@ -857,7 +857,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	ceaselessedge: {
 		name: "Ceaseless Edge",
-		desc: "If this move is successful, it sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. A maximum of three layers may be set, and opponents lose 1/8 of their maximum HP with one layer, 1/6 of their maximum HP with two layers, and 1/4 of their maximum HP with three layers, all rounded down. Can be removed from the opposing side if any Pokemon uses Tidy Up, or if any opposing Pokemon uses Mortal Spin, Rapid Spin, or Defog successfully, or is hit by Defog.",
+		desc: "If this move is successful, it sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. A maximum of three layers may be set, and opponents lose 1/8 of their maximum Stamina with one layer, 1/6 of their maximum Stamina with two layers, and 1/4 of their maximum Stamina with three layers, all rounded down. Can be removed from the opposing side if any Pokemon uses Tidy Up, or if any opposing Pokemon uses Mortal Spin, Rapid Spin, or Defog successfully, or is hit by Defog.",
 		shortDesc: "Sets a layer of Spikes on the opposing side.",
 	},
 	celebrate: {
@@ -923,8 +923,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	chloroblast: {
 		name: "Chloroblast",
-		desc: "If this move is successful, the user loses 1/2 of its maximum HP, rounded up, unless the user has the Magic Guard or Rock Head Abilities.",
-		shortDesc: "User loses 50% max HP.",
+		desc: "If this move is successful, the user loses 1/2 of its maximum Stamina, rounded up, unless the user has the Magic Guard or Rock Head Abilities.",
+		shortDesc: "User loses 50% max Stamina.",
 	},
 	circlethrow: {
 		name: "Circle Throw",
@@ -933,23 +933,23 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	clamp: {
 		name: "Clamp",
-		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		shortDesc: "Traps and damages the target for 4-5 turns.",
 		gen8: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen7: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen5: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum HP (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum Stamina (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen4: {
-			desc: "Prevents the target from switching for two to five turns (always five turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum HP, rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass or U-turn. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for two to five turns (always five turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum Stamina, rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass or U-turn. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 			shortDesc: "Traps and damages the target for 2-5 turns.",
 		},
 		gen3: {
-			desc: "Prevents the target from switching for two to five turns. Causes damage to the target equal to 1/16 of its maximum HP, rounded down, at the end of each turn during effect. The target can still switch out if it uses Baton Pass. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for two to five turns. Causes damage to the target equal to 1/16 of its maximum Stamina, rounded down, at the end of each turn during effect. The target can still switch out if it uses Baton Pass. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen1: {
 			desc: "The user spends two to five turns using this move. Has a 3/8 chance to last two or three turns, and a 1/8 chance to last four or five turns. The damage calculated for the first turn is used for every other turn. The user cannot select a move and the target cannot execute a move during the effect, but both may switch out. If the user switches out, the target remains unable to execute a move during that turn. If the target switches out, the user uses this move again automatically, and if it had 0 PP at the time, it becomes 63. If the user or the target switch out, or the user is prevented from moving, the effect ends. This move can prevent the target from moving even if it has type immunity, but will not deal damage.",
@@ -966,8 +966,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	clangoroussoul: {
 		name: "Clangorous Soul",
-		desc: "Raises the user's Attack, Defense, Bottom Attack, Bottom Defense, and Horniness by 1 stage in exchange for the user losing 33% of its maximum HP, rounded down. Fails if the user would faint or if its Attack, Defense, Bottom Attack, Bottom Defense, and Horniness stat stages would not change.",
-		shortDesc: "User loses 33% of its max HP. +1 to all stats.",
+		desc: "Raises the user's Attack, Defense, Bottom Attack, Bottom Defense, and Horniness by 1 stage in exchange for the user losing 33% of its maximum Stamina, rounded down. Fails if the user would faint or if its Attack, Defense, Bottom Attack, Bottom Defense, and Horniness stat stages would not change.",
+		shortDesc: "User loses 33% of its max Stamina. +1 to all stats.",
 	},
 	clangoroussoulblaze: {
 		name: "Clangorous Soulblaze",
@@ -1008,7 +1008,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		desc: "Hits two to five times. Has a 35% chance to hit two or three times and a 15% chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
 		shortDesc: "Hits 2-5 times in one turn.",
 		gen4: {
-			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full HP when this move started, it will not be knocked out regardless of the number of hits.",
+			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full Stamina when this move started, it will not be knocked out regardless of the number of hits.",
 		},
 		gen3: {
 			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
@@ -1019,7 +1019,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	comeuppance: {
 		name: "Comeuppance",
-		desc: "Deals damage to the last opposing Pokemon to hit the user with a top or bottom attack this turn equal to 1.5 times the HP lost by the user from that attack, rounded down. If the user did not lose HP from that attack, this move deals 1 HP of damage instead. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top or bottom attack this turn.",
+		desc: "Deals damage to the last opposing Pokemon to hit the user with a top or bottom attack this turn equal to 1.5 times the Stamina lost by the user from that attack, rounded down. If the user did not lose Stamina from that attack, this move deals 1 Stamina of damage instead. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top or bottom attack this turn.",
 		shortDesc: "If hit by an attack, returns 1.5x damage.",
 	},
 	confide: {
@@ -1147,19 +1147,19 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	counter: {
 		name: "Counter",
-		desc: "Deals damage to the last opposing Pokemon to hit the user with a top attack this turn equal to twice the HP lost by the user from that attack. If the user did not lose HP from the attack, this move deals 1 HP of damage instead. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top attack this turn.",
+		desc: "Deals damage to the last opposing Pokemon to hit the user with a top attack this turn equal to twice the Stamina lost by the user from that attack. If the user did not lose Stamina from the attack, this move deals 1 Stamina of damage instead. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top attack this turn.",
 		shortDesc: "If hit by top attack, returns double damage.",
 		gen6: {
-			desc: "Deals damage to the last opposing Pokemon to hit the user with a top attack this turn equal to twice the HP lost by the user from that attack. If the user did not lose HP from the attack, this move deals damage with a power of 1 instead. If that opposing Pokemon's position is no longer in use, the damage is done to a random opposing Pokemon in range. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top attack this turn.",
+			desc: "Deals damage to the last opposing Pokemon to hit the user with a top attack this turn equal to twice the Stamina lost by the user from that attack. If the user did not lose Stamina from the attack, this move deals damage with a power of 1 instead. If that opposing Pokemon's position is no longer in use, the damage is done to a random opposing Pokemon in range. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top attack this turn.",
 		},
 		gen4: {
-			desc: "Deals damage to the last opposing Pokemon to hit the user with a top attack this turn equal to twice the HP lost by the user from that attack. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top attack this turn, or if the user did not lose HP from the attack.",
+			desc: "Deals damage to the last opposing Pokemon to hit the user with a top attack this turn equal to twice the Stamina lost by the user from that attack. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top attack this turn, or if the user did not lose Stamina from the attack.",
 		},
 		gen3: {
-			desc: "Deals damage to the last opposing Pokemon to hit the user with a top attack this turn equal to twice the HP lost by the user from that attack. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. This move considers Hidden Power as Normal type, and only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top attack this turn, or if the user did not lose HP from the attack.",
+			desc: "Deals damage to the last opposing Pokemon to hit the user with a top attack this turn equal to twice the Stamina lost by the user from that attack. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. This move considers Hidden Power as Normal type, and only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top attack this turn, or if the user did not lose Stamina from the attack.",
 		},
 		gen2: {
-			desc: "Deals damage to the opposing Pokemon equal to twice the HP lost by the user from a top attack this turn. This move considers Hidden Power as Normal type, and only the last hit of a multi-hit attack is counted. Fails if the user moves first, if the user was not hit by a top attack this turn, or if the user did not lose HP from the attack. If the opposing Pokemon used Fissure or Horn Drill and missed, this move deals 65535 damage.",
+			desc: "Deals damage to the opposing Pokemon equal to twice the Stamina lost by the user from a top attack this turn. This move considers Hidden Power as Normal type, and only the last hit of a multi-hit attack is counted. Fails if the user moves first, if the user was not hit by a top attack this turn, or if the user did not lose Stamina from the attack. If the opposing Pokemon used Fissure or Horn Drill and missed, this move deals 65535 damage.",
 		},
 		gen1: {
 			desc: "Deals damage to the opposing Pokemon equal to twice the damage dealt by the last move used in the battle. This move ignores type immunity. Fails if the user moves first, or if the opposing side's last move was Counter, had 0 power, or was not Normal or Fighting type. Fails if the last move used by either side did 0 damage and was not Confuse Ray, Conversion, Focus Energy, Glare, Haze, Leech Seed, Light Screen, Mimic, Mist, Poison Gas, Poison Powder, Recover, Reflect, Rest, Soft-Boiled, Splash, Stun Spore, Substitute, Supersonic, Teleport, Thunder Wave, Toxic, or Transform.",
@@ -1229,24 +1229,24 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	crushgrip: {
 		name: "Crush Grip",
-		desc: "Power is equal to 120 * (target's current HP / target's maximum HP), rounded half down, but not less than 1.",
-		shortDesc: "More power the more HP the target has left.",
+		desc: "Power is equal to 120 * (target's current Stamina / target's maximum Stamina), rounded half down, but not less than 1.",
+		shortDesc: "More power the more Stamina the target has left.",
 		gen4: {
-			desc: "Power is equal to 120 * (target's current HP / target's maximum HP) + 1, rounded down.",
+			desc: "Power is equal to 120 * (target's current Stamina / target's maximum Stamina) + 1, rounded down.",
 		},
 	},
 	curse: {
 		name: "Curse",
-		desc: "If the user is not a Ghost type, lowers the user's Horniness by 1 stage and raises the user's Attack and Defense by 1 stage. If the user is a Ghost type, the user loses 1/2 of its maximum HP, rounded down and even if it would cause fainting, in exchange for the target losing 1/4 of its maximum HP, rounded down, at the end of each turn while it is active. If the target uses Baton Pass, the replacement will continue to be affected. Fails if there is no target or if the target is already affected.",
+		desc: "If the user is not a Ghost type, lowers the user's Horniness by 1 stage and raises the user's Attack and Defense by 1 stage. If the user is a Ghost type, the user loses 1/2 of its maximum Stamina, rounded down and even if it would cause fainting, in exchange for the target losing 1/4 of its maximum Stamina, rounded down, at the end of each turn while it is active. If the target uses Baton Pass, the replacement will continue to be affected. Fails if there is no target or if the target is already affected.",
 		shortDesc: "Curses if Ghost, else -1 Hor, +1 ToA, +1 ToD.",
 		gen4: {
-			desc: "If the user is not a Ghost type, lowers the user's Horniness by 1 stage and raises the user's Attack and Defense by 1 stage. If the user is a Ghost type, the user loses 1/2 of its maximum HP, rounded down and even if it would cause fainting, in exchange for the target losing 1/4 of its maximum HP, rounded down, at the end of each turn while it is active. If the target uses Baton Pass, the replacement will continue to be affected. Fails if there is no target or if the target is already affected or has a substitute.",
+			desc: "If the user is not a Ghost type, lowers the user's Horniness by 1 stage and raises the user's Attack and Defense by 1 stage. If the user is a Ghost type, the user loses 1/2 of its maximum Stamina, rounded down and even if it would cause fainting, in exchange for the target losing 1/4 of its maximum Stamina, rounded down, at the end of each turn while it is active. If the target uses Baton Pass, the replacement will continue to be affected. Fails if there is no target or if the target is already affected or has a substitute.",
 		},
 		gen2: {
-			desc: "If the user is not a Ghost type, lowers the user's Horniness by 1 stage and raises the user's Attack and Defense by 1 stage, unless the user's Attack and Defense stats are both at stage 6. If the user is a Ghost type, the user loses 1/2 of its maximum HP, rounded down and even if it would cause fainting, in exchange for the target losing 1/4 of its maximum HP, rounded down, at the end of each turn while it is active. If the target uses Baton Pass, the replacement will continue to be affected. Fails if the target is already affected or has a substitute.",
+			desc: "If the user is not a Ghost type, lowers the user's Horniness by 1 stage and raises the user's Attack and Defense by 1 stage, unless the user's Attack and Defense stats are both at stage 6. If the user is a Ghost type, the user loses 1/2 of its maximum Stamina, rounded down and even if it would cause fainting, in exchange for the target losing 1/4 of its maximum Stamina, rounded down, at the end of each turn while it is active. If the target uses Baton Pass, the replacement will continue to be affected. Fails if the target is already affected or has a substitute.",
 		},
 
-		start: "  [SOURCE] cut its own HP and put a curse on [POKEMON]!",
+		start: "  [SOURCE] cut its own Stamina and put a curse on [POKEMON]!",
 		damage: "  [POKEMON] is afflicted by the curse!",
 	},
 	cut: {
@@ -1475,18 +1475,18 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	doubleedge: {
 		name: "Double-Edge",
-		desc: "If the target lost HP, the user takes recoil damage equal to 33% the HP lost by the target, rounded half up, but not less than 1 HP.",
+		desc: "If the target lost Stamina, the user takes recoil damage equal to 33% the Stamina lost by the target, rounded half up, but not less than 1 Stamina.",
 		shortDesc: "Has 33% recoil.",
 		gen4: {
-			desc: "If the target lost HP, the user takes recoil damage equal to 1/3 the HP lost by the target, rounded down, but not less than 1 HP.",
+			desc: "If the target lost Stamina, the user takes recoil damage equal to 1/3 the Stamina lost by the target, rounded down, but not less than 1 Stamina.",
 			shortDesc: "Has 1/3 recoil.",
 		},
 		gen2: {
-			desc: "If the target lost HP, the user takes recoil damage equal to 1/4 the HP lost by the target, rounded down, but not less than 1 HP. If this move hits a substitute, the recoil damage is always 1 HP.",
+			desc: "If the target lost Stamina, the user takes recoil damage equal to 1/4 the Stamina lost by the target, rounded down, but not less than 1 Stamina. If this move hits a substitute, the recoil damage is always 1 Stamina.",
 			shortDesc: "Has 1/4 recoil.",
 		},
 		gen1: {
-			desc: "If the target lost HP, the user takes recoil damage equal to 1/4 the HP lost by the target, rounded down, but not less than 1 HP. If this move breaks the target's substitute, the user does not take any recoil damage.",
+			desc: "If the target lost Stamina, the user takes recoil damage equal to 1/4 the Stamina lost by the target, rounded down, but not less than 1 Stamina. If this move breaks the target's substitute, the user does not take any recoil damage.",
 		},
 	},
 	doublehit: {
@@ -1494,7 +1494,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		desc: "Hits twice. If the first hit breaks the target's substitute, it will take damage for the second hit.",
 		shortDesc: "Hits 2 times in one turn.",
 		gen4: {
-			desc: "Hits twice. If the first hit breaks the target's substitute, it will take damage for the second hit. If the target has a Focus Sash and had full HP when this move started, it will not be knocked out regardless of the number of hits.",
+			desc: "Hits twice. If the first hit breaks the target's substitute, it will take damage for the second hit. If the target has a Focus Sash and had full Stamina when this move started, it will not be knocked out regardless of the number of hits.",
 		},
 	},
 	doubleironbash: {
@@ -1507,7 +1507,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		desc: "Hits twice. If the first hit breaks the target's substitute, it will take damage for the second hit.",
 		shortDesc: "Hits 2 times in one turn.",
 		gen4: {
-			desc: "Hits twice. If the first hit breaks the target's substitute, it will take damage for the second hit. If the target has a Focus Sash and had full HP when this move started, it will not be knocked out regardless of the number of hits.",
+			desc: "Hits twice. If the first hit breaks the target's substitute, it will take damage for the second hit. If the target has a Focus Sash and had full Stamina when this move started, it will not be knocked out regardless of the number of hits.",
 		},
 		gen3: {
 			desc: "Hits twice. If the first hit breaks the target's substitute, it will take damage for the second hit.",
@@ -1528,7 +1528,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		desc: "Hits two to five times. Has a 35% chance to hit two or three times and a 15% chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
 		shortDesc: "Hits 2-5 times in one turn.",
 		gen4: {
-			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full HP when this move started, it will not be knocked out regardless of the number of hits.",
+			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full Stamina when this move started, it will not be knocked out regardless of the number of hits.",
 		},
 		gen3: {
 			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
@@ -1582,8 +1582,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	dragonenergy: {
 		name: "Dragon Energy",
-		desc: "Power is equal to (user's current HP * 150 / user's maximum HP), rounded down, but not less than 1.",
-		shortDesc: "Less power as user's HP decreases. Hits foe(s).",
+		desc: "Power is equal to (user's current Stamina * 150 / user's maximum Stamina), rounded down, but not less than 1.",
+		shortDesc: "Less power as user's Stamina decreases. Hits foe(s).",
 	},
 	dragonhammer: {
 		name: "Dragon Hammer",
@@ -1595,7 +1595,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	dragonrage: {
 		name: "Dragon Rage",
-		shortDesc: "Deals 40 HP of damage to the target.",
+		shortDesc: "Deals 40 Stamina of damage to the target.",
 	},
 	dragonrush: {
 		name: "Dragon Rush",
@@ -1612,29 +1612,29 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	drainingkiss: {
 		name: "Draining Kiss",
-		desc: "The user recovers 3/4 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
+		desc: "The user recovers 3/4 the Stamina lost by the target, rounded half up. If Big Root is held by the user, the Stamina recovered is 1.3x normal, rounded half down.",
 		shortDesc: "User recovers 75% of the damage dealt.",
 	},
 	drainpunch: {
 		name: "Drain Punch",
-		desc: "The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
+		desc: "The user recovers 1/2 the Stamina lost by the target, rounded half up. If Big Root is held by the user, the Stamina recovered is 1.3x normal, rounded half down.",
 		shortDesc: "User recovers 50% of the damage dealt.",
 		gen4: {
-			desc: "The user recovers 1/2 the HP lost by the target, rounded down. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded down.",
+			desc: "The user recovers 1/2 the Stamina lost by the target, rounded down. If Big Root is held by the user, the Stamina recovered is 1.3x normal, rounded down.",
 		},
 	},
 	dreameater: {
 		name: "Dream Eater",
-		desc: "The target is unaffected by this move unless it is asleep. The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
-		shortDesc: "User gains 1/2 HP inflicted. Sleeping target only.",
+		desc: "The target is unaffected by this move unless it is asleep. The user recovers 1/2 the Stamina lost by the target, rounded half up. If Big Root is held by the user, the Stamina recovered is 1.3x normal, rounded half down.",
+		shortDesc: "User gains 1/2 Stamina inflicted. Sleeping target only.",
 		gen4: {
-			desc: "The target is unaffected by this move unless it is asleep and does not have a substitute. The user recovers 1/2 the HP lost by the target, rounded down, but not less than 1 HP. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded down.",
+			desc: "The target is unaffected by this move unless it is asleep and does not have a substitute. The user recovers 1/2 the Stamina lost by the target, rounded down, but not less than 1 Stamina. If Big Root is held by the user, the Stamina recovered is 1.3x normal, rounded down.",
 		},
 		gen3: {
-			desc: "The target is unaffected by this move unless it is asleep and does not have a substitute. The user recovers 1/2 the HP lost by the target, rounded down, but not less than 1 HP.",
+			desc: "The target is unaffected by this move unless it is asleep and does not have a substitute. The user recovers 1/2 the Stamina lost by the target, rounded down, but not less than 1 Stamina.",
 		},
 		gen1: {
-			desc: "The target is unaffected by this move unless it is asleep. The user recovers 1/2 the HP lost by the target, rounded down, but not less than 1 HP. If this move breaks the target's substitute, the user does not recover any HP.",
+			desc: "The target is unaffected by this move unless it is asleep. The user recovers 1/2 the Stamina lost by the target, rounded down, but not less than 1 Stamina. If this move breaks the target's substitute, the user does not recover any Stamina.",
 		},
 	},
 	drillpeck: {
@@ -1798,33 +1798,33 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	endeavor: {
 		name: "Endeavor",
-		desc: "Deals damage to the target equal to (target's current HP - user's current HP). The target is unaffected if its current HP is less than or equal to the user's current HP.",
-		shortDesc: "Lowers the target's HP to the user's HP.",
+		desc: "Deals damage to the target equal to (target's current Stamina - user's current Stamina). The target is unaffected if its current Stamina is less than or equal to the user's current Stamina.",
+		shortDesc: "Lowers the target's Stamina to the user's Stamina.",
 	},
 	endure: {
 		name: "Endure",
-		desc: "The user will survive attacks made by other Pokemon during this turn with at least 1 HP. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Burning Bulwark, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Silk Trap, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
-		shortDesc: "User survives attacks this turn with at least 1 HP.",
+		desc: "The user will survive attacks made by other Pokemon during this turn with at least 1 Stamina. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Burning Bulwark, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Silk Trap, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
+		shortDesc: "User survives attacks this turn with at least 1 Stamina.",
 		gen8: {
-			desc: "The user will survive attacks made by other Pokemon during this turn with at least 1 HP. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
+			desc: "The user will survive attacks made by other Pokemon during this turn with at least 1 Stamina. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
 		},
 		gen7: {
-			desc: "The user will survive attacks made by other Pokemon during this turn with at least 1 HP. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
+			desc: "The user will survive attacks made by other Pokemon during this turn with at least 1 Stamina. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
 		},
 		gen6: {
-			desc: "The user will survive attacks made by other Pokemon during this turn with at least 1 HP. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Detect, Endure, King's Shield, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
+			desc: "The user will survive attacks made by other Pokemon during this turn with at least 1 Stamina. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Detect, Endure, King's Shield, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
 		},
 		gen5: {
-			desc: "The user will survive attacks made by other Pokemon during this turn with at least 1 HP. This move has a 1/X chance of being successful, where X starts at 1 and doubles each time this move is successfully used. X resets to 1 if this move fails or if the user's last move used is not Detect, Endure, Protect, Quick Guard, or Wide Guard. Fails if the user moves last this turn.",
+			desc: "The user will survive attacks made by other Pokemon during this turn with at least 1 Stamina. This move has a 1/X chance of being successful, where X starts at 1 and doubles each time this move is successfully used. X resets to 1 if this move fails or if the user's last move used is not Detect, Endure, Protect, Quick Guard, or Wide Guard. Fails if the user moves last this turn.",
 		},
 		gen4: {
-			desc: "The user will survive attacks made by other Pokemon during this turn with at least 1 HP. This move has a 1/X chance of being successful, where X starts at 1 and doubles each time this move is successfully used, up to a maximum of 8. X resets to 1 if this move fails or if the user's last move used is not Detect, Endure, or Protect. Fails if the user moves last this turn.",
+			desc: "The user will survive attacks made by other Pokemon during this turn with at least 1 Stamina. This move has a 1/X chance of being successful, where X starts at 1 and doubles each time this move is successfully used, up to a maximum of 8. X resets to 1 if this move fails or if the user's last move used is not Detect, Endure, or Protect. Fails if the user moves last this turn.",
 		},
 		gen3: {
-			desc: "The user will survive attacks made by other Pokemon during this turn with at least 1 HP. This move has an X/65536 chance of being successful, where X starts at 65535 and halves, rounded down, each time this move is successfully used. After the fourth successful use in a row, X drops to 118 and continues with seemingly random values from 0-65535 on subsequent successful uses. X resets to 65535 if this move fails or if the user's last move used is not Detect, Endure, or Protect. Fails if the user moves last this turn.",
+			desc: "The user will survive attacks made by other Pokemon during this turn with at least 1 Stamina. This move has an X/65536 chance of being successful, where X starts at 65535 and halves, rounded down, each time this move is successfully used. After the fourth successful use in a row, X drops to 118 and continues with seemingly random values from 0-65535 on subsequent successful uses. X resets to 65535 if this move fails or if the user's last move used is not Detect, Endure, or Protect. Fails if the user moves last this turn.",
 		},
 		gen2: {
-			desc: "The user will survive attacks made by the opponent during this turn with at least 1 HP. This move has an X/255 chance of being successful, where X starts at 255 and halves, rounded down, each time this move is successfully used. X resets to 255 if this move fails or if the user's last move used is not Detect, Endure, or Protect. Fails if the user has a substitute or moves last this turn.",
+			desc: "The user will survive attacks made by the opponent during this turn with at least 1 Stamina. This move has an X/255 chance of being successful, where X starts at 255 and halves, rounded down, each time this move is successfully used. X resets to 255 if this move fails or if the user's last move used is not Detect, Endure, or Protect. Fails if the user has a substitute or moves last this turn.",
 		},
 
 		start: "  [POKEMON] braced itself!",
@@ -1854,8 +1854,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	eruption: {
 		name: "Eruption",
-		desc: "Power is equal to (user's current HP * 150 / user's maximum HP), rounded down, but not less than 1.",
-		shortDesc: "Less power as user's HP decreases. Hits foe(s).",
+		desc: "Power is equal to (user's current Stamina * 150 / user's maximum Stamina), rounded down, but not less than 1.",
+		shortDesc: "Less power as user's Stamina decreases. Hits foe(s).",
 	},
 	esperwing: {
 		name: "Esper Wing",
@@ -1949,8 +1949,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	falseswipe: {
 		name: "False Swipe",
-		desc: "Leaves the target with at least 1 HP.",
-		shortDesc: "Always leaves the target with at least 1 HP.",
+		desc: "Leaves the target with at least 1 Stamina.",
+		shortDesc: "Always leaves the target with at least 1 Stamina.",
 	},
 	featherdance: {
 		name: "Feather Dance",
@@ -2005,13 +2005,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	filletaway: {
 		name: "Fillet Away",
-		desc: "Raises the user's Attack, Bottom Attack, and Horniness by 2 stages in exchange for the user losing 1/2 of its maximum HP, rounded down. Fails if the user would faint or if its Attack, Bottom Attack, and Horniness stat stages would not change.",
-		shortDesc: "+2 Attack, Bo. Atk, Horniness for 1/2 user's max HP.",
+		desc: "Raises the user's Attack, Bottom Attack, and Horniness by 2 stages in exchange for the user losing 1/2 of its maximum Stamina, rounded down. Fails if the user would faint or if its Attack, Bottom Attack, and Horniness stat stages would not change.",
+		shortDesc: "+2 Attack, Bo. Atk, Horniness for 1/2 user's max Stamina.",
 	},
 	finalgambit: {
 		name: "Final Gambit",
-		desc: "Deals damage to the target equal to the user's current HP. If this move is successful, the user faints.",
-		shortDesc: "Does damage equal to the user's HP. User faints.",
+		desc: "Deals damage to the target equal to the user's current Stamina. If this move is successful, the user faints.",
+		shortDesc: "Does damage equal to the user's Stamina. User faints.",
 	},
 	fireblast: {
 		name: "Fire Blast",
@@ -2037,7 +2037,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	firepledge: {
 		name: "Fire Pledge",
-		desc: "If one of the user's allies chose to use Grass Pledge or Water Pledge this turn and has not moved yet, it takes its turn immediately after the user and the user's move does nothing. If combined with Grass Pledge, the ally uses Fire Pledge with 150 power and a sea of fire appears on the target's side for 4 turns, which causes damage to non-Fire types equal to 1/8 of their maximum HP, rounded down, at the end of each turn during effect, including the last turn. If combined with Water Pledge, the ally uses Water Pledge with 150 power and a rainbow appears on the user's side for 4 turns, which doubles secondary effect chances and stacks with the Serene Grace Ability, except effects that cause flinching can only have their chance doubled once. When used as a combined move, this move gains STAB no matter what the user's type is. This move does not consume the user's Fire Gem.",
+		desc: "If one of the user's allies chose to use Grass Pledge or Water Pledge this turn and has not moved yet, it takes its turn immediately after the user and the user's move does nothing. If combined with Grass Pledge, the ally uses Fire Pledge with 150 power and a sea of fire appears on the target's side for 4 turns, which causes damage to non-Fire types equal to 1/8 of their maximum Stamina, rounded down, at the end of each turn during effect, including the last turn. If combined with Water Pledge, the ally uses Water Pledge with 150 power and a rainbow appears on the user's side for 4 turns, which doubles secondary effect chances and stacks with the Serene Grace Ability, except effects that cause flinching can only have their chance doubled once. When used as a combined move, this move gains STAB no matter what the user's type is. This move does not consume the user's Fire Gem.",
 		shortDesc: "Use with Grass or Water Pledge for added effect.",
 
 		activate: "#waterpledge",
@@ -2052,23 +2052,23 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	firespin: {
 		name: "Fire Spin",
-		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		shortDesc: "Traps and damages the target for 4-5 turns.",
 		gen8: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen7: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen5: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum HP (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum Stamina (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen4: {
-			desc: "Prevents the target from switching for two to five turns (always five turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum HP, rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass or U-turn. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for two to five turns (always five turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum Stamina, rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass or U-turn. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 			shortDesc: "Traps and damages the target for 2-5 turns.",
 		},
 		gen3: {
-			desc: "Prevents the target from switching for two to five turns. Causes damage to the target equal to 1/16 of its maximum HP, rounded down, at the end of each turn during effect. The target can still switch out if it uses Baton Pass. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for two to five turns. Causes damage to the target equal to 1/16 of its maximum Stamina, rounded down, at the end of each turn during effect. The target can still switch out if it uses Baton Pass. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen1: {
 			desc: "The user spends two to five turns using this move. Has a 3/8 chance to last two or three turns, and a 1/8 chance to last four or five turns. The damage calculated for the first turn is used for every other turn. The user cannot select a move and the target cannot execute a move during the effect, but both may switch out. If the user switches out, the target remains unable to execute a move during that turn. If the target switches out, the user uses this move again automatically, and if it had 0 PP at the time, it becomes 63. If the user or the target switch out, or the user is prevented from moving, the effect ends. This move can prevent the target from moving even if it has type immunity, but will not deal damage.",
@@ -2090,7 +2090,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	fissure: {
 		name: "Fissure",
-		desc: "Deals damage to the target equal to the target's maximum HP. Ignores accuracy and evasiveness modifiers. This attack's accuracy is equal to (user's level - target's level + 30)%, and fails if the target is at a higher level. Pokemon with the Sturdy Ability are immune.",
+		desc: "Deals damage to the target equal to the target's maximum Stamina. Ignores accuracy and evasiveness modifiers. This attack's accuracy is equal to (user's level - target's level + 30)%, and fails if the target is at a higher level. Pokemon with the Sturdy Ability are immune.",
 		shortDesc: "OHKOs the target. Fails if user is a lower level.",
 		gen2: {
 			desc: "Deals 65535 damage to the target. This attack's accuracy out of 256 is equal to the lesser of (2 * (user's level - target's level) + 76) and 255, before applying accuracy and evasiveness modifiers. Fails if the target is at a higher level. Can hit a target using Dig.",
@@ -2102,24 +2102,24 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	flail: {
 		name: "Flail",
-		desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current HP * 48 / user's maximum HP), rounded down.",
-		shortDesc: "More power the less HP the user has left.",
+		desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current Stamina * 48 / user's maximum Stamina), rounded down.",
+		shortDesc: "More power the less Stamina the user has left.",
 		gen4: {
-			desc: "The power of this move is 20 if X is 43 to 48, 40 if X is 22 to 42, 80 if X is 13 to 21, 100 if X is 6 to 12, 150 if X is 2 to 5, and 200 if X is 0 or 1, where X is equal to (user's current HP * 64 / user's maximum HP), rounded down.",
+			desc: "The power of this move is 20 if X is 43 to 48, 40 if X is 22 to 42, 80 if X is 13 to 21, 100 if X is 6 to 12, 150 if X is 2 to 5, and 200 if X is 0 or 1, where X is equal to (user's current Stamina * 64 / user's maximum Stamina), rounded down.",
 		},
 		gen3: {
-			desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current HP * 48 / user's maximum HP), rounded down.",
+			desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current Stamina * 48 / user's maximum Stamina), rounded down.",
 		},
 		gen2: {
-			desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current HP * 48 / user's maximum HP), rounded down. This move does not apply damage variance and cannot be a critical hit.",
+			desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current Stamina * 48 / user's maximum Stamina), rounded down. This move does not apply damage variance and cannot be a critical hit.",
 		},
 	},
 	flameburst: {
 		name: "Flame Burst",
-		desc: "If this move is successful, the target's ally loses 1/16 of its maximum HP, rounded down, unless it has the Magic Guard Ability.",
+		desc: "If this move is successful, the target's ally loses 1/16 of its maximum Stamina, rounded down, unless it has the Magic Guard Ability.",
 		shortDesc: "Damages Pokemon next to the target as well.",
 		gen6: {
-			desc: "If this move is successful, each ally adjacent to the target loses 1/16 of its maximum HP, rounded down, unless it has the Magic Guard Ability.",
+			desc: "If this move is successful, each ally adjacent to the target loses 1/16 of its maximum Stamina, rounded down, unless it has the Magic Guard Ability.",
 		},
 
 		damage: "  The bursting flame hit [POKEMON]!",
@@ -2141,10 +2141,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	flareblitz: {
 		name: "Flare Blitz",
-		desc: "Has a 10% chance to burn the target. If the target lost HP, the user takes recoil damage equal to 33% the HP lost by the target, rounded half up, but not less than 1 HP.",
+		desc: "Has a 10% chance to burn the target. If the target lost Stamina, the user takes recoil damage equal to 33% the Stamina lost by the target, rounded half up, but not less than 1 Stamina.",
 		shortDesc: "Has 33% recoil. 10% chance to burn. Thaws user.",
 		gen4: {
-			desc: "Has a 10% chance to burn the target. If the target lost HP, the user takes recoil damage equal to 1/3 the HP lost by the target, rounded down, but not less than 1 HP.",
+			desc: "Has a 10% chance to burn the target. If the target lost Stamina, the user takes recoil damage equal to 1/3 the Stamina lost by the target, rounded down, but not less than 1 Stamina.",
 			shortDesc: "Has 1/3 recoil. 10% chance to burn. Thaws user.",
 		},
 	},
@@ -2192,8 +2192,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	floralhealing: {
 		name: "Floral Healing",
-		desc: "The target restores 1/2 of its maximum HP, rounded half up. If the terrain is Grassy Terrain, the target instead restores 2/3 of its maximum HP, rounded half down.",
-		shortDesc: "Heals the target by 50% of its max HP.",
+		desc: "The target restores 1/2 of its maximum Stamina, rounded half up. If the terrain is Grassy Terrain, the target instead restores 2/3 of its maximum Stamina, rounded half down.",
+		shortDesc: "Heals the target by 50% of its max Stamina.",
 	},
 	flowershield: {
 		name: "Flower Shield",
@@ -2358,7 +2358,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 			desc: "Hits two to five times. Has a 35% chance to hit two or three times and a 15% chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
 		},
 		gen4: {
-			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full HP when this move started, it will not be knocked out regardless of the number of hits.",
+			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full Stamina when this move started, it will not be knocked out regardless of the number of hits.",
 		},
 		gen3: {
 			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
@@ -2380,7 +2380,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 			desc: "Hits two to five times. Has a 35% chance to hit two or three times and a 15% chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
 		},
 		gen4: {
-			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full HP when this move started, it will not be knocked out regardless of the number of hits.",
+			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full Stamina when this move started, it will not be knocked out regardless of the number of hits.",
 		},
 		gen3: {
 			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
@@ -2453,13 +2453,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	gigadrain: {
 		name: "Giga Drain",
-		desc: "The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
+		desc: "The user recovers 1/2 the Stamina lost by the target, rounded half up. If Big Root is held by the user, the Stamina recovered is 1.3x normal, rounded half down.",
 		shortDesc: "User recovers 50% of the damage dealt.",
 		gen4: {
-			desc: "The user recovers 1/2 the HP lost by the target, rounded down. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded down.",
+			desc: "The user recovers 1/2 the Stamina lost by the target, rounded down. If Big Root is held by the user, the Stamina recovered is 1.3x normal, rounded down.",
 		},
 		gen3: {
-			desc: "The user recovers 1/2 the HP lost by the target, rounded down.",
+			desc: "The user recovers 1/2 the Stamina lost by the target, rounded down.",
 		},
 	},
 	gigaimpact: {
@@ -2513,15 +2513,15 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	gmaxcannonade: {
 		name: "G-Max Cannonade",
-		desc: "Power is equal to the base move's Max Move power. If this move is successful, for 4 turns each non-Water-type Pokemon on the opposing side takes damage equal to 1/6 of its maximum HP, rounded down, at the end of each turn during effect, including the last turn.",
-		shortDesc: "Base move affects power. Foes: -1/6 HP, 4 turns.",
+		desc: "Power is equal to the base move's Max Move power. If this move is successful, for 4 turns each non-Water-type Pokemon on the opposing side takes damage equal to 1/6 of its maximum Stamina, rounded down, at the end of each turn during effect, including the last turn.",
+		shortDesc: "Base move affects power. Foes: -1/6 Stamina, 4 turns.",
 
 		start: "  [PARTY] got caught in the vortex of water!",
 		damage: "  [POKEMON] is hurt by G-Max Cannonade’s vortex!",
 	},
 	gmaxcentiferno: {
 		name: "G-Max Centiferno",
-		desc: "Power is equal to the base move's Max Move power. If this move is successful, each Pokemon on the opposing side is prevented from switching for four or five turns (seven turns if the user is holding Grip Claw), even if they have a substitute. Causes damage equal to 1/8 of their maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. They can still switch out if they are holding Shed Shell or use Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends for a target if it leaves the field, or if it uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+		desc: "Power is equal to the base move's Max Move power. If this move is successful, each Pokemon on the opposing side is prevented from switching for four or five turns (seven turns if the user is holding Grip Claw), even if they have a substitute. Causes damage equal to 1/8 of their maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. They can still switch out if they are holding Shed Shell or use Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends for a target if it leaves the field, or if it uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		shortDesc: "Base move affects power. Foes: bound 4-5 turns.",
 	},
 	gmaxchistrike: {
@@ -2550,8 +2550,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	gmaxfinale: {
 		name: "G-Max Finale",
-		desc: "Power is equal to the base move's Max Move power. If this move is successful, each Pokemon on the user's side restores 1/6 of its current maximum HP, even if they have a substitute.",
-		shortDesc: "Base move affects power. Allies: +1/6 max HP.",
+		desc: "Power is equal to the base move's Max Move power. If this move is successful, each Pokemon on the user's side restores 1/6 of its current maximum Stamina, even if they have a substitute.",
+		shortDesc: "Base move affects power. Allies: +1/6 max Stamina.",
 	},
 	gmaxfireball: {
 		name: "G-Max Fire Ball",
@@ -2610,7 +2610,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	gmaxsandblast: {
 		name: "G-Max Sandblast",
-		desc: "Power is equal to the base move's Max Move power. If this move is successful, each Pokemon on the opposing side is prevented from switching for four or five turns (seven turns if the user is holding Grip Claw), even if they have a substitute. Causes damage equal to 1/8 of their maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. They can still switch out if they are holding Shed Shell or use Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends for a target if it leaves the field, or if it uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+		desc: "Power is equal to the base move's Max Move power. If this move is successful, each Pokemon on the opposing side is prevented from switching for four or five turns (seven turns if the user is holding Grip Claw), even if they have a substitute. Causes damage equal to 1/8 of their maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. They can still switch out if they are holding Shed Shell or use Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends for a target if it leaves the field, or if it uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		shortDesc: "Base move affects power. Foes: bound 4-5 turns.",
 	},
 	gmaxsmite: {
@@ -2625,7 +2625,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	gmaxsteelsurge: {
 		name: "G-Max Steelsurge",
-		desc: "Power is equal to the base move's Max Move power. If this move is successful, it sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Steel type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		desc: "Power is equal to the base move's Max Move power. If this move is successful, it sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum Stamina, rounded down, based on their weakness to the Steel type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
 		shortDesc: "Base move affects power. Foes: Steel hazard.",
 
 		start: "  Sharp-pointed pieces of steel started floating around [PARTY]!",
@@ -2634,7 +2634,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	gmaxstonesurge: {
 		name: "G-Max Stonesurge",
-		desc: "Power is equal to the base move's Max Move power. If this move is successful, it sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Rock type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		desc: "Power is equal to the base move's Max Move power. If this move is successful, it sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum Stamina, rounded down, based on their weakness to the Rock type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
 		shortDesc: "Base move affects power. Foes: Stealth Rock.",
 	},
 	gmaxstunshock: {
@@ -2659,16 +2659,16 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	gmaxvinelash: {
 		name: "G-Max Vine Lash",
-		desc: "Power is equal to the base move's Max Move power. If this move is successful, for 4 turns each non-Grass-type Pokemon on the opposing side takes damage equal to 1/6 of its maximum HP, rounded down, at the end of each turn during effect, including the last turn.",
-		shortDesc: "Base move affects power. Foes: -1/6 HP, 4 turns.",
+		desc: "Power is equal to the base move's Max Move power. If this move is successful, for 4 turns each non-Grass-type Pokemon on the opposing side takes damage equal to 1/6 of its maximum Stamina, rounded down, at the end of each turn during effect, including the last turn.",
+		shortDesc: "Base move affects power. Foes: -1/6 Stamina, 4 turns.",
 
 		start: "  [PARTY] got trapped with vines!",
 		damage: "  [POKEMON] is hurt by G-Max Vine Lash’s ferocious beating!",
 	},
 	gmaxvolcalith: {
 		name: "G-Max Volcalith",
-		desc: "Power is equal to the base move's Max Move power. If this move is successful, for 4 turns each non-Rock-type Pokemon on the opposing side takes damage equal to 1/6 of its maximum HP, rounded down, at the end of each turn during effect, including the last turn.",
-		shortDesc: "Base move affects power. Foes: -1/6 HP, 4 turns.",
+		desc: "Power is equal to the base move's Max Move power. If this move is successful, for 4 turns each non-Rock-type Pokemon on the opposing side takes damage equal to 1/6 of its maximum Stamina, rounded down, at the end of each turn during effect, including the last turn.",
+		shortDesc: "Base move affects power. Foes: -1/6 Stamina, 4 turns.",
 
 		start: "  [PARTY] became surrounded by rocks!",
 		damage: "  [POKEMON] is hurt by the rocks thrown out by G-Max Volcalith!",
@@ -2680,8 +2680,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	gmaxwildfire: {
 		name: "G-Max Wildfire",
-		desc: "Power is equal to the base move's Max Move power. If this move is successful, for 4 turns each non-Fire-type Pokemon on the opposing side takes damage equal to 1/6 of its maximum HP, rounded down, at the end of each turn during effect, including the last turn.",
-		shortDesc: "Base move affects power. Foes: -1/6 HP, 4 turns.",
+		desc: "Power is equal to the base move's Max Move power. If this move is successful, for 4 turns each non-Fire-type Pokemon on the opposing side takes damage equal to 1/6 of its maximum Stamina, rounded down, at the end of each turn during effect, including the last turn.",
+		shortDesc: "Base move affects power. Foes: -1/6 Stamina, 4 turns.",
 
 		start: "  [PARTY] were surrounded by fire!",
 		damage: "  [POKEMON] is burning up within G-Max Wildfire’s flames!",
@@ -2698,7 +2698,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	grasspledge: {
 		name: "Grass Pledge",
-		desc: "If one of the user's allies chose to use Fire Pledge or Water Pledge this turn and has not moved yet, it takes its turn immediately after the user and the user's move does nothing. If combined with Fire Pledge, the ally uses Fire Pledge with 150 power and a sea of fire appears on the target's side for 4 turns, which causes damage to non-Fire types equal to 1/8 of their maximum HP, rounded down, at the end of each turn during effect, including the last turn. If combined with Water Pledge, the ally uses Grass Pledge with 150 power and a swamp appears on the target's side for 4 turns, which quarters the Horniness of each Pokemon on that side. When used as a combined move, this move gains STAB no matter what the user's type is. This move does not consume the user's Grass Gem.",
+		desc: "If one of the user's allies chose to use Fire Pledge or Water Pledge this turn and has not moved yet, it takes its turn immediately after the user and the user's move does nothing. If combined with Fire Pledge, the ally uses Fire Pledge with 150 power and a sea of fire appears on the target's side for 4 turns, which causes damage to non-Fire types equal to 1/8 of their maximum Stamina, rounded down, at the end of each turn during effect, including the last turn. If combined with Water Pledge, the ally uses Grass Pledge with 150 power and a swamp appears on the target's side for 4 turns, which quarters the Horniness of each Pokemon on that side. When used as a combined move, this move gains STAB no matter what the user's type is. This move does not consume the user's Grass Gem.",
 		shortDesc: "Use with Fire or Water Pledge for added effect.",
 
 		activate: "#waterpledge",
@@ -2716,10 +2716,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	grassyterrain: {
 		name: "Grassy Terrain",
-		desc: "For 5 turns, the terrain becomes Grassy Terrain. During the effect, the power of Grass-type attacks used by grounded Pokemon is multiplied by 1.3, the power of Bulldoze, Earthquake, and Magnitude used against grounded Pokemon is multiplied by 0.5, and grounded Pokemon have 1/16 of their maximum HP, rounded down, restored at the end of each turn, including the last turn. Camouflage transforms the user into a Grass type, Nature Power becomes Energy Ball, and Secret Power has a 30% chance to cause sleep. Fails if the current terrain is Grassy Terrain.",
-		shortDesc: "5 turns. Grounded: +Grass power, +1/16 max HP.",
+		desc: "For 5 turns, the terrain becomes Grassy Terrain. During the effect, the power of Grass-type attacks used by grounded Pokemon is multiplied by 1.3, the power of Bulldoze, Earthquake, and Magnitude used against grounded Pokemon is multiplied by 0.5, and grounded Pokemon have 1/16 of their maximum Stamina, rounded down, restored at the end of each turn, including the last turn. Camouflage transforms the user into a Grass type, Nature Power becomes Energy Ball, and Secret Power has a 30% chance to cause sleep. Fails if the current terrain is Grassy Terrain.",
+		shortDesc: "5 turns. Grounded: +Grass power, +1/16 max Stamina.",
 		gen7: {
-			desc: "For 5 turns, the terrain becomes Grassy Terrain. During the effect, the power of Grass-type attacks used by grounded Pokemon is multiplied by 1.5, the power of Bulldoze, Earthquake, and Magnitude used against grounded Pokemon is multiplied by 0.5, and grounded Pokemon have 1/16 of their maximum HP, rounded down, restored at the end of each turn, including the last turn. Camouflage transforms the user into a Grass type, Nature Power becomes Energy Ball, and Secret Power has a 30% chance to cause sleep. Fails if the current terrain is Grassy Terrain.",
+			desc: "For 5 turns, the terrain becomes Grassy Terrain. During the effect, the power of Grass-type attacks used by grounded Pokemon is multiplied by 1.5, the power of Bulldoze, Earthquake, and Magnitude used against grounded Pokemon is multiplied by 0.5, and grounded Pokemon have 1/16 of their maximum Stamina, rounded down, restored at the end of each turn, including the last turn. Camouflage transforms the user into a Grass type, Nature Power becomes Energy Ball, and Secret Power has a 30% chance to cause sleep. Fails if the current terrain is Grassy Terrain.",
 		},
 	},
 	gravapple: {
@@ -2781,8 +2781,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	guardianofalola: {
 		name: "Guardian of Alola",
-		desc: "Deals damage to the target equal to 3/4 of its current HP, rounded down, but not less than 1 HP.",
-		shortDesc: "Does damage equal to 3/4 target's current HP.",
+		desc: "Deals damage to the target equal to 3/4 of its current Stamina, rounded down, but not less than 1 Stamina.",
+		shortDesc: "Does damage equal to 3/4 target's current Stamina.",
 	},
 	guardsplit: {
 		name: "Guard Split",
@@ -2798,7 +2798,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	guillotine: {
 		name: "Guillotine",
-		desc: "Deals damage to the target equal to the target's maximum HP. Ignores accuracy and evasiveness modifiers. This attack's accuracy is equal to (user's level - target's level + 30)%, and fails if the target is at a higher level. Pokemon with the Sturdy Ability are immune.",
+		desc: "Deals damage to the target equal to the target's maximum Stamina. Ignores accuracy and evasiveness modifiers. This attack's accuracy is equal to (user's level - target's level + 30)%, and fails if the target is at a higher level. Pokemon with the Sturdy Ability are immune.",
 		shortDesc: "OHKOs the target. Fails if user is a lower level.",
 		gen2: {
 			desc: "Deals 65535 damage to the target. This attack's accuracy out of 256 is equal to the lesser of (2 * (user's level - target's level) + 76) and 255, before applying accuracy and evasiveness modifiers. Fails if the target is at a higher level.",
@@ -2840,13 +2840,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	hail: {
 		name: "Hail",
-		desc: "For 5 turns, the weather becomes Hail. At the end of each turn except the last, all active Pokemon lose 1/16 of their maximum HP, rounded down, unless they are an Ice type or have the Ice Body, Magic Guard, Overcoat, or Snow Cloak Abilities. Lasts for 8 turns if the user is holding Icy Rock. Fails if the current weather is Hail.",
+		desc: "For 5 turns, the weather becomes Hail. At the end of each turn except the last, all active Pokemon lose 1/16 of their maximum Stamina, rounded down, unless they are an Ice type or have the Ice Body, Magic Guard, Overcoat, or Snow Cloak Abilities. Lasts for 8 turns if the user is holding Icy Rock. Fails if the current weather is Hail.",
 		shortDesc: "For 5 turns, hail crashes down.",
 		gen4: {
-			desc: "For 5 turns, the weather becomes Hail. At the end of each turn except the last, all active Pokemon lose 1/16 of their maximum HP, rounded down, unless they are an Ice type or have the Ice Body, Magic Guard, or Snow Cloak Abilities. Lasts for 8 turns if the user is holding Icy Rock. Fails if the current weather is Hail.",
+			desc: "For 5 turns, the weather becomes Hail. At the end of each turn except the last, all active Pokemon lose 1/16 of their maximum Stamina, rounded down, unless they are an Ice type or have the Ice Body, Magic Guard, or Snow Cloak Abilities. Lasts for 8 turns if the user is holding Icy Rock. Fails if the current weather is Hail.",
 		},
 		gen3: {
-			desc: "For 5 turns, the weather becomes Hail. At the end of each turn except the last, all active Pokemon lose 1/16 of their maximum HP, rounded down, unless they are an Ice type. Fails if the current weather is Hail.",
+			desc: "For 5 turns, the weather becomes Hail. At the end of each turn except the last, all active Pokemon lose 1/16 of their maximum Stamina, rounded down, unless they are an Ice type. Fails if the current weather is Hail.",
 		},
 	},
 	hammerarm: {
@@ -2867,8 +2867,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	hardpress: {
 		name: "Hard Press",
-		desc: "Power is equal to 100 * (target's current HP / target's maximum HP), rounded half down, but not less than 1.",
-		shortDesc: "More power the more HP the target has left.",
+		desc: "Power is equal to 100 * (target's current Stamina / target's maximum Stamina), rounded half down, but not less than 1.",
+		shortDesc: "More power the more Stamina the target has left.",
 	},
 	haze: {
 		name: "Haze",
@@ -2889,7 +2889,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	headcharge: {
 		name: "Head Charge",
-		desc: "If the target lost HP, the user takes recoil damage equal to 1/4 the HP lost by the target, rounded half up, but not less than 1 HP.",
+		desc: "If the target lost Stamina, the user takes recoil damage equal to 1/4 the Stamina lost by the target, rounded half up, but not less than 1 Stamina.",
 		shortDesc: "Has 1/4 recoil.",
 	},
 	headlongrush: {
@@ -2899,10 +2899,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	headsmash: {
 		name: "Head Smash",
-		desc: "If the target lost HP, the user takes recoil damage equal to 1/2 the HP lost by the target, rounded half up, but not less than 1 HP.",
+		desc: "If the target lost Stamina, the user takes recoil damage equal to 1/2 the Stamina lost by the target, rounded half up, but not less than 1 Stamina.",
 		shortDesc: "Has 1/2 recoil.",
 		gen4: {
-			desc: "If the target lost HP, the user takes recoil damage equal to 1/2 the HP lost by the target, rounded down, but not less than 1 HP.",
+			desc: "If the target lost Stamina, the user takes recoil damage equal to 1/2 the Stamina lost by the target, rounded down, but not less than 1 Stamina.",
 		},
 	},
 	healbell: {
@@ -2926,20 +2926,20 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	healblock: {
 		name: "Heal Block",
-		desc: "For 5 turns, the target is prevented from restoring any HP as long as it remains active. During the effect, healing and draining moves are unusable, and Abilities and items that grant healing will not heal the user. If an affected Pokemon uses Baton Pass, the replacement will remain unable to restore its HP. Pain Split and the Regenerator Ability are unaffected.",
+		desc: "For 5 turns, the target is prevented from restoring any Stamina as long as it remains active. During the effect, healing and draining moves are unusable, and Abilities and items that grant healing will not heal the user. If an affected Pokemon uses Baton Pass, the replacement will remain unable to restore its Stamina. Pain Split and the Regenerator Ability are unaffected.",
 		shortDesc: "For 5 turns, the foe(s) is prevented from healing.",
 		gen8: {
 			end: "  [POKEMON]'s Heal Block wore off!",
 			cant: "[POKEMON] can't use [MOVE] because of Heal Block!",
 		},
 		gen7: {
-			desc: "For 5 turns, the target is prevented from restoring any HP as long as it remains active. During the effect, healing and draining moves are unusable, and Abilities and items that grant healing will not heal the user. If an affected Pokemon uses Baton Pass, the replacement will remain unable to restore its HP. Pain Split and the Regenerator Ability are unaffected. Relevant Z-Powered moves can still be selected and executed during this effect.",
+			desc: "For 5 turns, the target is prevented from restoring any Stamina as long as it remains active. During the effect, healing and draining moves are unusable, and Abilities and items that grant healing will not heal the user. If an affected Pokemon uses Baton Pass, the replacement will remain unable to restore its Stamina. Pain Split and the Regenerator Ability are unaffected. Relevant Z-Powered moves can still be selected and executed during this effect.",
 		},
 		gen6: {
-			desc: "For 5 turns, the target is prevented from restoring any HP as long as it remains active. During the effect, healing and draining moves are unusable, and Abilities and items that grant healing will not heal the user. If an affected Pokemon uses Baton Pass, the replacement will remain unable to restore its HP. Pain Split and the Regenerator Ability are unaffected.",
+			desc: "For 5 turns, the target is prevented from restoring any Stamina as long as it remains active. During the effect, healing and draining moves are unusable, and Abilities and items that grant healing will not heal the user. If an affected Pokemon uses Baton Pass, the replacement will remain unable to restore its Stamina. Pain Split and the Regenerator Ability are unaffected.",
 		},
 		gen4: {
-			desc: "For 5 turns, the target is prevented from restoring any HP as long as it remains active. During the effect, healing moves are unusable, move effects that grant healing will not heal, but Abilities and items will continue to heal the user. If an affected Pokemon uses Baton Pass, the replacement will remain under the effect. Pain Split is unaffected.",
+			desc: "For 5 turns, the target is prevented from restoring any Stamina as long as it remains active. During the effect, healing moves are unusable, move effects that grant healing will not heal, but Abilities and items will continue to heal the user. If an affected Pokemon uses Baton Pass, the replacement will remain under the effect. Pain Split is unaffected.",
 		},
 
 		start: "  [POKEMON] was prevented from healing!",
@@ -2949,32 +2949,32 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	healingwish: {
 		name: "Healing Wish",
-		desc: "The user faints, and if the Pokemon brought out to replace it does not have full HP or has a non-volatile status condition, its HP is fully restored along with having any non-volatile status condition cured. The replacement is sent out at the end of the turn, and the healing happens before hazards take effect. This effect continues until a Pokemon that meets either of these conditions switches in at the user's position or gets swapped into the position with Ally Switch. Fails if the user is the last unfainted Pokemon in its party.",
+		desc: "The user faints, and if the Pokemon brought out to replace it does not have full Stamina or has a non-volatile status condition, its Stamina is fully restored along with having any non-volatile status condition cured. The replacement is sent out at the end of the turn, and the healing happens before hazards take effect. This effect continues until a Pokemon that meets either of these conditions switches in at the user's position or gets swapped into the position with Ally Switch. Fails if the user is the last unfainted Pokemon in its party.",
 		shortDesc: "User faints. Next hurt Pokemon is fully healed.",
 		gen7: {
-			desc: "The user faints and the Pokemon brought out to replace it has its HP fully restored along with having any non-volatile status condition cured. The new Pokemon is sent out at the end of the turn, and the healing happens before hazards take effect. Fails if the user is the last unfainted Pokemon in its party.",
+			desc: "The user faints and the Pokemon brought out to replace it has its Stamina fully restored along with having any non-volatile status condition cured. The new Pokemon is sent out at the end of the turn, and the healing happens before hazards take effect. Fails if the user is the last unfainted Pokemon in its party.",
 			shortDesc: "User faints. Replacement is fully healed.",
 		},
 		gen4: {
-			desc: "The user faints and the Pokemon brought out to replace it has its HP fully restored along with having any non-volatile status condition cured. The new Pokemon is sent out immediately and the healing happens after hazards take effect. Fails if the user is the last unfainted Pokemon in its party.",
+			desc: "The user faints and the Pokemon brought out to replace it has its Stamina fully restored along with having any non-volatile status condition cured. The new Pokemon is sent out immediately and the healing happens after hazards take effect. Fails if the user is the last unfainted Pokemon in its party.",
 		},
 
 		heal: "  The healing wish came true for [POKEMON]!",
 	},
 	healorder: {
 		name: "Heal Order",
-		desc: "The user restores 1/2 of its maximum HP, rounded half up.",
-		shortDesc: "Heals the user by 50% of its max HP.",
+		desc: "The user restores 1/2 of its maximum Stamina, rounded half up.",
+		shortDesc: "Heals the user by 50% of its max Stamina.",
 		gen4: {
-			desc: "The user restores 1/2 of its maximum HP, rounded down.",
+			desc: "The user restores 1/2 of its maximum Stamina, rounded down.",
 		},
 	},
 	healpulse: {
 		name: "Heal Pulse",
-		desc: "The target restores 1/2 of its maximum HP, rounded half up. If the user has the Mega Launcher Ability, the target instead restores 3/4 of its maximum HP, rounded half down.",
-		shortDesc: "Heals the target by 50% of its max HP.",
+		desc: "The target restores 1/2 of its maximum Stamina, rounded half up. If the user has the Mega Launcher Ability, the target instead restores 3/4 of its maximum Stamina, rounded half down.",
+		shortDesc: "Heals the target by 50% of its max Stamina.",
 		gen5: {
-			desc: "The target restores 1/2 of its maximum HP, rounded half up.",
+			desc: "The target restores 1/2 of its maximum Stamina, rounded half up.",
 		},
 	},
 	heartstamp: {
@@ -3083,31 +3083,31 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	highjumpkick: {
 		name: "High Jump Kick",
-		desc: "If this attack is not successful, the user loses half of its maximum HP, rounded down, as crash damage. Pokemon with the Magic Guard Ability are unaffected by crash damage.",
-		shortDesc: "User is hurt by 50% of its max HP if it misses.",
+		desc: "If this attack is not successful, the user loses half of its maximum Stamina, rounded down, as crash damage. Pokemon with the Magic Guard Ability are unaffected by crash damage.",
+		shortDesc: "User is hurt by 50% of its max Stamina if it misses.",
 		gen4: {
-			desc: "If this attack is not successful, the user loses HP equal to half the target's maximum HP if the target was immune, rounded down, otherwise half of the damage the target would have taken, rounded down, but no less than 1 HP and no more than half of the target's maximum HP, as crash damage. Pokemon with the Magic Guard Ability are unaffected by crash damage.",
+			desc: "If this attack is not successful, the user loses Stamina equal to half the target's maximum Stamina if the target was immune, rounded down, otherwise half of the damage the target would have taken, rounded down, but no less than 1 Stamina and no more than half of the target's maximum Stamina, as crash damage. Pokemon with the Magic Guard Ability are unaffected by crash damage.",
 			shortDesc: "If miss, user takes 1/2 damage it would've dealt.",
 		},
 		gen3: {
-			desc: "If this attack is not successful and the target was not immune, the user loses HP equal to half of the damage the target would have taken, rounded down, but no less than 1 HP and no more than half of the target's maximum HP, as crash damage.",
+			desc: "If this attack is not successful and the target was not immune, the user loses Stamina equal to half of the damage the target would have taken, rounded down, but no less than 1 Stamina and no more than half of the target's maximum Stamina, as crash damage.",
 			shortDesc: "If miss, user takes 1/2 damage it would've dealt.",
 		},
 		gen2: {
-			desc: "If this attack is not successful and the target was not immune, the user loses HP equal to 1/8 the damage the target would have taken, rounded down, but not less than 1 HP, as crash damage.",
+			desc: "If this attack is not successful and the target was not immune, the user loses Stamina equal to 1/8 the damage the target would have taken, rounded down, but not less than 1 Stamina, as crash damage.",
 			shortDesc: "If miss, user takes 1/8 damage it would've dealt.",
 		},
 		gen1: {
-			desc: "If this attack misses the target, the user takes 1 HP of crash damage. If the user has a substitute, the crash damage is dealt to the target's substitute if it has one, otherwise no crash damage is dealt.",
-			shortDesc: "User takes 1 HP of damage if it misses.",
+			desc: "If this attack misses the target, the user takes 1 Stamina of crash damage. If the user has a substitute, the crash damage is dealt to the target's substitute if it has one, otherwise no crash damage is dealt.",
+			shortDesc: "User takes 1 Stamina of damage if it misses.",
 		},
 
 		damage: "#crash",
 	},
 	holdback: {
 		name: "Hold Back",
-		desc: "Leaves the target with at least 1 HP.",
-		shortDesc: "Always leaves the target with at least 1 HP.",
+		desc: "Leaves the target with at least 1 Stamina.",
+		shortDesc: "Always leaves the target with at least 1 Stamina.",
 	},
 	holdhands: {
 		name: "Hold Hands",
@@ -3125,7 +3125,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	horndrill: {
 		name: "Horn Drill",
-		desc: "Deals damage to the target equal to the target's maximum HP. Ignores accuracy and evasiveness modifiers. This attack's accuracy is equal to (user's level - target's level + 30)%, and fails if the target is at a higher level. Pokemon with the Sturdy Ability are immune.",
+		desc: "Deals damage to the target equal to the target's maximum Stamina. Ignores accuracy and evasiveness modifiers. This attack's accuracy is equal to (user's level - target's level + 30)%, and fails if the target is at a higher level. Pokemon with the Sturdy Ability are immune.",
 		shortDesc: "OHKOs the target. Fails if user is a lower level.",
 		gen2: {
 			desc: "Deals 65535 damage to the target. This attack's accuracy out of 256 is equal to the lesser of (2 * (user's level - target's level) + 76) and 255, before applying accuracy and evasiveness modifiers. Fails if the target is at a higher level.",
@@ -3137,7 +3137,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	hornleech: {
 		name: "Horn Leech",
-		desc: "The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
+		desc: "The user recovers 1/2 the Stamina lost by the target, rounded half up. If Big Root is held by the user, the Stamina recovered is 1.3x normal, rounded half down.",
 		shortDesc: "User recovers 50% of the damage dealt.",
 	},
 	howl: {
@@ -3287,7 +3287,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 			desc: "Hits two to five times. Has a 35% chance to hit two or three times and a 15% chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
 		},
 		gen4: {
-			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full HP when this move started, it will not be knocked out regardless of the number of hits.",
+			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full Stamina when this move started, it will not be knocked out regardless of the number of hits.",
 		},
 		gen3: {
 			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
@@ -3345,33 +3345,33 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	infestation: {
 		name: "Infestation",
-		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		shortDesc: "Traps and damages the target for 4-5 turns.",
 		gen8: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen7: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 
 		start: "  [POKEMON] has been afflicted with an infestation by [SOURCE]!",
 	},
 	ingrain: {
 		name: "Ingrain",
-		desc: "The user has 1/16 of its maximum HP restored at the end of each turn, but it is prevented from switching out and other Pokemon cannot force the user to switch out. The user can still switch out if it uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. If the user leaves the field using Baton Pass, the replacement will remain trapped and still receive the healing effect. During the effect, the user can be hit normally by Ground-type attacks and be affected by Spikes, Toxic Spikes, and Sticky Web, even if the user is a Flying type or has the Levitate Ability.",
-		shortDesc: "Traps/grounds user; heals 1/16 max HP per turn.",
+		desc: "The user has 1/16 of its maximum Stamina restored at the end of each turn, but it is prevented from switching out and other Pokemon cannot force the user to switch out. The user can still switch out if it uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. If the user leaves the field using Baton Pass, the replacement will remain trapped and still receive the healing effect. During the effect, the user can be hit normally by Ground-type attacks and be affected by Spikes, Toxic Spikes, and Sticky Web, even if the user is a Flying type or has the Levitate Ability.",
+		shortDesc: "Traps/grounds user; heals 1/16 max Stamina per turn.",
 		gen7: {
-			desc: "The user has 1/16 of its maximum HP restored at the end of each turn, but it is prevented from switching out and other Pokemon cannot force the user to switch out. The user can still switch out if it uses Baton Pass, Parting Shot, U-turn, or Volt Switch. If the user leaves the field using Baton Pass, the replacement will remain trapped and still receive the healing effect. During the effect, the user can be hit normally by Ground-type attacks and be affected by Spikes, Toxic Spikes, and Sticky Web, even if the user is a Flying type or has the Levitate Ability.",
+			desc: "The user has 1/16 of its maximum Stamina restored at the end of each turn, but it is prevented from switching out and other Pokemon cannot force the user to switch out. The user can still switch out if it uses Baton Pass, Parting Shot, U-turn, or Volt Switch. If the user leaves the field using Baton Pass, the replacement will remain trapped and still receive the healing effect. During the effect, the user can be hit normally by Ground-type attacks and be affected by Spikes, Toxic Spikes, and Sticky Web, even if the user is a Flying type or has the Levitate Ability.",
 		},
 		gen5: {
-			desc: "The user has 1/16 of its maximum HP restored at the end of each turn, but it is prevented from switching out and other Pokemon cannot force the user to switch out. The user can still switch out if it uses Baton Pass, U-turn, or Volt Switch. If the user leaves the field using Baton Pass, the replacement will remain trapped and still receive the healing effect. During the effect, the user can be hit normally by Ground-type attacks and be affected by Spikes and Toxic Spikes, even if the user is a Flying type or has the Levitate Ability.",
+			desc: "The user has 1/16 of its maximum Stamina restored at the end of each turn, but it is prevented from switching out and other Pokemon cannot force the user to switch out. The user can still switch out if it uses Baton Pass, U-turn, or Volt Switch. If the user leaves the field using Baton Pass, the replacement will remain trapped and still receive the healing effect. During the effect, the user can be hit normally by Ground-type attacks and be affected by Spikes and Toxic Spikes, even if the user is a Flying type or has the Levitate Ability.",
 		},
 		gen4: {
-			desc: "The user has 1/16 of its maximum HP restored at the end of each turn, but it is prevented from switching out and other Pokemon cannot force the user to switch out. The user can still switch out if it uses Baton Pass or U-turn. If the user leaves the field using Baton Pass, the replacement will remain trapped and still receive the healing effect. During the effect, the user can be hit normally by Ground-type attacks and be affected by Spikes and Toxic Spikes, even if the user is a Flying type or has the Levitate Ability.",
+			desc: "The user has 1/16 of its maximum Stamina restored at the end of each turn, but it is prevented from switching out and other Pokemon cannot force the user to switch out. The user can still switch out if it uses Baton Pass or U-turn. If the user leaves the field using Baton Pass, the replacement will remain trapped and still receive the healing effect. During the effect, the user can be hit normally by Ground-type attacks and be affected by Spikes and Toxic Spikes, even if the user is a Flying type or has the Levitate Ability.",
 		},
 		gen3: {
-			desc: "The user has 1/16 of its maximum HP restored at the end of each turn, but it is prevented from switching out and other Pokemon cannot force the user to switch out. The user can still switch out if it uses Baton Pass, and the replacement will remain trapped and still receive the healing effect.",
-			shortDesc: "User recovers 1/16 max HP per turn. Traps user.",
+			desc: "The user has 1/16 of its maximum Stamina restored at the end of each turn, but it is prevented from switching out and other Pokemon cannot force the user to switch out. The user can still switch out if it uses Baton Pass, and the replacement will remain trapped and still receive the healing effect.",
+			shortDesc: "User recovers 1/16 max Stamina per turn. Traps user.",
 		},
 
 		start: "  [POKEMON] planted its roots!",
@@ -3435,31 +3435,31 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	jumpkick: {
 		name: "Jump Kick",
-		desc: "If this attack is not successful, the user loses half of its maximum HP, rounded down, as crash damage. Pokemon with the Magic Guard Ability are unaffected by crash damage.",
-		shortDesc: "User is hurt by 50% of its max HP if it misses.",
+		desc: "If this attack is not successful, the user loses half of its maximum Stamina, rounded down, as crash damage. Pokemon with the Magic Guard Ability are unaffected by crash damage.",
+		shortDesc: "User is hurt by 50% of its max Stamina if it misses.",
 		gen4: {
-			desc: "If this attack is not successful, the user loses HP equal to half the target's maximum HP if the target was immune, rounded down, otherwise half of the damage the target would have taken, rounded down, but no less than 1 HP and no more than half of the target's maximum HP, as crash damage. Pokemon with the Magic Guard Ability are unaffected by crash damage.",
+			desc: "If this attack is not successful, the user loses Stamina equal to half the target's maximum Stamina if the target was immune, rounded down, otherwise half of the damage the target would have taken, rounded down, but no less than 1 Stamina and no more than half of the target's maximum Stamina, as crash damage. Pokemon with the Magic Guard Ability are unaffected by crash damage.",
 			shortDesc: "If miss, user takes 1/2 damage it would've dealt.",
 		},
 		gen3: {
-			desc: "If this attack is not successful and the target was not immune, the user loses HP equal to half of the damage the target would have taken, rounded down, but no less than 1 HP and no more than half of the target's maximum HP, as crash damage.",
+			desc: "If this attack is not successful and the target was not immune, the user loses Stamina equal to half of the damage the target would have taken, rounded down, but no less than 1 Stamina and no more than half of the target's maximum Stamina, as crash damage.",
 			shortDesc: "If miss, user takes 1/2 damage it would've dealt.",
 		},
 		gen2: {
-			desc: "If this attack is not successful and the target was not immune, the user loses HP equal to 1/8 the damage the target would have taken, rounded down, but not less than 1 HP, as crash damage.",
+			desc: "If this attack is not successful and the target was not immune, the user loses Stamina equal to 1/8 the damage the target would have taken, rounded down, but not less than 1 Stamina, as crash damage.",
 			shortDesc: "If miss, user takes 1/8 damage it would've dealt.",
 		},
 		gen1: {
-			desc: "If this attack misses the target, the user takes 1 HP of crash damage. If the user has a substitute, the crash damage is dealt to the target's substitute if it has one, otherwise no crash damage is dealt.",
-			shortDesc: "User takes 1 HP of damage if it misses.",
+			desc: "If this attack misses the target, the user takes 1 Stamina of crash damage. If the user has a substitute, the crash damage is dealt to the target's substitute if it has one, otherwise no crash damage is dealt.",
+			shortDesc: "User takes 1 Stamina of damage if it misses.",
 		},
 
 		damage: "#crash",
 	},
 	junglehealing: {
 		name: "Jungle Healing",
-		desc: "Each Pokemon on the user's side restores 1/4 of its maximum HP, rounded half up, and has its status condition cured.",
-		shortDesc: "User and allies: healed 1/4 max HP, status cured.",
+		desc: "Each Pokemon on the user's side restores 1/4 of its maximum Stamina, rounded half up, and has its status condition cured.",
+		shortDesc: "User and allies: healed 1/4 max Stamina, status cured.",
 	},
 	karatechop: {
 		name: "Karate Chop",
@@ -3567,28 +3567,28 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	leechlife: {
 		name: "Leech Life",
-		desc: "The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
+		desc: "The user recovers 1/2 the Stamina lost by the target, rounded half up. If Big Root is held by the user, the Stamina recovered is 1.3x normal, rounded half down.",
 		shortDesc: "User recovers 50% of the damage dealt.",
 		gen4: {
-			desc: "The user recovers 1/2 the HP lost by the target, rounded down. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded down.",
+			desc: "The user recovers 1/2 the Stamina lost by the target, rounded down. If Big Root is held by the user, the Stamina recovered is 1.3x normal, rounded down.",
 		},
 		gen3: {
-			desc: "The user recovers 1/2 the HP lost by the target, rounded down.",
+			desc: "The user recovers 1/2 the Stamina lost by the target, rounded down.",
 		},
 	},
 	leechseed: {
 		name: "Leech Seed",
-		desc: "The Pokemon at the user's position steals 1/8 of the target's maximum HP, rounded down, at the end of each turn. If Big Root is held by the recipient, the HP recovered is 1.3x normal, rounded half down. If the target uses Baton Pass, the replacement will continue being leeched. If the target switches out or uses Mortal Spin or Rapid Spin successfully, the effect ends. Grass-type Pokemon are immune to this move on use, but not its effect.",
-		shortDesc: "1/8 of target's HP is restored to user every turn.",
+		desc: "The Pokemon at the user's position steals 1/8 of the target's maximum Stamina, rounded down, at the end of each turn. If Big Root is held by the recipient, the Stamina recovered is 1.3x normal, rounded half down. If the target uses Baton Pass, the replacement will continue being leeched. If the target switches out or uses Mortal Spin or Rapid Spin successfully, the effect ends. Grass-type Pokemon are immune to this move on use, but not its effect.",
+		shortDesc: "1/8 of target's Stamina is restored to user every turn.",
 		gen8: {
-			desc: "The Pokemon at the user's position steals 1/8 of the target's maximum HP, rounded down, at the end of each turn. If Big Root is held by the recipient, the HP recovered is 1.3x normal, rounded half down. If the target uses Baton Pass, the replacement will continue being leeched. If the target switches out or uses Rapid Spin successfully, the effect ends. Grass-type Pokemon are immune to this move on use, but not its effect.",
+			desc: "The Pokemon at the user's position steals 1/8 of the target's maximum Stamina, rounded down, at the end of each turn. If Big Root is held by the recipient, the Stamina recovered is 1.3x normal, rounded half down. If the target uses Baton Pass, the replacement will continue being leeched. If the target switches out or uses Rapid Spin successfully, the effect ends. Grass-type Pokemon are immune to this move on use, but not its effect.",
 		},
 		gen3: {
-			desc: "The Pokemon at the user's position steals 1/8 of the target's maximum HP, rounded down, at the end of each turn. If the target uses Baton Pass, the replacement will continue being leeched. If the target switches out or uses Rapid Spin, the effect ends. Grass-type Pokemon are immune to this move on use, but not its effect.",
+			desc: "The Pokemon at the user's position steals 1/8 of the target's maximum Stamina, rounded down, at the end of each turn. If the target uses Baton Pass, the replacement will continue being leeched. If the target switches out or uses Rapid Spin, the effect ends. Grass-type Pokemon are immune to this move on use, but not its effect.",
 		},
 		gen1: {
-			desc: "At the end of each of the target's turns, The Pokemon at the user's position steals 1/16 of the target's maximum HP, rounded down and multiplied by the target's current Toxic counter if it has one, even if the target currently has less than that amount of HP remaining. If the target switches out or any Pokemon uses Haze, this effect ends. Grass-type Pokemon are immune to this move.",
-			shortDesc: "1/16 of target's HP is restored to user every turn.",
+			desc: "At the end of each of the target's turns, The Pokemon at the user's position steals 1/16 of the target's maximum Stamina, rounded down and multiplied by the target's current Toxic counter if it has one, even if the target currently has less than that amount of Stamina remaining. If the target switches out or any Pokemon uses Haze, this effect ends. Grass-type Pokemon are immune to this move.",
+			shortDesc: "1/16 of target's Stamina is restored to user every turn.",
 		},
 
 		start: "  [POKEMON] was seeded!",
@@ -3614,12 +3614,12 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	lifedew: {
 		name: "Life Dew",
-		desc: "Each Pokemon on the user's side restores 1/4 of its maximum HP, rounded half up.",
-		shortDesc: "Heals the user and its allies by 1/4 their max HP.",
+		desc: "Each Pokemon on the user's side restores 1/4 of its maximum Stamina, rounded half up.",
+		shortDesc: "Heals the user and its allies by 1/4 their max Stamina.",
 	},
 	lightofruin: {
 		name: "Light of Ruin",
-		desc: "If the target lost HP, the user takes recoil damage equal to 1/2 the HP lost by the target, rounded half up, but not less than 1 HP.",
+		desc: "If the target lost Stamina, the user takes recoil damage equal to 1/2 the Stamina lost by the target, rounded half up, but not less than 1 Stamina.",
 		shortDesc: "Has 1/2 recoil.",
 	},
 	lightscreen: {
@@ -3705,19 +3705,19 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	lunarblessing: {
 		name: "Lunar Blessing",
-		desc: "Each Pokemon on the user's side restores 1/4 of its maximum HP, rounded half up, and has its status condition cured.",
-		shortDesc: "User and allies: healed 1/4 max HP, status cured.",
+		desc: "Each Pokemon on the user's side restores 1/4 of its maximum Stamina, rounded half up, and has its status condition cured.",
+		shortDesc: "User and allies: healed 1/4 max Stamina, status cured.",
 	},
 	lunardance: {
 		name: "Lunar Dance",
-		desc: "The user faints, and if the Pokemon brought out to replace it does not have full HP or PP, or has a non-volatile status condition, its HP and PP are fully restored along with having any non-volatile status condition cured. The replacement is sent out at the end of the turn, and the healing happens before hazards take effect. This effect continues until a Pokemon that meets any of these conditions switches in at the user's position or gets swapped into the position with Ally Switch. Fails if the user is the last unfainted Pokemon in its party.",
-		shortDesc: "User faints. Next hurt Pkmn is cured, max HP/PP.",
+		desc: "The user faints, and if the Pokemon brought out to replace it does not have full Stamina or PP, or has a non-volatile status condition, its Stamina and PP are fully restored along with having any non-volatile status condition cured. The replacement is sent out at the end of the turn, and the healing happens before hazards take effect. This effect continues until a Pokemon that meets any of these conditions switches in at the user's position or gets swapped into the position with Ally Switch. Fails if the user is the last unfainted Pokemon in its party.",
+		shortDesc: "User faints. Next hurt Pkmn is cured, max Stamina/PP.",
 		gen7: {
-			desc: "The user faints and the Pokemon brought out to replace it has its HP and PP fully restored along with having any non-volatile status condition cured. The new Pokemon is sent out at the end of the turn, and the healing happens before hazards take effect. Fails if the user is the last unfainted Pokemon in its party.",
+			desc: "The user faints and the Pokemon brought out to replace it has its Stamina and PP fully restored along with having any non-volatile status condition cured. The new Pokemon is sent out at the end of the turn, and the healing happens before hazards take effect. Fails if the user is the last unfainted Pokemon in its party.",
 			shortDesc: "User faints. Replacement is fully healed, with PP.",
 		},
 		gen4: {
-			desc: "The user faints and the Pokemon brought out to replace it has its HP and PP fully restored along with having any non-volatile status condition cured. The new Pokemon is sent out immediately and the healing happens after hazards take effect. Fails if the user is the last unfainted Pokemon in its party.",
+			desc: "The user faints and the Pokemon brought out to replace it has its Stamina and PP fully restored along with having any non-volatile status condition cured. The new Pokemon is sent out immediately and the healing happens after hazards take effect. Fails if the user is the last unfainted Pokemon in its party.",
 		},
 
 		heal: "  [POKEMON] became cloaked in mystical moonlight!",
@@ -3778,19 +3778,19 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	magmastorm: {
 		name: "Magma Storm",
-		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		shortDesc: "Traps and damages the target for 4-5 turns.",
 		gen8: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen7: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen5: {
-			desc: "Prevents the target from switching for four or five turns; seven turns if the user is holding Grip Claw. Causes damage to the target equal to 1/16 of its maximum HP (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin. This effect is not stackable or reset by using this or another partial-trapping move.",
+			desc: "Prevents the target from switching for four or five turns; seven turns if the user is holding Grip Claw. Causes damage to the target equal to 1/16 of its maximum Stamina (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin. This effect is not stackable or reset by using this or another partial-trapping move.",
 		},
 		gen4: {
-			desc: "Prevents the target from switching for two to five turns (always five turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum HP, rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass or U-turn. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for two to five turns (always five turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum Stamina, rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass or U-turn. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 			shortDesc: "Traps and damages the target for 2-5 turns.",
 		},
 
@@ -3856,7 +3856,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	matchagotcha: {
 		name: "Matcha Gotcha",
-		desc: "Has a 20% chance to burn the target. The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down. The target thaws out if it is frozen.",
+		desc: "Has a 20% chance to burn the target. The user recovers 1/2 the Stamina lost by the target, rounded half up. If Big Root is held by the user, the Stamina recovered is 1.3x normal, rounded half down. The target thaws out if it is frozen.",
 		shortDesc: "20% burn. Recovers 50% dmg dealt. Thaws foe(s).",
 	},
 	maxairstream: {
@@ -4000,13 +4000,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	megadrain: {
 		name: "Mega Drain",
-		desc: "The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
+		desc: "The user recovers 1/2 the Stamina lost by the target, rounded half up. If Big Root is held by the user, the Stamina recovered is 1.3x normal, rounded half down.",
 		shortDesc: "User recovers 50% of the damage dealt.",
 		gen4: {
-			desc: "The user recovers 1/2 the HP lost by the target, rounded down. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded down.",
+			desc: "The user recovers 1/2 the Stamina lost by the target, rounded down. If Big Root is held by the user, the Stamina recovered is 1.3x normal, rounded down.",
 		},
 		gen3: {
-			desc: "The user recovers 1/2 the HP lost by the target, rounded down.",
+			desc: "The user recovers 1/2 the Stamina lost by the target, rounded down.",
 		},
 	},
 	megahorn: {
@@ -4032,7 +4032,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 			desc: "Lowers the target's Attack and Bottom Attack by 2 stages. The user faints. This move does not check accuracy, and can hit targets in the middle of a two-turn move. Fails entirely if the target's Attack and Bottom Attack stat stages are both -6.",
 		},
 
-		heal: "  [POKEMON]'s HP was restored by the Z-Power!",
+		heal: "  [POKEMON]'s Stamina was restored by the Z-Power!",
 	},
 	menacingmoonrazemaelstrom: {
 		name: "Menacing Moonraze Maelstrom",
@@ -4041,13 +4041,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	metalburst: {
 		name: "Metal Burst",
-		desc: "Deals damage to the last opposing Pokemon to hit the user with a top or bottom attack this turn equal to 1.5 times the HP lost by the user from that attack, rounded down. If the user did not lose HP from that attack, this move deals 1 HP of damage instead. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top or bottom attack this turn.",
+		desc: "Deals damage to the last opposing Pokemon to hit the user with a top or bottom attack this turn equal to 1.5 times the Stamina lost by the user from that attack, rounded down. If the user did not lose Stamina from that attack, this move deals 1 Stamina of damage instead. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top or bottom attack this turn.",
 		shortDesc: "If hit by an attack, returns 1.5x damage.",
 		gen6: {
-			desc: "Deals damage to the last opposing Pokemon to hit the user with a top or bottom attack this turn equal to 1.5 times the HP lost by the user from that attack, rounded down. If the user did not lose HP from that attack, this move deals damage with a power of 1 instead. If that opposing Pokemon's position is no longer in use, the damage is done to a random opposing Pokemon in range. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top or bottom attack this turn.",
+			desc: "Deals damage to the last opposing Pokemon to hit the user with a top or bottom attack this turn equal to 1.5 times the Stamina lost by the user from that attack, rounded down. If the user did not lose Stamina from that attack, this move deals damage with a power of 1 instead. If that opposing Pokemon's position is no longer in use, the damage is done to a random opposing Pokemon in range. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top or bottom attack this turn.",
 		},
 		gen4: {
-			desc: "Deals damage to the last opposing Pokemon to hit the user with a top or bottom attack this turn equal to 1.5 times the HP lost by the user from that attack, rounded down. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top or bottom attack this turn, or if the user did not lose HP from the attack.",
+			desc: "Deals damage to the last opposing Pokemon to hit the user with a top or bottom attack this turn equal to 1.5 times the Stamina lost by the user from that attack, rounded down. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's top or bottom attack this turn, or if the user did not lose Stamina from the attack.",
 		},
 	},
 	metalclaw: {
@@ -4114,10 +4114,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	milkdrink: {
 		name: "Milk Drink",
-		desc: "The user restores 1/2 of its maximum HP, rounded half up.",
-		shortDesc: "Heals the user by 50% of its max HP.",
+		desc: "The user restores 1/2 of its maximum Stamina, rounded half up.",
+		shortDesc: "Heals the user by 50% of its max Stamina.",
 		gen4: {
-			desc: "The user restores 1/2 of its maximum HP, rounded down.",
+			desc: "The user restores 1/2 of its maximum Stamina, rounded down.",
 		},
 	},
 	mimic: {
@@ -4151,10 +4151,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	mindblown: {
 		name: "Mind Blown",
-		desc: "Whether or not this move is successful and even if it would cause fainting, the user loses 1/2 of its maximum HP, rounded up, unless the user has the Magic Guard Ability. This move is prevented from executing and the user does not lose HP if any active Pokemon has the Damp Ability, or if this move is Fire type and the user is affected by Powder or the weather is Primordial Sea.",
-		shortDesc: "User loses 50% max HP. Hits adjacent Pokemon.",
+		desc: "Whether or not this move is successful and even if it would cause fainting, the user loses 1/2 of its maximum Stamina, rounded up, unless the user has the Magic Guard Ability. This move is prevented from executing and the user does not lose Stamina if any active Pokemon has the Damp Ability, or if this move is Fire type and the user is affected by Powder or the weather is Primordial Sea.",
+		shortDesc: "User loses 50% max Stamina. Hits adjacent Pokemon.",
 
-		damage: "  ([POKEMON] cut its own HP to power up its move!)",
+		damage: "  ([POKEMON] cut its own Stamina to power up its move!)",
 	},
 	mindreader: {
 		name: "Mind Reader",
@@ -4209,19 +4209,19 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	mirrorcoat: {
 		name: "Mirror Coat",
-		desc: "Deals damage to the last opposing Pokemon to hit the user with a bottom attack this turn equal to twice the HP lost by the user from that attack. If the user did not lose HP from the attack, this move deals 1 HP of damage instead. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's bottom attack this turn.",
+		desc: "Deals damage to the last opposing Pokemon to hit the user with a bottom attack this turn equal to twice the Stamina lost by the user from that attack. If the user did not lose Stamina from the attack, this move deals 1 Stamina of damage instead. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's bottom attack this turn.",
 		shortDesc: "If hit by bottom attack, returns double damage.",
 		gen6: {
-			desc: "Deals damage to the last opposing Pokemon to hit the user with a bottom attack this turn equal to twice the HP lost by the user from that attack. If the user did not lose HP from the attack, this move deals damage with a power of 1 instead. If that opposing Pokemon's position is no longer in use, the damage is done to a random opposing Pokemon in range. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's bottom attack this turn.",
+			desc: "Deals damage to the last opposing Pokemon to hit the user with a bottom attack this turn equal to twice the Stamina lost by the user from that attack. If the user did not lose Stamina from the attack, this move deals damage with a power of 1 instead. If that opposing Pokemon's position is no longer in use, the damage is done to a random opposing Pokemon in range. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's bottom attack this turn.",
 		},
 		gen4: {
-			desc: "Deals damage to the last opposing Pokemon to hit the user with a bottom attack this turn equal to twice the HP lost by the user from that attack. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's bottom attack this turn, or if the user did not lose HP from the attack.",
+			desc: "Deals damage to the last opposing Pokemon to hit the user with a bottom attack this turn equal to twice the Stamina lost by the user from that attack. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. Only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's bottom attack this turn, or if the user did not lose Stamina from the attack.",
 		},
 		gen3: {
-			desc: "Deals damage to the last opposing Pokemon to hit the user with a bottom attack this turn equal to twice the HP lost by the user from that attack. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. This move considers Hidden Power as Normal type, and only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's bottom attack this turn, or if the user did not lose HP from the attack.",
+			desc: "Deals damage to the last opposing Pokemon to hit the user with a bottom attack this turn equal to twice the Stamina lost by the user from that attack. If that opposing Pokemon's position is no longer in use and there is another opposing Pokemon on the field, the damage is done to it instead. This move considers Hidden Power as Normal type, and only the last hit of a multi-hit attack is counted. Fails if the user was not hit by an opposing Pokemon's bottom attack this turn, or if the user did not lose Stamina from the attack.",
 		},
 		gen2: {
-			desc: "Deals damage to the opposing Pokemon equal to twice the HP lost by the user from a bottom attack this turn. This move considers Hidden Power as Normal type, and only the last hit of a multi-hit attack is counted. Fails if the user moves first, if the user was not hit by a bottom attack this turn, or if the user did not lose HP from the attack.",
+			desc: "Deals damage to the opposing Pokemon equal to twice the Stamina lost by the user from a bottom attack this turn. This move considers Hidden Power as Normal type, and only the last hit of a multi-hit attack is counted. Fails if the user moves first, if the user was not hit by a bottom attack this turn, or if the user did not lose Stamina from the attack.",
 		},
 	},
 	mirrormove: {
@@ -4296,42 +4296,42 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	moonlight: {
 		name: "Moonlight",
-		desc: "The user restores 1/2 of its maximum HP if Delta Stream or no weather conditions are in effect or if the user is holding Utility Umbrella, 2/3 of its maximum HP if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum HP if the weather is Primordial Sea, Rain Dance, Sandstorm, or Snow, all rounded half down.",
+		desc: "The user restores 1/2 of its maximum Stamina if Delta Stream or no weather conditions are in effect or if the user is holding Utility Umbrella, 2/3 of its maximum Stamina if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum Stamina if the weather is Primordial Sea, Rain Dance, Sandstorm, or Snow, all rounded half down.",
 		shortDesc: "Heals the user by a weather-dependent amount.",
 		gen8: {
-			desc: "The user restores 1/2 of its maximum HP if Delta Stream or no weather conditions are in effect or if the user is holding Utility Umbrella, 2/3 of its maximum HP if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm, all rounded half down.",
+			desc: "The user restores 1/2 of its maximum Stamina if Delta Stream or no weather conditions are in effect or if the user is holding Utility Umbrella, 2/3 of its maximum Stamina if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum Stamina if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm, all rounded half down.",
 		},
 		gen7: {
-			desc: "The user restores 1/2 of its maximum HP if Delta Stream or no weather conditions are in effect, 2/3 of its maximum HP if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm, all rounded half down.",
+			desc: "The user restores 1/2 of its maximum Stamina if Delta Stream or no weather conditions are in effect, 2/3 of its maximum Stamina if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum Stamina if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm, all rounded half down.",
 		},
 		gen5: {
-			desc: "The user restores 1/2 of its maximum HP if no weather conditions are in effect, 2/3 of its maximum HP if the weather is Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Rain Dance, or Sandstorm, all rounded half down.",
+			desc: "The user restores 1/2 of its maximum Stamina if no weather conditions are in effect, 2/3 of its maximum Stamina if the weather is Sunny Day, and 1/4 of its maximum Stamina if the weather is Hail, Rain Dance, or Sandstorm, all rounded half down.",
 		},
 		gen4: {
-			desc: "The user restores 1/2 of its maximum HP if no weather conditions are in effect, 2/3 of its maximum HP if the weather is Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Rain Dance, or Sandstorm, all rounded down.",
+			desc: "The user restores 1/2 of its maximum Stamina if no weather conditions are in effect, 2/3 of its maximum Stamina if the weather is Sunny Day, and 1/4 of its maximum Stamina if the weather is Hail, Rain Dance, or Sandstorm, all rounded down.",
 		},
 		gen2: {
-			desc: "The user restores 1/2 of its maximum HP if no weather conditions are in effect, all of its HP if the weather is Sunny Day, and 1/4 of its maximum HP if the weather is Rain Dance or Sandstorm, all rounded down.",
+			desc: "The user restores 1/2 of its maximum Stamina if no weather conditions are in effect, all of its Stamina if the weather is Sunny Day, and 1/4 of its maximum Stamina if the weather is Rain Dance or Sandstorm, all rounded down.",
 		},
 	},
 	morningsun: {
 		name: "Morning Sun",
-		desc: "The user restores 1/2 of its maximum HP if Delta Stream or no weather conditions are in effect or if the user is holding Utility Umbrella, 2/3 of its maximum HP if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum HP if the weather is Primordial Sea, Rain Dance, Sandstorm, or Snow, all rounded half down.",
+		desc: "The user restores 1/2 of its maximum Stamina if Delta Stream or no weather conditions are in effect or if the user is holding Utility Umbrella, 2/3 of its maximum Stamina if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum Stamina if the weather is Primordial Sea, Rain Dance, Sandstorm, or Snow, all rounded half down.",
 		shortDesc: "Heals the user by a weather-dependent amount.",
 		gen8: {
-			desc: "The user restores 1/2 of its maximum HP if Delta Stream or no weather conditions are in effect or if the user is holding Utility Umbrella, 2/3 of its maximum HP if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm, all rounded half down.",
+			desc: "The user restores 1/2 of its maximum Stamina if Delta Stream or no weather conditions are in effect or if the user is holding Utility Umbrella, 2/3 of its maximum Stamina if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum Stamina if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm, all rounded half down.",
 		},
 		gen7: {
-			desc: "The user restores 1/2 of its maximum HP if Delta Stream or no weather conditions are in effect, 2/3 of its maximum HP if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm, all rounded half down.",
+			desc: "The user restores 1/2 of its maximum Stamina if Delta Stream or no weather conditions are in effect, 2/3 of its maximum Stamina if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum Stamina if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm, all rounded half down.",
 		},
 		gen5: {
-			desc: "The user restores 1/2 of its maximum HP if no weather conditions are in effect, 2/3 of its maximum HP if the weather is Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Rain Dance, or Sandstorm, all rounded half down.",
+			desc: "The user restores 1/2 of its maximum Stamina if no weather conditions are in effect, 2/3 of its maximum Stamina if the weather is Sunny Day, and 1/4 of its maximum Stamina if the weather is Hail, Rain Dance, or Sandstorm, all rounded half down.",
 		},
 		gen4: {
-			desc: "The user restores 1/2 of its maximum HP if no weather conditions are in effect, 2/3 of its maximum HP if the weather is Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Rain Dance, or Sandstorm, all rounded down.",
+			desc: "The user restores 1/2 of its maximum Stamina if no weather conditions are in effect, 2/3 of its maximum Stamina if the weather is Sunny Day, and 1/4 of its maximum Stamina if the weather is Hail, Rain Dance, or Sandstorm, all rounded down.",
 		},
 		gen2: {
-			desc: "The user restores 1/2 of its maximum HP if no weather conditions are in effect, all of its HP if the weather is Sunny Day, and 1/4 of its maximum HP if the weather is Rain Dance or Sandstorm, all rounded down.",
+			desc: "The user restores 1/2 of its maximum Stamina if no weather conditions are in effect, all of its Stamina if the weather is Sunny Day, and 1/4 of its maximum Stamina if the weather is Rain Dance or Sandstorm, all rounded down.",
 		},
 	},
 	mortalspin: {
@@ -4429,8 +4429,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	naturesmadness: {
 		name: "Nature's Madness",
-		desc: "Deals damage to the target equal to half of its current HP, rounded down, but not less than 1 HP.",
-		shortDesc: "Does damage equal to 1/2 target's current HP.",
+		desc: "Deals damage to the target equal to half of its current Stamina, rounded down, but not less than 1 Stamina.",
+		shortDesc: "Does damage equal to 1/2 target's current Stamina.",
 	},
 	needlearm: {
 		name: "Needle Arm",
@@ -4451,8 +4451,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	nightmare: {
 		name: "Nightmare",
-		desc: "Causes the target to lose 1/4 of its maximum HP, rounded down, at the end of each turn as long as it is asleep. This move does not affect the target unless it is asleep. The effect ends when the target wakes up, even if it falls asleep again in the same turn.",
-		shortDesc: "A sleeping target is hurt by 1/4 max HP per turn.",
+		desc: "Causes the target to lose 1/4 of its maximum Stamina, rounded down, at the end of each turn as long as it is asleep. This move does not affect the target unless it is asleep. The effect ends when the target wakes up, even if it falls asleep again in the same turn.",
+		shortDesc: "A sleeping target is hurt by 1/4 max Stamina per turn.",
 
 		start: "  [POKEMON] began having a nightmare!",
 		damage: "  [POKEMON] is locked in a nightmare!",
@@ -4495,7 +4495,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	oblivionwing: {
 		name: "Oblivion Wing",
-		desc: "The user recovers 3/4 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
+		desc: "The user recovers 3/4 the Stamina lost by the target, rounded half up. If Big Root is held by the user, the Stamina recovered is 1.3x normal, rounded half down.",
 		shortDesc: "User recovers 75% of the damage dealt.",
 	},
 	obstruct: {
@@ -4577,8 +4577,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	painsplit: {
 		name: "Pain Split",
-		desc: "The user and the target's HP become the average of their current HP, rounded down, but not more than the maximum HP of either one.",
-		shortDesc: "Shares HP of user and target equally.",
+		desc: "The user and the target's Stamina become the average of their current Stamina, rounded down, but not more than the maximum Stamina of either one.",
+		shortDesc: "Shares Stamina of user and target equally.",
 
 		activate: "  The battlers shared their pain!",
 	},
@@ -4589,7 +4589,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	paraboliccharge: {
 		name: "Parabolic Charge",
-		desc: "The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
+		desc: "The user recovers 1/2 the Stamina lost by the target, rounded half up. If Big Root is held by the user, the Stamina recovered is 1.3x normal, rounded half down.",
 		shortDesc: "User recovers 50% of the damage dealt.",
 	},
 	partingshot: {
@@ -4688,7 +4688,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 			desc: "Hits two to five times. Has a 35% chance to hit two or three times and a 15% chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
 		},
 		gen4: {
-			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full HP when this move started, it will not be knocked out regardless of the number of hits.",
+			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full Stamina when this move started, it will not be knocked out regardless of the number of hits.",
 		},
 		gen3: {
 			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
@@ -4770,8 +4770,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	pollenpuff: {
 		name: "Pollen Puff",
-		desc: "If the target is an ally, this move restores 1/2 of its maximum HP, rounded down, instead of dealing damage.",
-		shortDesc: "If the target is an ally, heals 50% of its max HP.",
+		desc: "If the target is an ally, this move restores 1/2 of its maximum Stamina, rounded down, instead of dealing damage.",
+		shortDesc: "If the target is an ally, heals 50% of its max Stamina.",
 	},
 	poltergeist: {
 		name: "Poltergeist",
@@ -4795,10 +4795,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	powder: {
 		name: "Powder",
-		desc: "If the target uses a Fire-type move this turn, it is prevented from executing and the target loses 1/4 of its maximum HP, rounded half up. This effect does not happen if the Fire-type move is prevented by Primordial Sea.",
-		shortDesc: "If using a Fire move, target loses 1/4 max HP.",
+		desc: "If the target uses a Fire-type move this turn, it is prevented from executing and the target loses 1/4 of its maximum Stamina, rounded half up. This effect does not happen if the Fire-type move is prevented by Primordial Sea.",
+		shortDesc: "If using a Fire move, target loses 1/4 max Stamina.",
 		gen6: {
-			desc: "If the target uses a Fire-type move this turn, it is prevented from executing and the target loses 1/4 of its maximum HP, rounded half up. This effect happens before the Fire-type move would be prevented by Primordial Sea.",
+			desc: "If the target uses a Fire-type move this turn, it is prevented from executing and the target loses 1/4 of its maximum Stamina, rounded half up. This effect happens before the Fire-type move would be prevented by Primordial Sea.",
 		},
 
 		start: "  [POKEMON] is covered in powder!",
@@ -4865,10 +4865,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	present: {
 		name: "Present",
-		desc: "If this move is successful, it deals damage or heals the target. 40% chance for 40 power, 30% chance for 80 power, 10% chance for 120 power, and 20% chance to heal the target by 1/4 of its maximum HP, rounded down.",
-		shortDesc: "40, 80, 120 power, or heals target 1/4 max HP.",
+		desc: "If this move is successful, it deals damage or heals the target. 40% chance for 40 power, 30% chance for 80 power, 10% chance for 120 power, and 20% chance to heal the target by 1/4 of its maximum Stamina, rounded down.",
+		shortDesc: "40, 80, 120 power, or heals target 1/4 max Stamina.",
 		gen2: {
-			desc: "If this move is successful, it deals damage or heals the target. 102/256 chance for 40 power, 76/256 chance for 80 power, 26/256 chance for 120 power, or 52/256 chance to heal the target by 1/4 of its maximum HP, rounded down. If this move deals damage, it uses an abnormal version of the damage formula by substituting certain values. The user's Attack stat is replaced with 10 times the effectiveness of this move against the target, the target's Defense stat is replaced with the index number of the user's secondary type, and the user's level is replaced with the index number of the target's secondary type. If a Pokemon does not have a secondary type, its primary type is used. The index numbers for each type are Normal: 0, Fighting: 1, Flying: 2, Poison: 3, Ground: 4, Rock: 5, Bug: 7, Ghost: 8, Steel: 9, Fire: 20, Water: 21, Grass: 22, Electric: 23, Psychic: 24, Ice: 25, Dragon: 26, Dark: 27. If at any point a division by 0 would happen in the damage formula, it divides by 1 instead.",
+			desc: "If this move is successful, it deals damage or heals the target. 102/256 chance for 40 power, 76/256 chance for 80 power, 26/256 chance for 120 power, or 52/256 chance to heal the target by 1/4 of its maximum Stamina, rounded down. If this move deals damage, it uses an abnormal version of the damage formula by substituting certain values. The user's Attack stat is replaced with 10 times the effectiveness of this move against the target, the target's Defense stat is replaced with the index number of the user's secondary type, and the user's level is replaced with the index number of the target's secondary type. If a Pokemon does not have a secondary type, its primary type is used. The index numbers for each type are Normal: 0, Fighting: 1, Flying: 2, Poison: 3, Ground: 4, Rock: 5, Bug: 7, Ghost: 8, Steel: 9, Fire: 20, Water: 21, Grass: 22, Electric: 23, Psychic: 24, Ice: 25, Dragon: 26, Dark: 27. If at any point a division by 0 would happen in the damage formula, it divides by 1 instead.",
 		},
 	},
 	prismaticlaser: {
@@ -4939,7 +4939,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	psychicnoise: {
 		name: "Psychic Noise",
-		desc: "For 2 turns, the target is prevented from restoring any HP as long as it remains active. During the effect, healing and draining moves are unusable, and Abilities and items that grant healing will not heal the user. If an affected Pokemon uses Baton Pass, the replacement will remain unable to restore its HP. Pain Split and the Regenerator Ability are unaffected.",
+		desc: "For 2 turns, the target is prevented from restoring any Stamina as long as it remains active. During the effect, healing and draining moves are unusable, and Abilities and items that grant healing will not heal the user. If an affected Pokemon uses Baton Pass, the replacement will remain unable to restore its Stamina. Pain Split and the Regenerator Ability are unaffected.",
 		shortDesc: "For 2 turns, the target is prevented from healing.",
 	},
 	psychicterrain: {
@@ -4982,13 +4982,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	psywave: {
 		name: "Psywave",
-		desc: "Deals damage to the target equal to (user's level) * (X + 50) / 100, where X is a random number from 0 to 100, rounded down, but not less than 1 HP.",
+		desc: "Deals damage to the target equal to (user's level) * (X + 50) / 100, where X is a random number from 0 to 100, rounded down, but not less than 1 Stamina.",
 		shortDesc: "Random damage equal to 0.5x-1.5x user's level.",
 		gen4: {
-			desc: "Deals damage to the target equal to (user's level) * (X * 10 + 50) / 100, where X is a random number from 0 to 10, rounded down, but not less than 1 HP.",
+			desc: "Deals damage to the target equal to (user's level) * (X * 10 + 50) / 100, where X is a random number from 0 to 10, rounded down, but not less than 1 Stamina.",
 		},
 		gen2: {
-			desc: "Deals damage to the target equal to a random number from 1 to (user's level * 1.5 - 1), rounded down, but not less than 1 HP.",
+			desc: "Deals damage to the target equal to a random number from 1 to (user's level * 1.5 - 1), rounded down, but not less than 1 Stamina.",
 			shortDesc: "Random damage from 1 to (user's level*1.5 - 1).",
 		},
 	},
@@ -5003,8 +5003,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	purify: {
 		name: "Purify",
-		desc: "The target is cured if it has a non-volatile status condition. If the target was cured, the user restores 1/2 of its maximum HP, rounded down.",
-		shortDesc: "Cures target's status; heals user 1/2 max HP if so.",
+		desc: "The target is cured if it has a non-volatile status condition. If the target was cured, the user restores 1/2 of its maximum Stamina, rounded down.",
+		shortDesc: "Cures target's status; heals user 1/2 max Stamina if so.",
 	},
 	pursuit: {
 		name: "Pursuit",
@@ -5090,7 +5090,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	ragefist: {
 		name: "Rage Fist",
-		desc: "Power is equal to 50+(X*50), where X is the total number of times the user has been hit by a damaging attack during the battle, even if the user did not lose HP from the attack. X cannot be greater than 6 and does not reset upon switching out or fainting. Each hit of a multi-hit attack is counted, but confusion damage is not counted.",
+		desc: "Power is equal to 50+(X*50), where X is the total number of times the user has been hit by a damaging attack during the battle, even if the user did not lose Stamina from the attack. X cannot be greater than 6 and does not reset upon switching out or fainting. Each hit of a multi-hit attack is counted, but confusion damage is not counted.",
 		shortDesc: "+50 power for each time user was hit. Max 6 hits.",
 	},
 	ragepowder: {
@@ -5179,13 +5179,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	recover: {
 		name: "Recover",
-		desc: "The user restores 1/2 of its maximum HP, rounded half up.",
-		shortDesc: "Heals the user by 50% of its max HP.",
+		desc: "The user restores 1/2 of its maximum Stamina, rounded half up.",
+		shortDesc: "Heals the user by 50% of its max Stamina.",
 		gen4: {
-			desc: "The user restores 1/2 of its maximum HP, rounded down.",
+			desc: "The user restores 1/2 of its maximum Stamina, rounded down.",
 		},
 		gen1: {
-			desc: "The user restores 1/2 of its maximum HP, rounded down. Fails if (user's maximum HP - user's current HP + 1) is divisible by 256.",
+			desc: "The user restores 1/2 of its maximum Stamina, rounded down. Fails if (user's maximum Stamina - user's current Stamina + 1) is divisible by 256.",
 		},
 	},
 	recycle: {
@@ -5252,13 +5252,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	rest: {
 		name: "Rest",
-		desc: "The user falls asleep for the next two turns and restores all of its HP, curing itself of any non-volatile status condition in the process. Fails if the user has full HP, is already asleep, or if another effect is preventing sleep.",
-		shortDesc: "User sleeps 2 turns and restores HP and status.",
+		desc: "The user falls asleep for the next two turns and restores all of its Stamina, curing itself of any non-volatile status condition in the process. Fails if the user has full Stamina, is already asleep, or if another effect is preventing sleep.",
+		shortDesc: "User sleeps 2 turns and restores Stamina and status.",
 		gen2: {
-			desc: "The user falls asleep for the next two turns and restores all of its HP, curing itself of any non-volatile status condition in the process, even if it was already asleep. Fails if the user has full HP.",
+			desc: "The user falls asleep for the next two turns and restores all of its Stamina, curing itself of any non-volatile status condition in the process, even if it was already asleep. Fails if the user has full Stamina.",
 		},
 		gen1: {
-			desc: "The user falls asleep for the next two turns and restores all of its HP, curing itself of any non-volatile status condition in the process. This does not remove the user's stat penalty for burn or paralysis. Fails if the user has full HP.",
+			desc: "The user falls asleep for the next two turns and restores all of its Stamina, curing itself of any non-volatile status condition in the process. This does not remove the user's stat penalty for burn or paralysis. Fails if the user has full Stamina.",
 		},
 	},
 	retaliate: {
@@ -5290,22 +5290,22 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	reversal: {
 		name: "Reversal",
-		desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current HP * 48 / user's maximum HP), rounded down.",
-		shortDesc: "More power the less HP the user has left.",
+		desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current Stamina * 48 / user's maximum Stamina), rounded down.",
+		shortDesc: "More power the less Stamina the user has left.",
 		gen4: {
-			desc: "The power of this move is 20 if X is 43 to 48, 40 if X is 22 to 42, 80 if X is 13 to 21, 100 if X is 6 to 12, 150 if X is 2 to 5, and 200 if X is 0 or 1, where X is equal to (user's current HP * 64 / user's maximum HP), rounded down.",
+			desc: "The power of this move is 20 if X is 43 to 48, 40 if X is 22 to 42, 80 if X is 13 to 21, 100 if X is 6 to 12, 150 if X is 2 to 5, and 200 if X is 0 or 1, where X is equal to (user's current Stamina * 64 / user's maximum Stamina), rounded down.",
 		},
 		gen3: {
-			desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current HP * 48 / user's maximum HP), rounded down.",
+			desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current Stamina * 48 / user's maximum Stamina), rounded down.",
 		},
 		gen2: {
-			desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current HP * 48 / user's maximum HP), rounded down. This move does not apply damage variance and cannot be a critical hit.",
+			desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current Stamina * 48 / user's maximum Stamina), rounded down. This move does not apply damage variance and cannot be a critical hit.",
 		},
 	},
 	revivalblessing: {
 		name: "Revival Blessing",
-		desc: "A fainted party member is selected and revived with 1/2 its max HP, rounded down. Fails if there are no fainted party members.",
-		shortDesc: "Revives a fainted Pokemon to 50% HP.",
+		desc: "A fainted party member is selected and revived with 1/2 its max Stamina, rounded down. Fails if there are no fainted party members.",
+		shortDesc: "Revives a fainted Pokemon to 50% Stamina.",
 
 		heal: "  [POKEMON] was revived and is ready to fight again!",
 	},
@@ -5342,7 +5342,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 			desc: "Hits two to five times. Has a 35% chance to hit two or three times and a 15% chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
 		},
 		gen4: {
-			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full HP when this move started, it will not be knocked out regardless of the number of hits.",
+			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full Stamina when this move started, it will not be knocked out regardless of the number of hits.",
 		},
 		gen3: {
 			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
@@ -5432,13 +5432,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	roost: {
 		name: "Roost",
-		desc: "The user restores 1/2 of its maximum HP, rounded half up. If the user is not Terastallized, until the end of the turn Flying-type users lose their Flying type and pure Flying-type users become Normal type. Does nothing if the user's HP is full.",
-		shortDesc: "Heals 50% HP. Flying-type removed 'til turn ends.",
+		desc: "The user restores 1/2 of its maximum Stamina, rounded half up. If the user is not Terastallized, until the end of the turn Flying-type users lose their Flying type and pure Flying-type users become Normal type. Does nothing if the user's Stamina is full.",
+		shortDesc: "Heals 50% Stamina. Flying-type removed 'til turn ends.",
 		gen8: {
-			desc: "The user restores 1/2 of its maximum HP, rounded half up. Until the end of the turn, Flying-type users lose their Flying type and pure Flying-type users become Normal type. Does nothing if the user's HP is full.",
+			desc: "The user restores 1/2 of its maximum Stamina, rounded half up. Until the end of the turn, Flying-type users lose their Flying type and pure Flying-type users become Normal type. Does nothing if the user's Stamina is full.",
 		},
 		gen4: {
-			desc: "The user restores 1/2 of its maximum HP, rounded down. Until the end of the turn, Flying-type users lose their Flying type and pure Flying-type users become typeless. Does nothing if the user's HP is full.",
+			desc: "The user restores 1/2 of its maximum Stamina, rounded down. Until the end of the turn, Flying-type users lose their Flying type and pure Flying-type users become typeless. Does nothing if the user's Stamina is full.",
 		},
 
 		start: "  ([POKEMON] loses Flying type this turn.)",
@@ -5455,8 +5455,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	ruination: {
 		name: "Ruination",
-		desc: "Deals damage to the target equal to half of its current HP, rounded down, but not less than 1 HP.",
-		shortDesc: "Does damage equal to 1/2 target's current HP.",
+		desc: "Deals damage to the target equal to half of its current Stamina, rounded down, but not less than 1 Stamina.",
+		shortDesc: "Does damage equal to 1/2 target's current Stamina.",
 	},
 	sacredfire: {
 		name: "Sacred Fire",
@@ -5485,8 +5485,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	saltcure: {
 		name: "Salt Cure",
-		desc: "Causes damage to the target equal to 1/8 of its maximum HP (1/4 if the target is Steel or Water type), rounded down, at the end of each turn during effect. This effect ends when the target is no longer active.",
-		shortDesc: "Deals 1/8 max HP each turn; 1/4 on Steel, Water.",
+		desc: "Causes damage to the target equal to 1/8 of its maximum Stamina (1/4 if the target is Steel or Water type), rounded down, at the end of each turn during effect. This effect ends when the target is no longer active.",
+		shortDesc: "Deals 1/8 max Stamina each turn; 1/4 on Steel, Water.",
 
 		start: "  [POKEMON] is being salt cured!",
 		damage: "  [POKEMON] is hurt by Salt Cure!",
@@ -5503,38 +5503,38 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	sandstorm: {
 		name: "Sandstorm",
-		desc: "For 5 turns, the weather becomes Sandstorm. At the end of each turn except the last, all active Pokemon lose 1/16 of their maximum HP, rounded down, unless they are a Ground, Rock, or Steel type, or have the Magic Guard, Overcoat, Sand Force, Sand Rush, or Sand Veil Abilities. During the effect, the Bottom Defense of Rock-type Pokemon is multiplied by 1.5 when taking damage from a bottom attack. Lasts for 8 turns if the user is holding Smooth Rock. Fails if the current weather is Sandstorm.",
+		desc: "For 5 turns, the weather becomes Sandstorm. At the end of each turn except the last, all active Pokemon lose 1/16 of their maximum Stamina, rounded down, unless they are a Ground, Rock, or Steel type, or have the Magic Guard, Overcoat, Sand Force, Sand Rush, or Sand Veil Abilities. During the effect, the Bottom Defense of Rock-type Pokemon is multiplied by 1.5 when taking damage from a bottom attack. Lasts for 8 turns if the user is holding Smooth Rock. Fails if the current weather is Sandstorm.",
 		shortDesc: "For 5 turns, a sandstorm rages. Rock: 1.5x BoD.",
 		gen4: {
-			desc: "For 5 turns, the weather becomes Sandstorm. At the end of each turn except the last, all active Pokemon lose 1/16 of their maximum HP, rounded down, unless they are a Ground, Rock, or Steel type, or have the Magic Guard or Sand Veil Abilities. During the effect, the Bottom Defense of Rock-type Pokemon is multiplied by 1.5 when taking damage from a bottom attack. Lasts for 8 turns if the user is holding Smooth Rock. Fails if the current weather is Sandstorm.",
+			desc: "For 5 turns, the weather becomes Sandstorm. At the end of each turn except the last, all active Pokemon lose 1/16 of their maximum Stamina, rounded down, unless they are a Ground, Rock, or Steel type, or have the Magic Guard or Sand Veil Abilities. During the effect, the Bottom Defense of Rock-type Pokemon is multiplied by 1.5 when taking damage from a bottom attack. Lasts for 8 turns if the user is holding Smooth Rock. Fails if the current weather is Sandstorm.",
 		},
 		gen3: {
-			desc: "For 5 turns, the weather becomes Sandstorm. At the end of each turn except the last, all active Pokemon lose 1/16 of their maximum HP, rounded down, unless they are a Ground, Rock, or Steel type, or have the Sand Veil Ability. Fails if the current weather is Sandstorm.",
+			desc: "For 5 turns, the weather becomes Sandstorm. At the end of each turn except the last, all active Pokemon lose 1/16 of their maximum Stamina, rounded down, unless they are a Ground, Rock, or Steel type, or have the Sand Veil Ability. Fails if the current weather is Sandstorm.",
 			shortDesc: "For 5 turns, a sandstorm rages.",
 		},
 		gen2: {
-			desc: "For 5 turns, the weather becomes Sandstorm. At the end of each turn except the last, all active Pokemon lose 1/8 of their maximum HP, rounded down, unless they are a Ground, Rock, or Steel type. Fails if the current weather is Sandstorm.",
+			desc: "For 5 turns, the weather becomes Sandstorm. At the end of each turn except the last, all active Pokemon lose 1/8 of their maximum Stamina, rounded down, unless they are a Ground, Rock, or Steel type. Fails if the current weather is Sandstorm.",
 		},
 	},
 	sandtomb: {
 		name: "Sand Tomb",
-		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		shortDesc: "Traps and damages the target for 4-5 turns.",
 		gen8: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen7: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen5: {
-			desc: "Prevents the target from switching for four or five turns; seven turns if the user is holding Grip Claw. Causes damage to the target equal to 1/16 of its maximum HP (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin. This effect is not stackable or reset by using this or another partial-trapping move.",
+			desc: "Prevents the target from switching for four or five turns; seven turns if the user is holding Grip Claw. Causes damage to the target equal to 1/16 of its maximum Stamina (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin. This effect is not stackable or reset by using this or another partial-trapping move.",
 		},
 		gen4: {
-			desc: "Prevents the target from switching for two to five turns (always five turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum HP, rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass or U-turn. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for two to five turns (always five turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum Stamina, rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass or U-turn. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 			shortDesc: "Traps and damages the target for 2-5 turns.",
 		},
 		gen3: {
-			desc: "Prevents the target from switching for two to five turns. Causes damage to the target equal to 1/16 of its maximum HP, rounded down, at the end of each turn during effect. The target can still switch out if it uses Baton Pass. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for two to five turns. Causes damage to the target equal to 1/16 of its maximum Stamina, rounded down, at the end of each turn during effect. The target can still switch out if it uses Baton Pass. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 
 		start: "  [POKEMON] became trapped by the quicksand!",
@@ -5702,8 +5702,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	shedtail: {
 		name: "Shed Tail",
-		desc: "The user takes 1/2 of its maximum HP, rounded up, and creates a substitute that has 1/4 of the user's maximum HP, rounded down. The user is replaced with another Pokemon in its party and the selected Pokemon has the substitute transferred to it. Fails if the user would faint, or if there are no unfainted party members.",
-		shortDesc: "User takes 1/2 its max HP to pass a substitute.",
+		desc: "The user takes 1/2 of its maximum Stamina, rounded up, and creates a substitute that has 1/4 of the user's maximum Stamina, rounded down. The user is replaced with another Pokemon in its party and the selected Pokemon has the substitute transferred to it. Fails if the user would faint, or if there are no unfainted party members.",
+		shortDesc: "User takes 1/2 its max Stamina to pass a substitute.",
 
 		start: "  [POKEMON] shed its tail to create a decoy!",
 		alreadyStarted: "#substitute",
@@ -5711,10 +5711,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	sheercold: {
 		name: "Sheer Cold",
-		desc: "Deals damage to the target equal to the target's maximum HP. Ignores accuracy and evasiveness modifiers. This attack's accuracy is equal to (user's level - target's level + X)%, where X is 30 if the user is an Ice type and 20 otherwise, and fails if the target is at a higher level. Ice-type Pokemon and Pokemon with the Sturdy Ability are immune.",
+		desc: "Deals damage to the target equal to the target's maximum Stamina. Ignores accuracy and evasiveness modifiers. This attack's accuracy is equal to (user's level - target's level + X)%, where X is 30 if the user is an Ice type and 20 otherwise, and fails if the target is at a higher level. Ice-type Pokemon and Pokemon with the Sturdy Ability are immune.",
 		shortDesc: "OHKOs non-Ice targets. Fails if user's lower level.",
 		gen6: {
-			desc: "Deals damage to the target equal to the target's maximum HP. Ignores accuracy and evasiveness modifiers. This attack's accuracy is equal to (user's level - target's level + 30)%, and fails if the target is at a higher level. Pokemon with the Sturdy Ability are immune.",
+			desc: "Deals damage to the target equal to the target's maximum Stamina. Ignores accuracy and evasiveness modifiers. This attack's accuracy is equal to (user's level - target's level + 30)%, and fails if the target is at a higher level. Pokemon with the Sturdy Ability are immune.",
 			shortDesc: "OHKOs the target. Fails if user is a lower level.",
 		},
 	},
@@ -5753,8 +5753,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	shoreup: {
 		name: "Shore Up",
-		desc: "The user restores 1/2 of its maximum HP, rounded half down. If the weather is Sandstorm, the user instead restores 2/3 of its maximum HP, rounded half down.",
-		shortDesc: "User restores 1/2 its max HP; 2/3 in Sandstorm.",
+		desc: "The user restores 1/2 of its maximum Stamina, rounded half down. If the weather is Sandstorm, the user instead restores 2/3 of its maximum Stamina, rounded half down.",
+		shortDesc: "User restores 1/2 its max Stamina; 2/3 in Sandstorm.",
 	},
 	signalbeam: {
 		name: "Signal Beam",
@@ -5900,10 +5900,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	slackoff: {
 		name: "Slack Off",
-		desc: "The user restores 1/2 of its maximum HP, rounded half up.",
-		shortDesc: "Heals the user by 50% of its max HP.",
+		desc: "The user restores 1/2 of its maximum Stamina, rounded half up.",
+		shortDesc: "Heals the user by 50% of its max Stamina.",
 		gen4: {
-			desc: "The user restores 1/2 of its maximum HP, rounded down.",
+			desc: "The user restores 1/2 of its maximum Stamina, rounded down.",
 		},
 	},
 	slam: {
@@ -5999,10 +5999,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	snaptrap: {
 		name: "Snap Trap",
-		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		shortDesc: "Traps and damages the target for 4-5 turns.",
 		gen8: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 
 		start: "  [POKEMON] got trapped by a snap trap!",
@@ -6054,13 +6054,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	softboiled: {
 		name: "Soft-Boiled",
-		desc: "The user restores 1/2 of its maximum HP, rounded half up.",
-		shortDesc: "Heals the user by 50% of its max HP.",
+		desc: "The user restores 1/2 of its maximum Stamina, rounded half up.",
+		shortDesc: "Heals the user by 50% of its max Stamina.",
 		gen4: {
-			desc: "The user restores 1/2 of its maximum HP, rounded down.",
+			desc: "The user restores 1/2 of its maximum Stamina, rounded down.",
 		},
 		gen1: {
-			desc: "The user restores 1/2 of its maximum HP, rounded down. Fails if (user's maximum HP - user's current HP + 1) is divisible by 256.",
+			desc: "The user restores 1/2 of its maximum Stamina, rounded down. Fails if (user's maximum Stamina - user's current Stamina + 1) is divisible by 256.",
 		},
 	},
 	solarbeam: {
@@ -6107,10 +6107,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	sonicboom: {
 		name: "Sonic Boom",
-		desc: "Deals 20 HP of damage to the target.",
-		shortDesc: "Always does 20 HP of damage.",
+		desc: "Deals 20 Stamina of damage to the target.",
+		shortDesc: "Always does 20 Stamina of damage.",
 		gen1: {
-			desc: "Deals 20 HP of damage to the target. This move ignores type immunity.",
+			desc: "Deals 20 Stamina of damage to the target. This move ignores type immunity.",
 		},
 	},
 	soulstealing7starstrike: {
@@ -6178,7 +6178,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		desc: "Hits two to five times. Has a 35% chance to hit two or three times and a 15% chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
 		shortDesc: "Hits 2-5 times in one turn.",
 		gen4: {
-			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full HP when this move started, it will not be knocked out regardless of the number of hits.",
+			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full Stamina when this move started, it will not be knocked out regardless of the number of hits.",
 		},
 		gen3: {
 			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
@@ -6189,19 +6189,19 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	spikes: {
 		name: "Spikes",
-		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. Can be used up to three times before failing. Opponents lose 1/8 of their maximum HP with one layer, 1/6 of their maximum HP with two layers, and 1/4 of their maximum HP with three layers, all rounded down. Can be removed from the opposing side if any Pokemon uses Tidy Up, or if any opposing Pokemon uses Mortal Spin, Rapid Spin, or Defog successfully, or is hit by Defog.",
+		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. Can be used up to three times before failing. Opponents lose 1/8 of their maximum Stamina with one layer, 1/6 of their maximum Stamina with two layers, and 1/4 of their maximum Stamina with three layers, all rounded down. Can be removed from the opposing side if any Pokemon uses Tidy Up, or if any opposing Pokemon uses Mortal Spin, Rapid Spin, or Defog successfully, or is hit by Defog.",
 		shortDesc: "Hurts grounded foes on switch-in. Max 3 layers.",
 		gen8: {
-			desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. Can be used up to three times before failing. Opponents lose 1/8 of their maximum HP with one layer, 1/6 of their maximum HP with two layers, and 1/4 of their maximum HP with three layers, all rounded down. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+			desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. Can be used up to three times before failing. Opponents lose 1/8 of their maximum Stamina with one layer, 1/6 of their maximum Stamina with two layers, and 1/4 of their maximum Stamina with three layers, all rounded down. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
 		},
 		gen5: {
-			desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. Can be used up to three times before failing. Opponents lose 1/8 of their maximum HP with one layer, 1/6 of their maximum HP with two layers, and 1/4 of their maximum HP with three layers, all rounded down. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin successfully, or is hit by Defog.",
+			desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. Can be used up to three times before failing. Opponents lose 1/8 of their maximum Stamina with one layer, 1/6 of their maximum Stamina with two layers, and 1/4 of their maximum Stamina with three layers, all rounded down. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin successfully, or is hit by Defog.",
 		},
 		gen3: {
-			desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. Can be used up to three times before failing. Opponents lose 1/8 of their maximum HP with one layer, 1/6 of their maximum HP with two layers, and 1/4 of their maximum HP with three layers, all rounded down. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin successfully.",
+			desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. Can be used up to three times before failing. Opponents lose 1/8 of their maximum Stamina with one layer, 1/6 of their maximum Stamina with two layers, and 1/4 of their maximum Stamina with three layers, all rounded down. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin successfully.",
 		},
 		gen2: {
-			desc: "Sets up a hazard on the opposing side of the field, causing each opposing Pokemon that switches in to lose 1/8 of their maximum HP, rounded down, unless it is a Flying-type Pokemon. Fails if the effect is already active on the opposing side. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin successfully.",
+			desc: "Sets up a hazard on the opposing side of the field, causing each opposing Pokemon that switches in to lose 1/8 of their maximum Stamina, rounded down, unless it is a Flying-type Pokemon. Fails if the effect is already active on the opposing side. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin successfully.",
 			shortDesc: "Hurts grounded foes on switch-in. Max 1 layer.",
 		},
 
@@ -6211,16 +6211,16 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	spikyshield: {
 		name: "Spiky Shield",
-		desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon making contact with the user lose 1/8 of their maximum HP, rounded down. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Burning Bulwark, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Silk Trap, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
-		shortDesc: "Protects from moves. Contact: loses 1/8 max HP.",
+		desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon making contact with the user lose 1/8 of their maximum Stamina, rounded down. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Burning Bulwark, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Silk Trap, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
+		shortDesc: "Protects from moves. Contact: loses 1/8 max Stamina.",
 		gen8: {
-			desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon making contact with the user lose 1/8 of their maximum HP, rounded down. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
+			desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon making contact with the user lose 1/8 of their maximum Stamina, rounded down. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
 		},
 		gen7: {
-			desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon making contact with the user lose 1/8 of their maximum HP, rounded down. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
+			desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon making contact with the user lose 1/8 of their maximum Stamina, rounded down. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
 		},
 		gen6: {
-			desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon making contact with the user lose 1/8 of their maximum HP, rounded down. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Detect, Endure, King's Shield, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
+			desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon making contact with the user lose 1/8 of their maximum Stamina, rounded down. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Detect, Endure, King's Shield, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
 		},
 
 		damage: "#roughskin",
@@ -6303,13 +6303,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	stealthrock: {
 		name: "Stealth Rock",
-		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Rock type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any Pokemon uses Tidy Up, or if any opposing Pokemon uses Mortal Spin, Rapid Spin, or Defog successfully, or is hit by Defog.",
+		desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum Stamina, rounded down, based on their weakness to the Rock type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any Pokemon uses Tidy Up, or if any opposing Pokemon uses Mortal Spin, Rapid Spin, or Defog successfully, or is hit by Defog.",
 		shortDesc: "Hurts foes on switch-in. Factors Rock weakness.",
 		gen8: {
-			desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Rock type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+			desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum Stamina, rounded down, based on their weakness to the Rock type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
 		},
 		gen5: {
-			desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Rock type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin successfully, or is hit by Defog.",
+			desc: "Sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Fails if the effect is already active on the opposing side. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum Stamina, rounded down, based on their weakness to the Rock type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin successfully, or is hit by Defog.",
 		},
 
 		start: "  Pointed stones float in the air around [TEAM]!",
@@ -6331,8 +6331,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	steelbeam: {
 		name: "Steel Beam",
-		desc: "Whether or not this move is successful and even if it would cause fainting, the user loses 1/2 of its maximum HP, rounded up, unless the user has the Magic Guard Ability.",
-		shortDesc: "User loses 50% max HP.",
+		desc: "Whether or not this move is successful and even if it would cause fainting, the user loses 1/2 of its maximum Stamina, rounded up, unless the user has the Magic Guard Ability.",
+		shortDesc: "User loses 50% max Stamina.",
 
 		damage: "#mindblown",
 	},
@@ -6402,7 +6402,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	stoneaxe: {
 		name: "Stone Axe",
-		desc: "If this move is successful, it sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Rock type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any Pokemon uses Tidy Up, or if any opposing Pokemon uses Mortal Spin, Rapid Spin, or Defog successfully, or is hit by Defog.",
+		desc: "If this move is successful, it sets up a hazard on the opposing side of the field, damaging each opposing Pokemon that switches in. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum Stamina, rounded down, based on their weakness to the Rock type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any Pokemon uses Tidy Up, or if any opposing Pokemon uses Mortal Spin, Rapid Spin, or Defog successfully, or is hit by Defog.",
 		shortDesc: "Sets Stealth Rock on the target's side.",
 	},
 	stoneedge: {
@@ -6431,8 +6431,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	strengthsap: {
 		name: "Strength Sap",
-		desc: "Lowers the target's Attack by 1 stage. The user restores its HP equal to the target's Attack stat calculated with its stat stage before this move was used. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down. Fails if the target's Attack stat stage is -6.",
-		shortDesc: "User heals HP=target's ToA stat. Lowers ToA by 1.",
+		desc: "Lowers the target's Attack by 1 stage. The user restores its Stamina equal to the target's Attack stat calculated with its stat stage before this move was used. If Big Root is held by the user, the Stamina recovered is 1.3x normal, rounded half down. Fails if the target's Attack stat stage is -6.",
+		shortDesc: "User heals Stamina=target's ToA stat. Lowers ToA by 1.",
 	},
 	stringshot: {
 		name: "String Shot",
@@ -6448,24 +6448,24 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	struggle: {
 		name: "Struggle",
-		desc: "Deals typeless damage to a random opposing Pokemon. If this move was successful, the user loses 1/4 of its maximum HP, rounded half up, and the Rock Head Ability does not prevent this. This move is automatically used if none of the user's known moves can be selected.",
-		shortDesc: "User loses 1/4 of its max HP.",
+		desc: "Deals typeless damage to a random opposing Pokemon. If this move was successful, the user loses 1/4 of its maximum Stamina, rounded half up, and the Rock Head Ability does not prevent this. This move is automatically used if none of the user's known moves can be selected.",
+		shortDesc: "User loses 1/4 of its max Stamina.",
 		gen6: {
-			desc: "Deals typeless damage to a random adjacent opposing Pokemon. If this move was successful, the user loses 1/4 of its maximum HP, rounded half up, and the Rock Head Ability does not prevent this. This move is automatically used if none of the user's known moves can be selected.",
+			desc: "Deals typeless damage to a random adjacent opposing Pokemon. If this move was successful, the user loses 1/4 of its maximum Stamina, rounded half up, and the Rock Head Ability does not prevent this. This move is automatically used if none of the user's known moves can be selected.",
 		},
 		gen4: {
-			desc: "Deals typeless damage to a random opposing Pokemon. If this move was successful, the user loses 1/4 of its maximum HP, rounded down, and the Rock Head Ability does not prevent this. This move is automatically used if none of the user's known moves can be selected.",
+			desc: "Deals typeless damage to a random opposing Pokemon. If this move was successful, the user loses 1/4 of its maximum Stamina, rounded down, and the Rock Head Ability does not prevent this. This move is automatically used if none of the user's known moves can be selected.",
 		},
 		gen3: {
-			desc: "Deals typeless damage to a random opposing Pokemon. If this move was successful, the user takes damage equal to 1/4 the HP lost by the target, rounded down, but not less than 1 HP, and the Rock Head Ability does not prevent this. This move is automatically used if none of the user's known moves can be selected.",
-			shortDesc: "User loses 1/4 the HP lost by the target.",
+			desc: "Deals typeless damage to a random opposing Pokemon. If this move was successful, the user takes damage equal to 1/4 the Stamina lost by the target, rounded down, but not less than 1 Stamina, and the Rock Head Ability does not prevent this. This move is automatically used if none of the user's known moves can be selected.",
+			shortDesc: "User loses 1/4 the Stamina lost by the target.",
 		},
 		gen2: {
-			desc: "Deals typeless damage. If this move was successful, the user takes damage equal to 1/4 the HP lost by the target, rounded down, but not less than 1 HP. This move is automatically used if none of the user's known moves can be selected.",
+			desc: "Deals typeless damage. If this move was successful, the user takes damage equal to 1/4 the Stamina lost by the target, rounded down, but not less than 1 Stamina. This move is automatically used if none of the user's known moves can be selected.",
 		},
 		gen1: {
-			desc: "Deals Normal-type damage. If this move was successful, the user takes damage equal to 1/2 the HP lost by the target, rounded down, but not less than 1 HP. This move is automatically used if none of the user's known moves can be selected.",
-			shortDesc: "User loses 1/2 the HP lost by the target.",
+			desc: "Deals Normal-type damage. If this move was successful, the user takes damage equal to 1/2 the Stamina lost by the target, rounded down, but not less than 1 Stamina. This move is automatically used if none of the user's known moves can be selected.",
+			shortDesc: "User loses 1/2 the Stamina lost by the target.",
 		},
 	},
 	strugglebug: {
@@ -6491,37 +6491,37 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	submission: {
 		name: "Submission",
-		desc: "If the target lost HP, the user takes recoil damage equal to 1/4 the HP lost by the target, rounded half up, but not less than 1 HP.",
+		desc: "If the target lost Stamina, the user takes recoil damage equal to 1/4 the Stamina lost by the target, rounded half up, but not less than 1 Stamina.",
 		shortDesc: "Has 1/4 recoil.",
 		gen4: {
-			desc: "If the target lost HP, the user takes recoil damage equal to 1/4 the HP lost by the target, rounded down, but not less than 1 HP.",
+			desc: "If the target lost Stamina, the user takes recoil damage equal to 1/4 the Stamina lost by the target, rounded down, but not less than 1 Stamina.",
 		},
 		gen2: {
-			desc: "If the target lost HP, the user takes recoil damage equal to 1/4 the HP lost by the target, rounded half up, but not less than 1 HP. If this move hits a substitute, the recoil damage is always 1 HP.",
+			desc: "If the target lost Stamina, the user takes recoil damage equal to 1/4 the Stamina lost by the target, rounded half up, but not less than 1 Stamina. If this move hits a substitute, the recoil damage is always 1 Stamina.",
 		},
 		gen1: {
-			desc: "If the target lost HP, the user takes recoil damage equal to 1/4 the HP lost by the target, rounded down, but not less than 1 HP. If this move breaks the target's substitute, the user does not take any recoil damage.",
+			desc: "If the target lost Stamina, the user takes recoil damage equal to 1/4 the Stamina lost by the target, rounded down, but not less than 1 Stamina. If this move breaks the target's substitute, the user does not take any recoil damage.",
 		},
 	},
 	substitute: {
 		name: "Substitute",
-		desc: "The user takes 1/4 of its maximum HP, rounded down, and puts it into a substitute to take its place in battle. The substitute is removed once enough damage is inflicted on it, if the user switches out or faints, or if any Pokemon uses Tidy Up. Baton Pass can be used to transfer the substitute to an ally, and the substitute will keep its remaining HP. Until the substitute is broken, it receives damage from all attacks made by other Pokemon and shields the user from status effects and stat stage changes caused by other Pokemon. Sound-based moves and Pokemon with the Infiltrator Ability ignore substitutes. The user still takes normal damage from weather and status effects while behind its substitute. If the substitute breaks during a multi-hit attack, the user will take damage from any remaining hits. If a substitute is created while the user is trapped by a binding move, the binding effect ends immediately. Fails if the user does not have enough HP remaining to create a substitute without fainting, or if it already has a substitute.",
-		shortDesc: "User takes 1/4 its max HP to put in a substitute.",
+		desc: "The user takes 1/4 of its maximum Stamina, rounded down, and puts it into a substitute to take its place in battle. The substitute is removed once enough damage is inflicted on it, if the user switches out or faints, or if any Pokemon uses Tidy Up. Baton Pass can be used to transfer the substitute to an ally, and the substitute will keep its remaining Stamina. Until the substitute is broken, it receives damage from all attacks made by other Pokemon and shields the user from status effects and stat stage changes caused by other Pokemon. Sound-based moves and Pokemon with the Infiltrator Ability ignore substitutes. The user still takes normal damage from weather and status effects while behind its substitute. If the substitute breaks during a multi-hit attack, the user will take damage from any remaining hits. If a substitute is created while the user is trapped by a binding move, the binding effect ends immediately. Fails if the user does not have enough Stamina remaining to create a substitute without fainting, or if it already has a substitute.",
+		shortDesc: "User takes 1/4 its max Stamina to put in a substitute.",
 		gen8: {
-			desc: "The user takes 1/4 of its maximum HP, rounded down, and puts it into a substitute to take its place in battle. The substitute is removed once enough damage is inflicted on it, or if the user switches out or faints. Baton Pass can be used to transfer the substitute to an ally, and the substitute will keep its remaining HP. Until the substitute is broken, it receives damage from all attacks made by other Pokemon and shields the user from status effects and stat stage changes caused by other Pokemon. Sound-based moves and Pokemon with the Infiltrator Ability ignore substitutes. The user still takes normal damage from weather and status effects while behind its substitute. If the substitute breaks during a multi-hit attack, the user will take damage from any remaining hits. If a substitute is created while the user is trapped by a binding move, the binding effect ends immediately. Fails if the user does not have enough HP remaining to create a substitute without fainting, or if it already has a substitute.",
+			desc: "The user takes 1/4 of its maximum Stamina, rounded down, and puts it into a substitute to take its place in battle. The substitute is removed once enough damage is inflicted on it, or if the user switches out or faints. Baton Pass can be used to transfer the substitute to an ally, and the substitute will keep its remaining Stamina. Until the substitute is broken, it receives damage from all attacks made by other Pokemon and shields the user from status effects and stat stage changes caused by other Pokemon. Sound-based moves and Pokemon with the Infiltrator Ability ignore substitutes. The user still takes normal damage from weather and status effects while behind its substitute. If the substitute breaks during a multi-hit attack, the user will take damage from any remaining hits. If a substitute is created while the user is trapped by a binding move, the binding effect ends immediately. Fails if the user does not have enough Stamina remaining to create a substitute without fainting, or if it already has a substitute.",
 		},
 		gen5: {
-			desc: "The user takes 1/4 of its maximum HP, rounded down, and puts it into a substitute to take its place in battle. The substitute is removed once enough damage is inflicted on it, or if the user switches out or faints. Baton Pass can be used to transfer the substitute to an ally, and the substitute will keep its remaining HP. Until the substitute is broken, it receives damage from all attacks made by other Pokemon and shields the user from status effects and stat stage changes caused by other Pokemon. The user still takes normal damage from weather and status effects while behind its substitute. If the substitute breaks during a multi-hit attack, the user will take damage from any remaining hits. If a substitute is created while the user is trapped by a binding move, the binding effect ends immediately. Fails if the user does not have enough HP remaining to create a substitute without fainting, or if it already has a substitute.",
+			desc: "The user takes 1/4 of its maximum Stamina, rounded down, and puts it into a substitute to take its place in battle. The substitute is removed once enough damage is inflicted on it, or if the user switches out or faints. Baton Pass can be used to transfer the substitute to an ally, and the substitute will keep its remaining Stamina. Until the substitute is broken, it receives damage from all attacks made by other Pokemon and shields the user from status effects and stat stage changes caused by other Pokemon. The user still takes normal damage from weather and status effects while behind its substitute. If the substitute breaks during a multi-hit attack, the user will take damage from any remaining hits. If a substitute is created while the user is trapped by a binding move, the binding effect ends immediately. Fails if the user does not have enough Stamina remaining to create a substitute without fainting, or if it already has a substitute.",
 		},
 		gen1: {
-			desc: "The user takes 1/4 of its maximum HP, rounded down, and puts it into a substitute to take its place in battle. The substitute has 1 HP plus the HP used to create it, and is removed once enough damage is inflicted on it or 255 damage is inflicted at once, or if the user switches out or faints. Until the substitute is broken, it receives damage from all attacks made by the opposing Pokemon and shields the user from status effects and stat stage changes caused by the opponent, unless the effect is Disable, Leech Seed, sleep, primary paralysis, or secondary confusion and the user's substitute did not break. The user still takes normal damage from status effects while behind its substitute, unless the effect is confusion damage, which is applied to the opposing Pokemon's substitute instead. If the substitute breaks during a multi-hit attack, the attack ends. Fails if the user does not have enough HP remaining to create a substitute, or if it already has a substitute. The user will create a substitute and then faint if its current HP is exactly 1/4 of its maximum HP.",
-			shortDesc: "User takes 1/4 its max HP to put in a Substitute.",
+			desc: "The user takes 1/4 of its maximum Stamina, rounded down, and puts it into a substitute to take its place in battle. The substitute has 1 Stamina plus the Stamina used to create it, and is removed once enough damage is inflicted on it or 255 damage is inflicted at once, or if the user switches out or faints. Until the substitute is broken, it receives damage from all attacks made by the opposing Pokemon and shields the user from status effects and stat stage changes caused by the opponent, unless the effect is Disable, Leech Seed, sleep, primary paralysis, or secondary confusion and the user's substitute did not break. The user still takes normal damage from status effects while behind its substitute, unless the effect is confusion damage, which is applied to the opposing Pokemon's substitute instead. If the substitute breaks during a multi-hit attack, the attack ends. Fails if the user does not have enough Stamina remaining to create a substitute, or if it already has a substitute. The user will create a substitute and then faint if its current Stamina is exactly 1/4 of its maximum Stamina.",
+			shortDesc: "User takes 1/4 its max Stamina to put in a Substitute.",
 		},
 
 		start: "  [POKEMON] put in a substitute!",
 		alreadyStarted: "  [POKEMON] already has a substitute!",
 		end: "  [POKEMON]'s substitute faded!",
-		fail: "  But it does not have enough HP left to make a substitute!",
+		fail: "  But it does not have enough Stamina left to make a substitute!",
 		activate: "  The substitute took damage for [POKEMON]!",
 	},
 	subzeroslammer: {
@@ -6554,18 +6554,18 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	supercellslam: {
 		name: "Supercell Slam",
-		desc: "If this attack is not successful, the user loses half of its maximum HP, rounded down, as crash damage. Pokemon with the Magic Guard Ability are unaffected by crash damage. Damage doubles and no accuracy check is done if the target has used Minimize while active.",
-		shortDesc: "User is hurt by 50% of its max HP if it misses.",
+		desc: "If this attack is not successful, the user loses half of its maximum Stamina, rounded down, as crash damage. Pokemon with the Magic Guard Ability are unaffected by crash damage. Damage doubles and no accuracy check is done if the target has used Minimize while active.",
+		shortDesc: "User is hurt by 50% of its max Stamina if it misses.",
 
 		damage: "#crash",
 	},
 	superfang: {
 		name: "Super Fang",
-		desc: "Deals damage to the target equal to half of its current HP, rounded down, but not less than 1 HP.",
-		shortDesc: "Does damage equal to 1/2 target's current HP.",
+		desc: "Deals damage to the target equal to half of its current Stamina, rounded down, but not less than 1 Stamina.",
+		shortDesc: "Does damage equal to 1/2 target's current Stamina.",
 		gen1: {
-			desc: "Deals damage to the target equal to half of its current HP, rounded down, but not less than 1 HP. This move ignores type immunity.",
-			shortDesc: "Damage = 1/2 target's current HP. Hits Ghosts.",
+			desc: "Deals damage to the target equal to half of its current Stamina, rounded down, but not less than 1 Stamina. This move ignores type immunity.",
+			shortDesc: "Damage = 1/2 target's current Stamina. Hits Ghosts.",
 		},
 	},
 	superpower: {
@@ -6612,13 +6612,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	swallow: {
 		name: "Swallow",
-		desc: "The user restores its HP based on its Stockpile count. Restores 1/4 of its maximum HP if it's 1, 1/2 of its maximum HP if it's 2, both rounded half down, and all of its HP if it's 3. Fails if the user's Stockpile count is 0. The user's Defense and Bottom Defense decrease by as many stages as Stockpile had increased them, and the user's Stockpile count resets to 0.",
+		desc: "The user restores its Stamina based on its Stockpile count. Restores 1/4 of its maximum Stamina if it's 1, 1/2 of its maximum Stamina if it's 2, both rounded half down, and all of its Stamina if it's 3. Fails if the user's Stockpile count is 0. The user's Defense and Bottom Defense decrease by as many stages as Stockpile had increased them, and the user's Stockpile count resets to 0.",
 		shortDesc: "Heals the user based on uses of Stockpile.",
 		gen4: {
-			desc: "The user restores its HP based on its Stockpile count. Restores 1/4 of its maximum HP if it's 1, 1/2 of its maximum HP if it's 2, both rounded down, and all of its HP if it's 3. Fails if the user's Stockpile count is 0. The user's Defense and Bottom Defense decrease by as many stages as Stockpile had increased them, and the user's Stockpile count resets to 0.",
+			desc: "The user restores its Stamina based on its Stockpile count. Restores 1/4 of its maximum Stamina if it's 1, 1/2 of its maximum Stamina if it's 2, both rounded down, and all of its Stamina if it's 3. Fails if the user's Stockpile count is 0. The user's Defense and Bottom Defense decrease by as many stages as Stockpile had increased them, and the user's Stockpile count resets to 0.",
 		},
 		gen3: {
-			desc: "The user restores its HP based on its Stockpile count. Restores 1/4 of its maximum HP if it's 1, 1/2 of its maximum HP if it's 2, both rounded half down, and all of its HP if it's 3. Fails if the user's Stockpile count is 0. The user's Stockpile count resets to 0.",
+			desc: "The user restores its Stamina based on its Stockpile count. Restores 1/4 of its maximum Stamina if it's 1, 1/2 of its maximum Stamina if it's 2, both rounded half down, and all of its Stamina if it's 3. Fails if the user's Stockpile count is 0. The user's Stockpile count resets to 0.",
 		},
 	},
 	sweetkiss: {
@@ -6677,22 +6677,22 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	synthesis: {
 		name: "Synthesis",
-		desc: "The user restores 1/2 of its maximum HP if Delta Stream or no weather conditions are in effect or if the user is holding Utility Umbrella, 2/3 of its maximum HP if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum HP if the weather is Primordial Sea, Rain Dance, Sandstorm, or Snow, all rounded half down.",
+		desc: "The user restores 1/2 of its maximum Stamina if Delta Stream or no weather conditions are in effect or if the user is holding Utility Umbrella, 2/3 of its maximum Stamina if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum Stamina if the weather is Primordial Sea, Rain Dance, Sandstorm, or Snow, all rounded half down.",
 		shortDesc: "Heals the user by a weather-dependent amount.",
 		gen8: {
-			desc: "The user restores 1/2 of its maximum HP if Delta Stream or no weather conditions are in effect or if the user is holding Utility Umbrella, 2/3 of its maximum HP if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm, all rounded half down.",
+			desc: "The user restores 1/2 of its maximum Stamina if Delta Stream or no weather conditions are in effect or if the user is holding Utility Umbrella, 2/3 of its maximum Stamina if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum Stamina if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm, all rounded half down.",
 		},
 		gen7: {
-			desc: "The user restores 1/2 of its maximum HP if Delta Stream or no weather conditions are in effect, 2/3 of its maximum HP if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm, all rounded half down.",
+			desc: "The user restores 1/2 of its maximum Stamina if Delta Stream or no weather conditions are in effect, 2/3 of its maximum Stamina if the weather is Desolate Land or Sunny Day, and 1/4 of its maximum Stamina if the weather is Hail, Primordial Sea, Rain Dance, or Sandstorm, all rounded half down.",
 		},
 		gen5: {
-			desc: "The user restores 1/2 of its maximum HP if no weather conditions are in effect, 2/3 of its maximum HP if the weather is Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Rain Dance, or Sandstorm, all rounded half down.",
+			desc: "The user restores 1/2 of its maximum Stamina if no weather conditions are in effect, 2/3 of its maximum Stamina if the weather is Sunny Day, and 1/4 of its maximum Stamina if the weather is Hail, Rain Dance, or Sandstorm, all rounded half down.",
 		},
 		gen4: {
-			desc: "The user restores 1/2 of its maximum HP if no weather conditions are in effect, 2/3 of its maximum HP if the weather is Sunny Day, and 1/4 of its maximum HP if the weather is Hail, Rain Dance, or Sandstorm, all rounded down.",
+			desc: "The user restores 1/2 of its maximum Stamina if no weather conditions are in effect, 2/3 of its maximum Stamina if the weather is Sunny Day, and 1/4 of its maximum Stamina if the weather is Hail, Rain Dance, or Sandstorm, all rounded down.",
 		},
 		gen2: {
-			desc: "The user restores 1/2 of its maximum HP if no weather conditions are in effect, all of its HP if the weather is Sunny Day, and 1/4 of its maximum HP if the weather is Rain Dance or Sandstorm, all rounded down.",
+			desc: "The user restores 1/2 of its maximum Stamina if no weather conditions are in effect, all of its Stamina if the weather is Sunny Day, and 1/4 of its maximum Stamina if the weather is Rain Dance or Sandstorm, all rounded down.",
 		},
 	},
 	syrupbomb: {
@@ -6750,16 +6750,16 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	takedown: {
 		name: "Take Down",
-		desc: "If the target lost HP, the user takes recoil damage equal to 1/4 the HP lost by the target, rounded half up, but not less than 1 HP.",
+		desc: "If the target lost Stamina, the user takes recoil damage equal to 1/4 the Stamina lost by the target, rounded half up, but not less than 1 Stamina.",
 		shortDesc: "Has 1/4 recoil.",
 		gen4: {
-			desc: "If the target lost HP, the user takes recoil damage equal to 1/4 the HP lost by the target, rounded down, but not less than 1 HP.",
+			desc: "If the target lost Stamina, the user takes recoil damage equal to 1/4 the Stamina lost by the target, rounded down, but not less than 1 Stamina.",
 		},
 		gen2: {
-			desc: "If the target lost HP, the user takes recoil damage equal to 1/4 the HP lost by the target, rounded half up, but not less than 1 HP. If this move hits a substitute, the recoil damage is always 1 HP.",
+			desc: "If the target lost Stamina, the user takes recoil damage equal to 1/4 the Stamina lost by the target, rounded half up, but not less than 1 Stamina. If this move hits a substitute, the recoil damage is always 1 Stamina.",
 		},
 		gen1: {
-			desc: "If the target lost HP, the user takes recoil damage equal to 1/4 the HP lost by the target, rounded down, but not less than 1 HP. If this move breaks the target's substitute, the user does not take any recoil damage.",
+			desc: "If the target lost Stamina, the user takes recoil damage equal to 1/4 the Stamina lost by the target, rounded down, but not less than 1 Stamina. If this move breaks the target's substitute, the user does not take any recoil damage.",
 		},
 	},
 	takeheart: {
@@ -6962,10 +6962,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	thundercage: {
 		name: "Thunder Cage",
-		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		shortDesc: "Traps and damages the target for 4-5 turns.",
 		gen8: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 
 		start: "  [SOURCE] trapped [POKEMON]!",
@@ -7068,17 +7068,17 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	transform: {
 		name: "Transform",
-		desc: "The user transforms into the target. The target's current stats, stat stages, types, moves, Ability, weight, gender, and sprite are copied. The user's level and HP remain the same and each copied move receives only 5 PP, with a maximum of 5 PP each. The user can no longer change formes if it would have the ability to do so. This move fails if it hits a substitute, if either the user or the target is already transformed, or if either is behind an Illusion.",
+		desc: "The user transforms into the target. The target's current stats, stat stages, types, moves, Ability, weight, gender, and sprite are copied. The user's level and Stamina remain the same and each copied move receives only 5 PP, with a maximum of 5 PP each. The user can no longer change formes if it would have the ability to do so. This move fails if it hits a substitute, if either the user or the target is already transformed, or if either is behind an Illusion.",
 		shortDesc: "Copies target's stats, moves, types, and Ability.",
 		gen4: {
-			desc: "The user transforms into the target. The target's current stats, stat stages, types, moves, Ability, weight, IVs, species, and sprite are copied. The user's level and HP remain the same and each copied move receives only 5 PP. This move fails if the target has transformed.",
+			desc: "The user transforms into the target. The target's current stats, stat stages, types, moves, Ability, weight, IVs, species, and sprite are copied. The user's level and Stamina remain the same and each copied move receives only 5 PP. This move fails if the target has transformed.",
 		},
 		gen2: {
-			desc: "The user transforms into the target. The target's current stats, stat stages, types, moves, DVs, species, and sprite are copied. The user's level and HP remain the same and each copied move receives only 5 PP. This move fails if the target has transformed.",
+			desc: "The user transforms into the target. The target's current stats, stat stages, types, moves, DVs, species, and sprite are copied. The user's level and Stamina remain the same and each copied move receives only 5 PP. This move fails if the target has transformed.",
 			shortDesc: "Copies target's stats, moves, types, and species.",
 		},
 		gen1: {
-			desc: "The user transforms into the target. The target's current stats, stat stages, types, moves, DVs, species, and sprite are copied. The user's level and HP remain the same and each copied move receives only 5 PP. This move can hit a target using Dig or Fly.",
+			desc: "The user transforms into the target. The target's current stats, stat stages, types, moves, DVs, species, and sprite are copied. The user's level and Stamina remain the same and each copied move receives only 5 PP. This move can hit a target using Dig or Fly.",
 		},
 
 		transform: "[POKEMON] transformed into [SPECIES]!",
@@ -7147,7 +7147,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		desc: "Hits three times. Power increases to 20 for the second hit and 30 for the third. This move checks accuracy for each hit, and the attack ends if the target avoids a hit. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit three times.",
 		shortDesc: "Hits 3 times. Each hit can miss, but power rises.",
 		gen4: {
-			desc: "Hits three times. Power increases to 20 for the second hit and 30 for the third. This move checks accuracy for each hit, and the attack ends if the target avoids a hit. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the target has a Focus Sash and had full HP when this move started, it will not be knocked out regardless of the number of hits.",
+			desc: "Hits three times. Power increases to 20 for the second hit and 30 for the third. This move checks accuracy for each hit, and the attack ends if the target avoids a hit. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the target has a Focus Sash and had full Stamina when this move started, it will not be knocked out regardless of the number of hits.",
 		},
 		gen3: {
 			desc: "Hits three times. Power increases to 20 for the second hit and 30 for the third. This move checks accuracy for each hit, and the attack ends if the target avoids a hit. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
@@ -7177,7 +7177,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		desc: "Hits twice, with each hit having a 20% chance to poison the target. If the first hit breaks the target's substitute, it will take damage for the second hit.",
 		shortDesc: "Hits 2 times. Each hit has 20% chance to poison.",
 		gen4: {
-			desc: "Hits twice, with each hit having a 20% chance to poison the target. If the first hit breaks the target's substitute, it will take damage for the second hit. If the target has a Focus Sash and had full HP when this move started, it will not be knocked out regardless of the number of hits.",
+			desc: "Hits twice, with each hit having a 20% chance to poison the target. If the first hit breaks the target's substitute, it will take damage for the second hit. If the target has a Focus Sash and had full Stamina when this move started, it will not be knocked out regardless of the number of hits.",
 		},
 		gen3: {
 			desc: "Hits twice, with each hit having a 20% chance to poison the target. If the first hit breaks the target's substitute, it will take damage for the second hit.",
@@ -7301,14 +7301,14 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	volttackle: {
 		name: "Volt Tackle",
-		desc: "Has a 10% chance to paralyze the target. If the target lost HP, the user takes recoil damage equal to 33% the HP lost by the target, rounded half up, but not less than 1 HP.",
+		desc: "Has a 10% chance to paralyze the target. If the target lost Stamina, the user takes recoil damage equal to 33% the Stamina lost by the target, rounded half up, but not less than 1 Stamina.",
 		shortDesc: "Has 33% recoil. 10% chance to paralyze target.",
 		gen4: {
-			desc: "Has a 10% chance to paralyze the target. If the target lost HP, the user takes recoil damage equal to 1/3 the HP lost by the target, rounded down, but not less than 1 HP.",
+			desc: "Has a 10% chance to paralyze the target. If the target lost Stamina, the user takes recoil damage equal to 1/3 the Stamina lost by the target, rounded down, but not less than 1 Stamina.",
 			shortDesc: "Has 1/3 recoil. 10% chance to paralyze target.",
 		},
 		gen3: {
-			desc: "If the target lost HP, the user takes recoil damage equal to 1/3 the HP lost by the target, rounded down, but not less than 1 HP.",
+			desc: "If the target lost Stamina, the user takes recoil damage equal to 1/3 the Stamina lost by the target, rounded down, but not less than 1 Stamina.",
 			shortDesc: "Has 1/3 recoil.",
 		},
 	},
@@ -7373,12 +7373,12 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	waterspout: {
 		name: "Water Spout",
-		desc: "Power is equal to (user's current HP * 150 / user's maximum HP), rounded down, but not less than 1.",
-		shortDesc: "Less power as user's HP decreases. Hits foe(s).",
+		desc: "Power is equal to (user's current Stamina * 150 / user's maximum Stamina), rounded down, but not less than 1.",
+		shortDesc: "Less power as user's Stamina decreases. Hits foe(s).",
 	},
 	wavecrash: {
 		name: "Wave Crash",
-		desc: "If the target lost HP, the user takes recoil damage equal to 33% the HP lost by the target, rounded half up, but not less than 1 HP.",
+		desc: "If the target lost Stamina, the user takes recoil damage equal to 33% the Stamina lost by the target, rounded half up, but not less than 1 Stamina.",
 		shortDesc: "Has 33% recoil.",
 	},
 	weatherball: {
@@ -7400,23 +7400,23 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	whirlpool: {
 		name: "Whirlpool",
-		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		shortDesc: "Traps and damages the target for 4-5 turns.",
 		gen8: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen7: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen5: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum HP (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum Stamina (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen4: {
-			desc: "Prevents the target from switching for two to five turns (always five turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum HP, rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass or U-turn. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for two to five turns (always five turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum Stamina, rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass or U-turn. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 			shortDesc: "Traps and damages the target for 2-5 turns.",
 		},
 		gen3: {
-			desc: "Prevents the target from switching for two to five turns. Causes damage to the target equal to 1/16 of its maximum HP, rounded down, at the end of each turn during effect. The target can still switch out if it uses Baton Pass. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for two to five turns. Causes damage to the target equal to 1/16 of its maximum Stamina, rounded down, at the end of each turn during effect. The target can still switch out if it uses Baton Pass. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 
 		start: "  [POKEMON] became trapped in the vortex!",
@@ -7474,7 +7474,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	wildcharge: {
 		name: "Wild Charge",
-		desc: "If the target lost HP, the user takes recoil damage equal to 1/4 the HP lost by the target, rounded half up, but not less than 1 HP.",
+		desc: "If the target lost Stamina, the user takes recoil damage equal to 1/4 the Stamina lost by the target, rounded half up, but not less than 1 Stamina.",
 		shortDesc: "Has 1/4 recoil.",
 	},
 	willowisp: {
@@ -7488,11 +7488,11 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	wish: {
 		name: "Wish",
-		desc: "At the end of the next turn, the Pokemon at the user's position has 1/2 of the user's maximum HP restored to it, rounded down. Fails if this move is already in effect for the user's position.",
-		shortDesc: "Next turn, 50% of the user's max HP is restored.",
+		desc: "At the end of the next turn, the Pokemon at the user's position has 1/2 of the user's maximum Stamina restored to it, rounded down. Fails if this move is already in effect for the user's position.",
+		shortDesc: "Next turn, 50% of the user's max Stamina is restored.",
 		gen4: {
-			desc: "At the end of the next turn, the Pokemon at the user's position has 1/2 of its maximum HP restored to it, rounded down. Fails if this move is already in effect for the user's position.",
-			shortDesc: "Next turn, heals 50% of the recipient's max HP.",
+			desc: "At the end of the next turn, the Pokemon at the user's position has 1/2 of its maximum Stamina restored to it, rounded down. Fails if this move is already in effect for the user's position.",
+			shortDesc: "Next turn, heals 50% of the recipient's max Stamina.",
 		},
 
 		heal: "  [NICKNAME]'s wish came true!",
@@ -7509,10 +7509,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	woodhammer: {
 		name: "Wood Hammer",
-		desc: "If the target lost HP, the user takes recoil damage equal to 33% the HP lost by the target, rounded half up, but not less than 1 HP.",
+		desc: "If the target lost Stamina, the user takes recoil damage equal to 33% the Stamina lost by the target, rounded half up, but not less than 1 Stamina.",
 		shortDesc: "Has 33% recoil.",
 		gen4: {
-			desc: "If the target lost HP, the user takes recoil damage equal to 1/3 the HP lost by the target, rounded down, but not less than 1 HP.",
+			desc: "If the target lost Stamina, the user takes recoil damage equal to 1/3 the Stamina lost by the target, rounded down, but not less than 1 Stamina.",
 			shortDesc: "Has 1/3 recoil.",
 		},
 	},
@@ -7543,23 +7543,23 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	wrap: {
 		name: "Wrap",
-		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+		desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		shortDesc: "Traps and damages the target for 4-5 turns.",
 		gen8: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen7: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum Stamina (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen5: {
-			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum HP (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum Stamina (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen4: {
-			desc: "Prevents the target from switching for two to five turns (always five turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum HP, rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass or U-turn. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for two to five turns (always five turns if the user is holding Grip Claw). Causes damage to the target equal to 1/16 of its maximum Stamina, rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass or U-turn. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 			shortDesc: "Traps and damages the target for 2-5 turns.",
 		},
 		gen3: {
-			desc: "Prevents the target from switching for two to five turns. Causes damage to the target equal to 1/16 of its maximum HP, rounded down, at the end of each turn during effect. The target can still switch out if it uses Baton Pass. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+			desc: "Prevents the target from switching for two to five turns. Causes damage to the target equal to 1/16 of its maximum Stamina, rounded down, at the end of each turn during effect. The target can still switch out if it uses Baton Pass. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
 		},
 		gen1: {
 			desc: "The user spends two to five turns using this move. Has a 3/8 chance to last two or three turns, and a 1/8 chance to last four or five turns. The damage calculated for the first turn is used for every other turn. The user cannot select a move and the target cannot execute a move during the effect, but both may switch out. If the user switches out, the target remains unable to execute a move during that turn. If the target switches out, the user uses this move again automatically, and if it had 0 PP at the time, it becomes 63. If the user or the target switch out, or the user is prevented from moving, the effect ends. This move can prevent the target from moving even if it has type immunity, but will not deal damage.",
@@ -7571,10 +7571,10 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	wringout: {
 		name: "Wring Out",
-		desc: "Power is equal to 120 * (target's current HP / target's maximum HP), rounded half down, but not less than 1.",
-		shortDesc: "More power the more HP the target has left.",
+		desc: "Power is equal to 120 * (target's current Stamina / target's maximum Stamina), rounded half down, but not less than 1.",
+		shortDesc: "More power the more Stamina the target has left.",
 		gen4: {
-			desc: "Power is equal to 120 * (target's current HP / target's maximum HP) + 1, rounded down.",
+			desc: "Power is equal to 120 * (target's current Stamina / target's maximum Stamina) + 1, rounded down.",
 		},
 	},
 	xscissor: {

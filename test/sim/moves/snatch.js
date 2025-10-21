@@ -40,7 +40,7 @@ describe('Snatch', () => {
 		battle.makeChoices('move snatch, move trick 1', 'auto');
 	});
 
-	it('should not be able to steal Rest when the Rest user is at full HP', () => {
+	it('should not be able to steal Rest when the Rest user is at full Stamina', () => {
 		battle = common.createBattle({ gameType: 'doubles' }, [[
 			{ species: 'wynaut', moves: ['snatch'] },
 			{ species: 'accelgor', moves: ['rest'] },
@@ -71,9 +71,9 @@ describe('Snatch', () => {
 		assert(battle.log[battle.lastMoveLine + 2].startsWith('|cant'), 'should log that Heal Bell failed');
 
 		battle.makeChoices('move sleeptalk, move sleeptalk', 'move healblock, move throatchop 2');
-		const weavileHp = battle.p1.active[1].hp;
+		const weavileHp = battle.p1.active[1].st;
 		battle.makeChoices('move sleeptalk, move snatch', 'move sleeptalk, move recover');
-		assert.atMost(battle.p1.active[1].hp, weavileHp, 'should not allow Snatch to bypass Heal Block');
+		assert.atMost(battle.p1.active[1].st, weavileHp, 'should not allow Snatch to bypass Heal Block');
 		assert(battle.log[battle.lastMoveLine + 2].startsWith('|cant'), 'should log that Recover failed');
 	});
 

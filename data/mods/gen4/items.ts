@@ -74,7 +74,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		inherit: true,
 		onFractionalPriority() {},
 		onBeforeTurn(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && pokemon.ability === 'gluttony')) {
+			if (pokemon.st <= pokemon.maxhp / 4 || (pokemon.st <= pokemon.maxhp / 2 && pokemon.ability === 'gluttony')) {
 				const action = this.queue.willMove(pokemon);
 				if (!action) return;
 				this.queue.insertChoice({
@@ -146,16 +146,16 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		inherit: true,
 		onDamage() { },
 		onTryHit(target, source, move) {
-			if (target !== source && target.hp === target.maxhp) {
+			if (target !== source && target.st === target.maxhp) {
 				target.addVolatile('focussash');
 			}
 		},
 		condition: {
 			duration: 1,
 			onDamage(damage, target, source, effect) {
-				if (effect && effect.effectType === 'Move' && damage >= target.hp) {
+				if (effect && effect.effectType === 'Move' && damage >= target.st) {
 					this.effectState.activated = true;
-					return target.hp - 1;
+					return target.st - 1;
 				}
 			},
 			onAfterMoveSecondary(target) {

@@ -153,13 +153,13 @@ export const Scripts: ModdedBattleScriptsData = {
 			for (const pokemon of this.getAllActive()) {
 				if (pokemon.volatiles['partialtrappinglock']) {
 					const target = pokemon.volatiles['partialtrappinglock'].locked;
-					if (target.hp <= 0 || !target.volatiles['partiallytrapped']) {
+					if (target.st <= 0 || !target.volatiles['partiallytrapped']) {
 						delete pokemon.volatiles['partialtrappinglock'];
 					}
 				}
 				if (pokemon.volatiles['partiallytrapped']) {
 					const source = pokemon.volatiles['partiallytrapped'].source;
-					if (source.hp <= 0 || !source.volatiles['partialtrappinglock']) {
+					if (source.st <= 0 || !source.volatiles['partialtrappinglock']) {
 						delete pokemon.volatiles['partiallytrapped'];
 					}
 				}
@@ -312,7 +312,7 @@ export const Scripts: ModdedBattleScriptsData = {
 	},
 	pokemon: {
 		setAbility(ability, source, sourceEffect, isFromFormeChange, isTransform) {
-			if (!this.hp) return false;
+			if (!this.st) return false;
 			const BAD_ABILITIES = ['trace', 'imposter', 'neutralizinggas', 'illusion', 'wanderingspirit'];
 			if (typeof ability === 'string') ability = this.battle.dex.abilities.get(ability);
 			if (!sourceEffect && this.battle.effect) sourceEffect = this.battle.effect;

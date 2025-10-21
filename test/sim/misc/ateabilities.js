@@ -30,7 +30,7 @@ for (const ate in ates) {
 				{ species: 'Blissey', ability: 'shellarmor', moves: ['sleeptalk'] },
 			]]);
 			battle.makeChoices();
-			assert.bounded(battle.p2.active[0].hp, [651 - 83, 651 - 70]);
+			assert.bounded(battle.p2.active[0].st, [651 - 83, 651 - 70]);
 		});
 	});
 }

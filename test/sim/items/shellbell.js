@@ -20,7 +20,7 @@ describe('Shell Bell', () => {
 		]]);
 		battle.makeChoices('move superfang -2, move earthquake', 'auto');
 		const landorus = battle.p1.active[1];
-		assert.equal(landorus.hp, landorus.maxhp - Math.floor(landorus.maxhp / 2) + (Math.floor(11 * 2 / 8)));
+		assert.equal(landorus.st, landorus.maxhp - Math.floor(landorus.maxhp / 2) + (Math.floor(11 * 2 / 8)));
 	});
 
 	// Also applies to Parental Bond
@@ -30,13 +30,13 @@ describe('Shell Bell', () => {
 			{ species: 'landorus', moves: ['sleeptalk'] },
 			{ species: 'wynaut', moves: ['sleeptalk'] },
 		], [
-			{ species: 'cloyster', ability: 'skilllink', item: 'shellbell', evs: { hp: 4 }, moves: ['sleeptalk', 'iciclespear'] },
+			{ species: 'cloyster', ability: 'skilllink', item: 'shellbell', evs: { st: 4 }, moves: ['sleeptalk', 'iciclespear'] },
 		]]);
 		battle.makeChoices();
 		battle.makeChoices('switch 2');
 		battle.makeChoices('auto', 'move iciclespear');
 		const landorus = battle.p1.active[0];
 		const cloyster = battle.p2.active[0];
-		assert.equal(cloyster.hp, 1 + Math.floor(landorus.maxhp / 8));
+		assert.equal(cloyster.st, 1 + Math.floor(landorus.maxhp / 8));
 	});
 });

@@ -12,18 +12,18 @@ describe("Ripen", () => {
 
 	it('should double healing from Berries', () => {
 		battle = common.createBattle([[
-			{ species: 'wynaut', ability: 'ripen', item: 'sitrusberry', ivs: { hp: 30 }, moves: ['sleeptalk'] },
+			{ species: 'wynaut', ability: 'ripen', item: 'sitrusberry', ivs: { st: 30 }, moves: ['sleeptalk'] },
 		], [
 			{ species: 'wynaut', ability: 'compoundeyes', moves: ['superfang'] },
 		]]);
 		battle.makeChoices();
 		const ripenWynaut = battle.p1.active[0];
-		assert.equal(ripenWynaut.hp, Math.floor(ripenWynaut.maxhp / 2) + (Math.floor(ripenWynaut.maxhp / 4) * 2));
+		assert.equal(ripenWynaut.st, Math.floor(ripenWynaut.maxhp / 2) + (Math.floor(ripenWynaut.maxhp / 4) * 2));
 	});
 
 	it('should double stat boosts from Berries', () => {
 		battle = common.createBattle([[
-			{ species: 'wynaut', ability: 'ripen', item: 'liechiberry', evs: { hp: 4 }, moves: ['sleeptalk'] },
+			{ species: 'wynaut', ability: 'ripen', item: 'liechiberry', evs: { st: 4 }, moves: ['sleeptalk'] },
 		], [
 			{ species: 'wynaut', ability: 'compoundeyes', moves: ['superfang'] },
 		]]);
@@ -41,7 +41,7 @@ describe("Ripen", () => {
 		]]);
 		battle.makeChoices();
 		const falinks = battle.p2.active[0];
-		assert.equal(falinks.hp, falinks.maxhp - Math.floor(falinks.maxhp / 4), `Falinks should have lost 1/4 of its HP`);
+		assert.equal(falinks.st, falinks.maxhp - Math.floor(falinks.maxhp / 4), `Falinks should have lost 1/4 of its Stamina`);
 	});
 
 	it('should allow resist Berries to quarter the damage done', () => {
@@ -52,7 +52,7 @@ describe("Ripen", () => {
 		]]);
 		battle.makeChoices();
 		const ripenWynaut = battle.p1.active[0];
-		const damage = ripenWynaut.maxhp - ripenWynaut.hp;
+		const damage = ripenWynaut.maxhp - ripenWynaut.st;
 		assert.bounded(damage, [18, 21]); // If it was only halved, range would be 36-43
 	});
 
@@ -65,7 +65,7 @@ describe("Ripen", () => {
 		battle.makeChoices();
 		battle.makeChoices('auto', 'move dark pulse');
 		const ripenWynaut = battle.p1.active[0];
-		const damage = ripenWynaut.maxhp - ripenWynaut.hp;
+		const damage = ripenWynaut.maxhp - ripenWynaut.st;
 		assert.bounded(damage, [27, 32]); // If it was only halved, range would be 54-64
 	});
 

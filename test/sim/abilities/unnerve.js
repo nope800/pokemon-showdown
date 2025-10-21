@@ -27,8 +27,8 @@ describe(`Unnerve`, () => {
 	describe.skip(`Unnerve Desync Glitch`, () => {
 		beforeEach(() => {
 			battle = common.createBattle([[
-				// 18 HP on Wynaut
-				{ species: 'Wynaut', level: 3, ivs: { hp: 0 }, ability: 'dazzling', item: 'oranberry', moves: ['bellydrum', 'flamethrower'] },
+				// 18 Stamina on Wynaut
+				{ species: 'Wynaut', level: 3, ivs: { st: 0 }, ability: 'dazzling', item: 'oranberry', moves: ['bellydrum', 'flamethrower'] },
 				{ species: 'Aggron', moves: ['sleeptalk'] },
 			], [
 				{ species: 'Mewtwo', ability: 'unnerve', item: 'laggingtail', moves: ['explosion'] },

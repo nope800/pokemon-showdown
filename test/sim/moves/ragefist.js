@@ -18,11 +18,11 @@ describe('Rage Fist', () => {
 		]]);
 		battle.makeChoices();
 		const umbreon = battle.p2.active[0];
-		let rageFistDamage = umbreon.maxhp - umbreon.hp;
+		let rageFistDamage = umbreon.maxhp - umbreon.st;
 		assert.bounded(rageFistDamage, [17, 21], `Rage Fist should be 50 BP`);
 
 		battle.makeChoices();
-		rageFistDamage = umbreon.maxhp - rageFistDamage - umbreon.hp;
+		rageFistDamage = umbreon.maxhp - rageFistDamage - umbreon.st;
 		assert.bounded(rageFistDamage, [34, 41], `Rage Fist should be 100 BP`);
 	});
 
@@ -35,11 +35,11 @@ describe('Rage Fist', () => {
 
 		battle.makeChoices();
 		const umbreon = battle.p2.active[0];
-		let rageFistDamage = umbreon.maxhp - umbreon.hp;
+		let rageFistDamage = umbreon.maxhp - umbreon.st;
 		assert.bounded(rageFistDamage, [17, 21]);
 
 		battle.makeChoices();
-		rageFistDamage = umbreon.maxhp - rageFistDamage - umbreon.hp;
+		rageFistDamage = umbreon.maxhp - rageFistDamage - umbreon.st;
 		assert.bounded(rageFistDamage, [17, 21]);
 	});
 
@@ -53,7 +53,7 @@ describe('Rage Fist', () => {
 		battle.makeChoices();
 		battle.makeChoices('move ragefist', 'move sleeptalk');
 		const umbreon = battle.p2.active[0];
-		assert.bounded(umbreon.maxhp - umbreon.hp, [52, 61]);
+		assert.bounded(umbreon.maxhp - umbreon.st, [52, 61]);
 	});
 
 	it(`should use user's own number of times hit when called by another move`, () => {
@@ -65,7 +65,7 @@ describe('Rage Fist', () => {
 
 		battle.makeChoices();
 		const primeape = battle.p1.active[0];
-		assert.bounded(primeape.maxhp - primeape.hp, [77, 91]);
+		assert.bounded(primeape.maxhp - primeape.st, [77, 91]);
 	});
 
 	it(`should not increase BP when the user's Substitute is damaged or broken`, () => {
@@ -93,10 +93,10 @@ describe('Rage Fist', () => {
 
 		const annihilape = battle.p1.active[1];
 		battle.makeChoices('move pollenpuff -2, move sleeptalk', 'auto');
-		assert.equal(annihilape.timesAttacked, 0, `timesAttacked should not have incremented after a full HP Pollen Puff`);
+		assert.equal(annihilape.timesAttacked, 0, `timesAttacked should not have incremented after a full Stamina Pollen Puff`);
 
 		battle.makeChoices('move pollenpuff -2, move bellydrum', 'auto');
-		assert.equal(annihilape.timesAttacked, 0, `timesAttacked should not have incremented after a not-full HP Pollen Puff`);
+		assert.equal(annihilape.timesAttacked, 0, `timesAttacked should not have incremented after a not-full Stamina Pollen Puff`);
 	});
 
 	it(`should increase BP when hit by Dragon Darts`, () => {

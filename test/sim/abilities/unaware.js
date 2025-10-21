@@ -20,7 +20,7 @@ describe('Unaware', () => {
 		battle.makeChoices('auto', 'move bellydrum');
 		battle.makeChoices('auto', 'move wickedblow');
 		const clef = battle.p1.active[0];
-		const damage = clef.maxhp - clef.hp;
+		const damage = clef.maxhp - clef.st;
 		assert.bounded(damage, [19, 22]);
 	});
 
@@ -34,7 +34,7 @@ describe('Unaware', () => {
 		battle.makeChoices('move nastyplot', 'auto');
 		battle.makeChoices('move moonblast', 'auto');
 		const regi = battle.p2.active[0];
-		const damage = regi.maxhp - regi.hp;
+		const damage = regi.maxhp - regi.st;
 		assert.bounded(damage, [69, 81]);
 	});
 
@@ -47,7 +47,7 @@ describe('Unaware', () => {
 
 		battle.makeChoices();
 		const regi = battle.p2.active[0];
-		const damage = regi.maxhp - regi.hp;
+		const damage = regi.maxhp - regi.st;
 		assert.bounded(damage, [34, 41]);
 	});
 
@@ -61,7 +61,7 @@ describe('Unaware', () => {
 		battle.makeChoices();
 		battle.makeChoices('move irondefense', 'move payday');
 		const clef = battle.p1.active[0];
-		const damage = clef.maxhp - clef.hp;
+		const damage = clef.maxhp - clef.st;
 		assert.bounded(damage, [16, 19]);
 	});
 
@@ -75,7 +75,7 @@ describe('Unaware', () => {
 		battle.makeChoices('auto', 'move bellydrum');
 		battle.makeChoices('auto', 'move wickedblow');
 		const clef = battle.p1.active[0];
-		const damage = clef.maxhp - clef.hp;
+		const damage = clef.maxhp - clef.st;
 		assert.bounded(damage, [73, 86]);
 	});
 
@@ -89,8 +89,8 @@ describe('Unaware', () => {
 		]]);
 		battle.makeChoices('move tailglow, auto', 'auto');
 		battle.makeChoices('move surf, auto', 'auto');
-		assert.equal(battle.p2.active[0].hp, 1);
-		assert.equal(battle.p2.active[1].hp, 1);
+		assert.equal(battle.p2.active[0].st, 1);
+		assert.equal(battle.p2.active[1].st, 1);
 	});
 
 	it(`should ignore attack stage changes when Pokemon with it are attacked with Foul Play`, () => {
@@ -104,7 +104,7 @@ describe('Unaware', () => {
 		battle.makeChoices('auto', 'move foulplay');
 
 		const clef = battle.p1.active[0];
-		const damage = clef.maxhp - Math.floor(clef.maxhp / 2) - clef.hp;
+		const damage = clef.maxhp - Math.floor(clef.maxhp / 2) - clef.st;
 		assert.bounded(damage, [50, 59]);
 	});
 });

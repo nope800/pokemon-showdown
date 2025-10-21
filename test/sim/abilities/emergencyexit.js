@@ -5,12 +5,12 @@ const common = require('./../../common');
 
 let battle;
 
-const EMPTY_IVS = { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
+const EMPTY_IVS = { st: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
 
 describe(`Emergency Exit`, () => {
 	afterEach(() => battle.destroy());
 
-	it(`should request switch-out if damaged below 50% HP`, () => {
+	it(`should request switch-out if damaged below 50% Stamina`, () => {
 		battle = common.createBattle([[
 			{ species: "Golisopod", ability: 'emergencyexit', moves: ['sleeptalk'], ivs: EMPTY_IVS },
 			{ species: "Clefable", ability: 'unaware', moves: ['sleeptalk'] },
@@ -20,8 +20,8 @@ describe(`Emergency Exit`, () => {
 		const eePokemon = battle.p1.active[0];
 		const foePokemon = battle.p2.active[0];
 		battle.makeChoices('auto', 'move superfang');
-		assert.equal(foePokemon.hp, foePokemon.maxhp);
-		assert.atMost(eePokemon.hp, eePokemon.maxhp / 2);
+		assert.equal(foePokemon.st, foePokemon.maxhp);
+		assert.atMost(eePokemon.st, eePokemon.maxhp / 2);
 		assert.equal(battle.requestState, 'switch');
 	});
 
@@ -35,19 +35,19 @@ describe(`Emergency Exit`, () => {
 		assert.equal(battle.requestState, 'switch');
 	});
 
-	it(`should request switch-out if brought below half HP by residual damage`, () => {
+	it(`should request switch-out if brought below half Stamina by residual damage`, () => {
 		battle = common.createBattle([[
 			{ species: 'Crobat', moves: ['toxic'] },
 		], [
 			{ species: 'Mew', ability: 'emergencyexit', moves: ['splash'] },
 			{ species: 'Shaymin', moves: ['splash'] },
 		]]);
-		battle.p2.active[0].hp = Math.floor(battle.p2.active[0].maxhp / 2 + 2);
+		battle.p2.active[0].st = Math.floor(battle.p2.active[0].maxhp / 2 + 2);
 		battle.makeChoices();
 		assert.equal(battle.requestState, 'switch');
 	});
 
-	it(`should request switch-out if brought below half HP by Photon Geyser`, () => {
+	it(`should request switch-out if brought below half Stamina by Photon Geyser`, () => {
 		battle = common.createBattle([[
 			{ species: "Mew", moves: ['photongeyser'] },
 		], [
@@ -108,7 +108,7 @@ describe(`Emergency Exit`, () => {
 		battle.makeChoices('move splash', 'move spikes');
 		battle.makeChoices('move splash', 'move spikes');
 		battle.makeChoices('switch 2', 'move dragonascent');
-		assert(battle.p1.active[0].hp);
+		assert(battle.p1.active[0].st);
 		assert.equal(battle.requestState, 'switch');
 	});
 
@@ -182,9 +182,9 @@ describe(`Emergency Exit`, () => {
 		]);
 		const eePokemon = battle.p1.active[0];
 		battle.makeChoices('move substitute', 'move thunderbolt');
-		assert.false.atMost(eePokemon.hp, eePokemon.maxhp / 2);
+		assert.false.atMost(eePokemon.st, eePokemon.maxhp / 2);
 		battle.makeChoices('move substitute', 'move thunderbolt');
-		assert.atMost(eePokemon.hp, eePokemon.maxhp / 2);
+		assert.atMost(eePokemon.st, eePokemon.maxhp / 2);
 		assert.equal(battle.requestState, 'move');
 	});
 
@@ -198,7 +198,7 @@ describe(`Emergency Exit`, () => {
 		]]);
 		const eePokemon = battle.p1.active[0];
 		battle.makeChoices('move sleeptalk', 'move voltswitch');
-		assert.atMost(eePokemon.hp, eePokemon.maxhp / 2);
+		assert.atMost(eePokemon.st, eePokemon.maxhp / 2);
 		assert.equal(battle.requestState, 'switch');
 
 		battle.makeChoices('switch 2', '');
@@ -213,7 +213,7 @@ describe(`Emergency Exit`, () => {
 		]);
 		const eePokemon = battle.p1.active[0];
 		battle.makeChoices('move sleeptalk', 'move superfang');
-		assert.atMost(eePokemon.hp, eePokemon.maxhp / 2);
+		assert.atMost(eePokemon.st, eePokemon.maxhp / 2);
 
 		assert.false.holdsItem(eePokemon);
 		assert.equal(battle.requestState, 'switch');
@@ -230,7 +230,7 @@ describe(`Emergency Exit`, () => {
 		]);
 		const eePokemon = battle.p1.active[0];
 		battle.makeChoices('auto', 'auto');
-		assert.atMost(eePokemon.hp, eePokemon.maxhp / 2);
+		assert.atMost(eePokemon.st, eePokemon.maxhp / 2);
 
 		assert.false.holdsItem(eePokemon);
 		assert.equal(battle.requestState, 'switch');
@@ -248,13 +248,13 @@ describe(`Emergency Exit`, () => {
 		]]);
 		const eePokemon = battle.p1.active[0];
 		battle.makeChoices();
-		assert.atMost(eePokemon.hp, eePokemon.maxhp / 2);
+		assert.atMost(eePokemon.st, eePokemon.maxhp / 2);
 		assert.equal(battle.requestState, 'move');
 	});
 
-	it('should not request switchout if its HP is already below 50%', () => {
+	it('should not request switchout if its Stamina is already below 50%', () => {
 		battle = common.createBattle([[
-			{ species: "Golisopod", evs: { hp: 4 }, ability: 'emergencyexit', moves: ['sleeptalk', 'tackle'] },
+			{ species: "Golisopod", evs: { st: 4 }, ability: 'emergencyexit', moves: ['sleeptalk', 'tackle'] },
 			{ species: "Wynaut", moves: ['sleeptalk'] },
 		], [
 			{ species: "stufful", ability: 'compoundeyes', moves: ['superfang', 'sleeptalk'] },
@@ -268,9 +268,9 @@ describe(`Emergency Exit`, () => {
 		assert.equal(battle.requestState, 'move');
 	});
 
-	it('should request switchout if its HP was restored to above 50% and brought down again', () => {
+	it('should request switchout if its Stamina was restored to above 50% and brought down again', () => {
 		battle = common.createBattle([[
-			{ species: "Golisopod", evs: { hp: 4 }, ability: 'emergencyexit', moves: ['sleeptalk'] },
+			{ species: "Golisopod", evs: { st: 4 }, ability: 'emergencyexit', moves: ['sleeptalk'] },
 			{ species: "Wynaut", moves: ['sleeptalk'] },
 		], [
 			{ species: "stufful", ability: 'compoundeyes', moves: ['superfang', 'healpulse'] },
@@ -284,7 +284,7 @@ describe(`Emergency Exit`, () => {
 		assert.equal(battle.requestState, 'switch');
 	});
 
-	it('should not request switchout if its HP is already below 50% and an effect heals it', () => {
+	it('should not request switchout if its Stamina is already below 50% and an effect heals it', () => {
 		battle = common.createBattle([[
 			{ species: "Golisopod", level: 65, item: 'figyberry', ability: 'emergencyexit', moves: ['sleeptalk'] },
 			{ species: "Wynaut", moves: ['sleeptalk'] },
@@ -296,18 +296,18 @@ describe(`Emergency Exit`, () => {
 		assert.equal(battle.requestState, 'move');
 	});
 
-	it('should request switchout if its HP drops to below 50% while dynamaxed', () => {
+	it('should request switchout if its Stamina drops to below 50% while dynamaxed', () => {
 		battle = common.gen(8).createBattle([
 			[{ species: "Golisopod", ability: 'emergencyexit', moves: ['closecombat'], ivs: EMPTY_IVS, level: 30 }, { species: "Clefable", ability: 'Unaware', moves: ['metronome'] }],
 			[{ species: "Gengar", ability: 'cursedbody', moves: ['nightshade'] }],
 		]);
 		const eePokemon = battle.p1.active[0];
 		battle.makeChoices('move maxknuckle dynamax', 'move nightshade');
-		assert.atMost(eePokemon.hp, eePokemon.maxhp / 2);
+		assert.atMost(eePokemon.st, eePokemon.maxhp / 2);
 		assert.equal(battle.requestState, 'switch');
 	});
 
-	it('should not request switchout if its HP is below 50% when its dynamax ends', () => {
+	it('should not request switchout if its Stamina is below 50% when its dynamax ends', () => {
 		battle = common.gen(8).createBattle([
 			[{ species: "Golisopod", ability: 'emergencyexit', moves: ['drillrun'], ivs: EMPTY_IVS }, { species: "Clefable", ability: 'Unaware', moves: ['metronome'] }],
 			[{ species: "Landorus", ability: 'sheerforce', moves: ['sludgewave'] }],
@@ -317,14 +317,14 @@ describe(`Emergency Exit`, () => {
 		battle.makeChoices();
 		battle.makeChoices();
 		assert.false.fainted(eePokemon);
-		assert.atMost(eePokemon.hp, eePokemon.maxhp / 2);
+		assert.atMost(eePokemon.st, eePokemon.maxhp / 2);
 		assert.equal(battle.requestState, 'move');
 	});
 
 	it.skip(`should request switchout between hazards`, () => {
 		battle = common.createBattle([[
 			{ species: 'wynaut', moves: ['sleeptalk', 'uturn'] },
-			{ species: 'volcarona', ability: 'emergencyexit', evs: { hp: 4 }, moves: ['sleeptalk'] },
+			{ species: 'volcarona', ability: 'emergencyexit', evs: { st: 4 }, moves: ['sleeptalk'] },
 		], [
 			{ species: 'landorus', moves: ['stealthrock', 'spikes'] },
 		]]);
@@ -332,7 +332,7 @@ describe(`Emergency Exit`, () => {
 		battle.makeChoices('move uturn', 'move spikes');
 		battle.makeChoices('switch 2');
 		const volcarona = battle.p1.active[0];
-		assert.equal(volcarona.hp, Math.floor(volcarona.maxhp / 2), 'Emergency Exit should trigger before Spikes damage.');
+		assert.equal(volcarona.st, Math.floor(volcarona.maxhp / 2), 'Emergency Exit should trigger before Spikes damage.');
 		assert.equal(battle.requestState, 'switch');
 	});
 
@@ -352,18 +352,18 @@ describe(`Emergency Exit`, () => {
 		battle.makeChoices('switch 3');
 		battle.makeChoices('move firepledge 1, move grasspledge 1', 'auto');
 
-		// Halve Golisopod's HP
+		// Halve Golisopod's Stamina
 		battle.makeChoices('move sleeptalk, move sleeptalk', 'switch 3, move superfang -1');
 
 		const golisopod = battle.p2.active[0];
 		let maxHP = golisopod.maxhp;
 		let expectedHP = maxHP - Math.floor(maxHP / 2) - Math.floor(maxHP / 6);
-		assert.equal(golisopod.hp, expectedHP, `Golisopod should have only taken Volcalith damage`);
+		assert.equal(golisopod.st, expectedHP, `Golisopod should have only taken Volcalith damage`);
 
 		const amoonguss = battle.p2.active[1];
 		maxHP = amoonguss.maxhp;
 		expectedHP = maxHP - (3 * Math.floor(maxHP / 6)) - (2 * Math.floor(maxHP / 8)); // 3 turns of Volcalith, 2 turns of Sea of Fire
-		assert.equal(amoonguss.hp, expectedHP, `Amoonguss should have taken damage before Golisopod can be replaced.`);
+		assert.equal(amoonguss.st, expectedHP, `Amoonguss should have taken damage before Golisopod can be replaced.`);
 
 		assert.equal(battle.requestState, 'switch');
 	});
@@ -377,7 +377,7 @@ describe(`Emergency Exit`, () => {
 		]]);
 		const eePokemon = battle.p1.active[0];
 		battle.makeChoices();
-		assert.atMost(eePokemon.hp, eePokemon.maxhp / 2);
+		assert.atMost(eePokemon.st, eePokemon.maxhp / 2);
 		assert.equal(battle.requestState, 'switch');
 	});
 

@@ -29,7 +29,7 @@ describe('[Gen 1] Bide', () => {
 		battle.makeChoices();
 		battle.makeChoices();
 		assert.false(aerodactyl.volatiles['bide']);
-		assert.equal(gyarados.maxhp - gyarados.hp, 160);
+		assert.equal(gyarados.maxhp - gyarados.st, 160);
 	});
 
 	it(`should be possible to roll three-turn Bide`, () => {
@@ -46,7 +46,7 @@ describe('[Gen 1] Bide', () => {
 		battle.makeChoices();
 		battle.makeChoices();
 		assert.false(aerodactyl.volatiles['bide']);
-		assert.equal(gyarados.maxhp - gyarados.hp, 240);
+		assert.equal(gyarados.maxhp - gyarados.st, 240);
 	});
 
 	it(`should damage Substitute with Bide damage`, () => {
@@ -83,7 +83,7 @@ describe('[Gen 1] Bide', () => {
 		battle.makeChoices();
 		const exeggutor = battle.p2.active[0];
 		assert.false(aerodactyl.volatiles['bide']);
-		assert.equal(exeggutor.maxhp - exeggutor.hp, 240);
+		assert.equal(exeggutor.maxhp - exeggutor.st, 240);
 	});
 
 	it(`should zero out accumulated damage when an enemy faints (Desync Clause Mod)`, () => {
@@ -97,7 +97,7 @@ describe('[Gen 1] Bide', () => {
 		const aerodactyl = battle.p1.active[0];
 		const exeggutor = battle.p2.pokemon[1];
 		// Exeggutor will faint when switched in
-		exeggutor.hp = 1;
+		exeggutor.st = 1;
 		exeggutor.setStatus('psn');
 		battle.makeChoices();
 		aerodactyl.volatiles['bide'].time = 2;

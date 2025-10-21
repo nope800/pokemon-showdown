@@ -10,7 +10,7 @@ describe('Life Orb', () => {
 		battle.destroy();
 	});
 
-	it('should hurt the user by 1/10 of their max HP after a successful attack', () => {
+	it('should hurt the user by 1/10 of their max Stamina after a successful attack', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [
 			{ species: 'Scizor', ability: 'technician', item: 'lifeorb', moves: ['uturn'] },

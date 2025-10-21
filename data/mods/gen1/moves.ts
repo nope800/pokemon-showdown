@@ -414,7 +414,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			onAfterMoveSelfPriority: 1,
 			onAfterMoveSelf(pokemon) {
 				const leecher = this.getAtSlot(pokemon.volatiles['leechseed'].sourceSlot);
-				if (!leecher || leecher.fainted || leecher.hp <= 0) {
+				if (!leecher || leecher.fainted || leecher.st <= 0) {
 					this.debug('Nothing to leech into');
 					return;
 				}
@@ -429,7 +429,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				const damage = this.damage(toLeech, pokemon, leecher);
 				if (residualdmg) this.hint("In Gen 1, Leech Seed's damage is affected by Toxic's counter.", true);
 				if (!damage || toLeech > damage) {
-					this.hint("In Gen 1, Leech Seed recovery is not limited by the remaining HP of the seeded Pokemon.", true);
+					this.hint("In Gen 1, Leech Seed recovery is not limited by the remaining Stamina of the seeded Pokemon.", true);
 				}
 				this.heal(toLeech, leecher, pokemon);
 			},
@@ -597,15 +597,15 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		inherit: true,
 		heal: null,
 		onHit(target) {
-			if (target.hp === target.maxhp) return false;
+			if (target.st === target.maxhp) return false;
 			// Fail when health is 255 or 511 less than max, unless it is divisible by 256
 			if (
-				target.hp === target.maxhp ||
-				((target.hp === (target.maxhp - 255) || target.hp === (target.maxhp - 511)) && target.hp % 256 !== 0)
+				target.st === target.maxhp ||
+				((target.st === (target.maxhp - 255) || target.st === (target.maxhp - 511)) && target.st % 256 !== 0)
 			) {
 				this.hint(
-					"In Gen 1, recovery moves fail if (user's maximum HP - user's current HP + 1) is divisible by 256, " +
-					"unless the current hp is also divisible by 256."
+					"In Gen 1, recovery moves fail if (user's maximum Stamina - user's current Stamina + 1) is divisible by 256, " +
+					"unless the current st is also divisible by 256."
 				);
 				return false;
 			}
@@ -640,15 +640,15 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		inherit: true,
 		onTry() {},
 		onHit(target, source, move) {
-			if (target.hp === target.maxhp) return false;
+			if (target.st === target.maxhp) return false;
 			// Fail when health is 255 or 511 less than max, unless it is divisible by 256
 			if (
-				target.hp === target.maxhp ||
-				((target.hp === (target.maxhp - 255) || target.hp === (target.maxhp - 511)) && target.hp % 256 !== 0)
+				target.st === target.maxhp ||
+				((target.st === (target.maxhp - 255) || target.st === (target.maxhp - 511)) && target.st % 256 !== 0)
 			) {
 				this.hint(
-					"In Gen 1, recovery moves fail if (user's maximum HP - user's current HP + 1) is divisible by 256, " +
-					"unless the current hp is also divisible by 256."
+					"In Gen 1, recovery moves fail if (user's maximum Stamina - user's current Stamina + 1) is divisible by 256, " +
+					"unless the current st is also divisible by 256."
 				);
 				return false;
 			}
@@ -744,15 +744,15 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		inherit: true,
 		heal: null,
 		onHit(target) {
-			if (target.hp === target.maxhp) return false;
+			if (target.st === target.maxhp) return false;
 			// Fail when health is 255 or 511 less than max, unless it is divisible by 256
 			if (
-				target.hp === target.maxhp ||
-				((target.hp === (target.maxhp - 255) || target.hp === (target.maxhp - 511)) && target.hp % 256 !== 0)
+				target.st === target.maxhp ||
+				((target.st === (target.maxhp - 255) || target.st === (target.maxhp - 511)) && target.st % 256 !== 0)
 			) {
 				this.hint(
-					"In Gen 1, recovery moves fail if (user's maximum HP - user's current HP + 1) is divisible by 256, " +
-					"unless the current hp is also divisible by 256."
+					"In Gen 1, recovery moves fail if (user's maximum Stamina - user's current Stamina + 1) is divisible by 256, " +
+					"unless the current st is also divisible by 256."
 				);
 				return false;
 			}
@@ -780,15 +780,15 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				this.add('-fail', target, 'move: Substitute');
 				return null;
 			}
-			// We only prevent when hp is less than one quarter.
+			// We only prevent when st is less than one quarter.
 			// If you use substitute at exactly one quarter, you faint.
-			if (target.hp < target.maxhp / 4) {
+			if (target.st < target.maxhp / 4) {
 				this.add('-fail', target, 'move: Substitute', '[weak]');
 				return null;
 			}
 		},
 		onHit(target) {
-			// If max HP is 3 or less substitute makes no damage
+			// If max Stamina is 3 or less substitute makes no damage
 			if (target.maxhp > 3) {
 				this.directDamage(target.maxhp / 4, target, target);
 			}
@@ -796,7 +796,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		condition: {
 			onStart(target) {
 				this.add('-start', target, 'Substitute');
-				this.effectState.hp = Math.floor(target.maxhp / 4) + 1;
+				this.effectState.st = Math.floor(target.maxhp / 4) + 1;
 				delete target.volatiles['partiallytrapped'];
 			},
 			onTryHitPriority: -1,
@@ -814,16 +814,16 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 					return;
 				}
 				if (move.volatileStatus && target === source) return;
-				// NOTE: In future generations the damage is capped to the remaining HP of the
+				// NOTE: In future generations the damage is capped to the remaining Stamina of the
 				// Substitute, here we deliberately use the uncapped damage when tracking lastDamage etc.
 				// Also, multi-hit moves must always deal the same damage as the first hit for any subsequent hits
 				let uncappedDamage = move.hit > 1 ? this.lastDamage : this.actions.getDamage(source, target, move);
 				if (move.id === 'bide') uncappedDamage = source.volatiles['bide'].damage * 2;
 				if (!uncappedDamage && uncappedDamage !== 0) return null;
 				this.lastDamage = uncappedDamage;
-				target.volatiles['substitute'].hp -= uncappedDamage > target.volatiles['substitute'].hp ?
-					target.volatiles['substitute'].hp : uncappedDamage;
-				if (target.volatiles['substitute'].hp <= 0) {
+				target.volatiles['substitute'].st -= uncappedDamage > target.volatiles['substitute'].st ?
+					target.volatiles['substitute'].st : uncappedDamage;
+				if (target.volatiles['substitute'].st <= 0) {
 					target.removeVolatile('substitute');
 					target.subFainted = true;
 				} else {

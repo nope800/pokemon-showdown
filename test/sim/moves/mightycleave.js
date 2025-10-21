@@ -14,7 +14,7 @@ describe('Mighty Cleave', () => {
 			[{ species: "Entei", ability: 'innerfocus', moves: ['protect'] }],
 		]);
 		battle.makeChoices();
-		const damage = battle.p2.active[0].maxhp - battle.p2.active[0].hp;
+		const damage = battle.p2.active[0].maxhp - battle.p2.active[0].st;
 		assert.notEqual(damage, 0, `Entei should have taken damage`);
 	});
 });

@@ -65,7 +65,7 @@ export const Scripts: ModdedBattleScriptsData = {
 	statModify(baseStats, set, statName) {
 		const tr = this.trunc;
 		let stat = baseStats[statName];
-		if (statName === 'hp') {
+		if (statName === 'st') {
 			return tr(tr(2 * stat + set.ivs[statName] + 100) * set.level / 100 + 10) + set.evs[statName];
 		}
 		stat = tr((tr(2 * stat + set.ivs[statName]) * set.level / 100 + 5));

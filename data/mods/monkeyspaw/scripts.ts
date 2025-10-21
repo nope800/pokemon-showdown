@@ -22,13 +22,13 @@ export const Scripts: ModdedBattleScriptsData = {
 			for (const pokemon of this.getAllActive()) {
 				if (pokemon.volatiles['partialtrappinglock']) {
 					const target = pokemon.volatiles['partialtrappinglock'].locked;
-					if (target.hp <= 0 || !target.volatiles['partiallytrapped']) {
+					if (target.st <= 0 || !target.volatiles['partiallytrapped']) {
 						delete pokemon.volatiles['partialtrappinglock'];
 					}
 				}
 				if (pokemon.volatiles['partiallytrapped']) {
 					const source = pokemon.volatiles['partiallytrapped'].source;
-					if (source.hp <= 0 || !source.volatiles['partialtrappinglock']) {
+					if (source.st <= 0 || !source.volatiles['partialtrappinglock']) {
 						delete pokemon.volatiles['partiallytrapped'];
 					}
 				}
@@ -181,7 +181,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		this.makeRequest('move');
 	},
 	runAction(action) {
-		const pokemonOriginalHP = action.pokemon?.hp;
+		const pokemonOriginalHP = action.pokemon?.st;
 		let residualPokemon: (readonly [Pokemon, number])[] = [];
 		// returns whether or not we ended in a callback
 		switch (action.choice) {
@@ -242,7 +242,7 @@ export const Scripts: ModdedBattleScriptsData = {
 						// forfeited before starting
 						side.active[i] = side.pokemon[i];
 						side.active[i].fainted = true;
-						side.active[i].hp = 0;
+						side.active[i].st = 0;
 					} else {
 						this.actions.switchIn(side.pokemon[i], i);
 					}
@@ -326,7 +326,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					break;
 				} else {
 					// in gen 5+, the switch is cancelled
-					this.hint("A Pokemon can't switch between when it runs out of HP and when it faints");
+					this.hint("A Pokemon can't switch between when it runs out of Stamina and when it faints");
 					break;
 				}
 			}
@@ -344,7 +344,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			action.target.faintQueued = false;
 			action.target.subFainted = false;
 			action.target.status = '';
-			action.target.hp = 1; // Needed so hp functions works
+			action.target.st = 1; // Needed so st functions works
 			action.target.sethp(action.target.maxhp / 2);
 			if (!action.sourceEffect) action.target.m.revivedByMonkeysPaw = true;
 			this.add('-heal', action.target, action.target.getHealth, '[from] move: Revival Blessing');
@@ -376,7 +376,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		for (const side of this.sides) {
 			for (const pokemon of side.active) {
 				if (pokemon.forceSwitchFlag) {
-					if (pokemon.hp) this.actions.dragIn(pokemon.side, pokemon.position);
+					if (pokemon.st) this.actions.dragIn(pokemon.side, pokemon.position);
 					pokemon.forceSwitchFlag = false;
 				}
 			}
@@ -415,7 +415,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			this.eachEvent('Update');
 			for (const [pokemon, originalHP] of residualPokemon) {
 				const maxhp = pokemon.getUndynamaxedHP(pokemon.maxhp);
-				if (pokemon.hp && pokemon.getUndynamaxedHP() <= maxhp / 2 && originalHP > maxhp / 2) {
+				if (pokemon.st && pokemon.getUndynamaxedHP() <= maxhp / 2 && originalHP > maxhp / 2) {
 					this.runEvent('EmergencyExit', pokemon);
 				}
 			}
@@ -423,7 +423,7 @@ export const Scripts: ModdedBattleScriptsData = {
 
 		if (action.choice === 'runSwitch') {
 			const pokemon = action.pokemon;
-			if (pokemon.hp && pokemon.hp <= pokemon.maxhp / 2 && pokemonOriginalHP! > pokemon.maxhp / 2) {
+			if (pokemon.st && pokemon.st <= pokemon.maxhp / 2 && pokemonOriginalHP! > pokemon.maxhp / 2) {
 				this.runEvent('EmergencyExit', pokemon);
 			}
 		}
@@ -446,7 +446,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			} else if (switches[i]) {
 				for (const pokemon of this.sides[i].active) {
 					if (
-						pokemon.hp && pokemon.switchFlag && pokemon.switchFlag !== 'revivalblessing' &&
+						pokemon.st && pokemon.switchFlag && pokemon.switchFlag !== 'revivalblessing' &&
 						!pokemon.skipBeforeSwitchOutEventFlag
 					) {
 						this.runEvent('BeforeSwitchOut', pokemon);

@@ -15,7 +15,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		condition: {
 			onStart(target) {
 				this.add('-start', target, 'Substitute');
-				this.effectState.hp = Math.floor(target.maxhp / 4) + 1;
+				this.effectState.st = Math.floor(target.maxhp / 4) + 1;
 				delete target.volatiles['partiallytrapped'];
 			},
 			onTryHitPriority: -1,
@@ -36,15 +36,15 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 					return;
 				}
 				if (move.volatileStatus && target === source) return;
-				// NOTE: In future generations the damage is capped to the remaining HP of the
+				// NOTE: In future generations the damage is capped to the remaining Stamina of the
 				// Substitute, here we deliberately use the uncapped damage when tracking lastDamage etc.
 				// Also, multi-hit moves must always deal the same damage as the first hit for any subsequent hits
 				const uncappedDamage = move.hit > 1 ? this.lastDamage : this.actions.getDamage(source, target, move);
 				if (!uncappedDamage && uncappedDamage !== 0) return null;
 				this.lastDamage = uncappedDamage;
-				target.volatiles['substitute'].hp -= uncappedDamage > target.volatiles['substitute'].hp ?
-					target.volatiles['substitute'].hp : uncappedDamage;
-				if (target.volatiles['substitute'].hp <= 0) {
+				target.volatiles['substitute'].st -= uncappedDamage > target.volatiles['substitute'].st ?
+					target.volatiles['substitute'].st : uncappedDamage;
+				if (target.volatiles['substitute'].st <= 0) {
 					target.removeVolatile('substitute');
 					target.subFainted = true;
 				} else {

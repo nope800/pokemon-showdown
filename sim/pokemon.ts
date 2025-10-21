@@ -38,7 +38,7 @@ export interface EffectState {
 	[k: string]: any;
 }
 
-// Berries which restore PP/HP and thus inflict external staleness when given to an opponent as
+// Berries which restore PP/Stamina and thus inflict external staleness when given to an opponent as
 // there are very few non-malicious competitive reasons to do so
 export const RESTORATIVE_BERRIES = new Set([
 	'leppaberry', 'aguavberry', 'enigmaberry', 'figyberry', 'iapapaberry', 'magoberry', 'sitrusberry', 'wikiberry', 'oranberry',
@@ -134,9 +134,9 @@ export class Pokemon {
 	transformed: boolean;
 
 	maxhp: number;
-	/** This is the max HP before Dynamaxing; it's updated for Power Construct etc */
+	/** This is the max Stamina before Dynamaxing; it's updated for Power Construct etc */
 	baseMaxhp: number;
-	hp: number;
+	st: number;
 	fainted: boolean;
 	faintQueued: boolean;
 	subFainted: boolean | null;
@@ -225,7 +225,7 @@ export class Pokemon {
 	 */
 	moveThisTurnResult: boolean | null | undefined;
 	/**
-	 * The undynamaxed HP value this Pokemon was reduced to by damage this turn,
+	 * The undynamaxed Stamina value this Pokemon was reduced to by damage this turn,
 	 * or false if it hasn't taken damage yet this turn
 	 *
 	 * Used for Assurance, Emergency Exit, and Wimp Out
@@ -374,12 +374,12 @@ export class Pokemon {
 		this.showCure = undefined;
 
 		if (!this.set.evs) {
-			this.set.evs = { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
+			this.set.evs = { st: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
 		}
 		if (!this.set.ivs) {
-			this.set.ivs = { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
+			this.set.ivs = { st: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
 		}
-		const stats: StatsTable = { hp: 31, toa: 31, tod: 31, hor: 31, boa: 31, bod: 31 };
+		const stats: StatsTable = { st: 31, toa: 31, tod: 31, hor: 31, boa: 31, bod: 31 };
 		let stat: StatID;
 		for (stat in stats) {
 			if (!this.set.evs[stat]) this.set.evs[stat] = 0;
@@ -492,9 +492,9 @@ export class Pokemon {
 
 		this.maxhp = 0;
 		this.baseMaxhp = 0;
-		this.hp = 0;
+		this.st = 0;
 		this.clearVolatile();
-		this.hp = this.maxhp;
+		this.st = this.maxhp;
 	}
 
 	toJSON(): AnyObject {
@@ -546,8 +546,8 @@ export class Pokemon {
 
 	calculateStat(statName: StatIDExceptHP, boost: number, modifier?: number, statUser?: Pokemon) {
 		statName = toID(statName) as StatIDExceptHP;
-		// @ts-expect-error type checking prevents 'hp' from being passed, but we're paranoid
-		if (statName === 'hp') throw new Error("Please read `maxhp` directly");
+		// @ts-expect-error type checking prevents 'st' from being passed, but we're paranoid
+		if (statName === 'st') throw new Error("Please read `maxhp` directly");
 
 		// base stat
 		let stat = this.storedStats[statName];
@@ -582,8 +582,8 @@ export class Pokemon {
 
 	getStat(statName: StatIDExceptHP, unboosted?: boolean, unmodified?: boolean) {
 		statName = toID(statName) as StatIDExceptHP;
-		// @ts-expect-error type checking prevents 'hp' from being passed, but we're paranoid
-		if (statName === 'hp') throw new Error("Please read `maxhp` directly");
+		// @ts-expect-error type checking prevents 'st' from being passed, but we're paranoid
+		if (statName === 'st') throw new Error("Please read `maxhp` directly");
 
 		// base stat
 		let stat = this.storedStats[statName];
@@ -727,21 +727,21 @@ export class Pokemon {
 	}
 
 	getUndynamaxedHP(amount?: number) {
-		const hp = amount || this.hp;
+		const st = amount || this.st;
 		if (this.volatiles['dynamax']) {
-			return Math.ceil(hp * this.baseMaxhp / this.maxhp);
+			return Math.ceil(st * this.baseMaxhp / this.maxhp);
 		}
-		return hp;
+		return st;
 	}
 
 	/** Get targets for Dragon Darts */
 	getSmartTargets(target: Pokemon, move: ActiveMove) {
 		const target2 = target.adjacentAllies()[0];
-		if (!target2 || target2 === this || !target2.hp) {
+		if (!target2 || target2 === this || !target2.st) {
 			move.smartTarget = false;
 			return [target];
 		}
-		if (!target.hp) {
+		if (!target.st) {
 			move.smartTarget = false;
 			return [target2];
 		}
@@ -1360,12 +1360,12 @@ export class Pokemon {
 		this.weighthg = species.weighthg;
 
 		const stats = this.battle.spreadModify(this.species.baseStats, this.set);
-		if (this.species.maxHP) stats.hp = this.species.maxHP;
+		if (this.species.maxHP) stats.st = this.species.maxHP;
 
 		if (!this.maxhp) {
-			this.baseMaxhp = stats.hp;
-			this.maxhp = stats.hp;
-			this.hp = stats.hp;
+			this.baseMaxhp = stats.st;
+			this.maxhp = stats.st;
+			this.st = stats.st;
 		}
 
 		if (!isTransform) this.baseStoredStats = stats;
@@ -1460,13 +1460,13 @@ export class Pokemon {
 	}
 
 	updateMaxHp() {
-		const newBaseMaxHp = this.battle.statModify(this.species.baseStats, this.set, 'hp');
+		const newBaseMaxHp = this.battle.statModify(this.species.baseStats, this.set, 'st');
 		if (newBaseMaxHp === this.baseMaxhp) return;
 		this.baseMaxhp = newBaseMaxHp;
 		const newMaxHP = this.volatiles['dynamax'] ? (2 * this.baseMaxhp) : this.baseMaxhp;
-		this.hp = this.hp <= 0 ? 0 : Math.max(1, newMaxHP - (this.maxhp - this.hp));
+		this.st = this.st <= 0 ? 0 : Math.max(1, newMaxHP - (this.maxhp - this.st));
 		this.maxhp = newMaxHP;
-		if (this.hp) this.battle.add('-heal', this, this.getHealth, '[silent]');
+		if (this.st) this.battle.add('-heal', this, this.getHealth, '[silent]');
 	}
 
 	clearVolatile(includeSwitchFlags = true) {
@@ -1551,8 +1551,8 @@ export class Pokemon {
 	 */
 	faint(source: Pokemon | null = null, effect: Effect | null = null) {
 		if (this.fainted || this.faintQueued) return 0;
-		const d = this.hp;
-		this.hp = 0;
+		const d = this.st;
+		this.st = 0;
 		this.switchFlag = false;
 		this.faintQueued = true;
 		this.battle.faintQueue.push({
@@ -1564,12 +1564,12 @@ export class Pokemon {
 	}
 
 	damage(d: number, source: Pokemon | null = null, effect: Effect | null = null) {
-		if (!this.hp || isNaN(d) || d <= 0) return 0;
+		if (!this.st || isNaN(d) || d <= 0) return 0;
 		if (d < 1 && d > 0) d = 1;
 		d = this.battle.trunc(d);
-		this.hp -= d;
-		if (this.hp <= 0) {
-			d += this.hp;
+		this.st -= d;
+		if (this.st <= 0) {
+			d += this.st;
 			this.faint(source, effect);
 		}
 		return d;
@@ -1609,30 +1609,30 @@ export class Pokemon {
 
 	/** Returns the amount of damage actually healed */
 	heal(d: number, source: Pokemon | null = null, effect: Effect | null = null) {
-		if (!this.hp) return false;
+		if (!this.st) return false;
 		d = this.battle.trunc(d);
 		if (isNaN(d)) return false;
 		if (d <= 0) return false;
-		if (this.hp >= this.maxhp) return false;
-		this.hp += d;
-		if (this.hp > this.maxhp) {
-			d -= this.hp - this.maxhp;
-			this.hp = this.maxhp;
+		if (this.st >= this.maxhp) return false;
+		this.st += d;
+		if (this.st > this.maxhp) {
+			d -= this.st - this.maxhp;
+			this.st = this.maxhp;
 		}
 		return d;
 	}
 
-	/** Sets HP, returns delta */
+	/** Sets Stamina, returns delta */
 	sethp(d: number) {
-		if (!this.hp) return 0;
+		if (!this.st) return 0;
 		d = this.battle.trunc(d);
 		if (isNaN(d)) return;
 		if (d < 1) d = 1;
-		d -= this.hp;
-		this.hp += d;
-		if (this.hp > this.maxhp) {
-			d -= this.hp - this.maxhp;
-			this.hp = this.maxhp;
+		d -= this.st;
+		this.st += d;
+		if (this.st > this.maxhp) {
+			d -= this.st - this.maxhp;
+			this.st = this.maxhp;
 		}
 		return d;
 	}
@@ -1643,7 +1643,7 @@ export class Pokemon {
 
 	/** Unlike clearStatus, gives cure message */
 	cureStatus(silent = false) {
-		if (!this.hp || !this.status) return false;
+		if (!this.st || !this.status) return false;
 		this.battle.add('-curestatus', this, this.status, silent ? '[silent]' : '[msg]');
 		if (this.status === 'slp' && this.removeVolatile('nightmare')) {
 			this.battle.add('-end', this, 'Nightmare', '[silent]');
@@ -1658,7 +1658,7 @@ export class Pokemon {
 		sourceEffect: Effect | null = null,
 		ignoreImmunities = false
 	) {
-		if (!this.hp) return false;
+		if (!this.st) return false;
 		status = this.battle.dex.conditions.get(status);
 		if (this.battle.event) {
 			if (!source) source = this.battle.event.source;
@@ -1723,7 +1723,7 @@ export class Pokemon {
 	 * Unlike cureStatus, does not give cure message
 	 */
 	clearStatus() {
-		if (!this.hp || !this.status) return false;
+		if (!this.st || !this.status) return false;
 		if (this.status === 'slp' && this.removeVolatile('nightmare')) {
 			this.battle.add('-end', this, 'Nightmare', '[silent]');
 		}
@@ -1737,7 +1737,7 @@ export class Pokemon {
 
 	eatItem(force?: boolean, source?: Pokemon, sourceEffect?: Effect) {
 		if (!this.item || this.itemState.knockedOff) return false;
-		if ((!this.hp && this.item !== 'jabocaberry' && this.item !== 'rowapberry') || !this.isActive) return false;
+		if ((!this.st && this.item !== 'jabocaberry' && this.item !== 'rowapberry') || !this.isActive) return false;
 
 		if (!sourceEffect && this.battle.effect) sourceEffect = this.battle.effect;
 		if (!source && this.battle.event?.target) source = this.battle.event.target;
@@ -1779,7 +1779,7 @@ export class Pokemon {
 	}
 
 	useItem(source?: Pokemon, sourceEffect?: Effect) {
-		if ((!this.hp && !this.getItem().isGem) || !this.isActive) return false;
+		if ((!this.st && !this.getItem().isGem) || !this.isActive) return false;
 		if (!this.item || this.itemState.knockedOff) return false;
 
 		if (!sourceEffect && this.battle.effect) sourceEffect = this.battle.effect;
@@ -1839,7 +1839,7 @@ export class Pokemon {
 	}
 
 	setItem(item: string | Item, source?: Pokemon, effect?: Effect) {
-		if (!this.hp || !this.isActive) return false;
+		if (!this.st || !this.isActive) return false;
 		if (this.itemState.knockedOff && !(effect?.id === 'recycle')) return false;
 		delete this.itemState.knockedOff;
 		if (typeof item === 'string') item = this.battle.dex.items.get(item);
@@ -1884,7 +1884,7 @@ export class Pokemon {
 		ability: string | Ability, source?: Pokemon | null, sourceEffect?: Effect | null,
 		isFromFormeChange = false, isTransform = false,
 	) {
-		if (!this.hp) return false;
+		if (!this.st) return false;
 		if (typeof ability === 'string') ability = this.battle.dex.abilities.get(ability);
 		if (!sourceEffect && this.battle.effect) sourceEffect = this.battle.effect;
 		const oldAbility = this.battle.dex.abilities.get(this.ability);
@@ -1939,8 +1939,8 @@ export class Pokemon {
 	): boolean | any {
 		let result;
 		status = this.battle.dex.conditions.get(status);
-		if (!this.hp && !status.affectsFainted) return false;
-		if (linkedStatus && source && !source.hp) return false;
+		if (!this.st && !status.affectsFainted) return false;
+		if (linkedStatus && source && !source.st) return false;
 		if (this.battle.event) {
 			if (!source) source = this.battle.event.source;
 			if (!sourceEffect) sourceEffect = this.battle.effect;
@@ -2000,7 +2000,7 @@ export class Pokemon {
 	}
 
 	removeVolatile(status: string | Effect) {
-		if (!this.hp) return false;
+		if (!this.st) return false;
 		status = this.battle.dex.conditions.get(status) as Effect;
 		if (!this.volatiles[status.id]) return false;
 		const { linkedPokemon, linkedStatus } = this.volatiles[status.id];
@@ -2025,15 +2025,15 @@ export class Pokemon {
 	}
 
 	getHealth = () => {
-		if (!this.hp) return { side: this.side.id, secret: '0 fnt', shared: '0 fnt' };
-		let secret = `${this.hp}/${this.maxhp}`;
+		if (!this.st) return { side: this.side.id, secret: '0 fnt', shared: '0 fnt' };
+		let secret = `${this.st}/${this.maxhp}`;
 		let shared;
 		if (this.battle.reportExactHP) {
 			shared = secret;
 		} else if (this.battle.reportPercentages || this.battle.gen >= 7) {
-			// HP Percentage Mod mechanics
-			let percentage = Math.ceil(100 * this.hp / this.maxhp);
-			if (percentage === 100 && this.hp < this.maxhp) {
+			// Stamina Percentage Mod mechanics
+			let percentage = Math.ceil(100 * this.st / this.maxhp);
+			if (percentage === 100 && this.st < this.maxhp) {
 				percentage = 99;
 			}
 			shared = `${percentage}/100`;
@@ -2044,13 +2044,13 @@ export class Pokemon {
 			 * - [Gen 7] SM uses 99 pixels
 			 * - [Gen 7] USUM uses 86 pixels
 			 * */
-			const pixels = Math.floor(48 * this.hp / this.maxhp) || 1;
+			const pixels = Math.floor(48 * this.st / this.maxhp) || 1;
 			shared = `${pixels}/48`;
 			if (this.battle.gen >= 5) {
 				if (pixels === 9) {
-					shared += this.hp * 5 > this.maxhp ? 'y' : 'r';
+					shared += this.st * 5 > this.maxhp ? 'y' : 'r';
 				} else if (pixels === 24) {
-					shared += this.hp * 2 > this.maxhp ? 'g' : 'y';
+					shared += this.st * 2 > this.maxhp ? 'g' : 'y';
 				}
 			}
 		}
@@ -2172,7 +2172,7 @@ export class Pokemon {
 			!this.battle.suppressingAbility(this)) {
 			if (this.abilityState.resisted) return -1; // all hits of multi-hit move should be not very effective
 			if (move.category === 'Status' || move.id === 'struggle' || !this.runImmunity(move) ||
-				totalTypeMod < 0 || this.hp < this.maxhp) {
+				totalTypeMod < 0 || this.st < this.maxhp) {
 				return totalTypeMod;
 			}
 

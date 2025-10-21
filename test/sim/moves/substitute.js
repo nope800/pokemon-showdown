@@ -10,13 +10,13 @@ describe('Substitute', () => {
 		battle.destroy();
 	});
 
-	it('should deduct 25% of max HP, rounded down', () => {
+	it('should deduct 25% of max Stamina, rounded down', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: 'Mewtwo', ability: 'pressure', moves: ['substitute'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Mewtwo', ability: 'pressure', moves: ['recover'] }] });
 		battle.makeChoices('move substitute', 'move recover');
 		const pokemon = battle.p1.active[0];
-		assert.equal(pokemon.maxhp - pokemon.hp, Math.floor(pokemon.maxhp / 4));
+		assert.equal(pokemon.maxhp - pokemon.st, Math.floor(pokemon.maxhp / 4));
 	});
 
 	it('should not block the user\'s own moves from targeting itself', () => {
@@ -35,7 +35,7 @@ describe('Substitute', () => {
 		battle.setPlayer('p2', { team: [{ species: 'Mewtwo', ability: 'pressure', item: 'laggingtail', moves: ['psystrike'] }] });
 		battle.makeChoices('move substitute', 'move psystrike');
 		const pokemon = battle.p1.active[0];
-		assert.equal(pokemon.maxhp - pokemon.hp, Math.floor(pokemon.maxhp / 4));
+		assert.equal(pokemon.maxhp - pokemon.st, Math.floor(pokemon.maxhp / 4));
 	});
 
 	it('should not block recoil damage', () => {
@@ -45,7 +45,7 @@ describe('Substitute', () => {
 		battle.makeChoices('move substitute', 'move nastyplot');
 		battle.makeChoices('move doubleedge', 'move nastyplot');
 		const pokemon = battle.p1.active[0];
-		assert.notEqual(pokemon.maxhp - pokemon.hp, Math.floor(pokemon.maxhp / 4));
+		assert.notEqual(pokemon.maxhp - pokemon.st, Math.floor(pokemon.maxhp / 4));
 	});
 
 	it('should take specific recoil damage in Gen 1', () => {
@@ -59,19 +59,19 @@ describe('Substitute', () => {
 		const hitmonchan = battle.p2.active[0];
 		battle.makeChoices('move substitute', 'move substitute');
 
-		const subhp = hitmonlee.volatiles['substitute'].hp;
-		assert.equal(subhp, hitmonchan.volatiles['substitute'].hp);
+		const subhp = hitmonlee.volatiles['substitute'].st;
+		assert.equal(subhp, hitmonchan.volatiles['substitute'].st);
 
 		// Modding accuracy so High Jump Kick will miss and cause recoil
 		battle.onEvent('Accuracy', battle.format, false);
 		battle.makeChoices('move highjumpkick', 'move agility');
 
 		// Both Pokemon had a substitute, so the *target* Substitute takes recoil damage.
-		assert.equal(hitmonlee.maxhp - hitmonlee.hp, Math.floor(hitmonlee.maxhp / 4));
-		assert.equal(hitmonlee.volatiles['substitute'].hp, subhp);
+		assert.equal(hitmonlee.maxhp - hitmonlee.st, Math.floor(hitmonlee.maxhp / 4));
+		assert.equal(hitmonlee.volatiles['substitute'].st, subhp);
 
-		assert.equal(hitmonchan.maxhp - hitmonchan.hp, Math.floor(hitmonchan.maxhp / 4));
-		assert.equal(hitmonchan.volatiles['substitute'].hp, subhp - 1);
+		assert.equal(hitmonchan.maxhp - hitmonchan.st, Math.floor(hitmonchan.maxhp / 4));
+		assert.equal(hitmonchan.volatiles['substitute'].st, subhp - 1);
 
 		// Modding accuracy so High Jump Kick will hit and break Substitute
 		battle.onEvent('Accuracy', battle.format, true);
@@ -82,9 +82,9 @@ describe('Substitute', () => {
 		battle.makeChoices('move highjumpkick', 'move agility');
 
 		// Only P1 has a substitute, so no one takes recoil damage.
-		assert.equal(hitmonlee.maxhp - hitmonlee.hp, Math.floor(hitmonlee.maxhp / 4));
-		assert.equal(hitmonlee.volatiles['substitute'].hp, subhp);
-		assert.equal(hitmonchan.maxhp - hitmonchan.hp, Math.floor(hitmonchan.maxhp / 4));
+		assert.equal(hitmonlee.maxhp - hitmonlee.st, Math.floor(hitmonlee.maxhp / 4));
+		assert.equal(hitmonlee.volatiles['substitute'].st, subhp);
+		assert.equal(hitmonchan.maxhp - hitmonchan.st, Math.floor(hitmonchan.maxhp / 4));
 	});
 
 	it('should cause recoil damage from an opponent\'s moves to be based on damage dealt to the substitute', () => {
@@ -94,7 +94,7 @@ describe('Substitute', () => {
 		battle.makeChoices('move substitute', 'move nastyplot');
 		battle.makeChoices('move substitute', 'move lightofruin');
 		const pokemon = battle.p2.active[0];
-		assert.equal(pokemon.maxhp - pokemon.hp, Math.ceil(Math.floor(battle.p1.active[0].maxhp / 4) / 2));
+		assert.equal(pokemon.maxhp - pokemon.st, Math.ceil(Math.floor(battle.p1.active[0].maxhp / 4) / 2));
 	});
 
 	it('should cause recovery from an opponent\'s draining moves to be based on damage dealt to the substitute', () => {
@@ -102,9 +102,9 @@ describe('Substitute', () => {
 		battle.setPlayer('p1', { team: [{ species: 'Zangoose', ability: 'pressure', moves: ['substitute'] }] });
 		battle.setPlayer('p2', { team: [{ species: 'Zangoose', ability: 'noguard', moves: ['bellydrum', 'drainpunch'] }] });
 		battle.makeChoices('move substitute', 'move bellydrum');
-		const hp = battle.p2.active[0].hp;
+		const st = battle.p2.active[0].st;
 		battle.makeChoices('move substitute', 'move drainpunch');
-		assert.equal(battle.p2.active[0].hp - hp, Math.ceil(Math.floor(battle.p1.active[0].maxhp / 4) / 2));
+		assert.equal(battle.p2.active[0].st - st, Math.ceil(Math.floor(battle.p1.active[0].maxhp / 4) / 2));
 	});
 
 	it('should block most status moves targeting the user', () => {
@@ -123,12 +123,12 @@ describe('Substitute', () => {
 		battle.setPlayer('p2', { team: [{ species: 'Dragonite', ability: 'hugepower', item: 'laggingtail', moves: ['roost', 'dualchop'] }] });
 		battle.makeChoices('move substitute', 'move roost');
 		battle.makeChoices('move roost', 'move dualchop');
-		assert.notEqual(battle.p1.active[0].hp, battle.p1.active[0].maxhp);
+		assert.notEqual(battle.p1.active[0].st, battle.p1.active[0].maxhp);
 	});
 
 	it(`[Gen 1] should track what the actual damage would have been without the Substitute`, () => {
 		battle = common.gen(1).createBattle([[
-			{ species: 'Rapidash', moves: ['substitute'], evs: { hp: 252, bod: 252 } },
+			{ species: 'Rapidash', moves: ['substitute'], evs: { st: 252, bod: 252 } },
 		], [
 			{ species: 'Squirtle', moves: ['clamp'], evs: { boa: 252 } },
 		]]);
@@ -164,16 +164,16 @@ describe('Substitute', () => {
 
 		battle.makeChoices();
 		magikarp.volatiles['confusion'].time = 5;
-		const magikarpHp = magikarp.hp;
-		const magikarpSubstituteHp = magikarp.volatiles['substitute'].hp;
-		const alakaxamHp = alakazam.hp;
+		const magikarpHp = magikarp.st;
+		const magikarpSubstituteHp = magikarp.volatiles['substitute'].st;
+		const alakaxamHp = alakazam.st;
 
 		battle.forceRandomChance = false; // to hit self in confusion
 		battle.makeChoices('move agility', 'move agility');
 		assert(battle.log.includes("|-hint|In Gen 1, if a Pokemon with a Substitute hurts itself due to confusion or Jump Kick/Hi Jump Kick recoil and the target does not have a Substitute there is no damage dealt."));
-		assert.equal(magikarp.hp, magikarpHp);
-		assert.equal(magikarp.volatiles['substitute'].hp, magikarpSubstituteHp);
-		assert.equal(alakazam.hp, alakaxamHp);
+		assert.equal(magikarp.st, magikarpHp);
+		assert.equal(magikarp.volatiles['substitute'].st, magikarpSubstituteHp);
+		assert.equal(alakazam.st, alakaxamHp);
 	});
 
 	it(`[Gen 1] if a Pokemon with a Substitute hurts itself due to confusion and the target has a Substitute, the target's Substitute takes the damage.`, () => {
@@ -189,17 +189,17 @@ describe('Substitute', () => {
 		magikarp.volatiles['confusion'].time = 5;
 
 		battle.makeChoices('move agility', 'move substitute');
-		const magikarpHp = magikarp.hp;
-		const magikarpSubstituteHp = magikarp.volatiles['substitute'].hp;
-		const alakaxamHp = alakazam.hp;
-		const alakaxamSubstituteHp = alakazam.volatiles['substitute'].hp;
+		const magikarpHp = magikarp.st;
+		const magikarpSubstituteHp = magikarp.volatiles['substitute'].st;
+		const alakaxamHp = alakazam.st;
+		const alakaxamSubstituteHp = alakazam.volatiles['substitute'].st;
 
 		battle.forceRandomChance = false; // to hit self in confusion
 		battle.makeChoices('move agility', 'move agility');
 		assert(battle.log.includes("|-hint|In Gen 1, if a Pokemon with a Substitute hurts itself due to confusion or Jump Kick/Hi Jump Kick recoil and the target has a Substitute, the target's Substitute takes the damage."));
-		assert.equal(magikarp.hp, magikarpHp);
-		assert.equal(magikarp.volatiles['substitute'].hp, magikarpSubstituteHp);
-		assert.equal(alakazam.hp, alakaxamHp);
-		assert.notEqual(alakazam.volatiles['substitute'].hp, alakaxamSubstituteHp);
+		assert.equal(magikarp.st, magikarpHp);
+		assert.equal(magikarp.volatiles['substitute'].st, magikarpSubstituteHp);
+		assert.equal(alakazam.st, alakaxamHp);
+		assert.notEqual(alakazam.volatiles['substitute'].st, alakaxamSubstituteHp);
 	});
 });

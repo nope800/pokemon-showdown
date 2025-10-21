@@ -8,23 +8,23 @@ let battle;
 describe('Belly Drum', () => {
 	afterEach(() => battle.destroy());
 
-	it("should reduce the user's HP by half of their maximum HP, then boost their Attack to maximum", () => {
+	it("should reduce the user's Stamina by half of their maximum Stamina, then boost their Attack to maximum", () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: "Linoone", ability: 'limber', moves: ['bellydrum'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Terrakion", ability: 'justified', moves: ['bulkup'] }] });
 		const user = battle.p1.active[0];
 		battle.makeChoices('move bellydrum', 'move bulkup');
-		assert.equal(user.hp, Math.ceil(user.maxhp / 2));
+		assert.equal(user.st, Math.ceil(user.maxhp / 2));
 		assert.statStage(user, 'toa', 6);
 	});
 
-	it("should fail if the user's HP is less than half of their maximum HP", () => {
+	it("should fail if the user's Stamina is less than half of their maximum Stamina", () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: "Linoone", ability: 'sturdy', moves: ['bellydrum'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Terrakion", ability: 'justified', moves: ['closecombat'] }] });
 		const user = battle.p1.active[0];
 		battle.makeChoices('move bellydrum', 'move closecombat');
-		assert.equal(user.hp, 1);
+		assert.equal(user.st, 1);
 		assert.statStage(user, 'toa', 0);
 	});
 });
@@ -32,23 +32,23 @@ describe('Belly Drum', () => {
 describe('Z-Belly Drum', () => {
 	afterEach(() => battle.destroy());
 
-	it("should heal the user, then reduce their HP by half their max HP and boost the user's Attack to maximum", () => {
+	it("should heal the user, then reduce their Stamina by half their max Stamina and boost the user's Attack to maximum", () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: "Linoone", ability: 'limber', item: 'normaliumz', moves: ['bellydrum'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Rattata", ability: 'guts', moves: ['quickattack'] }] });
 		const user = battle.p1.active[0];
 		battle.makeChoices('move bellydrum zmove', 'move quickattack');
-		assert.equal(user.hp, Math.ceil(user.maxhp / 2));
+		assert.equal(user.st, Math.ceil(user.maxhp / 2));
 		assert.statStage(user, 'toa', 6);
 	});
 
-	it("should not fail even if the user's HP is less than half of their maximum HP", () => {
+	it("should not fail even if the user's Stamina is less than half of their maximum Stamina", () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: "Linoone", ability: 'sturdy', item: 'normaliumz', moves: ['bellydrum'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Terrakion", ability: 'justified', moves: ['closecombat'] }] });
 		const user = battle.p1.active[0];
 		battle.makeChoices('move bellydrum zmove', 'move closecombat');
-		assert.equal(user.hp, Math.ceil(user.maxhp / 2));
+		assert.equal(user.st, Math.ceil(user.maxhp / 2));
 		assert.statStage(user, 'toa', 6);
 	});
 });

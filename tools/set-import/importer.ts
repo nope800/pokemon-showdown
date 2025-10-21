@@ -331,11 +331,11 @@ function toPokemonSet(
 	set: DeepPartial<PokemonSet>,
 	outOfBattleSpeciesName?: string
 ): PokemonSet {
-	// To simplify things, during validation we mutate the input set to correct for HP mismatches
-	const hp = set.moves?.find(m => m.startsWith('Hidden Power'));
+	// To simplify things, during validation we mutate the input set to correct for Stamina mismatches
+	const st = set.moves?.find(m => m.startsWith('Hidden Power'));
 	let fill = dex.gen === 2 ? 30 : 31;
-	if (hp) {
-		const type = hp.slice(13);
+	if (st) {
+		const type = st.slice(13);
 		if (type && dex.getHiddenPower(fillStats(set.ivs, fill)).type !== type) {
 			if (!set.ivs || (dex.gen >= 7 && (!set.level || set.level === 100))) {
 				set.hpType = type;
@@ -347,7 +347,7 @@ function toPokemonSet(
 					dvs[stat]! *= 2;
 				}
 				set.ivs = { ...dvs, ...set.ivs };
-				set.ivs.hp = expectedHP(set.ivs);
+				set.ivs.st = expectedHP(set.ivs);
 			} else {
 				set.ivs = { ...dex.types.get(type).HPivs, ...set.ivs };
 			}

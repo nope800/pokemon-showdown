@@ -18,7 +18,7 @@ describe('Confusion', () => {
 		]]);
 		battle.makeChoices();
 		const deoxys = battle.p1.active[0];
-		const damage = deoxys.maxhp - deoxys.hp;
+		const damage = deoxys.maxhp - deoxys.st;
 		assert.bounded(damage, [150, 177]);
 	});
 });

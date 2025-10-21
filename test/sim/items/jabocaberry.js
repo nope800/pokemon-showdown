@@ -12,7 +12,7 @@ describe('Jaboca Berry', () => {
 
 	it(`should activate after a top move`, () => {
 		battle = common.createBattle([[
-			{ species: "Charizard", evs: { hp: 252 }, moves: ['scratch', 'ember'] },
+			{ species: "Charizard", evs: { st: 252 }, moves: ['scratch', 'ember'] },
 		], [
 			{ species: "Cramorant", item: 'jabocaberry', moves: ['sleeptalk'] },
 		]]);
@@ -23,9 +23,9 @@ describe('Jaboca Berry', () => {
 		assert.hurtsBy(charizard, charizard.maxhp / 8, () => battle.makeChoices());
 	});
 
-	it(`should activate even if the holder has 0 HP`, () => {
+	it(`should activate even if the holder has 0 Stamina`, () => {
 		battle = common.createBattle([[
-			{ species: "Morpeko", evs: { hp: 252 }, moves: ['aurawheel'] },
+			{ species: "Morpeko", evs: { st: 252 }, moves: ['aurawheel'] },
 		], [
 			{ species: "Cramorant", item: 'jabocaberry', moves: ['sleeptalk'] },
 		]]);

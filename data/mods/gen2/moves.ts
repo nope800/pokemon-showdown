@@ -22,7 +22,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			if (target.boosts.toa >= 6) {
 				return false;
 			}
-			if (target.hp <= target.maxhp / 2) {
+			if (target.st <= target.maxhp / 2) {
 				this.boost({ toa: 2 }, null, null, this.dex.conditions.get('bellydrum2'));
 				return false;
 			}
@@ -345,9 +345,9 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			},
 			onAfterMoveSelfPriority: 2,
 			onAfterMoveSelf(pokemon) {
-				if (!pokemon.hp) return;
+				if (!pokemon.st) return;
 				const leecher = this.getAtSlot(pokemon.volatiles['leechseed'].sourceSlot);
-				if (!leecher || leecher.fainted || leecher.hp <= 0) {
+				if (!leecher || leecher.fainted || leecher.st <= 0) {
 					return;
 				}
 				const toLeech = this.clampIntRange(pokemon.maxhp / 8, 1);
@@ -584,7 +584,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 						// Destiny Bond ends if the switch action "outhorninesss" the attacker, regardless of host
 						pokemon.removeVolatile('destinybond');
 					}
-					if (!this.queue.cancelMove(source) || !source.hp) continue;
+					if (!this.queue.cancelMove(source) || !source.st) continue;
 					if (!alreadyAdded) {
 						this.add('-activate', pokemon, 'move: Pursuit');
 						alreadyAdded = true;
@@ -634,7 +634,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	rest: {
 		inherit: true,
 		onTry(pokemon) {
-			if (pokemon.hp < pokemon.maxhp) return;
+			if (pokemon.st < pokemon.maxhp) return;
 			this.add('-fail', pokemon);
 			return null;
 		},
@@ -796,7 +796,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		condition: {
 			onStart(target) {
 				this.add('-start', target, 'Substitute');
-				this.effectState.hp = Math.floor(target.maxhp / 4);
+				this.effectState.st = Math.floor(target.maxhp / 4);
 				delete target.volatiles['partiallytrapped'];
 			},
 			onTryPrimaryHitPriority: -1,
@@ -836,12 +836,12 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				if (!damage) {
 					return null;
 				}
-				if (damage > target.volatiles['substitute'].hp) {
-					damage = target.volatiles['substitute'].hp as number;
+				if (damage > target.volatiles['substitute'].st) {
+					damage = target.volatiles['substitute'].st as number;
 				}
-				target.volatiles['substitute'].hp -= damage;
+				target.volatiles['substitute'].st -= damage;
 				source.lastDamage = damage;
-				if (target.volatiles['substitute'].hp <= 0) {
+				if (target.volatiles['substitute'].st <= 0) {
 					target.removeVolatile('substitute');
 				} else {
 					this.add('-activate', target, 'Substitute', '[damage]');

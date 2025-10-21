@@ -28,7 +28,7 @@ describe('Klutz', () => {
 		]]);
 		const klutzMon = battle.p1.active[0];
 		assert.constant(() => klutzMon.item, () => battle.makeChoices('move endure', 'move psychic'));
-		assert.equal(klutzMon.hp, 1);
+		assert.equal(klutzMon.st, 1);
 	});
 
 	it('should ignore the effects of items that disable moves', () => {

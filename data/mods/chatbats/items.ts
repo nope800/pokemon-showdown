@@ -8,7 +8,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 				return this.chainModify([6144, 4096]);
 			}
 		},
-		shortDesc: "Holder gains 1.5x HP from draining, Aqua Ring, Ingrain, Leech Seed, Strength Sap.",
+		shortDesc: "Holder gains 1.5x Stamina from draining, Aqua Ring, Ingrain, Leech Seed, Strength Sap.",
 	},
 	masquerainite: {
 		name: "Masquerainite",
@@ -33,8 +33,8 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 			type: "Psychic",
 		},
 		onUpdate(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 2 ||
-				((pokemon.hp <= pokemon.maxhp / 2 && pokemon.hasAbility('gluttony') && pokemon.abilityState.gluttony))) {
+			if (pokemon.st <= pokemon.maxhp / 2 ||
+				((pokemon.st <= pokemon.maxhp / 2 && pokemon.hasAbility('gluttony') && pokemon.abilityState.gluttony))) {
 				pokemon.eatItem();
 			}
 		},
@@ -87,7 +87,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 			}
 		},
 		onUpdate(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 2) {
+			if (pokemon.st <= pokemon.maxhp / 2) {
 				pokemon.eatItem();
 			}
 		},
@@ -100,7 +100,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 		itemUser: ["Flapple"],
 		num: 1117,
 		gen: 8,
-		desc: "Grass- and Ground-type moves have 1.2x power. Restores 1/4 max HP when at 1/2 max HP or less.",
+		desc: "Grass- and Ground-type moves have 1.2x power. Restores 1/4 max Stamina when at 1/2 max Stamina or less.",
 	},
 	thickclub: {
 		name: "Thick Club",

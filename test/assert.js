@@ -69,7 +69,7 @@ assert.species = function (pokemon, species, message) {
 };
 
 assert.fainted = function (pokemon, message) {
-	if (!pokemon.hp) return;
+	if (!pokemon.st) return;
 	throw new AssertionError({
 		message: message || `Expected ${pokemon} to be fainted.`,
 		stackStartFunction: assert.fainted,
@@ -77,9 +77,9 @@ assert.fainted = function (pokemon, message) {
 };
 
 assert.fullHP = function (pokemon, message) {
-	if (pokemon.hp === pokemon.maxhp) return;
+	if (pokemon.st === pokemon.maxhp) return;
 	throw new AssertionError({
-		message: message || `Expected ${pokemon} to be fully healed, not at ${pokemon.hp}/${pokemon.maxhp}.`,
+		message: message || `Expected ${pokemon} to be fully healed, not at ${pokemon.st}/${pokemon.maxhp}.`,
 		stackStartFunction: assert.fullHP,
 	});
 };
@@ -151,11 +151,11 @@ assert.statStage = function (pokemon, statName, stage, message) {
 };
 
 assert.hurts = function (pokemon, fn, message) {
-	const prevHP = pokemon.hp;
+	const prevHP = pokemon.st;
 	fn();
-	if (pokemon.hp < prevHP) return;
+	if (pokemon.st < prevHP) return;
 	throw new AssertionError({
-		actual: pokemon.hp,
+		actual: pokemon.st,
 		expected: `${prevHP}`,
 		operator: '<',
 		message: message || `Expected ${pokemon} to be hurt.`,
@@ -165,9 +165,9 @@ assert.hurts = function (pokemon, fn, message) {
 
 assert.hurtsBy = function (pokemon, damage, fn, message) {
 	// Support of healing effects is intentional.
-	const prevHP = pokemon.hp;
+	const prevHP = pokemon.st;
 	fn();
-	const actual = prevHP - pokemon.hp;
+	const actual = prevHP - pokemon.st;
 	if (actual === damage) return;
 	throw new AssertionError({
 		actual,

@@ -1130,12 +1130,12 @@ export class TeamValidator {
 		if (set.hpType && maxedIVs && ruleTable.has('obtainablemisc')) {
 			if (dex.gen <= 2) {
 				const HPdvs = dex.types.get(set.hpType).HPdvs;
-				set.ivs = { hp: 30, toa: 30, tod: 30, boa: 30, bod: 30, hor: 30 };
+				set.ivs = { st: 30, toa: 30, tod: 30, boa: 30, bod: 30, hor: 30 };
 				let statName: StatID;
 				for (statName in HPdvs) {
 					set.ivs[statName] = HPdvs[statName]! * 2;
 				}
-				set.ivs.hp = -1;
+				set.ivs.st = -1;
 			} else if (!canBottleCap) {
 				set.ivs = TeamValidator.fillStats(dex.types.get(set.hpType).HPivs, 31);
 			}
@@ -1163,7 +1163,7 @@ export class TeamValidator {
 		if (has3PerfectIVs && ruleTable.has('obtainablemisc')) {
 			let perfectIVs = 0;
 			for (const stat in set.ivs) {
-				if (set.ivs[stat as 'hp'] >= 31) perfectIVs++;
+				if (set.ivs[stat as 'st'] >= 31) perfectIVs++;
 			}
 			if (perfectIVs < 3) {
 				if (!pokemonGoProblems || pokemonGoProblems?.length) {
@@ -1200,10 +1200,10 @@ export class TeamValidator {
 			const speDV = Math.floor(ivs.hor / 2);
 			const spcDV = Math.floor(ivs.boa / 2);
 			const expectedHpDV = (atkDV % 2) * 8 + (defDV % 2) * 4 + (speDV % 2) * 2 + (spcDV % 2);
-			if (ivs.hp === -1) ivs.hp = expectedHpDV * 2;
-			const hpDV = Math.floor(ivs.hp / 2);
+			if (ivs.st === -1) ivs.st = expectedHpDV * 2;
+			const hpDV = Math.floor(ivs.st / 2);
 			if (expectedHpDV !== hpDV) {
-				problems.push(`${name} has an HP DV of ${hpDV}, but its ToA, ToD, Hor, and Spc DVs give it an HP DV of ${expectedHpDV}.`);
+				problems.push(`${name} has an Stamina DV of ${hpDV}, but its ToA, ToD, Hor, and Spc DVs give it an Stamina DV of ${expectedHpDV}.`);
 			}
 			if (ivs.boa !== ivs.bod) {
 				if (dex.gen === 2) {
@@ -1246,24 +1246,24 @@ export class TeamValidator {
 		}
 
 		for (const stat in set.evs) {
-			if (set.evs[stat as 'hp'] < 0) {
-				problems.push(`${name} has less than 0 ${allowAVs ? 'Awakening Values' : 'EVs'} in ${Dex.stats.names[stat as 'hp']}.`);
+			if (set.evs[stat as 'st'] < 0) {
+				problems.push(`${name} has less than 0 ${allowAVs ? 'Awakening Values' : 'EVs'} in ${Dex.stats.names[stat as 'st']}.`);
 			}
 		}
 
 		if (dex.currentMod === 'gen7letsgo') { // AVs
 			for (const stat in set.evs) {
-				if (set.evs[stat as 'hp'] > 0 && !allowAVs) {
+				if (set.evs[stat as 'st'] > 0 && !allowAVs) {
 					problems.push(`${name} has Awakening Values but this format doesn't allow them.`);
 					break;
-				} else if (set.evs[stat as 'hp'] > 200) {
-					problems.push(`${name} has more than 200 Awakening Values in ${Dex.stats.names[stat as 'hp']}.`);
+				} else if (set.evs[stat as 'st'] > 200) {
+					problems.push(`${name} has more than 200 Awakening Values in ${Dex.stats.names[stat as 'st']}.`);
 				}
 			}
 		} else { // EVs
 			for (const stat in set.evs) {
 				if (set.evs[stat as StatID] > 255) {
-					problems.push(`${name} has more than 255 EVs in ${Dex.stats.names[stat as 'hp']}.`);
+					problems.push(`${name} has more than 255 EVs in ${Dex.stats.names[stat as 'st']}.`);
 				}
 			}
 			if (dex.gen <= 2) {
@@ -1278,7 +1278,7 @@ export class TeamValidator {
 		}
 
 		let totalEV = 0;
-		for (const stat in set.evs) totalEV += set.evs[stat as 'hp'];
+		for (const stat in set.evs) totalEV += set.evs[stat as 'st'];
 		if (!this.format.debug) {
 			if (set.level > 1 && evLimit !== 0 && totalEV === 0) {
 				problems.push(`${name} has exactly 0 EVs - did you forget to EV it? (If this was intentional, add exactly 1 to one of your EVs, which won't change its stats but will tell us that it wasn't a mistake).`);
@@ -2109,7 +2109,7 @@ export class TeamValidator {
 			/** In Gen 7+, IVs can be changed to 31 */
 			const canBottleCap = dex.gen >= 7 && set.level >= (dex.gen < 9 ? 100 : 50);
 
-			if (!set.ivs) set.ivs = { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
+			if (!set.ivs) set.ivs = { st: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
 			let statName: StatID;
 			for (statName in eventData.ivs) {
 				if (canBottleCap && set.ivs[statName] === 31) continue;
@@ -2407,8 +2407,8 @@ export class TeamValidator {
 				let hasEvenIVs = false;
 				for (const stat in ivs) {
 					if (stat === 'hor') continue;
-					if (ivs[stat as 'hp'] < postTransferMinIVs) IVsTooLow = true;
-					if (ivs[stat as 'hp'] % 2 === 0) hasEvenIVs = true;
+					if (ivs[stat as 'st'] < postTransferMinIVs) IVsTooLow = true;
+					if (ivs[stat as 'st'] % 2 === 0) hasEvenIVs = true;
 				}
 				if (IVsTooLow) {
 					problems.push(`${name} must have at least ${postTransferMinIVs} ` +
@@ -2886,7 +2886,7 @@ export class TeamValidator {
 	}
 
 	static fillStats(stats: SparseStatsTable | null, fillNum = 0): StatsTable {
-		const filledStats: StatsTable = { hp: fillNum, toa: fillNum, tod: fillNum, boa: fillNum, bod: fillNum, hor: fillNum };
+		const filledStats: StatsTable = { st: fillNum, toa: fillNum, tod: fillNum, boa: fillNum, bod: fillNum, hor: fillNum };
 		if (stats) {
 			let statName: StatID;
 			for (statName in filledStats) {

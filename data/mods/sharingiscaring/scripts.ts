@@ -32,7 +32,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			if (!sourceEffect && this.battle.effect) sourceEffect = this.battle.effect;
 			if (!source && this.battle.event?.target) source = this.battle.event.target;
 			const item = (sourceEffect?.id.startsWith('item:')) ? sourceEffect as Item : this.getItem();
-			if ((!this.hp && !item.isGem) || !this.isActive) return false;
+			if ((!this.st && !item.isGem) || !this.isActive) return false;
 			if (!hasAnyItem) return false;
 
 			if (this.battle.runEvent('UseItem', this, null, null, item)) {
@@ -74,7 +74,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			if (!source && this.battle.event?.target) source = this.battle.event.target;
 			const item = (sourceEffect?.id.startsWith('item:')) ? sourceEffect as Item : this.getItem();
 			if (!hasAnyItem) return false;
-			if ((!this.hp && this.battle.toID(item.name) !== 'jabocaberry' && this.battle.toID(item.name) !== 'rowapberry') ||
+			if ((!this.st && this.battle.toID(item.name) !== 'jabocaberry' && this.battle.toID(item.name) !== 'rowapberry') ||
 				!this.isActive) return false;
 
 			if (
@@ -114,7 +114,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			return false;
 		},
 		setItem(item, source, effect) {
-			if (!this.hp || !this.isActive) return false;
+			if (!this.st || !this.isActive) return false;
 			if (this.itemState.knockedOff) return false;
 			if (typeof item === 'string') item = this.battle.dex.items.get(item);
 

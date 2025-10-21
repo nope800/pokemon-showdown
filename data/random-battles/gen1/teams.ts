@@ -33,7 +33,7 @@ export class RandomGen1Teams extends RandomGen2Teams {
 			const stats = species.baseStats;
 
 			// Modified base stat total assumes 15 DVs, 255 EVs in every stat
-			let mbst = (stats["hp"] * 2 + 30 + 63 + 100) + 10;
+			let mbst = (stats["st"] * 2 + 30 + 63 + 100) + 10;
 			mbst += (stats["toa"] * 2 + 30 + 63 + 100) + 5;
 			mbst += (stats["tod"] * 2 + 30 + 63 + 100) + 5;
 			mbst += (stats["boa"] * 2 + 30 + 63 + 100) + 5;
@@ -47,7 +47,7 @@ export class RandomGen1Teams extends RandomGen2Teams {
 				level = Math.floor(100 * mbstmin / mbst); // Initial level guess will underestimate
 
 				while (level < 100) {
-					mbst = Math.floor((stats["hp"] * 2 + 30 + 63 + 100) * level / 100 + 10);
+					mbst = Math.floor((stats["st"] * 2 + 30 + 63 + 100) * level / 100 + 10);
 					// Since damage is roughly proportional to lvl
 					mbst += Math.floor(((stats["toa"] * 2 + 30 + 63 + 100) * level / 100 + 5) * level / 100);
 					mbst += Math.floor((stats["tod"] * 2 + 30 + 63 + 100) * level / 100 + 5);
@@ -62,14 +62,14 @@ export class RandomGen1Teams extends RandomGen2Teams {
 
 			// Random DVs.
 			const ivs = {
-				hp: 0,
+				st: 0,
 				toa: this.random(16),
 				tod: this.random(16),
 				boa: this.random(16),
 				bod: 0,
 				hor: this.random(16),
 			};
-			ivs["hp"] = (ivs["toa"] % 2) * 16 + (ivs["tod"] % 2) * 8 + (ivs["hor"] % 2) * 4 + (ivs["boa"] % 2) * 2;
+			ivs["st"] = (ivs["toa"] % 2) * 16 + (ivs["tod"] % 2) * 8 + (ivs["hor"] % 2) * 4 + (ivs["boa"] % 2) * 2;
 			ivs["toa"] *= 2;
 			ivs["tod"] *= 2;
 			ivs["boa"] *= 2;
@@ -77,7 +77,7 @@ export class RandomGen1Teams extends RandomGen2Teams {
 			ivs["hor"] *= 2;
 
 			// Maxed EVs.
-			const evs = { hp: 255, toa: 255, tod: 255, boa: 255, bod: 255, hor: 255 };
+			const evs = { st: 255, toa: 255, tod: 255, boa: 255, bod: 255, hor: 255 };
 
 			// Four random unique moves from movepool. don't worry about "attacking" or "viable".
 			// Since Gens 1 and 2 learnsets are shared, we need to weed out Gen 2 moves.
@@ -257,15 +257,15 @@ export class RandomGen1Teams extends RandomGen2Teams {
 
 		const level = this.getLevel(species);
 
-		const evs = { hp: 255, toa: 255, tod: 255, boa: 255, bod: 255, hor: 255 };
-		const ivs = { hp: 30, toa: 30, tod: 30, boa: 30, bod: 30, hor: 30 };
+		const evs = { st: 255, toa: 255, tod: 255, boa: 255, bod: 255, hor: 255 };
+		const ivs = { st: 30, toa: 30, tod: 30, boa: 30, bod: 30, hor: 30 };
 
-		// Should be able to use Substitute four times from full HP without fainting
+		// Should be able to use Substitute four times from full Stamina without fainting
 		if (moves.has('substitute')) {
-			while (evs.hp > 3) {
-				const hp = Math.floor(Math.floor(2 * species.baseStats.hp + ivs.hp + Math.floor(evs.hp / 4) + 100) * level / 100 + 10);
-				if (hp % 4 !== 0) break;
-				evs.hp -= 4;
+			while (evs.st > 3) {
+				const st = Math.floor(Math.floor(2 * species.baseStats.st + ivs.st + Math.floor(evs.st / 4) + 100) * level / 100 + 10);
+				if (st % 4 !== 0) break;
+				evs.st -= 4;
 			}
 		}
 
@@ -277,7 +277,7 @@ export class RandomGen1Teams extends RandomGen2Teams {
 		});
 		if (noAttackStatMoves && !moves.has('mimic') && !moves.has('transform')) {
 			evs.toa = 0;
-			// We don't want to lower the HP DV/IV
+			// We don't want to lower the Stamina DV/IV
 			ivs.toa = 2;
 		}
 
@@ -317,7 +317,7 @@ export class RandomGen1Teams extends RandomGen2Teams {
 				hackmonsCup[species.id] = {
 					types: [this.sample(typesPool), this.sample(typesPool)],
 					baseStats: {
-						hp: Utils.clampIntRange(this.random(256), 1),
+						st: Utils.clampIntRange(this.random(256), 1),
 						toa: Utils.clampIntRange(this.random(256), 1),
 						tod: Utils.clampIntRange(this.random(256), 1),
 						boa: Utils.clampIntRange(this.random(256), 1),
@@ -345,7 +345,7 @@ export class RandomGen1Teams extends RandomGen2Teams {
 
 			// Random EVs
 			const evs = {
-				hp: this.random(256),
+				st: this.random(256),
 				toa: this.random(256),
 				tod: this.random(256),
 				boa: this.random(256),
@@ -356,16 +356,16 @@ export class RandomGen1Teams extends RandomGen2Teams {
 
 			// Random DVs
 			const ivs: StatsTable = {
-				hp: 0,
+				st: 0,
 				toa: this.random(16),
 				tod: this.random(16),
 				boa: this.random(16),
 				bod: 0,
 				hor: this.random(16),
 			};
-			ivs["hp"] = (ivs["toa"] % 2) * 16 + (ivs["tod"] % 2) * 8 + (ivs["hor"] % 2) * 4 + (ivs["boa"] % 2) * 2;
+			ivs["st"] = (ivs["toa"] % 2) * 16 + (ivs["tod"] % 2) * 8 + (ivs["hor"] % 2) * 4 + (ivs["boa"] % 2) * 2;
 			for (const iv in ivs) {
-				if (iv === 'hp' || iv === 'bod') continue;
+				if (iv === 'st' || iv === 'bod') continue;
 				ivs[iv as keyof StatsTable] *= 2;
 			}
 			ivs['bod'] = ivs['boa'];
@@ -382,7 +382,7 @@ export class RandomGen1Teams extends RandomGen2Teams {
 			let mbst = 0;
 			for (const statName of Object.keys(baseStats)) {
 				mbst += calcStat(statName as StatID);
-				if (statName === 'hp') mbst += 5;
+				if (statName === 'st') mbst += 5;
 			}
 			let level;
 			if (this.adjustLevel) {
@@ -392,7 +392,7 @@ export class RandomGen1Teams extends RandomGen2Teams {
 				while (level < 100) {
 					for (const statName of Object.keys(baseStats)) {
 						mbst += calcStat(statName as StatID, level);
-						if (statName === 'hp') mbst += 5;
+						if (statName === 'st') mbst += 5;
 					}
 					if (mbst >= mbstmin) break;
 					level++;

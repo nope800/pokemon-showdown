@@ -19,11 +19,11 @@ describe('Multiscale', () => {
 
 		battle.makeChoices();
 		const dnite = battle.p1.active[0];
-		const damage = dnite.maxhp - dnite.hp;
+		const damage = dnite.maxhp - dnite.st;
 		assert.bounded(damage, [15, 18], `Multiscale should reduce damage`);
 
 		battle.makeChoices();
-		assert.bounded(dnite.maxhp - dnite.hp - damage, [30, 36], `Multiscale should not reduce damage, because Dragonite was damaged`);
+		assert.bounded(dnite.maxhp - dnite.st - damage, [30, 36], `Multiscale should not reduce damage, because Dragonite was damaged`);
 	});
 
 	it('should be suppressed by Mold Breaker', () => {
@@ -35,7 +35,7 @@ describe('Multiscale', () => {
 
 		battle.makeChoices();
 		const dnite = battle.p1.active[0];
-		const damage = dnite.maxhp - dnite.hp;
+		const damage = dnite.maxhp - dnite.st;
 		assert.bounded(damage, [30, 36]);
 	});
 });

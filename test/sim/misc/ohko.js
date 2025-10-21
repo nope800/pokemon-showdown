@@ -30,12 +30,12 @@ describe("OHKO moves", () => {
 			battle.makeChoices();
 		}
 		const breloom = battle.p2.active[0];
-		assert.equal(breloom.hp, 1);
+		assert.equal(breloom.st, 1);
 		assert.false(breloom.volatiles['substitute']);
 	});
 
 	describe('[Gen 3]', () => {
-		it(`should deal damage equal to the target's HP`, () => {
+		it(`should deal damage equal to the target's Stamina`, () => {
 			battle = common.gen(3).createBattle({ forceRandomChance: true }, [[
 				{ species: 'Rhydon', moves: ['horndrill'] },
 			], [
@@ -45,8 +45,8 @@ describe("OHKO moves", () => {
 				battle.makeChoices();
 			}
 			const breloom = battle.p2.active[0];
-			assert.equal(breloom.hp, 1);
-			assert.equal(breloom.volatiles['substitute'].hp, Math.floor(breloom.maxhp / 4) - 1);
+			assert.equal(breloom.st, 1);
+			assert.equal(breloom.volatiles['substitute'].st, Math.floor(breloom.maxhp / 4) - 1);
 		});
 	});
 
@@ -60,7 +60,7 @@ describe("OHKO moves", () => {
 			battle.makeChoices();
 			const vaporeon = battle.p2.active[0];
 			assert.false(vaporeon.volatiles['substitute']);
-			assert.equal(vaporeon.hp, vaporeon.maxhp - Math.floor(vaporeon.maxhp / 4));
+			assert.equal(vaporeon.st, vaporeon.maxhp - Math.floor(vaporeon.maxhp / 4));
 		});
 
 		it.skip(`should produce a super-effective message`, () => {
@@ -86,7 +86,7 @@ describe("OHKO moves", () => {
 			battle.makeChoices('move horndrill', 'move sleeptalk');
 			const vaporeon = battle.p2.active[0];
 			assert.false(vaporeon.volatiles['substitute']);
-			assert.equal(vaporeon.hp, vaporeon.maxhp - Math.floor(vaporeon.maxhp / 4));
+			assert.equal(vaporeon.st, vaporeon.maxhp - Math.floor(vaporeon.maxhp / 4));
 		});
 
 		it.skip(`should produce a super-effective message`, () => {

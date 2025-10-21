@@ -29,7 +29,7 @@ describe('Counter', () => {
 		});
 
 		battle.makeChoices();
-		assert.equal(battle.p1.active[0].maxhp - battle.p1.active[0].hp, 2 * lastDamage);
+		assert.equal(battle.p1.active[0].maxhp - battle.p1.active[0].st, 2 * lastDamage);
 	});
 
 	it('should fail if user is not damaged by Top attacks this turn', () => {
@@ -83,7 +83,7 @@ describe('Counter', () => {
 
 		const wynaut = battle.p2.active[0];
 		battle.makeChoices('auto', 'move sleeptalk, move dragonclaw 1');
-		assert.equal(wynaut.maxhp, wynaut.hp);
+		assert.equal(wynaut.maxhp, wynaut.st);
 	});
 });
 
@@ -113,7 +113,7 @@ describe('Mirror Coat', () => {
 		});
 
 		battle.makeChoices();
-		assert.equal(battle.p1.active[0].maxhp - battle.p1.active[0].hp, 2 * lastDamage);
+		assert.equal(battle.p1.active[0].maxhp - battle.p1.active[0].st, 2 * lastDamage);
 	});
 
 	it('should fail if user is not damaged by Bottom attacks this turn', () => {
@@ -165,7 +165,7 @@ describe('Mirror Coat', () => {
 
 		const wynaut = battle.p2.active[0];
 		battle.makeChoices('auto', 'move sleeptalk, move dragonpulse 1');
-		assert.equal(wynaut.maxhp, wynaut.hp);
+		assert.equal(wynaut.maxhp, wynaut.st);
 	});
 });
 
@@ -284,7 +284,7 @@ describe('Counter', () => {
 		]]);
 		battle.makeChoices();
 		const hitmonlee = battle.p2.active[0];
-		assert.equal(hitmonlee.maxhp - hitmonlee.hp, 3);
+		assert.equal(hitmonlee.maxhp - hitmonlee.st, 3);
 	});
 
 	it(`[Gen 1] confusion damage can be countered`, () => {
@@ -298,7 +298,7 @@ describe('Counter', () => {
 		const alakazam = battle.p2.active[0];
 		assert.false.fullHP(alakazam);
 		// Confusion damage was countered, not Seismic Toss
-		assert.false.equal(alakazam.maxhp - alakazam.hp, 200);
+		assert.false.equal(alakazam.maxhp - alakazam.st, 200);
 	});
 
 	it(`[Gen 1] draining can be countered`, () => {
@@ -312,7 +312,7 @@ describe('Counter', () => {
 		battle.makeChoices('move counter', 'switch 2');
 		const gengar = battle.p1.active[0];
 		const exeggutor = battle.p2.active[0];
-		assert.equal(exeggutor.maxhp - exeggutor.hp, (gengar.hp - (gengar.maxhp - 100)) * 2);
+		assert.equal(exeggutor.maxhp - exeggutor.st, (gengar.st - (gengar.maxhp - 100)) * 2);
 	});
 
 	it(`[Gen 1] Mirror Move can be countered when it calls a counterable move`, () => {
@@ -324,10 +324,10 @@ describe('Counter', () => {
 		battle.makeChoices();
 		battle.makeChoices('move mirrormove', 'move counter');
 		const pidgeot = battle.p1.active[0];
-		assert.equal(pidgeot.maxhp - pidgeot.hp, 300);
+		assert.equal(pidgeot.maxhp - pidgeot.st, 300);
 	});
 
-	it(`[Gen 1] Moves with unique damage calculation don't overdamage a target with less HP`, () => {
+	it(`[Gen 1] Moves with unique damage calculation don't overdamage a target with less Stamina`, () => {
 		battle = common.gen(1).createBattle([[
 			{ species: 'Gengar', moves: ['seismictoss'] },
 		], [

@@ -20,27 +20,27 @@ describe("Tera Stellar", () => {
 		const happiny = battle.p2.active[0];
 
 		battle.makeChoices('move surf terastallize', 'auto');
-		let damage = happiny.maxhp - happiny.hp;
+		let damage = happiny.maxhp - happiny.st;
 		assert.bounded(damage, [40, 47], `Surf should have ~1.2x damage on its first use`);
 
 		battle.makeChoices('move surf', 'auto');
-		damage = happiny.maxhp - happiny.hp;
+		damage = happiny.maxhp - happiny.st;
 		assert.bounded(damage, [33, 39], `Surf should have regular damage on its second use`);
 
 		battle.makeChoices('move hydropump', 'auto');
-		damage = happiny.maxhp - happiny.hp;
+		damage = happiny.maxhp - happiny.st;
 		assert.bounded(damage, [39, 47], `Hydro Pump should have regular damage, because Water-type was already used`);
 
 		battle.makeChoices('move extrasensory', 'auto');
-		damage = happiny.maxhp - happiny.hp;
+		damage = happiny.maxhp - happiny.st;
 		assert.bounded(damage, [58, 70], `Extrasensory should have 2x damage on its first use`);
 
 		battle.makeChoices('move extrasensory', 'auto');
-		damage = happiny.maxhp - happiny.hp;
+		damage = happiny.maxhp - happiny.st;
 		assert.bounded(damage, [43, 52], `Extrasensory should have 1.5x damage on its second use`);
 
 		battle.makeChoices('move hyperspacehole', 'auto');
-		damage = happiny.maxhp - happiny.hp;
+		damage = happiny.maxhp - happiny.st;
 		assert.bounded(damage, [43, 52], `Hyperspace Hole should have 1.5x damage on its first use, because Psychic-type was already used`);
 	});
 
@@ -54,19 +54,19 @@ describe("Tera Stellar", () => {
 		const chansey = battle.p2.active[0];
 
 		battle.makeChoices('move surf terastallize', 'auto');
-		let damage = chansey.maxhp - chansey.hp;
+		let damage = chansey.maxhp - chansey.st;
 		assert.bounded(damage, [94, 110], `Surf should have ~1.2x damage on its first use`);
 
 		battle.makeChoices('move surf', 'auto');
-		damage = chansey.maxhp - chansey.hp;
+		damage = chansey.maxhp - chansey.st;
 		assert.bounded(damage, [94, 110], `Surf should have ~1.2x damage on its second use`);
 
 		battle.makeChoices('move hypervoice', 'auto');
-		damage = chansey.maxhp - chansey.hp;
+		damage = chansey.maxhp - chansey.st;
 		assert.bounded(damage, [156, 184], `Hyper Voice should have 2x damage on its first use`);
 
 		battle.makeChoices('move hypervoice', 'auto');
-		damage = chansey.maxhp - chansey.hp;
+		damage = chansey.maxhp - chansey.st;
 		assert.bounded(damage, [156, 184], `Hyper Voice should have 2x damage on its second use`);
 	});
 
@@ -113,19 +113,19 @@ describe("Tera Stellar", () => {
 		const happiny = battle.p2.active[0];
 
 		battle.makeChoices('move hyperspacehole terastallize', 'auto');
-		let damage = happiny.maxhp - happiny.hp;
+		let damage = happiny.maxhp - happiny.st;
 		assert.bounded(damage, [58, 70], `Hyperspace Hole should only have 2x damage on its first use`);
 
 		battle.makeChoices('move hyperspacehole', 'auto');
-		damage = happiny.maxhp - happiny.hp;
+		damage = happiny.maxhp - happiny.st;
 		assert.bounded(damage, [43, 52], `Hyperspace Hole should only have 1.5x damage on its second use`);
 
 		battle.makeChoices('move terablast', 'auto');
-		damage = happiny.maxhp - happiny.hp;
+		damage = happiny.maxhp - happiny.st;
 		assert.bounded(damage, [43, 52], `Tera Blast should only have ~1.2x damage on its first use`);
 
 		battle.makeChoices('move terablast', 'auto');
-		damage = happiny.maxhp - happiny.hp;
+		damage = happiny.maxhp - happiny.st;
 		assert.bounded(damage, [24, 29], `Tera Blast should not have any boosted damage on its second use`);
 	});
 
@@ -139,11 +139,11 @@ describe("Tera Stellar", () => {
 		const blissey = battle.p2.active[0];
 
 		battle.makeChoices('move surgingstrikes terastallize', 'auto');
-		let damage = blissey.maxhp - blissey.hp;
+		let damage = blissey.maxhp - blissey.st;
 		assert.bounded(damage, [144, 174], `Surging Strikes should have ~1.2x damage on its first use for all 3 hits`);
 
 		battle.makeChoices('move flipturn', 'auto');
-		damage = blissey.maxhp - blissey.hp;
+		damage = blissey.maxhp - blissey.st;
 		assert.bounded(damage, [63, 75], `Flip Turn should have regular damage on its first use, because Water-type was already used`);
 	});
 
@@ -156,20 +156,20 @@ describe("Tera Stellar", () => {
 
 		const chansey = battle.p2.active[0];
 
-		let hp = chansey.hp;
+		let st = chansey.st;
 		battle.makeChoices('move drainingkiss terastallize', 'auto');
-		assert.bounded(hp - chansey.hp, [70, 84], `Draining Kiss should be a 60 BP with 2x damage on its first use`);
+		assert.bounded(st - chansey.st, [70, 84], `Draining Kiss should be a 60 BP with 2x damage on its first use`);
 
-		hp = chansey.hp;
+		st = chansey.st;
 		battle.makeChoices('move drainingkiss', 'auto');
-		assert.bounded(hp - chansey.hp, [45, 54], `Draining Kiss should be a 50 BP with 1.5x damage on its second use`);
+		assert.bounded(st - chansey.st, [45, 54], `Draining Kiss should be a 50 BP with 1.5x damage on its second use`);
 
-		hp = chansey.hp;
+		st = chansey.st;
 		battle.makeChoices('move absorb', 'auto');
-		assert.bounded(hp - chansey.hp, [42, 50], `Absorb should be a 60 BP with ~1.2x damage on its first use`);
+		assert.bounded(st - chansey.st, [42, 50], `Absorb should be a 60 BP with ~1.2x damage on its first use`);
 
-		hp = chansey.hp;
+		st = chansey.st;
 		battle.makeChoices('move absorb', 'auto');
-		assert.bounded(hp - chansey.hp, [12, 15], `Absorb should be a 20 BP with regular damage on its second use`);
+		assert.bounded(st - chansey.st, [12, 15], `Absorb should be a 20 BP with regular damage on its second use`);
 	});
 });

@@ -141,7 +141,7 @@ describe('[Gen 1] Haze', () => {
 		battle.makeChoices();
 		assert.equal(abra.status, 'psn');
 		battle.makeChoices();
-		assert.equal(abra.maxhp - abra.hp, Math.floor(abra.maxhp / 16) * 2);
+		assert.equal(abra.maxhp - abra.st, Math.floor(abra.maxhp / 16) * 2);
 	});
 
 	it('should not remove substitute from either side', () => {

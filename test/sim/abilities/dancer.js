@@ -159,13 +159,13 @@ describe('Dancer', () => {
 		assert.hurts(allyTargetingDancer, () => battle.makeChoices('move sleeptalk, move fierydance -1', 'move sleeptalk, move sleeptalk'));
 
 		const allyTargetingOpponent = battle.p1.active[1];
-		const allyHP = allyTargetingOpponent.hp;
+		const allyHP = allyTargetingOpponent.st;
 		const opponentTargetedByAlly = battle.p2.active[1];
 		const opponentNotTargetedByAlly = battle.p2.active[0];
-		const opponentHP = opponentNotTargetedByAlly.hp;
+		const opponentHP = opponentNotTargetedByAlly.st;
 		assert.hurts(opponentTargetedByAlly, () => battle.makeChoices('move sleeptalk, move fierydance 2', 'move sleeptalk, move sleeptalk'));
-		assert.equal(allyTargetingOpponent.hp, allyHP);
-		assert.equal(opponentNotTargetedByAlly.hp, opponentHP);
+		assert.equal(allyTargetingOpponent.st, allyHP);
+		assert.equal(opponentNotTargetedByAlly.st, opponentHP);
 	});
 
 	it('should adopt the target selected by copycat', () => {

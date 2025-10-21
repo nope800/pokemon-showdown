@@ -21,6 +21,6 @@ describe('Leech Seed', () => {
 		battle.makeChoices('move leech seed -2, move sleeptalk', 'auto');
 		const comfey = battle.p1.active[1];
 		battle.makeChoices('move sleeptalk, move allyswitch', 'auto');
-		assert.equal(comfey.hp, comfey.maxhp - Math.floor(comfey.maxhp / 8), 'Comfey should damage and heal itself from Leech Seed');
+		assert.equal(comfey.st, comfey.maxhp - Math.floor(comfey.maxhp / 8), 'Comfey should damage and heal itself from Leech Seed');
 	});
 });

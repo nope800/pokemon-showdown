@@ -10,7 +10,7 @@ describe('Protosynthesis', () => {
 		battle.destroy();
 	});
 
-	it(`should boost the user's highest stat except HP while Sunny Day is active`, () => {
+	it(`should boost the user's highest stat except Stamina while Sunny Day is active`, () => {
 		battle = common.createBattle([[
 			{ species: 'Scream Tail', ability: 'protosynthesis', moves: ['raindance'] },
 		], [
@@ -129,14 +129,14 @@ describe('Protosynthesis', () => {
 
 		const tail = battle.p1.active[0];
 		battle.makeChoices('move luckychant', 'move venoshock');
-		assert.bounded(tail.maxhp - tail.hp, [84, 102]);
+		assert.bounded(tail.maxhp - tail.st, [84, 102]);
 		battle.makeChoices('auto', 'switch 2');
 		battle.makeChoices('move recover', 'move venoshock');
-		assert.bounded(tail.maxhp - tail.hp, [110, 132]);
+		assert.bounded(tail.maxhp - tail.st, [110, 132]);
 		// Ensure that the boost wasn't completely removed
 		battle.makeChoices('auto', 'switch 2');
 		battle.makeChoices('move recover', 'move venoshock');
-		assert.bounded(tail.maxhp - tail.hp, [84, 102]);
+		assert.bounded(tail.maxhp - tail.st, [84, 102]);
 	});
 
 	it(`should not activate while the user is Transformed`, () => {

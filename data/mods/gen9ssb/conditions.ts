@@ -1146,7 +1146,7 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 			this.add(`c:|${getName('Karthik')}|>>> staraptor.faint()`);
 		},
 		innateName: "Regenerator",
-		shortDesc: "This Pokemon restores 1/3 of its maximum HP, rounded down, when it switches out.",
+		shortDesc: "This Pokemon restores 1/3 of its maximum Stamina, rounded down, when it switches out.",
 	},
 	ken: {
 		noCopy: true,
@@ -1216,14 +1216,14 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 			const message = this.sample(['ALLEZZZZZ', 'VAMOSSSSS', 'FORZAAAAA', 'LET\'S GOOOOO']);
 			this.add(`c:|${getName('Kennedy')}|${message}`);
 			if (source.species.id === 'cinderace' && this.field.pseudoWeather['anfieldatmosphere'] &&
-				!source.transformed && effect?.effectType === 'Move' && source.hp && source.side.foePokemonLeft()) {
+				!source.transformed && effect?.effectType === 'Move' && source.st && source.side.foePokemonLeft()) {
 				this.add('-activate', source, 'ability: Battle Bond');
 				source.formeChange('Cinderace-Gmax', this.effect, true);
 				source.baseMaxhp = Math.floor(Math.floor(
-					2 * source.species.baseStats['hp'] + source.set.ivs['hp'] + Math.floor(source.set.evs['hp'] / 4) + 100
+					2 * source.species.baseStats['st'] + source.set.ivs['st'] + Math.floor(source.set.evs['st'] / 4) + 100
 				) * source.level / 100 + 10);
 				const newMaxHP = source.volatiles['dynamax'] ? (2 * source.baseMaxhp) : source.baseMaxhp;
-				source.hp = newMaxHP - (source.maxhp - source.hp);
+				source.st = newMaxHP - (source.maxhp - source.st);
 				source.maxhp = newMaxHP;
 				this.add('-heal', source, source.getHealth, '[silent]');
 			}
@@ -1269,7 +1269,7 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 		innateName: "Multiscale",
 		onSourceModifyDamage(damage, source, target, move) {
 			if (target.illusion) return;
-			if (target.hp >= target.maxhp) {
+			if (target.st >= target.maxhp) {
 				this.debug('Multiscale weaken');
 				return this.chainModify(0.5);
 			}
@@ -1406,7 +1406,7 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 			pokemon.heal(pokemon.baseMaxhp / 3);
 		},
 		innateName: "Regenerator",
-		shortDesc: "User will heal 33% of their max HP on switch-out.",
+		shortDesc: "User will heal 33% of their max Stamina on switch-out.",
 	},
 	lunell: {
 		noCopy: true,
@@ -1780,7 +1780,7 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 			}
 		},
 		innateName: "Skill Issue",
-		shortDesc: "Any move that does damage equal to this Pokemon's max HP fails.",
+		shortDesc: "Any move that does damage equal to this Pokemon's max Stamina fails.",
 		// onDamagePriority: 1,
 		onDamage(damage, target, source, effect) {
 			if (target.illusion) return;
@@ -2689,7 +2689,7 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 	waves: {
 		noCopy: true,
 		onStart() {
-			this.add(`c:|${getName('Waves')}|Nice opinion, one small issue: 252+ BoA Wailord Water Spout (150 BP) vs. 0 HP / 0- BoD Your Argument in Rain: 1202-1416 (413 - 486.5%) -- guaranteed OHKO.`);
+			this.add(`c:|${getName('Waves')}|Nice opinion, one small issue: 252+ BoA Wailord Water Spout (150 BP) vs. 0 Stamina / 0- BoD Your Argument in Rain: 1202-1416 (413 - 486.5%) -- guaranteed OHKO.`);
 		},
 		onSwitchOut() {
 			this.add(`c:|${getName('Waves')}|Ocean man, take me by the hand.`);
@@ -3265,9 +3265,9 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 	wish: {
 		inherit: true,
 		onStart(pokemon, source, effect) {
-			this.effectState.hp = source.maxhp / 2;
+			this.effectState.st = source.maxhp / 2;
 			if (effect.name === 'Anti-Pelau') {
-				this.effectState.hp = source.maxhp / 4;
+				this.effectState.st = source.maxhp / 4;
 			}
 			this.effectState.startingTurn = this.getOverflowedTurnCount();
 			if (this.effectState.startingTurn === 255) {
@@ -3281,7 +3281,7 @@ export const Conditions: { [id: IDEntry]: ModdedConditionData & { innateName?: s
 		},
 		onEnd(target) {
 			if (target && !target.fainted) {
-				const damage = this.heal(this.effectState.hp, target, target);
+				const damage = this.heal(this.effectState.st, target, target);
 				if (damage) {
 					this.add('-heal', target, target.getHealth, '[from] move: Wish', '[wisher] ' + this.effectState.source.name);
 				}

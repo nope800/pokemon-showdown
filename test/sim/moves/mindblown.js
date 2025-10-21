@@ -10,7 +10,7 @@ describe('Mind Blown', () => {
 		battle.destroy();
 	});
 
-	it('should deal damage to the user once per use equal to half its max HP, rounded up', () => {
+	it('should deal damage to the user once per use equal to half its max Stamina, rounded up', () => {
 		battle = common.createBattle([[
 			{ species: "Blacephalon", ability: 'parentalbond', moves: ['mindblown'] },
 		], [

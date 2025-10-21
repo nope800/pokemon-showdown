@@ -11,7 +11,7 @@ describe('Roost', () => {
 		battle.destroy();
 	});
 
-	it('should fail if the user is at max HP', () => {
+	it('should fail if the user is at max Stamina', () => {
 		battle = common.createBattle();
 		battle.setPlayer('p1', { team: [{ species: "Clefable", item: 'leftovers', ability: 'unaware', moves: ['calmmind'] }] });
 		battle.setPlayer('p2', { team: [{ species: "Dragonite", item: 'laggingtail', ability: 'multiscale', moves: ['roost'] }] });
@@ -25,7 +25,7 @@ describe('Roost', () => {
 		battle.setPlayer('p2', { team: [{ species: "Dragonite", ability: 'multiscale', moves: ['roost', 'dragondance'] }] });
 		battle.makeChoices('move hiddenpowergrass', 'move dragondance');
 		battle.makeChoices('move calmmind', 'move roost');
-		assert.equal(battle.p2.active[0].hp, battle.p2.active[0].maxhp);
+		assert.equal(battle.p2.active[0].st, battle.p2.active[0].maxhp);
 	});
 
 	it('should suppress user\'s current Flying type if successful', () => {
@@ -34,19 +34,19 @@ describe('Roost', () => {
 		battle.setPlayer('p2', { team: [{ species: "Aerodactyl", item: 'focussash', ability: 'wonderguard', moves: ['roost', 'doubleedge'] }] });
 
 		battle.makeChoices('move mudslap', 'move roost');
-		assert.equal(battle.p2.active[0].hp, battle.p2.active[0].maxhp); // Immune to Mud Slap
+		assert.equal(battle.p2.active[0].st, battle.p2.active[0].maxhp); // Immune to Mud Slap
 
 		// Ensure that Aerodactyl has some damage
 		battle.makeChoices('move mudslap', 'move doubleedge');
 
 		battle.makeChoices('move mudslap', 'move roost');
-		assert.notEqual(battle.p2.active[0].hp, battle.p2.active[0].maxhp); // Hit super-effectively by Mud Slap
+		assert.notEqual(battle.p2.active[0].st, battle.p2.active[0].maxhp); // Hit super-effectively by Mud Slap
 
 		// Ensure that Aerodactyl has some damage
 		battle.makeChoices('move mudslap', 'move doubleedge');
 
 		battle.makeChoices('move hiddenpowergrass', 'move roost');
-		assert.notEqual(battle.p2.active[0].hp, battle.p2.active[0].maxhp); // Hit super-effectively by HP Grass
+		assert.notEqual(battle.p2.active[0].st, battle.p2.active[0].maxhp); // Hit super-effectively by Stamina Grass
 	});
 
 	it('should suppress Flying type yet to be acquired this turn', () => {
@@ -76,13 +76,13 @@ describe('Roost', () => {
 		battle.setPlayer('p2', { team: [{ species: "Gastly", item: 'laggingtail', ability: 'levitate', moves: ['astonish', 'trickortreat'] }] });
 		battle.makeChoices('move roost', 'move astonish');
 		battle.makeChoices('move roost', 'move astonish');
-		assert.equal(battle.p1.active[0].hp, battle.p1.active[0].maxhp); // Immune to Astonish
+		assert.equal(battle.p1.active[0].st, battle.p1.active[0].maxhp); // Immune to Astonish
 
 		// Ensure that it also replaces the Flying type with Normal even when there is an added type
 		battle.makeChoices('move roost', 'move trickortreat');
 		battle.makeChoices('move roost', 'move astonish');
 		battle.makeChoices('move roost', 'move astonish');
-		assert.equal(battle.p1.active[0].hp, battle.p1.active[0].maxhp); // Immune to Astonish
+		assert.equal(battle.p1.active[0].st, battle.p1.active[0].maxhp); // Immune to Astonish
 	});
 
 	it('should not remove Flying type during Terastallization', () => {
@@ -110,9 +110,9 @@ describe('Roost - DPP', () => {
 
 		battle.makeChoices('move roost', 'move astonish');
 		battle.makeChoices('move roost', 'move astonish');
-		assert.notEqual(battle.p1.active[0].hp, battle.p1.active[0].maxhp); // Affected by Astonish
+		assert.notEqual(battle.p1.active[0].st, battle.p1.active[0].maxhp); // Affected by Astonish
 
 		battle.makeChoices('move roost', 'move earthpower');
-		assert.notEqual(battle.p1.active[0].hp, battle.p1.active[0].maxhp); // Affected by Earth Power
+		assert.notEqual(battle.p1.active[0].st, battle.p1.active[0].maxhp); // Affected by Earth Power
 	});
 });

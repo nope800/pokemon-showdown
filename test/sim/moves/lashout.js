@@ -18,7 +18,7 @@ describe('Lash Out', () => {
 		]]);
 		battle.makeChoices();
 		const blissey = battle.p2.active[0];
-		const damage = blissey.maxhp - blissey.hp;
+		const damage = blissey.maxhp - blissey.st;
 		assert.bounded(damage, [158, 186]); // If it wasn't doubled, range would be 79-94
 	});
 
@@ -32,7 +32,7 @@ describe('Lash Out', () => {
 		]]);
 		battle.makeChoices('move lashout -2, move faketears -1', 'auto');
 		const blissey = battle.p1.active[1];
-		const damage = blissey.maxhp - blissey.hp;
+		const damage = blissey.maxhp - blissey.st;
 		assert.bounded(damage, [158, 186]); // If it wasn't doubled, range would be 79-94
 	});
 
@@ -44,7 +44,7 @@ describe('Lash Out', () => {
 		]]);
 		battle.makeChoices();
 		const blissey = battle.p2.active[0];
-		const damage = blissey.maxhp - blissey.hp;
+		const damage = blissey.maxhp - blissey.st;
 		assert.bounded(damage, [104, 123]); // If it wasn't doubled, range would be 52-62
 	});
 
@@ -59,7 +59,7 @@ describe('Lash Out', () => {
 		battle.makeChoices();
 		battle.makeChoices();
 		const blissey = battle.p2.active[0];
-		const damage = blissey.maxhp - blissey.hp;
+		const damage = blissey.maxhp - blissey.st;
 		assert.bounded(damage, [52, 62]); // If it was doubled, range would be 104-123
 	});
 
@@ -73,7 +73,7 @@ describe('Lash Out', () => {
 		]]);
 		battle.makeChoices('move lashout -2, move faketears -1', 'auto');
 		const blissey = battle.p1.active[1];
-		const damage = blissey.maxhp - blissey.hp;
+		const damage = blissey.maxhp - blissey.st;
 		assert.bounded(damage, [158, 186]); // If it wasn't doubled, range would be 79-94
 	});
 });

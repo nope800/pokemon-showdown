@@ -21,11 +21,11 @@ describe('Steely Spirit', () => {
 
 		battle.makeChoices('move ironhead 1, move ironhead 2', 'auto');
 		const wynautLeft = battle.p2.active[0];
-		let damage = wynautLeft.maxhp - wynautLeft.hp;
+		let damage = wynautLeft.maxhp - wynautLeft.st;
 		assert.bounded(damage, [172, 204]);
 
 		const wynautRight = battle.p2.active[1];
-		damage = wynautRight.maxhp - wynautRight.hp;
+		damage = wynautRight.maxhp - wynautRight.st;
 		assert.bounded(damage, [172, 204]);
 	});
 
@@ -40,11 +40,11 @@ describe('Steely Spirit', () => {
 
 		battle.makeChoices('move ironhead 1, move ironhead 2', 'auto');
 		const wynautLeft = battle.p2.active[0];
-		let damage = wynautLeft.maxhp - wynautLeft.hp;
+		let damage = wynautLeft.maxhp - wynautLeft.st;
 		assert.bounded(damage, [258, 304]);
 
 		const wynautRight = battle.p2.active[1];
-		damage = wynautRight.maxhp - wynautRight.hp;
+		damage = wynautRight.maxhp - wynautRight.st;
 		assert.bounded(damage, [258, 304]);
 	});
 });

@@ -15,13 +15,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	blaze: {
 		inherit: true,
 		onModifyAtk(toa, attacker, defender, move) {
-			if (move.type === attacker.teraType && attacker.hp <= attacker.maxhp / 3) {
+			if (move.type === attacker.teraType && attacker.st <= attacker.maxhp / 3) {
 				this.debug('Blaze boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpA(toa, attacker, defender, move) {
-			if (move.type === attacker.teraType && attacker.hp <= attacker.maxhp / 3) {
+			if (move.type === attacker.teraType && attacker.st <= attacker.maxhp / 3) {
 				this.debug('Blaze boost');
 				return this.chainModify(1.5);
 			}
@@ -170,7 +170,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	galewings: {
 		inherit: true,
 		onModifyPriority(priority, pokemon, target, move) {
-			if (move?.type === pokemon.teraType && pokemon.hp === pokemon.maxhp) return priority + 1;
+			if (move?.type === pokemon.teraType && pokemon.st === pokemon.maxhp) return priority + 1;
 		},
 	},
 	galvanize: {
@@ -292,13 +292,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	overgrow: {
 		inherit: true,
 		onModifyAtk(toa, attacker, defender, move) {
-			if (move.type === attacker.teraType && attacker.hp <= attacker.maxhp / 3) {
+			if (move.type === attacker.teraType && attacker.st <= attacker.maxhp / 3) {
 				this.debug('Overgrow boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpA(toa, attacker, defender, move) {
-			if (move.type === attacker.teraType && attacker.hp <= attacker.maxhp / 3) {
+			if (move.type === attacker.teraType && attacker.st <= attacker.maxhp / 3) {
 				this.debug('Overgrow boost');
 				return this.chainModify(1.5);
 			}
@@ -462,13 +462,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	swarm: {
 		inherit: true,
 		onModifyAtk(toa, attacker, defender, move) {
-			if (move.type === attacker.teraType && attacker.hp <= attacker.maxhp / 3) {
+			if (move.type === attacker.teraType && attacker.st <= attacker.maxhp / 3) {
 				this.debug('Swarm boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpA(toa, attacker, defender, move) {
-			if (move.type === attacker.teraType && attacker.hp <= attacker.maxhp / 3) {
+			if (move.type === attacker.teraType && attacker.st <= attacker.maxhp / 3) {
 				this.debug('Swarm boost');
 				return this.chainModify(1.5);
 			}
@@ -501,13 +501,13 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	torrent: {
 		inherit: true,
 		onModifyAtk(toa, attacker, defender, move) {
-			if (move.type === attacker.teraType && attacker.hp <= attacker.maxhp / 3) {
+			if (move.type === attacker.teraType && attacker.st <= attacker.maxhp / 3) {
 				this.debug('Torrent boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onModifySpA(toa, attacker, defender, move) {
-			if (move.type === attacker.teraType && attacker.hp <= attacker.maxhp / 3) {
+			if (move.type === attacker.teraType && attacker.st <= attacker.maxhp / 3) {
 				this.debug('Torrent boost');
 				return this.chainModify(1.5);
 			}

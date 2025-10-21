@@ -1941,9 +1941,9 @@ export class GameRoom extends BasicRoom {
 		this.active = false;
 	}
 	/**
-	 * - logNum = 0          : spectator log (no exact HP)
-	 * - logNum = 1, 2, 3, 4 : player log (exact HP for that player)
-	 * - logNum = -1         : debug log (exact HP for all players)
+	 * - logNum = 0          : spectator log (no exact Stamina)
+	 * - logNum = 1, 2, 3, 4 : player log (exact Stamina for that player)
+	 * - logNum = -1         : debug log (exact Stamina for all players)
 	 */
 	getLog(channel: -1 | 0 | 1 | 2 | 3 | 4 = 0) {
 		return this.log.getScrollback(channel);

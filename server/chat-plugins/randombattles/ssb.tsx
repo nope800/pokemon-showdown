@@ -77,10 +77,10 @@ class SSBMoveHTML extends Chat.JSX.Component<{ sigMove: Move, dex: ModdedDex }> 
 			const zEffects: { [k: string]: string } = {
 				clearnegativeboost: "Restores negative stat stages to 0",
 				crit2: "Crit ratio +2",
-				heal: "Restores HP 100%",
-				curse: "Restores HP 100% if user is Ghost type, otherwise Attack +1",
+				heal: "Restores Stamina 100%",
+				curse: "Restores Stamina 100% if user is Ghost type, otherwise Attack +1",
 				redirect: "Redirects opposing attacks to user",
-				healreplacement: "Restores replacement's HP 100%",
+				healreplacement: "Restores replacement's Stamina 100%",
 			};
 			details["Z-Effect"] = zEffects[sigMove.zMove.effect];
 		} else if (sigMove.zMove?.boost) {

@@ -7,7 +7,7 @@ export const Rulesets: import('../../../sim/dex-formats').ModdedFormatDataTable 
 			}
 			if (status.id === 'slp') {
 				for (const pokemon of target.side.pokemon) {
-					if (pokemon.hp && pokemon.status === 'slp') {
+					if (pokemon.st && pokemon.status === 'slp') {
 						if (!pokemon.statusState.source?.isAlly(pokemon)) {
 							if (source.hasAbility('ididitagain')) {
 								this.add('-ability', source, 'I Did It Again');

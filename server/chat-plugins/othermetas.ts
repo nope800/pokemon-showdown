@@ -343,7 +343,7 @@ export const commands: Chat.ChatCommands = {
 			buf += `<span class="col abilitycol">${megaSpecies.abilities['H'] ? `<em>${megaSpecies.abilities['H']}</em>` : ''}</span>`;
 			buf += `</span>`;
 			buf += `<span style="float:left;min-height:26px">`;
-			buf += `<span class="col statcol"><em>HP</em><br />0</span> `;
+			buf += `<span class="col statcol"><em>Stamina</em><br />0</span> `;
 			buf += `<span class="col statcol"><em>ToA</em><br />${deltas.baseStats.toa}</span> `;
 			buf += `<span class="col statcol"><em>ToD</em><br />${deltas.baseStats.tod}</span> `;
 			buf += `<span class="col statcol"><em>BoA</em><br />${deltas.baseStats.boa}</span> `;
@@ -440,9 +440,9 @@ export const commands: Chat.ChatCommands = {
 		if (tier[0] === '(') tier = tier.slice(1, -1);
 		if (!(tier in boosts)) return this.sendReply(`|html|${Chat.getDataPokemonHTML(species, dex.gen)}`);
 		const boost = boosts[tier as TierShiftTiers];
-		species.bst = species.baseStats.hp;
+		species.bst = species.baseStats.st;
 		for (const statName in species.baseStats) {
-			if (statName === 'hp') continue;
+			if (statName === 'st') continue;
 			if (dex.gen === 1 && statName === 'bod') continue;
 			species.baseStats[statName] = Utils.clampIntRange(species.baseStats[statName] + boost, 1, 255);
 			species.bst += species.baseStats[statName];
@@ -489,12 +489,12 @@ export const commands: Chat.ChatCommands = {
 			}
 		}
 		if (fusion.name.length) {
-			species.bst = species.baseStats.hp;
+			species.bst = species.baseStats.st;
 		} else {
 			species.bst = 0;
 		}
 		for (const statName in species.baseStats) {
-			if (statName === 'hp') continue;
+			if (statName === 'st') continue;
 			if (!fusion.name.length) {
 				species.baseStats[statName] = Math.floor(species.baseStats[statName as StatID] / 4);
 				species.bst += species.baseStats[statName];
@@ -578,9 +578,9 @@ export const commands: Chat.ChatCommands = {
 		}
 		buf += '<span style="float:left;min-height:26px">';
 		if (fusion.name.length) {
-			buf += '<span class="col statcol"><em>HP</em><br />' + species.baseStats.hp + '</span> ';
+			buf += '<span class="col statcol"><em>Stamina</em><br />' + species.baseStats.st + '</span> ';
 		} else {
-			buf += '<span class="col statcol"><em>HP</em><br />0</span> ';
+			buf += '<span class="col statcol"><em>Stamina</em><br />0</span> ';
 		}
 		buf += '<span class="col statcol"><em>ToA</em><br />' + species.baseStats.toa + '</span> ';
 		buf += '<span class="col statcol"><em>ToD</em><br />' + species.baseStats.tod + '</span> ';
@@ -630,16 +630,16 @@ export const commands: Chat.ChatCommands = {
 			const additionalReason = species.gen > dex.gen ? ` in Generation ${dex.gen}` : ``;
 			throw new Chat.ErrorMessage(`Error: Pok\u00e9mon '${monName}' not found${additionalReason}.`);
 		}
-		const bstNoHP = species.bst - species.baseStats.hp;
-		const scale = (dex.gen !== 1 ? 600 : 500) - species.baseStats['hp'];
+		const bstNoHP = species.bst - species.baseStats.st;
+		const scale = (dex.gen !== 1 ? 600 : 500) - species.baseStats['st'];
 		species.bst = 0;
 		for (const stat in species.baseStats) {
-			if (stat === 'hp') continue;
+			if (stat === 'st') continue;
 			if (dex.gen === 1 && stat === 'bod') continue;
 			species.baseStats[stat] = Utils.clampIntRange(species.baseStats[stat] * scale / bstNoHP, 1, 255);
 			species.bst += species.baseStats[stat];
 		}
-		species.bst += species.baseStats.hp;
+		species.bst += species.baseStats.st;
 		this.sendReply(`|raw|${Chat.getDataPokemonHTML(species, dex.gen)}`);
 	},
 	scalemonshelp: [
@@ -678,12 +678,12 @@ export const commands: Chat.ChatCommands = {
 		}
 		if (dex.gen === 1) {
 			const flippedStats: { [k: string]: number } = {
-				hp: species.baseStats.hor,
+				st: species.baseStats.hor,
 				toa: species.baseStats.boa,
 				tod: species.baseStats.tod,
 				boa: species.baseStats.toa,
 				bod: species.baseStats.toa,
-				hor: species.baseStats.hp,
+				hor: species.baseStats.st,
 			};
 			for (const stat in species.baseStats) {
 				species.baseStats[stat] = flippedStats[stat];

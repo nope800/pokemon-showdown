@@ -176,7 +176,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		inherit: true,
 		heal: null,
 		onHit(target) {
-			if (target.hp === target.maxhp) {
+			if (target.st === target.maxhp) {
 				return false;
 			}
 			this.heal(Math.floor(target.maxhp / 2), target, target);
@@ -186,8 +186,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		inherit: true,
 		onHit(target, source, move) {
 			// Fails if the difference between
-			// max HP and current HP is 0, 255, or 511
-			if (target.hp >= target.maxhp) return false;
+			// max Stamina and current Stamina is 0, 255, or 511
+			if (target.st >= target.maxhp) return false;
 			if (!target.setStatus('slp', source, move)) return false;
 			target.statusState.time = 2;
 			target.statusState.startTime = 2;
@@ -200,7 +200,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		heal: null,
 		onHit(target) {
 			// Fail when health is 255 or 511 less than max
-			if (target.hp === target.maxhp) {
+			if (target.st === target.maxhp) {
 				return false;
 			}
 			this.heal(Math.floor(target.maxhp / 2), target, target);
@@ -214,7 +214,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				return null;
 			}
 			// Stadium fixes the 25% = you die gag
-			if (target.hp <= target.maxhp / 4) {
+			if (target.st <= target.maxhp / 4) {
 				this.add('-fail', target, 'move: Substitute', '[weak]');
 				return null;
 			}
@@ -222,7 +222,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		condition: {
 			onStart(target) {
 				this.add('-start', target, 'Substitute');
-				this.effectState.hp = Math.floor(target.maxhp / 4);
+				this.effectState.st = Math.floor(target.maxhp / 4);
 				delete target.volatiles['partiallytrapped'];
 			},
 			onTryHitPriority: -1,
@@ -245,13 +245,13 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				}
 				if (move.volatileStatus && target === source) return;
 				let damage = this.actions.getDamage(source, target, move);
-				if (damage && damage > target.volatiles['substitute'].hp) {
-					damage = target.volatiles['substitute'].hp;
+				if (damage && damage > target.volatiles['substitute'].st) {
+					damage = target.volatiles['substitute'].st;
 				}
 				if (!damage && damage !== 0) return null;
-				target.volatiles['substitute'].hp -= damage;
+				target.volatiles['substitute'].st -= damage;
 				this.lastDamage = damage;
-				if (target.volatiles['substitute'].hp <= 0) {
+				if (target.volatiles['substitute'].st <= 0) {
 					this.debug('Substitute broke');
 					target.removeVolatile('substitute');
 					target.subFainted = true;

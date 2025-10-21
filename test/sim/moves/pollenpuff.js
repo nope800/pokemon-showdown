@@ -23,7 +23,7 @@ describe('Pollen Puff', () => {
 		const lucario = battle.p2.active[1];
 
 		// -1/2 from Super Fang, -1/4 from Sub, +1/2 from Pollen Puff, damaged Sub.
-		assert.equal(lucario.hp, lucario.maxhp - Math.floor(lucario.maxhp / 4));
+		assert.equal(lucario.st, lucario.maxhp - Math.floor(lucario.maxhp / 4));
 	});
 
 	it(`should not heal a Pokemon if they have natural type immunity to Pollen Puff`, () => {

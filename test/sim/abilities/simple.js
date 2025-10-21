@@ -55,6 +55,6 @@ describe('Simple [Gen 4]', () => {
 		]);
 		const target = battle.p1.active[0];
 		battle.makeChoices('move defensecurl', 'move earthquake');
-		assert.bounded(target.maxhp - target.hp, [102, 120]);
+		assert.bounded(target.maxhp - target.st, [102, 120]);
 	});
 });

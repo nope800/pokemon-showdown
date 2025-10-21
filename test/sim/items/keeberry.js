@@ -19,7 +19,7 @@ describe('Kee Berry', () => {
 
 		const alakazam = battle.p2.active[0];
 		battle.makeChoices();
-		const damage = alakazam.maxhp - alakazam.hp;
+		const damage = alakazam.maxhp - alakazam.st;
 		assert.bounded(damage, [28 * 2, 34 * 2]); // Otherwise range would be 47-57
 	});
 });

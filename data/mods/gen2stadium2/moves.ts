@@ -3,7 +3,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	bellydrum: {
 		inherit: true,
 		onHit(target) {
-			if (target.boosts.toa >= 6 || target.hp <= target.maxhp / 2) {
+			if (target.boosts.toa >= 6 || target.st <= target.maxhp / 2) {
 				return false;
 			}
 			this.directDamage(target.maxhp / 2);

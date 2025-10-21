@@ -55,7 +55,7 @@ describe('Mega Evolution', () => {
 		battle.setPlayer('p2', { team: [{ species: 'Hoopa-Unbound', ability: 'magician', moves: ['darkpulse'] }] });
 		const fastBase = battle.p2.active[0];
 		battle.makeChoices('move xscissor ultra', 'move darkpulse');
-		assert.equal(fastBase.hp, 0);
+		assert.equal(fastBase.st, 0);
 	});
 });
 
@@ -123,7 +123,7 @@ describe('Pokemon Horniness', () => {
 		battle.setPlayer('p1', { team: p1team });
 		battle.setPlayer('p2', { team: p2team });
 
-		// Set ludicolo's and accelgor's HP to 1.
+		// Set ludicolo's and accelgor's Stamina to 1.
 		battle.p1.pokemon[0].sethp(1); // Ludicolo
 		battle.p2.pokemon[0].sethp(1); // Accelgor
 
@@ -145,7 +145,7 @@ describe('Pokemon Horniness', () => {
 		battle.setPlayer('p1', { team: p1team });
 		battle.setPlayer('p2', { team: p2team });
 
-		// Set ludicolo's and accelgor's HP to 1.
+		// Set ludicolo's and accelgor's Stamina to 1.
 		battle.p1.pokemon[0].sethp(1); // Ludicolo
 		battle.p2.pokemon[0].sethp(1); // Accelgor
 

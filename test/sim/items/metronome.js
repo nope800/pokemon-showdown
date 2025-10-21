@@ -14,13 +14,13 @@ describe('Metronome (item)', () => {
 		battle = common.createBattle([[
 			{ species: 'wynaut', item: 'metronome', moves: ['psystrike'] },
 		], [
-			{ species: 'cleffa', evs: { hp: 252 }, ability: 'shellarmor', moves: ['sleeptalk'] },
+			{ species: 'cleffa', evs: { st: 252 }, ability: 'shellarmor', moves: ['sleeptalk'] },
 		]]);
 		battle.makeChoices();
 		const cleffa = battle.p2.active[0];
-		const hpAfterOneAttack = cleffa.hp;
+		const hpAfterOneAttack = cleffa.st;
 		battle.makeChoices();
-		const damage = hpAfterOneAttack - cleffa.hp;
+		const damage = hpAfterOneAttack - cleffa.st;
 		assert.bounded(damage, [115, 137]);
 	});
 
@@ -28,14 +28,14 @@ describe('Metronome (item)', () => {
 		battle = common.createBattle([[
 			{ species: 'wynaut', item: 'metronome', moves: ['psystrike', 'sleeptalk'] },
 		], [
-			{ species: 'cleffa', evs: { hp: 252 }, ability: 'shellarmor', moves: ['sleeptalk'] },
+			{ species: 'cleffa', evs: { st: 252 }, ability: 'shellarmor', moves: ['sleeptalk'] },
 		]]);
 		battle.makeChoices();
 		const cleffa = battle.p2.active[0];
-		const hpAfterOneAttack = cleffa.hp;
+		const hpAfterOneAttack = cleffa.st;
 		battle.makeChoices('move sleeptalk', 'auto');
 		battle.makeChoices();
-		const damage = hpAfterOneAttack - cleffa.hp;
+		const damage = hpAfterOneAttack - cleffa.st;
 		assert.bounded(damage, [96, 114]);
 	});
 
@@ -43,14 +43,14 @@ describe('Metronome (item)', () => {
 		battle = common.createBattle([[
 			{ species: 'wynaut', item: 'metronome', moves: ['psystrike'] },
 		], [
-			{ species: 'cleffa', evs: { hp: 252 }, ability: 'shellarmor', moves: ['sleeptalk', 'protect'] },
+			{ species: 'cleffa', evs: { st: 252 }, ability: 'shellarmor', moves: ['sleeptalk', 'protect'] },
 		]]);
 		battle.makeChoices();
 		const cleffa = battle.p2.active[0];
-		const hpAfterOneAttack = cleffa.hp;
+		const hpAfterOneAttack = cleffa.st;
 		battle.makeChoices('auto', 'move protect');
 		battle.makeChoices();
-		const damage = hpAfterOneAttack - cleffa.hp;
+		const damage = hpAfterOneAttack - cleffa.st;
 		assert.bounded(damage, [96, 114]);
 	});
 
@@ -63,7 +63,7 @@ describe('Metronome (item)', () => {
 		battle.makeChoices();
 		battle.makeChoices();
 		const blissey = battle.p2.active[0];
-		let damage = blissey.maxhp - blissey.hp;
+		let damage = blissey.maxhp - blissey.st;
 
 		// Metronome 1 and 2 damage rolls always overlap in range, so we can't use assert.bounded here.
 		let possibleDamageRolls = [290, 294, 296, 300, 304, 307, 311, 314, 318, 320, 324, 328, 331, 335, 338, 342];
@@ -72,7 +72,7 @@ describe('Metronome (item)', () => {
 
 		battle.makeChoices();
 		battle.makeChoices();
-		damage = blissey.maxhp - blissey.hp;
+		damage = blissey.maxhp - blissey.st;
 		possibleDamageRolls = [339, 343, 346, 350, 354, 358, 363, 367, 371, 374, 378, 382, 386, 391, 395, 399];
 		const damageWasMetronome2Boosted = possibleDamageRolls.includes(damage);
 		assert(damageWasMetronome2Boosted, `Dig should be Metronome 2 boosted`);
@@ -87,13 +87,13 @@ describe('Metronome (item)', () => {
 		]]);
 		battle.makeChoices();
 		const blissey = battle.p2.active[0];
-		let damage = blissey.maxhp - blissey.hp;
+		let damage = blissey.maxhp - blissey.st;
 		assert.bounded(damage, [67, 79], `Solar Beam should not be Metronome boosted`);
 
 		battle.makeChoices('auto', 'switch 2');
 		battle.makeChoices();
 		const newBlissey = battle.p2.active[0];
-		damage = newBlissey.maxhp - newBlissey.hp;
+		damage = newBlissey.maxhp - newBlissey.st;
 		assert.bounded(damage, [80, 95], `Solar Beam should be Metronome 1 boosted`);
 	});
 
@@ -101,20 +101,20 @@ describe('Metronome (item)', () => {
 		battle = common.createBattle([[
 			{ species: 'goomy', item: 'metronome', moves: ['copycat', 'surf'] },
 		], [
-			{ species: 'clefable', evs: { hp: 252 }, ability: 'shellarmor', moves: ['softboiled', 'surf'] },
+			{ species: 'clefable', evs: { st: 252 }, ability: 'shellarmor', moves: ['softboiled', 'surf'] },
 		]]);
 		battle.makeChoices('move copycat', 'move surf');
 		const clefable = battle.p2.active[0];
-		let damage = clefable.maxhp - clefable.hp;
+		let damage = clefable.maxhp - clefable.st;
 		assert.bounded(damage, [45, 53], `Surf should not be Metronome boosted`);
 
-		const hpAfterOneAttack = clefable.hp;
+		const hpAfterOneAttack = clefable.st;
 		battle.makeChoices('move copycat', 'move surf');
-		damage = hpAfterOneAttack - clefable.hp;
+		damage = hpAfterOneAttack - clefable.st;
 		assert.bounded(damage, [54, 64], `Surf should be Metronome 1 boosted`);
 
 		battle.makeChoices('move surf', 'move softboiled');
-		damage = clefable.maxhp - clefable.hp;
+		damage = clefable.maxhp - clefable.st;
 		assert.bounded(damage, [63, 74], `Surf should be Metronome 2 boosted`);
 	});
 });

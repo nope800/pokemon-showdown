@@ -247,7 +247,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				if (damage || damage === 0 || damage === undefined) moveResult = true;
 			}
 			if (move.selfBoost && moveResult) this.moveHit(pokemon, pokemon, move, move.selfBoost, false, true);
-			if (!pokemon.hp) {
+			if (!pokemon.st) {
 				this.battle.faint(pokemon, pokemon, move);
 			}
 
@@ -406,7 +406,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				// There is no need to recursively check the ´sleepUsable´ flag as Sleep Talk can only be used while asleep.
 				const isSleepUsable = move.sleepUsable || this.dex.moves.get(move.sourceEffect).sleepUsable;
 				let i: number;
-				for (i = 0; i < hits && target.hp && pokemon.hp; i++) {
+				for (i = 0; i < hits && target.st && pokemon.st; i++) {
 					if (pokemon.status === 'slp' && !isSleepUsable) break;
 					move.hit = i + 1;
 
@@ -462,7 +462,7 @@ export const Scripts: ModdedBattleScriptsData = {
 
 			if (target && pokemon !== target) target.gotAttacked(move, damage, pokemon);
 
-			if (move.ohko && !target.hp) this.battle.add('-ohko');
+			if (move.ohko && !target.st) this.battle.add('-ohko');
 
 			if (!damage && damage !== 0) return damage;
 

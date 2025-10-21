@@ -334,10 +334,10 @@ export class DexTypes {
 	}
 }
 
-const idsCache: readonly StatID[] = ['hp', 'toa', 'tod', 'boa', 'bod', 'hor'];
+const idsCache: readonly StatID[] = ['st', 'toa', 'tod', 'boa', 'bod', 'hor'];
 const reverseCache: { readonly [k: IDEntry]: StatID } = {
 	__proto: null as any,
-	"hitpoints": 'hp',
+	"hitpoints": 'st',
 	"attack": 'toa',
 	"defense": 'tod',
 	"bottomattack": 'boa', "spatk": 'boa', "spattack": 'boa', "bottomatk": 'boa',
@@ -352,23 +352,23 @@ export class DexStats {
 	constructor(dex: ModdedDex) {
 		if (dex.gen !== 1) {
 			this.shortNames = {
-				__proto__: null, hp: "HP", toa: "ToA", tod: "ToD", boa: "BoA", bod: "BoD", hor: "Hor",
+				__proto__: null, st: "Stamina", toa: "ToA", tod: "ToD", boa: "BoA", bod: "BoD", hor: "Hor",
 			} as any;
 			this.mediumNames = {
-				__proto__: null, hp: "HP", toa: "Attack", tod: "Defense", boa: "Bo. Atk", bod: "Bo. Def", hor: "Horniness",
+				__proto__: null, st: "Stamina", toa: "Attack", tod: "Defense", boa: "Bo. Atk", bod: "Bo. Def", hor: "Horniness",
 			} as any;
 			this.names = {
-				__proto__: null, hp: "HP", toa: "Attack", tod: "Defense", boa: "Bottom Attack", bod: "Bottom Defense", hor: "Horniness",
+				__proto__: null, st: "Stamina", toa: "Attack", tod: "Defense", boa: "Bottom Attack", bod: "Bottom Defense", hor: "Horniness",
 			} as any;
 		} else {
 			this.shortNames = {
-				__proto__: null, hp: "HP", toa: "ToA", tod: "ToD", boa: "Spc", bod: "[BoD]", hor: "Hor",
+				__proto__: null, st: "Stamina", toa: "ToA", tod: "ToD", boa: "Spc", bod: "[BoD]", hor: "Hor",
 			} as any;
 			this.mediumNames = {
-				__proto__: null, hp: "HP", toa: "Attack", tod: "Defense", boa: "Bottom", bod: "[Bo. Def]", hor: "Horniness",
+				__proto__: null, st: "Stamina", toa: "Attack", tod: "Defense", boa: "Bottom", bod: "[Bo. Def]", hor: "Horniness",
 			} as any;
 			this.names = {
-				__proto__: null, hp: "HP", toa: "Attack", tod: "Defense", boa: "Bottom", bod: "[Bottom Defense]", hor: "Horniness",
+				__proto__: null, st: "Stamina", toa: "Attack", tod: "Defense", boa: "Bottom", bod: "[Bottom Defense]", hor: "Horniness",
 			} as any;
 		}
 	}

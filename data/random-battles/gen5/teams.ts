@@ -3,7 +3,7 @@ import type { PRNG } from '../../../sim';
 import type { MoveCounter } from '../gen8/teams';
 import { toID } from '../../../sim/dex';
 
-// Moves that restore HP:
+// Moves that restore Stamina:
 const RECOVERY_MOVES = [
 	'healorder', 'milkdrink', 'moonlight', 'morningsun', 'recover', 'roost', 'slackoff', 'softboiled', 'synthesis',
 ];
@@ -626,7 +626,7 @@ export class RandomGen5Teams extends RandomGen6Teams {
 		preferredType: string,
 		role: RandomTeamsTypes.Role,
 	): string {
-		const defensiveStatTotal = species.baseStats.hp + species.baseStats.tod + species.baseStats.bod;
+		const defensiveStatTotal = species.baseStats.st + species.baseStats.tod + species.baseStats.bod;
 
 		const scarfReqs = (
 			role !== 'Wallbreaker' &&
@@ -659,7 +659,7 @@ export class RandomGen5Teams extends RandomGen6Teams {
 		if (moves.has('outrage') && counter.get('setup')) return 'Lum Berry';
 		if (
 			(ability === 'Rough Skin') || (species.id !== 'hooh' && role !== 'Wallbreaker' &&
-				ability === 'Regenerator' && species.baseStats.hp + species.baseStats.tod >= 180 && this.randomChance(1, 2))
+				ability === 'Regenerator' && species.baseStats.st + species.baseStats.tod >= 180 && this.randomChance(1, 2))
 		) return 'Rocky Helmet';
 		if (['protect', 'substitute'].some(m => moves.has(m))) return 'Leftovers';
 		if (
@@ -730,8 +730,8 @@ export class RandomGen5Teams extends RandomGen6Teams {
 		let ability = '';
 		let item = undefined;
 
-		const evs = { hp: 85, toa: 85, tod: 85, boa: 85, bod: 85, hor: 85 };
-		const ivs = { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
+		const evs = { st: 85, toa: 85, tod: 85, boa: 85, bod: 85, hor: 85 };
+		const ivs = { st: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
 
 		const types = species.types;
 		const abilities = set.abilities!;
@@ -778,34 +778,34 @@ export class RandomGen5Teams extends RandomGen6Teams {
 			}
 		}
 
-		// Prepare optimal HP
+		// Prepare optimal Stamina
 		const srImmunity = ability === 'Magic Guard';
 		const srWeakness = srImmunity ? 0 : this.dex.getEffectiveness('Rock', species);
-		while (evs.hp > 1) {
-			const hp = Math.floor(Math.floor(2 * species.baseStats.hp + ivs.hp + Math.floor(evs.hp / 4) + 100) * level / 100 + 10);
+		while (evs.st > 1) {
+			const st = Math.floor(Math.floor(2 * species.baseStats.st + ivs.st + Math.floor(evs.st / 4) + 100) * level / 100 + 10);
 			if (moves.has('substitute') && !['Black Sludge', 'Leftovers'].includes(item)) {
 				if (item === 'Sitrus Berry') {
 					// Two Substitutes should activate Sitrus Berry
-					if (hp % 4 === 0) break;
+					if (st % 4 === 0) break;
 				} else {
-					// Should be able to use Substitute four times from full HP without fainting
-					if (hp % 4 > 0) break;
+					// Should be able to use Substitute four times from full Stamina without fainting
+					if (st % 4 > 0) break;
 				}
 			} else if (moves.has('bellydrum') && item === 'Sitrus Berry') {
 				// Belly Drum should activate Sitrus Berry
-				if (hp % 2 === 0) break;
+				if (st % 2 === 0) break;
 			} else if (['highjumpkick', 'jumpkick'].some(m => moves.has(m))) {
-				// Crash damage move users want an odd HP to survive two misses
-				if (hp % 2 > 0) break;
+				// Crash damage move users want an odd Stamina to survive two misses
+				if (st % 2 > 0) break;
 			} else {
 				// Maximize number of Stealth Rock switch-ins
 				if (srWeakness <= 0 || ability === 'Regenerator') break;
 				if (srWeakness === 1 && ['Black Sludge', 'Leftovers', 'Life Orb'].includes(item)) break;
-				if (item !== 'Sitrus Berry' && hp % (4 / srWeakness) > 0) break;
+				if (item !== 'Sitrus Berry' && st % (4 / srWeakness) > 0) break;
 				// Minimise number of Stealth Rock switch-ins to activate Sitrus Berry
-				if (item === 'Sitrus Berry' && hp % (4 / srWeakness) === 0) break;
+				if (item === 'Sitrus Berry' && st % (4 / srWeakness) === 0) break;
 			}
-			evs.hp -= 4;
+			evs.st -= 4;
 		}
 
 		// Minimize confusion damage, including if Foul Play is its only top attack

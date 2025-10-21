@@ -86,6 +86,6 @@ describe('Cud Chew', () => {
 		const tauros = battle.p1.active[0];
 		battle.makeChoices();
 		battle.makeChoices();
-		assert(tauros.hp > tauros.maxhp * 3 / 4, 'Tauros should have eaten its berry twice');
+		assert(tauros.st > tauros.maxhp * 3 / 4, 'Tauros should have eaten its berry twice');
 	});
 });

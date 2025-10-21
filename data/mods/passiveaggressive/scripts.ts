@@ -37,7 +37,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			for (hit = 1; hit <= targetHits; hit++) {
 				if (damage.includes(false)) break;
 				if (hit > 1 && pokemon.status === 'slp' && (!isSleepUsable || this.battle.gen === 4)) break;
-				if (targets.every(target => !target?.hp)) break;
+				if (targets.every(target => !target?.st)) break;
 				move.hit = hit;
 				if (move.smartTarget && targets.length > 1) {
 					targetsCopy = [targets[hit - 1]];
@@ -111,16 +111,16 @@ export const Scripts: ModdedBattleScriptsData = {
 					move.totalDamage += damage[i];
 				}
 				if (move.mindBlownRecoil) {
-					const hpBeforeRecoil = pokemon.hp;
+					const hpBeforeRecoil = pokemon.st;
 					const calc = calculate(this.battle, pokemon, pokemon, move.id);
 					this.battle.damage(Math.round(calc * pokemon.maxhp / 2), pokemon, pokemon, this.dex.conditions.get(move.id), true);
 					move.mindBlownRecoil = false;
-					if (pokemon.hp <= pokemon.maxhp / 2 && hpBeforeRecoil > pokemon.maxhp / 2) {
+					if (pokemon.st <= pokemon.maxhp / 2 && hpBeforeRecoil > pokemon.maxhp / 2) {
 						this.battle.runEvent('EmergencyExit', pokemon, pokemon);
 					}
 				}
 				this.battle.eachEvent('Update');
-				if (!pokemon.hp && targets.length === 1) {
+				if (!pokemon.st && targets.length === 1) {
 					hit++; // report the correct number of hits for multihit moves
 					break;
 				}
@@ -128,22 +128,22 @@ export const Scripts: ModdedBattleScriptsData = {
 			// hit is 1 higher than the actual hit count
 			if (hit === 1) return damage.fill(false);
 			if (nullDamage) damage.fill(false);
-			this.battle.faintMessages(false, false, !pokemon.hp);
+			this.battle.faintMessages(false, false, !pokemon.st);
 			if (move.multihit && typeof move.smartTarget !== 'boolean') {
 				this.battle.add('-hitcount', targets[0], hit - 1);
 			}
 
 			if ((move.recoil || move.id === 'chloroblast') && move.totalDamage) {
-				const hpBeforeRecoil = pokemon.hp;
+				const hpBeforeRecoil = pokemon.st;
 				const recoilDamage = this.calcRecoilDamage(move.totalDamage, move, pokemon);
 				if (recoilDamage !== 1.1) this.battle.damage(recoilDamage, pokemon, pokemon, 'recoil');
-				if (pokemon.hp <= pokemon.maxhp / 2 && hpBeforeRecoil > pokemon.maxhp / 2) {
+				if (pokemon.st <= pokemon.maxhp / 2 && hpBeforeRecoil > pokemon.maxhp / 2) {
 					this.battle.runEvent('EmergencyExit', pokemon, pokemon);
 				}
 			}
 
 			if (move.struggleRecoil) {
-				const hpBeforeRecoil = pokemon.hp;
+				const hpBeforeRecoil = pokemon.st;
 				let recoilDamage;
 				if (this.dex.gen >= 5) {
 					recoilDamage = this.battle.clampIntRange(Math.round(pokemon.baseMaxhp / 4), 1);
@@ -151,7 +151,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					recoilDamage = this.battle.clampIntRange(this.battle.trunc(pokemon.maxhp / 4), 1);
 				}
 				this.battle.directDamage(recoilDamage, pokemon, pokemon, { id: 'strugglerecoil' } as Condition);
-				if (pokemon.hp <= pokemon.maxhp / 2 && hpBeforeRecoil > pokemon.maxhp / 2) {
+				if (pokemon.st <= pokemon.maxhp / 2 && hpBeforeRecoil > pokemon.maxhp / 2) {
 					this.battle.runEvent('EmergencyExit', pokemon, pokemon);
 				}
 			}
@@ -170,7 +170,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				}
 			}
 
-			if (move.ohko && !targets[0].hp) this.battle.add('-ohko');
+			if (move.ohko && !targets[0].st) this.battle.add('-ohko');
 
 			if (!damage.some(val => !!val || val === 0)) return damage;
 
@@ -183,9 +183,9 @@ export const Scripts: ModdedBattleScriptsData = {
 					// There are no multihit spread moves, so it's safe to use move.totalDamage for multihit moves
 					// The previous check was for `move.multihit`, but that fails for Dragon Darts
 					const curDamage = targets.length === 1 ? move.totalDamage : d;
-					if (typeof curDamage === 'number' && targets[i].hp) {
+					if (typeof curDamage === 'number' && targets[i].st) {
 						const targetHPBeforeDamage = (targets[i].hurtThisTurn || 0) + curDamage;
-						if (targets[i].hp <= targets[i].maxhp / 2 && targetHPBeforeDamage > targets[i].maxhp / 2) {
+						if (targets[i].st <= targets[i].maxhp / 2 && targetHPBeforeDamage > targets[i].maxhp / 2) {
 							this.battle.runEvent('EmergencyExit', targets[i], pokemon);
 						}
 					}

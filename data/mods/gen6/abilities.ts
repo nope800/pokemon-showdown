@@ -9,7 +9,7 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 	aftermath: {
 		inherit: true,
 		onDamagingHit(damage, target, source, move) {
-			if (move.flags['contact'] && !target.hp) {
+			if (move.flags['contact'] && !target.st) {
 				this.damage(source.baseMaxhp / 4, source, target, null, true);
 			}
 		},

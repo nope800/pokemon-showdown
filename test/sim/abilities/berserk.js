@@ -12,7 +12,7 @@ describe('Berserk', () => {
 
 	it(`should activate prior to healing from Sitrus Berry`, () => {
 		battle = common.createBattle([[
-			{ species: 'drampa', item: 'sitrusberry', ability: 'berserk', evs: { hp: 4 }, moves: ['sleeptalk'] },
+			{ species: 'drampa', item: 'sitrusberry', ability: 'berserk', evs: { st: 4 }, moves: ['sleeptalk'] },
 		], [
 			{ species: 'wynaut', ability: 'compoundeyes', moves: ['superfang'] },
 		]]);
@@ -20,12 +20,12 @@ describe('Berserk', () => {
 		battle.makeChoices();
 		const drampa = battle.p1.active[0];
 		assert.statStage(drampa, 'boa', 1);
-		assert.equal(drampa.hp, Math.floor(drampa.maxhp / 2) + Math.floor(drampa.maxhp / 4));
+		assert.equal(drampa.st, Math.floor(drampa.maxhp / 2) + Math.floor(drampa.maxhp / 4));
 	});
 
 	it(`should not activate prior to healing from Sitrus Berry after a multi-hit move`, () => {
 		battle = common.createBattle([[
-			{ species: 'drampa', item: 'sitrusberry', ability: 'berserk', evs: { hp: 4 }, moves: ['sleeptalk'] },
+			{ species: 'drampa', item: 'sitrusberry', ability: 'berserk', evs: { st: 4 }, moves: ['sleeptalk'] },
 		], [
 			{ species: 'wynaut', ability: 'parentalbond', moves: ['seismictoss'] },
 		]]);
@@ -33,12 +33,12 @@ describe('Berserk', () => {
 		battle.makeChoices();
 		const drampa = battle.p1.active[0];
 		assert.statStage(drampa, 'boa', 0);
-		assert.equal(drampa.hp, drampa.maxhp - 200 + Math.floor(drampa.maxhp / 4));
+		assert.equal(drampa.st, drampa.maxhp - 200 + Math.floor(drampa.maxhp / 4));
 	});
 
-	it(`should not activate below 50% HP if it was damaged by Dragon Darts`, () => {
+	it(`should not activate below 50% Stamina if it was damaged by Dragon Darts`, () => {
 		battle = common.createBattle({ gameType: 'doubles' }, [[
-			{ species: 'drampa', ability: 'berserk', evs: { hp: 4 }, moves: ['sleeptalk'] },
+			{ species: 'drampa', ability: 'berserk', evs: { st: 4 }, moves: ['sleeptalk'] },
 			{ species: 'togedemaru', ability: 'compoundeyes', moves: ['superfang'] },
 		], [
 			{ species: 'wynaut', moves: ['dragondarts'] },

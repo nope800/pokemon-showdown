@@ -2,7 +2,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 	aguavberry: {
 		inherit: true,
 		onUpdate(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 2) {
+			if (pokemon.st <= pokemon.maxhp / 2) {
 				pokemon.eatItem();
 			}
 		},
@@ -32,7 +32,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 	figyberry: {
 		inherit: true,
 		onUpdate(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 2) {
+			if (pokemon.st <= pokemon.maxhp / 2) {
 				pokemon.eatItem();
 			}
 		},
@@ -50,7 +50,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 	iapapaberry: {
 		inherit: true,
 		onUpdate(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 2) {
+			if (pokemon.st <= pokemon.maxhp / 2) {
 				pokemon.eatItem();
 			}
 		},
@@ -98,7 +98,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 	magoberry: {
 		inherit: true,
 		onUpdate(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 2) {
+			if (pokemon.st <= pokemon.maxhp / 2) {
 				pokemon.eatItem();
 			}
 		},
@@ -190,7 +190,7 @@ export const Items: import('../../../sim/dex-items').ModdedItemDataTable = {
 	wikiberry: {
 		inherit: true,
 		onUpdate(pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 2) {
+			if (pokemon.st <= pokemon.maxhp / 2) {
 				pokemon.eatItem();
 			}
 		},

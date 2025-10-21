@@ -5,7 +5,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		secondary: null,
 		// Ancient Power is top and boosts on-kill
 		onAfterMoveSecondarySelf(pokemon, target, move) {
-			if (!target || target.fainted || target.hp <= 0) {
+			if (!target || target.fainted || target.st <= 0) {
 				this.boost({ toa: 1, tod: 1, boa: 1, bod: 1, hor: 1 }, pokemon, pokemon, move);
 			}
 		},
@@ -116,8 +116,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				}
 			},
 		},
-		shortDesc: "2x Water power, 0.5x Fire damage, heal 1/16 HP per turn.",
-		desc: "User recovers 1/16 max HP per turn. While this is active, this Pokemon's Water power is 2x and Fire power against it is halved.",
+		shortDesc: "2x Water power, 0.5x Fire damage, heal 1/16 Stamina per turn.",
+		desc: "User recovers 1/16 max Stamina per turn. While this is active, this Pokemon's Water power is 2x and Fire power against it is halved.",
 	},
 
 	ragingbull: {
@@ -680,7 +680,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			this.add('-anim', source, 'All-Out Pummeling', target);
 		},
 		onAfterMoveSecondarySelf(pokemon, target, move) {
-			if (!target || target.fainted || target.hp <= 0) {
+			if (!target || target.fainted || target.st <= 0) {
 				this.boost({ toa: 1 }, pokemon, pokemon, move);
 			} else {
 				this.boost({ toa: -1 }, pokemon, pokemon, move);
@@ -911,7 +911,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		onHit(target, source, move) {
 			if (source.species.id === 'jolteon' || source.species.id === 'vaporeon') {
 				this.add('-message', `Eevee uses its Fire Stone!`);
-				const currentHP = source.hp / source.maxhp;
+				const currentHP = source.st / source.maxhp;
 				source.formeChange('Flareon', null, true);
 				source.sethp(source.maxhp * currentHP);
 				this.add('-sethp', source, source.getHealth, '[from] move: Flip Turn', '[silent]');
@@ -950,7 +950,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		onHit(target, source, move) {
 			if (source.species.id === 'flareon' || source.species.id === 'vaporeon') {
 				this.add('-message', `Eevee uses its Thunder Stone!`);
-				const currentHP = source.hp / source.maxhp;
+				const currentHP = source.st / source.maxhp;
 				source.formeChange('Jolteon', null, true);
 				source.sethp(source.maxhp * currentHP);
 				this.add('-sethp', source, source.getHealth, '[from] move: Flip Turn', '[silent]');
@@ -981,7 +981,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		onHit(target, source, move) {
 			if (source.species.id === 'jolteon' || source.species.id === 'flareon') {
 				this.add('-message', `Eevee uses its Water Stone!`);
-				const currentHP = source.hp / source.maxhp;
+				const currentHP = source.st / source.maxhp;
 				source.formeChange('Vaporeon', null, true);
 				source.sethp(source.maxhp * currentHP);
 				this.add('-sethp', source, source.getHealth, '[from] move: Flip Turn', '[silent]');
@@ -1048,8 +1048,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			}
 		},
 		target: "self",
-		desc: "Heals for 25% HP, or 50% if foe is statused.",
-		shortDesc: "Heals for 25% HP, or 50% if foe is statused.",
+		desc: "Heals for 25% Stamina, or 50% if foe is statused.",
+		shortDesc: "Heals for 25% Stamina, or 50% if foe is statused.",
 	},
 	saltcurse: {
 		num: -1006,
@@ -1280,8 +1280,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		type: "Normal",
 		zMove: { effect: 'clearnegativeboost' },
 		contestType: "Cute",
-		shortDesc: "User switches. Next Pokemon heals 1/3 HP.",
-		desc: "User switches. Next Pokemon heals 1/3 HP.",
+		shortDesc: "User switches. Next Pokemon heals 1/3 Stamina.",
+		desc: "User switches. Next Pokemon heals 1/3 Stamina.",
 	},
 	technoblast: {
 		inherit: true,
@@ -1311,7 +1311,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				this.add('-fail', source, 'move: Crowverload');
 				return this.NOT_FAIL;
 			}
-			if (source.hp <= source.maxhp / 4) {
+			if (source.st <= source.maxhp / 4) {
 				this.add('-fail', source, 'move: Substitute', '[weak]');
 				return this.NOT_FAIL;
 			}
@@ -1534,7 +1534,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			},
 			onTryHeal(damage, target, source, effect) {
 				if (effect && (effect.id === 'zpower' || (effect as Move).isZ)) return damage;
-				if (source && target !== source && target.hp !== target.maxhp && effect.name === "Pollen Puff") {
+				if (source && target !== source && target.st !== target.maxhp && effect.name === "Pollen Puff") {
 					this.attrLastMove('[still]');
 					// FIXME: Wrong error message, correct one not supported yet
 					this.add('cant', source, 'move: Electric Terrain', effect);

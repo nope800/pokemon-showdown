@@ -705,14 +705,14 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	stoneaxe: {
 		inherit: true,
 		onAfterHit(target, source, move) {
-			if (!move.hasSheerForce && source.hp) {
+			if (!move.hasSheerForce && source.st) {
 				for (const side of source.side.foeSidesWithConditions()) {
 					side.addSideCondition('stealthrock', source);
 				}
 			}
 		},
 		onAfterSubDamage(damage, target, source, move) {
-			if (!move.hasSheerForce && source.hp) {
+			if (!move.hasSheerForce && source.st) {
 				for (const side of source.side.foeSidesWithConditions()) {
 					side.addSideCondition('stealthrock', source);
 				}

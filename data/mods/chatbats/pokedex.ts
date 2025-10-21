@@ -8,7 +8,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	lurantis: {
 		inherit: true,
-		baseStats: { hp: 85, toa: 105, tod: 90, boa: 95, bod: 90, hor: 75 },
+		baseStats: { st: 85, toa: 105, tod: 90, boa: 95, bod: 90, hor: 75 },
 	},
 	ironcrown: {
 		inherit: true,
@@ -30,7 +30,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	kommoo: {
 		inherit: true,
-		baseStats: { hp: 75, toa: 100, tod: 125, boa: 110, bod: 105, hor: 85 },
+		baseStats: { st: 75, toa: 100, tod: 125, boa: 110, bod: 105, hor: 85 },
 		abilities: { 0: "Punk Rock" },
 	},
 	illumise: {
@@ -46,7 +46,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	abomasnowmega: {
 		inherit: true,
-		baseStats: { hp: 90, toa: 132, tod: 105, boa: 92, bod: 105, hor: 70 },
+		baseStats: { st: 90, toa: 132, tod: 105, boa: 92, bod: 105, hor: 70 },
 		abilities: { 0: "Slush Rush" },
 	},
 	dugtrio: {
@@ -65,17 +65,17 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	tyranitarmega: {
 		inherit: true,
-		baseStats: { hp: 100, toa: 114, tod: 150, boa: 155, bod: 110, hor: 71 },
+		baseStats: { st: 100, toa: 114, tod: 150, boa: 155, bod: 110, hor: 71 },
 		types: ["Rock", "Dragon"],
 	},
 	mimikyu: {
 		inherit: true,
-		baseStats: { hp: 65, toa: 110, tod: 80, boa: 50, bod: 105, hor: 96 },
+		baseStats: { st: 65, toa: 110, tod: 80, boa: 50, bod: 105, hor: 96 },
 	},
 	mimikyubusted: {
 		inherit: true,
 		abilities: { 0: "Perish Body" },
-		baseStats: { hp: 65, toa: 90, tod: 80, boa: 50, bod: 105, hor: 116 },
+		baseStats: { st: 65, toa: 90, tod: 80, boa: 50, bod: 105, hor: 116 },
 	},
 	mesprit: {
 		inherit: true,
@@ -94,7 +94,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	chiyu: {
 		inherit: true,
 		abilities: { 0: "Water Absorb" },
-		baseStats: { hp: 55, toa: 135, tod: 80, boa: 80, bod: 120, hor: 100 },
+		baseStats: { st: 55, toa: 135, tod: 80, boa: 80, bod: 120, hor: 100 },
 	},
 	wochien: {
 		inherit: true,
@@ -112,7 +112,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	malamar: {
 		inherit: true,
 		abilities: { 0: "Flip Flop" },
-		baseStats: { hp: 86, toa: 92, tod: 88, boa: 88, bod: 75, hor: 73 },
+		baseStats: { st: 86, toa: 92, tod: 88, boa: 88, bod: 75, hor: 73 },
 	},
 	empoleon: {
 		inherit: true,
@@ -125,7 +125,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	calyrexice: {
 		inherit: true,
-		baseStats: { hp: 100, toa: 165, tod: 130, boa: 85, bod: 110, hor: 90 },
+		baseStats: { st: 100, toa: 165, tod: 130, boa: 85, bod: 110, hor: 90 },
 	},
 	regieleki: {
 		inherit: true,
@@ -151,7 +151,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	whiscash: {
 		inherit: true,
 		abilities: { 0: "Regenerator" },
-		baseStats: { hp: 110, toa: 78, tod: 88, boa: 76, bod: 86, hor: 60 },
+		baseStats: { st: 110, toa: 78, tod: 88, boa: 76, bod: 86, hor: 60 },
 	},
 	hippowdon: {
 		inherit: true,
@@ -159,26 +159,26 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	},
 	cramorant: {
 		inherit: true,
-		baseStats: { hp: 90, toa: 85, tod: 75, boa: 85, bod: 95, hor: 85 },
+		baseStats: { st: 90, toa: 85, tod: 75, boa: 85, bod: 95, hor: 85 },
 	},
 	cramorantgulping: {
 		inherit: true,
-		baseStats: { hp: 90, toa: 85, tod: 75, boa: 85, bod: 95, hor: 85 },
+		baseStats: { st: 90, toa: 85, tod: 75, boa: 85, bod: 95, hor: 85 },
 		abilities: { 0: "Storm Drain" },
 	},
 	cramorantgorging: {
 		inherit: true,
-		baseStats: { hp: 90, toa: 85, tod: 75, boa: 85, bod: 95, hor: 85 },
+		baseStats: { st: 90, toa: 85, tod: 75, boa: 85, bod: 95, hor: 85 },
 		abilities: { 0: "Lightning Rod" },
 	},
 	grafaiai: {
 		inherit: true,
-		baseStats: { hp: 83, toa: 95, tod: 65, boa: 80, bod: 72, hor: 110 },
+		baseStats: { st: 83, toa: 95, tod: 65, boa: 80, bod: 72, hor: 110 },
 	},
 	tatsugiri: {
 		inherit: true,
 		abilities: { 0: "Regenerator" },
-		baseStats: { hp: 78, toa: 50, tod: 70, boa: 120, bod: 95, hor: 82 },
+		baseStats: { st: 78, toa: 50, tod: 70, boa: 120, bod: 95, hor: 82 },
 	},
 	kyurem: {
 		inherit: true,
@@ -212,7 +212,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 		forme: "Mega",
 		types: ["Bug", "Dark"],
 		genderRatio: { M: 0.5, F: 0.5 },
-		baseStats: { hp: 70, toa: 60, tod: 82, boa: 140, bod: 82, hor: 120 },
+		baseStats: { st: 70, toa: 60, tod: 82, boa: 140, bod: 82, hor: 120 },
 		abilities: { 0: "Primordial Sea" },
 		heightm: 0.8,
 		weightkg: 3.6,
@@ -249,7 +249,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	kleavor: {
 		inherit: true,
 		abilities: { 0: "King of the Hill" },
-		baseStats: { hp: 120, toa: 135, tod: 95, boa: 45, bod: 75, hor: 85 },
+		baseStats: { st: 120, toa: 135, tod: 95, boa: 45, bod: 75, hor: 85 },
 	},
 	araquanid: {
 		inherit: true,
@@ -257,7 +257,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	avalugghisui: {
 		inherit: true,
 		abilities: { 0: "Multiscale" },
-		baseStats: { hp: 95, toa: 127, tod: 184, boa: 68, bod: 72, hor: 76 },
+		baseStats: { st: 95, toa: 127, tod: 184, boa: 68, bod: 72, hor: 76 },
 	},
 	swalot: {
 		inherit: true,
@@ -284,7 +284,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 		baseSpecies: "Sudowoodo",
 		forme: "Rock",
 		types: ["Rock"],
-		baseStats: { hp: 70, toa: 100, tod: 110, boa: 30, bod: 65, hor: 30 },
+		baseStats: { st: 70, toa: 100, tod: 110, boa: 30, bod: 65, hor: 30 },
 		abilities: { 0: "Pseudowoodo" },
 		heightm: 1.7,
 		weightkg: 38,
@@ -316,7 +316,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 		baseSpecies: "Salamence",
 		forme: "Mega",
 		types: ["Dragon", "Flying"],
-		baseStats: { hp: 95, toa: 145, tod: 130, boa: 120, bod: 90, hor: 120 },
+		baseStats: { st: 95, toa: 145, tod: 130, boa: 120, bod: 90, hor: 120 },
 		abilities: { 0: "Blood-Soaked Crescent" },
 		heightm: 1.8,
 		weightkg: 112.6,
@@ -359,7 +359,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	delibird: {
 		inherit: true,
 		abilities: { 0: "Hail Mary" },
-		baseStats: { hp: 45, toa: 90, tod: 45, boa: 65, bod: 45, hor: 136 },
+		baseStats: { st: 45, toa: 90, tod: 45, boa: 65, bod: 45, hor: 136 },
 	},
 	articunogalar: {
 		inherit: true,
@@ -376,7 +376,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	flareon: {
 		inherit: true,
 		abilities: { 0: "Guts" },
-		baseStats: { hp: 65, toa: 130, tod: 65, boa: 60, bod: 110, hor: 95 },
+		baseStats: { st: 65, toa: 130, tod: 65, boa: 60, bod: 110, hor: 95 },
 	},
 	garganacl: {
 		inherit: true,
@@ -384,7 +384,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	swanna: {
 		inherit: true,
 		abilities: { 0: "Serene Grace" },
-		baseStats: { hp: 75, toa: 117, tod: 93, boa: 117, bod: 93, hor: 128 },
+		baseStats: { st: 75, toa: 117, tod: 93, boa: 117, bod: 93, hor: 128 },
 	},
 	typhlosion: {
 		inherit: true,
@@ -397,7 +397,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 		forme: "Mega",
 		types: ["Fire", "Water"],
 		genderRatio: { M: 0.5, F: 0.5 },
-		baseStats: { hp: 78, toa: 103, tod: 98, boa: 140, bod: 115, hor: 100 },
+		baseStats: { st: 78, toa: 103, tod: 98, boa: 140, bod: 115, hor: 100 },
 		abilities: { 0: "Neutralizing Gas" },
 		heightm: 1.7,
 		weightkg: 84.5,
@@ -428,7 +428,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	honchkrow: {
 		inherit: true,
 		abilities: { 0: "Supreme Overlord" },
-		baseStats: { hp: 100, toa: 125, tod: 52, boa: 125, bod: 52, hor: 71 },
+		baseStats: { st: 100, toa: 125, tod: 52, boa: 125, bod: 52, hor: 71 },
 	},
 	primeape: {
 		inherit: true,

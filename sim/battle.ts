@@ -1436,10 +1436,10 @@ export class Battle {
 		}
 
 		const hpPercentage = tiedSides.map(side => (
-			side.pokemon.map(pokemon => pokemon.hp / pokemon.maxhp).reduce((a, b) => a + b) * 100 / 6
+			side.pokemon.map(pokemon => pokemon.st / pokemon.maxhp).reduce((a, b) => a + b) * 100 / 6
 		));
 		this.add('-message', tiedSides.map((side, i) => (
-			`${side.name}: ${Math.round(hpPercentage[i])}% total HP left`
+			`${side.name}: ${Math.round(hpPercentage[i])}% total Stamina left`
 		)).join('; '));
 		const maxPercentage = Math.max(...hpPercentage);
 		tiedSides = tiedSides.filter((side, i) => hpPercentage[i] === maxPercentage);
@@ -1448,10 +1448,10 @@ export class Battle {
 		}
 
 		const hpTotal = tiedSides.map(side => (
-			side.pokemon.map(pokemon => pokemon.hp).reduce((a, b) => a + b)
+			side.pokemon.map(pokemon => pokemon.st).reduce((a, b) => a + b)
 		));
 		this.add('-message', tiedSides.map((side, i) => (
-			`${side.name}: ${Math.round(hpTotal[i])} total HP left`
+			`${side.name}: ${Math.round(hpTotal[i])} total Stamina left`
 		)).join('; '));
 		const maxTotal = Math.max(...hpTotal);
 		tiedSides = tiedSides.filter((side, i) => hpTotal[i] === maxTotal);
@@ -1597,19 +1597,19 @@ export class Battle {
 			for (const pokemon of this.getAllActive()) {
 				if (pokemon.volatiles['partialtrappinglock']) {
 					const target = pokemon.volatiles['partialtrappinglock'].locked;
-					if (target.hp <= 0 || !target.volatiles['partiallytrapped']) {
+					if (target.st <= 0 || !target.volatiles['partiallytrapped']) {
 						delete pokemon.volatiles['partialtrappinglock'];
 					}
 				}
 				if (pokemon.volatiles['partiallytrapped']) {
 					const source = pokemon.volatiles['partiallytrapped'].source;
-					if (source.hp <= 0 || !source.volatiles['partialtrappinglock']) {
+					if (source.st <= 0 || !source.volatiles['partialtrappinglock']) {
 						delete pokemon.volatiles['partiallytrapped'];
 					}
 				}
 				if (pokemon.volatiles['fakepartiallytrapped']) {
 					const counterpart = pokemon.volatiles['fakepartiallytrapped'].counterpart;
-					if (counterpart.hp <= 0 || !counterpart.volatiles['fakepartiallytrapped']) {
+					if (counterpart.st <= 0 || !counterpart.volatiles['fakepartiallytrapped']) {
 						delete pokemon.volatiles['fakepartiallytrapped'];
 					}
 				}
@@ -1980,7 +1980,7 @@ export class Battle {
 			source ||= this.event.source;
 			effect ||= this.effect;
 		}
-		if (!target?.hp) return 0;
+		if (!target?.st) return 0;
 		if (!target.isActive) return false;
 		if (this.gen > 5 && !target.side.foePokemonLeft()) return false;
 		boost = this.runEvent('ChangeBoost', target, source, effect, { ...boost });
@@ -2056,7 +2056,7 @@ export class Battle {
 				retVals[i] = targetDamage;
 				continue;
 			}
-			if (!target || !target.hp) {
+			if (!target || !target.st) {
 				retVals[i] = 0;
 				continue;
 			}
@@ -2089,7 +2089,7 @@ export class Battle {
 			}
 
 			retVals[i] = targetDamage = target.damage(targetDamage, source, effect);
-			if (targetDamage !== 0) target.hurtThisTurn = target.hp;
+			if (targetDamage !== 0) target.hurtThisTurn = target.st;
 			if (source && effect.effectType === 'Move') source.lastDamage = targetDamage;
 
 			const name = effect.fullname === 'tox' ? 'psn' : effect.fullname;
@@ -2116,7 +2116,7 @@ export class Battle {
 
 			if (targetDamage && effect.effectType === 'Move') {
 				if (this.gen <= 1 && effect.recoil && source) {
-					if (this.dex.currentMod !== 'gen1stadium' || target.hp > 0) {
+					if (this.dex.currentMod !== 'gen1stadium' || target.st > 0) {
 						const amount = this.clampIntRange(Math.floor(targetDamage * effect.recoil[0] / effect.recoil[1]), 1);
 						this.damage(amount, source, target, 'recoil');
 					}
@@ -2138,7 +2138,7 @@ export class Battle {
 			for (const [i, target] of targetArray.entries()) {
 				if (!retVals[i] || !target) continue;
 
-				if (target.hp <= 0) {
+				if (target.st <= 0) {
 					this.debug(`instafaint: ${this.faintQueue.map(entry => entry.target.name)}`);
 					this.faintMessages(true);
 					if (this.gen <= 2) {
@@ -2180,7 +2180,7 @@ export class Battle {
 			source ||= this.event.source;
 			effect ||= this.effect;
 		}
-		if (!target?.hp) return 0;
+		if (!target?.st) return 0;
 		if (!damage) return 0;
 		damage = this.clampIntRange(damage, 1);
 
@@ -2196,8 +2196,8 @@ export class Battle {
 				// if the move was a self-targeting move, the source is the same as the target. We need to check the opposing substitute
 				const foe = target.side.foe.active[0];
 				if (foe?.volatiles['substitute']) {
-					foe.volatiles['substitute'].hp -= damage;
-					if (foe.volatiles['substitute'].hp <= 0) {
+					foe.volatiles['substitute'].st -= damage;
+					if (foe.volatiles['substitute'].st <= 0) {
 						foe.removeVolatile('substitute');
 						foe.subFainted = true;
 					} else {
@@ -2240,9 +2240,9 @@ export class Battle {
 		// for things like Liquid Ooze, the Heal event still happens when nothing is healed.
 		damage = this.runEvent('TryHeal', target, source, effect, damage);
 		if (!damage) return damage;
-		if (!target?.hp) return false;
+		if (!target?.st) return false;
 		if (!target.isActive) return false;
-		if (target.hp >= target.maxhp) return false;
+		if (target.st >= target.maxhp) return false;
 		const finalDamage = target.heal(damage, source, effect);
 		switch (effect?.id) {
 		case 'leechseed':
@@ -2314,7 +2314,7 @@ export class Battle {
 
 	/** Given a table of base stats and a pokemon set, return the actual stats. */
 	spreadModify(baseStats: StatsTable, set: PokemonSet): StatsTable {
-		const modStats: StatsTable = { hp: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
+		const modStats: StatsTable = { st: 0, toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
 		for (const statName in baseStats) {
 			modStats[statName as StatID] = this.statModify(baseStats, set, statName as StatID);
 		}
@@ -2324,7 +2324,7 @@ export class Battle {
 	statModify(baseStats: StatsTable, set: PokemonSet, statName: StatID): number {
 		const tr = this.trunc;
 		let stat = baseStats[statName];
-		if (statName === 'hp') {
+		if (statName === 'st') {
 			return (2 * stat);
 		}
 		return stat;
@@ -2616,7 +2616,7 @@ export class Battle {
 	}
 
 	runAction(action: Action) {
-		const pokemonOriginalHP = action.pokemon?.hp;
+		const pokemonOriginalHP = action.pokemon?.st;
 		let residualPokemon: (readonly [Pokemon, number])[] = [];
 		// returns whether or not we ended in a callback
 		switch (action.choice) {
@@ -2677,7 +2677,7 @@ export class Battle {
 						// forfeited before starting
 						side.active[i] = side.pokemon[i];
 						side.active[i].fainted = true;
-						side.active[i].hp = 0;
+						side.active[i].st = 0;
 					} else {
 						this.actions.switchIn(side.pokemon[i], i);
 					}
@@ -2761,7 +2761,7 @@ export class Battle {
 					break;
 				} else {
 					// in gen 5+, the switch is cancelled
-					this.hint("A Pokemon can't switch between when it runs out of HP and when it faints");
+					this.hint("A Pokemon can't switch between when it runs out of Stamina and when it faints");
 					break;
 				}
 			}
@@ -2779,7 +2779,7 @@ export class Battle {
 			action.target.faintQueued = false;
 			action.target.subFainted = false;
 			action.target.status = '';
-			action.target.hp = 1; // Needed so hp functions works
+			action.target.st = 1; // Needed so st functions works
 			action.target.sethp(action.target.maxhp / 2);
 			this.add('-heal', action.target, action.target.getHealth, '[from] move: Revival Blessing');
 			action.pokemon.side.removeSlotCondition(action.pokemon, 'revivalblessing');
@@ -2810,7 +2810,7 @@ export class Battle {
 		for (const side of this.sides) {
 			for (const pokemon of side.active) {
 				if (pokemon.forceSwitchFlag) {
-					if (pokemon.hp) this.actions.dragIn(pokemon.side, pokemon.position);
+					if (pokemon.st) this.actions.dragIn(pokemon.side, pokemon.position);
 					pokemon.forceSwitchFlag = false;
 				}
 			}
@@ -2849,7 +2849,7 @@ export class Battle {
 			this.eachEvent('Update');
 			for (const [pokemon, originalHP] of residualPokemon) {
 				const maxhp = pokemon.getUndynamaxedHP(pokemon.maxhp);
-				if (pokemon.hp && pokemon.getUndynamaxedHP() <= maxhp / 2 && originalHP > maxhp / 2) {
+				if (pokemon.st && pokemon.getUndynamaxedHP() <= maxhp / 2 && originalHP > maxhp / 2) {
 					this.runEvent('EmergencyExit', pokemon);
 				}
 			}
@@ -2857,7 +2857,7 @@ export class Battle {
 
 		if (action.choice === 'runSwitch') {
 			const pokemon = action.pokemon;
-			if (pokemon.hp && pokemon.hp <= pokemon.maxhp / 2 && pokemonOriginalHP! > pokemon.maxhp / 2) {
+			if (pokemon.st && pokemon.st <= pokemon.maxhp / 2 && pokemonOriginalHP! > pokemon.maxhp / 2) {
 				this.runEvent('EmergencyExit', pokemon);
 			}
 		}
@@ -2880,7 +2880,7 @@ export class Battle {
 			} else if (switches[i]) {
 				for (const pokemon of this.sides[i].active) {
 					if (
-						pokemon.hp && pokemon.switchFlag && pokemon.switchFlag !== 'revivalblessing' &&
+						pokemon.st && pokemon.switchFlag && pokemon.switchFlag !== 'revivalblessing' &&
 						!pokemon.skipBeforeSwitchOutEventFlag
 					) {
 						this.runEvent('BeforeSwitchOut', pokemon);

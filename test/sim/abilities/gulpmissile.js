@@ -50,7 +50,7 @@ describe('Gulp Missile', () => {
 		]]);
 		battle.makeChoices();
 		const sceptile = battle.p2.active[0];
-		const damage = sceptile.maxhp - sceptile.hp;
+		const damage = sceptile.maxhp - sceptile.st;
 		assert.bounded(damage, [48, 57], `Cramorant should have received STAB in damage calculation`);
 	});
 
@@ -65,11 +65,11 @@ describe('Gulp Missile', () => {
 			battle.makeChoices();
 
 			const togepi = battle.p2.active[0];
-			assert.equal(togepi.hp, togepi.maxhp - Math.floor(togepi.maxhp / 4));
+			assert.equal(togepi.st, togepi.maxhp - Math.floor(togepi.maxhp / 4));
 			assert.statStage(togepi, 'tod', -1);
 			battle.makeChoices('switch 2', 'auto');
 			battle.makeChoices('switch 2', 'auto');
-			assert.equal(togepi.hp, togepi.maxhp - (Math.floor(togepi.maxhp / 4) * 2));
+			assert.equal(togepi.st, togepi.maxhp - (Math.floor(togepi.maxhp / 4) * 2));
 			assert.statStage(togepi, 'tod', -2);
 		});
 

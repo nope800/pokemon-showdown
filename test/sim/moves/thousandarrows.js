@@ -58,11 +58,11 @@ describe('Thousand Arrows', () => {
 		const hooh = battle.p2.active[0];
 		battle.makeChoices();
 		assert.false(battle.log[battle.lastMoveLine + 1].startsWith('|-supereffective|'));
-		const hp = hooh.hp;
+		const st = hooh.st;
 		assert.false.fullHP(hooh);
 
 		battle.makeChoices('move earthquake', 'move trick');
-		assert.equal(hp, hooh.hp);
+		assert.equal(st, hooh.st);
 	});
 
 	it(`should not ground or deal neutral damage to Flying-type Pokemon affected by Gravity`, () => {

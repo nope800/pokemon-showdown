@@ -34,9 +34,9 @@ describe('Target Resolution', () => {
 				{ species: 'Metapod', ability: 'shedskin', moves: ['harden'] },
 			]]);
 			const activePokemonList = [battle.p1.active[0], ...battle.p2.active];
-			const prevHps = activePokemonList.map(pokemon => pokemon.hp);
+			const prevHps = activePokemonList.map(pokemon => pokemon.st);
 			battle.makeChoices('move watergun -2, auto', 'auto');
-			const newHps = activePokemonList.map(pokemon => pokemon.hp);
+			const newHps = activePokemonList.map(pokemon => pokemon.st);
 
 			assert.deepEqual(prevHps, newHps);
 			assert(battle.log.includes('|move|p1a: Wailord|Water Gun|p1: Latias|[notarget]'));
@@ -149,9 +149,9 @@ describe('Target Resolution', () => {
 			battle.makeChoices('auto', 'auto'); // Shedinjas burned
 			battle.makeChoices('auto', 'auto'); // Shedinjas faint
 
-			const prevHps = attackers.map(pokemon => pokemon.hp);
+			const prevHps = attackers.map(pokemon => pokemon.st);
 			battle.makeChoices('move watergun 2, pass', 'move watergun 2, pass');
-			const newHps = attackers.map(pokemon => pokemon.hp);
+			const newHps = attackers.map(pokemon => pokemon.st);
 
 			assert(
 				newHps[0] < prevHps[0] && newHps[1] < prevHps[1],
@@ -176,9 +176,9 @@ describe('Target Resolution', () => {
 			assert.fainted(faintTargets[0]);
 			assert.fainted(faintTargets[1]);
 
-			const prevHps = attackers.map(pokemon => pokemon.hp);
+			const prevHps = attackers.map(pokemon => pokemon.st);
 			battle.makeChoices('move watergun -2, pass', 'move watergun -2, pass');
-			const newHps = attackers.map(pokemon => pokemon.hp);
+			const newHps = attackers.map(pokemon => pokemon.st);
 
 			assert.deepEqual(prevHps, newHps);
 			assert(battle.log.includes('|move|p1a: Wailord|Water Gun|p1: Shedinja|[notarget]'));
@@ -340,8 +340,8 @@ describe('Target Resolution', () => {
 		battle.makeChoices('auto', 'move phantomforce 1, move sheercold 1');
 		battle.makeChoices('switch 3');
 		battle.makeChoices();
-		assert.fullHP(battle.p1.active[1], 'Altaria should be at full HP, because it was not targeted.');
-		assert.false.fullHP(battle.p1.active[0], 'Aggron should not be at full HP, because it was targeted.');
+		assert.fullHP(battle.p1.active[1], 'Altaria should be at full Stamina, because it was not targeted.');
+		assert.false.fullHP(battle.p1.active[0], 'Aggron should not be at full Stamina, because it was targeted.');
 
 		battle = common.createBattle({ gameType: 'doubles' }, [[
 			{ species: 'houndour', level: 1, moves: ['sleeptalk'] },
@@ -354,7 +354,7 @@ describe('Target Resolution', () => {
 
 		battle.makeChoices('auto', 'move phantomforce 1, move sleeptalk');
 		battle.makeChoices('auto', 'move phantomforce 1, move sheercold 1');
-		assert.false.fullHP(battle.p1.active[1], 'Altaria should not be at full HP, because Phantom Force was redirected and targeted it.');
+		assert.false.fullHP(battle.p1.active[1], 'Altaria should not be at full Stamina, because Phantom Force was redirected and targeted it.');
 	});
 
 	it(`should cause Rollout to target the same slot after being called as a submove`, () => {
@@ -370,7 +370,7 @@ describe('Target Resolution', () => {
 		battle.makeChoices('move copycat, move spore 2', 'move splash, move rollout 1');
 		// Determine which slot was damaged on first turn of Rollout
 		const aggron = battle.p2.active[0];
-		const notTargetedPokemon = aggron.hp === aggron.maxhp ? aggron : battle.p2.active[1];
+		const notTargetedPokemon = aggron.st === aggron.maxhp ? aggron : battle.p2.active[1];
 
 		for (let i = 0; i < 5; i++) battle.makeChoices();
 		assert.fullHP(notTargetedPokemon);

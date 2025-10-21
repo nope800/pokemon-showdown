@@ -73,8 +73,8 @@ describe('Electric Terrain', () => {
 		battle.setPlayer('p2', { team: [{ species: "Pidgeot", ability: 'keeneye', moves: ['doubleedge', 'rest'] }] });
 		battle.makeChoices('move electricterrain', 'move doubleedge');
 		battle.makeChoices('move rest', 'move rest');
-		assert.notEqual(battle.p1.active[0].hp, battle.p1.active[0].maxhp);
-		assert.equal(battle.p2.active[0].hp, battle.p2.active[0].maxhp);
+		assert.notEqual(battle.p1.active[0].st, battle.p1.active[0].maxhp);
+		assert.equal(battle.p2.active[0].st, battle.p2.active[0].maxhp);
 	});
 
 	it('should not affect Pokemon in a semi-invulnerable state', () => {

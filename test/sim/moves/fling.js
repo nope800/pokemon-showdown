@@ -50,7 +50,7 @@ describe('Fling', () => {
 
 		// Fling's damage should be boosted by Life Orb
 		const cleffa = battle.p2.active[0];
-		const damage = cleffa.maxhp - cleffa.hp;
+		const damage = cleffa.maxhp - cleffa.st;
 		assert.bounded(damage, [13, 16]);
 
 		// Wynaut should not have taken Life Orb recoil

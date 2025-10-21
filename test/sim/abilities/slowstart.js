@@ -37,7 +37,7 @@ describe(`Slow Start`, () => {
 		]]);
 		battle.makeChoices('move hyperbeam zmove', 'auto');
 		const wynaut = battle.p2.active[0];
-		const damage = wynaut.maxhp - wynaut.hp;
+		const damage = wynaut.maxhp - wynaut.st;
 		assert.bounded(damage, [160, 189]);
 	});
 
@@ -51,7 +51,7 @@ describe(`Slow Start`, () => {
 		]]);
 		battle.makeChoices();
 		const wynaut = battle.p2.active[0];
-		const damage = wynaut.maxhp - wynaut.hp;
+		const damage = wynaut.maxhp - wynaut.st;
 		assert.bounded(damage, [96, 114]);
 	});
 });

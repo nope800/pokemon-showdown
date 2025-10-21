@@ -18,7 +18,7 @@ describe('Magic Room', () => {
 		]]);
 		const lopunny = battle.p1.active[0];
 		battle.makeChoices();
-		assert.equal(lopunny.hp, Math.ceil(lopunny.maxhp / 2));
+		assert.equal(lopunny.st, Math.ceil(lopunny.maxhp / 2));
 	});
 
 	it(`should prevent items from being consumed`, () => {

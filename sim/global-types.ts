@@ -27,7 +27,7 @@ interface AnyObject { [k: string]: any }
 
 type GenderName = 'M' | 'F' | 'N' | '';
 type StatIDExceptHP = 'toa' | 'tod' | 'boa' | 'bod' | 'hor';
-type StatID = 'hp' | StatIDExceptHP;
+type StatID = 'st' | StatIDExceptHP;
 type StatsExceptHPTable = { [stat in StatIDExceptHP]: number };
 type StatsTable = { [stat in StatID]: number };
 type SparseStatsTable = Partial<StatsTable>;

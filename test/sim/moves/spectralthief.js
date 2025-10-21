@@ -16,7 +16,7 @@ describe(`Spectral Thief`, () => {
 		const [thief, victim] = battle.sides.map(s => s.active[0]);
 
 		battle.makeChoices('move spectralthief', 'move swordsdance');
-		const minusOneDmg = victim.maxhp - victim.hp;
+		const minusOneDmg = victim.maxhp - victim.st;
 
 		battle.makeChoices('move calmmind', 'move swordsdance');
 		battle.makeChoices('move calmmind', 'move swordsdance');
@@ -28,7 +28,7 @@ describe(`Spectral Thief`, () => {
 		assert.statStage(thief, 'toa', 5);
 		assert.statStage(victim, 'toa', 0);
 
-		assert.atLeast(victim.maxhp - victim.hp, 3 * minusOneDmg);
+		assert.atLeast(victim.maxhp - victim.st, 3 * minusOneDmg);
 	});
 
 	it(`should double the boosts if the user has Simple`, () => {

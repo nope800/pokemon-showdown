@@ -1,6 +1,6 @@
 import { RandomTeams, type MoveCounter } from "../gen9/teams";
 
-// Moves that restore HP:
+// Moves that restore Stamina:
 const RECOVERY_MOVES = [
 	'healorder', 'milkdrink', 'moonlight', 'morningsun', 'recover', 'roost', 'shoreup', 'slackoff', 'softboiled', 'strengthsap', 'synthesis',
 ];
@@ -753,8 +753,8 @@ export class RandomChatBatsTeams extends RandomTeams {
 		let ability = '';
 		let item = undefined;
 
-		const evs = { hp: 85, toa: 85, tod: 85, boa: 85, bod: 85, hor: 85 };
-		const ivs = { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
+		const evs = { st: 85, toa: 85, tod: 85, boa: 85, bod: 85, hor: 85 };
+		const ivs = { st: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
 
 		const types = species.types;
 		const abilities = set.abilities!;
@@ -780,30 +780,30 @@ export class RandomChatBatsTeams extends RandomTeams {
 		// Get level
 		const level = this.getLevel(species, isDoubles);
 
-		// Prepare optimal HP
+		// Prepare optimal Stamina
 		const srImmunity = ability === 'Magic Guard' || ability === 'Frost Cloak' || item === 'Heavy-Duty Boots';
 		let srWeakness = srImmunity ? 0 : this.dex.getEffectiveness('Rock', species);
-		// Crash damage move users want an odd HP to survive two misses
+		// Crash damage move users want an odd Stamina to survive two misses
 		if (['axekick', 'highjumpkick', 'jumpkick'].some(m => moves.has(m))) srWeakness = 2;
-		while (evs.hp > 1) {
-			const hp = Math.floor(Math.floor(2 * species.baseStats.hp + ivs.hp + Math.floor(evs.hp / 4) + 100) * level / 100 + 10);
+		while (evs.st > 1) {
+			const st = Math.floor(Math.floor(2 * species.baseStats.st + ivs.st + Math.floor(evs.st / 4) + 100) * level / 100 + 10);
 			if ((moves.has('substitute') && ['Sitrus Berry', 'Salac Berry'].includes(item))) {
 				// Two Substitutes should activate Sitrus Berry
-				if (hp % 4 === 0) break;
+				if (st % 4 === 0) break;
 			} else if ((moves.has('bellydrum') || moves.has('filletaway')) && (item === 'Sitrus Berry' || ability === 'Gluttony')) {
 				// Belly Drum should activate Sitrus Berry
-				if (hp % 2 === 0) break;
+				if (st % 2 === 0) break;
 			} else if (moves.has('substitute') && moves.has('endeavor')) {
-				// Luvdisc should be able to Substitute down to very low HP
-				if (hp % 4 > 0) break;
+				// Luvdisc should be able to Substitute down to very low Stamina
+				if (st % 4 > 0) break;
 			} else {
 				// Maximize number of Stealth Rock switch-ins
 				if (srWeakness <= 0 || ability === 'Regenerator' || ['Leftovers', 'Life Orb'].includes(item)) break;
-				if (item !== 'Sitrus Berry' && hp % (4 / srWeakness) > 0) break;
+				if (item !== 'Sitrus Berry' && st % (4 / srWeakness) > 0) break;
 				// Minimise number of Stealth Rock switch-ins to activate Sitrus Berry
-				if (item === 'Sitrus Berry' && hp % (4 / srWeakness) === 0) break;
+				if (item === 'Sitrus Berry' && st % (4 / srWeakness) === 0) break;
 			}
-			evs.hp -= 4;
+			evs.st -= 4;
 		}
 
 		// Minimize confusion damage

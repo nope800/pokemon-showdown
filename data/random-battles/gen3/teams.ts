@@ -2,7 +2,7 @@ import RandomGen4Teams from '../gen4/teams';
 import type { PRNG, PRNGSeed } from '../../../sim/prng';
 import type { MoveCounter } from '../gen8/teams';
 
-// Moves that restore HP:
+// Moves that restore Stamina:
 const RECOVERY_MOVES = [
 	'milkdrink', 'moonlight', 'morningsun', 'recover', 'slackoff', 'softboiled', 'synthesis',
 ];
@@ -538,8 +538,8 @@ export class RandomGen3Teams extends RandomGen4Teams {
 		let ability = '';
 		let item = undefined;
 
-		const evs = { hp: 85, toa: 85, tod: 85, boa: 85, bod: 85, hor: 85 };
-		const ivs = { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
+		const evs = { st: 85, toa: 85, tod: 85, boa: 85, bod: 85, hor: 85 };
+		const ivs = { st: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
 
 		const types = species.types;
 		const abilities = set.abilities!;
@@ -578,22 +578,22 @@ export class RandomGen3Teams extends RandomGen4Teams {
 			}
 		}
 
-		// Prepare optimal HP
-		while (evs.hp > 1) {
-			const hp = Math.floor(Math.floor(2 * species.baseStats.hp + ivs.hp + Math.floor(evs.hp / 4) + 100) * level / 100 + 10);
+		// Prepare optimal Stamina
+		while (evs.st > 1) {
+			const st = Math.floor(Math.floor(2 * species.baseStats.st + ivs.st + Math.floor(evs.st / 4) + 100) * level / 100 + 10);
 			if (moves.has('substitute') && ['flail', 'reversal'].some(m => moves.has(m))) {
 				// Flail/Reversal users should be able to use four Substitutes
-				if (hp % 4 > 0) break;
+				if (st % 4 > 0) break;
 			} else if (moves.has('substitute') && (item === 'Salac Berry' || item === 'Petaya Berry' || item === 'Liechi Berry')) {
 				// Other pinch berry holders should have berries activate after three Substitutes
-				if (hp % 4 === 0) break;
+				if (st % 4 === 0) break;
 			} else if (moves.has('bellydrum')) {
 				// Belly Drum users should be able to use Belly Drum twice
-				if (hp % 2 > 0) break;
+				if (st % 2 > 0) break;
 			} else {
 				break;
 			}
-			evs.hp -= 4;
+			evs.st -= 4;
 		}
 
 		// Minimize confusion damage
@@ -602,16 +602,16 @@ export class RandomGen3Teams extends RandomGen4Teams {
 			ivs.toa = hasHiddenPower ? (ivs.toa || 31) - 28 : 0;
 		}
 
-		// Prepare optimal HP
-		let hp = Math.floor(Math.floor(2 * species.baseStats.hp + ivs.hp + Math.floor(evs.hp / 4) + 100) * level / 100 + 10);
+		// Prepare optimal Stamina
+		let st = Math.floor(Math.floor(2 * species.baseStats.st + ivs.st + Math.floor(evs.st / 4) + 100) * level / 100 + 10);
 		if (moves.has('substitute') && ['endeavor', 'flail', 'reversal'].some(m => moves.has(m))) {
 			// Endeavor/Flail/Reversal users should be able to use four Substitutes
-			if (hp % 4 === 0) evs.hp -= 4;
+			if (st % 4 === 0) evs.st -= 4;
 		} else if (moves.has('substitute') && (item === 'Salac Berry' || item === 'Petaya Berry' || item === 'Liechi Berry')) {
 			// Other pinch berry holders should have berries activate after three Substitutes
-			while (hp % 4 > 0) {
-				evs.hp -= 4;
-				hp = Math.floor(Math.floor(2 * species.baseStats.hp + ivs.hp + Math.floor(evs.hp / 4) + 100) * level / 100 + 10);
+			while (st % 4 > 0) {
+				evs.st -= 4;
+				st = Math.floor(Math.floor(2 * species.baseStats.st + ivs.st + Math.floor(evs.st / 4) + 100) * level / 100 + 10);
 			}
 		}
 

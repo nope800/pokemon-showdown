@@ -281,8 +281,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	crushgrip: {
 		inherit: true,
 		basePowerCallback(pokemon, target) {
-			const bp = Math.floor(target.hp * 120 / target.maxhp) + 1;
-			this.debug(`BP for ${target.hp}/${target.maxhp} HP: ${bp}`);
+			const bp = Math.floor(target.st * 120 / target.maxhp) + 1;
+			this.debug(`BP for ${target.st}/${target.maxhp} Stamina: ${bp}`);
 			return bp;
 		},
 	},
@@ -508,7 +508,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	endeavor: {
 		inherit: true,
 		onTry(pokemon, target) {
-			if (pokemon.hp >= target.hp) {
+			if (pokemon.st >= target.st) {
 				this.add('-fail', pokemon);
 				return null;
 			}
@@ -540,7 +540,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	flail: {
 		inherit: true,
 		basePowerCallback(pokemon) {
-			const ratio = Math.max(Math.floor(pokemon.hp * 64 / pokemon.maxhp), 1);
+			const ratio = Math.max(Math.floor(pokemon.st * 64 / pokemon.maxhp), 1);
 			let bp;
 			if (ratio < 2) {
 				bp = 200;
@@ -831,7 +831,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			duration: 1,
 			onSwitchInPriority: -1,
 			onSwitchIn(target) {
-				if (target.hp > 0) {
+				if (target.st > 0) {
 					target.heal(target.maxhp);
 					target.clearStatus();
 					this.add('-heal', target, target.getHealth, '[from] move: Healing Wish');
@@ -929,7 +929,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			onResidualSubOrder: 5,
 			onResidual(pokemon) {
 				const target = this.getAtSlot(pokemon.volatiles['leechseed'].sourceSlot);
-				if (!target || target.fainted || target.hp <= 0) {
+				if (!target || target.fainted || target.st <= 0) {
 					this.debug('Nothing to leech into');
 					return;
 				}
@@ -1012,7 +1012,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				if (target.getSlot() !== this.effectState.sourceSlot) {
 					return;
 				}
-				if (target.hp > 0) {
+				if (target.st > 0) {
 					target.heal(target.maxhp);
 					target.clearStatus();
 					for (const moveSlot of target.moveSlots) {
@@ -1337,7 +1337,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				this.debug('Pursuit start');
 				let alreadyAdded = false;
 				for (const source of this.effectState.sources) {
-					if (!this.queue.cancelMove(source) || !source.hp) continue;
+					if (!this.queue.cancelMove(source) || !source.st) continue;
 					if (!alreadyAdded) {
 						this.add('-activate', pokemon, 'move: Pursuit');
 						alreadyAdded = true;
@@ -1412,7 +1412,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	reversal: {
 		inherit: true,
 		basePowerCallback(pokemon) {
-			const ratio = Math.max(Math.floor(pokemon.hp * 64 / pokemon.maxhp), 1);
+			const ratio = Math.max(Math.floor(pokemon.st * 64 / pokemon.maxhp), 1);
 			let bp;
 			if (ratio < 2) {
 				bp = 200;
@@ -1639,7 +1639,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		condition: {
 			onStart(target) {
 				this.add('-start', target, 'Substitute');
-				this.effectState.hp = Math.floor(target.maxhp / 4);
+				this.effectState.st = Math.floor(target.maxhp / 4);
 				delete target.volatiles['partiallytrapped'];
 			},
 			onTryPrimaryHitPriority: -1,
@@ -1653,12 +1653,12 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 					this.attrLastMove('[still]');
 					return null;
 				}
-				if (damage > target.volatiles['substitute'].hp) {
-					damage = target.volatiles['substitute'].hp as number;
+				if (damage > target.volatiles['substitute'].st) {
+					damage = target.volatiles['substitute'].st as number;
 				}
-				target.volatiles['substitute'].hp -= damage;
+				target.volatiles['substitute'].st -= damage;
 				source.lastDamage = damage;
-				if (target.volatiles['substitute'].hp <= 0) {
+				if (target.volatiles['substitute'].st <= 0) {
 					target.removeVolatile('substitute');
 					target.addVolatile('substitutebroken');
 					if (target.volatiles['substitutebroken']) target.volatiles['substitutebroken'].move = move.id;
@@ -1965,8 +1965,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 	wringout: {
 		inherit: true,
 		basePowerCallback(pokemon, target) {
-			const bp = Math.floor(target.hp * 120 / target.maxhp) + 1;
-			this.debug(`BP for ${target.hp}/${target.maxhp} HP: ${bp}`);
+			const bp = Math.floor(target.st * 120 / target.maxhp) + 1;
+			this.debug(`BP for ${target.st}/${target.maxhp} Stamina: ${bp}`);
 			return bp;
 		},
 	},

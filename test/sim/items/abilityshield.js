@@ -58,7 +58,7 @@ describe('Ability Shield', () => {
 		assert(battle.log.some(line => line.includes('Ability Shield')), `Ability Shield should trigger a block message`);
 
 		battle.makeChoices();
-		assert.equal(battle.p1.active[0].hp, 1, `Holder should survive due to Sturdy`);
+		assert.equal(battle.p1.active[0].st, 1, `Holder should survive due to Sturdy`);
 	});
 
 	// https://www.smogon.com/forums/threads/scarlet-violet-battle-mechanics-research.3709545/post-9412194
@@ -73,7 +73,7 @@ describe('Ability Shield', () => {
 		assert(battle.log.every(line => !line.includes('Ability Shield')), `Ability Shield should not trigger a block message`);
 
 		battle.makeChoices();
-		assert.equal(battle.p1.active[0].hp, 1, `Holder should survive from sturdy`);
+		assert.equal(battle.p1.active[0].st, 1, `Holder should survive from sturdy`);
 		battle.makeChoices('switch gastly', 'move earthpower');
 		assert.fullHP(battle.p1.active[0], `Holder should be ungrounded through levitate`);
 	});
@@ -90,7 +90,7 @@ describe('Ability Shield', () => {
 		assert(battle.log.some(line => line.includes('Ability Shield')), `Ability Shield should trigger a block message`);
 
 		battle.makeChoices('move splash', 'move shadowball');
-		assert.equal(battle.p1.active[0].hp, 1, `Holder should survive due to Sturdy`);
+		assert.equal(battle.p1.active[0].st, 1, `Holder should survive due to Sturdy`);
 	});
 
 	// https://www.smogon.com/forums/threads/scarlet-violet-battle-mechanics-research.3709545/post-9412999
@@ -118,7 +118,7 @@ describe('Ability Shield', () => {
 		battle.makeChoices('move splash', 'move trick');
 		battle.makeChoices('move splash', 'move shadowball');
 
-		assert.equal(battle.p1.active[0].hp, 1, `Holder should survive due to Sturdy`);
+		assert.equal(battle.p1.active[0].st, 1, `Holder should survive due to Sturdy`);
 	});
 
 	// https://www.smogon.com/forums/threads/scarlet-violet-battle-mechanics-research.3709545/post-9412999

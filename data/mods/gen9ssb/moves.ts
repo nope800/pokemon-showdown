@@ -37,7 +37,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		zMove: {boost: {toa: 2}}, // for status moves, stat boost given when used as a z move
 		critRatio: 2, // The higher the number (above 1) the higher the ratio, lowering it lowers the crit ratio
 		drain: [1, 2], // recover first num / second num % of the damage dealt
-		heal: [1, 2], // recover first num / second num % of the target's HP
+		heal: [1, 2], // recover first num / second num % of the target's Stamina
 	},
 	*/
 	// Please keep sets organized alphabetically based on staff member name!
@@ -152,7 +152,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 0,
 		category: "Status",
 		shortDesc: "Haze + Parting Shot + Replacement heals 33%.",
-		desc: "Resets the stat stages of all active Pokemon to 0, then lowers the foe's Attack and Bottom Attack by 1 stage each while switching out. The Pokemon that switches in heals 33% of its maximum HP. This move bypasses all Protect-like effects.",
+		desc: "Resets the stat stages of all active Pokemon to 0, then lowers the foe's Attack and Bottom Attack by 1 stage each while switching out. The Pokemon that switches in heals 33% of its maximum Stamina. This move bypasses all Protect-like effects.",
 		name: "Free Switch Button",
 		gen: 9,
 		pp: 10,
@@ -181,7 +181,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		slotCondition: 'freeswitchbutton',
 		condition: {
 			onSwitchIn(target) {
-				if (!target.fainted && (target.hp < target.maxhp)) {
+				if (!target.fainted && (target.st < target.maxhp)) {
 					target.heal(target.maxhp / 3);
 					this.add('-heal', target, target.getHealth, '[from] move: Free Switch Button');
 					target.side.removeSlotCondition(target, 'freeswitchbutton');
@@ -199,7 +199,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 0,
 		category: "Status",
 		shortDesc: "Leech Seed + Heal Block + Infestation",
-		desc: "Applies the effects of Leech Seed, Heal Block, and partial trapping to the target, causing the user to steal 1/8 of the target's maximum HP at the end of each turn until the target switches out, preventing the target from using any moves, items, or Abilities that heal HP for 5 turns, and preventing the target from switching out while damaging it for an additional 1/8 of its maximum HP at the end of each turn for 4-5 turns. If the target uses Baton Pass, the effects of Leech Seed, Heal Block, and partial trapping will remain in effect for the replacement.",
+		desc: "Applies the effects of Leech Seed, Heal Block, and partial trapping to the target, causing the user to steal 1/8 of the target's maximum Stamina at the end of each turn until the target switches out, preventing the target from using any moves, items, or Abilities that heal Stamina for 5 turns, and preventing the target from switching out while damaging it for an additional 1/8 of its maximum Stamina at the end of each turn for 4-5 turns. If the target uses Baton Pass, the effects of Leech Seed, Heal Block, and partial trapping will remain in effect for the replacement.",
 		name: "Spicier Extract",
 		pp: 15,
 		priority: 0,
@@ -380,8 +380,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		accuracy: 100,
 		basePower: 0,
 		category: "Status",
-		shortDesc: "Confuses foe & deals 1/6th max HP for 4-5 turns.",
-		desc: "Causes the target to become confused. If this move is successful, the target takes damage equal to 1/6th of its maximum HP at the end of each turn for 4-5 turns.",
+		shortDesc: "Confuses foe & deals 1/6th max Stamina for 4-5 turns.",
+		desc: "Causes the target to become confused. If this move is successful, the target takes damage equal to 1/6th of its maximum Stamina at the end of each turn for 4-5 turns.",
 		name: "Tori's Stori",
 		gen: 9,
 		pp: 5,
@@ -426,7 +426,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 0,
 		category: "Status",
 		shortDesc: "Quag: Protect; Clod: Recover. Switch sires.",
-		desc: "Nearly always moves first. If the user is Quagsire, the user is protected from most attacks made by other Pokemon during this turn and then transforms into Clodsire. If the user is Clodsire, the user recovers 1/2 of its maximum HP and then transforms into Quagsire. This move fails if the user is neither Quagsire nor Clodsire.",
+		desc: "Nearly always moves first. If the user is Quagsire, the user is protected from most attacks made by other Pokemon during this turn and then transforms into Clodsire. If the user is Clodsire, the user recovers 1/2 of its maximum Stamina and then transforms into Quagsire. This move fails if the user is neither Quagsire nor Clodsire.",
 		name: "Sire Switch",
 		gen: 9,
 		pp: 20,
@@ -484,8 +484,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		shortDesc: "Cures team status, all heal 75% max HP.",
-		desc: "Z-Move that requires Lilligantium Z. Every Pokemon in the user's party is cured of its non-volatile status condition. With the exception of the user, every Pokemon in the user's party heals for 1/2 of their maximum HP. This effect cannot revive fainted Pokemon.",
+		shortDesc: "Cures team status, all heal 75% max Stamina.",
+		desc: "Z-Move that requires Lilligantium Z. Every Pokemon in the user's party is cured of its non-volatile status condition. With the exception of the user, every Pokemon in the user's party heals for 1/2 of their maximum Stamina. This effect cannot revive fainted Pokemon.",
 		name: "Aura Rain",
 		pp: 1,
 		priority: 0,
@@ -807,7 +807,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 123,
 		category: "Bottom",
 		shortDesc: "If hit, Trick Room. Else, attack+random effect.",
-		desc: "Begins to charge an attack at the start of the turn. Nearly always moves last. If the user is directly damaged while charging, Trick Room is set instead, making the slower Pokemon move first for 5 turns. The Trick Room effect occurs before Cascade if both would activate on the same turn. If the user was not directly damaged while charging, the attack executes and one random effect will occur from the following: poison; burn; paralysis; confusion; the user recovers HP equal to 75% of damage dealt; all entry hazards are removed from the field; a random entry hazard is set, except G-Max Steelsurge; two random stats of the user are raised by 1 stage each, except Accuracy and Evasion; two random stats of the target are lowered by 1 stage each, except Accuracy and Evasion; or the target transforms into a Fennekin with Ember, Scratch, and Growl until they switch out.",
+		desc: "Begins to charge an attack at the start of the turn. Nearly always moves last. If the user is directly damaged while charging, Trick Room is set instead, making the slower Pokemon move first for 5 turns. The Trick Room effect occurs before Cascade if both would activate on the same turn. If the user was not directly damaged while charging, the attack executes and one random effect will occur from the following: poison; burn; paralysis; confusion; the user recovers Stamina equal to 75% of damage dealt; all entry hazards are removed from the field; a random entry hazard is set, except G-Max Steelsurge; two random stats of the user are raised by 1 stage each, except Accuracy and Evasion; two random stats of the target are lowered by 1 stage each, except Accuracy and Evasion; or the target transforms into a Fennekin with Ember, Scratch, and Growl until they switch out.",
 		name: "Sigil's Storm",
 		pp: 20,
 		priority: -6,
@@ -997,7 +997,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			}
 		},
 		onAfterMoveSecondarySelf(pokemon, target, move) {
-			if (!target || target.fainted || target.hp <= 0) this.boost({ toa: 2 }, pokemon, pokemon, move);
+			if (!target || target.fainted || target.st <= 0) this.boost({ toa: 2 }, pokemon, pokemon, move);
 		},
 		secondary: null,
 		target: "normal",
@@ -1010,7 +1010,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 0,
 		category: "Status",
 		shortDesc: "Eats berry, gives random new berry, heals 25%.",
-		desc: "The user consumes its held berry if it is holding one, heals 25% of its maximum HP, and then gains a random item from the following: Iapapa Berry, Leppa Berry, Lum Berry, Maranga Berry, Ganlon Berry, Starf Berry, Liechi Berry, or Enigma Berry.",
+		desc: "The user consumes its held berry if it is holding one, heals 25% of its maximum Stamina, and then gains a random item from the following: Iapapa Berry, Leppa Berry, Lum Berry, Maranga Berry, Ganlon Berry, Starf Berry, Liechi Berry, or Enigma Berry.",
 		name: "what kind",
 		gen: 9,
 		pp: 10,
@@ -1252,7 +1252,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 0,
 		category: "Status",
 		shortDesc: "Wake up -> Wish + Substitute -> Baton Pass.",
-		desc: "The user wakes up if it is asleep. Then, the user uses the moves Wish, Substitute, and Baton Pass in that order. If the user does not have enough HP to set a Substitute, the rest of the effects of the move will still occur.",
+		desc: "The user wakes up if it is asleep. Then, the user uses the moves Wish, Substitute, and Baton Pass in that order. If the user does not have enough Stamina to set a Substitute, the rest of the effects of the move will still occur.",
 		name: "Baker's Douze Off",
 		gen: 9,
 		pp: 15,
@@ -1267,7 +1267,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		},
 		onTry(source, target, move) {
 			if (source.volatiles['substitute'] ||
-				source.hp <= source.maxhp / 4 || source.maxhp === 1) { // Shedinja clause
+				source.st <= source.maxhp / 4 || source.maxhp === 1) { // Shedinja clause
 				delete move.volatileStatus;
 			}
 		},
@@ -1408,7 +1408,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 0,
 		category: "Status",
 		shortDesc: "+2, -2 to random stats, small chance of harm.",
-		desc: "The user boosts a random stat by 2 stages, and the user lowers a random stat by 2 stages. These can be the same stat, and cannot include Accuracy or Evasion. Independently, there is a 10% chance for the user to lose 10% of their maximum HP, and there is a 5% chance for the user to gain a random non-volatile status condition.",
+		desc: "The user boosts a random stat by 2 stages, and the user lowers a random stat by 2 stages. These can be the same stat, and cannot include Accuracy or Evasion. Independently, there is a 10% chance for the user to lose 10% of their maximum Stamina, and there is a 5% chance for the user to gain a random non-volatile status condition.",
 		name: "Testing in Production",
 		gen: 9,
 		pp: 5,
@@ -1456,7 +1456,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			if (this.randomChance(1, 10)) {
 				this.add(`c:|${getName((pokemon.illusion || pokemon).name)}|Ouch! That crash is really getting on my nerves...`);
 				this.damage(pokemon.baseMaxhp / 10);
-				if (pokemon.hp <= 0) return;
+				if (pokemon.st <= 0) return;
 			}
 
 			if (this.randomChance(1, 20)) {
@@ -1524,8 +1524,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		accuracy: 90,
 		basePower: 90,
 		category: "Top",
-		shortDesc: "Sets Grassy Terrain before. -50% HP on miss.",
-		desc: "Before attacking, this move will set Grassy Terrain for 5 turns. If the attack is not successful, the user loses half of its maximum HP, rounded down, as crash damage.",
+		shortDesc: "Sets Grassy Terrain before. -50% Stamina on miss.",
+		desc: "Before attacking, this move will set Grassy Terrain for 5 turns. If the attack is not successful, the user loses half of its maximum Stamina, rounded down, as crash damage.",
 		name: "De Todas las Flores",
 		gen: 9,
 		pp: 15,
@@ -1553,8 +1553,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 0,
 		category: "Status",
 		name: "Antidote",
-		shortDesc: "Heal 50% HP + 3 turn Magnet Rise.",
-		desc: "The user restores 1/2 of its maximum HP, rounded half up. If the user is not currently under the effect of Magnet Rise, it gains the effect of Magnet Rise for 3 turns, causing it to be immune to all Ground-type moves except Thousand Arrows for the duration.",
+		shortDesc: "Heal 50% Stamina + 3 turn Magnet Rise.",
+		desc: "The user restores 1/2 of its maximum Stamina, rounded half up. If the user is not currently under the effect of Magnet Rise, it gains the effect of Magnet Rise for 3 turns, causing it to be immune to all Ground-type moves except Thousand Arrows for the duration.",
 		pp: 10,
 		priority: 0,
 		flags: { snatch: 1, heal: 1, gravity: 1, metronome: 1 },
@@ -1719,8 +1719,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		shortDesc: "Curses and traps foe. User loses 1/2 HP.",
-		desc: "The user loses 1/2 of its maximum HP, rounded down and even if it would cause fainting, in exchange for the target losing 1/4 of its maximum HP, rounded down, at the end of each turn while it is active and becoming unable to switch out.",
+		shortDesc: "Curses and traps foe. User loses 1/2 Stamina.",
+		desc: "The user loses 1/2 of its maximum Stamina, rounded down and even if it would cause fainting, in exchange for the target losing 1/4 of its maximum Stamina, rounded down, at the end of each turn while it is active and becoming unable to switch out.",
 		name: "Stockholm Syndrome",
 		pp: 5,
 		priority: 0,
@@ -1886,8 +1886,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		shortDesc: "User heals 25% HP; Target: +2 ToA/BoA + Taunt.",
-		desc: "The user heals 1/4 of its maximum HP. The target's Attack and Bottom Attack are raised by 2 stages each, and the target cannot use status moves for 3 turns.",
+		shortDesc: "User heals 25% Stamina; Target: +2 ToA/BoA + Taunt.",
+		desc: "The user heals 1/4 of its maximum Stamina. The target's Attack and Bottom Attack are raised by 2 stages each, and the target cannot use status moves for 3 turns.",
 		name: "Super Ego Inflation",
 		gen: 9,
 		pp: 5,
@@ -1924,7 +1924,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		},
 		category: "Top",
 		shortDesc: "If foe is switching out, 2x power. Doesn't KO.",
-		desc: "If an opposing Pokemon switches out this turn, this move hits that Pokemon before it leaves the field, even if it was not the original target. If the user moves after an opponent using Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch, but not Baton Pass, it will hit that opponent before it leaves the field. Power doubles and no accuracy check is done if the user hits an opponent switching out, and the user's turn is over. Leaves the target with at least 1 HP.",
+		desc: "If an opposing Pokemon switches out this turn, this move hits that Pokemon before it leaves the field, even if it was not the original target. If the user moves after an opponent using Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch, but not Baton Pass, it will hit that opponent before it leaves the field. Power doubles and no accuracy check is done if the user hits an opponent switching out, and the user's turn is over. Leaves the target with at least 1 Stamina.",
 		name: "Trivial Pursuit",
 		pp: 5,
 		priority: 0,
@@ -1956,7 +1956,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				let alreadyAdded = false;
 				pokemon.removeVolatile('destinybond');
 				for (const source of this.effectState.sources) {
-					if (!source.isAdjacent(pokemon) || !this.queue.cancelMove(source) || !source.hp) continue;
+					if (!source.isAdjacent(pokemon) || !this.queue.cancelMove(source) || !source.st) continue;
 					if (!alreadyAdded) {
 						this.add('-activate', pokemon, 'move: Pursuit');
 						alreadyAdded = true;
@@ -1978,7 +1978,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		},
 		onDamagePriority: -20,
 		onDamage(damage, target, source, effect) {
-			if (damage >= target.hp) return target.hp - 1;
+			if (damage >= target.st) return target.st - 1;
 		},
 		secondary: null,
 		target: "normal",
@@ -2032,7 +2032,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 0,
 		category: "Status",
 		shortDesc: "Charges.Turn 2: +2 ToA/ToD, heal 33% for 3 turns.",
-		desc: "Boosts the user's Attack and Defense by 2 stages, and heals the user for 1/3 of its maximum HP at the end of each turn for 3 turns. This attack charges on the first turn and executes on the second. This move will fail if it is already in effect.",
+		desc: "Boosts the user's Attack and Defense by 2 stages, and heals the user for 1/3 of its maximum Stamina at the end of each turn for 3 turns. This attack charges on the first turn and executes on the second. This move will fail if it is already in effect.",
 		name: "Snack Time",
 		pp: 10,
 		priority: 0,
@@ -2073,7 +2073,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 0,
 		category: "Status",
 		shortDesc: "Recover & Refresh. 7/8 get Boiled, 1/8 Beefed.",
-		desc: "The user heals 1/2 of its maximum HP and cures its non-volatile status condition. The user has a 7/8 chance of gaining the Boiled condition, removing all previously-added extra types, adding a Water typing to the user, replacing its ability with Horniness Boost, and replacing Teatime or Body Press with Steam Eruption if it exists on the set; and a 1/8 chance of gaining the Beefed condition, removing all previously-added extra types, adding a Fighting typing to the user, replacing its ability with Stamina, and replacing Teatime or Steam Eruption with Body Press.",
+		desc: "The user heals 1/2 of its maximum Stamina and cures its non-volatile status condition. The user has a 7/8 chance of gaining the Boiled condition, removing all previously-added extra types, adding a Water typing to the user, replacing its ability with Horniness Boost, and replacing Teatime or Body Press with Steam Eruption if it exists on the set; and a 1/8 chance of gaining the Beefed condition, removing all previously-added extra types, adding a Fighting typing to the user, replacing its ability with Stamina, and replacing Teatime or Steam Eruption with Body Press.",
 		name: "Tea Party",
 		pp: 5,
 		priority: 0,
@@ -2162,7 +2162,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 80,
 		category: "Top",
 		shortDesc: "Has 33% recoil. Switch after using.",
-		desc: "If the target lost HP, the user takes recoil damage equal to 33% of the HP lost by the target, rounded half up, but not less than 1 HP. If this move is successful and the user has not fainted, the user switches out even if it is trapped and is replaced immediately by a selected party member. The user does not switch out if there are no unfainted party members, or if the target switched out using an Eject Button or through the effect of the Emergency Exit or Wimp Out Abilities.",
+		desc: "If the target lost Stamina, the user takes recoil damage equal to 33% of the Stamina lost by the target, rounded half up, but not less than 1 Stamina. If this move is successful and the user has not fainted, the user switches out even if it is trapped and is replaced immediately by a selected party member. The user does not switch out if there are no unfainted party members, or if the target switched out using an Eject Button or through the effect of the Emergency Exit or Wimp Out Abilities.",
 		name: "Insert boar pun here",
 		pp: 20,
 		priority: 0,
@@ -2187,7 +2187,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 0,
 		category: "Status",
 		shortDesc: "Creates a Substitute and sets Leech Seed.",
-		desc: "The user takes 1/6 of its maximum HP, rounded down, and puts it into a substitute to take its place in battle. The Pokemon at the user's position steals 1/8 of the target's maximum HP, rounded down, at the end of each turn. If either of the affected Pokemon uses Baton Pass, its respective effect will remain for its replacement.",
+		desc: "The user takes 1/6 of its maximum Stamina, rounded down, and puts it into a substitute to take its place in battle. The Pokemon at the user's position steals 1/8 of the target's maximum Stamina, rounded down, at the end of each turn. If either of the affected Pokemon uses Baton Pass, its respective effect will remain for its replacement.",
 		name: "Solidarity",
 		pp: 15,
 		priority: 0,
@@ -2206,7 +2206,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		self: {
 			onHit(target, source) {
 				if (source.volatiles['substitute']) return;
-				if (source.hp <= source.maxhp / 6 || source.maxhp === 1) { // Shedinja clause
+				if (source.st <= source.maxhp / 6 || source.maxhp === 1) { // Shedinja clause
 					this.add('-fail', source, 'move: Substitute', '[weak]');
 				} else {
 					source.addVolatile('substitute');
@@ -2362,7 +2362,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 40,
 		category: "Top",
 		shortDesc: "Applies Salt Cure and sets a layer of spikes.",
-		desc: "Causes damage to the target equal to 1/8 of its maximum HP (1/4 if the target is Steel or Water type), rounded down, at the end of each turn during effect. This effect ends when the target is no longer active. Sets a layer of Spikes on the target's side of the field, damaging grounded foes when they switch in.",
+		desc: "Causes damage to the target equal to 1/8 of its maximum Stamina (1/4 if the target is Steel or Water type), rounded down, at the end of each turn during effect. This effect ends when the target is no longer active. Sets a layer of Spikes on the target's side of the field, damaging grounded foes when they switch in.",
 		name: "Wiggling Strike",
 		gen: 9,
 		pp: 10,
@@ -2462,7 +2462,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 0,
 		category: "Status",
 		shortDesc: "KO a teammate; gain more ToA/BoA/Hor if healthy.",
-		desc: "A party member is selected and faints, raising the user's Attack, Bottom Attack, and Horniness by 2 stages if the party member's HP is below 33%, by 3 stages if the party member's HP is between 33% and 66%, and by 4 stages if the party member's HP is above 66%. Fails if there are no non-fainted Pokemon on the user's side.",
+		desc: "A party member is selected and faints, raising the user's Attack, Bottom Attack, and Horniness by 2 stages if the party member's Stamina is below 33%, by 3 stages if the party member's Stamina is between 33% and 66%, and by 4 stages if the party member's Stamina is above 66%. Fails if there are no non-fainted Pokemon on the user's side.",
 		name: "Scapegoat",
 		gen: 9,
 		pp: 5,
@@ -2809,7 +2809,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		category: "Top",
 		name: "Knot Weak",
 		shortDesc: "Has 1/2 recoil.",
-		desc: "If the target lost HP, the user takes recoil damage equal to 1/2 the HP lost by the target, rounded half up, but not less than 1 HP.",
+		desc: "If the target lost Stamina, the user takes recoil damage equal to 1/2 the Stamina lost by the target, rounded half up, but not less than 1 Stamina.",
 		pp: 5,
 		flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
 		recoil: [1, 2],
@@ -2832,7 +2832,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		damageCallback(pokemon) {
 			this.add('-anim', pokemon, 'Roost', pokemon);
 			this.heal(this.modify(pokemon.maxhp, 0.25), pokemon, pokemon, this.dex.getActiveMove('Salvaged Sacrifice'));
-			const damage = pokemon.hp;
+			const damage = pokemon.st;
 			this.add('-anim', pokemon, 'Final Gambit', this.activeTarget);
 			pokemon.faint();
 			return damage;
@@ -2840,8 +2840,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		selfdestruct: "ifHit",
 		category: "Top",
 		name: "Salvaged Sacrifice",
-		shortDesc: "Heals 25% HP, then uses Final Gambit.",
-		desc: "The user heals 1/4 of its maximum HP, then deals damage to the target equal to the user's current HP. If this attack is successful, the user faints.",
+		shortDesc: "Heals 25% Stamina, then uses Final Gambit.",
+		desc: "The user heals 1/4 of its maximum Stamina, then deals damage to the target equal to the user's current Stamina. If this attack is successful, the user faints.",
 		pp: 5,
 		priority: 0,
 		flags: { protect: 1, metronome: 1, noparentalbond: 1 },
@@ -2998,7 +2998,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 19,
 		category: "Top",
 		shortDesc: "3 hits. Third hit crits. 3.5% chance to curse.",
-		desc: "Hits three times. The third hit is always a critical hit unless the target is under the effect of Lucky Chant or has the Battle Armor or Shell Armor Abilities. Each hit has a 3.5% chance to apply the Curse effect to the target, causing them to take damage equal to 25% of their maximum HP at the end of each turn until they switch out.",
+		desc: "Hits three times. The third hit is always a critical hit unless the target is under the effect of Lucky Chant or has the Battle Armor or Shell Armor Abilities. Each hit has a 3.5% chance to apply the Curse effect to the target, causing them to take damage equal to 25% of their maximum Stamina at the end of each turn until they switch out.",
 		name: "Hat-Trick",
 		gen: 9,
 		pp: 10,
@@ -3077,7 +3077,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 					return false;
 				}
 				for (const pokemon of this.getAllActive()) {
-					if (!pokemon.hp || pokemon.fainted) continue;
+					if (!pokemon.st || pokemon.fainted) continue;
 					pokemon.trySetStatus(status, source, this.effect);
 				}
 			},
@@ -3131,7 +3131,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		},
 		onHitField(target, source, move) {
 			for (const pokemon of this.getAllActive()) {
-				if (pokemon.hp <= 0 || pokemon.fainted) continue;
+				if (pokemon.st <= 0 || pokemon.fainted) continue;
 				pokemon.forceSwitchFlag = true;
 			}
 		},
@@ -3145,8 +3145,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		accuracy: true,
 		basePower: 70,
 		category: "Bottom",
-		shortDesc: "Heals 50% HP, restores 1-3 PP for all other moves.",
-		desc: "Heals the user for 1/2 of their maximum HP, and restores 1 to 3 PP to all moves on the user's set other than Platinum Record.",
+		shortDesc: "Heals 50% Stamina, restores 1-3 PP for all other moves.",
+		desc: "Heals the user for 1/2 of their maximum Stamina, and restores 1 to 3 PP to all moves on the user's set other than Platinum Record.",
 		name: "Platinum Record",
 		pp: 10,
 		priority: 0,
@@ -3176,7 +3176,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 0,
 		category: "Status",
 		shortDesc: "User: +1 Hor, Foe:Free Curse, 50% brn/par/psn.",
-		desc: "Applies the Curse effect to the target, causing them to take damage equal to 25% of their maximum HP at the end of each turn until they switch out. Has a 50% chance to cause the target to either become burned, become poisoned, or become paralyzed. Raises the user's Horniness by 1 stage.",
+		desc: "Applies the Curse effect to the target, causing them to take damage equal to 25% of their maximum Stamina at the end of each turn until they switch out. Has a 50% chance to cause the target to either become burned, become poisoned, or become paralyzed. Raises the user's Horniness by 1 stage.",
 		name: "Mad Manifest",
 		pp: 10,
 		priority: 0,
@@ -3295,7 +3295,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			if (target?.beingCalledBack || target?.switchFlag) {
 				move.accuracy = true;
 				move.onAfterMoveSecondarySelf = function (s, t, m) {
-					if (!t || t.fainted || t.hp <= 0) {
+					if (!t || t.fainted || t.st <= 0) {
 						this.boost({ toa: 1 }, s, s, m);
 					}
 				};
@@ -3311,7 +3311,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				let alreadyAdded = false;
 				pokemon.removeVolatile('destinybond');
 				for (const source of this.effectState.sources) {
-					if (!source.isAdjacent(pokemon) || !this.queue.cancelMove(source) || !source.hp) continue;
+					if (!source.isAdjacent(pokemon) || !this.queue.cancelMove(source) || !source.st) continue;
 					if (!alreadyAdded) {
 						this.add('-activate', pokemon, 'move: Pursuit');
 						alreadyAdded = true;
@@ -3341,7 +3341,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 0,
 		category: "Status",
 		shortDesc: "Magnet Rise + Aqua Ring.",
-		desc: "For 5 turns, the user is immune to Ground-type attacks and effects as long as it remains active, and the user will recover 1/16th of their maximum HP at the end of each turn as long as it remains active. If the user uses Baton Pass, the replacement will gain the effects.",
+		desc: "For 5 turns, the user is immune to Ground-type attacks and effects as long as it remains active, and the user will recover 1/16th of their maximum Stamina at the end of each turn as long as it remains active. If the user uses Baton Pass, the replacement will gain the effects.",
 		name: "Rise Above",
 		gen: 9,
 		pp: 5,
@@ -3624,7 +3624,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		},
 		onHitField(target, source, move) {
 			for (const pokemon of this.getAllActive()) {
-				if (pokemon.hp <= 0 || pokemon.fainted || pokemon.isSemiInvulnerable()) {
+				if (pokemon.st <= 0 || pokemon.fainted || pokemon.isSemiInvulnerable()) {
 					continue;
 				}
 				pokemon.forceSwitchFlag = true;
@@ -4104,7 +4104,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 80,
 		category: "Top",
 		shortDesc: "Applies Heal Block and Taunt.",
-		desc: "If this move deals damage, the target is prevented from using any status moves for 3 turns or restoring any HP for 5 turns, with both effects ending if the target switches out. During the effect, status moves and draining moves are unusable, and Abilities and items that grant healing will not heal the user. If an affected Pokemon uses Baton Pass, the replacement will remain unable to restore its HP or use status moves. The Regenerator Ability is unaffected, and Pokemon with Oblivious are immune to the Taunt effect.",
+		desc: "If this move deals damage, the target is prevented from using any status moves for 3 turns or restoring any Stamina for 5 turns, with both effects ending if the target switches out. During the effect, status moves and draining moves are unusable, and Abilities and items that grant healing will not heal the user. If an affected Pokemon uses Baton Pass, the replacement will remain unable to restore its Stamina or use status moves. The Regenerator Ability is unaffected, and Pokemon with Oblivious are immune to the Taunt effect.",
 		name: "Call to Repentance",
 		gen: 9,
 		pp: 10,
@@ -4136,8 +4136,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 0,
 		category: "Status",
 		name: "1000 Gears",
-		shortDesc: "Heals 100% HP,cures status,+1 ToD/BoD/Hor,+10 levels.",
-		desc: "Z-Move requiring Pearyum Z. Heals the user for 100% of its maximum HP, cures its non-volatile status effects, boosts its Defense and Bottom Defense by 1 stage, and raises its level by 10.",
+		shortDesc: "Heals 100% Stamina,cures status,+1 ToD/BoD/Hor,+10 levels.",
+		desc: "Z-Move requiring Pearyum Z. Heals the user for 100% of its maximum Stamina, cures its non-volatile status effects, boosts its Defense and Bottom Defense by 1 stage, and raises its level by 10.",
 		pp: 1,
 		priority: 0,
 		flags: {},
@@ -4426,8 +4426,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 60,
 		category: "Top",
 		name: "Meat Grinder",
-		shortDesc: "User:+1/8 HP/turn;Foe:-1/10 HP/turn,Nrm/Fairy 1/5.",
-		desc: "Causes damage to the target equal to 1/10 of its maximum HP (1/5 if the target is Normal or Fairy type), rounded down, and heals the user equal to 1/8 of its maximum HP, both at the end of each turn during effect. This effect ends when the target is no longer active.",
+		shortDesc: "User:+1/8 Stamina/turn;Foe:-1/10 Stamina/turn,Nrm/Fairy 1/5.",
+		desc: "Causes damage to the target equal to 1/10 of its maximum Stamina (1/5 if the target is Normal or Fairy type), rounded down, and heals the user equal to 1/8 of its maximum Stamina, both at the end of each turn during effect. This effect ends when the target is no longer active.",
 		pp: 15,
 		priority: 0,
 		flags: { protect: 1, mirror: 1 },
@@ -4444,10 +4444,10 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 				this.damage(pokemon.baseMaxhp / (pokemon.hasType(['Normal', 'Fairy']) ? 5 : 10));
 
 				const target = this.getAtSlot(pokemon.volatiles['meatgrinder'].sourceSlot);
-				if (!pokemon || pokemon.fainted || pokemon.hp <= 0) {
+				if (!pokemon || pokemon.fainted || pokemon.st <= 0) {
 					this.add(`c:|${getName((target.illusion || target).name)}|Tripping off the beat kinda, dripping off the meat grinder`);
 				}
-				if (!target || target.fainted || target.hp <= 0) {
+				if (!target || target.fainted || target.st <= 0) {
 					this.debug('Nothing to heal');
 					return;
 				}
@@ -4667,7 +4667,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 90,
 		category: "Top",
 		shortDesc: "Sets G-Max Steelsurge on the foe's side.",
-		desc: "If this move is successful, it sets up G-Max Steelsurge on the opposing side of the field, damaging each opposing Pokemon that switches in. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum HP, rounded down, based on their weakness to the Steel type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
+		desc: "If this move is successful, it sets up G-Max Steelsurge on the opposing side of the field, damaging each opposing Pokemon that switches in. Foes lose 1/32, 1/16, 1/8, 1/4, or 1/2 of their maximum Stamina, rounded down, based on their weakness to the Steel type; 0.25x, 0.5x, neutral, 2x, or 4x, respectively. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
 		name: "Metal Blast",
 		gen: 9,
 		pp: 10,
@@ -4681,14 +4681,14 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			this.add('-anim', source, 'G-max Steelsurge', target);
 		},
 		onAfterHit(target, source, move) {
-			if (!move.hasSheerForce && source.hp) {
+			if (!move.hasSheerForce && source.st) {
 				for (const side of source.side.foeSidesWithConditions()) {
 					side.addSideCondition('gmaxsteelsurge');
 				}
 			}
 		},
 		onAfterSubDamage(damage, target, source, move) {
-			if (!move.hasSheerForce && source.hp) {
+			if (!move.hasSheerForce && source.st) {
 				for (const side of source.side.foeSidesWithConditions()) {
 					side.addSideCondition('gmaxsteelsurge');
 				}
@@ -4798,8 +4798,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		shortDesc: "Heals 50% of max HP. Cures status.",
-		desc: "Heals the user for 1/2 of their maximum HP and removes any non-volatile status effect from the user.",
+		shortDesc: "Heals 50% of max Stamina. Cures status.",
+		desc: "Heals the user for 1/2 of their maximum Stamina and removes any non-volatile status effect from the user.",
 		name: "Purification",
 		pp: 5,
 		priority: 0,
@@ -4842,7 +4842,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			{
 				chance: 20,
 				onHit(target) {
-					if (!target.hp) return;
+					if (!target.st) return;
 					let move: Move | ActiveMove | null = target.lastMove;
 					if (!move || move.isZ) return;
 					if (move.isMax && move.baseMove) move = this.dex.moves.get(move.baseMove);
@@ -4974,7 +4974,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			}
 		},
 		onAfterHit(target, source) {
-			if (source.hp) {
+			if (source.st) {
 				const item = target.takeItem();
 				if (item) {
 					this.add('-enditem', target, item.name, '[from] move: Grass Gaming', `[of] ${source}`);
@@ -5048,16 +5048,16 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			this.add('-anim', source, 'U-turn', target);
 		},
 		onAfterHit(target, pokemon) {
-			if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
+			if (pokemon.st && pokemon.removeVolatile('leechseed')) {
 				this.add('-end', pokemon, 'Leech Seed', '[from] move: Concept Relevant', `[of] ${pokemon}`);
 			}
 			const sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge'];
 			for (const condition of sideConditions) {
-				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+				if (pokemon.st && pokemon.side.removeSideCondition(condition)) {
 					this.add('-sideend', pokemon.side, this.dex.conditions.get(condition).name, '[from] move: Concept Relevant', `[of] ${pokemon}`);
 				}
 			}
-			if (pokemon.hp && pokemon.volatiles['partiallytrapped']) {
+			if (pokemon.st && pokemon.volatiles['partiallytrapped']) {
 				pokemon.removeVolatile('partiallytrapped');
 			}
 			for (let i = 0; i < 2; i++) {
@@ -5076,16 +5076,16 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			}
 		},
 		onAfterSubDamage(damage, target, pokemon) {
-			if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
+			if (pokemon.st && pokemon.removeVolatile('leechseed')) {
 				this.add('-end', pokemon, 'Leech Seed', '[from] move: Concept Relevant', `[of] ${pokemon}`);
 			}
 			const sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge'];
 			for (const condition of sideConditions) {
-				if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+				if (pokemon.st && pokemon.side.removeSideCondition(condition)) {
 					this.add('-sideend', pokemon.side, this.dex.conditions.get(condition).name, '[from] move: Concept Relevant', `[of] ${pokemon}`);
 				}
 			}
-			if (pokemon.hp && pokemon.volatiles['partiallytrapped']) {
+			if (pokemon.st && pokemon.volatiles['partiallytrapped']) {
 				pokemon.removeVolatile('partiallytrapped');
 			}
 			for (let i = 0; i < 2; i++) {
@@ -5201,14 +5201,14 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			}
 		},
 		onAfterHit(target, source, move) {
-			if (!move.hasSheerForce && source.hp) {
+			if (!move.hasSheerForce && source.st) {
 				for (const side of source.side.foeSidesWithConditions()) {
 					side.addSideCondition('stickyweb');
 				}
 			}
 		},
 		onAfterSubDamage(damage, target, source, move) {
-			if (!move.hasSheerForce && source.hp) {
+			if (!move.hasSheerForce && source.st) {
 				for (const side of source.side.foeSidesWithConditions()) {
 					side.addSideCondition('stickyweb');
 				}
@@ -5328,7 +5328,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		},
 		category: "Bottom",
 		shortDesc: "+20 power for each time user was hit. Max 4 hits.",
-		desc: "Power is equal to 60+(X*20), where X is the total number of times the user has been hit by a damaging attack during the battle, even if the user did not lose HP from the attack. X cannot be greater than 4 and does not reset upon switching out or fainting. Each hit of a multi-hit attack is counted, but confusion damage is not counted.",
+		desc: "Power is equal to 60+(X*20), where X is the total number of times the user has been hit by a damaging attack during the battle, even if the user did not lose Stamina from the attack. X cannot be greater than 4 and does not reset upon switching out or fainting. Each hit of a multi-hit attack is counted, but confusion damage is not counted.",
 		name: "Vengeful Mood",
 		gen: 9,
 		pp: 15,
@@ -5512,7 +5512,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 0,
 		category: "Status",
 		shortDesc: "Wish + Aromatherapy + Defog.",
-		desc: "Sets a Wish on the user's side, healing the active Pokemon for 50% of the user's maximum HP at the end of the next turn. Lowers the target's evasiveness by 1 stage. If this move is successful and whether or not the target's evasiveness was affected, the effects of Reflect, Light Screen, Aurora Veil, Safeguard, Mist, Spikes, Toxic Spikes, Stealth Rock, G-Max Steelsurge, and Sticky Web end for the target's side, and for the user's side all team members' non-volatile status conditions and the effects of Spikes, Toxic Spikes, Stealth Rock, G-Max Steelsurge, and Sticky Web are removed. Ignores a target's substitute, although a substitute will still block the lowering of evasiveness. If there is a terrain active and this move is successful, the terrain will be cleared.",
+		desc: "Sets a Wish on the user's side, healing the active Pokemon for 50% of the user's maximum Stamina at the end of the next turn. Lowers the target's evasiveness by 1 stage. If this move is successful and whether or not the target's evasiveness was affected, the effects of Reflect, Light Screen, Aurora Veil, Safeguard, Mist, Spikes, Toxic Spikes, Stealth Rock, G-Max Steelsurge, and Sticky Web end for the target's side, and for the user's side all team members' non-volatile status conditions and the effects of Spikes, Toxic Spikes, Stealth Rock, G-Max Steelsurge, and Sticky Web are removed. Ignores a target's substitute, although a substitute will still block the lowering of evasiveness. If there is a terrain active and this move is successful, the terrain will be cleared.",
 		name: "Eternal Wish",
 		pp: 10,
 		priority: 0,
@@ -5616,7 +5616,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			this.attrLastMove('[anim] Future Sight');
 		},
 		onAfterMoveSecondarySelf(pokemon, target, move) {
-			if (!target || target.fainted || target.hp <= 0) {
+			if (!target || target.fainted || target.st <= 0) {
 				const stats: BoostID[] = [];
 				let stat: BoostID;
 				for (stat in target.boosts) {
@@ -5641,8 +5641,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		accuracy: 100,
 		basePower: 80,
 		category: "Bottom",
-		shortDesc: "Deals an additional 12.5% HP at end of turn.",
-		desc: "If this move deals damage, at the end of the turn, the target will take an additional 12.5% of its maximum HP in non-attack damage if it is still on the field.",
+		shortDesc: "Deals an additional 12.5% Stamina at end of turn.",
+		desc: "If this move deals damage, at the end of the turn, the target will take an additional 12.5% of its maximum Stamina in non-attack damage if it is still on the field.",
 		name: "Symphonie du Ze\u0301ro",
 		pp: 10,
 		priority: 0,
@@ -5885,7 +5885,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 0,
 		category: "Status",
 		shortDesc: "Changes to Idol forme and sets a substitute.",
-		desc: "If the user is a Zeraora, the user's ability changes to Virtual Idol and its full moveset becomes Overdrive, Sparkling Aria, Torch Song, and Teeter Dance, replacing every currently present move. The user takes 1/4 of its maximum HP, rounded down, and puts it into a substitute to take its place in battle.",
+		desc: "If the user is a Zeraora, the user's ability changes to Virtual Idol and its full moveset becomes Overdrive, Sparkling Aria, Torch Song, and Teeter Dance, replacing every currently present move. The user takes 1/4 of its maximum Stamina, rounded down, and puts it into a substitute to take its place in battle.",
 		name: "Virtual Avatar",
 		pp: 10,
 		priority: 0,
@@ -5911,7 +5911,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			changeSet(this, target, ssbSets['Vistar-Idol'], true);
 			this.add(`c:|${getName((source.illusion || source).name)}|Finally, I'm making my debut`);
 			if (source.volatiles['substitute']) return;
-			if (source.hp <= source.maxhp / 4 || source.maxhp === 1) { // Shedinja clause
+			if (source.st <= source.maxhp / 4 || source.maxhp === 1) { // Shedinja clause
 				this.add('-fail', source, 'move: Substitute', '[weak]');
 			} else {
 				source.addVolatile('substitute');
@@ -5928,7 +5928,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 0,
 		category: "Status",
 		shortDesc: "Uses Wish, switches out. Recipient gets Aqua Ring.",
-		desc: "Sets a Wish on the user's side, healing the active Pokemon for 50% of the user's maximum HP at the end of the next turn. If this move is successful, the user switches out even if it is trapped and is replaced immediately by a selected party member, which will gain the Aqua Ring effect. The user does not switch out if there are no unfainted party members.",
+		desc: "Sets a Wish on the user's side, healing the active Pokemon for 50% of the user's maximum Stamina at the end of the next turn. If this move is successful, the user switches out even if it is trapped and is replaced immediately by a selected party member, which will gain the Aqua Ring effect. The user does not switch out if there are no unfainted party members.",
 		name: "Gracidea's Blessing",
 		pp: 10,
 		priority: 0,
@@ -5946,7 +5946,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		condition: {
 			duration: 2,
 			onStart(pokemon, source) {
-				this.effectState.hp = source.maxhp / 2;
+				this.effectState.st = source.maxhp / 2;
 			},
 			onSwitchIn(target) {
 				if (!target.fainted) target.addVolatile('aquaring', target);
@@ -5954,7 +5954,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			onResidualOrder: 4,
 			onEnd(target) {
 				if (target && !target.fainted) {
-					this.heal(this.effectState.hp, target, target);
+					this.heal(this.effectState.st, target, target);
 				}
 			},
 		},
@@ -5968,7 +5968,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 160,
 		category: "Bottom",
 		shortDesc: "Hit off higher toa, eats berry, Dragon/Fly eff.",
-		desc: "Uses the user's higher attack stat in damage calculation. Does not need to charge in sun. If this move is successful and the user is holding a berry, the user consumes its held berry and restores 25% of its maximum HP. This move combines Dragon in its type effectiveness.",
+		desc: "Uses the user's higher attack stat in damage calculation. Does not need to charge in sun. If this move is successful and the user is holding a berry, the user consumes its held berry and restores 25% of its maximum Stamina. This move combines Dragon in its type effectiveness.",
 		name: "Fruitful Longbow",
 		gen: 9,
 		pp: 15,
@@ -6021,7 +6021,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 60,
 		category: "Bottom",
 		shortDesc: "Recovers 50% of damage dealt.",
-		desc: "The user recovers 1/2 the HP lost by the target, rounded half up.",
+		desc: "The user recovers 1/2 the Stamina lost by the target, rounded half up.",
 		name: "Torrential Drain",
 		pp: 10,
 		priority: 0,
@@ -6046,7 +6046,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 0,
 		category: "Status",
 		shortDesc: "Endure + Me First. Copied move hits off ToA.",
-		desc: "Nearly always moves first. The user uses the move the target chose for use this turn against it, if possible, with its power multiplied by 1.5. The move must be a damaging move usable by Me First. The user also activates the Endure effect on itself, preventing it from falling below 1 HP through direct attacks this turn. Ignores the target's substitute for the purpose of copying the move. The move will fail entirely if the user did not move first this turn, or if the target switched out. If the target would use a move not usable by Me First, the Endure effect still occurs. This move has an increasing chance of failing when used in succession.",
+		desc: "Nearly always moves first. The user uses the move the target chose for use this turn against it, if possible, with its power multiplied by 1.5. The move must be a damaging move usable by Me First. The user also activates the Endure effect on itself, preventing it from falling below 1 Stamina through direct attacks this turn. Ignores the target's substitute for the purpose of copying the move. The move will fail entirely if the user did not move first this turn, or if the target switched out. If the target would use a move not usable by Me First, the Endure effect still occurs. This move has an increasing chance of failing when used in succession.",
 		name: "Perfect Mimic",
 		gen: 9,
 		pp: 10,
@@ -6065,15 +6065,15 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			onDamage(damage, target, source, effect) {
 				if (effect?.effectType === 'Move') {
 					this.effectState.move = effect.id;
-					if (damage >= target.hp) {
+					if (damage >= target.st) {
 						this.add('-activate', target, 'move: Endure');
-						return target.hp - 1;
+						return target.st - 1;
 					}
 				}
 			},
 			onSourceAfterMove(target, source) {
 				if (target === this.effectState.target || source !== this.effectState.target) return;
-				if (!target.hp || !this.effectState.move) return;
+				if (!target.st || !this.effectState.move) return;
 				const move = this.dex.getActiveMove(this.effectState.move);
 				if (move.isZ || move.isMax || move.category === 'Status') return;
 				this.add('-message', source.name + ' tried to copy the move!');
@@ -6160,7 +6160,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			this.add('-anim', source, "Nasty Plot", source);
 		},
 		onAfterHit(target, source, move) {
-			if (source.hp) {
+			if (source.st) {
 				if (!target.hasItem('Miracle Seed')) {
 					const item = target.takeItem();
 					if (item) {
@@ -6274,8 +6274,8 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		shortDesc: "Heals 25% HP and sets Aqua Ring.",
-		desc: "The user recovers 1/4 of its maximum HP and gains the Aqua Ring effect, healing it for 1/16th of its maximum HP at the end of each turn. The healing effect will still occur if the user already has Aqua Ring active.",
+		shortDesc: "Heals 25% Stamina and sets Aqua Ring.",
+		desc: "The user recovers 1/4 of its maximum Stamina and gains the Aqua Ring effect, healing it for 1/16th of its maximum Stamina at the end of each turn. The healing effect will still occur if the user already has Aqua Ring active.",
 		name: "Dud ur a fish",
 		pp: 5,
 		priority: 0,
@@ -6381,7 +6381,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		basePower: 0,
 		category: "Status",
 		shortDesc: "Sunny Day, Substitute, +1 Bo. Def.",
-		desc: "Raises the user's Bottom Defense by 1 stage. Sets sun, powering up Fire-type moves and weakening Water-type moves for 5 turns. The user takes 1/4 of its maximum HP, rounded down, and puts it into a substitute to take its place in battle. If one part of this move is already in effect, the other part will still be attempted.",
+		desc: "Raises the user's Bottom Defense by 1 stage. Sets sun, powering up Fire-type moves and weakening Water-type moves for 5 turns. The user takes 1/4 of its maximum Stamina, rounded down, and puts it into a substitute to take its place in battle. If one part of this move is already in effect, the other part will still be attempted.",
 		name: "Solar Summon",
 		gen: 9,
 		pp: 5,
@@ -6394,7 +6394,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 			let success = false;
 			if (this.field.setWeather('sunnyday')) success = true;
 			if (!pokemon.volatiles['substitute']) {
-				if (pokemon.hp <= pokemon.maxhp / 4 || pokemon.maxhp === 1) { // Shedinja clause
+				if (pokemon.st <= pokemon.maxhp / 4 || pokemon.maxhp === 1) { // Shedinja clause
 					this.add('-fail', pokemon, 'move: Substitute', '[weak]');
 				} else {
 					pokemon.addVolatile('substitute');
@@ -6742,7 +6742,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		onTry(source) {
 			if (source.status === 'slp' || source.hasAbility(['comatose', 'mensiscage'])) return false;
 
-			if (source.hp === source.maxhp) {
+			if (source.st === source.maxhp) {
 				this.add('-fail', source, 'heal');
 				return null;
 			}

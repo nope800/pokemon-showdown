@@ -16,7 +16,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					this.battle.runEvent('AfterSwitchInSelf', pokemon);
 				}
 			}
-			if (!pokemon.hp) return false;
+			if (!pokemon.st) return false;
 			pokemon.isStarted = true;
 			if (!pokemon.fainted) {
 				this.battle.singleEvent('Start', pokemon.getAbility(), pokemon.abilityState, pokemon);

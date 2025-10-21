@@ -18,7 +18,7 @@ describe('Hydro Steam', () => {
 		]]);
 		const koraidon = battle.p2.active[0];
 		battle.makeChoices();
-		assert.bounded(koraidon.maxhp - koraidon.hp, [81, 96]);
+		assert.bounded(koraidon.maxhp - koraidon.st, [81, 96]);
 	});
 
 	it(`should have its damaged halved if the user holds a Utility Umbrella`, () => {
@@ -29,7 +29,7 @@ describe('Hydro Steam', () => {
 		]]);
 		const koraidon = battle.p2.active[0];
 		battle.makeChoices();
-		assert.bounded(koraidon.maxhp - koraidon.hp, [27, 32]);
+		assert.bounded(koraidon.maxhp - koraidon.st, [27, 32]);
 	});
 
 	it(`should have its damage multiplied by 1.5 if only the target holds Utility Umbrella`, () => {
@@ -40,7 +40,7 @@ describe('Hydro Steam', () => {
 		]]);
 		const koraidon = battle.p2.active[0];
 		battle.makeChoices();
-		assert.bounded(koraidon.maxhp - koraidon.hp, [81, 96]);
+		assert.bounded(koraidon.maxhp - koraidon.st, [81, 96]);
 	});
 
 	it(`should not have its damage changed if both the user and target hold Utility Umbrellas`, () => {
@@ -51,6 +51,6 @@ describe('Hydro Steam', () => {
 		]]);
 		const koraidon = battle.p2.active[0];
 		battle.makeChoices();
-		assert.bounded(koraidon.maxhp - koraidon.hp, [54, 64]);
+		assert.bounded(koraidon.maxhp - koraidon.st, [54, 64]);
 	});
 });

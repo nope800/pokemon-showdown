@@ -18,7 +18,7 @@ describe('Glaive Rush', () => {
 		]]);
 		battle.makeChoices();
 		const baxcalibur = battle.p1.active[0];
-		const damage = baxcalibur.maxhp - baxcalibur.hp;
+		const damage = baxcalibur.maxhp - baxcalibur.st;
 		assert.bounded(damage, [212, 252]); // If it wasn't doubled, range would be 106-126
 	});
 
@@ -40,11 +40,11 @@ describe('Glaive Rush', () => {
 		]]);
 		const baxcalibur = battle.p1.active[0];
 		battle.makeChoices();
-		let damage = baxcalibur.maxhp - baxcalibur.hp;
+		let damage = baxcalibur.maxhp - baxcalibur.st;
 		assert.bounded(damage, [150, 178]); // If it wasn't doubled, range would be 75-89
 
 		battle.makeChoices('move shoreup', 'auto');
-		damage = baxcalibur.maxhp - baxcalibur.hp;
+		damage = baxcalibur.maxhp - baxcalibur.st;
 		assert.bounded(damage, [75, 89]); // If it was doubled, range would be 150-178
 	});
 });

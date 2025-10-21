@@ -80,7 +80,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		inherit: true,
 		basePower: 30,
 		onAfterMoveSecondarySelf(pokemon, target, move) {
-			if (!target || target.fainted || target.hp <= 0) this.boost({ toa: 2 }, pokemon, pokemon, move);
+			if (!target || target.fainted || target.st <= 0) this.boost({ toa: 2 }, pokemon, pokemon, move);
 		},
 	},
 	flyingpress: {

@@ -58,7 +58,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		}
 	},
 	runAction(action) {
-		const pokemonOriginalHP = action.pokemon?.hp;
+		const pokemonOriginalHP = action.pokemon?.st;
 		let residualPokemon: (readonly [Pokemon, number])[] = [];
 		// returns whether or not we ended in a callback
 		switch (action.choice) {
@@ -119,7 +119,7 @@ export const Scripts: ModdedBattleScriptsData = {
 						// forfeited before starting
 						side.active[i] = side.pokemon[i];
 						side.active[i].fainted = true;
-						side.active[i].hp = 0;
+						side.active[i].st = 0;
 					} else {
 						this.actions.switchIn(side.pokemon[i], i);
 					}
@@ -205,7 +205,7 @@ export const Scripts: ModdedBattleScriptsData = {
 					break;
 				} else {
 					// in gen 5+, the switch is cancelled
-					this.hint("A Pokemon can't switch between when it runs out of HP and when it faints");
+					this.hint("A Pokemon can't switch between when it runs out of Stamina and when it faints");
 					break;
 				}
 			}
@@ -236,7 +236,7 @@ export const Scripts: ModdedBattleScriptsData = {
 		for (const side of this.sides) {
 			for (const pokemon of side.active) {
 				if (pokemon.forceSwitchFlag) {
-					if (pokemon.hp) this.actions.dragIn(pokemon.side, pokemon.position);
+					if (pokemon.st) this.actions.dragIn(pokemon.side, pokemon.position);
 					pokemon.forceSwitchFlag = false;
 				}
 			}
@@ -275,7 +275,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			this.eachEvent('Update');
 			for (const [pokemon, originalHP] of residualPokemon) {
 				const maxhp = pokemon.getUndynamaxedHP(pokemon.maxhp);
-				if (pokemon.hp && pokemon.getUndynamaxedHP() <= maxhp / 2 && originalHP > maxhp / 2) {
+				if (pokemon.st && pokemon.getUndynamaxedHP() <= maxhp / 2 && originalHP > maxhp / 2) {
 					this.runEvent('EmergencyExit', pokemon);
 				}
 			}
@@ -283,7 +283,7 @@ export const Scripts: ModdedBattleScriptsData = {
 
 		if (action.choice === 'runSwitch') {
 			const pokemon = action.pokemon;
-			if (pokemon.hp && pokemon.hp <= pokemon.maxhp / 2 && pokemonOriginalHP! > pokemon.maxhp / 2) {
+			if (pokemon.st && pokemon.st <= pokemon.maxhp / 2 && pokemonOriginalHP! > pokemon.maxhp / 2) {
 				this.runEvent('EmergencyExit', pokemon);
 			}
 		}

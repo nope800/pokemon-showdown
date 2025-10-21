@@ -21,7 +21,7 @@ describe('Metal Burst', () => {
 		battle.makeChoices('switch 2', 'move spore');
 		battle.makeChoices('move sleeptalk', 'move sonicboom');
 		const breloom = battle.p2.active[0];
-		assert.equal(breloom.hp, breloom.maxhp - battle.dex.moves.get('sonicboom').damage * 1.5);
+		assert.equal(breloom.st, breloom.maxhp - battle.dex.moves.get('sonicboom').damage * 1.5);
 	});
 
 	it(`should target the opposing Pokemon that hit the user with an attack most recently that turn`, () => {
@@ -49,7 +49,7 @@ describe('Metal Burst', () => {
 
 		battle.makeChoices('move sleeptalk', 'move closecombat');
 		battle.makeChoices('move metalburst', 'move falseswipe');
-		assert.equal(battle.p2.active[0].hp, battle.p2.active[0].maxhp - 1);
+		assert.equal(battle.p2.active[0].st, battle.p2.active[0].maxhp - 1);
 	});
 
 	it(`should be subject to redirection`, () => {
@@ -67,6 +67,6 @@ describe('Metal Burst', () => {
 		assert.statStage(manectric, 'boa', 1);
 		battle.makeChoices('move metalburst, move sleeptalk', 'move dragonrage 1, move followme');
 		assert.fullHP(blissey);
-		assert.equal(manectric.hp, manectric.maxhp - battle.dex.moves.get('dragonrage').damage * 1.5);
+		assert.equal(manectric.st, manectric.maxhp - battle.dex.moves.get('dragonrage').damage * 1.5);
 	});
 });

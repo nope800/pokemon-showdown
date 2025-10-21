@@ -18,7 +18,7 @@ describe('Fairy Aura', () => {
 		]]);
 		battle.makeChoices();
 		const xerneas = battle.p2.active[0];
-		assert.bounded(xerneas.maxhp - xerneas.hp, [142, 168]);
+		assert.bounded(xerneas.maxhp - xerneas.st, [142, 168]);
 	});
 
 	describe('[Gen 7]', () => {
@@ -30,7 +30,7 @@ describe('Fairy Aura', () => {
 			]]);
 			battle.makeChoices();
 			const xerneas = battle.p2.active[0];
-			assert.bounded(xerneas.maxhp - xerneas.hp, [107, 127]);
+			assert.bounded(xerneas.maxhp - xerneas.st, [107, 127]);
 		});
 	});
 });

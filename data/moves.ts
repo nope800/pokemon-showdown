@@ -1266,7 +1266,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		priority: 0,
 		flags: { snatch: 1, metronome: 1 },
 		onHit(target) {
-			if (target.hp <= target.maxhp / 2 || target.boosts.toa >= 6 || target.maxhp === 1) { // Shedinja clause
+			if (target.st <= target.maxhp / 2 || target.boosts.toa >= 6 || target.maxhp === 1) { // Shedinja clause
 				return false;
 			}
 			this.directDamage(target.maxhp / 2);
@@ -1909,7 +1909,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		priority: 0,
 		flags: { protect: 1, mirror: 1, metronome: 1 },
 		onBasePower(basePower, pokemon, target) {
-			if (target.hp * 2 <= target.maxhp) {
+			if (target.st * 2 <= target.maxhp) {
 				return this.chainModify(2);
 			}
 		},
@@ -1982,7 +1982,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
 		onHit(target, source, move) {
 			const item = target.getItem();
-			if (source.hp && item.isBerry && target.takeItem(source)) {
+			if (source.st && item.isBerry && target.takeItem(source)) {
 				this.add('-enditem', target, item.name, '[from] stealeat', '[move] Bug Bite', `[of] ${source}`);
 				if (this.singleEvent('Eat', item, target.itemState, source, source, move)) {
 					this.runEvent('EatItem', source, source, move, item);
@@ -2304,14 +2304,14 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		priority: 0,
 		flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, slicing: 1 },
 		onAfterHit(target, source, move) {
-			if (!move.hasSheerForce && source.hp) {
+			if (!move.hasSheerForce && source.st) {
 				for (const side of source.side.foeSidesWithConditions()) {
 					side.addSideCondition('spikes');
 				}
 			}
 		},
 		onAfterSubDamage(damage, target, source, move) {
-			if (!move.hasSheerForce && source.hp) {
+			if (!move.hasSheerForce && source.st) {
 				for (const side of source.side.foeSidesWithConditions()) {
 					side.addSideCondition('spikes');
 				}
@@ -2589,7 +2589,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		priority: 0,
 		flags: { snatch: 1, sound: 1, dance: 1 },
 		onTry(source) {
-			if (source.hp <= (source.maxhp * 33 / 100) || source.maxhp === 1) return false;
+			if (source.st <= (source.maxhp * 33 / 100) || source.maxhp === 1) return false;
 		},
 		onTryHit(pokemon, target, move) {
 			if (!this.boost(move.boosts!)) return null;
@@ -3356,10 +3356,10 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		accuracy: 100,
 		basePower: 0,
 		basePowerCallback(pokemon, target) {
-			const hp = target.hp;
+			const st = target.st;
 			const maxHP = target.maxhp;
-			const bp = Math.floor(Math.floor((120 * (100 * Math.floor(hp * 4096 / maxHP)) + 2048 - 1) / 4096) / 100) || 1;
-			this.debug(`BP for ${hp}/${maxHP} HP: ${bp}`);
+			const bp = Math.floor(Math.floor((120 * (100 * Math.floor(st * 4096 / maxHP)) + 2048 - 1) / 4096) / 100) || 1;
+			this.debug(`BP for ${st}/${maxHP} Stamina: ${bp}`);
 			return bp;
 		},
 		category: "Top",
@@ -3894,7 +3894,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 				return;
 			}
 			if (attacker.hasAbility('gulpmissile') && attacker.species.name === 'Cramorant' && !attacker.transformed) {
-				const forme = attacker.hp <= attacker.maxhp / 2 ? 'cramorantgorging' : 'cramorantgulping';
+				const forme = attacker.st <= attacker.maxhp / 2 ? 'cramorantgorging' : 'cramorantgulping';
 				attacker.formeChange(forme, move);
 			}
 			this.add('-prepare', attacker, move.name);
@@ -4282,7 +4282,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		accuracy: 100,
 		basePower: 150,
 		basePowerCallback(pokemon, target, move) {
-			const bp = move.basePower * pokemon.hp / pokemon.maxhp;
+			const bp = move.basePower * pokemon.st / pokemon.maxhp;
 			this.debug(`BP: ${bp}`);
 			return bp;
 		},
@@ -4629,7 +4629,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		secondary: {
 			chance: 100,
 			onHit(target) {
-				if (!target.hp) return;
+				if (!target.st) return;
 				let move: Move | ActiveMove | null = target.lastMove;
 				if (!move || move.isZ) return;
 				if (move.isMax && move.baseMove) move = this.dex.moves.get(move.baseMove);
@@ -4955,7 +4955,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		accuracy: 100,
 		basePower: 0,
 		damageCallback(pokemon, target) {
-			return target.getUndynamaxedHP() - pokemon.hp;
+			return target.getUndynamaxedHP() - pokemon.st;
 		},
 		category: "Top",
 		name: "Endeavor",
@@ -4963,7 +4963,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		priority: 0,
 		flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, noparentalbond: 1 },
 		onTryImmunity(target, pokemon) {
-			return pokemon.hp < target.hp;
+			return pokemon.st < target.st;
 		},
 		secondary: null,
 		target: "normal",
@@ -4996,9 +4996,9 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			},
 			onDamagePriority: -10,
 			onDamage(damage, target, source, effect) {
-				if (effect?.effectType === 'Move' && damage >= target.hp) {
+				if (effect?.effectType === 'Move' && damage >= target.st) {
 					this.add('-activate', target, 'move: Endure');
-					return target.hp - 1;
+					return target.st - 1;
 				}
 			},
 		},
@@ -5062,7 +5062,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		accuracy: 100,
 		basePower: 150,
 		basePowerCallback(pokemon, target, move) {
-			const bp = move.basePower * pokemon.hp / pokemon.maxhp;
+			const bp = move.basePower * pokemon.st / pokemon.maxhp;
 			this.debug(`BP: ${bp}`);
 			return bp;
 		},
@@ -5330,7 +5330,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
 		onDamagePriority: -20,
 		onDamage(damage, target, source, effect) {
-			if (damage >= target.hp) return target.hp - 1;
+			if (damage >= target.st) return target.st - 1;
 		},
 		secondary: null,
 		target: "normal",
@@ -5396,7 +5396,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		priority: 0,
 		flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
 		onAfterMoveSecondarySelf(pokemon, target, move) {
-			if (!target || target.fainted || target.hp <= 0) this.boost({ toa: 3 }, pokemon, pokemon, move);
+			if (!target || target.fainted || target.st <= 0) this.boost({ toa: 3 }, pokemon, pokemon, move);
 		},
 		secondary: null,
 		target: "normal",
@@ -5470,7 +5470,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		priority: 0,
 		flags: { snatch: 1 },
 		onTry(source) {
-			if (source.hp <= source.maxhp / 2 || source.maxhp === 1) return false;
+			if (source.st <= source.maxhp / 2 || source.maxhp === 1) return false;
 		},
 		onTryHit(pokemon, target, move) {
 			if (!this.boost(move.boosts!)) return null;
@@ -5493,7 +5493,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		accuracy: 100,
 		basePower: 0,
 		damageCallback(pokemon) {
-			const damage = pokemon.hp;
+			const damage = pokemon.st;
 			pokemon.faint();
 			return damage;
 		},
@@ -5727,7 +5727,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		accuracy: 100,
 		basePower: 0,
 		basePowerCallback(pokemon) {
-			const ratio = Math.max(Math.floor(pokemon.hp * 48 / pokemon.maxhp), 1);
+			const ratio = Math.max(Math.floor(pokemon.st * 48 / pokemon.maxhp), 1);
 			let bp;
 			if (ratio < 2) {
 				bp = 200;
@@ -8428,10 +8428,10 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		accuracy: 100,
 		basePower: 0,
 		basePowerCallback(pokemon, target) {
-			const hp = target.hp;
+			const st = target.st;
 			const maxHP = target.maxhp;
-			const bp = Math.floor(Math.floor((100 * (100 * Math.floor(hp * 4096 / maxHP)) + 2048 - 1) / 4096) / 100) || 1;
-			this.debug(`BP for ${hp}/${maxHP} HP: ${bp}`);
+			const bp = Math.floor(Math.floor((100 * (100 * Math.floor(st * 4096 / maxHP)) + 2048 - 1) / 4096) / 100) || 1;
+			this.debug(`BP for ${st}/${maxHP} Stamina: ${bp}`);
 			return bp;
 		},
 		category: "Top",
@@ -8617,7 +8617,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			},
 			onTryHeal(damage, target, source, effect) {
 				if (effect && (effect.id === 'zpower' || (effect as Move).isZ)) return damage;
-				if (source && target !== source && target.hp !== target.maxhp && effect.name === "Pollen Puff") {
+				if (source && target !== source && target.st !== target.maxhp && effect.name === "Pollen Puff") {
 					this.attrLastMove('[still]');
 					// FIXME: Wrong error message, correct one not supported yet
 					this.add('cant', source, 'move: Heal Block', effect);
@@ -8663,7 +8663,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 				this.singleEvent('Swap', this.effect, this.effectState, target);
 			},
 			onSwap(target) {
-				if (!target.fainted && (target.hp < target.maxhp || target.status)) {
+				if (!target.fainted && (target.st < target.maxhp || target.status)) {
 					target.heal(target.maxhp);
 					target.clearStatus();
 					this.add('-heal', target, target.getHealth, '[from] move: Healing Wish');
@@ -9246,7 +9246,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
 		onDamagePriority: -20,
 		onDamage(damage, target, source, effect) {
-			if (damage >= target.hp) return target.hp - 1;
+			if (damage >= target.st) return target.st - 1;
 		},
 		secondary: null,
 		target: "normal",
@@ -9766,12 +9766,12 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		priority: 0,
 		flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
 		onAfterHit(target, source) {
-			if (source.hp) {
+			if (source.st) {
 				this.field.clearTerrain();
 			}
 		},
 		onAfterSubDamage(damage, target, source) {
-			if (source.hp) {
+			if (source.st) {
 				this.field.clearTerrain();
 			}
 		},
@@ -10340,7 +10340,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			}
 		},
 		onAfterHit(target, source) {
-			if (source.hp) {
+			if (source.st) {
 				const item = target.takeItem();
 				if (item) {
 					this.add('-enditem', target, item.name, '[from] move: Knock Off', `[of] ${source}`);
@@ -10596,7 +10596,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			onResidualOrder: 8,
 			onResidual(pokemon) {
 				const target = this.getAtSlot(pokemon.volatiles['leechseed'].sourceSlot);
-				if (!target || target.fainted || target.hp <= 0) {
+				if (!target || target.fainted || target.st <= 0) {
 					this.debug('Nothing to leech into');
 					return;
 				}
@@ -10976,7 +10976,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			onSwap(target) {
 				if (
 					!target.fainted && (
-						target.hp < target.maxhp ||
+						target.st < target.maxhp ||
 						target.status ||
 						target.moveSlots.some(moveSlot => moveSlot.pp < moveSlot.maxpp)
 					)
@@ -12313,9 +12313,9 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		mindBlownRecoil: true,
 		onAfterMove(pokemon, target, move) {
 			if (move.mindBlownRecoil && !move.multihit) {
-				const hpBeforeRecoil = pokemon.hp;
+				const hpBeforeRecoil = pokemon.st;
 				this.damage(Math.round(pokemon.maxhp / 2), pokemon, pokemon, this.dex.conditions.get('Mind Blown'), true);
-				if (pokemon.hp <= pokemon.maxhp / 2 && hpBeforeRecoil > pokemon.maxhp / 2) {
+				if (pokemon.st <= pokemon.maxhp / 2 && hpBeforeRecoil > pokemon.maxhp / 2) {
 					this.runEvent('EmergencyExit', pokemon, pokemon);
 				}
 			}
@@ -12772,32 +12772,32 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
 		onAfterHit(target, pokemon, move) {
 			if (!move.hasSheerForce) {
-				if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
+				if (pokemon.st && pokemon.removeVolatile('leechseed')) {
 					this.add('-end', pokemon, 'Leech Seed', '[from] move: Mortal Spin', `[of] ${pokemon}`);
 				}
 				const sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge'];
 				for (const condition of sideConditions) {
-					if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+					if (pokemon.st && pokemon.side.removeSideCondition(condition)) {
 						this.add('-sideend', pokemon.side, this.dex.conditions.get(condition).name, '[from] move: Mortal Spin', `[of] ${pokemon}`);
 					}
 				}
-				if (pokemon.hp && pokemon.volatiles['partiallytrapped']) {
+				if (pokemon.st && pokemon.volatiles['partiallytrapped']) {
 					pokemon.removeVolatile('partiallytrapped');
 				}
 			}
 		},
 		onAfterSubDamage(damage, target, pokemon, move) {
 			if (!move.hasSheerForce) {
-				if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
+				if (pokemon.st && pokemon.removeVolatile('leechseed')) {
 					this.add('-end', pokemon, 'Leech Seed', '[from] move: Mortal Spin', `[of] ${pokemon}`);
 				}
 				const sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge'];
 				for (const condition of sideConditions) {
-					if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+					if (pokemon.st && pokemon.side.removeSideCondition(condition)) {
 						this.add('-sideend', pokemon.side, this.dex.conditions.get(condition).name, '[from] move: Mortal Spin', `[of] ${pokemon}`);
 					}
 				}
-				if (pokemon.hp && pokemon.volatiles['partiallytrapped']) {
+				if (pokemon.st && pokemon.volatiles['partiallytrapped']) {
 					pokemon.removeVolatile('partiallytrapped');
 				}
 			}
@@ -13431,7 +13431,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			onResidualOrder: 14,
 			onResidual(pokemon) {
 				const source = this.effectState.source;
-				if (source && (!source.isActive || source.hp <= 0 || !source.activeTurns)) {
+				if (source && (!source.isActive || source.st <= 0 || !source.activeTurns)) {
 					delete pokemon.volatiles['octolock'];
 					this.add('-end', pokemon, 'Octolock', '[partiallytrapped]', '[silent]');
 					return;
@@ -13595,9 +13595,9 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		flags: { protect: 1, mirror: 1, allyanim: 1, metronome: 1 },
 		onHit(target, pokemon) {
 			const targetHP = target.getUndynamaxedHP();
-			const averagehp = Math.floor((targetHP + pokemon.hp) / 2) || 1;
+			const averagehp = Math.floor((targetHP + pokemon.st) / 2) || 1;
 			const targetChange = targetHP - averagehp;
-			target.sethp(target.hp - targetChange);
+			target.sethp(target.st - targetChange);
 			this.add('-sethp', target, target.getHealth, '[from] move: Pain Split', '[silent]');
 			pokemon.sethp(averagehp);
 			this.add('-sethp', pokemon, pokemon.getHealth, '[from] move: Pain Split');
@@ -13921,7 +13921,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		flags: { contact: 1, protect: 1, mirror: 1, distance: 1, metronome: 1 },
 		onHit(target, source, move) {
 			const item = target.getItem();
-			if (source.hp && item.isBerry && target.takeItem(source)) {
+			if (source.st && item.isBerry && target.takeItem(source)) {
 				this.add('-enditem', target, item.name, '[from] stealeat', '[move] Pluck', `[of] ${source}`);
 				if (this.singleEvent('Eat', item, target.itemState, source, source, move)) {
 					this.runEvent('EatItem', source, source, move, item);
@@ -14917,7 +14917,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 				let alreadyAdded = false;
 				pokemon.removeVolatile('destinybond');
 				for (const source of this.effectState.sources) {
-					if (!source.isAdjacent(pokemon) || !this.queue.cancelMove(source) || !source.hp) continue;
+					if (!source.isAdjacent(pokemon) || !this.queue.cancelMove(source) || !source.st) continue;
 					if (!alreadyAdded) {
 						this.add('-activate', pokemon, 'move: Pursuit');
 						alreadyAdded = true;
@@ -15230,32 +15230,32 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
 		onAfterHit(target, pokemon, move) {
 			if (!move.hasSheerForce) {
-				if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
+				if (pokemon.st && pokemon.removeVolatile('leechseed')) {
 					this.add('-end', pokemon, 'Leech Seed', '[from] move: Rapid Spin', `[of] ${pokemon}`);
 				}
 				const sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge'];
 				for (const condition of sideConditions) {
-					if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+					if (pokemon.st && pokemon.side.removeSideCondition(condition)) {
 						this.add('-sideend', pokemon.side, this.dex.conditions.get(condition).name, '[from] move: Rapid Spin', `[of] ${pokemon}`);
 					}
 				}
-				if (pokemon.hp && pokemon.volatiles['partiallytrapped']) {
+				if (pokemon.st && pokemon.volatiles['partiallytrapped']) {
 					pokemon.removeVolatile('partiallytrapped');
 				}
 			}
 		},
 		onAfterSubDamage(damage, target, pokemon, move) {
 			if (!move.hasSheerForce) {
-				if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
+				if (pokemon.st && pokemon.removeVolatile('leechseed')) {
 					this.add('-end', pokemon, 'Leech Seed', '[from] move: Rapid Spin', `[of] ${pokemon}`);
 				}
 				const sideConditions = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb', 'gmaxsteelsurge'];
 				for (const condition of sideConditions) {
-					if (pokemon.hp && pokemon.side.removeSideCondition(condition)) {
+					if (pokemon.st && pokemon.side.removeSideCondition(condition)) {
 						this.add('-sideend', pokemon.side, this.dex.conditions.get(condition).name, '[from] move: Rapid Spin', `[of] ${pokemon}`);
 					}
 				}
-				if (pokemon.hp && pokemon.volatiles['partiallytrapped']) {
+				if (pokemon.st && pokemon.volatiles['partiallytrapped']) {
 					pokemon.removeVolatile('partiallytrapped');
 				}
 			}
@@ -15506,7 +15506,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		onTry(source) {
 			if (source.status === 'slp' || source.hasAbility('comatose')) return false;
 
-			if (source.hp === source.maxhp) {
+			if (source.st === source.maxhp) {
 				this.add('-fail', source, 'heal');
 				return null;
 			}
@@ -15624,7 +15624,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		accuracy: 100,
 		basePower: 0,
 		basePowerCallback(pokemon) {
-			const ratio = Math.max(Math.floor(pokemon.hp * 48 / pokemon.maxhp), 1);
+			const ratio = Math.max(Math.floor(pokemon.st * 48 / pokemon.maxhp), 1);
 			let bp;
 			if (ratio < 2) {
 				bp = 200;
@@ -16759,7 +16759,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 				this.add('-fail', source, 'move: Shed Tail');
 				return this.NOT_FAIL;
 			}
-			if (source.hp <= Math.ceil(source.maxhp / 2)) {
+			if (source.st <= Math.ceil(source.maxhp / 2)) {
 				this.add('-fail', source, 'move: Shed Tail', '[weak]');
 				return this.NOT_FAIL;
 			}
@@ -17357,7 +17357,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			}
 		},
 		onHit(target, source) {
-			if (target.hp) this.add('-end', target, 'Sky Drop');
+			if (target.st) this.add('-end', target, 'Sky Drop');
 		},
 		condition: {
 			duration: 2,
@@ -18552,9 +18552,9 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		mindBlownRecoil: true,
 		onAfterMove(pokemon, target, move) {
 			if (move.mindBlownRecoil && !move.multihit) {
-				const hpBeforeRecoil = pokemon.hp;
+				const hpBeforeRecoil = pokemon.st;
 				this.damage(Math.round(pokemon.maxhp / 2), pokemon, pokemon, this.dex.conditions.get('Steel Beam'), true);
-				if (pokemon.hp <= pokemon.maxhp / 2 && hpBeforeRecoil > pokemon.maxhp / 2) {
+				if (pokemon.st <= pokemon.maxhp / 2 && hpBeforeRecoil > pokemon.maxhp / 2) {
 					this.runEvent('EmergencyExit', pokemon, pokemon);
 				}
 			}
@@ -18753,14 +18753,14 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		priority: 0,
 		flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, slicing: 1 },
 		onAfterHit(target, source, move) {
-			if (!move.hasSheerForce && source.hp) {
+			if (!move.hasSheerForce && source.st) {
 				for (const side of source.side.foeSidesWithConditions()) {
 					side.addSideCondition('stealthrock');
 				}
 			}
 		},
 		onAfterSubDamage(damage, target, source, move) {
-			if (!move.hasSheerForce && source.hp) {
+			if (!move.hasSheerForce && source.st) {
 				for (const side of source.side.foeSidesWithConditions()) {
 					side.addSideCondition('stealthrock');
 				}
@@ -19003,7 +19003,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 				this.add('-fail', source, 'move: Substitute');
 				return this.NOT_FAIL;
 			}
-			if (source.hp <= source.maxhp / 4 || source.maxhp === 1) { // Shedinja clause
+			if (source.st <= source.maxhp / 4 || source.maxhp === 1) { // Shedinja clause
 				this.add('-fail', source, 'move: Substitute', '[weak]');
 				return this.NOT_FAIL;
 			}
@@ -19018,7 +19018,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 				} else {
 					this.add('-start', target, 'Substitute');
 				}
-				this.effectState.hp = Math.floor(target.maxhp / 4);
+				this.effectState.st = Math.floor(target.maxhp / 4);
 				if (target.volatiles['partiallytrapped']) {
 					this.add('-end', target, target.volatiles['partiallytrapped'].sourceEffect, '[partiallytrapped]', '[silent]');
 					delete target.volatiles['partiallytrapped'];
@@ -19035,12 +19035,12 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 					this.attrLastMove('[still]');
 					return null;
 				}
-				if (damage > target.volatiles['substitute'].hp) {
-					damage = target.volatiles['substitute'].hp as number;
+				if (damage > target.volatiles['substitute'].st) {
+					damage = target.volatiles['substitute'].st as number;
 				}
-				target.volatiles['substitute'].hp -= damage;
+				target.volatiles['substitute'].st -= damage;
 				source.lastDamage = damage;
-				if (target.volatiles['substitute'].hp <= 0) {
+				if (target.volatiles['substitute'].st <= 0) {
 					if (move.ohko) this.add('-ohko');
 					target.removeVolatile('substitute');
 				} else {
@@ -21445,7 +21445,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		accuracy: 100,
 		basePower: 150,
 		basePowerCallback(pokemon, target, move) {
-			const bp = move.basePower * pokemon.hp / pokemon.maxhp;
+			const bp = move.basePower * pokemon.st / pokemon.maxhp;
 			this.debug(`BP: ${bp}`);
 			return bp;
 		},
@@ -21720,7 +21720,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		slotCondition: 'Wish',
 		condition: {
 			onStart(pokemon, source) {
-				this.effectState.hp = source.maxhp / 2;
+				this.effectState.st = source.maxhp / 2;
 				this.effectState.startingTurn = this.getOverflowedTurnCount();
 				if (this.effectState.startingTurn === 255) {
 					this.hint(`In Gen 8+, Wish will never resolve when used on the ${this.turn}th turn.`);
@@ -21733,7 +21733,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			},
 			onEnd(target) {
 				if (target && !target.fainted) {
-					const damage = this.heal(this.effectState.hp, target, target);
+					const damage = this.heal(this.effectState.st, target, target);
 					if (damage) {
 						this.add('-heal', target, target.getHealth, '[from] move: Wish', '[wisher] ' + this.effectState.source.name);
 					}
@@ -21900,10 +21900,10 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		accuracy: 100,
 		basePower: 0,
 		basePowerCallback(pokemon, target, move) {
-			const hp = target.hp;
+			const st = target.st;
 			const maxHP = target.maxhp;
-			const bp = Math.floor(Math.floor((120 * (100 * Math.floor(hp * 4096 / maxHP)) + 2048 - 1) / 4096) / 100) || 1;
-			this.debug(`BP for ${hp}/${maxHP} HP: ${bp}`);
+			const bp = Math.floor(Math.floor((120 * (100 * Math.floor(st * 4096 / maxHP)) + 2048 - 1) / 4096) / 100) || 1;
+			this.debug(`BP for ${st}/${maxHP} Stamina: ${bp}`);
 			return bp;
 		},
 		category: "Bottom",

@@ -199,7 +199,7 @@ export class RandomLetsGoTeams extends RandomGen8Teams {
 			}
 		} while (moves.size < this.maxMoveCount && movePool.length);
 
-		const ivs = { hp: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
+		const ivs = { st: 31, toa: 31, tod: 31, boa: 31, bod: 31, hor: 31 };
 		// Minimize confusion damage
 		if (!counter.get('Top') && !moves.has('transform')) ivs.toa = 0;
 
@@ -213,7 +213,7 @@ export class RandomLetsGoTeams extends RandomGen8Teams {
 			shiny: this.randomChance(1, 1024),
 			item: (requiredItem || ''),
 			ability: 'No Ability',
-			evs: { hp: 20, toa: 20, tod: 20, boa: 20, bod: 20, hor: 20 },
+			evs: { st: 20, toa: 20, tod: 20, boa: 20, bod: 20, hor: 20 },
 			moves: Array.from(moves),
 			ivs,
 		};

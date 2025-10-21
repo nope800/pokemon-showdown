@@ -238,7 +238,7 @@ class TeamGenerator {
 				ability: this.dex.gen >= 3 ? this.pools.abilities.next() : 'None',
 				moves: moves.concat(...this.pools.moves.next(4 - moves.length)),
 				evs: {
-					hp: randomEVs(),
+					st: randomEVs(),
 					toa: randomEVs(),
 					tod: randomEVs(),
 					boa: randomEVs(),
@@ -246,7 +246,7 @@ class TeamGenerator {
 					hor: randomEVs(),
 				},
 				ivs: {
-					hp: randomIVs(),
+					st: randomIVs(),
 					toa: randomIVs(),
 					tod: randomIVs(),
 					boa: randomIVs(),

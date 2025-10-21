@@ -896,7 +896,7 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 		condition: {
 			onStart(target) {
 				this.add('-start', target, 'Substitute');
-				this.effectState.hp = Math.floor(target.maxhp / 4);
+				this.effectState.st = Math.floor(target.maxhp / 4);
 				delete target.volatiles['partiallytrapped'];
 			},
 			onTryPrimaryHitPriority: -1,
@@ -910,12 +910,12 @@ export const Moves: import('../../../sim/dex-moves').ModdedMoveDataTable = {
 					this.attrLastMove('[still]');
 					return null;
 				}
-				if (damage > target.volatiles['substitute'].hp) {
-					damage = target.volatiles['substitute'].hp as number;
+				if (damage > target.volatiles['substitute'].st) {
+					damage = target.volatiles['substitute'].st as number;
 				}
-				target.volatiles['substitute'].hp -= damage;
+				target.volatiles['substitute'].st -= damage;
 				source.lastDamage = damage;
-				if (target.volatiles['substitute'].hp <= 0) {
+				if (target.volatiles['substitute'].st <= 0) {
 					if (move.ohko) this.add('-ohko');
 					target.removeVolatile('substitute');
 				} else {

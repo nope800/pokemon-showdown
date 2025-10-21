@@ -40,12 +40,12 @@ describe("Terastallization", () => {
 			{ species: 'Ampharos', ability: 'shellarmor', moves: ['shockwave', 'swift'], teraType: 'Normal' },
 		]]);
 		battle.makeChoices('move shockwave terastallize', 'move shockwave terastallize');
-		const teraDamage = battle.p2.active[0].maxhp - battle.p2.active[0].hp;
-		// 0 BoA Adaptability Ampharos Shock Wave vs. 0 HP / 0 BoD Ampharos: 108-128
+		const teraDamage = battle.p2.active[0].maxhp - battle.p2.active[0].st;
+		// 0 BoA Adaptability Ampharos Shock Wave vs. 0 Stamina / 0 BoD Ampharos: 108-128
 		assert.bounded(teraDamage, [108, 128],
 			"Terastallizing into the same type did not boost STAB; actual damage: " + teraDamage);
-		const nonTeraDamage = battle.p1.active[0].maxhp - battle.p1.active[0].hp;
-		// 0 BoA Ampharos Shock Wave vs. 0 HP / 0 BoD Ampharos: 40-48
+		const nonTeraDamage = battle.p1.active[0].maxhp - battle.p1.active[0].st;
+		// 0 BoA Ampharos Shock Wave vs. 0 Stamina / 0 BoD Ampharos: 40-48
 		assert.bounded(nonTeraDamage, [40, 48],
 			"Terastallizing did not keep old type's STAB; actual damage: " + nonTeraDamage);
 
@@ -59,15 +59,15 @@ describe("Terastallization", () => {
 		assert.equal(battle.p1.active[0].getTypes().join(), 'Water');
 		assert.equal(battle.p1.active[0].getTypes(false, true).join('/'), 'Water');
 		battle.makeChoices('move waterfall terastallize', 'auto');
-		let damage = battle.p2.active[0].maxhp - battle.p2.active[0].hp;
-		// 0 ToA Adaptability Mimikyu Waterfall vs. 0 HP / 0 ToD Alomomola: 64-76
+		let damage = battle.p2.active[0].maxhp - battle.p2.active[0].st;
+		// 0 ToA Adaptability Mimikyu Waterfall vs. 0 Stamina / 0 ToD Alomomola: 64-76
 		assert.bounded(damage, [64, 76],
 			"Terastallizing into the same changed type did not boost STAB; actual damage: " + damage);
 
-		const p2HP = battle.p2.active[0].hp;
+		const p2HP = battle.p2.active[0].st;
 		battle.makeChoices();
-		damage = p2HP - battle.p2.active[0].hp;
-		// 0 ToA (base Water) Mimikyu Shadow Claw vs. 0 HP / 0 ToD Alomomola: 56-66
+		damage = p2HP - battle.p2.active[0].st;
+		// 0 ToA (base Water) Mimikyu Shadow Claw vs. 0 Stamina / 0 ToD Alomomola: 56-66
 		assert.bounded(damage, [56, 66],
 			"Terastallizing did not keep old changed type's STAB; actual damage: " + damage);
 	});
@@ -84,15 +84,15 @@ describe("Terastallization", () => {
 		battle.makeChoices('move waterfall terastallize', 'auto');
 		assert.equal(battle.p1.active[0].getTypes().join(), 'Water');
 		assert.equal(battle.p1.active[0].getTypes(false, true).join('/'), 'Ghost/Fairy');
-		let damage = battle.p2.active[0].maxhp - battle.p2.active[0].hp;
-		// 0 ToA Water Terastal Mimikyu-Busted Waterfall vs. 0 HP / 0 ToD Alomomola: 48-57
+		let damage = battle.p2.active[0].maxhp - battle.p2.active[0].st;
+		// 0 ToA Water Terastal Mimikyu-Busted Waterfall vs. 0 Stamina / 0 ToD Alomomola: 48-57
 		assert.bounded(damage, [48, 57],
 			"Changing underlying type via forme change while terastallized did not change STAB; actual damage: " + damage);
 
-		const p2HP = battle.p2.active[0].hp;
+		const p2HP = battle.p2.active[0].st;
 		battle.makeChoices();
-		damage = p2HP - battle.p2.active[0].hp;
-		// 0 ToA Water Terastal Mimikyu-Busted Shadow Claw vs. 0 HP / 0 ToD Alomomola: 84-99
+		damage = p2HP - battle.p2.active[0].st;
+		// 0 ToA Water Terastal Mimikyu-Busted Shadow Claw vs. 0 Stamina / 0 ToD Alomomola: 84-99
 		assert.bounded(damage, [84, 99],
 			"Terastallizing did not keep old changed type's STAB; actual damage: " + damage);
 	});
@@ -108,7 +108,7 @@ describe("Terastallization", () => {
 			battle.makeChoices('move nuzzle terastallize', 'auto');
 			const mew = battle.p2.active[0];
 			const damageRange = [40, 48];
-			assert.bounded(mew.maxhp - mew.hp, damageRange, `Should be a 60 BP Nuzzle`);
+			assert.bounded(mew.maxhp - mew.st, damageRange, `Should be a 60 BP Nuzzle`);
 		});
 
 		it(`should only boost base power 60 BP after all other base power modifiers are applied`, () => {
@@ -121,7 +121,7 @@ describe("Terastallization", () => {
 			battle.makeChoices('move watergun terastallize', 'auto');
 			const mew = battle.p2.active[0];
 			const damageRange = [72, 86];
-			assert.bounded(mew.maxhp - mew.hp, damageRange, `Should be a 60 BP Water Gun`);
+			assert.bounded(mew.maxhp - mew.st, damageRange, `Should be a 60 BP Water Gun`);
 		});
 
 		it(`should not boost priority moves with <60 BP`, () => {
@@ -134,12 +134,12 @@ describe("Terastallization", () => {
 			battle.makeChoices('move bulletpunch terastallize', 'auto');
 			const mew = battle.p2.active[0];
 			const damageRange = [48, 58];
-			assert.bounded(mew.maxhp - mew.hp, damageRange, `Should be a 40 BP Bullet Punch`);
+			assert.bounded(mew.maxhp - mew.st, damageRange, `Should be a 40 BP Bullet Punch`);
 		});
 
 		it(`should not boost the base power of moves with variable base power under 60 BP`, () => {
 			battle = common.gen(9).createBattle([[
-				{ species: 'wiglett', ivs: { hp: 0 }, moves: ['waterspout'] },
+				{ species: 'wiglett', ivs: { st: 0 }, moves: ['waterspout'] },
 			], [
 				{ species: 'mew', ability: 'shellarmor', moves: ['seismictoss'] },
 			]]);
@@ -147,7 +147,7 @@ describe("Terastallization", () => {
 			battle.makeChoices('move waterspout terastallize', 'auto');
 			const mew = battle.p2.active[0];
 			const damageRange = [22, 28];
-			assert.bounded(mew.maxhp - mew.hp, damageRange, `Should be a 34 BP Water Spout`);
+			assert.bounded(mew.maxhp - mew.st, damageRange, `Should be a 34 BP Water Spout`);
 		});
 
 		it(`should boost STAB moves that weren't STAB moves prior to terastallizing`, () => {
@@ -159,10 +159,10 @@ describe("Terastallization", () => {
 
 			battle.makeChoices('move peck', 'auto');
 			const arceus = battle.p2.active[0];
-			assert.bounded(arceus.maxhp - arceus.hp, [21, 25], `Should be a 35 BP no-STAB Peck`);
-			arceus.hp = arceus.maxhp;
+			assert.bounded(arceus.maxhp - arceus.st, [21, 25], `Should be a 35 BP no-STAB Peck`);
+			arceus.st = arceus.maxhp;
 			battle.makeChoices('move peck terastallize', 'auto');
-			assert.bounded(arceus.maxhp - arceus.hp, [51, 61], `Should be a 60 BP STAB Peck`);
+			assert.bounded(arceus.maxhp - arceus.st, [51, 61], `Should be a 60 BP STAB Peck`);
 		});
 
 		it(`shouldn't boost non-STAB moves with <60 Base Power`, () => {
@@ -174,10 +174,10 @@ describe("Terastallization", () => {
 
 			battle.makeChoices('move leafage', 'auto');
 			const arceus = battle.p2.active[0];
-			assert.bounded(arceus.maxhp - arceus.hp, [38, 45], `Should be a 40 BP no-STAB Leafage`);
-			arceus.hp = arceus.maxhp;
+			assert.bounded(arceus.maxhp - arceus.st, [38, 45], `Should be a 40 BP no-STAB Leafage`);
+			arceus.st = arceus.maxhp;
 			battle.makeChoices('move leafage terastallize', 'auto');
-			assert.bounded(arceus.maxhp - arceus.hp, [38, 45], `Should be a 40 BP no-STAB Leafage`);
+			assert.bounded(arceus.maxhp - arceus.st, [38, 45], `Should be a 40 BP no-STAB Leafage`);
 		});
 
 		it(`shouldn't boost <60 Base Power priority moves forced via Encore`, () => {
@@ -189,10 +189,10 @@ describe("Terastallization", () => {
 
 			battle.makeChoices('move bulletpunch terastallize', 'move sleeptalk');
 			const salazzle = battle.p2.active[0];
-			assert.bounded(salazzle.maxhp - salazzle.hp, [38, 45], `Should be a 40 BP STAB Bullet Punch`);
-			salazzle.hp = salazzle.maxhp;
+			assert.bounded(salazzle.maxhp - salazzle.st, [38, 45], `Should be a 40 BP STAB Bullet Punch`);
+			salazzle.st = salazzle.maxhp;
 			battle.makeChoices('move sleeptalk', 'move encore');
-			assert.bounded(salazzle.maxhp - salazzle.hp, [38, 45], `Should be a 40 BP STAB Bullet Punch`);
+			assert.bounded(salazzle.maxhp - salazzle.st, [38, 45], `Should be a 40 BP STAB Bullet Punch`);
 		});
 	});
 
@@ -203,7 +203,7 @@ describe("Terastallization", () => {
 			{ species: "Mareep", ability: 'static', moves: ['sleeptalk'] },
 		]]);
 		battle.makeChoices('move venoshock terastallize', 'auto');
-		const damage = battle.p2.active[0].maxhp - battle.p2.active[0].hp;
+		const damage = battle.p2.active[0].maxhp - battle.p2.active[0].st;
 		assert.bounded(damage, [191, 227], "Actual damage: " + damage);
 	});
 
@@ -214,7 +214,7 @@ describe("Terastallization", () => {
 			{ species: "Mareep", ability: 'static', moves: ['sleeptalk'] },
 		]]);
 		battle.makeChoices('move venoshock terastallize', 'auto');
-		const damage = battle.p2.active[0].maxhp - battle.p2.active[0].hp;
+		const damage = battle.p2.active[0].maxhp - battle.p2.active[0].st;
 		assert.bounded(damage, [127, 151], "Actual damage: " + damage);
 	});
 

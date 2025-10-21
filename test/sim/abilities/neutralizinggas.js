@@ -113,7 +113,7 @@ describe('Neutralizing Gas', () => {
 
 	it(`should prevent Unburden's activation when it is active on the field`, () => {
 		battle = common.createBattle([[
-			{ species: "Wynaut", ability: 'unburden', item: 'sitrusberry', evs: { hp: 4 }, moves: ['bellydrum'] },
+			{ species: "Wynaut", ability: 'unburden', item: 'sitrusberry', evs: { st: 4 }, moves: ['bellydrum'] },
 		], [
 			{ species: "Pancham", ability: 'neutralizinggas', moves: ['sleeptalk'] },
 			{ species: "Whismur", moves: ['sleeptalk'] },
@@ -131,7 +131,7 @@ describe('Neutralizing Gas', () => {
 
 	it(`should negate Unburden when Neutralizing Gas enters the field`, () => {
 		battle = common.createBattle([[
-			{ species: "Wynaut", ability: 'unburden', item: 'sitrusberry', evs: { hp: 4 }, moves: ['bellydrum'] },
+			{ species: "Wynaut", ability: 'unburden', item: 'sitrusberry', evs: { st: 4 }, moves: ['bellydrum'] },
 		], [
 			{ species: "Whismur", moves: ['sleeptalk'] },
 			{ species: "Pancham", ability: 'neutralizinggas', moves: ['sleeptalk'] },
@@ -185,7 +185,7 @@ describe('Neutralizing Gas', () => {
 
 	it(`should not cause Gluttony to instantly eat Berries when Neutralizing Gas leaves the field`, () => {
 		battle = common.createBattle([[
-			{ species: "Wynaut", ability: 'gluttony', item: 'aguavberry', evs: { hp: 4 }, moves: ['bellydrum'] },
+			{ species: "Wynaut", ability: 'gluttony', item: 'aguavberry', evs: { st: 4 }, moves: ['bellydrum'] },
 		], [
 			{ species: "Pancham", ability: 'neutralizinggas', moves: ['sleeptalk'] },
 			{ species: "Whismur", level: 1, moves: ['seismictoss'] },
@@ -193,15 +193,15 @@ describe('Neutralizing Gas', () => {
 
 		const wynaut = battle.p1.active[0];
 		battle.makeChoices();
-		assert.equal(wynaut.hp, Math.floor(wynaut.maxhp / 2));
+		assert.equal(wynaut.st, Math.floor(wynaut.maxhp / 2));
 
 		// Gluttony doesn't activate because it missed the timing
 		battle.makeChoices('auto', 'switch 2');
-		assert.equal(wynaut.hp, Math.floor(wynaut.maxhp / 2));
+		assert.equal(wynaut.st, Math.floor(wynaut.maxhp / 2));
 
 		// Gluttony now has the opportunity to activate the Aguav Berry again on taking damage
 		battle.makeChoices();
-		assert.equal(wynaut.hp, Math.floor(wynaut.maxhp / 2) - 1 + Math.floor(wynaut.maxhp / 3));
+		assert.equal(wynaut.st, Math.floor(wynaut.maxhp / 2) - 1 + Math.floor(wynaut.maxhp / 3));
 	});
 
 	it(`should not trigger twice if negated then replaced`, () => {

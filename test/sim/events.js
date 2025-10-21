@@ -30,7 +30,7 @@ describe('Battle#onEvent', () => {
 		battle.makeChoices('move bulkup', 'move peck');
 		assert.equal(eventCount, 4);
 		assert.equal(eventCount2, 2);
-		assert.equal(battle.p1.active[0].maxhp - battle.p1.active[0].hp, 5);
+		assert.equal(battle.p1.active[0].maxhp - battle.p1.active[0].st, 5);
 	});
 
 	it('should support and resolve priorities correctly', () => {

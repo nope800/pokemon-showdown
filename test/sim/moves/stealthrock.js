@@ -36,7 +36,7 @@ describe('Stealth Rock', () => {
 			pokemon = battle.p2.active[0];
 			const expectedPercent = 0.5 ** (i - 1);
 			const expectedDamage = Math.floor(pokemon.maxhp * expectedPercent);
-			assert.equal(pokemon.maxhp - pokemon.hp, expectedDamage, `${pokemon.name} should take ${expectedPercent * 100}%`);
+			assert.equal(pokemon.maxhp - pokemon.st, expectedDamage, `${pokemon.name} should take ${expectedPercent * 100}%`);
 		}
 	});
 
@@ -53,6 +53,6 @@ describe('Stealth Rock', () => {
 		const pokemon = battle.p2.active[0];
 		const expectedPercent = 0.5 ** 2;
 		const expectedDamage = Math.floor(pokemon.maxhp * expectedPercent);
-		assert.equal(pokemon.maxhp - pokemon.hp, expectedDamage, `${pokemon.name} should take ${expectedPercent * 100}%`);
+		assert.equal(pokemon.maxhp - pokemon.st, expectedDamage, `${pokemon.name} should take ${expectedPercent * 100}%`);
 	});
 });

@@ -116,9 +116,9 @@ describe('Mega Evolution', () => {
 
 	describe("Mega Rayquaza", () => {
 		const TEAMS = [[
-			{ species: "Rayquaza", ability: 'airlock', moves: ['dragonascent'], evs: { hp: 1 } },
+			{ species: "Rayquaza", ability: 'airlock', moves: ['dragonascent'], evs: { st: 1 } },
 		], [
-			{ species: "Rayquaza", ability: 'airlock', moves: ['protect'], evs: { hp: 1 } },
+			{ species: "Rayquaza", ability: 'airlock', moves: ['protect'], evs: { st: 1 } },
 		]];
 
 		function assertCanMega(formatid) {

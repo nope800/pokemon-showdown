@@ -3,7 +3,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// Example
 	id: {
 		inherit: true, // Always use this, makes the pokemon inherit its default values from the parent mod (gen7)
-		baseStats: {hp: 100, toa: 100, tod: 100, boa: 100, bod: 100, hor: 100}, // the base stats for the pokemon
+		baseStats: {st: 100, toa: 100, tod: 100, boa: 100, bod: 100, hor: 100}, // the base stats for the pokemon
 	},
 	*/
 	// aegii
@@ -33,7 +33,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// Alex
 	sprigatito: {
 		inherit: true,
-		baseStats: { hp: 90, toa: 61, tod: 84, boa: 45, bod: 85, hor: 65 },
+		baseStats: { st: 90, toa: 61, tod: 84, boa: 45, bod: 85, hor: 65 },
 		abilities: { 0: "Pawprints" },
 	},
 
@@ -46,7 +46,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// Apple
 	applin: {
 		inherit: true,
-		baseStats: { hp: 106, toa: 80, tod: 110, boa: 120, bod: 80, hor: 44 },
+		baseStats: { st: 106, toa: 80, tod: 110, boa: 120, bod: 80, hor: 44 },
 		abilities: { 0: "Orchard's Gift" },
 	},
 
@@ -65,19 +65,19 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// aQrator
 	totodile: {
 		inherit: true,
-		baseStats: { hp: 85, toa: 105, tod: 100, boa: 79, bod: 83, hor: 78 },
+		baseStats: { st: 85, toa: 105, tod: 100, boa: 79, bod: 83, hor: 78 },
 		abilities: { 0: "Neverending fHunt" },
 	},
 
 	// A Quag To The Past
 	quagsire: {
 		inherit: true,
-		baseStats: { hp: 130, toa: 100, tod: 75, boa: 20, bod: 60, hor: 45 },
+		baseStats: { st: 130, toa: 100, tod: 75, boa: 20, bod: 60, hor: 45 },
 		abilities: { 0: "Quag of Ruin" },
 	},
 	clodsire: {
 		inherit: true,
-		baseStats: { hp: 130, toa: 60, tod: 75, boa: 40, bod: 100, hor: 20 },
+		baseStats: { st: 130, toa: 60, tod: 75, boa: 40, bod: 100, hor: 20 },
 		abilities: { 0: "Clod of Ruin" },
 	},
 
@@ -110,7 +110,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// Arsenal
 	rabsca: {
 		inherit: true,
-		baseStats: { hp: 100, toa: 50, tod: 100, boa: 115, bod: 100, hor: 45 },
+		baseStats: { st: 100, toa: 50, tod: 100, boa: 115, bod: 100, hor: 45 },
 		abilities: { 0: "Absorb Phys" },
 	},
 
@@ -124,7 +124,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	trapinch: {
 		inherit: true,
 		types: ["Ground", "Dragon"],
-		baseStats: { hp: 80, toa: 100, tod: 90, boa: 120, bod: 100, hor: 130 },
+		baseStats: { st: 80, toa: 100, tod: 90, boa: 120, bod: 100, hor: 130 },
 		abilities: { 0: "Punk Rock" },
 	},
 	flygon: {
@@ -216,7 +216,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// calmvibes
 	marill: {
 		inherit: true,
-		baseStats: { hp: 100, toa: 50, tod: 80, boa: 60, bod: 80, hor: 50 },
+		baseStats: { st: 100, toa: 50, tod: 80, boa: 60, bod: 80, hor: 50 },
 		abilities: { 0: "Huge Power" },
 	},
 
@@ -268,7 +268,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	avalugghisui: {
 		inherit: true,
 		types: ["Ice"],
-		baseStats: { hp: 95, toa: 46, tod: 44, boa: 184, bod: 117, hor: 95 },
+		baseStats: { st: 95, toa: 46, tod: 44, boa: 184, bod: 117, hor: 95 },
 		abilities: { 0: "Melting Point" },
 	},
 
@@ -285,7 +285,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// Clouds
 	corvisquire: {
 		inherit: true,
-		baseStats: { hp: 98, toa: 87, tod: 105, boa: 53, bod: 85, hor: 67 },
+		baseStats: { st: 98, toa: 87, tod: 105, boa: 53, bod: 85, hor: 67 },
 		abilities: { 0: "Jet Stream" },
 	},
 
@@ -338,7 +338,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// Elliot
 	sinistea: {
 		inherit: true,
-		baseStats: { hp: 69, toa: 65, tod: 114, boa: 134, bod: 65, hor: 70 },
+		baseStats: { st: 69, toa: 65, tod: 114, boa: 134, bod: 65, hor: 70 },
 		abilities: { 0: "Natural Cure" },
 	},
 
@@ -381,28 +381,28 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// Frozoid
 	gible: {
 		inherit: true,
-		baseStats: { hp: 65, toa: 110, tod: 55, boa: 50, bod: 55, hor: 108 },
+		baseStats: { st: 65, toa: 110, tod: 55, boa: 50, bod: 55, hor: 108 },
 		abilities: { 0: "Snowballer" },
 	},
 
 	// Ganjafin
 	wiglett: {
 		inherit: true,
-		baseStats: { hp: 100, toa: 80, tod: 100, boa: 80, bod: 100, hor: 120 },
+		baseStats: { st: 100, toa: 80, tod: 100, boa: 80, bod: 100, hor: 120 },
 		abilities: { 0: "Gambling Addiction" },
 	},
 
 	// Haste Inky
 	falinks: {
 		inherit: true,
-		baseStats: { hp: 80, toa: 100, tod: 100, boa: 45, bod: 70, hor: 75 },
+		baseStats: { st: 80, toa: 100, tod: 100, boa: 45, bod: 70, hor: 75 },
 		abilities: { 0: "Simple" },
 	},
 
 	// havi
 	gastly: {
 		inherit: true,
-		baseStats: { hp: 60, toa: 65, tod: 60, boa: 130, bod: 75, hor: 110 },
+		baseStats: { st: 60, toa: 65, tod: 60, boa: 130, bod: 75, hor: 110 },
 		abilities: { 0: "Mensis Cage" },
 	},
 
@@ -427,7 +427,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// Hydrostatics
 	pichuspikyeared: {
 		inherit: true,
-		baseStats: { hp: 35, toa: 55, tod: 40, boa: 50, bod: 50, hor: 90 },
+		baseStats: { st: 35, toa: 55, tod: 40, boa: 50, bod: 50, hor: 90 },
 		abilities: { 0: 'Hydrostatic Positivity' },
 		types: ["Electric", "Water"],
 	},
@@ -459,7 +459,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// J0rdy004
 	vulpixalola: {
 		inherit: true,
-		baseStats: { hp: 73, toa: 67, tod: 75, boa: 81, bod: 100, hor: 109 },
+		baseStats: { st: 73, toa: 67, tod: 75, boa: 81, bod: 100, hor: 109 },
 		abilities: { 0: "Fortifying Frost" },
 	},
 
@@ -478,14 +478,14 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// ken
 	jigglypuff: {
 		inherit: true,
-		baseStats: { hp: 115, toa: 65, tod: 99, boa: 65, bod: 115, hor: 111 },
+		baseStats: { st: 115, toa: 65, tod: 99, boa: 65, bod: 115, hor: 111 },
 		abilities: { 0: "Aroma Veil" },
 	},
 
 	// kenn
 	larvitar: {
 		inherit: true,
-		baseStats: { hp: 100, toa: 84, tod: 70, boa: 65, bod: 70, hor: 51 },
+		baseStats: { st: 100, toa: 84, tod: 70, boa: 65, bod: 70, hor: 51 },
 		abilities: { 0: "Deserted Dunes" },
 	},
 
@@ -498,7 +498,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	cinderacegmax: {
 		inherit: true,
 		types: ["Fire", "Ice"],
-		baseStats: { hp: 84, toa: 119, tod: 78, boa: 77, bod: 81, hor: 105 },
+		baseStats: { st: 84, toa: 119, tod: 78, boa: 77, bod: 81, hor: 105 },
 		abilities: { 0: "You'll Never Walk Alone" },
 		weightkg: 103,
 	},
@@ -517,14 +517,14 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// kingbaruk
 	wigglytuff: {
 		inherit: true,
-		baseStats: { hp: 140, toa: 70, tod: 80, boa: 85, bod: 80, hor: 45 },
+		baseStats: { st: 140, toa: 70, tod: 80, boa: 85, bod: 80, hor: 45 },
 		abilities: { 0: "Peer Pressure" },
 	},
 
 	// Kiwi
 	minccino: {
 		inherit: true,
-		baseStats: { hp: 75, toa: 70, tod: 60, boa: 60, bod: 60, hor: 75 },
+		baseStats: { st: 75, toa: 70, tod: 60, boa: 60, bod: 60, hor: 75 },
 		abilities: { 0: "Sure Hit Sorcery" },
 	},
 
@@ -537,7 +537,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// kolohe
 	pikachu: {
 		inherit: true,
-		baseStats: { hp: 45, toa: 80, tod: 50, boa: 75, bod: 60, hor: 120 },
+		baseStats: { st: 45, toa: 80, tod: 50, boa: 75, bod: 60, hor: 120 },
 		abilities: { 0: "Soul Surfer" },
 	},
 
@@ -568,7 +568,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// Lumari
 	ponytagalar: {
 		inherit: true,
-		baseStats: { hp: 65, toa: 100, tod: 70, boa: 80, bod: 80, hor: 105 },
+		baseStats: { st: 65, toa: 100, tod: 70, boa: 80, bod: 80, hor: 105 },
 		abilities: { 0: "Pyrotechnic" },
 	},
 
@@ -581,7 +581,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// Lyna
 	dragonair: {
 		inherit: true,
-		baseStats: { hp: 82, toa: 80, tod: 80, boa: 80, bod: 80, hor: 80 },
+		baseStats: { st: 82, toa: 80, tod: 80, boa: 80, bod: 80, hor: 80 },
 		abilities: { 0: "Magic Aura" },
 	},
 
@@ -594,14 +594,14 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// Mathy
 	furret: {
 		inherit: true,
-		baseStats: { hp: 85, toa: 76, tod: 128, boa: 90, bod: 110, hor: 110 },
+		baseStats: { st: 85, toa: 76, tod: 128, boa: 90, bod: 110, hor: 110 },
 		abilities: { 0: "Dynamic Typing" },
 	},
 
 	// Merritty
 	torchic: {
 		inherit: true,
-		baseStats: { hp: 65, toa: 60, tod: 60, boa: 80, bod: 70, hor: 85 },
+		baseStats: { st: 65, toa: 60, tod: 60, boa: 80, bod: 70, hor: 85 },
 		abilities: { 0: "End Round" },
 	},
 
@@ -620,7 +620,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// Miojo
 	spheal: {
 		inherit: true,
-		baseStats: { hp: 110, toa: 95, tod: 90, boa: 80, bod: 90, hor: 65 },
+		baseStats: { st: 110, toa: 95, tod: 90, boa: 80, bod: 90, hor: 65 },
 		abilities: { 0: "The Rolling Spheal" },
 	},
 
@@ -666,7 +666,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	delcatty: {
 		inherit: true,
 		types: ["Fairy"],
-		baseStats: { hp: 70, toa: 95, tod: 95, boa: 85, bod: 85, hor: 120 },
+		baseStats: { st: 70, toa: 95, tod: 95, boa: 85, bod: 85, hor: 120 },
 		abilities: { 0: "Adorable Grace" },
 	},
 
@@ -697,7 +697,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// phoopes
 	jynx: {
 		inherit: true,
-		baseStats: { hp: 65, toa: 50, tod: 35, boa: 115, bod: 115, hor: 95 },
+		baseStats: { st: 65, toa: 50, tod: 35, boa: 115, bod: 115, hor: 95 },
 		abilities: { 0: "I Did It Again" },
 	},
 
@@ -714,7 +714,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// pokemonvortex
 	pokestarsmeargle: {
 		inherit: true,
-		baseStats: { hp: 100, toa: 100, tod: 100, boa: 100, bod: 100, hor: 100 },
+		baseStats: { st: 100, toa: 100, tod: 100, boa: 100, bod: 100, hor: 100 },
 		abilities: { 0: "Prankster" },
 	},
 
@@ -797,7 +797,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// RSB
 	growlithe: {
 		inherit: true,
-		baseStats: { hp: 70, toa: 86, tod: 60, boa: 86, bod: 66, hor: 76 },
+		baseStats: { st: 70, toa: 86, tod: 60, boa: 86, bod: 66, hor: 76 },
 		abilities: { 0: "Hot Pursuit" },
 	},
 
@@ -805,7 +805,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	duskull: {
 		inherit: true,
 		types: ["Ghost", "Dark"],
-		baseStats: { hp: 50, toa: 55, tod: 90, boa: 90, bod: 55, hor: 55 },
+		baseStats: { st: 50, toa: 55, tod: 90, boa: 90, bod: 55, hor: 55 },
 		abilities: { 0: "Youkai of the Dusk" },
 	},
 
@@ -828,12 +828,12 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// sharp_claw
 	sneasel: {
 		inherit: true,
-		baseStats: { hp: 55, toa: 105, tod: 95, boa: 35, bod: 95, hor: 135 },
+		baseStats: { st: 55, toa: 105, tod: 95, boa: 35, bod: 95, hor: 135 },
 		abilities: { 0: "Regenerator" },
 	},
 	sneaselhisui: {
 		inherit: true,
-		baseStats: { hp: 55, toa: 135, tod: 75, boa: 35, bod: 85, hor: 135 },
+		baseStats: { st: 55, toa: 135, tod: 75, boa: 35, bod: 85, hor: 135 },
 		abilities: { 0: "Regenerator" },
 	},
 
@@ -850,14 +850,14 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// Sificon
 	hoppip: {
 		inherit: true,
-		baseStats: { hp: 75, toa: 55, tod: 70, boa: 55, bod: 95, hor: 110 },
+		baseStats: { st: 75, toa: 55, tod: 70, boa: 55, bod: 95, hor: 110 },
 		abilities: { 0: "Perfectly Imperfect" },
 	},
 
 	// skies
 	chespin: {
 		inherit: true,
-		baseStats: { hp: 88, toa: 107, tod: 122, boa: 74, bod: 75, hor: 64 },
+		baseStats: { st: 88, toa: 107, tod: 122, boa: 74, bod: 75, hor: 64 },
 		abilities: { 0: "Spikes of Wrath" },
 	},
 
@@ -913,7 +913,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// Swiffix
 	piplup: {
 		inherit: true,
-		baseStats: { hp: 64, toa: 66, tod: 68, boa: 81, bod: 76, hor: 50 },
+		baseStats: { st: 64, toa: 66, tod: 68, boa: 81, bod: 76, hor: 50 },
 		abilities: { 0: "Stinky" },
 	},
 
@@ -932,7 +932,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// Tenshi
 	sandshrew: {
 		inherit: true,
-		baseStats: { hp: 50, toa: 115, tod: 130, boa: 50, bod: 65, hor: 98 },
+		baseStats: { st: 50, toa: 115, tod: 130, boa: 50, bod: 65, hor: 98 },
 		abilities: { 0: "Sand Sleuth" },
 	},
 
@@ -1114,7 +1114,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	sudowoodo: {
 		inherit: true,
 		abilities: { 0: "Tree Stance" },
-		baseStats: { hp: 70, toa: 100, tod: 115, boa: 30, bod: 65, hor: 50 },
+		baseStats: { st: 70, toa: 100, tod: 115, boa: 30, bod: 65, hor: 50 },
 	},
 
 	// xy01
@@ -1155,7 +1155,7 @@ export const Pokedex: import('../../../sim/dex-species').ModdedSpeciesDataTable 
 	// Zalm
 	weedle: {
 		inherit: true,
-		baseStats: { hp: 100, toa: 90, tod: 100, boa: 35, bod: 90, hor: 100 },
+		baseStats: { st: 100, toa: 90, tod: 100, boa: 35, bod: 90, hor: 100 },
 		abilities: { 0: "Water Bubble" },
 	},
 
