@@ -22251,7 +22251,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		condition: {
 			duration: 1,
 			onStart(pokemon) {
-				this.add('-start', pokemon, 'Concentrate');
+				this.add('-singleturn', pokemon, 'Concentrate');
 			},
 			onDamagePriority: -10,
 			onDamage(damage, target, source, move) {
@@ -22366,11 +22366,13 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			return source.status === 'held';
 		},
 		onHit(target, source, move) {
-			this.boost({ toa: -1}, target, source);
 			source.cureStatus()
+			this.boost({ toa: -1}, target, source);
 		},
-		status: "held",
-		secondary: null,
+		secondary: {
+			chance: 100,
+			status: 'held',
+		},
 		target: "normal",
 		type: "Muscle",
 		contestType: "Cool",
