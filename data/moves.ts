@@ -22047,10 +22047,10 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		basePower: 0,
 		damage: 1,
 		category: "Top",
-		name: "Light Touch On The Shoulder",
+		name: "Shoulder Touch",
 		pp: 20,
 		priority: 0,
-		flags: {},
+		flags: {protect: 1},
 		secondary: null,
 		target: "normal",
 		type: "Vanilla",
@@ -22064,7 +22064,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		name: "Top",
 		pp: 10,
 		priority: 0,
-		flags: {},
+		flags: {protect: 1},
 		secondary: null,
 		target: "normal",
 		type: "Vanilla",
@@ -22078,7 +22078,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		name: "Bottom",
 		pp: 10,
 		priority: 0,
-		flags: {},
+		flags: {protect: 1},
 		secondary: null,
 		target: "normal",
 		type: "Vanilla",
@@ -22093,7 +22093,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		pp: 5,
 		priority: 1,
 		flags: {},
-		onHit(target) {
+		onHit(target, source) {
 			let stats: StatIDExceptHP [];
 			stats = ["tod", "boa", "bod", "hor"];
 			let higheststat: StatIDExceptHP [];
@@ -22109,7 +22109,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			}
 			const boost: SparseBoostsTable = {};
 			boost[this.sample(higheststat)] = 2;
-			this.boost(boost);
+			this.boost(boost, source);
 		},
 		secondary: null,
 		target: "normal",
@@ -22124,7 +22124,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		name: "Mount",
 		pp: 10,
 		priority: 0,
-		flags: {},
+		flags: {protect: 1},
 		onModifyMove(move, source) {
 			if (source.activeMoveActions < 2) {
 				move.willCrit = true
@@ -22143,7 +22143,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		name: "Sticky Web",
 		pp: 5,
 		priority: 2,
-		flags: {hold:1},
+		flags: {hold:1, protect: 1},
 		boosts: {
 			hor: -1,
 		},
@@ -22161,7 +22161,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		name: "Squirm",
 		pp: 10,
 		priority: 0,
-		flags: {},
+		flags: {protect: 1},
 		onModifyMove(move, source) {
 			if (source.status === "held") {
 				move.willCrit = true
@@ -22180,10 +22180,12 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		name: "Bounce",
 		pp: 10,
 		priority: 0,
-		flags: {},
+		flags: {protect: 1},
 		secondary: null,
-		boosts: {
-			hor: 1,
+		self: {
+			boosts: {
+				hor: 1,
+			},
 		},
 		target: "normal",
 		type: "Vanilla",
@@ -22198,7 +22200,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		pp: 10,
 		priority: 0,
 		multihit: 2,
-		flags: {},
+		flags: {protect: 1},
 		secondary: null,
 		target: "normal",
 		type: "Vanilla",
@@ -22212,7 +22214,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		name: "Cuddle",
 		pp: 5,
 		priority: 0,
-		flags: {},
+		flags: {protect: 1},
 		heal: [1, 2],
 		status: 'held',
 		secondary: null,
