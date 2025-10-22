@@ -1037,4 +1037,20 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 			move.multihitType = "swarming"
 		},
 	},
+	/*
+	wingman: {
+		name: 'wingman',
+		// this is a volatile status
+		duration: 2,
+		onStart(target, source, sourceEffect) {
+			this.add('-start', target, 'wingman');
+		},
+		onEnd(target) {
+			this.add('-end', target, 'wingman');
+		},
+		onModifyMove(move, source) {
+				move.willCrit = true
+		},
+	},
+	*/
 };

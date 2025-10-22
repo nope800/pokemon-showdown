@@ -193,7 +193,7 @@ export interface MoveData extends EffectData, MoveEventMethods, HitEffect {
 	thawsTarget?: boolean;
 	heal?: number[] | null;
 	forceSwitch?: boolean;
-	selfSwitch?: 'copyvolatile' | 'shedtail' | boolean;
+	selfSwitch?: 'copyvolatile' | 'shedtail' | 'wingman' | boolean;
 	selfBoost?: { boosts?: SparseBoostsTable };
 	selfdestruct?: 'always' | 'ifHit' | boolean;
 	breaksProtect?: boolean;

@@ -266,6 +266,15 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 		cant: "THIS SHOULDN'T HAPPEN! LET ME KNOW IF IT DOES! tell me 'Swarm-Cant' ",
 	},
 
+
+	//amoros volatile statuses
+	/*
+	wingman: {
+		start: "  [POKEMON] got hyped up by its ally! Guaranteed crit next turn!",
+		end: "  [POKEMON]'s confidence boost from its wingman wore off.",
+	},
+	*/
+
 	// misc effects
 	confusion: {
 		start: "  [POKEMON] became confused!",

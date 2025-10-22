@@ -22470,12 +22470,9 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			onEnd(pokemon) {
 				this.add('-end', pokemon, 'wingman');
 			},
-			onSwitchIn(target) {
-				this.singleEvent('Swap', this.effect, this.effectState, target);
-			},
 		},
 		flags: {},
-		selfSwitch: true,
+		selfSwitch: 'wingman',
 		secondary: null,
 		target: "self",
 		type: "Vanilla",
