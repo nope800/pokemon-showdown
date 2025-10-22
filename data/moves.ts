@@ -9944,41 +9944,6 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		zMove: { boost: { bod: 1 } },
 		contestType: "Clever",
 	},
-	instruct: {
-		num: 689,
-		accuracy: true,
-		basePower: 0,
-		category: "Status",
-		name: "Instruct",
-		pp: 15,
-		priority: 0,
-		flags: { protect: 1, bypasssub: 1, allyanim: 1, failinstruct: 1 },
-		onHit(target, source) {
-			if (!target.lastMove || target.volatiles['dynamax']) return false;
-			const lastMove = target.lastMove;
-			const moveSlot = target.getMoveData(lastMove.id);
-			if (
-				lastMove.flags['failinstruct'] || lastMove.isZ || lastMove.isMax ||
-				lastMove.flags['charge'] || lastMove.flags['recharge'] ||
-				target.volatiles['beakblast'] || target.volatiles['focuspunch'] || target.volatiles['shelltrap'] ||
-				(moveSlot && moveSlot.pp <= 0)
-			) {
-				return false;
-			}
-			this.add('-singleturn', target, 'move: Instruct', `[of] ${source}`);
-			this.queue.prioritizeAction(this.queue.resolveAction({
-				choice: 'move',
-				pokemon: target,
-				moveid: target.lastMove.id,
-				targetLoc: target.lastMoveTargetLoc!,
-			})[0] as MoveAction);
-		},
-		secondary: null,
-		target: "normal",
-		type: "Psychic",
-		zMove: { boost: { boa: 1 } },
-		contestType: "Clever",
-	},
 	iondeluge: {
 		num: 569,
 		accuracy: true,
@@ -15573,40 +15538,6 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		target: "normal",
 		type: "Fighting",
 		contestType: "Tough",
-	},
-	reversal: {
-		num: 179,
-		accuracy: 100,
-		basePower: 0,
-		basePowerCallback(pokemon) {
-			const ratio = Math.max(Math.floor(pokemon.st * 48 / pokemon.maxhp), 1);
-			let bp;
-			if (ratio < 2) {
-				bp = 200;
-			} else if (ratio < 5) {
-				bp = 150;
-			} else if (ratio < 10) {
-				bp = 100;
-			} else if (ratio < 17) {
-				bp = 80;
-			} else if (ratio < 33) {
-				bp = 40;
-			} else {
-				bp = 20;
-			}
-			this.debug(`BP: ${bp}`);
-			return bp;
-		},
-		category: "Top",
-		name: "Reversal",
-		pp: 15,
-		priority: 0,
-		flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
-		secondary: null,
-		target: "normal",
-		type: "Fighting",
-		zMove: { basePower: 160 },
-		contestType: "Cool",
 	},
 	revivalblessing: {
 		num: 863,
@@ -22040,6 +21971,20 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		type: "Fire",
 		contestType: "Beautiful",
 	},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	//AMOROS
 	shouldertouch: {
 		num: 0,
@@ -22323,5 +22268,179 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		type: "Control",
 		contestType: "Cool",
 	},
-
+	hump: {
+		num: 13,
+		accuracy: 100,
+		basePower: 10,
+		category: "Top",
+		name: "Hump",
+		pp: 10,
+		priority: 0,
+		multihit: 3,
+		flags: {protect: 1},
+		secondary: null,
+		target: "normal",
+		type: "Pathetic",
+		contestType: "Cool",
+	},
+	tagteam: {
+		num: 14,
+		accuracy: 100,
+		basePower: 10,
+		category: "Top",
+		name: "Tag Team",
+		pp: 10,
+		priority: 0,
+		multihit: 2,
+		flags: {protect: 1},
+		secondary: null,
+		target: "normal",
+		type: "Group",
+		contestType: "Cool",
+	},
+	doublebj: {
+		num: 15,
+		accuracy: 100,
+		basePower: 10,
+		category: "Bottom",
+		name: "Double BJ",
+		pp: 10,
+		priority: 0,
+		multihit: 2,
+		flags: {protect: 1},
+		secondary: null,
+		target: "normal",
+		type: "Group",
+		contestType: "Cool",
+	},
+	taketurns: {
+		num: 16,
+		accuracy: 100,
+		basePower: 15,
+		category: "Bottom",
+		name: "Take Turns",
+		pp: 10,
+		priority: 0,
+		multihit: 2,
+		flags: {protect: 1},
+		onHit(target, source) {
+			this.heal(20, source)
+		},
+		secondary: null,
+		target: "normal",
+		type: "Group",
+		contestType: "Cool",
+	},
+	shyscurry: {
+		num: 17,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		name: "Shy Scurry",
+		pp: 5,
+		priority: 0,
+		flags: { protect: 1, reflectable: 1},
+		onHit(target, source, move) {
+			const success = this.boost({ toa: -1}, target, source);
+			if (!success) {
+				delete move.selfSwitch;
+			}
+		},
+		selfSwitch: true,
+		secondary: null,
+		target: "normal",
+		type: "Pathetic",
+		contestType: "Cool",
+	},
+	reversal: {
+		num: 18,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		name: "Reversal",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, reflectable: 1},
+		onTry(source) {
+			return source.status === 'held';
+		},
+		onHit(target, source, move) {
+			this.boost({ toa: -1}, target, source);
+			source.clearStatus()
+		},
+		status: "held",
+		secondary: null,
+		target: "normal",
+		type: "Muscle",
+		contestType: "Cool",
+	},
+	doggystyle: {
+		num: 19,
+		accuracy: 100,
+		basePower: 25,
+		category: "Top",
+		name: "Doggy Style",
+		pp: 10,
+		priority: 0,
+		flags: {hold: 1, protect: 1},
+		secondary: {
+			chance: 100,
+			status: 'held',
+		},
+		target: "normal",
+		type: "Instinct",
+		contestType: "Cool",
+	},
+	cutekisses: {
+		num: 20,
+		accuracy: 100,
+		basePower: 5,
+		category: "Bottom",
+		name: "Cute Kisses",
+		pp: 10,
+		priority: 0,
+		multihit: 4,
+		flags: {protect: 1},
+		secondary: null,
+		target: "normal",
+		type: "Loving",
+		contestType: "Cool",
+	},
+	instruct: {
+		num: 21,
+		accuracy: 100,
+		basePower: 15,
+		category: "Bottom",
+		name: "Instruct",
+		pp: 10,
+		priority: -1,
+		flags: {protect: 1},
+		secondary: {
+			chance: 100,
+			status: 'embarrassed',
+		},
+		onHit(target, source) {
+			this.heal(10, source)
+		},
+		target: "normal",
+		type: "Control",
+		contestType: "Cool",
+	},
+	warmembrace: {
+		num: 22,
+		accuracy: 100,
+		basePower: 35,
+		category: "Top",
+		name: "Warm Embrace",
+		pp: 10,
+		priority: 0,
+		flags: {hold: 1, protect: 1},
+		secondary: {
+			chance: 100,
+			status: 'held',
+		},
+		target: "normal",
+		type: "Loving",
+		contestType: "Cool",
+	},
 };
