@@ -7624,7 +7624,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	concentrate: {
 		name: "Concentrate",
 		desc: "The user protects itself from taking any damage for one round. Status effects and stat changes can still be inflicted.",
-		shortDesc: "Nagates all damage for a turn.",
+		shortDesc: "Negates all damage for a turn.",
 
 		start: "  [POKEMON] concentrated! It will take no damage this turn!",
 	},

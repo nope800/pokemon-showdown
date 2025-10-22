@@ -22031,7 +22031,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 	},
 	rivalryboost: {
 		num: 3,
-		accuracy: 100,
+		accuracy: true,
 		basePower: 0,
 		category: "Status",
 		name: "Rivalry Boost",
@@ -22171,7 +22171,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 	},
 	strapswap: {
 		num: 10,
-		accuracy: 100,
+		accuracy: true,
 		basePower: 0,
 		category: "Status",
 		name: "Strap Swap",
@@ -22241,7 +22241,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 	},
 	concentrate: {
 		num: 12,
-		accuracy: 100,
+		accuracy: true,
 		basePower: 0,
 		category: "Status",
 		name: "Concentrate",
@@ -22249,17 +22249,19 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		priority: 3,
 		volatileStatus: 'concentrate',
 		condition: {
+			duration: 1,
 			onStart(pokemon) {
 				this.add('-start', pokemon, 'Concentrate');
 			},
-			onDamagePriority: -5,
+			onDamagePriority: -10,
 			onDamage(damage, target, source, move) {
-				if (!move || !(move.effectType === "Move")) {
+				if (!source || !move || !(move.effectType === "Move")) {
 					return 0;
 				}
 				if (!move.flags['protect']) {
 					return damage;
 				}
+				return 0;
 			},
 		},
 		flags: {},
@@ -22321,7 +22323,6 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		name: "Take Turns",
 		pp: 10,
 		priority: 0,
-		multihit: 2,
 		flags: {protect: 1},
 		onHit(target, source) {
 			this.heal(20, source)
@@ -22333,7 +22334,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 	},
 	shyscurry: {
 		num: 17,
-		accuracy: 100,
+		accuracy: true,
 		basePower: 0,
 		category: "Status",
 		name: "Shy Scurry",
@@ -22366,7 +22367,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		},
 		onHit(target, source, move) {
 			this.boost({ toa: -1}, target, source);
-			source.clearStatus()
+			source.cureStatus()
 		},
 		status: "held",
 		secondary: null,
