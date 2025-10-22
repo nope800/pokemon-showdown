@@ -22471,6 +22471,11 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 				this.add('-end', pokemon, 'wingman');
 			},
 		},
+		self: {
+			onHit(source) {
+				source.skipBeforeSwitchOutEventFlag = true;
+			},
+		},
 		flags: {},
 		selfSwitch: 'wingman',
 		secondary: null,
