@@ -22041,7 +22041,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		contestType: "Beautiful",
 	},
 	//AMOROS
-	lighttouchontheshoulder: {
+	shouldertouch: {
 		num: 0,
 		accuracy: 100,
 		basePower: 0,
@@ -22143,7 +22143,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		name: "Sticky Web",
 		pp: 5,
 		priority: 2,
-		flags: {hold:1, protect: 1},
+		flags: {hold:1, protect: 1, reflectable: 1},
 		boosts: {
 			hor: -1,
 		},
@@ -22214,8 +22214,10 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		name: "Cuddle",
 		pp: 5,
 		priority: 0,
-		flags: {protect: 1},
-		heal: [1, 2],
+		flags: {protect: 1, reflectable: 1},
+		onHit(target, source) {
+			this.heal(source.maxhp / 2, source)
+		},
 		status: 'held',
 		secondary: null,
 		target: "normal",
