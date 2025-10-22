@@ -22224,4 +22224,104 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		type: "Loving",
 		contestType: "Cool",
 	},
+	strapswap: {
+		num: 10,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		name: "Strap Swap",
+		pp: 5,
+		priority: 0,
+		flags: {},
+		onHit(target, source) {
+			this.heal(15, source)
+		},
+		volatileStatus: 'strapswap',
+		condition: {
+			onStart(pokemon) {
+				this.add('-start', pokemon, 'Strap Swap');
+				const newtoa = pokemon.storedStats.boa;
+				const newtod = pokemon.storedStats.bod;
+				const newboa = pokemon.storedStats.toa;
+				const newbod = pokemon.storedStats.tod;
+				pokemon.storedStats.toa = newtoa;
+				pokemon.storedStats.tod = newtod;
+				pokemon.storedStats.boa = newboa;
+				pokemon.storedStats.bod = newbod;
+			},
+			onCopy(pokemon) {
+				const newtoa = pokemon.storedStats.boa;
+				const newtod = pokemon.storedStats.bod;
+				const newboa = pokemon.storedStats.toa;
+				const newbod = pokemon.storedStats.tod;
+				pokemon.storedStats.toa = newtoa;
+				pokemon.storedStats.tod = newtod;
+				pokemon.storedStats.boa = newboa;
+				pokemon.storedStats.bod = newbod;
+			},
+			onEnd(pokemon) {
+				this.add('-end', pokemon, 'Strap Swap');
+				const newtoa = pokemon.storedStats.boa;
+				const newtod = pokemon.storedStats.bod;
+				const newboa = pokemon.storedStats.toa;
+				const newbod = pokemon.storedStats.tod;
+				pokemon.storedStats.toa = newtoa;
+				pokemon.storedStats.tod = newtod;
+				pokemon.storedStats.boa = newboa;
+				pokemon.storedStats.bod = newbod;
+			},
+			onRestart(pokemon) {
+				pokemon.removeVolatile('Strap Swap');
+			},
+		},
+		secondary: null,
+		target: "self",
+		type: "Toy",
+		contestType: "Cool",
+	},
+	pollinate: {
+		num: 11,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		name: "Pollinate",
+		pp: 5,
+		priority: 1,
+		flags: {protect: 1, reflectable: 1},
+		status: 'heat',
+		secondary: null,
+		target: "normal",
+		type: "Vanilla",
+		contestType: "Cool",
+	},
+	concentrate: {
+		num: 12,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		name: "Concentrate",
+		pp: 3,
+		priority: 3,
+		volatileStatus: 'concentrate',
+		condition: {
+			onStart(pokemon) {
+				this.add('-start', pokemon, 'Concentrate');
+			},
+			onDamagePriority: -5,
+			onDamage(damage, target, source, move) {
+				if (!move || !(move.effectType === "Move")) {
+					return 0;
+				}
+				if (!move.flags['protect']) {
+					return damage;
+				}
+			},
+		},
+		flags: {},
+		secondary: null,
+		target: "self",
+		type: "Control",
+		contestType: "Cool",
+	},
+
 };

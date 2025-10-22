@@ -134,11 +134,11 @@ export const DefaultText: { [id: IDEntry]: DefaultText } = {
 		statShortName: "St",
 	},
 	toa: {
-		statName: "Attack",
+		statName: "Top Atk",
 		statShortName: "ToA",
 	},
 	tod: {
-		statName: "Defense",
+		statName: "Top Def",
 		statShortName: "ToD",
 	},
 	boa: {

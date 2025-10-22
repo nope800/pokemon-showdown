@@ -7612,4 +7612,13 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 			shortDesc: "Nearly always goes first. Always crits.",
 		},
 	},
+	//AMOROS
+	strapswap: {
+		name: "Strap Swap",
+		desc: "The user swaps its Top and Bottom Stats, and stat stage changes remain on their respective stats. This move can be used again to swap the stats back. If the user uses Baton Pass, the replacement will have its Attack and Defense stats swapped if the effect is active. If the user has its stats recalculated by changing forme while its stats are swapped, this effect is ignored but is still active for the purposes of Baton Pass.",
+		shortDesc: "Switches user's Top and Bottom stats, and heals for 20.",
+
+		start: "  [POKEMON] switched its Top and Bottom stats!",
+		end: "#.start",
+	},
 };
