@@ -1210,11 +1210,15 @@ export class Pokemon {
 	}
 
 	copyVolatileFrom(pokemon: Pokemon, switchCause?: string | boolean) {
+		console.log("COPYVOLATILEFROM");
+		console.log(switchCause);
 		this.clearVolatile();
 		if (switchCause === 'copyvolatile') this.boosts = pokemon.boosts;
 		for (const i in pokemon.volatiles) {
+			console.log(i);
 			if (switchCause === 'shedtail' && i !== 'substitute') continue;
 			if (switchCause === 'wingman' && i !== 'wingman') continue;
+			console.log("CORRECT VOLATILE")
 			if (this.battle.dex.conditions.getByID(i as ID).noCopy) continue;
 			// shallow clones
 			this.volatiles[i] = this.battle.initEffectState({ ...pokemon.volatiles[i], target: this });
