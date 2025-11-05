@@ -22341,6 +22341,9 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		pp: 5,
 		priority: 0,
 		flags: { protect: 1, reflectable: 1},
+		onTry(source) {
+			return source.status != "held"
+		},
 		onHit(target, source, move) {
 			const success = this.boost({ toa: -1}, target, source);
 			if (!success) {
@@ -22455,6 +22458,9 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		pp: 5,
 		priority: -1,
 		volatileStatus: "wingman",
+		onTry(source) {
+			return source.status != "held"
+		},
 		condition: {
 			duration:2,
 			onStart(pokemon, source, effect) {
@@ -22614,6 +22620,21 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		secondary: null,
 		target: "normal",
 		type: "Control",
+		contestType: "Cool",
+	},
+	tease: {
+		num: 35,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		name: "Tease",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1},
+		secondary: null,
+		status: "embarrassed",
+		target: "normal",
+		type: "Spoiled",
 		contestType: "Cool",
 	},
 };
