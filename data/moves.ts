@@ -22707,7 +22707,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		multihit: 3,
 		flags: {protect: 1},
 		secondary: null,
-		onAfterMove(source) {
+		onTry(source) { //Somehow there's no callback for "do this exactly once after the move succeeds" so you can cheat a hor boost even if it gets disabled.
 			let horboost: Partial<BoostsTable> = {
 				hor: 1,
 			};
