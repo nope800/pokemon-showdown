@@ -22843,10 +22843,16 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			}
 		},
 		onHit(target, source) {
-			let priorboosts: BoostsTable;
-			priorboosts = target.volatiles['bite']?.boosts
-			let correctionboosts: Partial<BoostsTable>;
-			correctionboosts = {
+			let priorboosts: BoostsTable = {
+				toa: target.volatiles['bite']?.toa,
+				tod: target.volatiles['bite']?.tod,
+				boa: target.volatiles['bite']?.boa,
+				bod: target.volatiles['bite']?.bod,
+				hor: target.volatiles['bite']?.hor,
+				accuracy: target.volatiles['bite']?.acc,
+				evasion: target.volatiles['bite']?.ev,
+			}
+			let correctionboosts: Partial<BoostsTable> = {
 				toa: 0, //filler so it's defined if no stats changed
 			}
 			let i: BoostID;
@@ -22861,7 +22867,14 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 			duration: 1,
 			onStart(pokemon) {
 				this.add('-singleturn', pokemon, 'move: Bite');
-				this.effectState.boosts = pokemon.boosts;
+				let startingboost: BoostsTable = pokemon.boosts//almost certainly a more general way to do this
+				this.effectState.toa = startingboost.toa;
+				this.effectState.tod = startingboost.toa;
+				this.effectState.boa = startingboost.toa;
+				this.effectState.bod = startingboost.toa;
+				this.effectState.hor = startingboost.toa;
+				this.effectState.acc = startingboost.accuracy;
+				this.effectState.ev = startingboost.evasion;
 			},
 		},
 		secondary: null,
