@@ -1395,23 +1395,6 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		type: "Normal",
 		contestType: "Tough",
 	},
-	bite: {
-		num: 44,
-		accuracy: 100,
-		basePower: 60,
-		category: "Top",
-		name: "Bite",
-		pp: 25,
-		priority: 0,
-		flags: { contact: 1, protect: 1, mirror: 1, metronome: 1, bite: 1 },
-		secondary: {
-			chance: 30,
-			volatileStatus: 'flinch',
-		},
-		target: "normal",
-		type: "Dark",
-		contestType: "Tough",
-	},
 	bitterblade: {
 		num: 891,
 		accuracy: 100,
@@ -10568,23 +10551,6 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		target: "normal",
 		type: "Fairy",
 		contestType: "Cool",
-	},
-	lick: {
-		num: 122,
-		accuracy: 100,
-		basePower: 30,
-		category: "Top",
-		name: "Lick",
-		pp: 30,
-		priority: 0,
-		flags: { contact: 1, protect: 1, mirror: 1, metronome: 1 },
-		secondary: {
-			chance: 30,
-			status: 'par',
-		},
-		target: "normal",
-		type: "Ghost",
-		contestType: "Cute",
 	},
 	lifedew: {
 		num: 791,
@@ -22637,4 +22603,304 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		type: "Spoiled",
 		contestType: "Cool",
 	},
+	deepbreaths: {
+		num: 36,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		name: "Deep Breaths",
+		pp: 5,
+		priority: 0,
+		flags: {},
+		boosts: {
+			bod: 1,
+			hor: -1,
+		},
+		onHit(target, source, move) {
+			target.cureStatus()
+		},
+		secondary: null,
+		target: "self",
+		type: "Stoic",
+		contestType: "Cool",
+	},
+	givehead: {
+		num: 37,
+		accuracy: 100,
+		basePower: 30,
+		category: "Bottom",
+		name: "Give Head",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1},
+		secondary: null,
+		target: "normal",
+		type: "Vanilla",
+		contestType: "Cool",
+	},
+	cheerlead: {
+		num: 38,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Cheerlead",
+		pp: 5,
+		priority: -1,
+		onTry(source) {
+			return source.status != "held"
+		},
+		self: {
+			onHit(source) {
+				source.skipBeforeSwitchOutEventFlag = true;
+			},
+		},
+		flags: {},
+		selfSwitch: 'cheerlead',
+		secondary: null,
+		target: "self",
+		type: "Loving",
+		contestType: "Cool",
+	},
+	shibari: {
+		num: 41,
+		accuracy: 100,
+		basePower: 35,
+		category: "Top",
+		name: "Shibari",
+		pp: 10,
+		priority: 0,
+		flags: {hold: 1, protect: 1},
+		secondary: {
+			chance: 100,
+			status: 'held',
+		},
+		target: "normal",
+		type: "Toy",
+		contestType: "Cool",
+	},
+	groupgrope: {
+		num: 42,
+		accuracy: 100,
+		basePower: 5,
+		category: "Top",
+		name: "Group Grope",
+		pp: 10,
+		priority: 0,
+		multihit: 7,
+		flags: {hold: 1, protect: 1},
+		secondary: {
+			chance: 100,
+			status: 'held',
+		},
+		target: "normal",
+		type: "Group",
+		contestType: "Cool",
+	},
+	gremlinmode: {
+		num: 43,
+		accuracy: 100,
+		basePower: 10,
+		category: "Top",
+		name: "Gremlin Mode",
+		pp: 10,
+		priority: 0,
+		multihit: 3,
+		flags: {protect: 1},
+		secondary: null,
+		self: {
+			boosts: {
+				hor: 1,
+			},
+		},
+		target: "normal",
+		type: "Freak",
+		contestType: "Cool",
+	},
+	rolereversal: {
+		num: 44,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		name: "Role Reversal",
+		pp: 5,
+		priority: 0,
+		flags: {},
+		volatileStatus: 'rolereversal',
+		condition: {
+			onStart(pokemon) {
+				this.add('-start', pokemon, 'Role Reversal');
+				const newtoa = pokemon.storedStats.boa;
+				const newboa = pokemon.storedStats.toa;
+				pokemon.storedStats.toa = newtoa;
+				pokemon.storedStats.boa = newboa;
+			},
+			onCopy(pokemon) {
+				const newtoa = pokemon.storedStats.boa;
+				const newboa = pokemon.storedStats.toa;
+				pokemon.storedStats.toa = newtoa;
+				pokemon.storedStats.boa = newboa;
+			},
+			onEnd(pokemon) {
+				this.add('-end', pokemon, 'Role Reversal');
+				const newtoa = pokemon.storedStats.boa;
+				const newboa = pokemon.storedStats.toa;
+				pokemon.storedStats.toa = newtoa;
+				pokemon.storedStats.boa = newboa;
+			},
+			onRestart(pokemon) {
+				pokemon.removeVolatile('Role Reversal');
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Vanilla",
+		contestType: "Cool",
+	},
+	serpentsqueeze: {
+		num: 47,
+		accuracy: 100,
+		basePower: 20,
+		category: "Top",
+		name: "Serpent Squeeze",
+		pp: 10,
+		priority: 0,
+		flags: {hold: 1, protect: 1},
+		secondary: {
+			chance: 100,
+			status: 'held',
+		},
+		target: "normal",
+		type: "Control",
+		contestType: "Cool",
+	},
+	slipin: {
+		num: 49,
+		accuracy: 100,
+		basePower: 20,
+		category: "Top",
+		name: "Slip In",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1},
+		target: "normal",
+		type: "tentacle",
+		contestType: "Cool",
+	},
+	rhythmichips: {
+		num: 50,
+		accuracy: 100,
+		basePower: 10,
+		category: "Bottom",
+		name: "Rhythmic Hips",
+		pp: 10,
+		priority: 0,
+		multihit: 3,
+		flags: {protect: 1},
+		onModifyMove(move, source, target) {
+			if (target && target.status) {
+				move.willCrit = true
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Instinct",
+		contestType: "Cool",
+	},
+	matingdance: {
+		num: 51,
+		accuracy: 100,
+		basePower: 0,
+		category: "Status",
+		name: "Mating Dance",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1},
+		secondary: null,
+		onHit(target, source) {
+			source.clearStatus()
+		},
+		status: "trance",
+		target: "normal",
+		type: "Loving",
+		contestType: "Cool",
+	},
+	bite: {
+		num: 52,
+		accuracy: 100,
+		basePower: 20,
+		category: "Top",
+		name: "Bite",
+		pp: 10,
+		priority: -1,
+		flags: {protect: 1,},
+		priorityChargeCallback(test) {
+			let pokemonlist: Pokemon[];
+			pokemonlist = this.getAllActive()
+			for (let i = 0; i < pokemonlist.length; i++) {
+				let pokemon = pokemonlist[i]
+				pokemon.addVolatile('bite');
+			}
+		},
+		onHit(target, source) {
+			let priorboosts: BoostsTable;
+			priorboosts = target.volatiles['bite']?.boosts
+			let correctionboosts: Partial<BoostsTable>;
+			correctionboosts = {
+				toa: 0, //filler so it's defined if no stats changed
+			}
+			let i: BoostID;
+			for (i in target.boosts) {
+				if (target.boosts[i] > priorboosts[i]) {
+					correctionboosts[i] = priorboosts[i] - target.boosts[i]
+				}
+			}
+			target.boostBy(correctionboosts)
+		},
+		condition: {
+			duration: 1,
+			onStart(pokemon) {
+				this.add('-singleturn', pokemon, 'move: Bite');
+				this.effectState.boosts = pokemon.boosts;
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Instinct",
+		contestType: "Tough",
+	},
+	lick: {
+		num: 53,
+		accuracy: 100,
+		basePower: 20,
+		category: "Top",
+		name: "Lick",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1},
+		onHit(target, user) {
+			const stats: BoostID[] = [];
+			let stat: BoostID;
+			for (stat in target.boosts) {
+				if (target.boosts[stat] > 0) {
+					stats.push(stat);
+				}
+			}
+			if (stats.length) {
+				const randomStat = this.sample(stats);
+				const userboost: SparseBoostsTable = {};
+				const targetboost: SparseBoostsTable = {};
+				userboost[randomStat] = target.boosts[randomStat];
+				targetboost[randomStat] = - target.boosts[randomStat];
+				this.boost(userboost, user);
+				this.boost(targetboost, target);
+			} else {
+				return false;
+			}
+		},
+		target: "normal",
+		type: "Freak",
+		contestType: "Cool",
+	},
+	
+
 };

@@ -511,15 +511,6 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		start: "  [POKEMON] was squeezed by [SOURCE]!",
 		move: "#wrap", // gen 1 only
 	},
-	bite: {
-		name: "Bite",
-		desc: "Has a 30% chance to make the target flinch.",
-		shortDesc: "30% chance to make the target flinch.",
-		gen1: {
-			desc: "Has a 10% chance to make the target flinch.",
-			shortDesc: "10% chance to make the target flinch.",
-		},
-	},
 	bitterblade: {
 		name: "Bitter Blade",
 		desc: "The user recovers 1/2 the St lost by the target, rounded half up. If Big Root is held by the user, the St recovered is 1.3x normal, rounded half down.",
@@ -7634,5 +7625,19 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		shortDesc: "Switch out, gaurentee crit for ally.",
 		start: "  [POKEMON] talked up its ally! Guaranteed crit next turn!",
 		end: "[POKEMON]'s confidence boost from its wingman wore off.",
+	},
+	rolereversal: {
+		name: "Role Reversal",
+		desc: "The user forces the target to try something new, swapping its top and bottom attack stats. Stat changes remain where they were. This move can be used again to swap the stats back.",
+		shortDesc: "Switches target's Top and Bottom stats.",
+
+		start: "  [POKEMON] had its Top and Bottom attack stats switched !",
+		end: "#.start",
+	},
+	bite: {
+		name: "Bite",
+		desc: "Reverts all the target's raised stats this turn. For each stat, sets the boost to the minimum of its current value and its value at the start of the turn.",
+		shortDesc: "Fails if the user takes damage before it hits.",
+		start: "  [POKEMON]'s stat boosts are being watched!",
 	},
 };

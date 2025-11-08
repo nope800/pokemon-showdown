@@ -73,7 +73,7 @@ export class BattleActions {
 		const unfaintedActive = oldActive?.st ? oldActive : null;
 		if (unfaintedActive) {
 			oldActive.beingCalledBack = true;
-			let switchCopyFlag: 'copyvolatile' | 'shedtail' | 'wingman' | boolean = false;
+			let switchCopyFlag: 'copyvolatile' | 'shedtail' | 'wingman' | 'cheerlead' | boolean = false;
 			if (sourceEffect && typeof (sourceEffect as Move).selfSwitch === 'string') {
 				switchCopyFlag = (sourceEffect as Move).selfSwitch!;
 			}
