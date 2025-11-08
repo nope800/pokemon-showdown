@@ -7637,7 +7637,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	bite: {
 		name: "Bite",
 		desc: "Reverts all the target's raised stats this turn. For each stat, sets the boost to the minimum of its current value and its value at the start of the turn.",
-		shortDesc: "Fails if the user takes damage before it hits.",
+		shortDesc: "Negates all target's positive stat changes this turn.",
 		start: "  [POKEMON]'s stat boosts are being watched!",
 	},
 };

@@ -22707,10 +22707,11 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		multihit: 3,
 		flags: {protect: 1},
 		secondary: null,
-		self: {
-			boosts: {
+		onAfterMove(source) {
+			let horboost: Partial<BoostsTable> = {
 				hor: 1,
-			},
+			};
+			source.boostBy(horboost);
 		},
 		target: "normal",
 		type: "Freak",
@@ -22817,7 +22818,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		flags: {protect: 1},
 		secondary: null,
 		onHit(target, source) {
-			source.clearStatus()
+			source.cureStatus()
 		},
 		status: "trance",
 		target: "normal",
