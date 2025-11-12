@@ -2494,7 +2494,7 @@ export const Chat = new class {
 		}
 		buf += `<span class="col widelabelcol"><em>Accuracy</em><br>${typeof move.accuracy === 'number' ? (`${move.accuracy}%`) : '—'}</span> `;
 		const basePP = move.pp || 1;
-		const pp = Math.floor(move.noPPBoosts ? basePP : basePP * 8 / 5);
+		const pp = Math.floor(move.noPPBoosts ? basePP : basePP);
 		buf += `<span class="col pplabelcol"><em>PP</em><br>${pp}</span> `;
 		buf += `<span class="col movedesccol">${move.shortDesc || move.desc}</span> `;
 		buf += `</li><li style="clear:both"></li></ul>`;

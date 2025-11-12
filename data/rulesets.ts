@@ -2511,8 +2511,8 @@ export const Rulesets: import('../sim/dex-formats').FormatDataTable = {
 						...pokemon.baseMoveSlots, {
 							id: move.id,
 							move: move.name,
-							pp: move.pp * 8 / 5,
-							maxpp: move.pp * 8 / 5,
+							pp: move.pp, //Amoros: pp is pp
+							maxpp: move.pp,
 							target: move.target,
 							disabled: false,
 							disabledSource: '',

@@ -945,8 +945,8 @@ export const Abilities: import('../../../sim/dex-abilities').ModdedAbilityDataTa
 				const finalGambit = {
 					move: move.name,
 					id: move.id,
-					pp: move.noPPBoosts ? move.pp : move.pp * 8 / 5,
-					maxpp: move.noPPBoosts ? move.pp : move.pp * 8 / 5,
+					pp: move.noPPBoosts ? move.pp : move.pp,
+					maxpp: move.noPPBoosts ? move.pp : move.pp,
 					target: move.target,
 					disabled: false,
 					used: false,
