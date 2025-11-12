@@ -100014,7 +100014,7 @@ export const Learnsets: import('../sim/dex-species').LearnsetDataTable = {
 			showboat: ["1L1","9L1"],
 			manhandle: ["1L1","9L1"],
 			pleadingeyes: ["1L1","9L1"],
-			failforwards: ["1L1","9L1"],
+			failforward: ["1L1","9L1"],
 			clench: ["1L1","9L1"],
 			bossaround: ["1L1","9L1"],
 			thornwhip: ["1L1","9L1"],

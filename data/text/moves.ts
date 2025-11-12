@@ -652,22 +652,6 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		desc: "No additional effect.",
 		shortDesc: "No additional effect. Hits adjacent Pokemon.",
 	},
-	bounce: {
-		name: "Bounce",
-		desc: "Has a 30% chance to paralyze the target. This attack charges on the first turn and executes on the second. On the first turn, the user avoids all attacks other than Gust, Hurricane, Sky Uppercut, Smack Down, Thousand Arrows, Thunder, and Twister, and Gust and Twister have doubled power when used against it. If the user is holding a Power Herb, the move completes in one turn.",
-		shortDesc: "Bounces turn 1. Hits turn 2. 30% paralyze.",
-		gen5: {
-			desc: "Has a 30% chance to paralyze the target. This attack charges on the first turn and executes on the second. On the first turn, the user avoids all attacks other than Gust, Hurricane, Sky Uppercut, Smack Down, Thunder, and Twister, and Gust and Twister have doubled power when used against it. If the user is holding a Power Herb, the move completes in one turn.",
-		},
-		gen4: {
-			desc: "Has a 30% chance to paralyze the target. This attack charges on the first turn and executes on the second. On the first turn, the user avoids all attacks other than Gust, Sky Uppercut, Thunder, and Twister, and Gust and Twister have doubled power when used against it. If the user is holding a Power Herb, the move completes in one turn.",
-		},
-		gen3: {
-			desc: "Has a 30% chance to paralyze the target. This attack charges on the first turn and executes on the second. On the first turn, the user avoids all attacks other than Gust, Sky Uppercut, Thunder, and Twister, and Gust and Twister have doubled power when used against it.",
-		},
-
-		prepare: "[POKEMON] sprang up!",
-	},
 	bouncybubble: {
 		name: "Bouncy Bubble",
 		desc: "The user recovers 1/2 the St lost by the target, rounded half up. If Big Root is held by the user, the St recovered is 1.3x normal, rounded half down.",
@@ -3369,19 +3353,6 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		block: "  [POKEMON] is anchored in place with its roots!",
 		heal: "  [POKEMON] absorbed nutrients with its roots!",
 	},
-	instruct: {
-		name: "Instruct",
-		desc: "The target immediately uses its last used move. Fails if the target has not made a move, if the move has 0 PP, if the target is preparing to use Beak Blast, Focus Punch, or Shell Trap, or if the move is Assist, Beak Blast, Belch, Bide, Blazing Torque, Celebrate, Chatter, Combat Torque, Copycat, Dynamax Cannon, Focus Punch, Hold Hands, Ice Ball, Instruct, King's Shield, Magical Torque, Me First, Metronome, Mimic, Mirror Move, Nature Power, Noxious Torque, Obstruct, Outrage, Petal Dance, Rollout, Shell Trap, Sketch, Sleep Talk, Struggle, Thrash, Transform, Uproar, Wicked Torque, any two-turn move, or any recharge move.",
-		shortDesc: "The target immediately uses its last used move.",
-		gen8: {
-			desc: "The target immediately uses its last used move. Fails if the target has not made a move, if the move has 0 PP, if the target is Dynamaxed, if the target is preparing to use Beak Blast, Focus Punch, or Shell Trap, or if the move is Assist, Beak Blast, Belch, Bide, Celebrate, Chatter, Copycat, Dynamax Cannon, Focus Punch, Hold Hands, Ice Ball, Instruct, King's Shield, Me First, Metronome, Mimic, Mirror Move, Nature Power, Obstruct, Outrage, Petal Dance, Rollout, Shell Trap, Sketch, Sleep Talk, Struggle, Thrash, Transform, Uproar, any two-turn move, any recharge move, or any Max or G-Max Move.",
-		},
-		gen7: {
-			desc: "The target immediately uses its last used move. Fails if the target has not made a move, if the move has 0 PP, if the target is preparing to use Beak Blast, Focus Punch, or Shell Trap, or if the move is Assist, Beak Blast, Belch, Bide, Celebrate, Chatter, Copycat, Focus Punch, Hold Hands, Ice Ball, Instruct, King's Shield, Me First, Metronome, Mimic, Mirror Move, Nature Power, Outrage, Petal Dance, Rollout, Shell Trap, Sketch, Sleep Talk, Struggle, Thrash, Transform, Uproar, any two-turn move, any recharge move, or any Z-Move.",
-		},
-
-		activate: "  [TARGET] followed [POKEMON]'s instructions!",
-	},
 	iondeluge: {
 		name: "Ion Deluge",
 		desc: "Causes Normal-type moves to become Electric type this turn. The effect happens after other effects that change a move's type.",
@@ -3597,11 +3568,6 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	letssnuggleforever: {
 		name: "Let's Snuggle Forever",
 		shortDesc: "No additional effect.",
-	},
-	lick: {
-		name: "Lick",
-		desc: "Has a 30% chance to paralyze the target.",
-		shortDesc: "30% chance to paralyze the target.",
 	},
 	lifedew: {
 		name: "Life Dew",
@@ -5279,20 +5245,6 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 			shortDesc: "Damage doubles if user is hit by the target.",
 		},
 	},
-	reversal: {
-		name: "Reversal",
-		desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current St * 48 / user's maximum St), rounded down.",
-		shortDesc: "More power the less St the user has left.",
-		gen4: {
-			desc: "The power of this move is 20 if X is 43 to 48, 40 if X is 22 to 42, 80 if X is 13 to 21, 100 if X is 6 to 12, 150 if X is 2 to 5, and 200 if X is 0 or 1, where X is equal to (user's current St * 64 / user's maximum St), rounded down.",
-		},
-		gen3: {
-			desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current St * 48 / user's maximum St), rounded down.",
-		},
-		gen2: {
-			desc: "The power of this move is 20 if X is 33 to 48, 40 if X is 17 to 32, 80 if X is 10 to 16, 100 if X is 5 to 9, 150 if X is 2 to 4, and 200 if X is 0 or 1, where X is equal to (user's current St * 48 / user's maximum St), rounded down. This move does not apply damage variance and cannot be a critical hit.",
-		},
-	},
 	revivalblessing: {
 		name: "Revival Blessing",
 		desc: "A fainted party member is selected and revived with 1/2 its max St, rounded down. Fails if there are no fainted party members.",
@@ -6336,18 +6288,6 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		name: "Steel Wing",
 		desc: "Has a 10% chance to raise the user's Defense by 1 stage.",
 		shortDesc: "10% chance to raise the user's Defense by 1.",
-	},
-	stickyweb: {
-		name: "Sticky Web",
-		desc: "Sets up a hazard on the opposing side of the field, lowering the Horniness by 1 stage of each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. Fails if the effect is already active on the opposing side. Can be removed from the opposing side if any Pokemon uses Tidy Up, or if any opposing Pokemon uses Mortal Spin, Rapid Spin, or Defog successfully, or is hit by Defog.",
-		shortDesc: "Lowers Horniness of grounded foes by 1 on switch-in.",
-		gen8: {
-			desc: "Sets up a hazard on the opposing side of the field, lowering the Horniness by 1 stage of each opposing Pokemon that switches in, unless it is a Flying-type Pokemon or has the Levitate Ability. Fails if the effect is already active on the opposing side. Can be removed from the opposing side if any opposing Pokemon uses Rapid Spin or Defog successfully, or is hit by Defog.",
-		},
-
-		start: "  A sticky web has been laid out on the ground around [TEAM]!",
-		end: "  The sticky web has disappeared from the ground around [TEAM]!",
-		activate: "  [POKEMON] was caught in a sticky web!",
 	},
 	stockpile: {
 		name: "Stockpile",
@@ -7604,40 +7544,244 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		},
 	},
 	//AMOROS
+	shouldertouch: {
+		name: "Shoulder Touch",
+		desc: "The user casually and platonically touches their target on the shoulder. Always deals exactly 1 damage.",
+		shortDesc: "Deals exactly 1 damage.",
+	},
+	top: {
+		name: "Top",
+		desc: "The user has simple vanilla sex, topping their target.",
+		shortDesc: "No additional effect.",
+	},
+	bottom: {
+		name: "Top",
+		desc: "The user has simple vanilla sex, bottoming to their target.",
+		shortDesc: "No additional effect.",
+	},
+	rivalryboost: {
+		name: "Rivalry Boost",
+		desc: "The user strives to match their target's strengths. Sharply raises a stat for the user, chosen based on the target's highest non-stamina stat.",
+		shortDesc: "Raises a stat of the user by 2. Based on highest stat of the target. Usually moves first.",
+	},
+	mount: {
+		name: "Mount",
+		desc: "The user climbs onto their target to initiate sex. Deals a critical hit if used on the user's first move.",
+		shortDesc: "Crits if used on first turn out.",
+	},
+	stickyweb: {
+		name: "Sticky Web",
+		desc: "The user spins a web around the target to restrain them. Inflicts Held. Lowers horniness.",
+		shortDesc: "Inflicts Held. Lowers the target's horniness by 1. Usually moves first.",
+	},
+	squirm: {
+		name: "Squirm",
+		desc: "The user wiggles around pathetically. Deals a critical hit if the user is Held.",
+		shortDesc: "Crits if held.",
+	},
+	bounce: {
+		name: "Bounce",
+		desc: "The user bounces eagerly on their target. Raises the user's Horniness.",
+		shortDesc: "Raises the user's horniness by 1.",
+	},
+	stroke: {
+		name: "Stroke",
+		desc: "The user uses their hands to please their target. Hits twice.",
+		shortDesc: "Hits twice.",
+	},
+	cuddle: {
+		name: "Cuddle",
+		desc: "The user snuggles the target, healing 50% of the user's max health while inflicting Held on the target. May be used even while the user is Held.",
+		shortDesc: "Heals the user for 50% of their max health. Inflicts Held. May be used while Held.",
+	},
 	strapswap: {
 		name: "Strap Swap",
-		desc: "The user swaps its Top and Bottom Stats, and stat stage changes remain on their respective stats. This move can be used again to swap the stats back.",
-		shortDesc: "Switches user's Top and Bottom stats, and heals for 20.",
+		desc: "The user swaps their own Top and Bottom Stats. The user heals 15 St. Stat stage changes remain on their respective stats. This move can be used again to swap the stats back.",
+		shortDesc: "Switches user's Top and Bottom stats, and heals for 15 St.",
 
 		start: "  [POKEMON] switched its Top and Bottom stats!",
 		end: "#.start",
 	},
+	pollinate: {
+		name: "Pollinate",
+		desc: "The user lets out a puff of pollen, inflicting the target with In Heat.",
+		shortDesc: "Inflicts heat. Usually moves first.",
+	},
 	concentrate: {
 		name: "Concentrate",
-		desc: "The user protects itself from taking any damage for one round. Status effects and stat changes can still be inflicted.",
+		desc: "The user focuses on their target, preventing the user from taking damage this turn. Status effects and stat changes can still be inflicted.",
 		shortDesc: "Negates all damage for a turn.",
 
 		start: "  [POKEMON] concentrated! It will take no damage this turn!",
 	},
+	hump: {
+		name: "Hump",
+		desc: "The user mounts their target and pitifully thrusts away at them. This move hits 3 times.",
+		shortDesc: "Hits 3 times.",
+	},
+	tagteam: {
+		name: "Tag Team",
+		desc: "The user tag teams the target, taking them on from multiple angles. This move hits twice.",
+		shortDesc: "Hits twice.",
+	},
+	doublebj: {
+		name: "Double BJ",
+		desc: "The users both use their mouths on the target at the same time. This move hits twice.",
+		shortDesc: "Hits twice.",
+	},
+	taketurns: {
+		name: "Take Turns",
+		desc: "The users take turns amongst themselves, giving their other bodies opportunities to rest and heal. Heals 20 St.",
+		shortDesc: "The user heals 20 St.",
+	},
+	shyscurry: {
+		name: "Shy Scurry",
+		desc: "The user gets too worked up and can't face their opponent. Lowers the target's Top Attack and switches the user out.",
+		shortDesc: "Lowers the target's top attack by 1. Switches the user out.",
+	},
+	reversal: {
+		name: "Reversal",
+		desc: "May only be used if the user is Held. Clears Held from the user and inflicts Held on the target, while lowering their top attack.",
+		shortDesc: "Can only be used while Held. Inflicts Held. lowers the target's Top Attack by 1.",
+	},
+	doggystyle: {
+		name: "Doggystyle",
+		desc: "The user mounts their target doggystyle. Inflicts Held.",
+		shortDesc: "Inflicts Held.",
+	},
+	cutekisses: {
+		name: "Cute Kisses",
+		desc: "The user peppers their target with cute kisses. This move hits 4 times.",
+		shortDesc: "Hits 4 times.",
+	},
+	instruct: {
+		name: "Instruct",
+		desc: "The user gives their target instructions on how better to fuck them. Inflicts Embarrassed.",
+		shortDesc: "Inflicts Embarrassed. Usually moves last.",
+	},
+	warmembrace: {
+		name: "Warm Embrace",
+		desc: "The user wraps their arms around their target tight, keeping them held close. Inflicts Held.",
+		shortDesc: "Inflicts Held.",
+	},
 	wingman: {
 		name: "Wing Man",
-		desc: "The user switches out while talking up their ally. Guarantees the ally will crit next turn.",
-		shortDesc: "Switch out, gaurentee crit for ally.",
-		start: "  [POKEMON] talked up its ally! Guaranteed crit next turn!",
-		end: "[POKEMON]'s confidence boost from its wingman wore off.",
+		desc: "The user talks up one of their teammates. The user switches out. The teammate that switches in will deal a critical hit on their next turn.",
+		shortDesc: "Switch out, gaurentee crit for teammate. Usually moves last.",
+		start: "  [POKEMON] talked up its teammate! Guaranteed crit next turn!",
+		end: "[POKEMON]'s confidence boost from their wingman wore off.",
+	},
+	missionary: {
+		name: "Missionary",
+		desc: "The user has sex with their target in a vanilla position.",
+		shortDesc: "No additional effect.",
+	},
+	showboat: {
+		name: "Showboat",
+		desc: "The user flexes their muscles, showing off. Sharply raises the users Top Attack.",
+		shortDesc: "Raises the user's Top Attack by 2.",
+	},
+	manhandle: {
+		name: "Manhandle",
+		desc: "The user tosses their target around with ease.",
+		shortDesc: "No additional effect.",
+	},
+	pleadingeyes: {
+		name: "Pleading Eyes",
+		desc: "The user looks up at the target with a needy expression. Lowers the target's Bottom Attack and Bottom Defense.",
+		shortDesc: "Lowers target Bottom Attack and Bottom Defense by 1.",
+	},
+	failforward: {
+		name: "Fail Forward",
+		desc: "The user slips up, knocking their target down and landing atop them. Inflicts Held, and lowers the target's Top Attack",
+		shortDesc: "Inflicts Held. Lowers the target's Top Attack by 1. Usually moves first.",
+	},
+	clench: {
+		name: "Clench",
+		desc: "The user tightens up, squeezing their target hard and not letting go.",
+		shortDesc: "No additional effect.",
+	},
+	bossaround: {
+		name: "Boss Around",
+		desc: "The user bosses their target around mercilessly. Deals a critical hit if the target is Embarrassed.",
+		shortDesc: "Crits if target is Embarrassed.",
+	},
+	thornwhip: {
+		name: "Thorn Whip",
+		desc: "The user uses a vine of thorns to lash out at their target.",
+		shortDesc: "No additional effect.",
+	},
+	tease: {
+		name: "Tease",
+		desc: "The user makes fun of the target. Inflicts Embarrassed.",
+		shortDesc: "Inflicts Embarrassed.",
+	},
+	deepbreaths: {
+		name: "Deep Breaths",
+		desc: "The user calms themselves. Removes all status effects from the user, lower's the user's Horniness, and raises their Bottom Defense.",
+		shortDesc: "Clears user's statuses. Lower's user's Horniness. Raises user's Bottom Defense.",
+	},
+	givehead: {
+		name: "Give Head",
+		desc: "The user uses their mouth to please their target.",
+		shortDesc: "No additional effect.",
+	},
+	cheerlead: {
+		name: "Cheerlead",
+		desc: "The user hypes up one of their teammates. The user switches out. The teammate that switches in is inflicted with Swarming.",
+		shortDesc: "Switch out, give swarming to teammate. Usually moves last.",
+	},
+	shibari: {
+		name: "Shibari",
+		desc: "The user ties up the target with swiftly-spun webbing. Inflicts Held.",
+		shortDesc: "Inflicts Held.",
+	},
+	groupgrope: {
+		name: "Group Grope",
+		desc: "The user grabs their target with four or more hands, gripping and squeezing them all over. Inflicts Held. This move hits 7 times.",
+		shortDesc: "Inflicts Held. Hits 7 times.",
+	},
+	gremlinmode: {
+		name: "Gremlin Mode",
+		desc: "The user lets lose with their target, feverishly using their body however they can. Hits 3 times. Raises the user's Horniness.",
+		shortDesc: "Raises the user's Horniness. Hits 3 times.",
 	},
 	rolereversal: {
 		name: "Role Reversal",
-		desc: "The user forces the target to try something new, swapping its top and bottom attack stats. Stat changes remain where they were. This move can be used again to swap the stats back.",
-		shortDesc: "Switches target's Top and Bottom stats.",
+		desc: "The user forces the target to try something new. Swaps the target's Top attack and bottom attack. Stat changes remain where they were. This move can be used again to swap the stats back.",
+		shortDesc: "Switches target's Top and Bottom attack stats.",
 
 		start: "  [POKEMON] had its Top and Bottom attack stats switched !",
 		end: "#.start",
 	},
+	serpentsqueeze: {
+		name: "Serpent Squeeze",
+		desc: "The user slithers around their target with their body to constrict their movements. Inflicts held.",
+		shortDesc: "Inflict Held.",
+	},
+	slipin: {
+		name: "Slip In",
+		desc: "The user slides a tentacle into their target with ease.",
+		shortDesc: "No additional effect.",
+	},
+	rhythmichips: {
+		name: "Rhythmic Hips",
+		desc: "The user thrusts their body against their target rhythmically. Deals a critical hit if the target currently has any status effect. Hits 3 times.",
+		shortDesc: "Crits if the target has a status. Hits 3 times.",
+	},
+	matingdance: {
+		name: "Mating dance",
+		desc: "The user dances alluringly to attract their target. Clears all status effects on the user, and inflicts Trance on the target.",
+		shortDesc: "Clears user's status. Inflicts Trance.",
+	},
 	bite: {
 		name: "Bite",
-		desc: "Reverts all the target's raised stats this turn. For each stat, sets the boost to the minimum of its current value and its value at the start of the turn.",
+		desc: "The user bites their target. Reverts all the target's raised stats this turn. For each stat, sets the boost to the minimum of its current value and its value at the start of the turn.",
 		shortDesc: "Negates all target's positive stat changes this turn.",
-		start: "  [POKEMON]'s stat boosts are being watched!",
+	},
+	lick: {
+		name: "Lick",
+		desc: "The user licks their target with a single, long lap of the tongue. The user steals one of the target's positive stat changes, chosen at random.",
+		shortDesc: "Steals a random positive boost.",
 	},
 };

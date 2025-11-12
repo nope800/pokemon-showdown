@@ -18720,7 +18720,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 	struggle: {
 		num: 165,
 		accuracy: true,
-		basePower: 50,
+		basePower: 10,
 		category: "Top",
 		name: "Struggle",
 		pp: 1,
@@ -22518,12 +22518,12 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		type: "Pathetic",
 		contestType: "Cute",
 	},
-	failforwards: {
+	failforward: {
 		num: 30,
 		accuracy: 100,
 		basePower: 15,
 		category: "Top",
-		name: "Fail Forwards",
+		name: "Fail Forward",
 		pp: 10,
 		priority: 1,
 		flags: {protect: 1, hold:1 },
@@ -22546,11 +22546,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		name: "Clench",
 		pp: 10,
 		priority: 0,
-		flags: {hold: 1, protect: 1},
-		secondary: {
-			chance: 100,
-			status: 'held',
-		},
+		flags: {protect: 1},
 		target: "normal",
 		type: "Rage",
 		contestType: "Cool",
@@ -22707,11 +22703,10 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		multihit: 3,
 		flags: {protect: 1},
 		secondary: null,
-		onTry(source) { //Somehow there's no callback for "do this exactly once after the move succeeds" so you can cheat a hor boost even if it gets disabled.
-			let horboost: Partial<BoostsTable> = {
+		selfBoost: {
+			boosts: {
 				hor: 1,
-			};
-			source.boostBy(horboost);
+			},
 		},
 		target: "normal",
 		type: "Freak",
@@ -22834,48 +22829,21 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		pp: 10,
 		priority: -1,
 		flags: {protect: 1,},
-		priorityChargeCallback(test) {
-			let pokemonlist: Pokemon[];
-			pokemonlist = this.getAllActive()
-			for (let i = 0; i < pokemonlist.length; i++) {
-				let pokemon = pokemonlist[i]
-				pokemon.addVolatile('bite');
+		onHit(target) {
+			let resetboost: BoostsTable = {
+				toa: 0,
+				tod: 0,
+				boa: 0,
+				bod: 0,
+				hor: 0,
+				evasion: 0,
+				accuracy: 0,
 			}
-		},
-		onHit(target, source) {
-			let priorboosts: BoostsTable = {
-				toa: target.volatiles['bite']?.toa,
-				tod: target.volatiles['bite']?.tod,
-				boa: target.volatiles['bite']?.boa,
-				bod: target.volatiles['bite']?.bod,
-				hor: target.volatiles['bite']?.hor,
-				accuracy: target.volatiles['bite']?.acc,
-				evasion: target.volatiles['bite']?.ev,
+			let stat:BoostID
+			for (stat in resetboost) {
+				resetboost[stat] = Math.max(target.startofturnboosts[stat] - target.boosts[stat], 0)
 			}
-			let correctionboosts: Partial<BoostsTable> = {
-				toa: 0, //filler so it's defined if no stats changed
-			}
-			let i: BoostID;
-			for (i in target.boosts) {
-				if (target.boosts[i] > priorboosts[i]) {
-					correctionboosts[i] = priorboosts[i] - target.boosts[i]
-				}
-			}
-			target.boostBy(correctionboosts)
-		},
-		condition: {
-			duration: 1,
-			onStart(pokemon) {
-				this.add('-singleturn', pokemon, 'move: Bite');
-				let startingboost: BoostsTable = pokemon.boosts//almost certainly a more general way to do this
-				this.effectState.toa = startingboost.toa;
-				this.effectState.tod = startingboost.toa;
-				this.effectState.boa = startingboost.toa;
-				this.effectState.bod = startingboost.toa;
-				this.effectState.hor = startingboost.toa;
-				this.effectState.acc = startingboost.accuracy;
-				this.effectState.ev = startingboost.evasion;
-			},
+			this.boost(resetboost, target)
 		},
 		secondary: null,
 		target: "normal",

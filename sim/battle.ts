@@ -1575,6 +1575,12 @@ export class Battle {
 	}
 
 	endTurn() {
+		//AMOROS: END OF TURN SET STARTOFTURNBOOSTS. I KNOW IT'S CONFUSING I'M SORRY
+		for (const pokemon of this.getAllActive()) {
+			pokemon.setStartOfTurnBoosts(pokemon.boosts)
+		}
+
+
 		this.turn++;
 		this.lastSuccessfulMoveThisTurn = null;
 
@@ -2653,8 +2659,8 @@ export class Battle {
 					pokemon.baseMoveSlots[ironHeadIndex] = {
 						move: move.name,
 						id: move.id,
-						pp: move.noPPBoosts ? move.pp : move.pp * 8 / 5,
-						maxpp: move.noPPBoosts ? move.pp : move.pp * 8 / 5,
+						pp: move.noPPBoosts ? move.pp : move.pp, //AMOROS: pp is just pp dude
+						maxpp: move.noPPBoosts ? move.pp : move.pp,
 						target: move.target,
 						disabled: false,
 						disabledSource: '',

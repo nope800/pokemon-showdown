@@ -160,7 +160,16 @@ export class BattleActions {
 		} else {
 			this.battle.queue.insertChoice({ choice: 'runSwitch', pokemon });
 		}
-
+		//AMOROS: when a pokemon switches in, mark that they started this turn without buffs.
+		pokemon.startofturnboosts = {
+			toa: 0,
+			tod: 0,
+			boa: 0,
+			bod: 0,
+			hor: 0,
+			evasion: 0,
+			accuracy: 0,
+		}
 		return true;
 	}
 	dragIn(side: Side, pos: number) {
@@ -1728,7 +1737,7 @@ export class BattleActions {
 		const tr = this.battle.trunc;
 		if (!move.type) move.type = '???';
 		const type = move.type;
-
+		//Maybe remove this? If we're consistently up by two then yeah
 		baseDamage += 2;
 
 		if (move.spreadHit) {

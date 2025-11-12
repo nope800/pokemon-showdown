@@ -113,6 +113,7 @@ export class Pokemon {
 	 */
 	storedStats: StatsExceptHPTable;
 	boosts: BoostsTable;
+	startofturnboosts: BoostsTable;
 
 	baseAbility: ID;
 	ability: ID;
@@ -409,6 +410,7 @@ export class Pokemon {
 		this.baseStoredStats = null!;
 		this.storedStats = { toa: 0, tod: 0, boa: 0, bod: 0, hor: 0 };
 		this.boosts = { toa: 0, tod: 0, boa: 0, bod: 0, hor: 0, accuracy: 0, evasion: 0 };
+		this.startofturnboosts = { toa: 0, tod: 0, boa: 0, bod: 0, hor: 0, accuracy: 0, evasion: 0 };
 
 		this.baseAbility = toID(set.ability);
 		this.ability = this.baseAbility;
@@ -1206,6 +1208,13 @@ export class Pokemon {
 		let boostName: BoostID;
 		for (boostName in boosts) {
 			this.boosts[boostName] = boosts[boostName]!;
+		}
+	}
+
+	setStartOfTurnBoosts(boosts: SparseBoostsTable) {
+		let boostName: BoostID;
+		for (boostName in boosts) {
+			this.startofturnboosts[boostName] = boosts[boostName]!;
 		}
 	}
 
