@@ -7592,12 +7592,12 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	cuddle: {
 		name: "Cuddle",
 		desc: "The user snuggles the target, healing 50% of the user's max health while inflicting Held on the target. May be used even while the user is Held.",
-		shortDesc: "Heals the user for 50% of their max health. Inflicts Held. May be used while Held.",
+		shortDesc: "Heals 50%. Inflicts Held. Can use while Held.",
 	},
 	strapswap: {
 		name: "Strap Swap",
 		desc: "The user swaps their own Top and Bottom Stats. The user heals 15 St. Stat stage changes remain on their respective stats. This move can be used again to swap the stats back.",
-		shortDesc: "Switches user's Top and Bottom stats, and heals for 15 St.",
+		shortDesc: "Switches own Top and Bottom stats. Heals for 15.",
 
 		start: "  [POKEMON] switched its Top and Bottom stats!",
 		end: "#.start",
@@ -7637,12 +7637,12 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	shyscurry: {
 		name: "Shy Scurry",
 		desc: "The user gets too worked up and can't face their opponent. Lowers the target's Top Attack and switches the user out.",
-		shortDesc: "Lowers the target's top attack by 1. Switches the user out.",
+		shortDesc: "-1 top attack. Switches the user out.",
 	},
 	reversal: {
 		name: "Reversal",
 		desc: "May only be used if the user is Held. Clears Held from the user and inflicts Held on the target, while lowering their top attack.",
-		shortDesc: "Can only be used while Held. Inflicts Held. lowers the target's Top Attack by 1.",
+		shortDesc: "Must be Held. Inflict Held. -1 Top Attack.",
 	},
 	doggystyle: {
 		name: "Doggystyle",
@@ -7667,7 +7667,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	wingman: {
 		name: "Wing Man",
 		desc: "The user talks up one of their teammates. The user switches out. The teammate that switches in will deal a critical hit on their next turn.",
-		shortDesc: "Switch out, gaurentee crit for teammate. Usually moves last.",
+		shortDesc: "Switch out, teammate crits next turn. Moves last.",
 		start: "  [POKEMON] talked up its teammate! Guaranteed crit next turn!",
 		end: "[POKEMON]'s confidence boost from their wingman wore off.",
 	},
@@ -7689,12 +7689,12 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	pleadingeyes: {
 		name: "Pleading Eyes",
 		desc: "The user looks up at the target with a needy expression. Lowers the target's Bottom Attack and Bottom Defense.",
-		shortDesc: "Lowers target Bottom Attack and Bottom Defense by 1.",
+		shortDesc: "-1 Bottom Attack. -1 Bottom Defense",
 	},
 	failforward: {
 		name: "Fail Forward",
 		desc: "The user slips up, knocking their target down and landing atop them. Inflicts Held, and lowers the target's Top Attack",
-		shortDesc: "Inflicts Held. Lowers the target's Top Attack by 1. Usually moves first.",
+		shortDesc: "Inflicts Held. -1 Top Attack. Usually moves first.",
 	},
 	clench: {
 		name: "Clench",
@@ -7719,7 +7719,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	deepbreaths: {
 		name: "Deep Breaths",
 		desc: "The user calms themselves. Removes all status effects from the user, lower's the user's Horniness, and raises their Bottom Defense.",
-		shortDesc: "Clears user's statuses. Lower's user's Horniness. Raises user's Bottom Defense.",
+		shortDesc: "Clears statuses. -1 Horniness. +1 Bottom Defense",
 	},
 	givehead: {
 		name: "Give Head",
@@ -7729,7 +7729,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	cheerlead: {
 		name: "Cheerlead",
 		desc: "The user hypes up one of their teammates. The user switches out. The teammate that switches in is inflicted with Swarming.",
-		shortDesc: "Switch out, give swarming to teammate. Usually moves last.",
+		shortDesc: "Switch out. New pokemon swarms. Usually moves last.",
 	},
 	shibari: {
 		name: "Shibari",
@@ -7777,7 +7777,7 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	bite: {
 		name: "Bite",
 		desc: "The user bites their target. Reverts all the target's raised stats this turn. For each stat, sets the boost to the minimum of its current value and its value at the start of the turn.",
-		shortDesc: "Negates all target's positive stat changes this turn.",
+		shortDesc: "Usually moves last. Reverts positive stat changes.",
 	},
 	lick: {
 		name: "Lick",
