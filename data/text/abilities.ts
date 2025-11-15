@@ -3,6 +3,11 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 		name: "No Ability",
 		shortDesc: "Does nothing.",
 	},
+	humanadaptability: {
+		name: "Human Adaptability",
+		desc: "This character's type changes to match their moves when sent out",
+		activate: "  [POKEMON]'s type changed to suit its moves!",
+	},
 	adaptability: {
 		name: "Adaptability",
 		desc: "This Pokemon's moves that match one of its types have a same-type attack bonus (STAB) of 2 instead of 1.5.",

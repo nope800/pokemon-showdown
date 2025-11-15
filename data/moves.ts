@@ -22546,7 +22546,11 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		name: "Clench",
 		pp: 10,
 		priority: 0,
-		flags: {protect: 1},
+		flags: {hold: 1, protect: 1},
+		secondary: {
+			chance: 100,
+			status: 'held',
+		},
 		target: "normal",
 		type: "Rage",
 		contestType: "Cool",

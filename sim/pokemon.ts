@@ -2079,6 +2079,8 @@ export class Pokemon {
 	 * Sets a type (except on Arceus, who resists type changes)
 	 */
 	setType(newType: string | string[], enforce = false) {
+		console.log("setType called")
+		console.log(newType)
 		if (!enforce) {
 			// No Pokemon should be able to have Stellar as a base type
 			if (typeof newType === 'string' ? newType === 'Stellar' : newType.includes('Stellar')) return false;
@@ -2092,7 +2094,11 @@ export class Pokemon {
 		}
 
 		if (!newType) throw new Error("Must pass type to setType");
+		console.log("PRIOR TYPE:")
+		console.log(this.types)
 		this.types = (typeof newType === 'string' ? [newType] : newType);
+		console.log("NEW TYPE:")
+		console.log(this.types)
 		this.addedType = '';
 		this.knownType = true;
 		this.apparentType = this.types.join('/');

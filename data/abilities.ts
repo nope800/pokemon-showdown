@@ -32,6 +32,9 @@ Ratings and how they work:
 
 */
 
+import { Types } from 'mysql2';
+import { Type } from 'mysql2/typings/mysql/lib/parsers/typeCast';
+
 export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	noability: {
 		flags: {},
@@ -39,9 +42,53 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		rating: 0.1,
 		num: 0,
 	},
-	humanadaptability: {
+	humanadaptability: { //AMOROS HUMANS
 		flags: {},
 		name: "Human Adaptability",
+		onSwitchIn(pokemon) {
+			console.log(pokemon.types)
+			console.log("CALLED")
+			//almost certainly already a const for this somewhere but I haven't tracked down where ~(.-.)~
+			const pokemontypes = ["Vanilla", "Loving", "Muscle", "Control", "Instinct", "Toy", "Freak", "Spoiled" , "Group" , "Pathetic" , "Tentacle" , "Stoic" , "Rage"]
+			let newtypes: string[] = []
+			let movetypes: string[] = []
+			for (const moveSlot of pokemon.moveSlots) {
+					const move = this.dex.moves.get(moveSlot.id);
+					movetypes.push(move.type) 
+			}
+			//for some reason it's not letting me use move.type as an index on an object to count the numbers, so here we are.
+			let monotype:boolean = false;
+			console.log("COUNTING")
+			console.log(movetypes)
+			for (const pokemontype in pokemontypes) {
+				let count = movetypes.filter((ptype) => ptype == pokemontypes[pokemontype]).length
+				console.log(pokemontype)
+				console.log(count)
+				if (count > 1) {
+					newtypes.push(pokemontypes[pokemontype])
+					if (count > 2) {
+						monotype = true
+						break
+					}
+				}
+			}
+			if (!monotype && newtypes.length < 2 && !newtypes.includes("Vanilla")) {
+				newtypes.push("Vanilla")
+			}
+			if (newtypes.length == 0) {return;}
+			console.log("NEW TYPES:")
+			console.log(newtypes)
+			this.add('-ability', pokemon, 'Human Adaptability');
+			//pokemon.setType(newtypes)
+			//setType isn't working so fine, I'll do it myself.
+			//maybe because this triggers while being sent out and the pokemon isn't fully initialized or something??
+			//who knows.
+			pokemon.types = newtypes
+			pokemon.addedType = '';
+			pokemon.knownType = true;
+			pokemon.apparentType = newtypes.join('/');
+			return
+		},
 		rating: 0.1,
 		num: 99999,
 	},
