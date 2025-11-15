@@ -45,9 +45,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	humanadaptability: { //AMOROS HUMANS
 		flags: {},
 		name: "Human Adaptability",
+		onSwitchInPriority: -10,
 		onSwitchIn(pokemon) {
-			console.log(pokemon.types)
-			console.log("CALLED")
 			//almost certainly already a const for this somewhere but I haven't tracked down where ~(.-.)~
 			const pokemontypes = ["Vanilla", "Loving", "Muscle", "Control", "Instinct", "Toy", "Freak", "Spoiled" , "Group" , "Pathetic" , "Tentacle" , "Stoic" , "Rage"]
 			let newtypes: string[] = []
@@ -58,12 +57,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			}
 			//for some reason it's not letting me use move.type as an index on an object to count the numbers, so here we are.
 			let monotype:boolean = false;
-			console.log("COUNTING")
-			console.log(movetypes)
 			for (const pokemontype in pokemontypes) {
 				let count = movetypes.filter((ptype) => ptype == pokemontypes[pokemontype]).length
-				console.log(pokemontype)
-				console.log(count)
 				if (count > 1) {
 					newtypes.push(pokemontypes[pokemontype])
 					if (count > 2) {
@@ -76,17 +71,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 				newtypes.push("Vanilla")
 			}
 			if (newtypes.length == 0) {return;}
-			console.log("NEW TYPES:")
-			console.log(newtypes)
-			this.add('-ability', pokemon, 'Human Adaptability');
-			//pokemon.setType(newtypes)
-			//setType isn't working so fine, I'll do it myself.
-			//maybe because this triggers while being sent out and the pokemon isn't fully initialized or something??
-			//who knows.
-			pokemon.types = newtypes
-			pokemon.addedType = '';
-			pokemon.knownType = true;
-			pokemon.apparentType = newtypes.join('/');
+			this.add('-start', pokemon, 'typechange', newtypes.join('/'), '[from] ability: Human Adaptability');
+			pokemon.setType(newtypes)
 			return
 		},
 		rating: 0.1,

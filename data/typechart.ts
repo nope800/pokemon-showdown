@@ -157,7 +157,7 @@ export const TypeChart: import('../sim/dex-data').TypeDataTable = {
 			vanilla: 0,
 			loving: 0,
 			muscle: 0,
-			control: 0,
+			control: 1,
 			instinct: 0,
 			toy: 0,
 			freak: 0,

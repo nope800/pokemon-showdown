@@ -22834,6 +22834,9 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		priority: -1,
 		flags: {protect: 1,},
 		onHit(target) {
+			console.log("BITE")
+			console.log(target.types)
+			console.log(target.getTypes())
 			let resetboost: BoostsTable = {
 				toa: 0,
 				tod: 0,

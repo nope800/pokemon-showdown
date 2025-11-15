@@ -1219,15 +1219,11 @@ export class Pokemon {
 	}
 
 	copyVolatileFrom(pokemon: Pokemon, switchCause?: string | boolean) {
-		console.log("COPYVOLATILEFROM");
-		console.log(switchCause);
 		this.clearVolatile();
 		if (switchCause === 'copyvolatile') this.boosts = pokemon.boosts;
 		for (const i in pokemon.volatiles) {
-			console.log(i);
 			if (switchCause === 'shedtail' && i !== 'substitute') continue;
 			if (switchCause === 'wingman' && i !== 'wingman') continue;
-			console.log("CORRECT VOLATILE")
 			if (this.battle.dex.conditions.getByID(i as ID).noCopy) continue;
 			// shallow clones
 			this.volatiles[i] = this.battle.initEffectState({ ...pokemon.volatiles[i], target: this });
@@ -2079,8 +2075,6 @@ export class Pokemon {
 	 * Sets a type (except on Arceus, who resists type changes)
 	 */
 	setType(newType: string | string[], enforce = false) {
-		console.log("setType called")
-		console.log(newType)
 		if (!enforce) {
 			// No Pokemon should be able to have Stellar as a base type
 			if (typeof newType === 'string' ? newType === 'Stellar' : newType.includes('Stellar')) return false;
@@ -2094,11 +2088,7 @@ export class Pokemon {
 		}
 
 		if (!newType) throw new Error("Must pass type to setType");
-		console.log("PRIOR TYPE:")
-		console.log(this.types)
 		this.types = (typeof newType === 'string' ? [newType] : newType);
-		console.log("NEW TYPE:")
-		console.log(this.types)
 		this.addedType = '';
 		this.knownType = true;
 		this.apparentType = this.types.join('/');

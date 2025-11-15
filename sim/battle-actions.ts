@@ -111,10 +111,7 @@ export class BattleActions {
 			if (this.battle.gen === 4 && sourceEffect) {
 				newMove = oldActive.lastMove;
 			}
-			console.log("CHECKING SWITCHOUT FLAG")
-			console.log(switchCopyFlag)
 			if (switchCopyFlag) {
-				console.log("FOUND COPY FLAG")
 				pokemon.copyVolatileFrom(oldActive, switchCopyFlag);
 			}
 			if (newMove) pokemon.lastMove = newMove;

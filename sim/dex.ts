@@ -263,7 +263,7 @@ export class ModdedDex {
 		}
 		const typeData = this.types.get(targetTyping);
 		if (!typeData) return 0;
-		switch (typeData.damageTaken[sourceType]) {
+		switch (typeData.damageTaken[sourceType.toLowerCase()]) {
 		case 1: return 1; // super-effective
 		case 2: return -1; // resist
 		// in case of weird situations like Gravity, immunity is handled elsewhere

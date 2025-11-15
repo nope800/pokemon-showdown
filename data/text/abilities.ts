@@ -6,7 +6,7 @@ export const AbilitiesText: { [id: IDEntry]: AbilityText } = {
 	humanadaptability: {
 		name: "Human Adaptability",
 		desc: "This character's type changes to match their moves when sent out",
-		activate: "  [POKEMON]'s type changed to suit its moves!",
+		activate: "[POKEMON]'s type changed to suit its moves!",
 	},
 	adaptability: {
 		name: "Adaptability",
