@@ -22890,6 +22890,42 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		type: "Freak",
 		contestType: "Cool",
 	},
+	squishycoil: {
+		num: 54,
+		accuracy: 100,
+		basePower: 30,
+		category: "Bottom",
+		name: "Squishy Coil",
+		pp: 10,
+		priority: 0,
+		flags: {hold: 1, protect: 1},
+		secondary: {
+			chance: 100,
+			status: 'held',
+		},
+		target: "normal",
+		type: "Tentacle",
+		contestType: "Cool",
+	},
+	surprise: {
+		num: 4,
+		accuracy: 100,
+		basePower: 15,
+		category: "Top",
+		name: "Surprise",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1},
+		onModifyMove(move, source) {
+			if (source.activeMoveActions < 2) {
+				move.willCrit = true
+			}
+		},
+		secondary: null,
+		target: "normal",
+		type: "Vanilla",
+		contestType: "Cool",
+	},
 	
 
 };

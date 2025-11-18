@@ -7698,8 +7698,8 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 	},
 	clench: {
 		name: "Clench",
-		desc: "The user tightens up, squeezing their target hard and not letting go.",
-		shortDesc: "No additional effect.",
+		desc: "The user tightens up, squeezing their target hard and not letting go. Inflicts Held.",
+		shortDesc: "Inflicts Held.",
 	},
 	bossaround: {
 		name: "Boss Around",
@@ -7783,5 +7783,15 @@ export const MovesText: { [id: IDEntry]: MoveText } = {
 		name: "Lick",
 		desc: "The user licks their target with a single, long lap of the tongue. The user steals one of the target's positive stat changes, chosen at random.",
 		shortDesc: "Steals a random positive boost.",
+	},
+	squishycoil: {
+		name: "Squishy Coil",
+		desc: "The user wraps their soft tentacles around the target, squeezing them softly. Inflicts Held.",
+		shortDesc: "Inflicts Held.",
+	},
+	surprise: {
+		name: "Surprise",
+		desc: "The user moves as fast as they can to suddenly engage the target before they can react. Deals a critical hit if used on the user's first turn.",
+		shortDesc: "Crits if used on first turn out. Usually moves first.",
 	},
 };
