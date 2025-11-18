@@ -78,6 +78,12 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		rating: 0.1,
 		num: 99999,
 	},
+	no: {
+		flags: {},
+		name: "No",
+		rating: 0.1,
+		num: 0,
+	},
 	adaptability: {
 		onModifySTAB(stab, source, target, move) {
 			if (move.forceSTAB || source.hasType(move.type)) {
