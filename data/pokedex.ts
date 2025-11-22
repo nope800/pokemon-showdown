@@ -5838,22 +5838,6 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		color: "Purple",
 		eggGroups: ["Bug", "Human-Like"],
 	},
-	roselia: {
-		num: 315,
-		name: "Roselia",
-		types: ["Grass", "Poison"],
-		baseStats: { st: 50, toa: 60, tod: 45, boa: 100, bod: 80, hor: 65 },
-		abilities: { 0: "Natural Cure", 1: "Poison Point", H: "Leaf Guard" },
-		heightm: 0.3,
-		weightkg: 2,
-		color: "Green",
-		prevo: "Budew",
-		evoType: "levelFriendship",
-		evoCondition: "during the day",
-		evos: ["Roserade"],
-		eggGroups: ["Fairy", "Grass"],
-		canHatch: true,
-	},
 	gulpin: {
 		num: 316,
 		name: "Gulpin",
@@ -20124,7 +20108,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		eggGroups: ["Undiscovered"],
 		canHatch: true,
 	},
-	roserade: {
+	roselia: {
 		num: 15,
 		name: "Roserade",
 		types: ["Control"],
