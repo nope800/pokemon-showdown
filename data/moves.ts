@@ -22518,12 +22518,12 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		type: "Pathetic",
 		contestType: "Cute",
 	},
-	failforward: {
+	failforwards: {
 		num: 30,
 		accuracy: 100,
 		basePower: 15,
 		category: "Top",
-		name: "Fail Forward",
+		name: "Fail Forwards",
 		pp: 10,
 		priority: 1,
 		flags: {protect: 1, hold:1 },
