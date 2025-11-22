@@ -46,6 +46,14 @@ export const Tags: { [id: IDEntry]: TagData } = {
 		name: "Restricted Legendary",
 		speciesFilter: species => species.tags.includes("Restricted Legendary"),
 	},
+	protagonist: { //AMOROS PROTAGS
+		name: "Protagonist",
+		speciesFilter: species => species.tags.includes("Protagonist"),
+	},
+	overleveled: { //AMOROS POKEMON WE'VE SEEN THE STATS OF TOO EARLY
+		name: "Overleveled",
+		speciesFilter: species => species.tags.includes("Overleveled"),
+	},
 	ultrabeast: {
 		name: "Ultra Beast",
 		speciesFilter: species => species.tags.includes("Ultra Beast"),

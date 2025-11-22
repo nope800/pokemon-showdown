@@ -6044,4 +6044,24 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		isNonstandard: "Custom",
 		tier: "Illegal",
 	},
+
+	//AMOROS
+	cerise: {
+		tier: "OU",
+	},
+	hunter: {
+		tier: "OU",
+	},
+	indigo: {
+		tier: "OU",
+	},
+	joi: {
+		tier: "OU",
+	},
+	pablo: {
+		tier: "OU",
+	},
+	becky: {
+		tier: "OU",
+	},
 };
