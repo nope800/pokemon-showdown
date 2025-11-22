@@ -23,11 +23,12 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 	//AMOROS
 	//////////////////////////////////////
 	{
-		section: "AMOROS",
+		section: "Amoros",
 	},
 	{
 		name: "League Standard",
 		desc: `3v3 singles.`,
+		mod: 'amoros',
 		ruleset: ['Picked Team Size = 3', 'Max Team Size = 7', 'Obtainable', 'St Percentage Mod', 'Cancel Mod', 'terastalclause', 'Limit One Restricted', 'teampreview'],
 		restricted: ['Protagonist',],
 		banlist: ['Overleveled',]
