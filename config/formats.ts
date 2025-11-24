@@ -33,6 +33,38 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 		restricted: ['Protagonist',],
 		banlist: ['Overleveled',]
 	},
+	{
+		name: "[Gen 9]Full Team Singles",
+		desc: `6v6 singles.`,
+		mod: 'gen9',
+		ruleset: ['Max Team Size = 7', 'Obtainable', 'St Percentage Mod', 'Cancel Mod', 'terastalclause', 'Limit One Restricted', 'teampreview'],
+		restricted: ['Protagonist',],
+		banlist: ['Overleveled',]
+	},
+	{
+		name: "[Gen 9]3v3 Doubles",
+		desc: `3v3 doubles.`,
+		mod: 'gen9',
+		gameType: 'doubles',
+		ruleset: ['Picked Team Size = 3', 'Max Team Size = 7', 'Obtainable', 'St Percentage Mod', 'Cancel Mod', 'terastalclause', 'Limit One Restricted', 'teampreview'],
+		restricted: ['Protagonist',],
+		banlist: ['Overleveled',]
+	},
+	{
+		name: "[Gen 9]Full Team Doubles",
+		desc: `6v6 doubles.`,
+		mod: 'gen9',
+		gameType: 'doubles',
+		ruleset: ['Max Team Size = 7', 'Obtainable', 'St Percentage Mod', 'Cancel Mod', 'terastalclause', 'Limit One Restricted', 'teampreview'],
+		restricted: ['Protagonist',],
+		banlist: ['Overleveled',]
+	},
+	{
+		name: "[Gen 9]Anything Goes",
+		desc: `6v6 singles with no restrictions or bans.`,
+		mod: 'gen9',
+		ruleset: ['Max Team Size = 7', 'Obtainable', 'St Percentage Mod', 'Cancel Mod', 'terastalclause', 'teampreview'],
+	},
 
 	// S/V Singles
 	///////////////////////////////////////////////////////////////////
