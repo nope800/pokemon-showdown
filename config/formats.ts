@@ -399,11 +399,6 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 		],
 	},
 	{
-		name: "[Gen 9] Anything Goes",
-		mod: 'gen9',
-		ruleset: ['Standard AG'],
-	},
-	{
 		name: "[Gen 9] Ubers UU",
 		mod: 'gen9',
 		searchShow: false,
