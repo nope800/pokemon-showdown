@@ -1721,8 +1721,9 @@ export class BattleActions {
 
 		// int(int(int(2 * L / 5 + 2) * A * P / D) / 50); NORMAL POKEMON
 		//const baseDamage = tr(tr(tr(tr(2 * level / 5 + 2) * basePower * attack) / defense) / 50);
-		// math.round(math.round(ATT/DEF * POW / 1.6) + 0.5); AMOROS
-		const baseDamage = Math.round(Math.round((attack / defense) * basePower / 1.6) + 0.5);
+		// math.round(ATT/DEF * POW / 1.6) + 0.5); AMOROS
+		const baseDamage = Math.round((attack / defense) * basePower / 1.6) + 0.5;
+		//we end up with a .5 here, but that gets rounded in modifyDamage
 
 		// Calculate damage modifiers separately (order differs between generations)
 		return this.modifyDamage(baseDamage, source, target, move, suppressMessages);
