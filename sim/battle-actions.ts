@@ -1804,7 +1804,7 @@ export class BattleActions {
 
 		// types
 		let typeMod = target.runEffectiveness(move);
-		typeMod = this.battle.clampIntRange(typeMod, -6, 6);
+		typeMod = this.battle.clampIntRange(typeMod, -1, 1); //AMOROS: only x2 and 1/2, no 4x here.
 		target.getMoveHitData(move).typeMod = typeMod;
 		if (typeMod > 0) {
 			if (!suppressMessages) this.battle.add('-supereffective', target);
