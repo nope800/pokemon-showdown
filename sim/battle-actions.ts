@@ -1688,10 +1688,10 @@ export class BattleActions {
 		let ignoreNegativeOffensive = !!move.ignoreNegativeOffensive;
 		let ignorePositiveDefensive = !!move.ignorePositiveDefensive;
 
-		if (moveHit.crit) {
-			ignoreNegativeOffensive = true;
-			ignorePositiveDefensive = true;
-		}
+		//if (moveHit.crit) {
+		//	ignoreNegativeOffensive = true; //AMOROS: crits don't ignore stat changes.
+		//	ignorePositiveDefensive = true;
+		//}
 		const ignoreOffensive = !!(move.ignoreOffensive || (ignoreNegativeOffensive && atkBoosts < 0));
 		const ignoreDefensive = !!(move.ignoreDefensive || (ignorePositiveDefensive && defBoosts > 0));
 
