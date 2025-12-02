@@ -1755,7 +1755,7 @@ export class BattleActions {
 		// crit - not a modifier
 		const isCrit = target.getMoveHitData(move).crit;
 		if (isCrit) {
-			baseDamage = tr(baseDamage * 1.5); //AMOROS, crits are always 1.5
+			baseDamage = baseDamage * 1.5; //AMOROS, crits are always 1.5
 		}
 
 		// random factor - also not a modifier
@@ -1768,7 +1768,7 @@ export class BattleActions {
 		// Struggle in the same turn.
 		// (On second thought, it might be easier to get a MissingNo.)
 		if (type !== '???') {
-			let stab: number | [number, number] = 1;
+			let stab: number = 1;
 
 			const isSTAB = move.forceSTAB || pokemon.hasType(type) || pokemon.getTypes(false, true).includes(type);
 			if (isSTAB) {
@@ -1784,7 +1784,7 @@ export class BattleActions {
 			// and then goes back to using the regular 1.5x STAB boost for those types.
 			if (pokemon.terastallized === 'Stellar') {
 				if (!pokemon.stellarBoostedTypes.includes(type) || move.stellarBoosted) {
-					stab = isSTAB ? 2 : [4915, 4096];
+					stab = isSTAB ? 2 : 2; //idk
 					move.stellarBoosted = true;
 					if (pokemon.species.name !== 'Terapagos-Stellar') {
 						pokemon.stellarBoostedTypes.push(type);
@@ -1797,7 +1797,8 @@ export class BattleActions {
 				stab = this.battle.runEvent('ModifySTAB', pokemon, target, move, stab);
 			}
 
-			baseDamage = this.battle.modify(baseDamage, stab); //AMOROS this might break stuff?
+			//baseDamage = this.battle.modify(baseDamage, stab); //AMOROS this might break stuff?
+			baseDamage = baseDamage * stab
 		}
 
 		// types
@@ -1841,8 +1842,7 @@ export class BattleActions {
 		// Generation 6-7 moves the check for minimum 1 damage after the final modifier...
 		if (this.battle.gen !== 5 && !baseDamage) return 1;
 
-		// ...but 16-bit truncation happens even later, and can truncate to 0
-		return tr(baseDamage, 16);
+		return Math.round(baseDamage);
 	}
 
 	/**
