@@ -66,6 +66,7 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 		ruleset: ['Max Team Size = 7', 'Obtainable', 'St Percentage Mod', 'Cancel Mod', 'terastalclause', 'teampreview'],
 	},
 
+	/*
 	// S/V Singles
 	///////////////////////////////////////////////////////////////////
 
@@ -5108,4 +5109,5 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 		battle: { trunc: Math.trunc },
 		ruleset: ['St Percentage Mod', 'Cancel Mod', 'Desync Clause Mod', 'Max Team Size = 24', 'Max Move Count = 24', 'Max Level = 9999', 'Default Level = 100'],
 	},
+	*/
 ];

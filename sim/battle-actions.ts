@@ -1734,8 +1734,8 @@ export class BattleActions {
 		const tr = this.battle.trunc;
 		if (!move.type) move.type = '???';
 		const type = move.type;
-		//Maybe remove this? If we're consistently up by two then yeah
-		baseDamage += 2;
+		//AMOROS Maybe remove this? If we're consistently up by two then yeah
+		//baseDamage += 2;
 
 		if (move.spreadHit) {
 			// multi-target modifier (doubles only)
@@ -1755,7 +1755,7 @@ export class BattleActions {
 		// crit - not a modifier
 		const isCrit = target.getMoveHitData(move).crit;
 		if (isCrit) {
-			baseDamage = tr(baseDamage * (move.critModifier || (this.battle.gen >= 6 ? 1.5 : 2)));
+			baseDamage = tr(baseDamage * 1.5); //AMOROS, crits are always 1.5
 		}
 
 		// random factor - also not a modifier
@@ -1772,7 +1772,7 @@ export class BattleActions {
 
 			const isSTAB = move.forceSTAB || pokemon.hasType(type) || pokemon.getTypes(false, true).includes(type);
 			if (isSTAB) {
-				stab = 1.5;
+				stab = pokemon.getTypes(false,false).length == 1? 1.75 : 1.5; //AMOROS single typers get 1.75x stab
 			}
 
 			// The Stellar tera type makes this incredibly confusing
@@ -1797,7 +1797,7 @@ export class BattleActions {
 				stab = this.battle.runEvent('ModifySTAB', pokemon, target, move, stab);
 			}
 
-			baseDamage = this.battle.modify(baseDamage, stab);
+			baseDamage = this.battle.modify(baseDamage, stab); //AMOROS this might break stuff?
 		}
 
 		// types

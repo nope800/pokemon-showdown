@@ -5059,7 +5059,7 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		
 	},
 	calyrexshadow: {
-		tier: "AG",
+		tier: "Illegal",
 		
 		
 	},
@@ -5450,7 +5450,7 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		
 	},
 	miraidon: {
-		tier: "AG",
+		tier: "Illegal",
 		
 		
 	},
