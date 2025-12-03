@@ -1,4 +1,5 @@
 export const Items: import('../sim/dex-items').ItemDataTable = {
+	/*
 	abilityshield: {
 		name: "Ability Shield",
 		spritenum: 746,
@@ -7696,4 +7697,5 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 		gen: 8,
 		isNonstandard: "CAP",
 	},
+	*/
 };
