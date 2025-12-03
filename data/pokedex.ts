@@ -19929,7 +19929,7 @@ export const Pokedex: import('../sim/dex-species').SpeciesDataTable = {
 		name: "Cerise",
 		types: ["Vanilla"],
 		gender: "N",
-		baseStats: { st: 25, toa: 25, tod: 25, boa: 25, bod: 25, hor: 25 },
+		baseStats: { st: 28, toa: 25, tod: 27, boa: 28, bod: 26, hor: 28 },
 		abilities: { 0: "Human Adaptability" },
 		tags: ["Protagonist"],
 		heightm: 2,

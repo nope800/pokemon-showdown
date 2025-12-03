@@ -29,7 +29,7 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 		name: "[Gen 9]League Standard",
 		desc: `3v3 singles.`,
 		mod: 'gen9',
-		ruleset: ['Picked Team Size = 3', 'Max Team Size = 7', 'Obtainable', 'St Percentage Mod', 'Cancel Mod', 'terastalclause', 'Limit One Restricted', 'teampreview'],
+		ruleset: ['Picked Team Size = 3', 'Max Team Size = 7', 'Obtainable', 'Species Clause', 'St Percentage Mod', 'Cancel Mod', 'terastalclause', 'Limit One Restricted', 'teampreview'],
 		restricted: ['Protagonist',],
 		banlist: ['Overleveled',]
 	},
@@ -37,7 +37,7 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 		name: "[Gen 9]Full Team Singles",
 		desc: `6v6 singles.`,
 		mod: 'gen9',
-		ruleset: ['Max Team Size = 7', 'Obtainable', 'St Percentage Mod', 'Cancel Mod', 'terastalclause', 'Limit One Restricted', 'teampreview'],
+		ruleset: ['Max Team Size = 7', 'Obtainable', 'Species Clause', 'St Percentage Mod', 'Cancel Mod', 'terastalclause', 'Limit One Restricted', 'teampreview'],
 		restricted: ['Protagonist',],
 		banlist: ['Overleveled',]
 	},
@@ -46,7 +46,7 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 		desc: `3v3 doubles.`,
 		mod: 'gen9',
 		gameType: 'doubles',
-		ruleset: ['Picked Team Size = 3', 'Max Team Size = 7', 'Obtainable', 'St Percentage Mod', 'Cancel Mod', 'terastalclause', 'Limit One Restricted', 'teampreview'],
+		ruleset: ['Picked Team Size = 3', 'Max Team Size = 7', 'Obtainable', 'Species Clause', 'St Percentage Mod', 'Cancel Mod', 'terastalclause', 'Limit One Restricted', 'teampreview'],
 		restricted: ['Protagonist',],
 		banlist: ['Overleveled',]
 	},
@@ -55,7 +55,7 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 		desc: `6v6 doubles.`,
 		mod: 'gen9',
 		gameType: 'doubles',
-		ruleset: ['Max Team Size = 7', 'Obtainable', 'St Percentage Mod', 'Cancel Mod', 'terastalclause', 'Limit One Restricted', 'teampreview'],
+		ruleset: ['Max Team Size = 7', 'Obtainable', 'Species Clause', 'St Percentage Mod', 'Cancel Mod', 'terastalclause', 'Limit One Restricted', 'teampreview'],
 		restricted: ['Protagonist',],
 		banlist: ['Overleveled',]
 	},
