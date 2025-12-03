@@ -1538,6 +1538,8 @@ export class Pokemon {
 		delete this.itemState.started;
 
 		this.setSpecies(this.baseSpecies);
+		//AMOROS: all statuses are volatile
+		this.cureStatus()
 	}
 
 	hasType(type: string | string[]) {
@@ -1648,7 +1650,9 @@ export class Pokemon {
 	}
 
 	trySetStatus(status: string | Condition, source: Pokemon | null = null, sourceEffect: Effect | null = null) {
-		return this.setStatus(this.status || status, source, sourceEffect);
+		//AMOROS: always override the old status with the new.
+		//return this.setStatus(this.status || status, source, sourceEffect);
+		return this.setStatus(status, source, sourceEffect);
 	}
 
 	/** Unlike clearStatus, gives cure message */
@@ -1676,6 +1680,7 @@ export class Pokemon {
 		}
 		if (!source) source = this;
 
+		/* AMOROS: you can override a status effect with itself.
 		if (this.status === status.id) {
 			if ((sourceEffect as Move)?.status === this.status) {
 				this.battle.add('-fail', this, this.status);
@@ -1685,6 +1690,7 @@ export class Pokemon {
 			}
 			return false;
 		}
+		*/
 
 		if (
 			!ignoreImmunities && status.id && !(source?.hasAbility('corrosion') && ['tox', 'psn'].includes(status.id))
@@ -1716,6 +1722,7 @@ export class Pokemon {
 			this.statusState.duration = status.durationCallback.call(this.battle, this, source, sourceEffect);
 		}
 
+		//Pretty sure these two fail states are bugs and shouldn't happen?
 		if (status.id && !this.battle.singleEvent('Start', status, this.statusState, this, source, sourceEffect)) {
 			this.battle.debug('status start [' + status.id + '] interrupted');
 			// cancel the setstatus
